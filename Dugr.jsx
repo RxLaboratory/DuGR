@@ -25,7 +25,7 @@ This file is part of Dugr.
 (function Dugr (obj) {
 	
 	//================
-	var version = "2.0";
+	var version = "2.0.1";
 	//================
 	
 	//Dugr needs to write files
@@ -480,48 +480,30 @@ This file is part of Dugr.
 			
 			comp.hideShyLayers = true;
 			
-			for (var i = 0 ; i < groupsList.selection.length ; i++)
+
+			for (var j = 1;j<=comp.numLayers;j++)
 			{
-				var group = groupsList.selection[i].text;
-				for (var j = 1;j<=comp.numLayers;j++)
+				var layer = comp.layer(j);
+				if (!alreadyActivated)
 				{
-					var layer = comp.layer(j);
-					if (!alreadyActivated)
-					{
-						layer.comment = layer.comment.replace('|shy| ','');
-						layer.comment = layer.comment.replace('|vis| ','');
-						layer.comment = layer.comment.replace('|sel| ','');
-						if (layer.shy) layer.comment = layer.comment + '|shy| ';
-						if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-						if (layer.selected) layer.comment = layer.comment + '|sel| ';
-					}
-			
-					if (group == 'All')
-					{
-						layer.shy = false;
-						layer.enabled = true;
-					}
-					else if (group == 'Selected' && layer.selected)
-					{
-						layer.shy = false;
-						layer.enabled = true;
-					}
-					else if (group == 'Not selected'  && !layer.selected)
-					{
-						layer.shy = false;
-						layer.enabled = true;
-					}
-					else if (layer.comment.indexOf('|' + group + '| ')>=0)
-					{
-						layer.shy = false;
-						layer.enabled = true;
-					}
-					else 
-					{
-						layer.shy = true;
-						layer.enabled = false;
-					}
+					layer.comment = layer.comment.replace('|shy| ','');
+					layer.comment = layer.comment.replace('|vis| ','');
+					layer.comment = layer.comment.replace('|sel| ','');
+					if (layer.shy) layer.comment = layer.comment + '|shy| ';
+					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+					if (layer.selected) layer.comment = layer.comment + '|sel| ';
 				}
+				
+				layer.shy = true;
+				layer.enabled = false;
+			}
+
+			
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+				layers[i].shy = false;
+				layers[i].enabled = true;
 			}
 			
 			addDugrLayer();
@@ -552,43 +534,27 @@ This file is part of Dugr.
 			
 			comp.hideShyLayers = true;
 			
-			for (var i = 0 ; i < groupsList.selection.length ; i++)
+			for (var j = 1;j<=comp.numLayers;j++)
 			{
-				var group = groupsList.selection[i].text;
-				for (var j = 1;j<=comp.numLayers;j++)
+				var layer = comp.layer(j);
+				if (!alreadyActivated)
 				{
-					var layer = comp.layer(j);
-					if (!alreadyActivated)
-					{
-						layer.comment = layer.comment.replace('|shy| ','');
-						layer.comment = layer.comment.replace('|vis| ','');
-						layer.comment = layer.comment.replace('|sel| ','');
-						if (layer.shy) layer.comment = layer.comment + '|shy| ';
-						if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-						if (layer.selected) layer.comment = layer.comment + '|sel| ';
-					}
-			
-					if (group == 'All')
-					{
-						layer.shy = false;
-					}
-					else if (group == 'Selected' && layer.selected)
-					{
-						layer.shy = false;
-					}
-					else if (group == 'Not selected'  && !layer.selected)
-					{
-						layer.shy = false;
-					}
-					else if (layer.comment.indexOf('|' + group + '| ')>=0)
-					{
-						layer.shy = false;
-					}
-					else 
-					{
-						layer.shy = true;
-					}
+					layer.comment = layer.comment.replace('|shy| ','');
+					layer.comment = layer.comment.replace('|vis| ','');
+					layer.comment = layer.comment.replace('|sel| ','');
+					if (layer.shy) layer.comment = layer.comment + '|shy| ';
+					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+					if (layer.selected) layer.comment = layer.comment + '|sel| ';
 				}
+		
+				layer.shy = true;
+				
+			}
+
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+				layers[i].shy = false;
 			}
 			
 			addDugrLayer();
@@ -619,43 +585,28 @@ This file is part of Dugr.
 			
 			comp.hideShyLayers = true;
 				
-			for (var i = 0 ; i < groupsList.selection.length ; i++)
+
+			for (var j = 1;j<=comp.numLayers;j++)
 			{
-				var group = groupsList.selection[i].text;
-				for (var j = 1;j<=comp.numLayers;j++)
+				var layer = comp.layer(j);
+				if (!alreadyActivated)
 				{
-					var layer = comp.layer(j);
-					if (!alreadyActivated)
-					{
-						layer.comment = layer.comment.replace('|shy| ','');
-						layer.comment = layer.comment.replace('|vis| ','');
-						layer.comment = layer.comment.replace('|sel| ','');
-						if (layer.shy) layer.comment = layer.comment + '|shy| ';
-						if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-						if (layer.selected) layer.comment = layer.comment + '|sel| ';
-					}
-			
-					if (group == 'All')
-					{
-						layer.enabled = true;
-					}
-					else if (group == 'Selected' && layer.selected)
-					{
-						layer.enabled = true;
-					}
-					else if (group == 'Not selected'  && !layer.selected)
-					{
-						layer.enabled = true;
-					}
-					else if (layer.comment.indexOf('|' + group + '| ')>=0)
-					{
-						layer.enabled = true;
-					}
-					else 
-					{
-						layer.enabled = false;
-					}
+					layer.comment = layer.comment.replace('|shy| ','');
+					layer.comment = layer.comment.replace('|vis| ','');
+					layer.comment = layer.comment.replace('|sel| ','');
+					if (layer.shy) layer.comment = layer.comment + '|shy| ';
+					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+					if (layer.selected) layer.comment = layer.comment + '|sel| ';
 				}
+		
+				layer.enabled = false;
+			}
+
+			
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+				layers[i].enabled = true;
 			}
 			
 			addDugrLayer();
@@ -680,36 +631,20 @@ This file is part of Dugr.
 				return;
 			}
 				
-			for (var i = 0 ; i < groupsList.selection.length ; i++)
-			{
-				var group = groupsList.selection[i].text;
-				for (var j = 1;j<=comp.numLayers;j++)
-				{
-					var layer = comp.layer(j);
 
-					if (group == 'All')
-					{
-						layer.selected = true;
-					}
-					else if (group == 'Selected' && layer.selected)
-					{
-						layer.selected = true;
-					}
-					else if (group == 'Not selected'  && !layer.selected)
-					{
-						layer.selected = true;
-					}
-					else if (layer.comment.indexOf('|' + group + '| ')>=0)
-					{
-						layer.selected = true;
-					}
-					else 
-					{
-						layer.selected = false;
-					}
-				}
+			for (var j = 1;j<=comp.numLayers;j++)
+			{
+				var layer = comp.layer(j);
+
+				layer.selected = false;
 			}
-				
+			
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+				layers[i].selected = true;
+			}
+			
 			app.endUndoGroup();
 		}
 		
