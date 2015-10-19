@@ -25,7 +25,7 @@ This file is part of Dugr.
 (function Dugr (obj) {
 	
 	//================
-	var version = "2.0.1";
+	var version = "2.0.2";
 	//================
 	
 	//Dugr needs to write files
@@ -137,11 +137,14 @@ This file is part of Dugr.
 		
 		function addLayerToGroup(layer,group)
 		{
+			var locked = layer.locked;
+			layer.locked = false;
 			var groupComment = '|' + group + '| ';
 			if (layer.comment.indexOf(groupComment) < 0)
 			{
 				layer.comment = layer.comment + groupComment;
 			}
+			layer.locked = locked;
 		}
 		
 		function addSelectedLayersToGroup(group)
@@ -162,7 +165,10 @@ This file is part of Dugr.
 		
 		function removeLayerFromGroup(layer,group)
 		{
+			var locked = layer.locked;
+			layer.locked = false;
 			layer.comment = layer.comment.replace('|' + group + '| ','');
+			layer.locked = locked;
 		}
 		
 		function removeSelectedLayersFromGroup(group)
@@ -486,12 +492,15 @@ This file is part of Dugr.
 				var layer = comp.layer(j);
 				if (!alreadyActivated)
 				{
+					var locked = layer.locked;
+					layer.locked = false;
 					layer.comment = layer.comment.replace('|shy| ','');
 					layer.comment = layer.comment.replace('|vis| ','');
 					layer.comment = layer.comment.replace('|sel| ','');
 					if (layer.shy) layer.comment = layer.comment + '|shy| ';
 					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					layer.locked = locked;
 				}
 				
 				layer.shy = true;
@@ -502,8 +511,12 @@ This file is part of Dugr.
 			var layers = getLayers();
 			for (var i = 0 ; i< layers.length;i++)
 			{
-				layers[i].shy = false;
-				layers[i].enabled = true;
+				var layer = layers[i];
+				var locked = layer.locked;
+				layer.locked = false;
+				layer.shy = false;
+				layer.enabled = true;
+				layer.locked = locked;
 			}
 			
 			addDugrLayer();
@@ -539,12 +552,15 @@ This file is part of Dugr.
 				var layer = comp.layer(j);
 				if (!alreadyActivated)
 				{
+					var locked = layer.locked;
+					layer.locked = false;
 					layer.comment = layer.comment.replace('|shy| ','');
 					layer.comment = layer.comment.replace('|vis| ','');
 					layer.comment = layer.comment.replace('|sel| ','');
 					if (layer.shy) layer.comment = layer.comment + '|shy| ';
 					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					layer.locked = locked;
 				}
 		
 				layer.shy = true;
@@ -554,7 +570,10 @@ This file is part of Dugr.
 			var layers = getLayers();
 			for (var i = 0 ; i< layers.length;i++)
 			{
+				var locked = layers[i].locked;
+				layers[i].locked = false;
 				layers[i].shy = false;
+				layers[i].locked = locked;
 			}
 			
 			addDugrLayer();
@@ -589,14 +608,18 @@ This file is part of Dugr.
 			for (var j = 1;j<=comp.numLayers;j++)
 			{
 				var layer = comp.layer(j);
+				
 				if (!alreadyActivated)
 				{
+					var locked = layer.locked;
+					layer.locked = false;
 					layer.comment = layer.comment.replace('|shy| ','');
 					layer.comment = layer.comment.replace('|vis| ','');
 					layer.comment = layer.comment.replace('|sel| ','');
 					if (layer.shy) layer.comment = layer.comment + '|shy| ';
 					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					layer.locked = locked
 				}
 		
 				layer.enabled = false;
@@ -606,7 +629,10 @@ This file is part of Dugr.
 			var layers = getLayers();
 			for (var i = 0 ; i< layers.length;i++)
 			{
+				var locked = layers[i].locked;
+				layers[i].locked = false;
 				layers[i].enabled = true;
+				layers[i].locked = locked;
 			}
 			
 			addDugrLayer();
@@ -676,7 +702,10 @@ This file is part of Dugr.
 			for (var i = 1;i<=comp.numLayers;i++)
 			{
 				var layer = comp.layer(i);
-				
+			
+				var locked = layer.locked;
+				layer.locked = false;
+			
 				layer.shy = layer.comment.indexOf('|shy| ') >= 0;
 				layer.enabled = layer.comment.indexOf('|vis| ') >= 0;
 				layer.selected = layer.comment.indexOf('|sel| ') >= 0;
@@ -684,6 +713,8 @@ This file is part of Dugr.
 				layer.comment = layer.comment.replace('|shy| ','');
 				layer.comment = layer.comment.replace('|vis| ','');
 				layer.comment = layer.comment.replace('|sel| ','');
+				
+				layer.locked = locked;
 			}
 		}
 		
