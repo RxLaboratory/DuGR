@@ -431,7 +431,7 @@ if (!exists) groupsFound.push(group);
 //add groups
 for (var i = 0;i<groupsFound.length;i++)
 {
-groupsList.add('item',groupsFound[i]);
+if (groupsFound[i] != 'shy' && groupsFound[i] != 'selected' && groupsFound[i] != 'vis') groupsList.add('item',groupsFound[i]);
 }
 }
 
