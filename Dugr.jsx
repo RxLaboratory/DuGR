@@ -22,10 +22,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 */
-(function Dugr (obj) {
+(function (obj) {
 
 	//================
-	var version = "2.1";
+	var version = "3.0";
 	//================
 
 	//Dugr needs to write files
@@ -450,10 +450,24 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 
 			//init
-			groupsList.add('item',"All");
-			groupsList.add('item',"Selected");
-			groupsList.add('item',"Not selected");
-			groupsList.add('item',"Not grouped");
+			dynamicGroupsList.add('item',"All layers");
+			dynamicGroupsList.add('item',"Selected");
+			dynamicGroupsList.add('item',"Grouped");
+			dynamicGroupsList.add('item',"Type: Null Objects");
+			dynamicGroupsList.add('item',"Type: Solids");
+			dynamicGroupsList.add('item',"Type: Shapes");
+			dynamicGroupsList.add('item',"Type: Texts");
+			dynamicGroupsList.add('item',"Type: Adjustment");
+			dynamicGroupsList.add('item',"Type: Lights");
+			dynamicGroupsList.add('item',"Type: Cameras");
+			dynamicGroupsList.add('item',"Attribute: Visible");
+			dynamicGroupsList.add('item',"Attribute: Sound");
+			dynamicGroupsList.add('item',"Attribute: Solo");
+			dynamicGroupsList.add('item',"Attribute: Locked");
+			dynamicGroupsList.add('item',"Attribute: Shy");
+			dynamicGroupsList.add('item',"Attribute: Effects");
+			dynamicGroupsList.add('item',"Attribute: Motion Blur");
+			dynamicGroupsList.add('item',"Attribute: 3D");
 
 			if (!(comp instanceof CompItem)) return;
 
@@ -1079,14 +1093,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			soloIsolateButton.size = [24,24];
 			soloIsolateButton.onClick = soloI;
 			soloIsolateButton.helpTip = "Isolate selected groups in the composition panel only";
-			var selectButton = topButtons.add('iconbutton',undefined,imgFolder + 'select.png');
-			selectButton.size = [24,24];
-			selectButton.onClick = select;
-			selectButton.helpTip = "Select layers from selected groups";
-			var invertButton = topButtons.add('iconbutton',undefined,imgFolder + 'invert.png');
-			invertButton.size = [24,24];
-			invertButton.onClick = invert;
-			invertButton.helpTip = "Invert groups selection";
 			var exitButton = topButtons.add('iconbutton',undefined,imgFolder + 'exit.png');
 			exitButton.onClick = exit;
 			exitButton.size = [24,24];
@@ -1141,11 +1147,75 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var threeDLayerButton = attributesGroup2.add('iconbutton',undefined,imgFolder + 'threeDLayer.png');
 			threeDLayerButton.maximumSize = [18,18];
 			threeDLayerButton.onClick = threeDLayer;
+			
+			var topButtons2 = myPal.add('group');
+			topButtons2.alignment = ['fill','top'];
+			topButtons2.alignChildren = ['fill','bottom'];
+			topButtons2.margins = 0;
+			topButtons2.spacing = 2;
+			
+			var notButton = topButtons2.add('checkbox',undefined,"Not");
+			var invertButton = topButtons2.add('iconbutton',undefined,imgFolder + 'invert.png');
+			invertButton.size = [24,24];
+			invertButton.onClick = invert;
+			invertButton.helpTip = "Invert groups selection";
+			var selectButton = topButtons2.add('iconbutton',undefined,imgFolder + 'select.png');
+			selectButton.size = [24,24];
+			selectButton.onClick = select;
+			selectButton.helpTip = "Select layers from selected groups";
+			
 
+			var dynamicPanel = myPal.add('group');
+			dynamicPanel.alignment = ['fill','top'];
+			dynamicPanel.orientation = 'column';
+			dynamicPanel.alignChildren = ['fill','fill'];
+			dynamicPanel.margins = 0;
+			dynamicPanel.spacing = 0;
+			var dynamicGroupLabel = dynamicPanel.add('statictext',undefined,"Dynamic Groups");
+			dynamicGroupLabel.alignment = ['left','top'];
+			
+			var dynamicGroupsList = dynamicPanel.add('listbox',undefined,"Groups",{multiselect: true});
+			dynamicGroupsList.maximumSize = [500,100];
+			
+			var customPanel = myPal.add('group');
+			customPanel.orientation = 'column';
+			customPanel.alignChildren = ['fill','fill'];
+			customPanel.margins = 0;
+			customPanel.spacing = 0;
+			var customGroupLabel = customPanel.add('statictext',undefined,"Custom Groups");
+			customGroupLabel.alignment = ['left','top'];
+			
+			var groupsList = customPanel.add('listbox',undefined,"Groups",{multiselect: true});
+			
+			
+			var bottomButtons2 = myPal.add('group');
+			bottomButtons2.alignment = ['fill','bottom'];
+			bottomButtons2.alignChildren = ['fill','fill'];
+			bottomButtons2.margins = 0;
+			bottomButtons2.spacing = 2;
 
+			var addLayerButton = bottomButtons2.add('iconbutton',undefined,imgFolder + 'add.png');
+			addLayerButton.onClick = addLayersToGroups;
+			addLayerButton.size = [22,22];
+			addLayerButton.helpTip = "Add selected layers to selected groups";
+			var removeLayerButton = bottomButtons2.add('iconbutton',undefined,imgFolder + 'remove.png');
+			removeLayerButton.onClick = removeLayersFromGroups;
+			removeLayerButton.size = [22,22];
+			removeLayerButton.helpTip = "Remove selected layers from selected groups";
+			
+			
+			var nameEdit = myPal.add('edittext',undefined,"New group...");
+			nameEdit.alignment = ['fill','bottom'];
+			nameEdit.onActivate = function(){nameEdit.text = '';};
+			nameEdit.helpTip = "The name of a new group";
 
-			var groupsList = myPal.add('listbox',undefined,"Groups",{multiselect: true});
+			function nameEditKeyDown(e)
+			{
+				if (e.keyName == 'Enter') createGroup();
+			}
 
+			nameEdit.addEventListener('keydown',nameEditKeyDown);
+			
 			var bottomButtons = myPal.add('group');
 			bottomButtons.alignment = ['fill','bottom'];
 			bottomButtons.alignChildren = ['fill','fill'];
@@ -1168,34 +1238,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			refreshButton.size = [22,22];
 			refreshButton.onClick = refresh;
 			refreshButton.helpTip = "Reload group(s) from current composition";
-			
-			var nameEdit = myPal.add('edittext',undefined,"New group...");
-			nameEdit.alignment = ['fill','bottom'];
-			nameEdit.onActivate = function(){nameEdit.text = '';};
-			nameEdit.helpTip = "The name of a new group";
-
-			function nameEditKeyDown(e)
-			{
-			if (e.keyName == 'Enter') createGroup();
-			}
-
-			nameEdit.addEventListener('keydown',nameEditKeyDown);
-
-			var bottomButtons2 = myPal.add('group');
-			bottomButtons2.alignment = ['fill','bottom'];
-			bottomButtons2.alignChildren = ['fill','fill'];
-			bottomButtons2.margins = 0;
-			bottomButtons2.spacing = 2;
-
-			var addLayerButton = bottomButtons2.add('iconbutton',undefined,imgFolder + 'add.png');
-			addLayerButton.onClick = addLayersToGroups;
-			addLayerButton.size = [22,22];
-			addLayerButton.helpTip = "Add selected layers to selected groups";
-			var removeLayerButton = bottomButtons2.add('iconbutton',undefined,imgFolder + 'remove.png');
-			removeLayerButton.onClick = removeLayersFromGroups;
-			removeLayerButton.size = [22,22];
-			removeLayerButton.helpTip = "Remove selected layers from selected groups";
-
 
 			var bottomGroup = myPal.add("group");
 			bottomGroup.alignment = ["fill","bottom"];
@@ -1214,8 +1256,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			myPal.layout.resize();
 			myPal.onResizing = myPal.onResize = function () {this.layout.resize();}
 		}
-
-
 
 
 		return myPal;
