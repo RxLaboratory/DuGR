@@ -902,7 +902,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		{
 		app.beginUndoGroup('Dugr');
 
-		if (!groupsList.selection)
+		if ( (!groupsList.selection && customGroupsButton.checked) || (!dynamicGroupsList.selection && dynamicGroupsButton.checked) )
 		{
 		alert("Please select the group(s) to isolate.");
 		return;
