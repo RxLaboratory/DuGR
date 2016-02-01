@@ -428,7 +428,26 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				}
 			}
 			
-
+			if (invertButton.checked)
+			{
+				var oldLayers = layers;
+				layers = [];
+				for (var i = 1 ; i <= comp.numLayers;i++)
+				{
+					var found = false;
+					for (var j = 0 ; j < oldLayers.length;j++)
+					{
+						if (oldLayers[j].index == i)
+						{
+							found = true;
+							break;
+						}
+					}
+					if (!found) addLayer(comp.layer(i));
+				}
+			}
+			
+			
 			return layers;
 		}
 
@@ -1544,7 +1563,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			
 			var invertButton = addImageCheckBox(topButtons2,'',imgFolder + 'invert.png',"Not!",imgFolder + 'invert_o.png')
 			invertButton.size = [24,24];
-			//invertButton.onClick = invert;
 		
 			var selectButton = addImageButton(topButtons2,'',imgFolder + 'select.png',"Select layers of selected groups", imgFolder + 'select_o.png');
 			selectButton.size = [24,24];
