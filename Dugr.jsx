@@ -1494,7 +1494,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var isolateButton = addImageCheckBox(topButtons,'',imgFolder + 'isolate.png',"Isolate selected groups",imgFolder + 'isolate_o.png');
 			isolateButton.group.size = [24,24];
 			isolateButton.onClick = isolateButtonClicked;
-			var shyIsolateButton = addImageCheckBox(topButtons,'',imgFolder + 'shyIsolate.png',"Isolate selected groups in the timeline only",imgFolder + 'shyIsolate_o.png');
+			var shyIsolateButton = addImageCheckBox(topButtons,'',imgFolder + 'shyIsolate.png',"Isolate selected groups in the time-line only",imgFolder + 'shyIsolate_o.png');
 			shyIsolateButton.size = [24,24];
 			shyIsolateButton.onClick = shyIsolateButtonClicked;
 			var soloIsolateButton = addImageCheckBox(topButtons,'',imgFolder + 'soloIsolate.png',"Isolate selected groups in the composition panel only",imgFolder + 'soloIsolate_o.png');
@@ -1564,7 +1564,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var invertButton = addImageCheckBox(topButtons2,'',imgFolder + 'invert.png',"Not!",imgFolder + 'invert_o.png')
 			invertButton.size = [24,24];
 		
-			var selectButton = addImageButton(topButtons2,'',imgFolder + 'select.png',"Select layers of selected groups", imgFolder + 'select_o.png');
+			var selectButton = addImageButton(topButtons2,'',imgFolder + 'select.png',"Select layers in the groups", imgFolder + 'select_o.png');
 			selectButton.size = [24,24];
 			selectButton.onClick = select;
 			
