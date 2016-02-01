@@ -337,121 +337,321 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		return layers;
 		}
 
+		function validateGroupName(name)
+		{
+			if (name == '') return false;
+			if (name.indexOf('|') >= 0)
+			{
+				alert("Sorry, group names can not contain any vertical stroke ' | '.");
+				return false;
+			}
+			if (name == 'shy')
+			{
+				alert("Sorry, group name can not be 'shy'.");
+				return false;
+			}
+			if (name == 'sel')
+			{
+				alert("Sorry, group name can not be 'sel'.");
+				return false;
+			}
+			if (name == 'vis')
+			{
+				alert("Sorry, group name can not be 'vis'.");
+				return false;
+			}
+			
+			
+			//check if the group does not already exist
+			for (var i = 0;i < groupsList.items.length; i++)
+			{
+				if (groupsList.items[i].text == name)
+				{
+					alert("This group already exists, please choose another name.");
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		
+		function isolation()
+		{
+			exit();
+			if (isolateButton.checked) isolate();
+			else if (shyIsolateButton.checked) shyI();
+			else if (soloIsolateButton.checked) soloI();
+		}
+		
+		function isolate()
+		{
+			app.beginUndoGroup('Dugr');
+
+			if (!groupsList.selection)
+			{
+			alert("Please select the group(s) to isolate.");
+			return;
+			}
+
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
+
+			alreadyActivated = removeDugrLayer();
+
+			if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
+
+			comp.hideShyLayers = true;
+
+
+			for (var j = 1;j<=comp.numLayers;j++)
+			{
+			var layer = comp.layer(j);
+			if (!alreadyActivated)
+			{
+			var locked = layer.locked;
+			layer.locked = false;
+			layer.comment = layer.comment.replace('|shy| ','');
+			layer.comment = layer.comment.replace('|vis| ','');
+			layer.comment = layer.comment.replace('|sel| ','');
+			if (layer.shy) layer.comment = layer.comment + '|shy| ';
+			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+			if (layer.selected) layer.comment = layer.comment + '|sel| ';
+			layer.locked = locked;
+			}
+
+			layer.shy = true;
+			layer.enabled = false;
+			}
+
+
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+			var layer = layers[i];
+			var locked = layer.locked;
+			layer.locked = false;
+			layer.shy = false;
+			layer.enabled = true;
+			layer.locked = locked;
+			}
+
+			addDugrLayer();
+
+			app.endUndoGroup();
+		}
+		
+		function shyI()
+		{
+			app.beginUndoGroup('Dugr');
+
+			if (!groupsList.selection)
+			{
+			alert("Please select the group(s) to isolate.");
+			return;
+			}
+
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
+
+			alreadyActivated = removeDugrLayer();
+
+			if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
+
+			comp.hideShyLayers = true;
+
+			for (var j = 1;j<=comp.numLayers;j++)
+			{
+			var layer = comp.layer(j);
+			if (!alreadyActivated)
+			{
+			var locked = layer.locked;
+			layer.locked = false;
+			layer.comment = layer.comment.replace('|shy| ','');
+			layer.comment = layer.comment.replace('|vis| ','');
+			layer.comment = layer.comment.replace('|sel| ','');
+			if (layer.shy) layer.comment = layer.comment + '|shy| ';
+			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+			if (layer.selected) layer.comment = layer.comment + '|sel| ';
+			layer.locked = locked;
+			}
+
+			layer.shy = true;
+
+			}
+
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+			var locked = layers[i].locked;
+			layers[i].locked = false;
+			layers[i].shy = false;
+			layers[i].locked = locked;
+			}
+
+			addDugrLayer();
+
+			app.endUndoGroup();
+		}
+		
+		function soloI()
+		{
+			app.beginUndoGroup('Dugr');
+
+			if (!groupsList.selection)
+			{
+			alert("Please select the group(s) to isolate.");
+			return;
+			}
+
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
+
+			alreadyActivated = removeDugrLayer();
+
+			if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
+
+			comp.hideShyLayers = true;
+
+
+			for (var j = 1;j<=comp.numLayers;j++)
+			{
+			var layer = comp.layer(j);
+
+			if (!alreadyActivated)
+			{
+			var locked = layer.locked;
+			layer.locked = false;
+			layer.comment = layer.comment.replace('|shy| ','');
+			layer.comment = layer.comment.replace('|vis| ','');
+			layer.comment = layer.comment.replace('|sel| ','');
+			if (layer.shy) layer.comment = layer.comment + '|shy| ';
+			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+			if (layer.selected) layer.comment = layer.comment + '|sel| ';
+			layer.locked = locked
+			}
+
+			layer.enabled = false;
+			}
+
+
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+			var locked = layers[i].locked;
+			layers[i].locked = false;
+			layers[i].enabled = true;
+			layers[i].locked = locked;
+			}
+
+			addDugrLayer();
+
+			app.endUndoGroup();
+		}
+		
+		function exit()
+		{
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
+
+			if (!removeDugrLayer()) return;
+
+			comp.hideShyLayers = hideShyLayers;
+
+			for (var i = 1;i<=comp.numLayers;i++)
+			{
+				var layer = comp.layer(i);
+
+				var locked = layer.locked;
+				layer.locked = false;
+
+				layer.shy = layer.comment.indexOf('|shy| ') >= 0;
+				layer.enabled = layer.comment.indexOf('|vis| ') >= 0;
+				layer.selected = layer.comment.indexOf('|sel| ') >= 0;
+
+				layer.comment = layer.comment.replace('|shy| ','');
+				layer.comment = layer.comment.replace('|vis| ','');
+				layer.comment = layer.comment.replace('|sel| ','');
+
+				layer.locked = locked;
+			}
+		}
+		
+		
 		//=========== UI ACTIONS ==========
 
 		//create group
-		function createGroup() {
-
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem)) return;
-
-		var newGroupName = nameEdit.text;
-		if (newGroupName == '') return;
-		if (newGroupName.indexOf('|') >= 0)
+		function createGroup()
 		{
-		alert("Sorry, group names can not contain any vertical stroke ' | '.");
-		return;
-		}
-		if (newGroupName == 'shy')
-		{
-		alert("Sorry, group name can not be 'shy'.");
-		return;
-		}
-		if (newGroupName == 'sel')
-		{
-		alert("Sorry, group name can not be 'sel'.");
-		return;
-		}
-		if (newGroupName == 'vis')
-		{
-		alert("Sorry, group name can not be 'vis'.");
-		return;
-		}
-		
-		
-		//check if the group does not already exist
-		for (var i = 0;i < groupsList.items.length; i++)
-		{
-		if (groupsList.items[i].text == newGroupName)
-		{
-		alert("This group already exists, please choose another name.");
-		return;
-		}
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem)) return;
 
-		app.beginUndoGroup("Dugr - Add group");
+			var newGroupName = nameEdit.text;
+			if (!validateGroupName(newGroupName)) return;
 
-		addSelectedLayersToGroup(newGroupName);
+			app.beginUndoGroup("Dugr - Add group");
 
-		app.endUndoGroup();
+			addSelectedLayersToGroup(newGroupName);
 
-		//ajouter le groupe
-		groupsList.add('item',newGroupName);
-		nameEdit.text = "New group...";
+			app.endUndoGroup();
+
+			//ajouter le groupe
+			groupsList.add('item',newGroupName);
+			nameEdit.text = "New group...";
 		}
 
 		//remove group
-		function removeGroup() {
-
-		var removedGroups = [];
-		if (!groupsList.selection) return;
-
-		for (var i = 0 ; i< groupsList.selection.length;i++)
+		function removeGroup()
 		{
-		removedGroups.push(groupsList.selection[i].text);
-		}
+			var removedGroups = [];
+			if (!groupsList.selection) return;
 
-		app.beginUndoGroup("Dugr - Remove group");
+			for (var i = 0 ; i< groupsList.selection.length;i++)
+			{
+				removedGroups.push(groupsList.selection[i].text);
+			}
 
-		for (var i = 0;i< removedGroups.length ; i++)
-		{
-		var group = removedGroups[i];
+			app.beginUndoGroup("Dugr - Remove group");
 
-		if (group == "All") continue;
-		if (group == "Selected") continue;
-		if (group == "Not selected") continue;
-		if (group == "Not grouped") continue;
+			for (var i = 0;i< removedGroups.length ; i++)
+			{
+				var group = removedGroups[i];
 
-		groupsList.remove(group);
+				groupsList.remove(group);
 
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem)) continue;
+				var comp = app.project.activeItem;
+				if (!(comp instanceof CompItem)) continue;
 
-		removeAllLayersFromGroup(group);
-		}
+				removeAllLayersFromGroup(group);
+			}
 
-		app.endUndoGroup();
-
+			app.endUndoGroup();
 		}
 
 		//rename group
-		function renameGroup() {
+		function renameGroup()
+		{
 			if (!groupsList.selection) return;
 			
 			var oldName = groupsList.selection[0].text;
 			var newName = nameEdit.text;
 			
-			if (newName == '') return;
-			if (newName.indexOf('|') >= 0)
-			{
-				alert("Sorry, group names can not contain any vertical stroke ' | '.");
-				return;
-			}
-			if (newName == 'shy')
-			{
-				alert("Sorry, group name can not be 'shy'.");
-				return;
-			}
-			if (newName == 'sel')
-			{
-				alert("Sorry, group name can not be 'sel'.");
-				return;
-			}
-			if (newName == 'vis')
-			{
-				alert("Sorry, group name can not be 'vis'.");
-				return;
-			}
+			if (!validateGroupName(newName)) return;
 		
 			if (oldName == newName) return;
 			
@@ -467,7 +667,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			refresh();
 		}
 		
-		
 		//refresh
 		function refresh(force)
 		{
@@ -481,26 +680,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			//remove old items
 			groupsList.removeAll();
 
-
-			//init
-			dynamicGroupsList.add('item',"All layers");
-			dynamicGroupsList.add('item',"Selected");
-			dynamicGroupsList.add('item',"Grouped");
-			dynamicGroupsList.add('item',"Type: Null Objects");
-			dynamicGroupsList.add('item',"Type: Solids");
-			dynamicGroupsList.add('item',"Type: Shapes");
-			dynamicGroupsList.add('item',"Type: Texts");
-			dynamicGroupsList.add('item',"Type: Adjustment");
-			dynamicGroupsList.add('item',"Type: Lights");
-			dynamicGroupsList.add('item',"Type: Cameras");
-			dynamicGroupsList.add('item',"Attribute: Visible");
-			dynamicGroupsList.add('item',"Attribute: Sound");
-			dynamicGroupsList.add('item',"Attribute: Solo");
-			dynamicGroupsList.add('item',"Attribute: Locked");
-			dynamicGroupsList.add('item',"Attribute: Shy");
-			dynamicGroupsList.add('item',"Attribute: Effects");
-			dynamicGroupsList.add('item',"Attribute: Motion Blur");
-			dynamicGroupsList.add('item',"Attribute: 3D");
 
 			if (!(comp instanceof CompItem)) return;
 
@@ -541,218 +720,77 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		//add layers to selected groups
 		function addLayersToGroups()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("Please select the layers you want to add to the group(s).");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("Please select the layers you want to add to the group(s).");
+				return;
+			}
 
-		if (!groupsList.selection) return;
+			if (!groupsList.selection) return;
 
-		app.beginUndoGroup("Dugr - Add layers to group");
-		for (var i = 0 ; i < groupsList.selection.length ; i++)
-		{
-		addSelectedLayersToGroup(groupsList.selection[i].text);
-		}
-		app.endUndoGroup();
+			app.beginUndoGroup("Dugr - Add layers to group");
+			for (var i = 0 ; i < groupsList.selection.length ; i++)
+			{
+				addSelectedLayersToGroup(groupsList.selection[i].text);
+			}
+			app.endUndoGroup();
 		}
 
 		//remove layers from selected groups
 		function removeLayersFromGroups()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("Please select the layers you want to remove from the group(s).");
+				return;
+			}
+
+
+			if (!groupsList.selection) return;
+			app.beginUndoGroup("Dugr - Remove layers from group");
+			for (var i = 0 ; i < groupsList.selection.length ; i++)
+			{
+				removeSelectedLayersFromGroup(groupsList.selection[i].text);
+			}
+			app.endUndoGroup();
+		}
+		
+		function isolateButtonClicked()
 		{
-		alert("Please select the layers you want to remove from the group(s).");
-		return;
+			if (isolateButton.checked)
+			{
+				shyIsolateButton.setChecked(false);
+				soloIsolateButton.setChecked(false);
+			}
+			
+			isolation();
 		}
 
-
-		if (!groupsList.selection) return;
-		app.beginUndoGroup("Dugr - Remove layers from group");
-		for (var i = 0 ; i < groupsList.selection.length ; i++)
+		function shyIsolateButtonClicked()
 		{
-		removeSelectedLayersFromGroup(groupsList.selection[i].text);
-		}
-		app.endUndoGroup();
-		}
-
-		function isolate()
-		{
-		app.beginUndoGroup('Dugr');
-
-		if (!groupsList.selection)
-		{
-		alert("Please select the group(s) to isolate.");
-		return;
+			
+			if (shyIsolateButton.checked)
+			{
+				isolateButton.setChecked(false);
+				soloIsolateButton.setChecked(false);
+			}
+			
+			isolation();
+			
 		}
 
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
+		function soloIsolateButtonClicked()
 		{
-		alert("No active composition.");
-		return;
-		}
-
-		alreadyActivated = removeDugrLayer();
-
-		if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
-
-		comp.hideShyLayers = true;
-
-
-		for (var j = 1;j<=comp.numLayers;j++)
-		{
-		var layer = comp.layer(j);
-		if (!alreadyActivated)
-		{
-		var locked = layer.locked;
-		layer.locked = false;
-		layer.comment = layer.comment.replace('|shy| ','');
-		layer.comment = layer.comment.replace('|vis| ','');
-		layer.comment = layer.comment.replace('|sel| ','');
-		if (layer.shy) layer.comment = layer.comment + '|shy| ';
-		if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-		if (layer.selected) layer.comment = layer.comment + '|sel| ';
-		layer.locked = locked;
-		}
-
-		layer.shy = true;
-		layer.enabled = false;
-		}
-
-
-		var layers = getLayers();
-		for (var i = 0 ; i< layers.length;i++)
-		{
-		var layer = layers[i];
-		var locked = layer.locked;
-		layer.locked = false;
-		layer.shy = false;
-		layer.enabled = true;
-		layer.locked = locked;
-		}
-
-		addDugrLayer();
-
-		app.endUndoGroup();
-		}
-
-		function shyI()
-		{
-		app.beginUndoGroup('Dugr');
-
-		if (!groupsList.selection)
-		{
-		alert("Please select the group(s) to isolate.");
-		return;
-		}
-
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
-
-		alreadyActivated = removeDugrLayer();
-
-		if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
-
-		comp.hideShyLayers = true;
-
-		for (var j = 1;j<=comp.numLayers;j++)
-		{
-		var layer = comp.layer(j);
-		if (!alreadyActivated)
-		{
-		var locked = layer.locked;
-		layer.locked = false;
-		layer.comment = layer.comment.replace('|shy| ','');
-		layer.comment = layer.comment.replace('|vis| ','');
-		layer.comment = layer.comment.replace('|sel| ','');
-		if (layer.shy) layer.comment = layer.comment + '|shy| ';
-		if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-		if (layer.selected) layer.comment = layer.comment + '|sel| ';
-		layer.locked = locked;
-		}
-
-		layer.shy = true;
-
-		}
-
-		var layers = getLayers();
-		for (var i = 0 ; i< layers.length;i++)
-		{
-		var locked = layers[i].locked;
-		layers[i].locked = false;
-		layers[i].shy = false;
-		layers[i].locked = locked;
-		}
-
-		addDugrLayer();
-
-		app.endUndoGroup();
-		}
-
-		function soloI()
-		{
-		app.beginUndoGroup('Dugr');
-
-		if (!groupsList.selection)
-		{
-		alert("Please select the group(s) to isolate.");
-		return;
-		}
-
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
-
-		alreadyActivated = removeDugrLayer();
-
-		if (!alreadyActivated) hideShyLayers = app.project.activeItem.hideShyLayers;
-
-		comp.hideShyLayers = true;
-
-
-		for (var j = 1;j<=comp.numLayers;j++)
-		{
-		var layer = comp.layer(j);
-
-		if (!alreadyActivated)
-		{
-		var locked = layer.locked;
-		layer.locked = false;
-		layer.comment = layer.comment.replace('|shy| ','');
-		layer.comment = layer.comment.replace('|vis| ','');
-		layer.comment = layer.comment.replace('|sel| ','');
-		if (layer.shy) layer.comment = layer.comment + '|shy| ';
-		if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-		if (layer.selected) layer.comment = layer.comment + '|sel| ';
-		layer.locked = locked
-		}
-
-		layer.enabled = false;
-		}
-
-
-		var layers = getLayers();
-		for (var i = 0 ; i< layers.length;i++)
-		{
-		var locked = layers[i].locked;
-		layers[i].locked = false;
-		layers[i].enabled = true;
-		layers[i].locked = locked;
-		}
-
-		addDugrLayer();
-
-		app.endUndoGroup();
+			
+			if (soloIsolateButton.checked)
+			{
+				shyIsolateButton.setChecked(false) ;
+				isolateButton.setChecked(false);
+			}
+			
+			isolation();
 		}
 
 		function select()
@@ -800,39 +838,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		groupsList.items[i].selected = !groupsList.items[i].selected;
 		}
 		}
-
-		function exit()
-		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
-
-		if (!removeDugrLayer()) return;
-
-		comp.hideShyLayers = hideShyLayers;
-
-		for (var i = 1;i<=comp.numLayers;i++)
-		{
-		var layer = comp.layer(i);
-
-		var locked = layer.locked;
-		layer.locked = false;
-
-		layer.shy = layer.comment.indexOf('|shy| ') >= 0;
-		layer.enabled = layer.comment.indexOf('|vis| ') >= 0;
-		layer.selected = layer.comment.indexOf('|sel| ') >= 0;
-
-		layer.comment = layer.comment.replace('|shy| ','');
-		layer.comment = layer.comment.replace('|vis| ','');
-		layer.comment = layer.comment.replace('|sel| ','');
-
-		layer.locked = locked;
-		}
-		}
-
 
 
 		//======== ATTRIBUTES ACTIONS =========
@@ -1213,9 +1218,24 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					imageButton.image = icon;
 				}
 				
+				imageButton.setChecked = function (c)
+				{
+					imageButton.checked = c;
+					if (imageButton.imageChecked != '')
+					{
+						if (imageButton.checked)
+						{
+							if (icon) if (imageButton.imageChecked != '') icon.image = imageButton.imageChecked;
+						}
+						else
+						{
+							if (icon) if (imageButton.standardImage != '') icon.image = imageButton.standardImage;
+						}
+					}
+				}
+				
 				imageButton.clicked = function (e)
 				{
-					imageButton.onClick();
 					if (imageButton.imageChecked != '')
 					{
 						if (imageButton.checked)
@@ -1229,6 +1249,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 							imageButton.checked = true;
 						}
 					}
+					imageButton.onClick();
 				}		
 				imageButton.mouseOver = function (e)
 				{
@@ -1273,18 +1294,18 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			topButtons.spacing = 2;
 			topButtons.maximumSize = [138,24];
 
-			var isolateButton = addImageButton(topButtons,'',imgFolder + 'isolate.png',"Isolate selected groups",imgFolder + 'isolate_o.png');
+			var isolateButton = addImageCheckBox(topButtons,'',imgFolder + 'isolate.png',"Isolate selected groups",imgFolder + 'isolate_o.png');
 			isolateButton.group.size = [24,24];
-			isolateButton.onClick = isolate;
-			var shyIsolateButton = addImageButton(topButtons,'',imgFolder + 'shyIsolate.png',"Isolate selected groups in the timeline only",imgFolder + 'shyIsolate_o.png');
+			isolateButton.onClick = isolateButtonClicked;
+			var shyIsolateButton = addImageCheckBox(topButtons,'',imgFolder + 'shyIsolate.png',"Isolate selected groups in the timeline only",imgFolder + 'shyIsolate_o.png');
 			shyIsolateButton.size = [24,24];
-			shyIsolateButton.onClick = shyI;
-			var soloIsolateButton = addImageButton(topButtons,'',imgFolder + 'soloIsolate.png',"Isolate selected groups in the composition panel only",imgFolder + 'soloIsolate_o.png');
+			shyIsolateButton.onClick = shyIsolateButtonClicked;
+			var soloIsolateButton = addImageCheckBox(topButtons,'',imgFolder + 'soloIsolate.png',"Isolate selected groups in the composition panel only",imgFolder + 'soloIsolate_o.png');
 			soloIsolateButton.size = [24,24];
-			soloIsolateButton.onClick = soloI;
-			var exitButton = addImageButton(topButtons,'',imgFolder + 'exit.png',"Leave isolation",imgFolder + 'exit_o.png');
+			soloIsolateButton.onClick = soloIsolateButtonClicked;
+			/*var exitButton = addImageButton(topButtons,'',imgFolder + 'exit.png',"Leave isolation",imgFolder + 'exit_o.png');
 			exitButton.onClick = exit;
-			exitButton.size = [24,24];
+			exitButton.size = [24,24];*/
 
 			var attributesGroup = myPal.add('group');
 			attributesGroup.alignment = ['center','top'];
@@ -1368,6 +1389,25 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			dynamicPanel.spacing = 0;
 			
 			var dynamicGroupsList = dynamicPanel.add('listbox',undefined,"Groups",{multiselect: true});
+			//init
+			dynamicGroupsList.add('item',"All layers");
+			dynamicGroupsList.add('item',"Selected");
+			dynamicGroupsList.add('item',"Grouped");
+			dynamicGroupsList.add('item',"Type: Null Objects");
+			dynamicGroupsList.add('item',"Type: Solids");
+			dynamicGroupsList.add('item',"Type: Shapes");
+			dynamicGroupsList.add('item',"Type: Texts");
+			dynamicGroupsList.add('item',"Type: Adjustment");
+			dynamicGroupsList.add('item',"Type: Lights");
+			dynamicGroupsList.add('item',"Type: Cameras");
+			dynamicGroupsList.add('item',"Attribute: Visible");
+			dynamicGroupsList.add('item',"Attribute: Sound");
+			dynamicGroupsList.add('item',"Attribute: Solo");
+			dynamicGroupsList.add('item',"Attribute: Locked");
+			dynamicGroupsList.add('item',"Attribute: Shy");
+			dynamicGroupsList.add('item',"Attribute: Effects");
+			dynamicGroupsList.add('item',"Attribute: Motion Blur");
+			dynamicGroupsList.add('item',"Attribute: 3D");
 			
 			var customPanel = mainPanel.add('group');
 			customPanel.orientation = 'column';
