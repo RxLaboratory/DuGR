@@ -42,7 +42,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 	}
 	}
 
-
+	//DUGR Settings
+	if (!app.settings.haveSetting('dugr', 'lockedLayersDeny')){app.settings.saveSetting('dugr','lockedLayersDeny','0');}
+	if (!app.settings.haveSetting('dugr', 'warningFrame')){app.settings.saveSetting('dugr','warningFrame','1');}
+	if (!app.settings.haveSetting('dugr', 'isolationType')){app.settings.saveSetting('dugr','isolationType','1');}
+	
+	
 	function DugrUI(thisObj)
 	{
 
@@ -968,23 +973,23 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function enabled()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
+			if (!layers.length) return;
 
-		var enabled = !layers[0].enabled;
+			var enabled = !layers[0].enabled;
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].enabled = enabled;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				layers[i].enabled = enabled;
+			}
 		}
 
 		function audioEnabled()
@@ -1029,71 +1034,83 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function locked()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var locked = !layers[0].locked;
+			if (!layers.length) return;
+			var locked = !layers[0].locked;
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].locked = locked;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				layers[i].locked = locked;
+			}
 		}
 
 		function shy()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var shy = !layers[0].shy;
+			if (!layers.length) return;
+			var shy = !layers[0].shy;
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].shy = shy;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				layers[i].shy = shy;
+			}
 		}
 
 		function collapseTransformation()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
+			if (!layers.length) return;
 
-		var collapseTransformation = false;
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		if (layers[i].canSetCollapseTransformation)
-		{
-		collapseTransformation = !layers[i].collapseTransformation;
-		break;
-		}
-		}
+			var collapseTransformation = false;
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (layers[i].canSetCollapseTransformation && !(layers[i].locked && lockedLayersDeny.value))
+				{
+					collapseTransformation = !layers[i].collapseTransformation;
+					break;
+				}
+			}
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		if (layers[i].canSetCollapseTransformation) layers[i].collapseTransformation = collapseTransformation;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (layers[i].canSetCollapseTransformation)
+				{
+					if (lockedLayersAllow.value)
+					{
+						var locked = layers[i].locked;
+						layers[i].locked = false;
+					}
+					else if (layers[i].locked) continue;
+					else locked = false;
+					
+					layers[i].collapseTransformation = collapseTransformation;
+					layers[i].locked = locked;
+				}
+			}
 		}
 
 		function quality()
@@ -1186,42 +1203,78 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function adjustmentLayer()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var adjustmentLayer = !layers[0].adjustmentLayer;
+			if (!layers.length) return;
+			
+			var adjustmentLayer = false;
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (!(layers[i].locked && lockedLayersDeny.value) || lockedLayersAllow.value)
+				{
+					adjustmentLayer = !layers[i].adjustmentLayer;
+					break;
+				}
+			}
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].adjustmentLayer = adjustmentLayer;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (lockedLayersAllow.value)
+				{
+					var locked = layers[i].locked;
+					layers[i].locked = false;
+				}
+				else if (layers[i].locked) continue;
+				else locked = false;
+					
+				layers[i].adjustmentLayer = adjustmentLayer;
+				layers[i].locked = locked;
+			}
 		}
 
 		function threeDLayer()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+				alert("No active composition.");
+				return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var threeDLayer = !layers[0].threeDLayer;
+			if (!layers.length) return;
+			
+			var threeDLayer = false;
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (!(layers[i].locked && lockedLayersDeny.value) || lockedLayersAllow.value)
+				{
+					threeDLayer = !layers[i].threeDLayer;
+					break;
+				}
+			}
 
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].threeDLayer = threeDLayer;
-		}
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (lockedLayersAllow.value)
+				{
+					var locked = layers[i].locked;
+					layers[i].locked = false;
+				}
+				else if (layers[i].locked) continue;
+				else locked = false;
+				
+				layers[i].threeDLayer = threeDLayer;
+				layers[i].locked = locked;
+			}
 		}
 
 		function guideLayer()
@@ -1236,11 +1289,29 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var layers = getLayers();
 
 			if (!layers.length) return;
-			var guideLayer = !layers[0].guideLayer;
+			
+			var guideLayer = false;
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+				if (!(layers[i].locked && lockedLayersDeny.value) || lockedLayersAllow.value)
+				{
+					guideLayer = !layers[i].guideLayer;
+					break;
+				}
+			}
 
 			for (var i = 0 ; i < layers.length ; i++)
 			{
+				if (lockedLayersAllow.value)
+				{
+					var locked = layers[i].locked;
+					layers[i].locked = false;
+				}
+				else if (layers[i].locked) continue;
+				else locked = false;
+				
 				layers[i].guideLayer = guideLayer;
+				layers[i].locked = locked;
 			}
 		}
 		//========= PANEL SELECTOR ============
@@ -1261,6 +1332,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			}
 			dynamicPanel.show();
 			customPanel.hide();
+			settingsPanel.hide();
 		}
 		
 		function customGroupsButtonClicked()
@@ -1280,6 +1352,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			}
 			dynamicPanel.hide();
 			customPanel.show();
+			settingsPanel.hide();
 		}
 		
 		function settingsButtonClicked()
@@ -1295,6 +1368,24 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			}
 			dynamicPanel.hide();
 			customPanel.hide();
+			settingsPanel.show();
+		}
+			
+		function lockedLayersClicked()
+		{
+			if (lockedLayersAllow.value) app.settings.saveSetting('dugr','lockedLayersDeny','0');
+			else app.settings.saveSetting('dugr','lockedLayersDeny','1');
+		}
+		
+		function isolationWarningFrameChanged()
+		{
+			app.settings.saveSetting('dugr','warningFrame',isolationWarningFrameList.selection.index);
+		}
+		
+		function isolationTypeClicked()
+		{
+			if (isolationHide.value) app.settings.saveSetting('dugr','isolationType','0');
+			else app.settings.saveSetting('dugr','isolationType','1');
 		}
 		
 		//=========== UI ===========
@@ -1662,9 +1753,48 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			refreshButton.size = [22,22];
 			refreshButton.onClick = refresh;
 			
-			//TODO SETTINGS Panel
+			//SETTINGS Panel
+			var settingsPanel = mainPanel.add('group');
+			settingsPanel.alignment = ['fill','fill'];
+			settingsPanel.orientation = 'column';
+			settingsPanel.alignChildren = ['left','top'];
+			settingsPanel.margins = 0;
+			settingsPanel.spacing = 2;
+			settingsPanel.hide();
+			
 			//Allow to modify locked layers' attributes
+			settingsPanel.add('statictext',undefined,"• " + "Locked layers:");
+			var lockedLayersSettings = settingsPanel.add('group');
+			lockedLayersSettings.orientation = 'column';
+			lockedLayersSettings.margins = 0;
+			lockedLayersSettings.spacing = 0;
+			lockedLayersSettings.alignChildren = ['left','center'];
+			var lockedLayersAllow = lockedLayersSettings.add('radiobutton',undefined,"Allow changes");
+			var lockedLayersDeny = lockedLayersSettings.add('radiobutton',undefined,"Deny changes");
+			if (app.settings.getSetting('dugr', 'lockedLayersDeny') == 0) lockedLayersAllow.value = true;
+			else lockedLayersDeny.value = true;
+			lockedLayersAllow.onClick = lockedLayersClicked;
+			lockedLayersDeny.onClick = lockedLayersClicked;
+			
 			//Isolation red warning : none, below, above (can mess up expressions and effects using layer indices)
+			settingsPanel.add('statictext',undefined,"• " + "Isolation warning frame:");
+			var isolationWarningFrameList = settingsPanel.add('dropdownlist',undefined,["None","Below","Above"]);
+			isolationWarningFrameList.selection = app.settings.getSetting('dugr', 'warningFrame');
+			isolationWarningFrameList.onChange = isolationWarningFrameChanged;
+			
+			//isolation wireframe or not
+			settingsPanel.add('statictext',undefined,"• " + "Isolation type:");
+			var isolationTypeSettings = settingsPanel.add('group');
+			isolationTypeSettings.orientation = 'column';
+			isolationTypeSettings.margins = 0;
+			isolationTypeSettings.spacing = 0;
+			isolationTypeSettings.alignChildren = ['left','center'];
+			var isolationHide = isolationTypeSettings.add('radiobutton',undefined,"Hide layers");
+			var isolationWireFrame = isolationTypeSettings.add('radiobutton',undefined,"Use wireframe");
+			if (app.settings.getSetting('dugr', 'isolationType') == 0) isolationHide.value = true;
+			else isolationWireFrame.value = true;
+			isolationHide.onClick = isolationTypeClicked;
+			isolationWireFrame.onClick = isolationTypeClicked;
 			
 			
 			var panelSelectorGroup = myPal.add('group');
