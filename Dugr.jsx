@@ -46,6 +46,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 	if (!app.settings.haveSetting('dugr', 'lockedLayersDeny')){app.settings.saveSetting('dugr','lockedLayersDeny','0');}
 	if (!app.settings.haveSetting('dugr', 'warningFrame')){app.settings.saveSetting('dugr','warningFrame','1');}
 	if (!app.settings.haveSetting('dugr', 'isolationType')){app.settings.saveSetting('dugr','isolationType','1');}
+	if (!app.settings.haveSetting('dugr', 'lockIsolatedLayers')){app.settings.saveSetting('dugr','lockIsolatedLayers','1');}
 	
 	
 	function DugrUI(thisObj)
@@ -472,17 +473,36 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				alert("Sorry, group name can not be 'shy'.");
 				return false;
 			}
-			if (name == 'sel')
+			else if (name == 'sel')
 			{
 				alert("Sorry, group name can not be 'sel'.");
 				return false;
 			}
-			if (name == 'vis')
+			else if (name == 'vis')
 			{
 				alert("Sorry, group name can not be 'vis'.");
 				return false;
 			}
-			
+			else if (name == 'bes')
+			{
+				alert("Sorry, group name can not be 'bes'.");
+				return false;
+			}
+			else if (name == 'dra')
+			{
+				alert("Sorry, group name can not be 'dra'.");
+				return false;
+			}
+			else if (name == 'wf')
+			{
+				alert("Sorry, group name can not be 'wf'.");
+				return false;
+			}
+			else if (name == 'lo')
+			{
+				alert("Sorry, group name can not be 'lo'.");
+				return false;
+			}
 			
 			//check if the group does not already exist
 			for (var i = 0;i < groupsList.items.length; i++)
@@ -539,9 +559,9 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			for (var j = 1;j<=comp.numLayers;j++)
 			{
 				var layer = comp.layer(j);
+				var locked = layer.locked;
 				if (!alreadyActivated)
 				{
-					var locked = layer.locked;
 					layer.locked = false;
 					layer.comment = layer.comment.replace('|shy| ','');
 					layer.comment = layer.comment.replace('|vis| ','');
@@ -549,26 +569,27 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					layer.comment = layer.comment.replace('|wf| ','');
 					layer.comment = layer.comment.replace('|bes| ','');
 					layer.comment = layer.comment.replace('|dra| ','');
+					layer.comment = layer.comment.replace('|lo| ','');
 					if (layer.shy) layer.comment = layer.comment + '|shy| ';
 					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					if (locked) layer.comment = layer.comment + '|lo| ';
 					if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
 					if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
 					if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
-					layer.locked = locked;
 				}
 
 				layer.shy = true;
 				if (isolationHide.value) layer.enabled = false;
 				else layer.quality = LayerQuality.WIREFRAME;
+				if (lockIsolatedLayers.value) layer.locked = true;
+				else layer.locked = locked;
 			}
 			
 			
 			for (var i = 0 ; i< layers.length;i++)
 			{
 				var layer = layers[i];
-				var locked = layer.locked;
-				layer.locked = false;
 				layer.shy = false;
 				if (isolationHide.value) layer.enabled = true;
 				else
@@ -577,7 +598,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					else if (layer.comment.indexOf('|bes| ') >= 0) layer.quality = LayerQuality.BEST;
 					else if (layer.comment.indexOf('|wf| ') < 0) layer.quality = LayerQuality.DRAFT;
 				}
-				layer.locked = locked;
+				layer.locked = layer.comment.indexOf('|lo| ') >= 0;
 			}
 
 			addDugrLayer();
@@ -607,32 +628,36 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			for (var j = 1;j<=comp.numLayers;j++)
 			{
 			var layer = comp.layer(j);
+			var locked = layer.locked;
 			if (!alreadyActivated)
 			{
-			var locked = layer.locked;
-			layer.locked = false;
-			layer.comment = layer.comment.replace('|shy| ','');
-			layer.comment = layer.comment.replace('|vis| ','');
-			layer.comment = layer.comment.replace('|sel| ','');
-			if (layer.shy) layer.comment = layer.comment + '|shy| ';
-			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-			if (layer.selected) layer.comment = layer.comment + '|sel| ';
-			if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
-			if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
-			if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
-			layer.locked = locked;
+				layer.locked = false;
+				layer.comment = layer.comment.replace('|shy| ','');
+				layer.comment = layer.comment.replace('|vis| ','');
+				layer.comment = layer.comment.replace('|sel| ','');
+				layer.comment = layer.comment.replace('|wf| ','');
+				layer.comment = layer.comment.replace('|bes| ','');
+				layer.comment = layer.comment.replace('|dra| ','');
+				layer.comment = layer.comment.replace('|lo| ','');
+				if (layer.shy) layer.comment = layer.comment + '|shy| ';
+				if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+				if (layer.selected) layer.comment = layer.comment + '|sel| ';
+				if (locked) layer.comment = layer.comment + '|lo| ';
+				if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
+				if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
+				if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
 			}
 
 			layer.shy = true;
+			if (lockIsolatedLayers.value) layer.locked = true;
+			else layer.locked = locked;
 
 			}
 			
 			for (var i = 0 ; i< layers.length;i++)
 			{
-			var locked = layers[i].locked;
-			layers[i].locked = false;
-			layers[i].shy = false;
-			layers[i].locked = locked;
+				layers[i].shy = false;
+				layers[i].locked = layers[i].comment.indexOf('|lo| ') >= 0;
 			}
 
 			addDugrLayer();
@@ -663,33 +688,36 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			for (var j = 1;j<=comp.numLayers;j++)
 			{
 				var layer = comp.layer(j);
-
+				var locked = layer.locked;
 				if (!alreadyActivated)
 				{
-				var locked = layer.locked;
-				layer.locked = false;
-				layer.comment = layer.comment.replace('|shy| ','');
-				layer.comment = layer.comment.replace('|vis| ','');
-				layer.comment = layer.comment.replace('|sel| ','');
-				if (layer.shy) layer.comment = layer.comment + '|shy| ';
-				if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-				if (layer.selected) layer.comment = layer.comment + '|sel| ';
-				if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
-				if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
-				if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
-				layer.locked = locked
+					layer.locked = false;
+					layer.comment = layer.comment.replace('|shy| ','');
+					layer.comment = layer.comment.replace('|vis| ','');
+					layer.comment = layer.comment.replace('|sel| ','');
+					layer.comment = layer.comment.replace('|wf| ','');
+					layer.comment = layer.comment.replace('|bes| ','');
+					layer.comment = layer.comment.replace('|dra| ','');
+					layer.comment = layer.comment.replace('|lo| ','');
+					if (layer.shy) layer.comment = layer.comment + '|shy| ';
+					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					if (locked) layer.comment = layer.comment + '|lo| ';
+					if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
+					if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
+					if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
 				}
 
 				if (isolationHide.value) layer.enabled = false;
 				else layer.quality = LayerQuality.WIREFRAME;
+				if (lockIsolatedLayers.value) layer.locked = true;
+				else layer.locked = locked;
 			}
 			
 			
 			for (var i = 0 ; i< layers.length;i++)
 			{
 				var layer = layers[i];
-				var locked = layers[i].locked;
-				layer.locked = false;
 				if (isolationHide.value) layer.enabled = true;
 				else
 				{
@@ -697,7 +725,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					else if (layer.comment.indexOf('|bes| ') >= 0) layer.quality = LayerQuality.BEST;
 					else if (layer.comment.indexOf('|wf| ') < 0) layer.quality = LayerQuality.DRAFT;
 				}
-				layer.locked = locked;
+				layer.locked = layer.comment.indexOf('|lo| ') >= 0;
 			}
 
 			addDugrLayer();
@@ -722,7 +750,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			{
 				var layer = comp.layer(i);
 
-				var locked = layer.locked;
+				var locked = layer.locked = layer.comment.indexOf('|lo| ') >= 0;
 				layer.locked = false;
 
 				layer.shy = layer.comment.indexOf('|shy| ') >= 0;
@@ -739,8 +767,10 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layer.comment = layer.comment.replace('|bes| ','');
 				layer.comment = layer.comment.replace('|dra| ','');
 				layer.comment = layer.comment.replace('|wf| ','');
-
+				layer.comment = layer.comment.replace('|lo| ','');
+				
 				layer.locked = locked;
+
 			}
 		}
 		
@@ -1000,7 +1030,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		groupsList.items[i].selected = !groupsList.items[i].selected;
 		}
 		}
-
 
 		//======== ATTRIBUTES ACTIONS =========
 
@@ -1347,6 +1376,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layers[i].locked = locked;
 			}
 		}
+		
 		//========= PANEL SELECTOR ============
 		function dynamicGroupsButtonClicked()
 		{
@@ -1419,6 +1449,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		{
 			if (isolationHide.value) app.settings.saveSetting('dugr','isolationType','0');
 			else app.settings.saveSetting('dugr','isolationType','1');
+		}
+		
+		function lockIsolatedLayersClicked()
+		{
+			if (lockIsolatedLayers.value) app.settings.saveSetting('dugr','lockIsolatedLayers','1');
+			else app.settings.saveSetting('dugr','lockIsolatedLayers','0');
 		}
 		
 		//=========== UI ===========
@@ -1829,6 +1865,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			isolationHide.onClick = isolationTypeClicked;
 			isolationWireFrame.onClick = isolationTypeClicked;
 			
+			//lock isolated layers
+			settingsPanel.add('statictext',undefined,"• " + "Isolated layers:");
+			var lockIsolatedLayers = settingsPanel.add('checkbox',undefined,"Lock");
+			if (app.settings.getSetting('dugr', 'lockIsolatedLayers') == 1) lockIsolatedLayers.value = true;
+			else lockIsolatedLayers.value = false;
+			lockIsolatedLayers.onClick = lockIsolatedLayersClicked;
 			
 			var panelSelectorGroup = myPal.add('group');
 			panelSelectorGroup.alignment = ['fill','bottom'];
