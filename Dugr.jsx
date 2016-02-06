@@ -238,24 +238,27 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function addDugrLayer()
 		{
-		var comp = app.project.activeItem;
+			if (isolationWarningFrameList.selection.index == 0) return;
+			
+			var comp = app.project.activeItem;
 
-		//add rect
-		sq = comp.layers.addShape();
-		sq.shy = true;
-		sq.guideLayer = true;
-		sq.name = 'Dugr Activated';
+			//add rect
+			sq = comp.layers.addShape();
+			sq.shy = true;
+			sq.guideLayer = true;
+			sq.name = 'Dugr Activated';
+			if (isolationWarningFrameList.selection.index == 1) sq.moveToEnd();
 
-		var gr = sq("ADBE Root Vectors Group").addProperty("ADBE Vector Group");
-		var groupContent = gr.property("ADBE Vectors Group");
-		var shapeProp = groupContent.addProperty("ADBE Vector Shape - Rect");
-		shapeProp("ADBE Vector Rect Size").setValue([comp.width,comp.height]);
-		var stroke = groupContent.addProperty("ADBE Vector Graphic - Stroke");
-		stroke("ADBE Vector Stroke Color").setValue([0.8,0,0]);
-		stroke("ADBE Vector Stroke Opacity").setValue(50);
-		stroke("ADBE Vector Stroke Width").setValue(comp.width/100);
+			var gr = sq("ADBE Root Vectors Group").addProperty("ADBE Vector Group");
+			var groupContent = gr.property("ADBE Vectors Group");
+			var shapeProp = groupContent.addProperty("ADBE Vector Shape - Rect");
+			shapeProp("ADBE Vector Rect Size").setValue([comp.width,comp.height]);
+			var stroke = groupContent.addProperty("ADBE Vector Graphic - Stroke");
+			stroke("ADBE Vector Stroke Color").setValue([0.8,0,0]);
+			stroke("ADBE Vector Stroke Opacity").setValue(50);
+			stroke("ADBE Vector Stroke Width").setValue(comp.width/100);
 
-		sq.locked = true;
+			sq.locked = true;
 		}
 
 		function removeDugrLayer()
@@ -543,14 +546,21 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					layer.comment = layer.comment.replace('|shy| ','');
 					layer.comment = layer.comment.replace('|vis| ','');
 					layer.comment = layer.comment.replace('|sel| ','');
+					layer.comment = layer.comment.replace('|wf| ','');
+					layer.comment = layer.comment.replace('|bes| ','');
+					layer.comment = layer.comment.replace('|dra| ','');
 					if (layer.shy) layer.comment = layer.comment + '|shy| ';
 					if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 					if (layer.selected) layer.comment = layer.comment + '|sel| ';
+					if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
+					if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
+					if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
 					layer.locked = locked;
 				}
 
 				layer.shy = true;
-				layer.enabled = false;
+				if (isolationHide.value) layer.enabled = false;
+				else layer.quality = LayerQuality.WIREFRAME;
 			}
 			
 			
@@ -560,7 +570,13 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				var locked = layer.locked;
 				layer.locked = false;
 				layer.shy = false;
-				layer.enabled = true;
+				if (isolationHide.value) layer.enabled = true;
+				else
+				{
+					if (layer.comment.indexOf('|dra| ') >= 0) layer.quality = LayerQuality.DRAFT;
+					else if (layer.comment.indexOf('|bes| ') >= 0) layer.quality = LayerQuality.BEST;
+					else if (layer.comment.indexOf('|wf| ') < 0) layer.quality = LayerQuality.DRAFT;
+				}
 				layer.locked = locked;
 			}
 
@@ -601,6 +617,9 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			if (layer.shy) layer.comment = layer.comment + '|shy| ';
 			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
 			if (layer.selected) layer.comment = layer.comment + '|sel| ';
+			if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
+			if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
+			if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
 			layer.locked = locked;
 			}
 
@@ -639,39 +658,46 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 			comp.hideShyLayers = true;
 
-
-
-
-
 			var layers = getLayers();
 			
 			for (var j = 1;j<=comp.numLayers;j++)
 			{
-			var layer = comp.layer(j);
+				var layer = comp.layer(j);
 
-			if (!alreadyActivated)
-			{
-			var locked = layer.locked;
-			layer.locked = false;
-			layer.comment = layer.comment.replace('|shy| ','');
-			layer.comment = layer.comment.replace('|vis| ','');
-			layer.comment = layer.comment.replace('|sel| ','');
-			if (layer.shy) layer.comment = layer.comment + '|shy| ';
-			if (layer.enabled) layer.comment = layer.comment + '|vis| ';
-			if (layer.selected) layer.comment = layer.comment + '|sel| ';
-			layer.locked = locked
-			}
+				if (!alreadyActivated)
+				{
+				var locked = layer.locked;
+				layer.locked = false;
+				layer.comment = layer.comment.replace('|shy| ','');
+				layer.comment = layer.comment.replace('|vis| ','');
+				layer.comment = layer.comment.replace('|sel| ','');
+				if (layer.shy) layer.comment = layer.comment + '|shy| ';
+				if (layer.enabled) layer.comment = layer.comment + '|vis| ';
+				if (layer.selected) layer.comment = layer.comment + '|sel| ';
+				if (layer.quality == LayerQuality.WIREFRAME) layer.comment = layer.comment + '|wf| ';
+				if (layer.quality == LayerQuality.BEST) layer.comment = layer.comment + '|bes| ';
+				if (layer.quality == LayerQuality.DRAFT) layer.comment = layer.comment + '|dra| ';
+				layer.locked = locked
+				}
 
-			layer.enabled = false;
+				if (isolationHide.value) layer.enabled = false;
+				else layer.quality = LayerQuality.WIREFRAME;
 			}
 			
 			
 			for (var i = 0 ; i< layers.length;i++)
 			{
-			var locked = layers[i].locked;
-			layers[i].locked = false;
-			layers[i].enabled = true;
-			layers[i].locked = locked;
+				var layer = layers[i];
+				var locked = layers[i].locked;
+				layer.locked = false;
+				if (isolationHide.value) layer.enabled = true;
+				else
+				{
+					if (layer.comment.indexOf('|dra| ') >= 0) layer.quality = LayerQuality.DRAFT;
+					else if (layer.comment.indexOf('|bes| ') >= 0) layer.quality = LayerQuality.BEST;
+					else if (layer.comment.indexOf('|wf| ') < 0) layer.quality = LayerQuality.DRAFT;
+				}
+				layer.locked = locked;
 			}
 
 			addDugrLayer();
@@ -702,10 +728,17 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layer.shy = layer.comment.indexOf('|shy| ') >= 0;
 				layer.enabled = layer.comment.indexOf('|vis| ') >= 0;
 				layer.selected = layer.comment.indexOf('|sel| ') >= 0;
+				if (layer.comment.indexOf('|dra| ') >= 0) layer.quality = LayerQuality.DRAFT;
+				else if (layer.comment.indexOf('|bes| ') >= 0) layer.quality = LayerQuality.BEST;
+				else if (layer.comment.indexOf('|wf| ') >= 0) layer.quality = LayerQuality.WIREFRAME;
+				else layer.quality = LayerQuality.DRAFT;
 
 				layer.comment = layer.comment.replace('|shy| ','');
 				layer.comment = layer.comment.replace('|vis| ','');
 				layer.comment = layer.comment.replace('|sel| ','');
+				layer.comment = layer.comment.replace('|bes| ','');
+				layer.comment = layer.comment.replace('|dra| ','');
+				layer.comment = layer.comment.replace('|wf| ','');
 
 				layer.locked = locked;
 			}
