@@ -2,7 +2,7 @@
 
 
 Dugr / Duduf Groups for After Effects
-Copyright (c) 2011 Nicolas Dufresne
+Copyright (c) 2011-2016 Nicolas Dufresne
 http://www.duduf.net
 
 
