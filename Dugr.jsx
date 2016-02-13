@@ -840,11 +840,15 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var comp = app.project.activeItem;
 			if (!(comp instanceof CompItem)) return;
 			
+			app.beginUndoGroup("Dugr - Rename group");
+			
 			for (var i = 1 ; i <= comp.numLayers ; i++)
 			{
 				var layer = comp.layer(i);
 				layer.comment = layer.comment.replace('|' + oldName + '| ','|' + newName + '| ');
 			}
+			
+			app.endUndoGroup();
 			
 			refresh();
 		}
@@ -1053,10 +1057,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 			var enabled = !layers[0].enabled;
 
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				layers[i].enabled = enabled;
 			}
+			app.endUndoGroup();
 		}
 
 		function audioEnabled()
@@ -1073,10 +1079,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		if (!layers.length) return;
 		var audioEnabled = !layers[0].audioEnabled;
 
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].audioEnabled = audioEnabled;
 		}
+		app.endUndoGroup();
 		}
 
 		function solo()
@@ -1092,11 +1100,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		if (!layers.length) return;
 		var solo = !layers[0].solo;
-
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].solo = solo;
 		}
+		app.endUndoGroup();
 		}
 
 		function locked()
@@ -1112,11 +1121,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 			if (!layers.length) return;
 			var locked = !layers[0].locked;
-
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				layers[i].locked = locked;
 			}
+			app.endUndoGroup();
 		}
 
 		function shy()
@@ -1132,11 +1142,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 			if (!layers.length) return;
 			var shy = !layers[0].shy;
-
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				layers[i].shy = shy;
 			}
+			app.endUndoGroup();
 		}
 
 		function collapseTransformation()
@@ -1162,6 +1173,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				}
 			}
 
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				if (layers[i].canSetCollapseTransformation)
@@ -1178,6 +1190,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					layers[i].locked = locked;
 				}
 			}
+			app.endUndoGroup();
 		}
 
 		function quality()
@@ -1198,10 +1211,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		else if (quality == LayerQuality.DRAFT) quality = LayerQuality.WIREFRAME;
 		else if (quality == LayerQuality.WIREFRAME) quality = LayerQuality.BEST;
 
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].quality = quality;
 		}
+		app.endUndoGroup();
 		}
 
 		function effectsActive()
@@ -1217,11 +1232,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		if (!layers.length) return;
 		var effectsActive = !layers[0].effectsActive;
-
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].effectsActive = effectsActive;
 		}
+		app.endUndoGroup();
 		}
 
 		function frameBlending()
@@ -1241,11 +1257,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		if (frameBlending == FrameBlendingType.PIXEL_MOTION) frameBlending = FrameBlendingType.FRAME_MIX;
 		else if (frameBlending == FrameBlendingType.FRAME_MIX) frameBlending = FrameBlendingType.NO_FRAME_BLEND;
 		else if (frameBlending == FrameBlendingType.NO_FRAME_BLEND) frameBlending = FrameBlendingType.PIXEL_MOTION;
-
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].frameBlendingType = frameBlending;
 		}
+		app.endUndoGroup();
 		}
 
 		function motionBlur()
@@ -1261,11 +1278,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		if (!layers.length) return;
 		var motionBlur = !layers[0].motionBlur;
-
+		app.beginUndoGroup("Dugr - Attributes change");
 		for (var i = 0 ; i < layers.length ; i++)
 		{
 		layers[i].motionBlur = motionBlur;
 		}
+		app.endUndoGroup();
 		}
 
 		function adjustmentLayer()
@@ -1290,7 +1308,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					break;
 				}
 			}
-
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				if (lockedLayersAllow.value)
@@ -1304,6 +1322,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layers[i].adjustmentLayer = adjustmentLayer;
 				layers[i].locked = locked;
 			}
+			app.endUndoGroup();
 		}
 
 		function threeDLayer()
@@ -1328,7 +1347,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					break;
 				}
 			}
-
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				if (lockedLayersAllow.value)
@@ -1342,6 +1361,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layers[i].threeDLayer = threeDLayer;
 				layers[i].locked = locked;
 			}
+			app.endUndoGroup();
 		}
 
 		function guideLayer()
@@ -1366,7 +1386,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					break;
 				}
 			}
-
+			app.beginUndoGroup("Dugr - Attributes change");
 			for (var i = 0 ; i < layers.length ; i++)
 			{
 				if (lockedLayersAllow.value)
@@ -1380,6 +1400,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				layers[i].guideLayer = guideLayer;
 				layers[i].locked = locked;
 			}
+			app.endUndoGroup();
 		}
 		
 		//========= PANEL SELECTOR ============
