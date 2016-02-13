@@ -985,6 +985,11 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			isolation();
 		}
 		
+		function invertButtonClicked()
+		{
+			isolation();
+		}
+		
 		function select()
 		{
 		app.beginUndoGroup('Dugr');
@@ -1416,6 +1421,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			dynamicPanel.hide();
 			customPanel.show();
 			settingsPanel.hide();
+			refresh();
 		}
 		
 		function settingsButtonClicked()
@@ -1723,6 +1729,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			
 			var invertButton = addImageCheckBox(topButtons2,'',imgFolder + 'invert.png',"Not!",imgFolder + 'invert_o.png')
 			invertButton.size = [24,24];
+			invertButton.onClick = invertButtonClicked;
 		
 			var selectButton = addImageButton(topButtons2,'',imgFolder + 'select.png',"Select layers in the groups", imgFolder + 'select_o.png');
 			selectButton.size = [24,24];
