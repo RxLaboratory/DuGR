@@ -26,9 +26,16 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 (function (obj) {
 
 	//================
-	var version = "3.0";
+	var version = "3.01";
 	//================
 
+	//detect AE Version
+	var reV = /^(\d+\.?\d*)/i;
+	var v = app.version.match(reV);
+	aeVersion = parseFloat(v[1]);
+	delete reV;
+	delete v;
+	
 	//Dugr needs to write files
 	if (app.preferences.getPrefAsLong("Main Pref Section","Pref_SCRIPTING_FILE_NETWORK_SECURITY") != 1)
 	{
@@ -1533,7 +1540,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 		
 		//=========== UI ===========
 		{
-			
+
 			function addImageButton(container,text,image,helpTip,imageOver)
 			{
 				if (!container) return null;
@@ -1580,10 +1587,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				}		
 				function mouseOver(e)
 				{
+					if (aeVersion >= 11 && aeVersion < 12) return; //Bugs on CS6
 					if (icon) if (imageButton.imageOver != '') icon.image = imageButton.imageOver;
 				}
 				function mouseOut(e)
 				{
+					if (aeVersion >= 11 && aeVersion < 12) return; //Bugs on CS6
 					if (icon) if (imageButton.standardImage != '') icon.image = imageButton.standardImage;
 				}
 				
@@ -1684,10 +1693,12 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 				}		
 				imageButton.mouseOver = function (e)
 				{
+					if (aeVersion >= 11 && aeVersion < 12) return; //Bugs on CS6
 					if (icon) if (imageButton.imageOver != '') icon.image = imageButton.imageOver;
 				}
 				imageButton.mouseOut = function (e)
 				{
+					if (aeVersion >= 11 && aeVersion < 12) return; //Bugs on CS6
 					if (imageButton.checked)
 					{
 						if (icon) if (imageButton.imageChecked != '') icon.image = imageButton.imageChecked;
