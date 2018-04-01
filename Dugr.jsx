@@ -1146,18 +1146,20 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			var comp = app.project.activeItem;
 			if (!(comp instanceof CompItem))
 			{
-			alert("No active composition.");
-			return;
+				alert("No active composition.");
+				return;
 			}
 
 			var layers = getLayers();
 
 			if (!layers.length) return;
-			var solo = !layers[0].solo;
+			var solo = -1;
 			app.beginUndoGroup("Dugr - Attributes change");
-			for (var i = 0 ; i < layers.length ; i++)
+			for (var i = 0, num = layers.length ; i < num ; i++)
 			{
-			layers[i].solo = solo;
+				if (!layers[i].enabled) continue;
+				if (solo === -1) solo = !layers[i].solo;
+				layers[i].solo = solo;
 			}
 			app.endUndoGroup();
 		}
