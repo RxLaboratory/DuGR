@@ -273,19 +273,19 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function removeDugrLayer()
 		{
-			var found = false;
-			var comp = app.project.activeItem;
-			for (var i = 1;i<=comp.numLayers;i++)
-			{
-			if (comp.layer(i).name == 'Dugr Activated')
-			{
-				found = true;
-				comp.layer(i).locked = false;
-				comp.layer(i).remove();
-				break;
-			}
-			}
-			return found;
+		var found = false;
+		var comp = app.project.activeItem;
+		for (var i = 1;i<=comp.numLayers;i++)
+		{
+		if (comp.layer(i).name == 'Dugr Activated')
+		{
+			found = true;
+			comp.layer(i).locked = false;
+			comp.layer(i).remove();
+			break;
+		}
+		}
+		return found;
 		}
 
 		function getLayers()
@@ -1050,48 +1050,48 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function select()
 		{
-		app.beginUndoGroup('Dugr');
+			app.beginUndoGroup('Dugr');
 
-		if ( (!groupsList.selection && customGroupsButton.checked) || (!dynamicGroupsList.selection && dynamicGroupsButton.checked) )
-		{
-		alert("Please select the group(s) to isolate.");
-		return;
-		}
+			if ( (!groupsList.selection && customGroupsButton.checked) || (!dynamicGroupsList.selection && dynamicGroupsButton.checked) )
+			{
+			alert("Please select the group(s) to isolate.");
+			return;
+			}
 
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
 
-		for (var j = 1;j<=comp.numLayers;j++)
-		{
-		var layer = comp.layer(j);
+			for (var j = 1;j<=comp.numLayers;j++)
+			{
+			var layer = comp.layer(j);
 
-		layer.selected = false;
-		}
+			layer.selected = false;
+			}
 
-		var layers = getLayers();
-		for (var i = 0 ; i< layers.length;i++)
-		{
-		layers[i].selected = true;
-		}
+			var layers = getLayers();
+			for (var i = 0 ; i< layers.length;i++)
+			{
+			layers[i].selected = true;
+			}
 
-		app.endUndoGroup();
+			app.endUndoGroup();
 		}
 
 		function invert()
 		{
-		groupsList.items[0].selected = false;
-		groupsList.items[1].selected = false;
-		groupsList.items[2].selected = false;
+			groupsList.items[0].selected = false;
+			groupsList.items[1].selected = false;
+			groupsList.items[2].selected = false;
 
-		for (var i = 3 ; i<groupsList.items.length ; i++)
-		{
-		groupsList.items[i].selected = !groupsList.items[i].selected;
-		}
+			for (var i = 3 ; i<groupsList.items.length ; i++)
+			{
+			groupsList.items[i].selected = !groupsList.items[i].selected;
+			}
 		}
 
 		//======== ATTRIBUTES ACTIONS =========
@@ -1121,45 +1121,45 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function audioEnabled()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var audioEnabled = !layers[0].audioEnabled;
+			if (!layers.length) return;
+			var audioEnabled = !layers[0].audioEnabled;
 
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].audioEnabled = audioEnabled;
-		}
-		app.endUndoGroup();
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].audioEnabled = audioEnabled;
+			}
+			app.endUndoGroup();
 		}
 
 		function solo()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var solo = !layers[0].solo;
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].solo = solo;
-		}
-		app.endUndoGroup();
+			if (!layers.length) return;
+			var solo = !layers[0].solo;
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].solo = solo;
+			}
+			app.endUndoGroup();
 		}
 
 		function locked()
@@ -1249,95 +1249,95 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function quality()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
+			if (!layers.length) return;
 
-		var quality = layers[0].quality;
-		if (quality == LayerQuality.BEST) quality = LayerQuality.DRAFT;
-		else if (quality == LayerQuality.DRAFT) quality = LayerQuality.WIREFRAME;
-		else if (quality == LayerQuality.WIREFRAME) quality = LayerQuality.BEST;
+			var quality = layers[0].quality;
+			if (quality == LayerQuality.BEST) quality = LayerQuality.DRAFT;
+			else if (quality == LayerQuality.DRAFT) quality = LayerQuality.WIREFRAME;
+			else if (quality == LayerQuality.WIREFRAME) quality = LayerQuality.BEST;
 
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].quality = quality;
-		}
-		app.endUndoGroup();
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].quality = quality;
+			}
+			app.endUndoGroup();
 		}
 
 		function effectsActive()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var effectsActive = !layers[0].effectsActive;
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].effectsActive = effectsActive;
-		}
-		app.endUndoGroup();
+			if (!layers.length) return;
+			var effectsActive = !layers[0].effectsActive;
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].effectsActive = effectsActive;
+			}
+			app.endUndoGroup();
 		}
 
 		function frameBlending()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
+			if (!layers.length) return;
 
-		var frameBlending = layers[0].frameBlendingType;
-		if (frameBlending == FrameBlendingType.PIXEL_MOTION) frameBlending = FrameBlendingType.FRAME_MIX;
-		else if (frameBlending == FrameBlendingType.FRAME_MIX) frameBlending = FrameBlendingType.NO_FRAME_BLEND;
-		else if (frameBlending == FrameBlendingType.NO_FRAME_BLEND) frameBlending = FrameBlendingType.PIXEL_MOTION;
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].frameBlendingType = frameBlending;
-		}
-		app.endUndoGroup();
+			var frameBlending = layers[0].frameBlendingType;
+			if (frameBlending == FrameBlendingType.PIXEL_MOTION) frameBlending = FrameBlendingType.FRAME_MIX;
+			else if (frameBlending == FrameBlendingType.FRAME_MIX) frameBlending = FrameBlendingType.NO_FRAME_BLEND;
+			else if (frameBlending == FrameBlendingType.NO_FRAME_BLEND) frameBlending = FrameBlendingType.PIXEL_MOTION;
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].frameBlendingType = frameBlending;
+			}
+			app.endUndoGroup();
 		}
 
 		function motionBlur()
 		{
-		var comp = app.project.activeItem;
-		if (!(comp instanceof CompItem))
-		{
-		alert("No active composition.");
-		return;
-		}
+			var comp = app.project.activeItem;
+			if (!(comp instanceof CompItem))
+			{
+			alert("No active composition.");
+			return;
+			}
 
-		var layers = getLayers();
+			var layers = getLayers();
 
-		if (!layers.length) return;
-		var motionBlur = !layers[0].motionBlur;
-		app.beginUndoGroup("Dugr - Attributes change");
-		for (var i = 0 ; i < layers.length ; i++)
-		{
-		layers[i].motionBlur = motionBlur;
-		}
-		app.endUndoGroup();
+			if (!layers.length) return;
+			var motionBlur = !layers[0].motionBlur;
+			app.beginUndoGroup("Dugr - Attributes change");
+			for (var i = 0 ; i < layers.length ; i++)
+			{
+			layers[i].motionBlur = motionBlur;
+			}
+			app.endUndoGroup();
 		}
 
 		function adjustmentLayer()
