@@ -195,7 +195,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			function addLayer(l)
 			{
 				var added = false;
-				for (var i = 0;i<layers.length;i++ )
+				for (var i = 0,num = layers.length;i<num;i++ )
 				{
 					if (l.index == layers[i].index)
 					{
@@ -207,13 +207,13 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 			}
 
 			//for each group, list layers
-			if (customGroupsButton.checked && groupsList.selection)
+			if (groupsList.selection)
 			{
 				for (var i = 0 ; i < groupsList.selection.length ; i++)
 				{
 					var group = groupsList.selection[i].text;
 
-					for (var j = 1;j<=comp.numLayers;j++)
+					for (var j = 1,num=comp.numLayers;j<=num;j++)
 					{
 						var layer = comp.layer(j);
 
@@ -227,9 +227,9 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 							if (layer.selected) addLayer(layer);
 						}
 
-						if (layer.comment.indexOf('|' + group + '| ')>=0)
+						else if (layer.comment.indexOf('|' + group + '| ')>=0)
 						{
-							addLayer(layer);
+							alert(layer.name);
 						}
 					}
 				}
@@ -253,7 +253,6 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 					if (!found) addLayer(comp.layer(i));
 				}
 			}
-
 
 			return layers;
 		}
