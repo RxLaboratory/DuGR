@@ -229,7 +229,7 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 						else if (layer.comment.indexOf('|' + group + '| ')>=0)
 						{
-							alert(layer.name);
+							addLayer(layer);
 						}
 					}
 				}
