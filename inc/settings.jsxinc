@@ -1,0 +1,74 @@
+DuScriptUI.separator(ui.settingsGroup);
+
+// Locked layers
+// TODO Icon
+var lockedLayersButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    "Locked layers: deny changes",
+    undefined,
+    "What to do if a layer is locked.",
+    "Locked layers: allow changes"
+);
+
+// Warning frame
+//TODO Icons
+var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
+warningFrameSelector.addButton(
+    "Warning frame: None",
+    undefined,
+    "Don't use any warning frame."
+);
+warningFrameSelector.addButton(
+    "Warning frame: Above",
+    undefined,
+    "Draw the frame above the composition."
+);
+warningFrameSelector.addButton(
+    "Warning frame: Below",
+    undefined,
+    "Draw the frame below the composition."
+);
+
+// Isolation mode
+// TODO Icon
+var useWireframeButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    "Isolation: hide layers",
+    undefined,
+    "Method used to isolate layers in the composition.",
+    "Isolation: wireframe"
+);
+
+// Lock hidden
+// TODO Icon
+var lockHiddenButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    "Lock hidden layers",
+    undefined,
+    "Wether the hidden layers have to be locked.",
+);
+
+// Read settings
+ui.onResetSettings = function () {
+    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    lockedLayersButton.setChecked(allowLockedLayers);
+
+    var warningFrameType = def(DuESF.scriptSettings.data.warningFrame, 2);
+    warningFrameSelector.setCurrentIndex(warningFrameType);
+
+    var useWireframe = def(DuESF.scriptSettings.data.useWireframe, true);
+    useWireframeButton.setChecked(useWireframe);
+
+    var lockHidden = def(DuESF.scriptSettings.data.lockHidden, true);
+    lockHiddenButton.setChecked(lockHidden);
+}
+
+// Save settings
+ui.onApplySettings = function () {
+    DuESF.scriptSettings.data.allowLockedLayers = lockedLayersButton.value;
+    DuESF.scriptSettings.data.warningFrame = warningFrameSelector.index;
+    DuESF.scriptSettings.data.useWireframe = useWireframeButton.value;
+    DuESF.scriptSettings.data.lockHidden = lockHiddenButton.value;
+
+    DuESF.scriptSettings.save();
+}

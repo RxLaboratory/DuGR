@@ -3,8 +3,11 @@ function buildUI()
     var ui = DuScriptUI.scriptPanel( thisObj, true, true, new File($.fileName) );
     ui.addCommonSettings();
 
+    // Settings
+    #include "settings.jsxinc"
+
     // Build ui in ui.mainGroup
-    // Add settings in ui.settingsGroup
+    
 
     DuScriptUI.showUI(ui);
 }
