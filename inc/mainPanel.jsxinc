@@ -117,6 +117,23 @@ var selectLayerAEButton = DuScriptUI.button(
     "Select layers"
 )
 
+enableAEButton.onClick = function()
+{
+    var comp = DuAEProject.getActiveComp();
+    if (!comp) return;
+    var layers = comp.selectedLayers;
+    var enabled = !layers[0].enabled;
+    
+    DuAE.toggleLayerControls();
+
+    for (var i = 0, n = layers.length; i < n; i++)
+    {
+        layers[i].enabled = enabled;
+    }
+
+    DuAE.toggleLayerControls();
+}
+
 // ========= PANELS ==========
 
 DuScriptUI.separator( ui.mainGroup );
