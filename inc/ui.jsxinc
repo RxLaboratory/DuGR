@@ -7,7 +7,7 @@ function buildUI()
     #include "settings.jsxinc"
 
     // Build ui in ui.mainGroup
-    
+    #include "mainPanel.jsxinc"
 
     DuScriptUI.showUI(ui);
 }

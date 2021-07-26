@@ -1,0 +1,22 @@
+var propList = tab.add('listbox',undefined,"Groups",{multiselect: true});
+propList.alignment = ['fill', 'fill'];
+
+propList.add('item',"All layers");
+propList.add('item',"Selected");
+propList.add('item',"Grouped");
+propList.add('item',"Type: Null Objects");
+propList.add('item',"Type: Solids");
+propList.add('item',"Type: Shapes");
+propList.add('item',"Type: Texts");
+propList.add('item',"Type: Adjustment");
+propList.add('item',"Type: Lights");
+propList.add('item',"Type: Cameras");
+propList.add('item',"Attribute: Visible");
+propList.add('item',"Attribute: Sound");
+propList.add('item',"Attribute: Solo");
+propList.add('item',"Attribute: Locked");
+propList.add('item',"Attribute: Shy");
+propList.add('item',"Attribute: Effects");
+propList.add('item',"Attribute: Motion Blur");
+propList.add('item',"Attribute: 3D");
+propList.add('item',"Attribute: Guide");

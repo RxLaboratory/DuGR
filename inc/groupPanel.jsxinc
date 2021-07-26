@@ -1,0 +1,2 @@
+var groupList = tab.add('listbox',undefined,"Groups",{multiselect: true});
+groupList.alignment = ['fill', 'fill'];
