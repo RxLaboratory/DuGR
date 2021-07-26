@@ -4,6 +4,8 @@
 
 #include "api.jsxinc"
 
+#include "icons.jsxinc"
+
 #include "init.jsxinc"
 
 #include "ui.jsxinc"

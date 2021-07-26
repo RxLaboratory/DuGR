@@ -1,0 +1,7 @@
+#include "icons/w16_frame_above.png.jsxinc"
+#include "icons/w16_frame_below.png.jsxinc"
+#include "icons/w16_hide.png.jsxinc"
+#include "icons/w16_lock.png.jsxinc"
+#include "icons/w16_no_frame.png.jsxinc"
+#include "icons/w16_unlock.png.jsxinc"
+#include "icons/w16_wireframe.png.jsxinc"

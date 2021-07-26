@@ -5,9 +5,10 @@ DuScriptUI.separator(ui.settingsGroup);
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     "Locked layers: deny changes",
-    undefined,
+    w16_lock,
     "What to do if a layer is locked.",
-    "Locked layers: allow changes"
+    "Locked layers: allow changes",
+    w16_unlock
 );
 
 // Warning frame
@@ -15,28 +16,30 @@ var lockedLayersButton = DuScriptUI.checkBox(
 var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
 warningFrameSelector.addButton(
     "Warning frame: None",
-    undefined,
+    w16_no_frame,
     "Don't use any warning frame."
 );
 warningFrameSelector.addButton(
     "Warning frame: Above",
-    undefined,
+    w16_frame_above,
     "Draw the frame above the composition."
 );
 warningFrameSelector.addButton(
     "Warning frame: Below",
-    undefined,
+    w16_frame_below,
     "Draw the frame below the composition."
 );
+warningFrameSelector.setCurrentIndex(2);
 
 // Isolation mode
 // TODO Icon
 var useWireframeButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     "Isolation: hide layers",
-    undefined,
+    w16_hide,
     "Method used to isolate layers in the composition.",
-    "Isolation: wireframe"
+    "Isolation: wireframe",
+    w16_wireframe
 );
 
 // Lock hidden
