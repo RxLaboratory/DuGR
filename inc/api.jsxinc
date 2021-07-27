@@ -1,1 +1,171 @@
 // The API which may extend DuAEF
+
+/**
+ * DuGR - Duduf Groups - Batch methods on layers, group them by tags...
+ * @namespace
+ */
+var DuGR = {}
+
+/**
+ * Predefined and automatic groups
+ * @enum {string}
+ */
+DuGR.Group = {
+    /**
+     * All layers in the composition
+     */
+    ALL: 'DugR.all',
+    /**
+     * Selected layers
+     */
+    SELECTED: 'DugR.selected',
+    /**
+     * Layers included in a custom group
+     */
+    GROUPED: 'DugR.grouped',
+    /**
+     * Null objects
+     */
+    NULL: 'DugR.type.null',
+    /**
+     * Solids
+     */
+    SOLID: 'DugR.type.solid',
+    /**
+     * Shape layers
+     */
+    SHAPE: 'DugR.type.shape',
+    /**
+     * Text layers
+     */
+    TEXT: 'DugR.type.text',
+    /**
+     * Adjustement layers
+     */
+    ADJUSTMENT: 'DugR.type.adjustment',
+    /**
+     * 3D Light layers
+     */
+    LIGHT: 'DugR.type.light',
+    /**
+     * Camera layers
+     */
+    CAMERA: 'DugR.type.camera',
+    /**
+     * Visible layers
+     */
+    VISIBLE: 'DugR.attr.visible',
+    /**
+     * Audio layers
+     */
+    SOUND: 'DugR.attr.sound',
+    /**
+     * Solo layers
+     */
+    SOLO: 'DugR.attr.solo',
+    /**
+     * Locked layers
+     */
+    LOCKED: 'DugR.attr.locked',
+    /**
+     * Shy layers
+     */
+    SHY: 'DugR.attr.shy',
+    /**
+     * Effects enabled
+     */
+    EFFECTS: 'DugR.attr.effects',
+    /**
+     * Motion Blur enabled
+     */
+    MB: 'DugR.attr.mb',
+    /**
+     * 3D layers
+     */
+    THREE_D: 'DugR.attr.three_d',
+    /**
+     * Guide layers
+     */
+    GUIDE: 'DugR.attr.guide'
+}
+
+/**
+ * Checks if a layer is included in the given groups
+ * @param {Layer} layer The layer to test
+ * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @returns {Boolean} true if the layer belongs to at least one of the given groups
+ */
+DuGR.inGroups = function ( layer, groups )
+{
+    for( var i = 0, n = groups.length; i < n; i++)
+    {
+        var group = groups[i];
+        if (group == DuGR.Group.ALL) return true;
+
+        if (group == DuGR.Group.SELECTED && layer.selected) return true;
+
+        if (group == DuGR.Group.GROUPED && DuAETag.getGroups( layer ).length > 0) return true;
+
+        if (group == DuGR.Group.NULL && layer.nullLayer) return true;
+        
+        if (group == DuGR.Group.SOLID) return DuAELayer.isSolid( layer );
+
+        if (group == DuGR.Group.SHAPE && layer instanceof ShapeLayer) return true;
+
+        if (group == DuGR.Group.TEXT && layer instanceof TextLayer) return true;
+
+        if (group == DuGR.Group.ADJUSTMENT && layer.adjustmentLayer) return true;
+
+        if (group == DuGR.Group.LIGHT && layer instanceof LightLayer) return true;
+
+        if (group == DuGR.Group.CAMERA && layer instanceof CameraLayer) return true;
+
+        if (group == DuGR.Group.VISIBLE && layer.enabled) return true;
+
+        if (group == DuGR.Group.SOUND && layer instanceof AVLayer && layer.audioEnabled) return true;
+
+        if (group == DuGR.Group.SOLO && layer.solo) return true;
+
+        if (group == DuGR.Group.LOCKED && layer.locked) return true;
+
+        if (group == DuGR.Group.SHY && layer.shy) return true;
+
+        if (group == DuGR.Group.EFFECTS && layer.effectsActive && layer.property("ADBE Effect Parade").numProperties > 0) return true; 
+
+        if (group == DuGR.Group.MB && layer.motionBlur) return true;
+
+        if (group == DuGR.Group.THREE_D && DuAELayer.isThreeD( layer )) return true;
+
+        if (group == DuGR.Group.GUIDE && layer.guideLayer) return true;
+    }
+
+    return false;
+}
+
+/**
+ * Toggles the visibility of all layers in the groups.
+ * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ */
+DuGR.toggleVisibility = function ( groups, invert, comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.layers.length == 0) return;
+
+    var enabled;
+
+    new DuList(comp.layers).do(function (layer)
+    {
+        var ok = DuGR.inGroups(layer, groups);
+        if (invert) ok = !ok;
+        if (ok)
+        {
+            if (typeof enabled === 'undefined') enabled = !layer.enabled;
+            layer.enabled = enabled;
+        }
+    });
+    
+}
+

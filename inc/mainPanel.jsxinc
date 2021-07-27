@@ -119,19 +119,13 @@ var selectLayerAEButton = DuScriptUI.button(
 
 enableAEButton.onClick = function()
 {
-    var comp = DuAEProject.getActiveComp();
-    if (!comp) return;
-    var layers = comp.selectedLayers;
-    var enabled = !layers[0].enabled;
-    
+    DuAE.beginUndoGroup( "Toggle layer visibility" );
     DuAE.toggleLayerControls();
 
-    for (var i = 0, n = layers.length; i < n; i++)
-    {
-        layers[i].enabled = enabled;
-    }
+    DuGR.toggleVisibility( getGroups(), invertButton.checked );
 
     DuAE.toggleLayerControls();
+    DuAE.endUndoGroup();
 }
 
 // ========= PANELS ==========
@@ -141,6 +135,9 @@ var mainTabs = DuScriptUI.tabPanel( ui.mainGroup, 'column' );
 mainTabs.buttonsGroup.alignment = ['center', 'top'];
 var propTab = mainTabs.addTab( "Properties", w16_prop_group, "Select layer by property or type" );
 var groupTab = mainTabs.addTab( "Groups", w16_layer_group, "Select groups" );
+
+var propList;
+var groupList;
 
 propTab.build = function (tab)
 {
@@ -161,4 +158,27 @@ var invertButton = DuScriptUI.checkBox(
     w16_inverted,
     'column'
 )
+
 invertButton.alignment = ['left','fill'];
+
+// =========== Get Groups ! ========
+
+function getGroups()
+{
+    var groups = [];
+    if (mainTabs.index == 0 && propList.selection)
+    {
+        for (var i = 0, n = propList.selection.length; i < n ; i++)
+        {
+            groups.push( propList.selection[i].groupName );
+        }
+    }
+    else if (mainTabs.index == 1 && groupList.selection)
+    {
+        for (var i = 0, n = groupList.selection.length; i < n ; i++)
+        {
+            groups.push( groupList.selection[i].text );
+        }
+    }
+    return groups;
+}
