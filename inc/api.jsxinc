@@ -92,6 +92,7 @@ DuGR.Group = {
 /**
  * The way the warning frame can be displayed
  * @enum {int}
+ * @readonly
  */
 DuGR.WarningFrameMode = {
     /**
@@ -111,6 +112,7 @@ DuGR.WarningFrameMode = {
 /**
  * The way layers are isolated
  * @enum {int}
+ * @readonly
  */
 DuGR.IsolationMode = {
     /**
@@ -132,6 +134,16 @@ DuGR.IsolationMode = {
 }
 
 /**
+ * How to isolate layers in the comp panel
+ * @enum {string}
+ * @readonly
+ */
+DuGR.CompIsolationMode = {
+    HIDE: 0,
+    WIREFRAME: 1
+}
+
+/**
  * The name of the warning frame layer
  * @default "DuGR::Isolation"
  * @type {string}
@@ -145,15 +157,58 @@ DuScriptUI.String.DUGR_FRAME_NAME = "DuGR::" + tr("Isolation")
  * @readonly
  * @memberof DuAETag.Key
  */
-DuAETag.Key.DUGR_ISOLATION_MODE = 'dugrIsolationModed';
+DuAETag.Key.DUGR_ISOLATION_MODE = 'dugrIsolationMode';
+/**
+ * Is the layer isolated or not
+ * @default 'dugrIsolated'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_HIDDEN = 'dugrIsolated';
+/**
+ * If the layer was shy before isolation
+ * @default 'dugrWasShy'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_WAS_SHY = 'dugrWasShy';
+/**
+ * If the layer was enabled before isolation
+ * @default 'dugrWasShy'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_WAS_ENABLED = 'dugrWasEnabled'
+/**
+ * If the layer was locked before isolation
+ * @default 'dugrWasLocked'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_WAS_LOCKED = 'dugrWasLocked'
+/**
+ * The layer quality before isolation. The value may be one of 'best', 'draft', 'wireframe'.
+ * @default 'dugrPreviousQuality'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_PREVIOUS_QUALITY = 'dugrPreviousQuality'
+/**
+ * If the layer had a tag before isolation.
+ * @default 'dugrHadTag'
+ * @readonly
+ * @memberof DuAETag.Key
+ */
+DuAETag.Key.DUGR_HAD_TAG = 'dugrHadTag'
 
 /**
  * Checks if a layer is included in the given groups
  * @param {Layer} layer The layer to test
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @param {MarkerValue} [tag] If you have the tag as returned by {@link DuAETag.get} or {@link DuAETag.set}, providing it here improves performance.
  * @returns {Boolean} true if the layer belongs to at least one of the given groups
  */
-DuGR.inGroups = function ( layer, groups )
+DuGR.inGroups = function ( layer, groups, tag )
 {
     for( var i = 0, n = groups.length; i < n; i++)
     {
@@ -199,7 +254,6 @@ DuGR.inGroups = function ( layer, groups )
 
     return false;
 }
-
 
 /**
  * Runs a function for each layer in the groups.
@@ -562,8 +616,8 @@ DuGR.createDugrLayer = function( comp, frameMode, isolationMode )
     sq.guideLayer = true;
     sq.name = DuScriptUI.String.DUGR_FRAME_NAME;
 
-    DuAETag.set(sq, DuScriptUI.String.DUGR_FRAME_NAME );
-    DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode);
+    var tag = DuAETag.set( sq, DuScriptUI.String.DUGR_FRAME_NAME );
+    DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode, tag);
 
     if (frameMode != DuGR.WarningFrameMode.ABOVE) sq.moveToEnd();
 
@@ -588,20 +642,32 @@ DuGR.createDugrLayer = function( comp, frameMode, isolationMode )
 }
 
 // Low level undocumented method. Removes the warning frame.
-DuGR.removeDugrLayer = function( comp, frameMode )
+DuGR.removeDugrLayer = function( comp )
+{
+    var layer = DuGR.getDugrLayer( comp );
+    if (!layer) return;
+    layer.locked = false;
+    layer.remove();
+}
+
+// Low level undocumented method. Gets the warning frame.
+DuGR.getDugrLayer = function( comp )
 {
     comp = def( comp, DuAEProject.getActiveComp() );
     if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    //To be faster, check first and last layer first
+    if (comp.layer(1).name == DuScriptUI.String.DUGR_FRAME_NAME) return comp.layer(1);
+
+    if (comp.layer(comp.numLayers).name == DuScriptUI.String.DUGR_FRAME_NAME)  return comp.layer(comp.numLayers);
 
     for (var i = 1, n = comp.numLayers; i <= n; i++)
     {
-        if (comp.layer(i).name == DuScriptUI.String.DUGR_FRAME_NAME)
-        {
-            comp.layer(i).locked = false;
-            comp.layer(i).remove();
-            return;
-        }
+        if (comp.layer(i).name == DuScriptUI.String.DUGR_FRAME_NAME) return comp.layer(i);
     }
+
+    return null;
 }
 
 /**
@@ -615,29 +681,205 @@ DuGR.isolationMode = function( comp )
     if (!comp) return DuGR.IsolationMode.NONE;
     if (comp.numLayers == 0) return DuGR.IsolationMode.NONE;
 
-    //To be faster, check first and last layer first
-    if (comp.layer(1).name == DuScriptUI.String.DUGR_FRAME_NAME)
+    var dugrLayer = DuGR.getDugrLayer( comp );
+    if (!dugrLayer) return DuGR.IsolationMode.NONE;
+
+    var mode = DuAETag.getValue( dugrLayer, DuAETag.Key.DUGR_ISOLATION_MODE, DuAETag.Type.INT ) ;
+    if (mode == null) mode = DuGR.IsolationMode.NONE;
+    return mode;
+}
+
+/**
+ * Activates the isolation mode.
+ * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to isolate.
+ * @param {DuGR.WarningFrameMode} [frameMode=DuGR.WarningFrameMode.BELOW] How the warning frame must be shown
+ * @param {DuGR.IsolationMode} [isolationMode=DuGR.IsolationMode.BOTH] What needs to be hidden.
+ * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.WIREFRAME] How to hide the layers
+ * @param {Boolean} [lockHiddenLayers=true] Wether to lock the layers being hidden.
+ */
+DuGR.isolate = function( groups, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    frameMode = def(frameMode, DuGR.WarningFrameMode.BELOW);
+    isolationMode = def(isolationMode, DuGR.IsolationMode.BOTH);
+    compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.WIREFRAME);
+    lockHiddenLayers = def(lockHiddenLayers, true);
+
+    if (isolationMode == DuGR.IsolationMode.NONE) DuGR.exitIsolation( comp );
+
+    var timeline = isolationMode == DuGR.IsolationMode.BOTH || isolationMode == DuGR.IsolationMode.TIMELINE;
+    var compPanel = isolationMode == DuGR.IsolationMode.BOTH || isolationMode == DuGR.IsolationMode.COMP_PANEL;
+
+    // The previous mode
+    var previousMode = DuGR.isolationMode( comp );
+
+    // AE deselects the layers on creation of the new shape... Store the list
+    var selectedLayers = DuAEComp.unselectLayers( comp );
+
+    // Create the frame
+    var dugrFrameLayer;
+    if (previousMode == DuGR.IsolationMode.NONE) dugrFrameLayer = DuGR.createDugrLayer( comp, frameMode, isolationMode );
+    else
     {
-        var mode = DuAETag.getValue( comp.layer(1), DuAETag.Key.DUGR_ISOLATION_MODE ) ;
-        if (mode == null) mode = DuGR.IsolationMode.NONE;
-        return mode;
-    }
-    if (comp.layer(comp.numLayers).name == DuScriptUI.String.DUGR_FRAME_NAME)
-    {
-        var mode = DuAETag.getValue( comp.layer(comp.numLayers), DuAETag.Key.DUGR_ISOLATION_MODE ) ;
-        if (mode == null) mode = DuGR.IsolationMode.NONE;
-        return mode;
+        dugrFrameLayer = DuGR.getDugrLayer(comp);
+        DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode);
     }
 
+    // Restore the selection
+    DuAEComp.selectLayers(selectedLayers);
+
+    // Keep the shy status of the comp
+    if (previousMode == DuGR.IsolationMode.NONE || previousMode == DuGR.IsolationMode.COMP_PANEL)
+    {
+        DuAETag.setValue( dugrFrameLayer, DuAETag.Key.DUGR_COMP_SHY, comp.hideShyLayers);
+    }
+
+    // Activate shy mode
+    if (timeline) comp.hideShyLayers = true;
+
+    // Loop layers to hide/shy them or restore their previous state.
     for (var i = 1, n = comp.numLayers; i <= n; i++)
     {
-        if (comp.layer(i).name == DuScriptUI.String.DUGR_FRAME_NAME)
+        var layer = comp.layer(i);
+
+        // Get/Set the dugr tag
+        var tag = DuAETag.set( layer );
+
+        // Wether to isolate the layer
+        var hide = !DuGR.inGroups( layer, groups, tag );
+
+        // Wether the layer was already isolated
+        var wasHidden = DuAETag.getValue( layer, DuAETag.Key.DUGR_HIDDEN, DuAETag.Type.BOOL, tag );
+
+        // Nothing to do
+        if (!wasHidden && !hide) continue;
+
+        if (!wasHidden)
         {
-            var mode = DuAETag.getValue( comp.layer(i), DuAETag.Key.DUGR_ISOLATION_MODE ) ;
-            if (mode == null) mode = DuGR.IsolationMode.NONE;
-            return mode;
+            DuGR.saveStatus( layer, tag );
+        }
+        
+        if (hide)
+        {
+            DuGR.hideLayer( layer, timeline, compPanel, compIsolationMode, lockHiddenLayers, tag );
+        }
+        else 
+        {
+            DuGR.unHideLayer( layer, tag );
         }
     }
+}
 
-    return DuGR.IsolationMode.NONE;
+// low-level undocumented method to save the status of a layer before hiding it.
+DuGR.saveStatus = function( layer, tag )
+{
+    var tagParams = tag.getParameters();
+
+    tagParams[DuAETag.Key.DUGR_HIDDEN] = true;
+    tagParams[DuAETag.Key.DUGR_WAS_SHY] = layer.shy;
+    tagParams[DuAETag.Key.DUGR_WAS_ENABLED] = layer.enabled;
+    tagParams[DuAETag.Key.DUGR_WAS_LOCKED] = layer.locked;
+    //params[DuAETag.Key.DUGR_HAD_TAG] = hadTag;
+
+    var quality = 'best';
+    if (layer.quality == LayerQuality.DRAFT) quality = 'draft';
+    else if (layer.quality == LayerQuality.WIREFRAME) quality = 'wireframe';
+    tagParams[DuAETag.Key.DUGR_PREVIOUS_QUALITY] = quality;
+
+    tag.setParameters( tagParams );
+
+    DuAETag.set( layer, undefined, tag );
+}
+
+// low-level undocumented method to put a layer to isolation
+DuGR.hideLayer = function( layer, timeline, compPanel, compIsolationMode, lockHiddenLayers, tag )
+{
+    // Hide
+    if (timeline) layer.shy = true;
+    else // Restore shy status
+    {
+        var wasShy = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_SHY, DuAETag.Type.BOOL, tag );
+        if (wasShy) layer.shy = true;
+        else if (wasShy != null) layer.shy = false;
+    }
+    if (compPanel)
+    {
+        if (compIsolationMode == DuGR.CompIsolationMode.WIREFRAME) layer.quality = LayerQuality.WIREFRAME;
+        else layer.enabled = false;
+    }
+    else  // Restore visibility status
+    {
+        var wasEnabled = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_ENABLED, DuAETag.Type.BOOL, tag );
+        if (wasEnabled) layer.enabled = true;
+        else if (wasEnabled != null)  layer.enabled = false;
+
+        var quality = DuAETag.getValue( layer, DuAETag.Key.DUGR_PREVIOUS_QUALITY, DuAETag.Type.STRING, tag );
+        if (quality == 'best') layer.quality = LayerQuality.BEST;
+        else if (quality == 'draft') layer.quality = LayerQuality.DRAFT;
+        else if (quality == 'wireframe') layer.quality = LayerQuality.WIREFRAME;
+    }
+    if (lockHiddenLayers) layer.locked = true;
+
+    DuAETag.setValue( layer, DuAETag.Key.DUGR_HIDDEN, true, tag );
+}
+
+// low-level undocumented method to remove a layer from isolation
+DuGR.unHideLayer = function ( layer, tag )
+{
+    var wasShy = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_SHY, DuAETag.Type.BOOL, tag );
+    if (wasShy) layer.shy = true;
+    else if (wasShy != null) layer.shy = false;
+
+    var wasEnabled = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_ENABLED, DuAETag.Type.BOOL, tag );
+    if (wasEnabled) layer.enabled = true;
+    else if (wasEnabled != null)  layer.enabled = false;
+
+    var wasLocked = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_LOCKED, DuAETag.Type.BOOL, tag );
+    if (wasLocked) layer.locked = true;
+    else if (wasLocked != null) layer.locked = false;
+
+    var quality = DuAETag.getValue( layer, DuAETag.Key.DUGR_PREVIOUS_QUALITY, DuAETag.Type.STRING, tag );
+    if (quality == 'best') layer.quality = LayerQuality.BEST;
+    else if (quality == 'draft') layer.quality = LayerQuality.DRAFT;
+    else if (quality == 'wireframe') layer.quality = LayerQuality.WIREFRAME;
+
+    DuAETag.setValue( layer, DuAETag.Key.DUGR_HIDDEN, false, tag );
+
+    /*var hadTag = DuAETag.getValue( layer, DuAETag.Key.DUGR_HAD_TAG, DuAETag.Type.BOOL, tag );
+    if (hadTag) DuAETag.setValue( layer, DuAETag.Key.DUGR_HIDDEN, false );
+    else DuAETag.remove( layer );*/
+}
+
+/**
+ * Exits the isolation mode.
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ */
+DuGR.exitIsolation = function( comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    // Reset shy mode
+    var dugrFrameLayer = DuGR.getDugrLayer( comp )
+    var wasShy = DuAETag.getValue( dugrFrameLayer, DuAETag.Key.DUGR_COMP_SHY, DuAETag.Type.BOOL);
+    if (wasShy) comp.hideShyLayers = true;
+    else comp.hideShyLayers = false;
+
+    // Remove frame
+    DuGR.removeDugrLayer( comp );  
+
+    // Restore layers
+    for (var i = 1, n = comp.numLayers; i <= n; i++)
+    {
+        var layer = comp.layer(i);
+        var tag = DuAETag.get( layer );
+        // Only hidden layers to improve performance
+        var wasHidden = DuAETag.getValue( layer, DuAETag.Key.DUGR_HIDDEN, DuAETag.Type.BOOL, tag );
+        if (wasHidden) DuGR.unHideLayer( layer, tag );
+    }   
 }

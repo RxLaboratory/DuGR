@@ -48,13 +48,119 @@ isolateButton.onClick = function()
         isolateCompButton.setChecked(false);
     }
 
-    DuGR.createDugrLayer(
-        DuAEProject.getActiveComp(), 
-        DuESF.scriptSettings.data.warningFrameType, 
-        DuGR.IsolationMode.BOTH
-        );
+    var stgs = DuESF.scriptSettings.data;
 
-    alert( DuGR.isolationMode() );
+    if (isolateButton.checked)
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Isolation" );
+        DuAE.toggleLayerControls();
+
+        DuGR.isolate(
+            getGroups(),
+            undefined,
+            stgs.warningFrame,
+            DuGR.IsolationMode.BOTH,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }
+    else
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Exit Isolation" );
+        DuAE.toggleLayerControls();
+        DuGR.exitIsolation();
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }   
+}
+
+isolateTLButton.onClick = function()
+{
+    if (isolateTLButton.checked)
+    {
+        isolateButton.setChecked(false);
+        isolateCompButton.setChecked(false);
+    }
+
+    var stgs = DuESF.scriptSettings.data;
+
+    if (isolateTLButton.checked)
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Isolation" );
+        DuAE.toggleLayerControls();
+
+        DuGR.isolate(
+            getGroups(),
+            undefined,
+            stgs.warningFrame,
+            DuGR.IsolationMode.TIMELINE,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }
+    else
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Exit Isolation" );
+        DuAE.toggleLayerControls();
+        DuGR.exitIsolation();
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }   
+}
+
+isolateCompButton.onClick = function()
+{
+    if (isolateCompButton.checked)
+    {
+        isolateButton.setChecked(false);
+        isolateTLButton.setChecked(false);
+    }
+
+    var stgs = DuESF.scriptSettings.data;
+
+    if (isolateCompButton.checked)
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Isolation" );
+        DuAE.toggleLayerControls();
+
+        DuGR.isolate(
+            getGroups(),
+            undefined,
+            stgs.warningFrame,
+            DuGR.IsolationMode.COMP_PANEL,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }
+    else
+    {
+        if (DuESF.debug) $.hiresTimer;
+        DuAE.beginUndoGroup( "Exit Isolation" );
+        DuAE.toggleLayerControls();
+        DuGR.exitIsolation();
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+        if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
+    }   
 }
 
 DuScriptUI.separator( ui.mainGroup );

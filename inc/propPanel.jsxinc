@@ -20,3 +20,5 @@ propList.add('item',tr("Attribute: Effects")).groupName = DuGR.Group.EFFECTS;
 propList.add('item',tr("Attribute: Motion Blur")).groupName = DuGR.Group.MB;
 propList.add('item',tr("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
 propList.add('item',tr("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
+
+propList.selection = 1;
