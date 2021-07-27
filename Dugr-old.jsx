@@ -273,19 +273,19 @@ along with  Dugr. If not, see <http://www.gnu.org/licenses/>.
 
 		function removeDugrLayer()
 		{
-		var found = false;
-		var comp = app.project.activeItem;
-		for (var i = 1;i<=comp.numLayers;i++)
-		{
-		if (comp.layer(i).name == 'Dugr Activated')
-		{
-			found = true;
-			comp.layer(i).locked = false;
-			comp.layer(i).remove();
-			break;
-		}
-		}
-		return found;
+			var found = false;
+			var comp = app.project.activeItem;
+			for (var i = 1;i<=comp.numLayers;i++)
+			{
+			if (comp.layer(i).name == 'Dugr Activated')
+			{
+				found = true;
+				comp.layer(i).locked = false;
+				comp.layer(i).remove();
+				break;
+			}
+			}
+			return found;
 		}
 
 		function getLayers()

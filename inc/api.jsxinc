@@ -692,13 +692,14 @@ DuGR.isolationMode = function( comp )
 /**
  * Activates the isolation mode.
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to isolate.
  * @param {DuGR.WarningFrameMode} [frameMode=DuGR.WarningFrameMode.BELOW] How the warning frame must be shown
  * @param {DuGR.IsolationMode} [isolationMode=DuGR.IsolationMode.BOTH] What needs to be hidden.
  * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.WIREFRAME] How to hide the layers
  * @param {Boolean} [lockHiddenLayers=true] Wether to lock the layers being hidden.
  */
-DuGR.isolate = function( groups, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
+DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
 {
     comp = def(comp, DuAEProject.getActiveComp());
     if (!comp) return;
@@ -708,6 +709,7 @@ DuGR.isolate = function( groups, comp, frameMode, isolationMode, compIsolationMo
     isolationMode = def(isolationMode, DuGR.IsolationMode.BOTH);
     compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.WIREFRAME);
     lockHiddenLayers = def(lockHiddenLayers, true);
+    invert = def(invert, false);
 
     if (isolationMode == DuGR.IsolationMode.NONE) DuGR.exitIsolation( comp );
 
@@ -751,6 +753,7 @@ DuGR.isolate = function( groups, comp, frameMode, isolationMode, compIsolationMo
 
         // Wether to isolate the layer
         var hide = !DuGR.inGroups( layer, groups, tag );
+        if (invert) hide = !hide;
 
         // Wether the layer was already isolated
         var wasHidden = DuAETag.getValue( layer, DuAETag.Key.DUGR_HIDDEN, DuAETag.Type.BOOL, tag );

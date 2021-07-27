@@ -13,6 +13,13 @@
 #include "icons/w16_invert.png.jsxinc"
 #include "icons/w16_inverted.png.jsxinc"
 
+#include "icons/w12_add_layer.png.jsxinc"
+#include "icons/w12_add.png.jsxinc"
+#include "icons/w12_edit.png.jsxinc"
+#include "icons/w12_layer_info.png.jsxinc"
+#include "icons/w12_remove_layer.png.jsxinc"
+#include "icons/w12_remove.png.jsxinc"
+
 #include "icons/ae/enabled.png.jsxinc"
 #include "icons/ae/audioEnabled.png.jsxinc"
 #include "icons/ae/solo.png.jsxinc"

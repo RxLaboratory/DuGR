@@ -22,3 +22,5 @@ propList.add('item',tr("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
 propList.add('item',tr("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
 
 propList.selection = 1;
+
+propList.onChange = refreshIsolation;

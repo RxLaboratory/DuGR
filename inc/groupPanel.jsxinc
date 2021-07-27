@@ -1,2 +1,67 @@
-groupList = tab.add('listbox',undefined,"Groups",{multiselect: true});
+var groupGroup = DuScriptUI.group( tab, 'row') ;
+groupGroup.alignment = ['fill','fill'];
+
+groupList = groupGroup.add('listbox',undefined,"Groups",{multiselect: true});
 groupList.alignment = ['fill', 'fill'];
+
+groupList.add('item',tr("All layers")).groupName = DuGR.Group.ALL;
+groupList.add('item',tr("Selected")).groupName = DuGR.Group.SELECTED;
+groupList.add('item',tr("Grouped")).groupName = DuGR.Group.GROUPED;
+
+groupList.onChange = refreshIsolation;
+
+var buttonGroup = DuScriptUI.group( groupGroup, 'column');
+buttonGroup.alignment = ['right', 'fill'];
+var topButtons = DuScriptUI.group( buttonGroup, 'column');
+topButtons.alignment = ['right', 'top'];
+
+var addLayerButton = DuScriptUI.button(
+    topButtons,
+    "",
+    w12_add_layer,
+    "Add selected layers to group."
+)
+addLayerButton.alignment = ['right', 'top'];
+
+var layerInfoButton = DuScriptUI.button(
+    topButtons,
+    "",
+    w12_layer_info,
+    "Get groups from selected layers."
+)
+addLayerButton.alignment = ['right', 'top'];
+
+var removeLayerButton = DuScriptUI.button(
+    topButtons,
+    "",
+    w12_remove_layer,
+    "Remove selected layers from group."
+)
+removeLayerButton.alignment = ['right', 'top'];
+
+var bottomButtons = DuScriptUI.group( buttonGroup, 'column');
+bottomButtons.alignment = ['right', 'bottom'];
+
+var addGroupButton = DuScriptUI.button(
+    bottomButtons,
+    "",
+    w12_add,
+    "Create new group."
+)
+addGroupButton.alignment = ['right', 'bottom'];
+
+var editGroupButton = DuScriptUI.button(
+    bottomButtons,
+    "",
+    w12_edit,
+    "Rename group."
+)
+editGroupButton.alignment = ['right', 'bottom'];
+
+var removeGroupButton = DuScriptUI.button(
+    bottomButtons,
+    "",
+    w12_remove,
+    "Remove group."
+)
+removeGroupButton.alignment = ['right', 'bottom'];
