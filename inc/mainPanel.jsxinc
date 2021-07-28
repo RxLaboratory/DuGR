@@ -387,10 +387,31 @@ function getGroups()
 
 function refreshPanel()
 {
+    // Check isolation mode
     var isolationMode = DuGR.isolationMode();
     isolateButton.setChecked( isolationMode == DuGR.IsolationMode.BOTH );
     isolateTLButton.setChecked( isolationMode == DuGR.IsolationMode.TIMELINE );
     isolateCompButton.setChecked( isolationMode == DuGR.IsolationMode.COMP_PANEL );
+
+    // Get group list
+    if (groupList)
+    {
+        var groups = DuGR.listGroups();
+
+        // Remove groups not in the list
+        for (var i = groupList.items.length -1 ; i > 2; i-- )
+        {
+            var g = groupList.items[i].groupName;
+            if (groups.indexOf(g) < 0) groupList.remove(i);
+            else groups.removeAll(g);
+        }
+       
+        // Add new groups
+        groups.do(function( group )
+        {
+            groupList.add('item', group).groupName = group;
+        } );
+    }
 }
 
 function refreshIsolation()
