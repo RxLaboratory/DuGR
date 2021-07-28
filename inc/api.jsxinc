@@ -250,6 +250,12 @@ DuGR.inGroups = function ( layer, groups, tag )
         if (group == DuGR.Group.THREE_D && DuAELayer.isThreeD( layer )) return true;
 
         if (group == DuGR.Group.GUIDE && layer.guideLayer) return true;
+
+        // Get the custom groups
+        var layerGroups = DuAETag.getGroups( layer );
+        if (layerGroups.length == 0) return false;
+        layerGroups = new DuList( layerGroups );
+        if (layerGroups.indexOf(group) >= 0) return true;
     }
 
     return false;
