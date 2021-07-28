@@ -414,7 +414,7 @@ function refreshPanel()
         var groups = DuGR.listGroups();
 
         // Remove groups not in the list
-        for (var i = groupList.items.length -1 ; i > 2; i-- )
+        for (var i = groupList.items.length -1 ; i > 3; i-- )
         {
             var g = groupList.items[i].groupName;
             if (groups.indexOf(g) < 0) groupList.remove(i);
@@ -424,7 +424,7 @@ function refreshPanel()
         // Add new groups
         groups.do(function( group )
         {
-            groupList.add('item', group).groupName = group;
+            if (group != DuGR.Group.IGNORED) groupList.add('item', group).groupName = group;
         } );
     }
 }

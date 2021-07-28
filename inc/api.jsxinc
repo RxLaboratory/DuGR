@@ -123,7 +123,11 @@ DuGR.Group = {
     /**
      * The layer has at least one child
      */
-    HAS_CHILD: 'DuGR.hierarchy.hasChildren'
+    HAS_CHILD: 'DuGR.hierarchy.hasChildren',
+    /**
+     * This is a special group: all layers in there will always be ignored by all methods.
+     */
+    IGNORED: '::Ignored::'
 }
 
 /**
@@ -321,6 +325,7 @@ DuGR.do = function( groups, callback, invert, comp, notCallback )
     var returnValue;
 
     new DuList(comp.layers).do( function( layer ){
+        if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
         var ok = DuGR.inGroups(layer, groups);
         if (invert) ok = !ok;
         if (ok) returnValue = callback( layer, returnValue );
@@ -873,6 +878,7 @@ DuGR.saveStatus = function( layer, tag )
 // low-level undocumented method to put a layer to isolation
 DuGR.hideLayer = function( layer, timeline, compPanel, compIsolationMode, lockHiddenLayers, tag )
 {
+    if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
     // Hide
     if (timeline) layer.shy = true;
     else // Restore shy status
@@ -905,6 +911,8 @@ DuGR.hideLayer = function( layer, timeline, compPanel, compIsolationMode, lockHi
 // low-level undocumented method to remove a layer from isolation
 DuGR.unHideLayer = function ( layer, tag )
 {
+    if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
+
     var wasShy = DuAETag.getValue( layer, DuAETag.Key.DUGR_WAS_SHY, DuAETag.Type.BOOL, tag );
     if (wasShy) layer.shy = true;
     else if (wasShy != null) layer.shy = false;

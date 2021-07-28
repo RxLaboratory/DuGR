@@ -7,6 +7,7 @@ groupList.alignment = ['fill', 'fill'];
 groupList.add('item',tr("All layers")).groupName = DuGR.Group.ALL;
 groupList.add('item',tr("Selected")).groupName = DuGR.Group.SELECTED;
 groupList.add('item',tr("Grouped")).groupName = DuGR.Group.GROUPED;
+groupList.add('item',tr("Ignored")).groupName = DuGR.Group.IGNORED;
 
 groupList.onChange = refreshIsolation;
 
@@ -127,7 +128,7 @@ editGroupButton.onClick = function()
         return;
     }
     var item = groupList.selection[0];
-    if (item.index < 3)
+    if (item.index < 4)
     {
         nameEditor.block = true;
         return;
@@ -150,8 +151,7 @@ removeGroupButton.onClick = function()
 {
     if (!groupList.selection) return;
     var item = groupList.selection[0];
-    if (item.index < 3) return;
-
+    if (item.index < 4) return;
 
     var group = item.groupName;
     var ok = confirm("Are you sure you want to remove this group: " + group + "?", true, "Remove group");
@@ -199,7 +199,7 @@ layerInfoButton.onClick = function()
 
 removeLayerButton.onClick = function()
 {
-        if (!groupList.selection) return;
+    if (!groupList.selection) return;
 
     DuAE.beginUndoGroup("Remove layers from groups");
 
