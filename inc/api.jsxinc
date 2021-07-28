@@ -905,3 +905,25 @@ DuGR.addSelectedLayersToGroup = function( group, comp )
         DuAETag.addGroup( layer, group );
     }
 }
+
+/**
+ * Gets the list of all groups
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to read.
+ * @returns {DuList} The list of groups
+ */
+DuGR.listGroups = function ( comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return new DuList();
+    if (comp.numLayers == 0) return new DuList();
+
+    var groups = new DuList();
+    for (var i = 1, n = comp.numLayers; i < n; i++)
+    {
+        var l = comp.layer(i);
+        var g = DuAETag.getGroups( l );
+        groups.mergeUnique( g );
+    }
+    groups.sort();
+    return groups;
+}
