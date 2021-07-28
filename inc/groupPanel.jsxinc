@@ -65,3 +65,86 @@ var removeGroupButton = DuScriptUI.button(
     "Remove group."
 )
 removeGroupButton.alignment = ['right', 'bottom'];
+
+var nameEditor = DuScriptUI.popUp("Edit group name");
+nameEditor.content.alignment = ['fill','top'];
+var nameEdit = DuScriptUI.editText(
+    nameEditor.content,
+    '',
+    '',
+    '',
+    "New group",
+    "The name of the group"
+)
+nameEdit.alignment = ['fill','top'];
+
+var nameButtons = DuScriptUI.group( nameEditor.content );
+nameButtons.alignment = ['fill','top'];
+
+var nameOKButton = DuScriptUI.button(
+    nameButtons,
+    "OK",
+    DuScriptUI.Icon.CHECK,
+    "Change group name",
+    false,
+    'row',
+    'center'
+)
+
+nameEditor.previousName = '';
+
+nameEditor.tieTo( addGroupButton );
+nameEditor.tieTo( editGroupButton );
+
+// =========== FUNCTIONS ==================
+
+nameOKButton.onClick = function()
+{
+    if (nameEdit.text == '') return;
+
+    // Create group
+    if (nameEditor.previousName == '')
+    {
+        DuAE.beginUndoGroup("Create group");
+        DuGR.addSelectedLayersToGroup( nameEdit.text );
+        DuAE.endUndoGroup();
+        refreshPanel();
+    }
+    // Rename group
+    else
+    {
+        DuAE.beginUndoGroup("Rename group");
+        DuGR.renameGroup( nameEditor.previousName, nameEdit.text );
+        DuAE.endUndoGroup();
+        refreshPanel();
+    }
+
+    nameEditor.hidePopup();
+}
+
+editGroupButton.onClick = function()
+{
+    if (!groupList.selection) return;
+    var item = groupList.selection[0];
+    if (item.index < 3) return;
+
+    var group = item.groupName;
+    nameEditor.previousName = group;
+    nameEdit.setText(group);
+    nameEdit.clicked();
+}
+
+addGroupButton.onClick = function()
+{
+    nameEditor.previousName = '';
+    nameEdit.setText('');
+    nameEdit.clicked();
+}
+
+removeGroupButton.onClick = function()
+{
+
+}
+
+// Init
+refreshPanel();

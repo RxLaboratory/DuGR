@@ -933,3 +933,21 @@ DuGR.listGroups = function ( comp )
     groups.sort();
     return groups;
 }
+
+/**
+ * Renames an existing group (in the comp only)
+ * @param {string} previousName The current name
+ * @param {string} newName The new name
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to read.
+ */
+DuGR.renameGroup = function( previousName, newName, comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    for (var i = 1, n = comp.numLayers; i < n; i++)
+    {
+        DuAETag.renameGroup( comp.layer(i), previousName, newName );
+    }
+}
