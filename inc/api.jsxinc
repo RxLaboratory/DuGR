@@ -1,8 +1,37 @@
-// The API which may extend DuAEF
+#include "../DuAEF/DuAEF.jsxinc"
+
+// The API which extends DuAEF & DuESF
 
 /**
- * DuGR - Duduf Groups - Batch methods on layers, group them by tags...
+ * <h3>DuGR - Duduf Groups</h3>
+ * <p><i>Group After Effects layers by tags, and run batch methods on them.</i><br />
+ * <code>DuGR</code> is the high-level interface to the layer groups,<br />
+ * and it relies on {@link DuAETag}, a lower-level interface which adds tags on layers,<br />
+ * and stores data in these tags.</p>
+ * <p>A group is created using {@link DuGR.addSelectedLayersToGroup DuGR.addSelectedLayersToGroup()} or {@link DuAETag.addGroup DuAETag.addGroup()}.<br />
+ * Groups can be renamed with {@link DuGR.renameGroup DuGR.renameGroup()},<br />
+ * They can be removed with {@link DuGR.removeGroup DuGR.removeGroup()}.<br />
+ * You can run a method on all layers belonging to a set of groups with {@link DuGR.do DuGR.do()}.</p>
+ * <p>{@link DuGR.Group} contains predefined groups to sort layers by type or attribute and use {@link DuGR.do DuGR.do()} on them.</p>
+ * <P>You can use {@link DuGR.isolate DuGR.isolate()} to isolate layers in the timeline, the comp panel, or both,<br />
+ * use {@link DuGR.exitIsolation DuGR.exitIsolation()} to get out of isolation mode.
  * @namespace
+ * @author Nicolas Dufresne and contributors
+ * @copyright 2017 - 2021 Nicolas Dufresne, RxLaboratory
+ * @version 4.0.0-Beta
+ * @license GPL-3.0 <br />
+ * DuGR is free software: you can redistribute it and/or modify<br />
+ * it under the terms of the GNU General Public License as published by<br />
+ * the Free Software Foundation, either version 3 of the License, or<br />
+ * (at your option) any later version.<br />
+ *<br />
+ * DuGR is distributed in the hope that it will be useful,<br />
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of<br />
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br />
+ * GNU General Public License for more details.<br />
+ *<br />
+ * You should have received a copy of the GNU General Public License<br />
+ * along with DuGR. If not, see {@link http://www.gnu.org/licenses/}.
  */
 var DuGR = {}
 
@@ -103,7 +132,7 @@ DuGR.WarningFrameMode = {
      * Above all layers
      */
     ABOVE: 1,
-    /*
+    /**
      * Below all layers
      */
     BELOW: 2
@@ -123,7 +152,7 @@ DuGR.IsolationMode = {
      * Both the timeline and the comp panel
      */
     BOTH: 1,
-    /*
+    /**
      * Only in the timeline
      */
     TIMELINE: 2,
