@@ -886,3 +886,22 @@ DuGR.exitIsolation = function( comp )
         if (wasHidden) DuGR.unHideLayer( layer, tag );
     }   
 }
+
+/**
+ * Adds the selected layers to a (new) group
+ * @param {string} group The group name
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ */
+DuGR.addSelectedLayersToGroup = function( group, comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    var layers = comp.selectedLayers;
+    for(var i = 0, n = layers.length; i < n; i++)
+    {
+        var layer = layers[i];
+        DuAETag.addGroup( layer, group );
+    }
+}
