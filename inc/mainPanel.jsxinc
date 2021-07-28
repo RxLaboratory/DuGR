@@ -327,6 +327,17 @@ threeDLayerAEButton.onClick = function()
     DuAE.endUndoGroup();
 }
 
+selectLayerAEButton.onClick = function()
+{
+    DuAE.beginUndoGroup( "Select layers" );
+    DuAE.toggleLayerControls();
+
+    DuGR.select( getGroups(), invertButton.checked );
+
+    DuAE.toggleLayerControls();
+    DuAE.endUndoGroup();
+}
+
 // ========= PANELS ==========
 
 //DuScriptUI.separator( ui.mainGroup );
@@ -348,7 +359,11 @@ groupTab.build = function (tab)
     #include "groupPanel.jsxinc"
 }
 
-mainTabs.setCurrentIndex(0);
+mainTabs.onChange = function()
+{
+    DuESF.scriptSettings.data.currentTab = mainTabs.index;
+    DuESF.scriptSettings.save();
+}
 
 var invertButton = DuScriptUI.checkBox(
     mainTabs.buttonsGroup,
@@ -503,5 +518,10 @@ function exit()
 }
 
 DuScriptUI.addEvent( refreshPanel, 1000);
+
+// ========== INIT ==============
+
+var currentTab = def( DuESF.scriptSettings.data.currentTab, 0);
+mainTabs.setCurrentIndex( currentTab );
 
 refreshPanel();

@@ -115,7 +115,15 @@ DuGR.Group = {
     /**
      * Guide layers
      */
-    GUIDE: 'DugR.attr.guide'
+    GUIDE: 'DugR.attr.guide',
+    /**
+     * The layer does not have any parent
+     */
+    ORPHAN: 'DuGR.hierarchy.orphan',
+    /**
+     * The layer has at least one child
+     */
+    HAS_CHILD: 'DuGR.hierarchy.hasChildren'
 }
 
 /**
@@ -280,6 +288,10 @@ DuGR.inGroups = function ( layer, groups, tag )
 
         if (group == DuGR.Group.GUIDE && layer.guideLayer) return true;
 
+        if (group == DuGR.Group.ORPHAN && !layer.parent) return true;
+
+        if (group == DuGR.Group.HAS_CHILD && DuAELayer.hasChild(layer)) return true;
+
         // Get the custom groups
         var layerGroups = DuAETag.getGroups( layer );
         if (layerGroups.length == 0) return false;
@@ -296,8 +308,9 @@ DuGR.inGroups = function ( layer, groups, tag )
  * @param {DuGR~doCallBack} callback The function to run on each layer.
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ * @param {DuGR~doNotCallBack} notCallback The function to run on each layer IF it is NOT in the groups.
  */
-DuGR.do = function( groups, callback, invert, comp )
+DuGR.do = function( groups, callback, invert, comp, notCallback )
 {
     comp = def(comp, DuAEProject.getActiveComp());
     invert = def(invert, false);
@@ -311,6 +324,7 @@ DuGR.do = function( groups, callback, invert, comp )
         var ok = DuGR.inGroups(layer, groups);
         if (invert) ok = !ok;
         if (ok) returnValue = callback( layer, returnValue );
+        else notCallback( layer );
     } );
 }
 
@@ -637,6 +651,29 @@ DuGR.toggleThreeD = function( groups, invert, comp, allowLockedChanges )
     }
     
     DuGR.do( groups, f, invert, comp);
+}
+
+/**
+ * Selects the layers.
+ * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
+ * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ */
+DuGR.select = function( groups, invert, comp )
+{
+    function f( layer )
+    {
+        if (layer.locked) return;
+        layer.selected = true;
+    }
+
+    function nf( layer )
+    {
+        if (layer.locked) return;
+        layer.selected = false;
+    }
+    
+    DuGR.do( groups, f, invert, comp, nf);
 }
 
 // Low level undocumented method. Creates the warning frame.
