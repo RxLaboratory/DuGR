@@ -951,3 +951,20 @@ DuGR.renameGroup = function( previousName, newName, comp )
         DuAETag.renameGroup( comp.layer(i), previousName, newName );
     }
 }
+
+/**
+ * Removes a group from the composition
+ * @param {string} group The group to remove
+ * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ */
+DuGR.removeGroup = function( group, comp )
+{
+    comp = def(comp, DuAEProject.getActiveComp());
+    if (!comp) return;
+    if (comp.numLayers == 0) return;
+
+    for (var i = 1, n = comp.numLayers; i < n; i++)
+    {
+        DuAETag.removeGroup( comp.layer(i), group );
+    }
+}

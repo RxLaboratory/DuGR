@@ -93,9 +93,6 @@ var nameOKButton = DuScriptUI.button(
 
 nameEditor.previousName = '';
 
-nameEditor.tieTo( addGroupButton );
-nameEditor.tieTo( editGroupButton );
-
 // =========== FUNCTIONS ==================
 
 nameOKButton.onClick = function()
@@ -124,9 +121,17 @@ nameOKButton.onClick = function()
 
 editGroupButton.onClick = function()
 {
-    if (!groupList.selection) return;
+    if (!groupList.selection)
+    {
+        nameEditor.block = true;
+        return;
+    }
     var item = groupList.selection[0];
-    if (item.index < 3) return;
+    if (item.index < 3)
+    {
+        nameEditor.block = true;
+        return;
+    }
 
     var group = item.groupName;
     nameEditor.previousName = group;
@@ -143,8 +148,22 @@ addGroupButton.onClick = function()
 
 removeGroupButton.onClick = function()
 {
+    if (!groupList.selection) return;
+    var item = groupList.selection[0];
+    if (item.index < 3) return;
 
+
+    var group = item.groupName;
+    var ok = confirm("Are you sure you want to remove this group: " + group + "?", true, "Remove group");
+    if (!ok) return;
+    DuAE.beginUndoGroup("Remove group");
+    DuGR.removeGroup( group );
+    DuAE.endUndoGroup();
+    refreshPanel();
 }
+
+nameEditor.tieTo( addGroupButton );
+nameEditor.tieTo( editGroupButton );
 
 // Init
 refreshPanel();
