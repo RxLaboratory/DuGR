@@ -1,0 +1,6 @@
+[submodule "DuAEF"]
+	path = DuAEF
+	url = https://github.com/RxLaboratory/DuAEF.git
+[submodule "DuGR_Docs"]
+	path = DuGR_Docs
+	url = https://github.com/RxLaboratory/DuAEF_DuGR_Docs.git

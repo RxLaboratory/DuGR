@@ -1,4 +1,4 @@
-Dugr
-====
+# Dugr
 
-Duduf Groups for After Effects
+Group After Effects layers by tags, and run batch methods on them.
+

@@ -1,0 +1,28 @@
+propList = tab.add('listbox',undefined,"Groups",{multiselect: true});
+propList.alignment = ['fill', 'fill'];
+
+propList.add('item',tr("All layers")).groupName = DuGR.Group.ALL;
+propList.add('item',tr("Selected")).groupName = DuGR.Group.SELECTED;
+propList.add('item',tr("Grouped")).groupName = DuGR.Group.GROUPED;
+propList.add('item',tr("Hierarchy: Orphans")).groupName = DuGR.Group.ORPHAN;
+propList.add('item',tr("Hierarchy: Have children")).groupName = DuGR.Group.HAS_CHILD;
+propList.add('item',tr("Type: Null Objects")).groupName = DuGR.Group.NULL;
+propList.add('item',tr("Type: Solids")).groupName = DuGR.Group.SOLID;
+propList.add('item',tr("Type: Shapes")).groupName = DuGR.Group.SHAPE;
+propList.add('item',tr("Type: Texts")).groupName = DuGR.Group.TEXT;
+propList.add('item',tr("Type: Adjustment")).groupName = DuGR.Group.ADJUSTMENT;
+propList.add('item',tr("Type: Lights")).groupName = DuGR.Group.LIGHT;
+propList.add('item',tr("Type: Cameras")).groupName = DuGR.Group.CAMERA;
+propList.add('item',tr("Attribute: Visible")).groupName = DuGR.Group.VISIBLE;
+propList.add('item',tr("Attribute: Has Audio")).groupName = DuGR.Group.SOUND;
+propList.add('item',tr("Attribute: Solo")).groupName = DuGR.Group.SOLO;
+propList.add('item',tr("Attribute: Locked")).groupName = DuGR.Group.LOCKED;
+propList.add('item',tr("Attribute: Shy")).groupName = DuGR.Group.SHY;
+propList.add('item',tr("Attribute: Effects")).groupName = DuGR.Group.EFFECTS;
+propList.add('item',tr("Attribute: Motion Blur")).groupName = DuGR.Group.MB;
+propList.add('item',tr("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
+propList.add('item',tr("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
+
+propList.selection = 1;
+
+propList.onChange = refreshIsolation;
