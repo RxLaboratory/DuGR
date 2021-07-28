@@ -554,6 +554,8 @@
             
                 <li data-name="DuAELayer.getWorldPos"><a href="DuAELayer.html#.getWorldPos">getWorldPos</a></li>
             
+                <li data-name="DuAELayer.hasChild"><a href="DuAELayer.html#.hasChild">hasChild</a></li>
+            
                 <li data-name="DuAELayer.haveSelectedKeys"><a href="DuAELayer.html#.haveSelectedKeys">haveSelectedKeys</a></li>
             
                 <li data-name="DuAELayer.isSolid"><a href="DuAELayer.html#.isSolid">isSolid</a></li>
@@ -929,6 +931,8 @@
             
                 <li data-name="DuESF.docURL"><a href="DuESF.html#.docURL">docURL</a></li>
             
+                <li data-name="DuESF.donateURL"><a href="DuESF.html#.donateURL">donateURL</a></li>
+            
                 <li data-name="DuESF.featureRequestURL"><a href="DuESF.html#.featureRequestURL">featureRequestURL</a></li>
             
                 <li data-name="DuESF.file"><a href="DuESF.html#.file">file</a></li>
@@ -1101,6 +1105,8 @@
                 <li data-name="DuGR.removeGroup"><a href="DuGR.html#.removeGroup">removeGroup</a></li>
             
                 <li data-name="DuGR.renameGroup"><a href="DuGR.html#.renameGroup">renameGroup</a></li>
+            
+                <li data-name="DuGR.select"><a href="DuGR.html#.select">select</a></li>
             
                 <li data-name="DuGR.toggleAdjustment"><a href="DuGR.html#.toggleAdjustment">toggleAdjustment</a></li>
             
@@ -1337,6 +1343,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="DuScriptUI.addBugButton"><a href="DuScriptUI.html#.addBugButton">addBugButton</a></li>
+            
+                <li data-name="DuScriptUI.addDonateButton"><a href="DuScriptUI.html#.addDonateButton">addDonateButton</a></li>
             
                 <li data-name="DuScriptUI.addEvent"><a href="DuScriptUI.html#.addEvent">addEvent</a></li>
             
@@ -3991,6 +3999,93 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>ORPHAN</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuGR.hierarchy.orphan
+                
+                </td>
+            
+            
+            <td class="description last">The layer does not have any parent</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>HAS_CHILD</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuGR.hierarchy.hasChildren
+                
+                </td>
+            
+            
+            <td class="description last">The layer has at least one child</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>IGNORED</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    ::Ignored::
+                
+                </td>
+            
+            
+            <td class="description last">This is a special group: all layers in there will always be ignored by all methods.</td>
+        </tr>
+	
+	
 	</tbody>
 </table></dl>
         
@@ -4391,7 +4486,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20577
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20685
         </div>
         
     </div>
@@ -4549,12 +4644,12 @@
     <div class="nameContainer">
         <h4 class="name" id=".do">
             
-            <span class="type-signature static">static</span>DuGR.do<span class="signature">(groups, callback, <span class="optional">invert</span>, <span class="optional">comp</span>)</span>
+            <span class="type-signature static">static</span>DuGR.do<span class="signature">(groups, callback, <span class="optional">invert</span>, <span class="optional">comp</span>, notCallback)</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19947
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20027
         </div>
         
     </div>
@@ -4731,6 +4826,38 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>notCallback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">DuGR~doNotCallBack</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The function to run on each layer IF it is NOT in the groups.</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -4785,7 +4912,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20546
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20654
         </div>
         
     </div>
@@ -4916,7 +5043,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19887
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19962
         </div>
         
     </div>
@@ -5124,7 +5251,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20384
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20489
         </div>
         
     </div>
@@ -5467,7 +5594,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20360
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20465
         </div>
         
     </div>
@@ -5627,7 +5754,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20597
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20705
         </div>
         
     </div>
@@ -5823,7 +5950,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20645
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20753
         </div>
         
     </div>
@@ -6022,7 +6149,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20627
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20735
         </div>
         
     </div>
@@ -6210,6 +6337,205 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".select">
+            
+            <span class="type-signature static">static</span>DuGR.select<span class="signature">(groups, <span class="optional">invert</span>, <span class="optional">comp</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20377
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Selects the layers.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>groups</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The list of group names. It can include custom groups, or predefined names taken from <a href="DuGR.html#.Group"><code>DuGR.Group</code></a>.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>invert</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                When true, the list of groups is a blacklist and the layer must not be contained in any one of them.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>comp</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">CompItem</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    DuAEProject.getActiveComp
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The composition to update.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".toggleAdjustment">
             
             <span class="type-signature static">static</span>DuGR.toggleAdjustment<span class="signature">(groups, <span class="optional">invert</span>, <span class="optional">comp</span>, <span class="optional">allowLockedChanges</span>)</span>
@@ -6217,7 +6543,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20244
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20326
         </div>
         
     </div>
@@ -6452,7 +6778,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20072
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20154
         </div>
         
     </div>
@@ -6687,7 +7013,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20156
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20238
         </div>
         
     </div>
@@ -6922,7 +7248,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20182
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20264
         </div>
         
     </div>
@@ -7157,7 +7483,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20098
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20180
         </div>
         
     </div>
@@ -7392,7 +7718,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20035
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20117
         </div>
         
     </div>
@@ -7591,7 +7917,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20218
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20300
         </div>
         
     </div>
@@ -7826,7 +8152,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20124
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20206
         </div>
         
     </div>
@@ -8061,7 +8387,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20053
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20135
         </div>
         
     </div>
@@ -8260,7 +8586,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20016
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20098
         </div>
         
     </div>
@@ -8459,7 +8785,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19998
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20080
         </div>
         
     </div>
@@ -8658,7 +8984,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20270
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20352
         </div>
         
     </div>
@@ -8893,7 +9219,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19980
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20062
         </div>
         
     </div>
@@ -9098,7 +9424,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19964
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20046
         </div>
         
     </div>
@@ -9270,7 +9596,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Jul 28 2021 15:22:12 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Jul 28 2021 17:38:43 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>

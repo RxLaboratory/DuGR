@@ -554,6 +554,8 @@
             
                 <li data-name="DuAELayer.getWorldPos"><a href="DuAELayer.html#.getWorldPos">getWorldPos</a></li>
             
+                <li data-name="DuAELayer.hasChild"><a href="DuAELayer.html#.hasChild">hasChild</a></li>
+            
                 <li data-name="DuAELayer.haveSelectedKeys"><a href="DuAELayer.html#.haveSelectedKeys">haveSelectedKeys</a></li>
             
                 <li data-name="DuAELayer.isSolid"><a href="DuAELayer.html#.isSolid">isSolid</a></li>
@@ -929,6 +931,8 @@
             
                 <li data-name="DuESF.docURL"><a href="DuESF.html#.docURL">docURL</a></li>
             
+                <li data-name="DuESF.donateURL"><a href="DuESF.html#.donateURL">donateURL</a></li>
+            
                 <li data-name="DuESF.featureRequestURL"><a href="DuESF.html#.featureRequestURL">featureRequestURL</a></li>
             
                 <li data-name="DuESF.file"><a href="DuESF.html#.file">file</a></li>
@@ -1101,6 +1105,8 @@
                 <li data-name="DuGR.removeGroup"><a href="DuGR.html#.removeGroup">removeGroup</a></li>
             
                 <li data-name="DuGR.renameGroup"><a href="DuGR.html#.renameGroup">renameGroup</a></li>
+            
+                <li data-name="DuGR.select"><a href="DuGR.html#.select">select</a></li>
             
                 <li data-name="DuGR.toggleAdjustment"><a href="DuGR.html#.toggleAdjustment">toggleAdjustment</a></li>
             
@@ -1337,6 +1343,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="DuScriptUI.addBugButton"><a href="DuScriptUI.html#.addBugButton">addBugButton</a></li>
+            
+                <li data-name="DuScriptUI.addDonateButton"><a href="DuScriptUI.html#.addDonateButton">addDonateButton</a></li>
             
                 <li data-name="DuScriptUI.addEvent"><a href="DuScriptUI.html#.addEvent">addEvent</a></li>
             
@@ -3969,6 +3977,35 @@
 	
         <tr>
             
+                <td class="name"><code>HEART</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="DuBinary.html">DuBinary</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    w12_heart
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
                 <td class="name"><code>HELP</code></td>
             
             
@@ -5801,7 +5838,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8430
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8445
         </div>
         
     </div>
@@ -5992,6 +6029,204 @@ Request something new.
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".addDonateButton">
+            
+            <span class="type-signature static">static</span>DuScriptUI.addDonateButton<span class="signature">(container, <span class="optional">showLabel</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="DuButton.html">DuButton</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8543
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates a button opening the link for like/follow/donation
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>container</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Panel</span>
+|
+
+<span class="param-type">Window</span>
+|
+
+<span class="param-type">Group</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The ScriptUI Object which will contain and display the button.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>showLabel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                When true, the button includes a <code>"I ♥ " + DuESF.scriptName</code> label.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="DuButton.html">DuButton</a>
+                        
+                    
+            </td>
+            <td class="description last">The like button created.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".addEvent">
             
             <span class="type-signature static">static</span>DuScriptUI.addEvent<span class="signature">(func, <span class="optional">timeOut</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{int}</span>
@@ -5999,7 +6234,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10357
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10404
         </div>
         
     </div>
@@ -6191,7 +6426,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8462
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8477
         </div>
         
     </div>
@@ -6389,7 +6624,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8494
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8509
         </div>
         
     </div>
@@ -6587,7 +6822,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10536
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10583
         </div>
         
     </div>
@@ -6857,7 +7092,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10607
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10654
         </div>
         
     </div>
@@ -7011,7 +7246,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10321
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10368
         </div>
         
     </div>
@@ -7082,7 +7317,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8062
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8077
         </div>
         
     </div>
@@ -7529,7 +7764,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8694
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8741
         </div>
         
     </div>
@@ -7905,7 +8140,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11012
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11059
         </div>
         
     </div>
@@ -8103,7 +8338,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9461
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9508
         </div>
         
     </div>
@@ -8477,7 +8712,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9753
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9800
         </div>
         
     </div>
@@ -8856,7 +9091,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9655
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9702
         </div>
         
     </div>
@@ -9162,7 +9397,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10075
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10122
         </div>
         
     </div>
@@ -9313,7 +9548,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9064
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9111
         </div>
         
     </div>
@@ -9458,7 +9693,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8572
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8619
         </div>
         
     </div>
@@ -9644,7 +9879,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11256
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11303
         </div>
         
     </div>
@@ -9795,7 +10030,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11360
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 11407
         </div>
         
     </div>
@@ -9940,7 +10175,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10719
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10766
         </div>
         
     </div>
@@ -10138,7 +10373,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8529
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8576
         </div>
         
     </div>
@@ -10254,7 +10489,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7044
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7056
         </div>
         
     </div>
@@ -10529,7 +10764,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9042
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9089
         </div>
         
     </div>
@@ -10697,7 +10932,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7235
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7247
         </div>
         
     </div>
@@ -10933,7 +11168,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10371
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10418
         </div>
         
     </div>
@@ -11049,7 +11284,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7543
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7555
         </div>
         
     </div>
@@ -11322,7 +11557,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9177
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9224
         </div>
         
     </div>
@@ -11508,7 +11743,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8617
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8664
         </div>
         
     </div>
@@ -11776,7 +12011,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8554
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8601
         </div>
         
     </div>
@@ -11915,7 +12150,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8540
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8587
         </div>
         
     </div>
@@ -12054,7 +12289,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10517
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10564
         </div>
         
     </div>
@@ -12324,7 +12559,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7463
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 7475
         </div>
         
     </div>
@@ -12490,7 +12725,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9905
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9952
         </div>
         
     </div>
@@ -12977,7 +13212,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8306
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8321
         </div>
         
     </div>
@@ -13221,7 +13456,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9597
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 9644
         </div>
         
     </div>
@@ -13519,7 +13754,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10216
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 10263
         </div>
         
     </div>
@@ -13693,7 +13928,7 @@ Request something new.
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8403
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 8418
         </div>
         
     </div>
@@ -13900,7 +14135,7 @@ Request something new.
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Jul 28 2021 15:22:12 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Jul 28 2021 17:38:43 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>
