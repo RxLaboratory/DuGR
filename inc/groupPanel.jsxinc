@@ -162,6 +162,60 @@ removeGroupButton.onClick = function()
     refreshPanel();
 }
 
+addLayerButton.onClick = function()
+{
+    if (!groupList.selection) return;
+
+    DuAE.beginUndoGroup("Add layers to groups");
+
+    for (var i = 0, n = groupList.selection.length; i < n; i++)
+    {
+        var item = groupList.selection[i];
+        if (item.index < 3) continue;
+        var group = groupList.selection[i].groupName;
+        DuGR.addSelectedLayersToGroup( group );
+    }
+    
+    DuAE.endUndoGroup();
+}
+
+layerInfoButton.onClick = function()
+{
+    var groups = DuGR.listGroups( undefined, true);
+
+    groupList.items[0].selected = false;
+    groupList.items[1].selected = false;
+    groupList.items[2].selected = false;
+    
+    // Select
+    for (var i = 3, n = groupList.items.length; i < n; i++)
+    {
+        var item = groupList.items[i];
+        var g = item.groupName;
+        if (groups.indexOf(g) >= 0) item.selected = true;
+        else item.selected = false;
+    }
+}
+
+removeLayerButton.onClick = function()
+{
+        if (!groupList.selection) return;
+
+    DuAE.beginUndoGroup("Remove layers from groups");
+
+    for (var i = 0, n = groupList.selection.length; i < n; i++)
+    {
+        var item = groupList.selection[i];
+        if (item.index < 3) continue;
+        var group = groupList.selection[i].groupName;
+        DuGR.removeGroup( group, undefined, true );
+    }
+    
+    DuAE.endUndoGroup();
+    
+    refreshPanel();
+}
+
 nameEditor.tieTo( addGroupButton );
 nameEditor.tieTo( editGroupButton );
 

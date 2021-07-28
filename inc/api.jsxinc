@@ -915,21 +915,29 @@ DuGR.addSelectedLayersToGroup = function( group, comp )
 /**
  * Gets the list of all groups
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to read.
+ * @param {Boolean} [selectedLayers=false] When true, only from selected layers.
  * @returns {DuList} The list of groups
  */
-DuGR.listGroups = function ( comp )
+DuGR.listGroups = function ( comp, selectedLayers )
 {
     comp = def(comp, DuAEProject.getActiveComp());
+    selectedLayers = def(selectedLayers, false);
+
     if (!comp) return new DuList();
     if (comp.numLayers == 0) return new DuList();
+    if (selectedLayers && comp.selectedLayers.length == 0) return new DuList();
+
+    var layers;
+    if (selectedLayers) layers = comp.selectedLayers;
+    else layers = comp.layers;
+    layers = new DuList(layers);
 
     var groups = new DuList();
-    for (var i = 1, n = comp.numLayers; i < n; i++)
+    layers.do( function(layer )
     {
-        var l = comp.layer(i);
-        var g = DuAETag.getGroups( l );
+        var g = DuAETag.getGroups( layer );
         groups.mergeUnique( g );
-    }
+    } );
     groups.sort();
     return groups;
 }
@@ -956,15 +964,24 @@ DuGR.renameGroup = function( previousName, newName, comp )
  * Removes a group from the composition
  * @param {string} group The group to remove
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ * @param {Boolean} [selectedLayers=false] When true, only from selected layers.
  */
-DuGR.removeGroup = function( group, comp )
+DuGR.removeGroup = function( group, comp, selectedLayers )
 {
     comp = def(comp, DuAEProject.getActiveComp());
+    selectedLayers = def(selectedLayers, false);
+
     if (!comp) return;
     if (comp.numLayers == 0) return;
+    if (selectedLayers && comp.selectedLayers.length == 0) return;
 
-    for (var i = 1, n = comp.numLayers; i < n; i++)
+    var layers;
+    if (selectedLayers) layers = comp.selectedLayers;
+    else layers = comp.layers;
+    layers = new DuList(layers);
+
+    layers.do( function(layer )
     {
-        DuAETag.removeGroup( comp.layer(i), group );
-    }
+        DuAETag.removeGroup( layer, group );
+    } );
 }
