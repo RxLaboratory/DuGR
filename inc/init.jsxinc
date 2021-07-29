@@ -1,6 +1,6 @@
 
 // This is required
-DuAEF.init( "DuGR", "4.0.0-Beta", "RxLaboratory");
+DuAEF.init( "DuGR", "3.0.0-Beta", "RxLaboratory");
 
 // Setting these may prove useful
 DuESF.chatURL = 'http://chat.rxlab.info';
@@ -10,6 +10,7 @@ DuESF.aboutURL = 'http://rxlaboratory.org/tools/dugr';
 DuESF.docURL = 'http://dugr.rxlab.guide';
 DuESF.scriptAbout = 'Duduf Groups: group After Effects layers!';
 DuESF.companyURL = 'https://rxlaboratory.org';
+DuESF.rxVersionURL = 'http://version.rxlab.io'
 
 // Setup!
 DuScriptUI.setupScript( buildUI, thisObj );
