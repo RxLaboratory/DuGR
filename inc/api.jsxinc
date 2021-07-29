@@ -53,6 +53,10 @@ DuGR.Group = {
      */
     GROUPED: 'DugR.grouped',
     /**
+     * Precompositions
+     */
+    COMP: 'DugR.type.comp',
+    /**
      * Null objects
      */
     NULL: 'DugR.type.null',
@@ -259,6 +263,8 @@ DuGR.inGroups = function ( layer, groups, tag )
         if (group == DuGR.Group.SELECTED && layer.selected) return true;
 
         if (group == DuGR.Group.GROUPED && DuAETag.getGroups( layer ).length > 0) return true;
+
+        if (group == DuGR.Group.COMP) return DuAELayer.isComp( layer );
 
         if (group == DuGR.Group.NULL && layer.nullLayer) return true;
         
