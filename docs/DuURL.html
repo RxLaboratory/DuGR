@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Namespace: DuAERenderQueue</title>
+    <title>Namespace: DuURL</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -3233,7 +3233,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DuAERenderQueue.html">Namespace: DuAERenderQueue</h1>
+        <h1 class="page-title" data-filename="DuURL.html">Namespace: DuURL</h1>
         
 
 
@@ -3242,7 +3242,7 @@
     
 <header>
     <h2>
-    DuAERenderQueue
+    DuURL
     </h2>
     
 </header>  
@@ -3253,7 +3253,7 @@
     
     
         
-            <div class="description">Render Queue methods</div>
+            <div class="description">Methods to manage URLS</div>
         
         
         
@@ -3297,6 +3297,55 @@
     
     
     
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".EscapedChars"><span class="type-signature static">static</span>DuURL.EscapedChars</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The list of escaped characters in URLs
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
     
     
         <h3 class="subsection-title">Methods</h3>
@@ -3305,14 +3354,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".hasOutputModuleTemplate">
+        <h4 class="name" id=".buildGET">
             
-            <span class="type-signature static">static</span>DuAERenderQueue.hasOutputModuleTemplate<span class="signature">(templateName)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+            <span class="type-signature static">static</span>DuURL.buildGET<span class="signature">(host, <span class="optional">subfolders</span>, <span class="optional">argsArray</span>, <span class="optional">httpVersion</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 19863
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 6922
         </div>
         
     </div>
@@ -3323,7 +3372,7 @@
     
     
     <div class="description">
-        Checks if the given template is installed
+        Builds a HTTP GET request. The user-agent is named after DuESF.scriptName.
     </div>
     
 
@@ -3344,6 +3393,8 @@
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -3354,7 +3405,7 @@
 	
         <tr>
             
-                <td class="name"><code>templateName</code></td>
+                <td class="name"><code>host</code></td>
             
             
             <td class="type">
@@ -3367,10 +3418,123 @@
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
                 
-                The name of the template</td>
+                    
+                    
+                        
+                    
+                
+                The host, without port, without http part; for example: "duduf.com" or "version.rxlab.io"</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>subfolders</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The subfolders.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>argsArray</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                An associative array with key/value pairs. Values will be escaped.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>httpVersion</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "1.1"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                An associative array with key/value pairs. Values will be escaped.</td>
         </tr>
 	
 	
@@ -3431,11 +3595,11 @@
             
             <td class="type">
             
-                        Boolean
+                        string
                         
                     
             </td>
-            <td class="description last">true if the template is available</td>
+            <td class="description last">The query ready to be posted with a socket</td>
         </tr>
     
     </tbody>
@@ -3450,14 +3614,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".hasRenderSettingsTemplate">
+        <h4 class="name" id=".buildRequest">
             
-            <span class="type-signature static">static</span>DuAERenderQueue.hasRenderSettingsTemplate<span class="signature">(templateName)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+            <span class="type-signature static">static</span>DuURL.buildRequest<span class="signature">(arr)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 19840
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 6899
         </div>
         
     </div>
@@ -3468,7 +3632,7 @@
     
     
     <div class="description">
-        Checks if the given template is installed
+        Builds a query, made of "key=value" pairs.
     </div>
     
 
@@ -3499,13 +3663,13 @@
 	
         <tr>
             
-                <td class="name"><code>templateName</code></td>
+                <td class="name"><code>arr</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
             
@@ -3515,7 +3679,7 @@
             
             <td class="description last">
                 
-                The name of the template</td>
+                An associative array with key/value pairs. Values will be escaped.</td>
         </tr>
 	
 	
@@ -3576,11 +3740,156 @@
             
             <td class="type">
             
-                        Boolean
+                        string
                         
                     
             </td>
-            <td class="description last">true if the template is available</td>
+            <td class="description last">The query, with the leading ?.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".escape">
+            
+            <span class="type-signature static">static</span>DuURL.escape<span class="signature">(str)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 6885
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Escapes common characters from a string to be included in a GET request URL.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The string to escape.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        string
+                        
+                    
+            </td>
+            <td class="description last">The escaped string.</td>
         </tr>
     
     </tbody>
@@ -3608,7 +3917,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Jul 30 2021 09:16:49 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Jul 30 2021 09:16:50 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>

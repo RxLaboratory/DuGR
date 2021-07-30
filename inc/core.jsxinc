@@ -1,6 +1,6 @@
 #include "license.jsxinc"
 
-#include "api.jsxinc"
+#include "api_all.jsxinc"
 
 #include "icons.jsxinc"
 

@@ -558,6 +558,8 @@
             
                 <li data-name="DuAELayer.haveSelectedKeys"><a href="DuAELayer.html#.haveSelectedKeys">haveSelectedKeys</a></li>
             
+                <li data-name="DuAELayer.isComp"><a href="DuAELayer.html#.isComp">isComp</a></li>
+            
                 <li data-name="DuAELayer.isSolid"><a href="DuAELayer.html#.isSolid">isSolid</a></li>
             
                 <li data-name="DuAELayer.isThreeD"><a href="DuAELayer.html#.isThreeD">isThreeD</a></li>
@@ -944,6 +946,8 @@
                 <li data-name="DuESF.HostApplication"><a href="DuESF.html#.HostApplication">HostApplication</a></li>
             
                 <li data-name="DuESF.hostVersion"><a href="DuESF.html#.hostVersion">hostVersion</a></li>
+            
+                <li data-name="DuESF.rxVersionURL"><a href="DuESF.html#.rxVersionURL">rxVersionURL</a></li>
             
                 <li data-name="DuESF.scriptAbout"><a href="DuESF.html#.scriptAbout">scriptAbout</a></li>
             
@@ -1362,6 +1366,8 @@
             
                 <li data-name="DuScriptUI.checkBox"><a href="DuScriptUI.html#.checkBox">checkBox</a></li>
             
+                <li data-name="DuScriptUI.checkUpdate"><a href="DuScriptUI.html#.checkUpdate">checkUpdate</a></li>
+            
                 <li data-name="DuScriptUI.compSelector"><a href="DuScriptUI.html#.compSelector">compSelector</a></li>
             
                 <li data-name="DuScriptUI.editText"><a href="DuScriptUI.html#.editText">editText</a></li>
@@ -1480,6 +1486,8 @@
             
                 <li data-name="DuSystem.mac"><a href="DuSystem.html#.mac">mac</a></li>
             
+                <li data-name="DuSystem.osVersion"><a href="DuSystem.html#.osVersion">osVersion</a></li>
+            
                 <li data-name="DuSystem.win"><a href="DuSystem.html#.win">win</a></li>
             
             </ul>
@@ -1573,6 +1581,39 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DuURL">
+            <span class="title">
+                <a href="DuURL.html">DuURL</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="DuURL.EscapedChars"><a href="DuURL.html#.EscapedChars">EscapedChars</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DuURL.buildGET"><a href="DuURL.html#.buildGET">buildGET</a></li>
+            
+                <li data-name="DuURL.buildRequest"><a href="DuURL.html#.buildRequest">buildRequest</a></li>
+            
+                <li data-name="DuURL.escape"><a href="DuURL.html#.escape">escape</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -3062,6 +3103,10 @@
             </ul>
             <ul class="typedefs itemMembers">
             
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="DuVersion~UpdateReply"><a href="DuVersion.html#~UpdateReply">UpdateReply</a></li>
+            
             </ul>
             <ul class="methods itemMembers">
             
@@ -3208,7 +3253,7 @@
     
     
         
-            <div class="description"><h3>DuGR - Duduf Groups</h3><p><i>Group After Effects layers by tags, and run batch methods on them.</i><br /><code>DuGR</code> is the high-level interface to the layer groups,<br />and it relies on <a href="DuAETag.html"><code>DuAETag</code></a>, a lower-level interface which adds tags on layers,<br />and stores data in these tags.</p><p>A group is created using <a href="DuGR.html#.addSelectedLayersToGroup"><code>DuGR.addSelectedLayersToGroup()</code></a> or <a href="DuAETag.html#.addGroup"><code>DuAETag.addGroup()</code></a>.<br />Groups can be renamed with <a href="DuGR.html#.renameGroup"><code>DuGR.renameGroup()</code></a>,<br />They can be removed with <a href="DuGR.html#.removeGroup"><code>DuGR.removeGroup()</code></a>.<br />You can run a method on all layers belonging to a set of groups with <a href="DuGR.html#.do"><code>DuGR.do()</code></a>.</p><p><a href="DuGR.html#.Group"><code>DuGR.Group</code></a> contains predefined groups to sort layers by type or attribute and use <a href="DuGR.html#.do"><code>DuGR.do()</code></a> on them.</p><P>You can use <a href="DuGR.html#.isolate"><code>DuGR.isolate()</code></a> to isolate layers in the timeline, the comp panel, or both,<br />use <a href="DuGR.html#.exitIsolation"><code>DuGR.exitIsolation()</code></a> to get out of isolation mode.</div>
+            <div class="description"><h3>Duduf Groups</h3><p><i>Group After Effects layers by tags, and run batch methods on them.</i><br /><code>DuGR</code> is the high-level interface to the layer groups,<br />and it relies on <a href="DuAETag.html"><code>DuAETag</code></a>, a lower-level interface which adds tags on layers,<br />and stores data in these tags.</p><p>A group is created using <a href="DuGR.html#.addSelectedLayersToGroup"><code>DuGR.addSelectedLayersToGroup()</code></a> or <a href="DuAETag.html#.addGroup"><code>DuAETag.addGroup()</code></a>.<br />Groups can be renamed with <a href="DuGR.html#.renameGroup"><code>DuGR.renameGroup()</code></a>,<br />They can be removed with <a href="DuGR.html#.removeGroup"><code>DuGR.removeGroup()</code></a>.<br />You can run a method on all layers belonging to a set of groups with <a href="DuGR.html#.do"><code>DuGR.do()</code></a>.</p><p><a href="DuGR.html#.Group"><code>DuGR.Group</code></a> contains predefined groups to sort layers by type or attribute and use <a href="DuGR.html#.do"><code>DuGR.do()</code></a> on them.</p><P>You can use <a href="DuGR.html#.isolate"><code>DuGR.isolate()</code></a> to isolate layers in the timeline, the comp panel, or both,<br />use <a href="DuGR.html#.exitIsolation"><code>DuGR.exitIsolation()</code></a> to get out of isolation mode.</p><p>DuGR requires <i>DuAEF</i>, the <i>Duduf After Effects Framework</i>. Two builds of the <i>DuGR API</i> are available:<br /><ul><li><code>DuGR_api.jsxinc</code> does not include <i>DuAEF</i>, and can be used to compine multiple <i>Duduf APIs</i> with a single copy of <i>DuAEF</i>.<br />Be careful to grab the right version of <i>DuAEF</i> in this case.</li><li><code>DuAEF_DuGR_api.jsxinc</code> includes all dependencies, with <i>DuAEF</i>, and is easier to include in your scripts.</li></ul></p></div>
         
         
         
@@ -3248,11 +3293,31 @@
     
     
     
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="DuAETag.html"><code>DuAETag</code></a> for low-level group management</li>
+        </ul>
+    </dd>
+    
     
     
 </dl>
 
         
+        
+            <h3>Examples</h3>
+            
+
+    
+    <pre class="prettyprint"><code>// Encapsulate everything to avoid global variables!// The parameter is either undefined (stand alone script) or the panel containing the ui (ScriptUI)(function(thisObj){     // If you only need DuGR, just include DuAEF_DuGR_api     #include "DuAEF_DuGR_api.jsxinc";          // Running the init() method of DuAEF is required to setup everything properly.     DuAEF.init( "YourScriptName", "1.0.0", "YourCompanyName" );          // These info can be used by the framework to improve UX, but they're optional     DuESF.chatURL = 'http://chat.rxlab.info'; // A link to a live-chat server like Discord or Slack...     DuESF.bugReportURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose'; // A link to a bug report form     DuESF.featureRequestURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose'; // A link to a feature request form     DuESF.aboutURL = 'http://rxlaboratory.org/tools/dugr'; // A link to the webpage about your script     DuESF.docURL = 'http://dugr.rxlab.guide'; // A link to the documentation of the script     DuESF.scriptAbout = 'Duduf Groups: group After Effects layers!'; // A short string describing your script     DuESF.companyURL = 'https://rxlaboratory.org'; // A link to your company's website     DuESF.rxVersionURL = 'http://version.rxlab.io' // A link to an RxVersion server to check for updates          // Build your UI here, declare your methods, etc.     // This will be our main panel     var ui = DuScriptUI.scriptPanel( thisObj, true, true, new File($.fileName) );     ui.addCommonSettings(); // Automatically adds the language settings, location of the settings file, etc     DuScriptUI.staticText( ui.settingsGroup, "Hello world of settings!" ); // Adds a static text to the settings panel     DuScriptUI.staticText( ui.mainGroup, "Hello worlds!" ); // Adds a static text to the main panel          // When you're ready to display everything     DuScriptUI.showUI(ui);     // Note that if you don't have a UI or if you don't use DuScriptUI to show it,     // you HAVE TO run this method before running any other function:     // DuAEF.enterRunTime(); })(this);</code></pre>
+    
+
+
+    
+    <pre class="prettyprint"><code>// Encapsulate everything to avoid global variables!// The parameter is either undefined (stand alone script) or the panel containing the ui (ScriptUI)(function(thisObj){     // If you need to combine DuGR and other APIs like DuIO or DuIK     // Include DuAEF first, and then stand-alone APIs     #include "DuAEF.jsxinc";     #include "DuGR_api.jsxinc";     #include "DuIK_api.jsxinc";     #include "DuIO_api.jsxinc";          // Running the init() method of DuAEF is required to setup everything properly.     DuAEF.init( "YourScriptName", "1.0.0", "YourCompanyName" );          // These info can be used by the framework to improve UX, but they're optional     DuESF.chatURL = 'http://chat.rxlab.info'; // A link to a live-chat server like Discord or Slack...     DuESF.bugReportURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose'; // A link to a bug report form     DuESF.featureRequestURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose'; // A link to a feature request form     DuESF.aboutURL = 'http://rxlaboratory.org/tools/dugr'; // A link to the webpage about your script     DuESF.docURL = 'http://dugr.rxlab.guide'; // A link to the documentation of the script     DuESF.scriptAbout = 'Duduf Groups: group After Effects layers!'; // A short string describing your script     DuESF.companyURL = 'https://rxlaboratory.org'; // A link to your company's website     DuESF.rxVersionURL = 'http://version.rxlab.io' // A link to an RxVersion server to check for updates          // Build your UI here, declare your methods, etc.     // This will be our main panel     var ui = DuScriptUI.scriptPanel( thisObj, true, true, new File($.fileName) );     ui.addCommonSettings(); // Automatically adds the language settings, location of the settings file, etc     DuScriptUI.staticText( ui.settingsGroup, "Hello world of settings!" ); // Adds a static text to the settings panel     DuScriptUI.staticText( ui.mainGroup, "Hello worlds!" ); // Adds a static text to the main panel          // When you're ready to display everything     DuScriptUI.showUI(ui);     // Note that if you don't have a UI or if you don't use DuScriptUI to show it,     // you HAVE TO run this method before running any other function:     // DuAEF.enterRunTime(); })(this);</code></pre>
+    
+
         
     
     </div>
@@ -3261,6 +3326,12 @@
     
     
     
+    
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:DuAEF>=1.0.0</li>
+        </ul>
     
     
     
@@ -3532,6 +3603,35 @@
             
             
             <td class="description last">Layers included in a custom group</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>COMP</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DugR.type.comp
+                
+                </td>
+            
+            
+            <td class="description last">Precompositions</td>
         </tr>
 	
 	
@@ -4486,7 +4586,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20685
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21190
         </div>
         
     </div>
@@ -4649,7 +4749,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20027
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20532
         </div>
         
     </div>
@@ -4912,7 +5012,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20654
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21159
         </div>
         
     </div>
@@ -5043,7 +5143,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 19962
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20465
         </div>
         
     </div>
@@ -5251,7 +5351,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20489
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20994
         </div>
         
     </div>
@@ -5594,7 +5694,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20465
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20970
         </div>
         
     </div>
@@ -5754,7 +5854,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20705
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21210
         </div>
         
     </div>
@@ -5950,7 +6050,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20753
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21258
         </div>
         
     </div>
@@ -6149,7 +6249,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20735
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21240
         </div>
         
     </div>
@@ -6344,7 +6444,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20377
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20882
         </div>
         
     </div>
@@ -6543,7 +6643,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20326
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20831
         </div>
         
     </div>
@@ -6778,7 +6878,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20154
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20659
         </div>
         
     </div>
@@ -7013,7 +7113,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20238
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20743
         </div>
         
     </div>
@@ -7248,7 +7348,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20264
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20769
         </div>
         
     </div>
@@ -7483,7 +7583,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20180
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20685
         </div>
         
     </div>
@@ -7718,7 +7818,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20117
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20622
         </div>
         
     </div>
@@ -7917,7 +8017,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20300
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20805
         </div>
         
     </div>
@@ -8152,7 +8252,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20206
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20711
         </div>
         
     </div>
@@ -8387,7 +8487,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20135
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20640
         </div>
         
     </div>
@@ -8586,7 +8686,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20098
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20603
         </div>
         
     </div>
@@ -8785,7 +8885,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20080
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20585
         </div>
         
     </div>
@@ -8984,7 +9084,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20352
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20857
         </div>
         
     </div>
@@ -9219,7 +9319,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20062
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20567
         </div>
         
     </div>
@@ -9424,7 +9524,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/api.jsxinc, line 20046
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 20551
         </div>
         
     </div>
@@ -9596,7 +9696,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Jul 28 2021 17:38:43 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Jul 30 2021 09:16:49 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>
