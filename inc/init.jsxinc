@@ -4,8 +4,8 @@ DuAEF.init( "DuGR", "4.0.0", "RxLaboratory");
 
 // Setting these may prove useful
 DuESF.chatURL = 'http://chat.rxlab.info';
-DuESF.bugReportURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose';
-DuESF.featureRequestURL = 'https://github.com/RxLaboratory/DuAEF_Dugr/issues/new/choose';
+DuESF.bugReportURL = 'https://github.com/RxLaboratory/DuAEF_DuGR/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D+Short+but+precise+description+of+the+bug';
+DuESF.featureRequestURL = 'https://github.com/RxLaboratory/DuAEF_DuGR/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE+REQUEST%5D+Short+but+precise+description+of+the+feature';
 DuESF.aboutURL = 'http://rxlaboratory.org/tools/dugr';
 DuESF.docURL = 'http://dugr.rxlab.guide';
 DuESF.scriptAbout = 'Duduf Groups: group After Effects layers!';
