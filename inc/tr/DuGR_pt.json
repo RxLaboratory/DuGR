@@ -1,0 +1,965 @@
+{
+    "DuGR": [
+        {
+            "languageId": "pt",
+            "languageName": "Português",
+            "version": "1.0"
+        },
+        {
+            "translations": [
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "January",
+                    "translation": "January"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "February",
+                    "translation": "February"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "March",
+                    "translation": "March"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "April",
+                    "translation": "April"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "May",
+                    "translation": "May"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "June",
+                    "translation": "June"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "July",
+                    "translation": "July"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "August",
+                    "translation": "August"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "September",
+                    "translation": "September"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "October",
+                    "translation": "October"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "November",
+                    "translation": "November"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "December",
+                    "translation": "December"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolation",
+                    "translation": "Isolation"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "DuGR",
+                    "translation": "DuGR"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "{#} Settings",
+                    "translation": "{#} Settings"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Check for updates",
+                    "translation": "Check for updates"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Back",
+                    "translation": "Back"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Close settings",
+                    "translation": "Close settings"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Default",
+                    "translation": "Default"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Reset the settings to their default values.",
+                    "translation": "Reset the settings to their default values."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Apply",
+                    "translation": "Apply"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Apply changes to the settings.",
+                    "translation": "Apply changes to the settings."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Bug report",
+                    "translation": "Bug report"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Bug report\nTell us what's wrong!",
+                    "translation": "Bug report\nTell us what's wrong!"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Feature request",
+                    "translation": "Feature request"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Feature request\nRequest something new.",
+                    "translation": "Feature request\nRequest something new."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Edit settings",
+                    "translation": "Edit settings"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Help",
+                    "translation": "Help"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Get help.",
+                    "translation": "Get help."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Export translation file",
+                    "translation": "Export translation file"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Export a translation file to be edited with DuTranslator.",
+                    "translation": "Export a translation file to be edited with DuTranslator."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Settings file...",
+                    "translation": "Settings file..."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Set the location of the settings file.",
+                    "translation": "Set the location of the settings file."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Path...",
+                    "translation": "Path..."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Set the highlight color.",
+                    "translation": "Set the highlight color."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Cancel",
+                    "translation": "Cancel"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "After Effects Blue",
+                    "translation": "After Effects Blue"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The After Effects highlighting blue",
+                    "translation": "The After Effects highlighting blue"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "RxLab Purple",
+                    "translation": "RxLab Purple"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The RxLaboratory Purple",
+                    "translation": "The RxLaboratory Purple"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Rainbox Red",
+                    "translation": "Rainbox Red"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The Rainbox Productions Red",
+                    "translation": "The Rainbox Productions Red"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "After Effects Orange (CS6)",
+                    "translation": "After Effects Orange (CS6)"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The After Effects highlighting orange from good ol'CS6",
+                    "translation": "The After Effects highlighting orange from good ol'CS6"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Custom...",
+                    "translation": "Custom..."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Select a custom color",
+                    "translation": "Select a custom color"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Select the UI mode.",
+                    "translation": "Select the UI mode."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Rookie",
+                    "translation": "Rookie"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The easiest-to-use mode, but also the biggest UI.",
+                    "translation": "The easiest-to-use mode, but also the biggest UI."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Standard",
+                    "translation": "Standard"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The standard not-too-big UI.",
+                    "translation": "The standard not-too-big UI."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Expert",
+                    "translation": "Expert"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The smallest UI, for expert users.",
+                    "translation": "The smallest UI, for expert users."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Normal mode",
+                    "translation": "Normal mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Use at your own risk!",
+                    "translation": "Use at your own risk!"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Locked layers: deny changes",
+                    "translation": "Locked layers: deny changes"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "What to do if a layer is locked.",
+                    "translation": "What to do if a layer is locked."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type of warning frame to use",
+                    "translation": "Type of warning frame to use"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Warning frame: None",
+                    "translation": "Warning frame: None"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Don't use any warning frame.",
+                    "translation": "Don't use any warning frame."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Warning frame: Above",
+                    "translation": "Warning frame: Above"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Draw the frame above the composition.",
+                    "translation": "Draw the frame above the composition."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Warning frame: Below",
+                    "translation": "Warning frame: Below"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Draw the frame below the composition.",
+                    "translation": "Draw the frame below the composition."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolation: hide layers",
+                    "translation": "Isolation: hide layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Method used to isolate layers in the composition.",
+                    "translation": "Method used to isolate layers in the composition."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Lock hidden layers",
+                    "translation": "Lock hidden layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Wether the hidden layers have to be locked.",
+                    "translation": "Wether the hidden layers have to be locked."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolate",
+                    "translation": "Isolate"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolate selected groups.",
+                    "translation": "Isolate selected groups."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Timeline",
+                    "translation": "Timeline"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolate selected groups, in the timeline only.",
+                    "translation": "Isolate selected groups, in the timeline only."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Comp",
+                    "translation": "Comp"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Isolate selected groups, in the composition panel only",
+                    "translation": "Isolate selected groups, in the composition panel only"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Set interactive (sticky) mode.",
+                    "translation": "Set interactive (sticky) mode."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Show/Hide layers",
+                    "translation": "Show/Hide layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle audio",
+                    "translation": "Toggle audio"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle solo mode",
+                    "translation": "Toggle solo mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Lock layers",
+                    "translation": "Lock layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Shy layers",
+                    "translation": "Shy layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Collapse transformation / Continuous rasterization",
+                    "translation": "Collapse transformation / Continuous rasterization"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Guide layers",
+                    "translation": "Guide layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Change quality",
+                    "translation": "Change quality"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle effects",
+                    "translation": "Toggle effects"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Change frame blending",
+                    "translation": "Change frame blending"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle motion blur",
+                    "translation": "Toggle motion blur"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle adjutment layer mode",
+                    "translation": "Toggle adjutment layer mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Toggle 3D mode",
+                    "translation": "Toggle 3D mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Select layers",
+                    "translation": "Select layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Properties",
+                    "translation": "Properties"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Select layer by property or type",
+                    "translation": "Select layer by property or type"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Groups",
+                    "translation": "Groups"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Select groups",
+                    "translation": "Select groups"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Invert",
+                    "translation": "Invert"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Invert the group/property selection",
+                    "translation": "Invert the group/property selection"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "All layers",
+                    "translation": "All layers"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Selected",
+                    "translation": "Selected"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Grouped",
+                    "translation": "Grouped"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Hierarchy: Orphans",
+                    "translation": "Hierarchy: Orphans"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Hierarchy: Have children",
+                    "translation": "Hierarchy: Have children"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Pre-compositions",
+                    "translation": "Type: Pre-compositions"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Null Objects",
+                    "translation": "Type: Null Objects"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Solids",
+                    "translation": "Type: Solids"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Shapes",
+                    "translation": "Type: Shapes"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Texts",
+                    "translation": "Type: Texts"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Adjustment",
+                    "translation": "Type: Adjustment"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Lights",
+                    "translation": "Type: Lights"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Type: Cameras",
+                    "translation": "Type: Cameras"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Visible",
+                    "translation": "Attribute: Visible"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Has Audio",
+                    "translation": "Attribute: Has Audio"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Solo",
+                    "translation": "Attribute: Solo"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Locked",
+                    "translation": "Attribute: Locked"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Shy",
+                    "translation": "Attribute: Shy"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Effects",
+                    "translation": "Attribute: Effects"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Motion Blur",
+                    "translation": "Attribute: Motion Blur"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: 3D",
+                    "translation": "Attribute: 3D"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Attribute: Guide",
+                    "translation": "Attribute: Guide"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Custom",
+                    "translation": "Custom"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Dev and Debug mode",
+                    "translation": "Dev and Debug mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Set the language of the interface.",
+                    "translation": "Set the language of the interface."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Next",
+                    "translation": "Next"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Path",
+                    "translation": "Path"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Previous",
+                    "translation": "Previous"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Settings",
+                    "translation": "Settings"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Settings file",
+                    "translation": "Settings file"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "{#} needs to be allowed to write files.\nPlease, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects.",
+                    "translation": "{#} needs to be allowed to write files.\nPlease, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "File and network access",
+                    "translation": "File and network access"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "/!\\ ======\n/!\\ It seems something went wrong with {#} the last time you used it.\n/!\\ Check the box below to re-initialize {#} and try to make it work again.\n/!\\ ======",
+                    "translation": "/!\\ ======\n/!\\ It seems something went wrong with {#} the last time you used it.\n/!\\ Check the box below to re-initialize {#} and try to make it work again.\n/!\\ ======"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Re-initialize {#} before launch.",
+                    "translation": "Re-initialize {#} before launch."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "The pseudo effect file does not exist.",
+                    "translation": "The pseudo effect file does not exist."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Invalid pseudo effect file or match name.",
+                    "translation": "Invalid pseudo effect file or match name."
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Edit mode",
+                    "translation": "Edit mode"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "Open preferences",
+                    "translation": "Open preferences"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "None",
+                    "translation": "None"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "New version available",
+                    "translation": "New version available"
+                },
+                {
+                    "comment": "",
+                    "context": "",
+                    "contextId": 0,
+                    "source": "DuGR::Isolation",
+                    "translation": "DuGR::Isolation"
+                }
+            ]
+        }
+    ]
+}
