@@ -96,7 +96,7 @@ nameEditor.previousName = '';
 
 // =========== FUNCTIONS ==================
 
-nameOKButton.onClick = nameEdit.onChange = function()
+nameOKButton.onClick = function()
 {
     if (nameEdit.text == '') return;
 
@@ -119,6 +119,8 @@ nameOKButton.onClick = nameEdit.onChange = function()
 
     nameEditor.hidePopup();
 }
+
+nameEditor.addEventListener('enterkey', nameOKButton.onClick );
 
 editGroupButton.onClick = function()
 {
