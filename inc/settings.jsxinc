@@ -1,7 +1,6 @@
 DuScriptUI.separator(ui.settingsGroup);
 
 // Locked layers
-// TODO Icon
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     "Locked layers: deny changes",
@@ -12,7 +11,6 @@ var lockedLayersButton = DuScriptUI.checkBox(
 );
 
 // Warning frame
-//TODO Icons
 var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
 warningFrameSelector.addButton(
     "Warning frame: None",
@@ -32,7 +30,6 @@ warningFrameSelector.addButton(
 warningFrameSelector.setCurrentIndex(2);
 
 // Isolation mode
-// TODO Icon
 var useWireframeButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     "Isolation: hide layers",
@@ -42,8 +39,17 @@ var useWireframeButton = DuScriptUI.checkBox(
     w16_wireframe
 );
 
+// Tags
+var showTagsButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    "Hide markers",
+    w16_no_tag,
+    "Wether to show or hide the tags on the layers.",
+    "Show markers",
+    w16_tag
+);
+
 // Lock hidden
-// TODO Icon
 var lockHiddenButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     "Lock hidden layers",
@@ -64,6 +70,9 @@ ui.onResetSettings = function () {
 
     var lockHidden = def(DuESF.scriptSettings.data.lockHidden, true);
     lockHiddenButton.setChecked(lockHidden);
+
+    var showTags = def(DuESF.scriptSettings.data.showTags, true);
+    showTagsButton.setChecked(showTags);
 }
 
 // Save settings
@@ -72,6 +81,13 @@ ui.onApplySettings = function () {
     DuESF.scriptSettings.data.warningFrame = warningFrameSelector.index;
     DuESF.scriptSettings.data.useWireframe = useWireframeButton.value;
     DuESF.scriptSettings.data.lockHidden = lockHiddenButton.value;
+    DuESF.scriptSettings.data.showTags = showTagsButton.value;
+
+    DuAETag.hideTags = !DuESF.scriptSettings.data.showTags;
 
     DuESF.scriptSettings.save();
 }
+
+// Load settings on startup
+DuAETag.hideTags = !def( DuESF.scriptSettings.data.showTags, true) ;
+alert(DuAETag.hideTags);

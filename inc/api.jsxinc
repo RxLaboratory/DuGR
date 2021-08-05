@@ -783,7 +783,7 @@ DuGR.createDugrLayer = function( comp, frameMode, isolationMode )
     sq.guideLayer = true;
     sq.name = DuScriptUI.String.DUGR_FRAME_NAME;
 
-    var tag = DuAETag.set( sq, DuScriptUI.String.DUGR_FRAME_NAME );
+    var tag = DuAETag.set( sq, DuScriptUI.String.DUGR_FRAME_NAME, undefined );
     DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode, tag);
 
     if (frameMode != DuGR.WarningFrameMode.ABOVE) sq.moveToEnd();
@@ -916,7 +916,7 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
         var layer = comp.layer(i);
 
         // Get/Set the dugr tag
-        var tag = DuAETag.set( layer );
+        var tag = DuAETag.set( layer, undefined, undefined );
 
         // Wether to isolate the layer
         var hide = !DuGR.inGroups( layer, groups, tag );
