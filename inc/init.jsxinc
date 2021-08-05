@@ -10,7 +10,10 @@ DuESF.aboutURL = 'http://rxlaboratory.org/tools/dugr';
 DuESF.docURL = 'http://dugr.rxlab.guide';
 DuESF.scriptAbout = 'Duduf Groups: group After Effects layers!';
 DuESF.companyURL = 'https://rxlaboratory.org';
-DuESF.rxVersionURL = 'http://version.rxlab.io'
+DuESF.rxVersionURL = 'http://version.rxlab.io';
+
+// Extract translations
+#include "translation.jsxinc"
 
 // Setup!
 DuScriptUI.setupScript( buildUI, thisObj );

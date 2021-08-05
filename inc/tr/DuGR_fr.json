@@ -96,91 +96,91 @@
                     "context": "BUG_REPORT",
                     "contextId": 0,
                     "source": "Bug report",
-                    "translation": "Bug report"
+                    "translation": "Rapport d'erreur"
                 },
                 {
                     "comment": "",
                     "context": "BUG_REPORT_TIP",
                     "contextId": 0,
                     "source": "Bug report\nTell us what's wrong!",
-                    "translation": "Bug report\nTell us what's wrong!"
+                    "translation": "Rapport d'erreur\nDites nous ce qui ne va pas!"
                 },
                 {
                     "comment": "",
                     "context": "CANCEL",
                     "contextId": 0,
                     "source": "Cancel",
-                    "translation": "Cancel"
+                    "translation": "Annuler"
                 },
                 {
                     "comment": "",
                     "context": "CHARACTER",
                     "contextId": 0,
                     "source": "Character",
-                    "translation": "Character"
+                    "translation": "Personnage"
                 },
                 {
                     "comment": "",
                     "context": "CHECK_UPDATE",
                     "contextId": 0,
                     "source": "Check for updates",
-                    "translation": "Check for updates"
+                    "translation": "Vérifier les mises à jour"
                 },
                 {
                     "comment": "",
                     "context": "COLOR_HIGHLIGHT_TIP",
                     "contextId": 0,
                     "source": "Set the highlight color.",
-                    "translation": "Set the highlight color."
+                    "translation": "Choisir la couleur de mise en valeur."
                 },
                 {
                     "comment": "",
                     "context": "CUSTOM",
                     "contextId": 0,
                     "source": "Custom",
-                    "translation": "Custom"
+                    "translation": "Personnalisé"
                 },
                 {
                     "comment": "",
                     "context": "CUSTOM_COLOR_TIP",
                     "contextId": 0,
                     "source": "Select a custom color",
-                    "translation": "Select a custom color"
+                    "translation": "Sélectionner une couleur personnalisée."
                 },
                 {
                     "comment": "",
                     "context": "CLOSE_SETTINGS",
                     "contextId": 0,
                     "source": "Close settings",
-                    "translation": "Close settings"
+                    "translation": "Fermer les paramètres."
                 },
                 {
                     "comment": "",
                     "context": "DEFAULT",
                     "contextId": 0,
                     "source": "Default",
-                    "translation": "Default"
+                    "translation": "Défaut"
                 },
                 {
                     "comment": "",
                     "context": "DEV_MODE",
                     "contextId": 0,
                     "source": "Dev and Debug mode",
-                    "translation": "Dev and Debug mode"
+                    "translation": "Mode dev & deboggage"
                 },
                 {
                     "comment": "",
                     "context": "DEV_MODE_TIP",
                     "contextId": 0,
                     "source": "Use at your own risk!",
-                    "translation": "Use at your own risk!"
+                    "translation": "Utilisez à vos risques et périls!"
                 },
                 {
                     "comment": "",
                     "context": "EDIT_SETTINGS",
                     "contextId": 0,
                     "source": "Edit settings",
-                    "translation": "Edit settings"
+                    "translation": "Éditer les paramètres"
                 },
                 {
                     "comment": "",
@@ -194,147 +194,147 @@
                     "context": "EXPERT_UI_TIP",
                     "contextId": 0,
                     "source": "The smallest UI, for expert users.",
-                    "translation": "The smallest UI, for expert users."
+                    "translation": "La plus petite IU, pour les utilisateurs experts."
                 },
                 {
                     "comment": "",
                     "context": "EXPORT_TRANSLATION",
                     "contextId": 0,
                     "source": "Export translation file",
-                    "translation": "Export translation file"
+                    "translation": "Exporter le fichier de trad'"
                 },
                 {
                     "comment": "",
                     "context": "EXPORT_TRANSLATION_TIP",
                     "contextId": 0,
                     "source": "Export a translation file to be edited with DuTranslator.",
-                    "translation": "Export a translation file to be edited with DuTranslator."
+                    "translation": "Exporter un fichier de traductions à éditer avec DuTranslator."
                 },
                 {
                     "comment": "",
                     "context": "FEATURE_REQUEST",
                     "contextId": 0,
                     "source": "Feature request",
-                    "translation": "Feature request"
+                    "translation": "Demande de fonctionnalité"
                 },
                 {
                     "comment": "",
                     "context": "FEATURE_REQUEST_TIP",
                     "contextId": 0,
                     "source": "Feature request\nRequest something new.",
-                    "translation": "Feature request\nRequest something new."
+                    "translation": "Demande de fonctionnalité\nDemandez quelque chose de nouveau."
                 },
                 {
                     "comment": "",
                     "context": "FRONT",
                     "contextId": 0,
                     "source": "Front",
-                    "translation": "Front"
+                    "translation": "Avant"
                 },
                 {
                     "comment": "",
                     "context": "FRONT_SHORT",
                     "contextId": 0,
                     "source": "Fr",
-                    "translation": "Fr"
+                    "translation": "Av"
                 },
                 {
                     "comment": "",
                     "context": "GROUPS",
                     "contextId": 0,
                     "source": "Groups",
-                    "translation": "Groups"
+                    "translation": "Groupes"
                 },
                 {
                     "comment": "",
                     "context": "HELP",
                     "contextId": 0,
                     "source": "Help",
-                    "translation": "Help"
+                    "translation": "Aide"
                 },
                 {
                     "comment": "",
                     "context": "HELP_TIP",
                     "contextId": 0,
                     "source": "Get help.",
-                    "translation": "Get help."
+                    "translation": "Obtenez de l'aide."
                 },
                 {
                     "comment": "",
                     "context": "INVERT",
                     "contextId": 0,
                     "source": "Invert",
-                    "translation": "Invert"
+                    "translation": "Inverser"
                 },
                 {
                     "comment": "",
                     "context": "INVERTED",
                     "contextId": 0,
                     "source": "Inverted",
-                    "translation": "Inverted"
+                    "translation": "Inversé"
                 },
                 {
                     "comment": "",
                     "context": "ISOLATE",
                     "contextId": 0,
                     "source": "Isolate",
-                    "translation": "Isolate"
+                    "translation": "Isoler"
                 },
                 {
                     "comment": "",
                     "context": "LANGUAGE_TIP",
                     "contextId": 0,
                     "source": "Set the language of the interface.",
-                    "translation": "Set the language of the interface."
+                    "translation": "Choisir la langue de l'interface."
                 },
                 {
                     "comment": "",
                     "context": "LEFT",
                     "contextId": 0,
                     "source": "Left",
-                    "translation": "Left"
+                    "translation": "Gauche"
                 },
                 {
                     "comment": "",
                     "context": "LEFT_SHORT",
                     "contextId": 0,
                     "source": "L",
-                    "translation": "L"
+                    "translation": "G"
                 },
                 {
                     "comment": "",
                     "context": "MIDDLE",
                     "contextId": 0,
                     "source": "Middle",
-                    "translation": "Middle"
+                    "translation": "Milieu"
                 },
                 {
                     "comment": "",
                     "context": "MIDDLE_SHORT",
                     "contextId": 0,
                     "source": "Md",
-                    "translation": "Md"
+                    "translation": "M"
                 },
                 {
                     "comment": "",
                     "context": "NEXT",
                     "contextId": 0,
                     "source": "Next",
-                    "translation": "Next"
+                    "translation": "Suivant"
                 },
                 {
                     "comment": "",
                     "context": "NONE",
                     "contextId": 0,
                     "source": "None",
-                    "translation": "None"
+                    "translation": "Aucun"
                 },
                 {
                     "comment": "",
                     "context": "NORMAL_MODE",
                     "contextId": 0,
                     "source": "Normal mode",
-                    "translation": "Normal mode"
+                    "translation": "Mode normal"
                 },
                 {
                     "comment": "",
@@ -348,56 +348,56 @@
                     "context": "OPACITY",
                     "contextId": 0,
                     "source": "Opacity",
-                    "translation": "Opacity"
+                    "translation": "Opacité"
                 },
                 {
                     "comment": "",
                     "context": "PATH",
                     "contextId": 0,
                     "source": "Path",
-                    "translation": "Path"
+                    "translation": "Chemin"
                 },
                 {
                     "comment": "",
                     "context": "PREVIOUS",
                     "contextId": 0,
                     "source": "Previous",
-                    "translation": "Previous"
+                    "translation": "Précédent"
                 },
                 {
                     "comment": "",
                     "context": "PROPERTIES",
                     "contextId": 0,
                     "source": "Properties",
-                    "translation": "Properties"
+                    "translation": "Propriétés"
                 },
                 {
                     "comment": "",
                     "context": "RANDOM_TIP",
                     "contextId": 0,
                     "source": "Set a random value.",
-                    "translation": "Set a random value."
+                    "translation": "Choisir une valeur aléatoire."
                 },
                 {
                     "comment": "",
                     "context": "RESET_SETTINGS",
                     "contextId": 0,
                     "source": "Reset the settings to their default values.",
-                    "translation": "Reset the settings to their default values."
+                    "translation": "Ré-initialiser les paramètres à leurs valeurs par défaut."
                 },
                 {
                     "comment": "",
                     "context": "RIGHT",
                     "contextId": 0,
                     "source": "Right",
-                    "translation": "Right"
+                    "translation": "Droite"
                 },
                 {
                     "comment": "",
                     "context": "RIGHT_SHORT",
                     "contextId": 0,
                     "source": "R",
-                    "translation": "R"
+                    "translation": "D"
                 },
                 {
                     "comment": "",
