@@ -2,7 +2,7 @@
     "plugins": [],
     "recurseDepth": 1,
     "source": {
-		"include": [ "output/api.jsxinc" ],
+		"include": [ "output/DuAEF_DuGR_api.jsxinc" ],
         "includePattern": ".+\\.jsxinc$",
         "excludePattern": "(^|\\/|\\\\)_"
     },

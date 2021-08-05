@@ -1,54 +1,60 @@
 DuScriptUI.separator(ui.settingsGroup);
 
 // Locked layers
-// TODO Icon
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    "Locked layers: deny changes",
+    DuScriptUI.String.DUGR_SETTINGS_LOCK_UNCHECKED,
     w16_lock,
-    "What to do if a layer is locked.",
-    "Locked layers: allow changes",
+    DuScriptUI.String.DUGR_SETTINGS_LOCK_TIP,
+    DuScriptUI.String.DUGR_SETTINGS_LOCK_CHECKED,
     w16_unlock
 );
 
 // Warning frame
-//TODO Icons
 var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
 warningFrameSelector.addButton(
-    "Warning frame: None",
+    DuScriptUI.String.DUGR_SETTINGS_NO_WARNING_FRAME,
     w16_no_frame,
-    "Don't use any warning frame."
+    DuScriptUI.String.DUGR_SETTINGS_NO_WARNING_FRAME_TIP
 );
 warningFrameSelector.addButton(
-    "Warning frame: Above",
+    DuScriptUI.String.DUGR_SETTINGS_WARNING_ABOVE,
     w16_frame_above,
-    "Draw the frame above the composition."
+    DuScriptUI.String.DUGR_SETTINGS_WARNING_ABOVE_TIP
 );
 warningFrameSelector.addButton(
-    "Warning frame: Below",
+    DuScriptUI.String.DUGR_SETTINGS_WARNING_BELOW,
     w16_frame_below,
-    "Draw the frame below the composition."
+    DuScriptUI.String.DUGR_SETTINGS_WARNING_BELOW_TIP
 );
 warningFrameSelector.setCurrentIndex(2);
 
 // Isolation mode
-// TODO Icon
 var useWireframeButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    "Isolation: hide layers",
+    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_UNCHECKED,
     w16_hide,
-    "Method used to isolate layers in the composition.",
-    "Isolation: wireframe",
+    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_TIP,
+    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_CHECKED,
     w16_wireframe
 );
 
+// Tags
+var showTagsButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_UNCHECKED,
+    w16_no_tag,
+    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_TIP,
+    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_CHECKED,
+    w16_tag
+);
+
 // Lock hidden
-// TODO Icon
 var lockHiddenButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    "Lock hidden layers",
+    DuScriptUI.String.DUGR_SETTINGS_LOCK_HIDDEN,
     undefined,
-    "Wether the hidden layers have to be locked.",
+    DuScriptUI.String.DUGR_SETTINGSLOCK_HIDDEN_TIP
 );
 
 // Read settings
@@ -64,6 +70,9 @@ ui.onResetSettings = function () {
 
     var lockHidden = def(DuESF.scriptSettings.data.lockHidden, true);
     lockHiddenButton.setChecked(lockHidden);
+
+    var showTags = def(DuESF.scriptSettings.data.showTags, true);
+    showTagsButton.setChecked(showTags);
 }
 
 // Save settings
@@ -72,6 +81,12 @@ ui.onApplySettings = function () {
     DuESF.scriptSettings.data.warningFrame = warningFrameSelector.index;
     DuESF.scriptSettings.data.useWireframe = useWireframeButton.value;
     DuESF.scriptSettings.data.lockHidden = lockHiddenButton.value;
+    DuESF.scriptSettings.data.showTags = showTagsButton.value;
+
+    DuAETag.hideTags = !DuESF.scriptSettings.data.showTags;
 
     DuESF.scriptSettings.save();
 }
+
+// Load settings on startup
+DuAETag.hideTags = !def( DuESF.scriptSettings.data.showTags, true) ;
