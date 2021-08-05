@@ -2,4 +2,12 @@
 
 // Extract translations
 var outputFolder = DuESF.scriptSettings.file.parent.absoluteURI + '/';
+
 DuGR_fr.toFile( outputFolder + 'DuGR_fr.json' );
+
+
+// Load
+var common  = def(DuESF.scriptSettings.data.common, {});
+var currentLanguageName = def( common.currentLanguageName, 'Esperanto');
+DuTranslator.getAvailable();
+DuTranslator.setPrettyLanguage( currentLanguageName );
