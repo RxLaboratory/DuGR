@@ -96,7 +96,7 @@ nameEditor.previousName = '';
 
 // =========== FUNCTIONS ==================
 
-nameOKButton.onClick = function()
+nameOKButton.onClick = nameEdit.onChange = function()
 {
     if (nameEdit.text == '') return;
 
