@@ -932,6 +932,13 @@
                     "translation": "Invertir la sección de grupo/propiedad"
                 },
                 {
+                    "source": "Exit isolation.",
+                    "translation": "Salir del aislamiento.",
+                    "comment": "",
+                    "context": "DUGR_EXIT_ISOLATION_TIP",
+                    "contextId": 0
+                },
+                {
                     "comment": "",
                     "context": "",
                     "contextId": 0,

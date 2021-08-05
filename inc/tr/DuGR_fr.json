@@ -932,6 +932,13 @@
                     "translation": "Inverser la sélection de groupe/propriété"
                 },
                 {
+                    "source": "Exit isolation.",
+                    "translation": "Quitter l'isolation.",
+                    "comment": "",
+                    "context": "DUGR_EXIT_ISOLATION_TIP",
+                    "contextId": 0
+                },
+                {
                     "comment": "",
                     "context": "",
                     "contextId": 0,

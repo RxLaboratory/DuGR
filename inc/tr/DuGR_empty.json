@@ -932,6 +932,13 @@
                     "contextId": 0
                 },
                 {
+                    "source": "Exit isolation.",
+                    "translation": "Exit isolation.",
+                    "comment": "",
+                    "context": "DUGR_EXIT_ISOLATION_TIP",
+                    "contextId": 0
+                },
+                {
                     "source": "January",
                     "translation": "January",
                     "comment": "",

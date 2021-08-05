@@ -3,6 +3,13 @@
 var isolateGroup = DuScriptUI.group( ui.mainGroup);
 isolateGroup.alignment = ['center','top'];
 
+var exitButton = DuScriptUI.button(
+    isolateGroup,
+    "",
+    DuScriptUI.Icon.CLOSE,
+    DuScriptUI.String.DUGR_EXIT_ISOLATION_TIP
+);
+
 var isolateButton = DuScriptUI.checkBox(
     isolateGroup,
     DuScriptUI.String.ISOLATE,
@@ -42,15 +49,21 @@ var pinButton = DuScriptUI.checkBox(
     DuScriptUI.Icon.PINNED
 )
 pinButton.setChecked( def(DuESF.scriptSettings.data.interactiveMode, false ) );
+exitButton.visible = !pinButton.checked;
 
 pinButton.onClick = function()
 {
+    exitButton.visible = !pinButton.checked;
     DuESF.scriptSettings.data.interactiveMode = pinButton.checked;
     DuESF.scriptSettings.save();
 }
 
+exitButton.onClick = exit;
+
 isolateButton.onClick = function()
 {
+    if (!pinButton.checked) isolateButton.setChecked(true);
+
     if (isolateButton.checked)
     {
         isolateTLButton.setChecked(false);
@@ -63,6 +76,8 @@ isolateButton.onClick = function()
 
 isolateTLButton.onClick = function()
 {
+    if (!pinButton.checked) isolateTLButton.setChecked(true);
+
     if (isolateTLButton.checked)
     {
         isolateButton.setChecked(false);
@@ -75,6 +90,8 @@ isolateTLButton.onClick = function()
 
 isolateCompButton.onClick = function()
 {
+    if (!pinButton.checked) isolateCompButton.setChecked(true);
+
     if (isolateCompButton.checked)
     {
         isolateButton.setChecked(false);
@@ -387,6 +404,7 @@ function getGroups()
     {
         for (var i = 0, n = propList.selection.length; i < n ; i++)
         {
+            if (propList.selection[i].index == 0 && !invertButton.checked) return [];
             groups.push( propList.selection[i].groupName );
         }
     }
@@ -394,6 +412,7 @@ function getGroups()
     {
         for (var i = 0, n = groupList.selection.length; i < n ; i++)
         {
+            if (groupList.selection[i].index == 0 && !invertButton.checked) return [];
             groups.push( groupList.selection[i].groupName );
         }
     }
@@ -445,8 +464,15 @@ function isolate()
     DuAE.beginUndoGroup( "Isolation" );
     DuAE.toggleLayerControls();
 
+    var groups = getGroups();
+    if (groups.length == 0)
+    {
+        exit();
+        return;
+    }
+
     DuGR.isolate(
-        getGroups(),
+        groups,
         invertButton.checked,
         undefined,
         stgs.warningFrame,

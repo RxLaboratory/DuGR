@@ -5,9 +5,9 @@
 // Extract translations
 var outputFolder = DuESF.scriptSettings.file.parent.absoluteURI + '/';
 
-DuGR_fr.toFile( outputFolder + 'DuGR_fr.json' );
-DuGR_pd.toFile( outputFolder + 'DuGR_pd.json' );
-DuGR_es.toFile( outputFolder + 'DuGR_es.json' );
+DuGR_fr.toFile( outputFolder + 'DuGR_fr.json', false );
+DuGR_pd.toFile( outputFolder + 'DuGR_pd.json', false );
+DuGR_es.toFile( outputFolder + 'DuGR_es.json', false );
 
 
 // Load

@@ -31,3 +31,4 @@ DuScriptUI.String.DUGR_SETTINGS_LOCK_HIDDEN = "Lock hidden layers";
 DuScriptUI.String.DUGR_SETTINGSLOCK_HIDDEN_TIP = "Whether the hidden layers have to be locked.";
 DuScriptUI.String.DUGR_SELECT_PROP_TIP = "Select layer by property or type";
 DuScriptUI.String.DUGR_INVERT_TIP = "Invert the group/property selection";
+DuScriptUI.String.DUGR_EXIT_ISOLATION_TIP = "Exit isolation.";

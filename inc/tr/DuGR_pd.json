@@ -932,6 +932,13 @@
                     "translation": "Inverser el cusion ed groupe/acrinkillache"
                 },
                 {
+                    "source": "Exit isolation.",
+                    "translation": "Sortir del isolation.",
+                    "comment": "",
+                    "context": "DUGR_EXIT_ISOLATION_TIP",
+                    "contextId": 0
+                },
+                {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
