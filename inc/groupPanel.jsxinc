@@ -20,7 +20,7 @@ var addLayerButton = DuScriptUI.button(
     topButtons,
     "",
     w12_add_layer,
-    "Add selected layers to group."
+    DuScriptUI.String.DUGR_ADD_LAYERS_TIP
 )
 addLayerButton.alignment = ['right', 'top'];
 
@@ -28,7 +28,7 @@ var layerInfoButton = DuScriptUI.button(
     topButtons,
     "",
     w12_layer_info,
-    "Get groups from selected layers."
+    DuScriptUI.String.DUGR_GET_GROUPS_TI
 )
 addLayerButton.alignment = ['right', 'top'];
 
@@ -36,7 +36,7 @@ var removeLayerButton = DuScriptUI.button(
     topButtons,
     "",
     w12_remove_layer,
-    "Remove selected layers from group."
+    DuScriptUI.String.DUGR_REMOVE_LAYERS_TIP
 )
 removeLayerButton.alignment = ['right', 'top'];
 
@@ -47,7 +47,7 @@ var addGroupButton = DuScriptUI.button(
     bottomButtons,
     "",
     w12_add,
-    "Create new group."
+    DuScriptUI.String.DUGR_CREATE_GROUP_TIP
 )
 addGroupButton.alignment = ['right', 'bottom'];
 
@@ -55,7 +55,7 @@ var editGroupButton = DuScriptUI.button(
     bottomButtons,
     "",
     w12_edit,
-    "Rename group."
+    DuScriptUI.String.DUGR_RENAME_GROUP_TIP
 )
 editGroupButton.alignment = ['right', 'bottom'];
 
@@ -63,7 +63,7 @@ var removeGroupButton = DuScriptUI.button(
     bottomButtons,
     "",
     w12_remove,
-    "Remove group."
+    DuScriptUI.String.DUGR_REMOVE_GROUP_TIP
 )
 removeGroupButton.alignment = ['right', 'bottom'];
 
@@ -74,8 +74,8 @@ var nameEdit = DuScriptUI.editText(
     '',
     '',
     '',
-    "New group",
-    "The name of the group"
+    DuScriptUI.String.DUGR_NEW_GROUP,
+    
 )
 nameEdit.alignment = ['fill','top'];
 
@@ -84,9 +84,9 @@ nameButtons.alignment = ['fill','top'];
 
 var nameOKButton = DuScriptUI.button(
     nameButtons,
-    "OK",
+    DuScriptUI.String.OK,
     DuScriptUI.Icon.CHECK,
-    "Change group name",
+    DuScriptUI.String.DUGR_RENAME_GROUP_TIP,
     false,
     'row',
     'center'

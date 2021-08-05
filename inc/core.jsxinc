@@ -2,6 +2,8 @@
 
 #include "api_all.jsxinc"
 
+#include "strings.jsxinc"
+
 #include "icons.jsxinc"
 
 #include "init.jsxinc"
