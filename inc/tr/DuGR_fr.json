@@ -144,7 +144,7 @@
                     "comment": "",
                     "context": "CUSTOM_COLOR_TIP",
                     "contextId": 0,
-                    "source": "Select a custom color",
+                    "source": "Select a custom color.",
                     "translation": "Sélectionner une couleur personnalisée."
                 },
                 {
@@ -740,7 +740,7 @@
                     "context": "DUGR_STICKY_TIP",
                     "contextId": 0,
                     "source": "Set interactive (sticky) mode.",
-                    "translation": "Activer le mode interractif (persistant)."
+                    "translation": "Activer le mode intéractif (persistant)."
                 },
                 {
                     "comment": "",
@@ -900,7 +900,7 @@
                     "comment": "",
                     "context": "DUGR_SETTINGS_SHOW_TAGS_TIP",
                     "contextId": 0,
-                    "source": "Wether to show or hide the tags on the layers.",
+                    "source": "Whether to show or hide the tags on the layers.",
                     "translation": "Choisir de masquer ou afficher les marqueurs."
                 },
                 {
@@ -914,7 +914,7 @@
                     "comment": "",
                     "context": "DUGR_SETTINGSLOCK_HIDDEN_TIP",
                     "contextId": 0,
-                    "source": "Wether the hidden layers have to be locked.",
+                    "source": "Whether the hidden layers have to be locked.",
                     "translation": "Est-ce-que les calques masqués doivent être verrouillés ?"
                 },
                 {
@@ -992,7 +992,7 @@
                     "context": "",
                     "contextId": 0,
                     "source": "September",
-                    "translation": "Sptembre"
+                    "translation": "Septembre"
                 },
                 {
                     "comment": "",

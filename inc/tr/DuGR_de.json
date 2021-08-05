@@ -141,8 +141,8 @@
                     "contextId": 0
                 },
                 {
-                    "source": "Select a custom color",
-                    "translation": "Select a custom color",
+                    "source": "Select a custom color.",
+                    "translation": "Select a custom color.",
                     "comment": "",
                     "context": "CUSTOM_COLOR_TIP",
                     "contextId": 0
@@ -897,8 +897,8 @@
                     "contextId": 0
                 },
                 {
-                    "source": "Wether to show or hide the tags on the layers.",
-                    "translation": "Wether to show or hide the tags on the layers.",
+                    "source": "Whether to show or hide the tags on the layers.",
+                    "translation": "Whether to show or hide the tags on the layers.",
                     "comment": "",
                     "context": "DUGR_SETTINGS_SHOW_TAGS_TIP",
                     "contextId": 0
@@ -911,8 +911,8 @@
                     "contextId": 0
                 },
                 {
-                    "source": "Wether the hidden layers have to be locked.",
-                    "translation": "Wether the hidden layers have to be locked.",
+                    "source": "Whether the hidden layers have to be locked.",
+                    "translation": "Whether the hidden layers have to be locked.",
                     "comment": "",
                     "context": "DUGR_SETTINGSLOCK_HIDDEN_TIP",
                     "contextId": 0
