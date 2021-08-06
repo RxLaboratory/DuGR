@@ -12,14 +12,14 @@
                     "context": "ABOVE",
                     "contextId": 0,
                     "source": "Above",
-                    "translation": "Above"
+                    "translation": "Super"
                 },
                 {
                     "comment": "",
                     "context": "ABOVE_SHORT",
                     "contextId": 0,
                     "source": "Ab",
-                    "translation": "Ab"
+                    "translation": "Sup"
                 },
                 {
                     "comment": "",
@@ -33,7 +33,7 @@
                     "context": "AE_BLUE_TIP",
                     "contextId": 0,
                     "source": "The After Effects highlighting blue",
-                    "translation": "La blua After Effects highlighting"
+                    "translation": "La blua After Effects helo"
                 },
                 {
                     "comment": "",
@@ -47,7 +47,7 @@
                     "context": "AE_ORANGE_TIP",
                     "contextId": 0,
                     "source": "The After Effects highlighting orange from good ol'CS6",
-                    "translation": "La orangkolora After Effects highlighting de la bona maljuna CS6"
+                    "translation": "La orangkolora After Effects helo de la bona maljuna CS6"
                 },
                 {
                     "comment": "",
@@ -68,28 +68,28 @@
                     "context": "APPLY_SETTINGS_ALERT",
                     "contextId": 0,
                     "source": "You may need to restart the script for all changes to take effect.",
-                    "translation": "Vi devus restart la scripto per apliki la tutajn ŝanĝojn."
+                    "translation": "Vi devus rekomenci la scripto per apliki la tutajn ŝanĝojn."
                 },
                 {
                     "comment": "",
                     "context": "BACK_PREVIOUS",
                     "contextId": 0,
                     "source": "Back",
-                    "translation": "Reiri"
+                    "translation": "Returni"
                 },
                 {
                     "comment": "",
                     "context": "BACK_LOCATION",
                     "contextId": 0,
                     "source": "Back",
-                    "translation": "Back"
+                    "translation": "Malfronte"
                 },
                 {
                     "comment": "",
                     "context": "BACK_LOCATION_SHORT",
                     "contextId": 0,
                     "source": "Bk",
-                    "translation": "Bk"
+                    "translation": "Mfr"
                 },
                 {
                     "comment": "",
@@ -103,7 +103,7 @@
                     "context": "BUG_REPORT_TIP",
                     "contextId": 0,
                     "source": "Bug report\nTell us what's wrong!",
-                    "translation": "Raporto de eraro\nDiru al ni kiu estas malbona!"
+                    "translation": "Raporto de eraro\nDiru al ni kio estas malbona!"
                 },
                 {
                     "comment": "",
@@ -117,7 +117,7 @@
                     "context": "CHARACTER",
                     "contextId": 0,
                     "source": "Character",
-                    "translation": "Character"
+                    "translation": "Personeto"
                 },
                 {
                     "comment": "",
@@ -131,7 +131,7 @@
                     "context": "COLOR_HIGHLIGHT_TIP",
                     "contextId": 0,
                     "source": "Set the highlight color.",
-                    "translation": "Fiksi la highlight kolora."
+                    "translation": "Fiksi la hela kolora."
                 },
                 {
                     "comment": "",
@@ -145,7 +145,7 @@
                     "context": "CUSTOM_COLOR_TIP",
                     "contextId": 0,
                     "source": "Select a custom color.",
-                    "translation": "Elektiti propran Koloron."
+                    "translation": "Elektiti propran koloron."
                 },
                 {
                     "comment": "",
@@ -159,7 +159,7 @@
                     "context": "DEFAULT",
                     "contextId": 0,
                     "source": "Default",
-                    "translation": "Default"
+                    "translation": "Defaŭlto"
                 },
                 {
                     "comment": "",
@@ -187,28 +187,28 @@
                     "context": "EXPERT",
                     "contextId": 0,
                     "source": "Expert",
-                    "translation": "Lerta"
+                    "translation": "Spertulo"
                 },
                 {
                     "comment": "",
                     "context": "EXPERT_UI_TIP",
                     "contextId": 0,
                     "source": "The smallest UI, for expert users.",
-                    "translation": "La plej malgranda UF, per lertaj usuaroj."
+                    "translation": "La malplej granda UF, per lertaj uzantoj."
                 },
                 {
                     "comment": "",
                     "context": "EXPORT_TRANSLATION",
                     "contextId": 0,
                     "source": "Export translation file",
-                    "translation": "Export traduskan dosieron"
+                    "translation": "Eksporti traduka dosiero"
                 },
                 {
                     "comment": "",
                     "context": "EXPORT_TRANSLATION_TIP",
                     "contextId": 0,
                     "source": "Export a translation file to be edited with DuTranslator.",
-                    "translation": "Export traduskan dosieron per editi gin kun DuTranslator."
+                    "translation": "Eksporti traduka dosiero per eldoni ĝin kun DuTranslator."
                 },
                 {
                     "comment": "",
@@ -222,28 +222,28 @@
                     "context": "FEATURE_REQUEST_TIP",
                     "contextId": 0,
                     "source": "Feature request\nRequest something new.",
-                    "translation": "ĉefaĵa peto\ndemandu ie nova."
+                    "translation": "ĉefaĵa peto\nDemandu ion novan."
                 },
                 {
                     "comment": "",
                     "context": "FRONT",
                     "contextId": 0,
                     "source": "Front",
-                    "translation": "Front"
+                    "translation": "Antaŭ"
                 },
                 {
                     "comment": "",
                     "context": "FRONT_SHORT",
                     "contextId": 0,
                     "source": "Fr",
-                    "translation": "Fr"
+                    "translation": "Ant"
                 },
                 {
                     "comment": "",
                     "context": "GROUPS",
                     "contextId": 0,
                     "source": "Groups",
-                    "translation": "Groups"
+                    "translation": "Grupo"
                 },
                 {
                     "comment": "",
@@ -264,28 +264,28 @@
                     "context": "INVERT",
                     "contextId": 0,
                     "source": "Invert",
-                    "translation": "Invert"
+                    "translation": "invertiĝi"
                 },
                 {
                     "comment": "",
                     "context": "INVERTED",
                     "contextId": 0,
                     "source": "Inverted",
-                    "translation": "Inverted"
+                    "translation": "invertiĝa"
                 },
                 {
                     "comment": "",
                     "context": "ISOLATE",
                     "contextId": 0,
                     "source": "Isolate",
-                    "translation": "Isolate"
+                    "translation": "Izoli"
                 },
                 {
                     "comment": "",
                     "context": "LANGUAGE_TIP",
                     "contextId": 0,
                     "source": "Set the language of the interface.",
-                    "translation": "Fiksi la lingvo de la interface."
+                    "translation": "Fiksi la lingvo de la interfaco."
                 },
                 {
                     "comment": "",
@@ -306,14 +306,14 @@
                     "context": "MIDDLE",
                     "contextId": 0,
                     "source": "Middle",
-                    "translation": "Middle"
+                    "translation": "Mezo"
                 },
                 {
                     "comment": "",
                     "context": "MIDDLE_SHORT",
                     "contextId": 0,
                     "source": "Md",
-                    "translation": "Md"
+                    "translation": "Mz"
                 },
                 {
                     "comment": "",
@@ -327,7 +327,7 @@
                     "context": "NONE",
                     "contextId": 0,
                     "source": "None",
-                    "translation": "None"
+                    "translation": "Neniom"
                 },
                 {
                     "comment": "",
@@ -348,7 +348,7 @@
                     "context": "OPACITY",
                     "contextId": 0,
                     "source": "Opacity",
-                    "translation": "Opacity"
+                    "translation": "Opakeco"
                 },
                 {
                     "comment": "",
@@ -383,7 +383,7 @@
                     "context": "RESET_SETTINGS",
                     "contextId": 0,
                     "source": "Reset the settings to their default values.",
-                    "translation": "recomencigi la fiksoj al siajn default valorojn."
+                    "translation": "Recomencigi la fiksoj al siaj defaŭltaj valoroj."
                 },
                 {
                     "comment": "",
@@ -411,14 +411,14 @@
                     "context": "ROOKIE_UI_TIP",
                     "contextId": 0,
                     "source": "The easiest-to-use mode, but also the biggest UI.",
-                    "translation": "La plej facila reĝimo, sed ankau la plej granda UF."
+                    "translation": "La plej facila reĝimo, sed ankaŭ la plej granda UF."
                 },
                 {
                     "comment": "",
                     "context": "RX_PURPLE",
                     "contextId": 0,
                     "source": "RxLab Purple",
-                    "translation": "RxLab violkolora"
+                    "translation": "Violkolora RxLab"
                 },
                 {
                     "comment": "",
@@ -432,14 +432,14 @@
                     "context": "RX_RED",
                     "contextId": 0,
                     "source": "Rainbox Red",
-                    "translation": "Ruga Rainbox"
+                    "translation": "Ruĝa Rainbox"
                 },
                 {
                     "comment": "",
                     "context": "RX_RED_TIP",
                     "contextId": 0,
                     "source": "The Rainbox Productions Red",
-                    "translation": "La ruga de Rainbox Productions"
+                    "translation": "La ruĝa de Rainbox Productions"
                 },
                 {
                     "comment": "",
@@ -502,7 +502,7 @@
                     "context": "STANDARD_UI_TIP",
                     "contextId": 0,
                     "source": "The standard not-too-big UI.",
-                    "translation": "La norma ne tre grandeja UF."
+                    "translation": "La norma ne grandeja UF."
                 },
                 {
                     "comment": "",
@@ -523,7 +523,7 @@
                     "context": "TIMELINE",
                     "contextId": 0,
                     "source": "Timeline",
-                    "translation": "Fadeno da tempo"
+                    "translation": "Kronologia"
                 },
                 {
                     "comment": "",
@@ -537,28 +537,28 @@
                     "context": "UNDER",
                     "contextId": 0,
                     "source": "Under",
-                    "translation": "Under"
+                    "translation": "Sub"
                 },
                 {
                     "comment": "",
                     "context": "UNDER_SHORT",
                     "contextId": 0,
                     "source": "Un",
-                    "translation": "Un"
+                    "translation": "Sub"
                 },
                 {
                     "comment": "",
                     "context": "ASK_FILES_NETWORK_ACCESS",
                     "contextId": 0,
                     "source": "{#} needs to be allowed to write files.\nPlease, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects.",
-                    "translation": "{#} Bezonu esti allowed per skribi dosieron.\nBonvenu, selektu la skatolon 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+                    "translation": "{#} bezonas rajtigo per skribi dosieron.\nBonvenu, selekti la kesto 'Permesu Scriptoj per skribi dosieroj...' en la scriptaj agordoj de After Effects."
                 },
                 {
                     "comment": "",
                     "context": "ASK_FILES_NETWORK_ACCESS_TITLE",
                     "contextId": 0,
                     "source": "File and network access",
-                    "translation": "Dosieron kaj network access"
+                    "translation": "Dosieron kaj reta eniro"
                 },
                 {
                     "comment": "",
@@ -572,14 +572,14 @@
                     "context": "COMPOSITION",
                     "contextId": 0,
                     "source": "Composition",
-                    "translation": "Kompozicio"
+                    "translation": "Kompozito"
                 },
                 {
                     "comment": "",
                     "context": "CONTINUOUS_RASTERIZATION",
                     "contextId": 0,
                     "source": "Collapse transformation / Continuous rasterization",
-                    "translation": "Kunfandi transformation / Continuous rasterization"
+                    "translation": "Kunfandi ŝanĝo / Kontinua bilderigo"
                 },
                 {
                     "comment": "",
@@ -593,14 +593,14 @@
                     "context": "GUIDE_LAYERS",
                     "contextId": 0,
                     "source": "Guide layers",
-                    "translation": "Guide tavoloj"
+                    "translation": "Gvidistaj tavoloj"
                 },
                 {
                     "comment": "",
                     "context": "INVALID_PSEUDO_EFFECT",
                     "contextId": 0,
                     "source": "Invalid pseudo effect file or match name.",
-                    "translation": "Invalid pseudo efikista dosiero au match name."
+                    "translation": "La dosiero pseŭdo efikista aŭ \"match name\" nepravas."
                 },
                 {
                     "comment": "",
@@ -614,42 +614,42 @@
                     "context": "MISSING_PSEUDO_EFFECT",
                     "contextId": 0,
                     "source": "The pseudo effect file does not exist.",
-                    "translation": "La pseudo efikista dosieron ne eksistas."
+                    "translation": "La dosiero pseŭdo efikista ne eksistas."
                 },
                 {
                     "comment": "",
                     "context": "NEW_VERSION_TITLE",
                     "contextId": 0,
                     "source": "New version available",
-                    "translation": "Nova versiona available"
+                    "translation": "Nova versio disponebla"
                 },
                 {
                     "comment": "",
                     "context": "OPEN_PREFS",
                     "contextId": 0,
                     "source": "Open preferences",
-                    "translation": "Malfermi preferences"
+                    "translation": "Malfermi agordoj"
                 },
                 {
                     "comment": "",
                     "context": "REINIT_PROMPT",
                     "contextId": 0,
                     "source": "/!\\ ======\n/!\\ It seems something went wrong with {#} the last time you used it.\n/!\\ Check the box below to re-initialize {#} and try to make it work again.\n/!\\ ======",
-                    "translation": "/!\\ ======\n/!\\ Ie estis malbona kun {#} la lasta tempo kiu vi uzi gin.\n/!\\ Check the box below to re-initialize {#} and try to make it work again.\n/!\\ ======"
+                    "translation": "/!\\ ======\n/!\\ Ion estis malbona kun {#} la lasta tempo kio vi uzis ĝin.\n/!\\ Kontroli la kesto sub per rekomenci {#} kaj provu fari funkcii ĝin denove.\n/!\\ ======"
                 },
                 {
                     "comment": "",
                     "context": "REINIT_SCRIPT",
                     "contextId": 0,
                     "source": "Re-initialize {#} before launch.",
-                    "translation": "Re-initialize {#} antau launch."
+                    "translation": "Rekomenci {#} antaŭ ŝalti ĝin."
                 },
                 {
                     "comment": "",
                     "context": "SET_FRAME_BLENDING",
                     "contextId": 0,
                     "source": "Set frame blending mode",
-                    "translation": "Fiksi reĝimo de la marko blending"
+                    "translation": "Fiksi la miskan kadron reĝimon"v
                 },
                 {
                     "comment": "",
@@ -663,84 +663,84 @@
                     "context": "SHY_LAYERS",
                     "contextId": 0,
                     "source": "Shy layers",
-                    "translation": "Shy tavoloj"
+                    "translation": "Timidaj tavoloj"
                 },
                 {
                     "comment": "",
                     "context": "SOLO_LAYERS",
                     "contextId": 0,
                     "source": "Toggle solo mode",
-                    "translation": "Baskuli la solan reĝimon"
+                    "translation": "Baskuli la sola reĝimo"
                 },
                 {
                     "comment": "",
                     "context": "TOGGLE_3D_LAYER",
                     "contextId": 0,
                     "source": "Toggle 3D layer mode",
-                    "translation": "Baskuli la 3D tavolon reĝimon"
+                    "translation": "Baskuli la 3D tavolo reĝimo"
                 },
                 {
                     "comment": "",
                     "context": "TOGGLE_ADJUSTMENT_LAYER",
                     "contextId": 0,
                     "source": "Toggle adjustment layer mode",
-                    "translation": "Baskuli la adjustment tavolon reĝimon"
+                    "translation": "Baskuli la akomoda tavolo reĝimo"
                 },
                 {
                     "comment": "",
                     "context": "TOGGLE_AUDIO",
                     "contextId": 0,
                     "source": "Toggle audio",
-                    "translation": "Baskuli la audion"
+                    "translation": "Baskuli la aŭdio"
                 },
                 {
                     "comment": "",
                     "context": "TOGGLE_EFFECTS",
                     "contextId": 0,
                     "source": "Toggle effects",
-                    "translation": "Baskuli la efikistojn"
+                    "translation": "Baskuli la efikistoj"
                 },
                 {
                     "comment": "",
                     "context": "TOGGLE_MOTION_BLUR",
                     "contextId": 0,
                     "source": "Toggle motion blur",
-                    "translation": "Baskuli la moviĝan blur"
+                    "translation": "Baskuli la malklariĝa movo"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_FRAME_NAME",
                     "contextId": 0,
                     "source": "DuGR::Isolation",
-                    "translation": "DuGR::Isolation"
+                    "translation": "DuGR::Izoleco"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_ISOLATE_TIP",
                     "contextId": 0,
                     "source": "Isolate selected groups.",
-                    "translation": "Isolate selected groups."
+                    "translation": "Izoli la selektaj grupoj."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_ISOLATE_TIMELINE_TIP",
                     "contextId": 0,
                     "source": "Isolate selected groups, in the timeline only.",
-                    "translation": "Isolate selektaj grupoj, en la fadeno da tempo only."
+                    "translation": "Izoli selektajn grupojn, nur en la kronologio."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_ISOLATE_COMP_TIP",
                     "contextId": 0,
                     "source": "Isolate selected groups, in the composition panel only",
-                    "translation": "Isolate selected groups, in the composition panel only"
+                    "translation": "Izoli seletakj grupoj, nur en  la panelo de la kompozito."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_STICKY_TIP",
                     "contextId": 0,
                     "source": "Set interactive (sticky) mode.",
-                    "translation": "Fiksi interactive (sticky) reĝimo."
+                    "translation": "Fiksi interaga (adhera) reĝimo."
                 },
                 {
                     "comment": "",
@@ -775,21 +775,21 @@
                     "context": "DUGR_RENAME_GROUP_TIP",
                     "contextId": 0,
                     "source": "Change group name",
-                    "translation": "ŝanĝojn la nomon de la groupo"
+                    "translation": "ŝanĝi la nomon de la grupo"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_REMOVE_GROUP_TIP",
                     "contextId": 0,
                     "source": "Remove group.",
-                    "translation": "Forigi grupon."
+                    "translation": "Forigi grupo."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_NEW_GROUP",
                     "contextId": 0,
                     "source": "New group",
-                    "translation": "Nova grupon"
+                    "translation": "Nova grupo"
                 },
                 {
                     "comment": "",
@@ -803,14 +803,14 @@
                     "context": "DUGR_SETTINGS_LOCK_UNCHECKED",
                     "contextId": 0,
                     "source": "Locked layers: deny changes",
-                    "translation": "ŝlosaj tavoloj: deny ŝanĝojn"
+                    "translation": "ŝlosaj tavoloj: rifuzi ŝanĝoj"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_LOCK_CHECKED",
                     "contextId": 0,
                     "source": "Locked layers: allow changes",
-                    "translation": "ŝlosaj tavoloj: permesi ŝanĝojn"
+                    "translation": "ŝlosaj tavoloj: permesi ŝanĝoj"
                 },
                 {
                     "comment": "",
@@ -824,77 +824,77 @@
                     "context": "DUGR_SETTINGS_NO_WARNING_FRAME",
                     "contextId": 0,
                     "source": "Warning frame: None",
-                    "translation": "Warning frame: None"
+                    "translation": "Avertmesaĝa kadro: Neniom"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_NO_WARNING_FRAME_TIP",
                     "contextId": 0,
                     "source": "Don't use any warning frame.",
-                    "translation": "Don't use any warning frame."
+                    "translation": "Ne uzu neniom avertmesaĝan kadron."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WARNING_ABOVE",
                     "contextId": 0,
                     "source": "Warning frame: Above",
-                    "translation": "Warning frame: Above"
+                    "translation": "Avertmesaĝa kadro: Supra"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WARNING_ABOVE_TIP",
                     "contextId": 0,
                     "source": "Draw the frame above the composition.",
-                    "translation": "Draw the frame above the composition."
+                    "translation": "Desegni la kadron supra la kompozito."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WARNING_BELOW",
                     "contextId": 0,
                     "source": "Warning frame: Below",
-                    "translation": "Warning frame: Below"
+                    "translation": "Avertmesaĝa kadro: Sub"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WARNING_BELOW_TIP",
                     "contextId": 0,
                     "source": "Draw the frame below the composition.",
-                    "translation": "Draw the frame below the composition."
+                    "translation": "Desegni la kadron sub la kompozito."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WIREFRAME_UNCHECKED",
                     "contextId": 0,
                     "source": "Isolation: hide layers",
-                    "translation": "Isolation: vidigi tavoloj"
+                    "translation": "Izoliĝo: vidigi tavoloj"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WIREFRAME_CHECKED",
                     "contextId": 0,
                     "source": "Isolation: wireframe",
-                    "translation": "Isolation: wireframe"
+                    "translation": "Izoliĝo: drata kadro"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_WIREFRAME_TIP",
                     "contextId": 0,
                     "source": "Method used to isolate layers in the composition.",
-                    "translation": "Method used to isolate layers in the composition."
+                    "translation": "Metodo kion oni uzas per izoli tabolojn en la kompozito."
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_SHOW_TAGS_UNCHECKED",
                     "contextId": 0,
                     "source": "Hide markers",
-                    "translation": "Vidigi markers"
+                    "translation": "Kaŝi indikiloj"
                 },
                 {
                     "comment": "",
                     "context": "DUGR_SETTINGS_SHOW_TAGS_CHECKED",
                     "contextId": 0,
                     "source": "Show markers",
-                    "translation": "Show markers"
+                    "translation": "Vidig indikiloj"
                 },
                 {
                     "comment": "",
@@ -929,11 +929,11 @@
                     "context": "DUGR_INVERT_TIP",
                     "contextId": 0,
                     "source": "Invert the group/property selection",
-                    "translation": "Invert the group/property selection"
+                    "translation": "Inverti la grupo/selekto de la propraĵo"
                 },
                 {
                     "source": "Exit isolation.",
-                    "translation": "Exit isolation.",
+                    "translation": "Eliri izoliĝo.",
                     "comment": "",
                     "context": "DUGR_EXIT_ISOLATION_TIP",
                     "contextId": 0
@@ -1027,7 +1027,7 @@
                     "context": "",
                     "contextId": 0,
                     "source": "Isolation",
-                    "translation": "Isolation"
+                    "translation": "Izoliĝo"
                 },
                 {
                     "comment": "",
@@ -1083,175 +1083,175 @@
                     "context": "",
                     "contextId": 0,
                     "source": "Type of warning frame to use",
-                    "translation": "Type of warning frame to use"
+                    "translation": "Tipo de la avertmesaĝan kadron kion vi volas uzi"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "All layers",
-                    "translation": "la tutan tavolojn"
+                    "translation": "La tutan tavolojn"
                 },
                 {
                     "comment": "",
                     "context": "",
-                    "contextId": 0,
+                    "contextId": 7,
                     "source": "Selected",
-                    "translation": "Selected"
+                    "translation": "Selekta"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Grouped",
-                    "translation": "Grouped"
+                    "translation": "Grupa"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Hierarchy: Orphans",
-                    "translation": "Hierarchy: Orphans"
+                    "translation": "Hierarĥio: Orfo"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Hierarchy: Have children",
-                    "translation": "Hierarchy: Havas idoj"
+                    "translation": "Hierarĥio: Havas idoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Pre-compositions",
-                    "translation": "Type: Pre-compositions"
+                    "translation": "Tipo: Pre-kompozitoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Null Objects",
-                    "translation": "Tipo: nuligajn objektojn"
+                    "translation": "Tipo: Nuligajn objektojn"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Solids",
-                    "translation": "Type: Solids"
+                    "translation": "Tipo: Solidoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Shapes",
-                    "translation": "Type: Shapes"
+                    "translation": "Tipo: Formoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Texts",
-                    "translation": "Type: Texts"
+                    "translation": "Tipo: Tekstoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Adjustment",
-                    "translation": "Type: Adjustment"
+                    "translation": "Tipo: ĝustigo"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Lights",
-                    "translation": "Type: Lights"
+                    "translation": "Tipo: Lumoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Type: Cameras",
-                    "translation": "Type: Cameras"
+                    "translation": "Tipo: Kameraoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Visible",
-                    "translation": "Attribute: Visible"
+                    "translation": "Atributo: Videbla"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Has Audio",
-                    "translation": "Attribute: Has Audio"
+                    "translation": "Atributo: Havas Aŭdio"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Solo",
-                    "translation": "Attribute: Solo"
+                    "translation": "Atributo: Solo"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Locked",
-                    "translation": "Attribute: ŝlosa"
+                    "translation": "Atributo: ŝlosa"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Shy",
-                    "translation": "Attribute: Shy"
+                    "translation": "Atributo: Timida"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Effects",
-                    "translation": "Attribute: Efikistoj"
+                    "translation": "Atributo: Efikistoj"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Motion Blur",
-                    "translation": "Attribute: Motion Blur"
+                    "translation": "Atributo: Malklariĝa movo"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: 3D",
-                    "translation": "Attribute: 3D"
+                    "translation": "Atributo: 3D"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Attribute: Guide",
-                    "translation": "Attribute: Guide"
+                    "translation": "Atributo: Gvido"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Ignored",
-                    "translation": "Ignored"
+                    "translation": "Ignora"
                 },
                 {
                     "comment": "",
                     "context": "",
                     "contextId": 0,
                     "source": "Edit group name",
-                    "translation": "Sangi la nomon de la grupo"
+                    "translation": "ŝangi la nomon de la grupo"
                 },
                 {
                     "comment": "",
