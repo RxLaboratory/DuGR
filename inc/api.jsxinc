@@ -100,7 +100,7 @@
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2021 Nicolas Dufresne, RxLaboratory
- * @version 4.0.0-Beta
+ * @version 4.0.0
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @license GPL-3.0 <br />
@@ -339,6 +339,9 @@ DuAETag.Key.DUGR_HAD_TAG = 'dugrHadTag'
  */
 DuGR.inGroups = function ( layer, groups, tag )
 {
+    // The Dugr layer is not in any group
+    if (layer.name == DuScriptUI.String.DUGR_FRAME_NAME) return false;
+
     for( var i = 0, n = groups.length; i < n; i++)
     {
         var group = groups[i];
@@ -402,10 +405,11 @@ DuGR.inGroups = function ( layer, groups, tag )
  * @param {DuGR~doCallBack} callback The function to run on each layer.
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
- * @param {DuGR~doNotCallBack} notCallback The function to run on each layer IF it is NOT in the groups.
+ * @param {DuGR~doNotCallBack} [notCallback] The function to run on each layer IF it is NOT in the groups.
  */
 DuGR.do = function( groups, callback, invert, comp, notCallback )
 {
+    notCallback = def(notCallback, function(){} );
     comp = def(comp, DuAEProject.getActiveComp());
     invert = def(invert, false);
 
@@ -968,6 +972,9 @@ DuGR.saveStatus = function( layer, tag )
 // low-level undocumented method to put a layer to isolation
 DuGR.hideLayer = function( layer, timeline, compPanel, compIsolationMode, lockHiddenLayers, tag )
 {
+    // Ignore the Dugr Layer
+    if (layer.name == DuScriptUI.String.DUGR_FRAME_NAME) return;
+
     if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
     // Hide
     if (timeline) layer.shy = true;

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: DuTabPanel</title>
+    <title>Namespace: DuOCO</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -3424,7 +3424,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DuTabPanel.html">Class: DuTabPanel</h1>
+        <h1 class="page-title" data-filename="DuOCO.html">Namespace: DuOCO</h1>
         
 
 
@@ -3433,10 +3433,8 @@
     
 <header>
     <h2>
-    DuTabPanel
+    DuOCO
     </h2>
-    
-        <div class="class-description">For use with <a href="DuScriptUI.html"><code>DuScriptUI</code></a>.<br />A Panel with tabs.<br />This is not a real class, and cannot be instanciated.<br />Use <a href="DuScriptUI.html#.tabPanel"><code>DuScriptUI.tabPanel</code></a> to create a picker.<br />The DuTabPanel inherits the Group object from ScriptUI and has all of its properties and methods.</div>
     
 </header>  
 
@@ -3446,30 +3444,66 @@
     
     
         
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="DuTabPanel">
-            
-            new DuTabPanel<span class="signature">()</span>
-        </h4>
+            <div class="description">Methods to load and create OCO Documents and armatures</div>
+        
+        
+        
+<dl class="details">
     
         
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10793
-        </div>
-        
-    </div>
+    
+    
+    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Limb"><span class="type-signature static">static</span>DuOCO.Limb<span class="type-signature type string">string</span> </h4>
+    </div>
+    
     
 </dt>
 <dd>
     
-    
-
-    
-    
-    
-    
+    <div class="description">
+        Predefined limbs
+    </div>
     
     
     
@@ -3492,6 +3526,8 @@
 		
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -3502,122 +3538,7 @@
 	
         <tr>
             
-                <td class="name"><code>buttons</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="DuButton.html">DuButton</a>></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The buttons for the tabs. Not that an "index" property is added to the button, containing the DuTab index.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>tabs</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="DuTab.html">DuTab</a>></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The tabs.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The currently visible tab.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>buttonsGroup</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Group</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The ScriptUI Group containing the buttons</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>mainGroup</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Group</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The ScriptUI Group containing the tabs</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>scriptUIPanel</code></td>
+                <td class="name"><code>SPINE</code></td>
             
             
             <td class="type">
@@ -3632,21 +3553,27 @@
             
             
             
+                <td class="default">
+                
+                    spine
+                
+                </td>
             
-            <td class="description last">The file name ("script.jsx") of a scriptUI Panel. Alt+Click on this tab will open/close this panel.</td>
+            
+            <td class="description last"></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>onChange</code></td>
+                <td class="name"><code>ARM</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type"><a href="DuTabPanel.html#~onChange">DuTabPanel~onChange</a></span>
+<span class="param-type">string</span>
 
 
             
@@ -3655,8 +3582,188 @@
             
             
             
+                <td class="default">
+                
+                    arm
+                
+                </td>
             
-            <td class="description last">Called when the index changes.</td>
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>LEG</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    leg
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>WING</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    wing
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>FIN</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    fin
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>HAIR</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    hair
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>TAIL</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    tail
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>CUSTOM</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    custom
+                
+                </td>
+            
+            
+            <td class="description last"></td>
         </tr>
 	
 	
@@ -3688,23 +3795,207 @@
 
     
     
-
-    
-
-    
-    
-    
-    
-    
-    
-    
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".LimbType"><span class="type-signature static">static</span>DuOCO.LimbType<span class="type-signature type string">string</span> </h4>
+    </div>
     
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Types of limbs
     </div>
     
     
     
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>PLANTIGRADE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    plantigrade
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>DIGITIGRADE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    digitigrade
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>UNGULATE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    ungulate
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>ARTHROPOD</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    arthropod
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>CUSTOM</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    custom
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
     
     
     
@@ -3713,6 +4004,593 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Location"><span class="type-signature static">static</span>DuOCO.Location<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Locations for the limbs. Use these with <a href="DuOCO.html#.Side"><code>DuOCO.Side</code></a> to differenciate similar limbs,<br />for example, a leg can be Front-Right, Front-Left, Back-Right, Back-Left, etc.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>FRONT</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.FRONT_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>BACK</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.BACK_LOCATION_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>TAIL</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.TAIL_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>MIDDLE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.MIDDLE_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>ABOVE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.ABOVE_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>UNDER</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.UNDER_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>NONE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Side"><span class="type-signature static">static</span>DuOCO.Side<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Sides for the limbs Use these with <a href="DuOCO.html#.Location"><code>DuOCO.Location</code></a> to differenciate similar limbs,<br />for example, a leg can be Front-Right, Front-Left, Back-Right, Back-Left, etc.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>LEFT</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.LEFT_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>RIGHT</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    DuScriptUI.String.RIGHT_SHORT
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>NONE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    
+                
+                </td>
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Type"><span class="type-signature static">static</span>DuOCO.Type<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Types of OCO armatures
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>META</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    meta
+                
+                </td>
+            
+            
+            <td class="description last">A meta-rig, used to automatically create a default armature to be used with an auto-rig.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>CHARACTER</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+                <td class="default">
+                
+                    character
+                
+                </td>
+            
+            
+            <td class="description last">An actual (rigged) character.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -3722,14 +4600,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".addTab">
+        <h4 class="name" id=".getBounds">
             
-            <span class="type-signature static">static</span>DuTabPanel.addTab<span class="signature">(<span class="optional">text</span>, <span class="optional">image</span>, <span class="optional">helpTip</span>, <span class="optional">imageOver</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="DuTab.html">DuTab</a>}</span>
+            <span class="type-signature static">static</span>DuOCO.getBounds<span class="signature">(armature)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array.&lt;float>}</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10810
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 11308
         </div>
         
     </div>
@@ -3740,7 +4618,7 @@
     
     
     <div class="description">
-        Adds a new empty DuTab in the DuTabPanel.
+        Gets the boundaries of an armature (a chain of bones)
     </div>
     
 
@@ -3761,8 +4639,6 @@
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -3773,144 +4649,23 @@
 	
         <tr>
             
-                <td class="name"><code>text</code></td>
+                <td class="name"><code>armature</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;<a href="DuOCOBone.html">DuOCOBone</a>></span>
 
 
             
             </td>
             
             
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
             
             <td class="description last">
                 
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The label of the button.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>image</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The path to the icon.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>helpTip</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The helptip.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>imageOver</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    image
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The path to an icon displayed when the mouse is over the button.</td>
+                The chain of bones</td>
         </tr>
 	
 	
@@ -3971,11 +4726,11 @@
             
             <td class="type">
             
-                        <a href="DuTab.html">DuTab</a>
+                        Array.&lt;float>
                         
                     
             </td>
-            <td class="description last">The new DuTab.</td>
+            <td class="description last">[left, top, right, bottom]</td>
         </tr>
     
     </tbody>
@@ -3986,215 +4741,9 @@
     
 </dd>
 
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id=".setCurrentIndex">
-            
-            <span class="type-signature static">static</span>DuTabPanel.setCurrentIndex<span class="signature">(<span class="optional">index</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10822
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Sets the current visible tab.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The index of the tab to show.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
         </dl>
     
     
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-        
-        <dl>
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="~onChange">
-            
-            onChange<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10830
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Called when the index changes.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-            </dl>
     
     
     

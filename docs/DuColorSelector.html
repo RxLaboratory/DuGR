@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: DuTabPanel</title>
+    <title>Class: DuColorSelector</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -3424,7 +3424,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DuTabPanel.html">Class: DuTabPanel</h1>
+        <h1 class="page-title" data-filename="DuColorSelector.html">Class: DuColorSelector</h1>
         
 
 
@@ -3433,10 +3433,10 @@
     
 <header>
     <h2>
-    DuTabPanel
+    DuColorSelector
     </h2>
     
-        <div class="class-description">For use with <a href="DuScriptUI.html"><code>DuScriptUI</code></a>.<br />A Panel with tabs.<br />This is not a real class, and cannot be instanciated.<br />Use <a href="DuScriptUI.html#.tabPanel"><code>DuScriptUI.tabPanel</code></a> to create a picker.<br />The DuTabPanel inherits the Group object from ScriptUI and has all of its properties and methods.</div>
+        <div class="class-description">For use with <a href="DuScriptUI.html"><code>DuScriptUI</code></a>.<br />A color selector, with an edittext and a random button.<br />This is not a real class, and cannot be instanciated.<br />Use <a href="DuScriptUI.html#.colorSelector"><code>DuScriptUI.colorSelector</code></a> to create a Selector.<br />The Selector inherits the Group object from ScriptUI and has all of its properties and methods.</div>
     
 </header>  
 
@@ -3448,14 +3448,14 @@
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="DuTabPanel">
+        <h4 class="name" id="DuColorSelector">
             
-            new DuTabPanel<span class="signature">()</span>
+            new DuColorSelector<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10793
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 11011
         </div>
         
     </div>
@@ -3474,195 +3474,6 @@
     
     
 <dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>buttons</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="DuButton.html">DuButton</a>></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The buttons for the tabs. Not that an "index" property is added to the button, containing the DuTab index.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>tabs</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="DuTab.html">DuTab</a>></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The tabs.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The currently visible tab.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>buttonsGroup</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Group</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The ScriptUI Group containing the buttons</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>mainGroup</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Group</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The ScriptUI Group containing the tabs</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>scriptUIPanel</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The file name ("script.jsx") of a scriptUI Panel. Alt+Click on this tab will open/close this panel.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onChange</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuTabPanel.html#~onChange">DuTabPanel~onChange</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Called when the index changes.</td>
-        </tr>
-	
-	
-	</tbody>
-</table></dl>
-        
     
         
     
@@ -3713,6 +3524,100 @@
     
     
     
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".color"><span class="type-signature static">static</span>DuColorSelector.color<span class="type-signature type ducolor"><a href="DuColor.html">DuColor</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The current color
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".onChange"><span class="type-signature static">static</span>DuColorSelector.onChange<span class="type-signature type ducolorselector~onchange"><a href="DuColorSelector.html#~onChange">DuColorSelector~onChange</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Method called when the has been changed
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -3722,14 +3627,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".addTab">
+        <h4 class="name" id=".setColor">
             
-            <span class="type-signature static">static</span>DuTabPanel.addTab<span class="signature">(<span class="optional">text</span>, <span class="optional">image</span>, <span class="optional">helpTip</span>, <span class="optional">imageOver</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="DuTab.html">DuTab</a>}</span>
+            <span class="type-signature static">static</span>DuColorSelector.setColor<span class="signature">(color)</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10810
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 11028
         </div>
         
     </div>
@@ -3740,7 +3645,7 @@
     
     
     <div class="description">
-        Adds a new empty DuTab in the DuTabPanel.
+        Sets the current color
     </div>
     
 
@@ -3761,8 +3666,6 @@
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -3773,304 +3676,23 @@
 	
         <tr>
             
-                <td class="name"><code>text</code></td>
+                <td class="name"><code>color</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><a href="DuColor.html">DuColor</a></span>
 
 
             
             </td>
             
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
             
             
             <td class="description last">
                 
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The label of the button.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>image</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The path to the icon.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>helpTip</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The helptip.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>imageOver</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    image
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The path to an icon displayed when the mouse is over the button.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="DuTab.html">DuTab</a>
-                        
-                    
-            </td>
-            <td class="description last">The new DuTab.</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id=".setCurrentIndex">
-            
-            <span class="type-signature static">static</span>DuTabPanel.setCurrentIndex<span class="signature">(<span class="optional">index</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10822
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Sets the current visible tab.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The index of the tab to show.</td>
+                The new color</td>
         </tr>
 	
 	
@@ -4134,7 +3756,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 10830
+            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 11043
         </div>
         
     </div>
@@ -4145,7 +3767,7 @@
     
     
     <div class="description">
-        Called when the index changes.
+        The function to execute when the color is changed.
     </div>
     
 

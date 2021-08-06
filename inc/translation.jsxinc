@@ -1,13 +1,14 @@
 #include "tr/DuGR_fr.json.jsxinc"
 #include "tr/DuGR_pd.json.jsxinc"
 #include "tr/DuGR_es.json.jsxinc"
+#include "tr/DuGR_eo.json.jsxinc"
 
 // Extract translations
 var outputFolder = DuESF.scriptSettings.file.parent.absoluteURI + '/';
 
 DuGR_fr.toFile( outputFolder + 'DuGR_fr.json', false );
 DuGR_pd.toFile( outputFolder + 'DuGR_pd.json', false );
-DuGR_es.toFile( outputFolder + 'DuGR_es.json', false );
+DuGR_eo.toFile( outputFolder + 'DuGR_eo.json', false );
 
 
 // Load
