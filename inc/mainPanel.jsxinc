@@ -1,3 +1,6 @@
+var commonSettings = def( DuESF.scriptSettings.data.common, {} );
+var uiMode = def(commonSettings.uiMode, 0);
+
 // ========= ISOLATE BUTTONS =========
 
 var isolateGroup = DuScriptUI.group( ui.mainGroup);
@@ -18,7 +21,15 @@ var isolateButton = DuScriptUI.checkBox(
     undefined,
     undefined,
     'column'
-)
+);
+
+if (uiMode < 1)
+{
+    var spacer = isolateGroup.add('group');
+    spacer.spacing = 0;
+    spacer.margins = 0;
+    spacer.minimumSize = [5,-1];
+}
 
 var isolateTLButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -28,7 +39,15 @@ var isolateTLButton = DuScriptUI.checkBox(
     undefined,
     undefined,
     'column'
-)
+);
+
+if (uiMode < 1)
+{
+    var spacer = isolateGroup.add('group');
+    spacer.spacing = 0;
+    spacer.margins = 0;
+    spacer.minimumSize = [5,-1];
+}
 
 var isolateCompButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -38,7 +57,7 @@ var isolateCompButton = DuScriptUI.checkBox(
     undefined,
     undefined,
     'column'
-)
+);
 
 var pinButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -47,7 +66,7 @@ var pinButton = DuScriptUI.checkBox(
     DuScriptUI.String.DUGR_STICKY_TIP,
     "",
     DuScriptUI.Icon.PINNED
-)
+);
 pinButton.setChecked( def(DuESF.scriptSettings.data.interactiveMode, false ) );
 exitButton.visible = !pinButton.checked;
 
@@ -380,6 +399,14 @@ mainTabs.onChange = function()
 {
     DuESF.scriptSettings.data.currentTab = mainTabs.index;
     DuESF.scriptSettings.save();
+}
+
+if (uiMode < 1)
+{
+    var spacer = mainTabs.buttonsGroup.add('group');
+    spacer.spacing = 0;
+    spacer.margins = 0;
+    spacer.minimumSize = [5,-1];
 }
 
 var invertButton = DuScriptUI.checkBox(
