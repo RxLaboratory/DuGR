@@ -14,6 +14,7 @@
 #include "icons/w16_inverted.png.jsxinc"
 #include "icons/w16_tag.png.jsxinc"
 #include "icons/w16_no_tag.png.jsxinc"
+#include "icons/w16_exit_isolation.png.jsxinc"
 
 #include "icons/w12_add_layer.png.jsxinc"
 #include "icons/w12_add.png.jsxinc"

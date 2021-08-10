@@ -9,9 +9,19 @@ isolateGroup.alignment = ['center','top'];
 var exitButton = DuScriptUI.button(
     isolateGroup,
     "",
-    DuScriptUI.Icon.CLOSE,
+    w16_exit_isolation,
     DuScriptUI.String.DUGR_EXIT_ISOLATION_TIP
 );
+exitButton.alignment = ['center','center'];
+
+if (uiMode < 1)
+{
+    var spacer = isolateGroup.add('group');
+    spacer.spacing = 0;
+    spacer.margins = 0;
+    spacer.minimumSize = [5,-1];
+}
+
 
 var isolateButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -59,6 +69,15 @@ var isolateCompButton = DuScriptUI.checkBox(
     'column'
 );
 
+if (uiMode < 1)
+{
+    var spacer = isolateGroup.add('group');
+    spacer.spacing = 0;
+    spacer.margins = 0;
+    spacer.minimumSize = [5,-1];
+}
+
+
 var pinButton = DuScriptUI.checkBox(
     isolateGroup,
     "",
@@ -67,6 +86,7 @@ var pinButton = DuScriptUI.checkBox(
     "",
     DuScriptUI.Icon.PINNED
 );
+pinButton.alignment = ['center','center'];
 pinButton.setChecked( def(DuESF.scriptSettings.data.interactiveMode, false ) );
 exitButton.visible = !pinButton.checked;
 
