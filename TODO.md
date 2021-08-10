@@ -1,0 +1,3 @@
+- [ ] Language selection at first startup not working
+- [ ] update changelog
+- [ ] alert when changing settings
