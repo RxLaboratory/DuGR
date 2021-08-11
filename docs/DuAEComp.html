@@ -156,6 +156,8 @@
             
                 <li data-name="DuAEComp.framesToTime"><a href="DuAEComp.html#.framesToTime">framesToTime</a></li>
             
+                <li data-name="DuAEComp.getActiveLayer"><a href="DuAEComp.html#.getActiveLayer">getActiveLayer</a></li>
+            
                 <li data-name="DuAEComp.getAnimatedProps"><a href="DuAEComp.html#.getAnimatedProps">getAnimatedProps</a></li>
             
                 <li data-name="DuAEComp.getAudioLayers"><a href="DuAEComp.html#.getAudioLayers">getAudioLayers</a></li>
@@ -628,8 +630,6 @@
                 <li data-name="DuAEProject.expressionEngine"><a href="DuAEProject.html#.expressionEngine">expressionEngine</a></li>
             
                 <li data-name="DuAEProject.getActiveComp"><a href="DuAEProject.html#.getActiveComp">getActiveComp</a></li>
-            
-                <li data-name="DuAEProject.getActiveLayer"><a href="DuAEProject.html#.getActiveLayer">getActiveLayer</a></li>
             
                 <li data-name="DuAEProject.getComps"><a href="DuAEProject.html#.getComps">getComps</a></li>
             
@@ -2400,6 +2400,8 @@
             
                 <li data-name="DuColor.rgbToHsl"><a href="DuColor.html#.rgbToHsl">rgbToHsl</a></li>
             
+                <li data-name="DuColor#adjusted"><a href="DuColor.html#adjusted">adjusted</a></li>
+            
                 <li data-name="DuColor#darker"><a href="DuColor.html#darker">darker</a></li>
             
                 <li data-name="DuColor#equals"><a href="DuColor.html#equals">equals</a></li>
@@ -3503,7 +3505,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16843
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16914
         </div>
         
     </div>
@@ -3648,7 +3650,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16985
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 17056
         </div>
         
     </div>
@@ -3816,7 +3818,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16712
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16783
         </div>
         
     </div>
@@ -3997,7 +3999,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16695
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16766
         </div>
         
     </div>
@@ -4148,7 +4150,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16533
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16594
         </div>
         
     </div>
@@ -4333,6 +4335,109 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".getActiveLayer">
+            
+            <span class="type-signature static">static</span>DuAEComp.getActiveLayer<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Layer|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16755
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the first selected layer in the After Effects current composition
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Layer
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last">The layer or null if there's no current comp / no selected layer</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".getAnimatedProps">
             
             <span class="type-signature static">static</span>DuAEComp.getAnimatedProps<span class="signature">(<span class="optional">filter</span>, <span class="optional">strict</span>, <span class="optional">caseSensitive</span>, <span class="optional">selectedLayersOnly</span>, <span class="optional">comp</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array.&lt;<a href="DuAEProperty.html">DuAEProperty</a>>}</span>
@@ -4340,7 +4445,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16734
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16805
         </div>
         
     </div>
@@ -4651,7 +4756,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16934
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 17005
         </div>
         
     </div>
@@ -4843,7 +4948,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16919
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16990
         </div>
         
     </div>
@@ -4988,7 +5093,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16898
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16969
         </div>
         
     </div>
@@ -5180,7 +5285,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16875
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16946
         </div>
         
     </div>
@@ -5376,7 +5481,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16684
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16745
         </div>
         
     </div>
@@ -5476,7 +5581,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16656
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16717
         </div>
         
     </div>
@@ -5715,7 +5820,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16812
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16883
         </div>
         
     </div>
@@ -5941,7 +6046,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16829
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16900
         </div>
         
     </div>
@@ -6165,7 +6270,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16955
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 17026
         </div>
         
     </div>
@@ -6325,7 +6430,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16855
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16926
         </div>
         
     </div>
@@ -6488,7 +6593,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16599
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16660
         </div>
         
     </div>
@@ -6619,7 +6724,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16583
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16644
         </div>
         
     </div>
@@ -6750,7 +6855,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16564
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16625
         </div>
         
     </div>
@@ -7017,7 +7122,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16797
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16868
         </div>
         
     </div>
@@ -7133,7 +7238,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16616
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16677
         </div>
         
     </div>
@@ -7278,7 +7383,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16631
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16692
         </div>
         
     </div>
@@ -7448,7 +7553,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16547
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16608
         </div>
         
     </div>
@@ -7644,7 +7749,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16772
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16843
         </div>
         
     </div>
@@ -7804,7 +7909,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 16757
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 16828
         </div>
         
     </div>
@@ -7881,7 +7986,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Aug 06 2021 10:11:21 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Aug 11 2021 09:45:28 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>

@@ -156,6 +156,8 @@
             
                 <li data-name="DuAEComp.framesToTime"><a href="DuAEComp.html#.framesToTime">framesToTime</a></li>
             
+                <li data-name="DuAEComp.getActiveLayer"><a href="DuAEComp.html#.getActiveLayer">getActiveLayer</a></li>
+            
                 <li data-name="DuAEComp.getAnimatedProps"><a href="DuAEComp.html#.getAnimatedProps">getAnimatedProps</a></li>
             
                 <li data-name="DuAEComp.getAudioLayers"><a href="DuAEComp.html#.getAudioLayers">getAudioLayers</a></li>
@@ -628,8 +630,6 @@
                 <li data-name="DuAEProject.expressionEngine"><a href="DuAEProject.html#.expressionEngine">expressionEngine</a></li>
             
                 <li data-name="DuAEProject.getActiveComp"><a href="DuAEProject.html#.getActiveComp">getActiveComp</a></li>
-            
-                <li data-name="DuAEProject.getActiveLayer"><a href="DuAEProject.html#.getActiveLayer">getActiveLayer</a></li>
             
                 <li data-name="DuAEProject.getComps"><a href="DuAEProject.html#.getComps">getComps</a></li>
             
@@ -2400,6 +2400,8 @@
             
                 <li data-name="DuColor.rgbToHsl"><a href="DuColor.html#.rgbToHsl">rgbToHsl</a></li>
             
+                <li data-name="DuColor#adjusted"><a href="DuColor.html#adjusted">adjusted</a></li>
+            
                 <li data-name="DuColor#darker"><a href="DuColor.html#darker">darker</a></li>
             
                 <li data-name="DuColor#equals"><a href="DuColor.html#equals">equals</a></li>
@@ -3604,7 +3606,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2225
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2250
         </div>
         
     </div>
@@ -3956,7 +3958,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2261
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2286
         </div>
         
     </div>
@@ -4151,7 +4153,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2050
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2056
         </div>
         
     </div>
@@ -4251,7 +4253,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2131
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2137
         </div>
         
     </div>
@@ -4396,7 +4398,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2120
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2126
         </div>
         
     </div>
@@ -4541,7 +4543,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2145
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2151
         </div>
         
     </div>
@@ -4681,12 +4683,12 @@
     <div class="nameContainer">
         <h4 class="name" id=".setLanguage">
             
-            <span class="type-signature static">static</span>DuTranslator.setLanguage<span class="signature">(languageId)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{int}</span>
+            <span class="type-signature static">static</span>DuTranslator.setLanguage<span class="signature">(languageId)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2166
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2169
         </div>
         
     </div>
@@ -4805,11 +4807,11 @@
             
             <td class="type">
             
-                        int
+                        Boolean
                         
                     
             </td>
-            <td class="description last">success code<br />0	Everything went ok<br />1	The file linked to the given id can't be opened<br />2	The json content doesn't match a translation file</td>
+            <td class="description last">Success</td>
         </tr>
     
     </tbody>
@@ -4826,12 +4828,12 @@
     <div class="nameContainer">
         <h4 class="name" id=".setPrettyLanguage">
             
-            <span class="type-signature static">static</span>DuTranslator.setPrettyLanguage<span class="signature">(languageName)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{int}</span>
+            <span class="type-signature static">static</span>DuTranslator.setPrettyLanguage<span class="signature">(languageName)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 2205
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 2231
         </div>
         
     </div>
@@ -4950,11 +4952,11 @@
             
             <td class="type">
             
-                        int
+                        Boolean
                         
                     
             </td>
-            <td class="description last">success code<br />0	Everything went ok<br />-1   Can't find any language with the given pretty name<br />>0  Call to setLanguage(languageId) failed</td>
+            <td class="description last">Success</td>
         </tr>
     
     </tbody>
@@ -4982,7 +4984,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Aug 06 2021 10:11:22 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Aug 11 2021 09:45:29 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>

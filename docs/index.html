@@ -156,6 +156,8 @@
             
                 <li data-name="DuAEComp.framesToTime"><a href="DuAEComp.html#.framesToTime">framesToTime</a></li>
             
+                <li data-name="DuAEComp.getActiveLayer"><a href="DuAEComp.html#.getActiveLayer">getActiveLayer</a></li>
+            
                 <li data-name="DuAEComp.getAnimatedProps"><a href="DuAEComp.html#.getAnimatedProps">getAnimatedProps</a></li>
             
                 <li data-name="DuAEComp.getAudioLayers"><a href="DuAEComp.html#.getAudioLayers">getAudioLayers</a></li>
@@ -628,8 +630,6 @@
                 <li data-name="DuAEProject.expressionEngine"><a href="DuAEProject.html#.expressionEngine">expressionEngine</a></li>
             
                 <li data-name="DuAEProject.getActiveComp"><a href="DuAEProject.html#.getActiveComp">getActiveComp</a></li>
-            
-                <li data-name="DuAEProject.getActiveLayer"><a href="DuAEProject.html#.getActiveLayer">getActiveLayer</a></li>
             
                 <li data-name="DuAEProject.getComps"><a href="DuAEProject.html#.getComps">getComps</a></li>
             
@@ -2400,6 +2400,8 @@
             
                 <li data-name="DuColor.rgbToHsl"><a href="DuColor.html#.rgbToHsl">rgbToHsl</a></li>
             
+                <li data-name="DuColor#adjusted"><a href="DuColor.html#adjusted">adjusted</a></li>
+            
                 <li data-name="DuColor#darker"><a href="DuColor.html#darker">darker</a></li>
             
                 <li data-name="DuColor#equals"><a href="DuColor.html#equals">equals</a></li>
@@ -3453,7 +3455,7 @@
         
     
     <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>4.0.0</li></ul></dd>
+    <dd class="tag-version"><ul class="dummy"><li>4.0.1</li></ul></dd>
     
     
     
@@ -3730,7 +3732,7 @@
             
                 <td class="default">
                 
-                    DugR.all
+                    DuGR.all
                 
                 </td>
             
@@ -3759,7 +3761,7 @@
             
                 <td class="default">
                 
-                    DugR.selected
+                    DuGR.selected
                 
                 </td>
             
@@ -3788,7 +3790,7 @@
             
                 <td class="default">
                 
-                    DugR.grouped
+                    DuGR.grouped
                 
                 </td>
             
@@ -3817,7 +3819,7 @@
             
                 <td class="default">
                 
-                    DugR.type.comp
+                    DuGR.type.comp
                 
                 </td>
             
@@ -3846,7 +3848,7 @@
             
                 <td class="default">
                 
-                    DugR.type.null
+                    DuGR.type.null
                 
                 </td>
             
@@ -3875,7 +3877,7 @@
             
                 <td class="default">
                 
-                    DugR.type.solid
+                    DuGR.type.solid
                 
                 </td>
             
@@ -3904,7 +3906,7 @@
             
                 <td class="default">
                 
-                    DugR.type.shape
+                    DuGR.type.shape
                 
                 </td>
             
@@ -3933,7 +3935,7 @@
             
                 <td class="default">
                 
-                    DugR.type.text
+                    DuGR.type.text
                 
                 </td>
             
@@ -3962,7 +3964,7 @@
             
                 <td class="default">
                 
-                    DugR.type.adjustment
+                    DuGR.type.adjustment
                 
                 </td>
             
@@ -3991,7 +3993,7 @@
             
                 <td class="default">
                 
-                    DugR.type.light
+                    DuGR.type.light
                 
                 </td>
             
@@ -4020,7 +4022,7 @@
             
                 <td class="default">
                 
-                    DugR.type.camera
+                    DuGR.type.camera
                 
                 </td>
             
@@ -4049,7 +4051,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.visible
+                    DuGR.attr.visible
                 
                 </td>
             
@@ -4078,7 +4080,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.sound
+                    DuGR.attr.sound
                 
                 </td>
             
@@ -4107,7 +4109,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.solo
+                    DuGR.attr.solo
                 
                 </td>
             
@@ -4136,7 +4138,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.locked
+                    DuGR.attr.locked
                 
                 </td>
             
@@ -4165,7 +4167,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.shy
+                    DuGR.attr.shy
                 
                 </td>
             
@@ -4194,7 +4196,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.effects
+                    DuGR.attr.effects
                 
                 </td>
             
@@ -4223,7 +4225,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.mb
+                    DuGR.attr.mb
                 
                 </td>
             
@@ -4252,7 +4254,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.three_d
+                    DuGR.attr.three_d
                 
                 </td>
             
@@ -4281,7 +4283,7 @@
             
                 <td class="default">
                 
-                    DugR.attr.guide
+                    DuGR.attr.guide
                 
                 </td>
             
@@ -4777,7 +4779,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21924
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21995
         </div>
         
     </div>
@@ -4940,7 +4942,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21262
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21333
         </div>
         
     </div>
@@ -5205,7 +5207,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21893
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21964
         </div>
         
     </div>
@@ -5336,7 +5338,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21192
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21263
         </div>
         
     </div>
@@ -5544,7 +5546,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21725
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21796
         </div>
         
     </div>
@@ -5887,7 +5889,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21701
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21772
         </div>
         
     </div>
@@ -6047,7 +6049,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21944
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 22015
         </div>
         
     </div>
@@ -6243,7 +6245,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21992
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 22063
         </div>
         
     </div>
@@ -6442,7 +6444,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21974
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 22045
         </div>
         
     </div>
@@ -6637,7 +6639,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21613
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21684
         </div>
         
     </div>
@@ -6836,7 +6838,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21562
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21633
         </div>
         
     </div>
@@ -7071,7 +7073,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21390
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21461
         </div>
         
     </div>
@@ -7306,7 +7308,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21474
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21545
         </div>
         
     </div>
@@ -7541,7 +7543,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21500
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21571
         </div>
         
     </div>
@@ -7776,7 +7778,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21416
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21487
         </div>
         
     </div>
@@ -8011,7 +8013,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21353
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21424
         </div>
         
     </div>
@@ -8210,7 +8212,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21536
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21607
         </div>
         
     </div>
@@ -8445,7 +8447,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21442
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21513
         </div>
         
     </div>
@@ -8680,7 +8682,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21371
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21442
         </div>
         
     </div>
@@ -8879,7 +8881,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21334
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21405
         </div>
         
     </div>
@@ -9078,7 +9080,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21316
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21387
         </div>
         
     </div>
@@ -9277,7 +9279,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21588
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21659
         </div>
         
     </div>
@@ -9512,7 +9514,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21298
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21369
         </div>
         
     </div>
@@ -9717,7 +9719,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF_Dugr/tools/output/DuAEF_DuGR_api.jsxinc, line 21282
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 21353
         </div>
         
     </div>
@@ -9889,7 +9891,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Aug 06 2021 10:11:22 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Aug 11 2021 09:45:28 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>

@@ -100,7 +100,7 @@
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2021 Nicolas Dufresne, RxLaboratory
- * @version 4.0.0
+ * @version 4.0.1
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @license GPL-3.0 <br />
@@ -127,83 +127,83 @@ DuGR.Group = {
     /**
      * All layers in the composition
      */
-    ALL: 'DugR.all',
+    ALL: 'DuGR.all',
     /**
      * Selected layers
      */
-    SELECTED: 'DugR.selected',
+    SELECTED: 'DuGR.selected',
     /**
      * Layers included in a custom group
      */
-    GROUPED: 'DugR.grouped',
+    GROUPED: 'DuGR.grouped',
     /**
      * Precompositions
      */
-    COMP: 'DugR.type.comp',
+    COMP: 'DuGR.type.comp',
     /**
      * Null objects
      */
-    NULL: 'DugR.type.null',
+    NULL: 'DuGR.type.null',
     /**
      * Solids
      */
-    SOLID: 'DugR.type.solid',
+    SOLID: 'DuGR.type.solid',
     /**
      * Shape layers
      */
-    SHAPE: 'DugR.type.shape',
+    SHAPE: 'DuGR.type.shape',
     /**
      * Text layers
      */
-    TEXT: 'DugR.type.text',
+    TEXT: 'DuGR.type.text',
     /**
      * Adjustement layers
      */
-    ADJUSTMENT: 'DugR.type.adjustment',
+    ADJUSTMENT: 'DuGR.type.adjustment',
     /**
      * 3D Light layers
      */
-    LIGHT: 'DugR.type.light',
+    LIGHT: 'DuGR.type.light',
     /**
      * Camera layers
      */
-    CAMERA: 'DugR.type.camera',
+    CAMERA: 'DuGR.type.camera',
     /**
      * Visible layers
      */
-    VISIBLE: 'DugR.attr.visible',
+    VISIBLE: 'DuGR.attr.visible',
     /**
      * Audio layers
      */
-    SOUND: 'DugR.attr.sound',
+    SOUND: 'DuGR.attr.sound',
     /**
      * Solo layers
      */
-    SOLO: 'DugR.attr.solo',
+    SOLO: 'DuGR.attr.solo',
     /**
      * Locked layers
      */
-    LOCKED: 'DugR.attr.locked',
+    LOCKED: 'DuGR.attr.locked',
     /**
      * Shy layers
      */
-    SHY: 'DugR.attr.shy',
+    SHY: 'DuGR.attr.shy',
     /**
      * Effects enabled
      */
-    EFFECTS: 'DugR.attr.effects',
+    EFFECTS: 'DuGR.attr.effects',
     /**
      * Motion Blur enabled
      */
-    MB: 'DugR.attr.mb',
+    MB: 'DuGR.attr.mb',
     /**
      * 3D layers
      */
-    THREE_D: 'DugR.attr.three_d',
+    THREE_D: 'DuGR.attr.three_d',
     /**
      * Guide layers
      */
-    GUIDE: 'DugR.attr.guide',
+    GUIDE: 'DuGR.attr.guide',
     /**
      * The layer does not have any parent
      */

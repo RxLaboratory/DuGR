@@ -11,6 +11,7 @@ cd output
 xcopy /Y api.jsxinc Dugr_api.jsxinc
 cd ..
 xcopy /S /I /Y ..\docs output\docs
+xcopy /S /I /Y ..\DuGR_Docs\docs output\Help
 cd output\docs
 xcopy /Y DuGR.html index.html
 cd ..
