@@ -28,7 +28,7 @@ var layerInfoButton = DuScriptUI.button(
     topButtons,
     "",
     w12_layer_info,
-    DuScriptUI.String.DUGR_GET_GROUPS_TI
+    DuScriptUI.String.DUGR_GET_GROUPS_TIP
 )
 addLayerButton.alignment = ['right', 'top'];
 
