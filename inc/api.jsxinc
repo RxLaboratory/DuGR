@@ -868,7 +868,7 @@ DuGR.isolationMode = function( comp )
  * @param {DuGR.WarningFrameMode} [frameMode=DuGR.WarningFrameMode.BELOW] How the warning frame must be shown
  * @param {DuGR.IsolationMode} [isolationMode=DuGR.IsolationMode.BOTH] What needs to be hidden.
  * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.WIREFRAME] How to hide the layers
- * @param {Boolean} [lockHiddenLayers=true] Whether to lock the layers being hidden.
+ * @param {Boolean} [lockHiddenLayers=true] wether to lock the layers being hidden.
  */
 DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
 {
@@ -922,11 +922,11 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
         // Get/Set the dugr tag
         var tag = DuAETag.set( layer, undefined, undefined );
 
-        // Whether to isolate the layer
+        // wether to isolate the layer
         var hide = !DuGR.inGroups( layer, groups, tag );
         if (invert) hide = !hide;
 
-        // Whether the layer was already isolated
+        // wether the layer was already isolated
         var wasHidden = DuAETag.getValue( layer, DuAETag.Key.DUGR_HIDDEN, DuAETag.Type.BOOL, tag );
 
         // Nothing to do
