@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: DuButton</title>
+    <title>Class: DuProgressBar</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -3610,7 +3610,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DuButton.html">Class: DuButton</h1>
+        <h1 class="page-title" data-filename="DuProgressBar.html">Class: DuProgressBar</h1>
         
 
 
@@ -3619,10 +3619,10 @@
     
 <header>
     <h2>
-    DuButton
+    DuProgressBar
     </h2>
     
-        <div class="class-description">For use with <a href="DuScriptUI.html"><code>DuScriptUI</code></a>.<br />An Image Button.<br />This is not a real class, and cannot be instanciated.<br />Use <a href="DuScriptUI.html#.button"><code>DuScriptUI.button</code></a> to create an Image Button.<br />The Image Button inherits the <code>Group</code> object from ScriptUI and has all of its properties and methods.</div>
+        <div class="class-description">A simple progress bar.<br />This was inspired by <a target="_blank" href="https://github.com/indiscripts/extendscript/blob/master/scriptui/ProgressBar.jsx">the progress bar</a>by <a target="_blank" href="https://www.indiscripts.com/">Marc Autret / IndiScripts</a>.</div>
     
 </header>  
 
@@ -3634,14 +3634,14 @@
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="DuButton">
+        <h4 class="name" id="DuProgressBar">
             
-            new DuButton<span class="signature">()</span>
+            new DuProgressBar<span class="signature">(title)</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8782
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11826
         </div>
         
     </div>
@@ -3651,22 +3651,19 @@
 <dd>
     
     
+    <div class="description">
+        Constructs a progress bar popup
+    </div>
+    
 
     
     
     
     
     
-    
-    
-<dl class="details">
-    
         
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
 
-<table class="props">
+<table class="params">
     <thead>
 	<tr>
 		
@@ -3674,8 +3671,6 @@
 		
 		
 		<th>Type</th>
-		
-		
 		
 		
 		
@@ -3688,7 +3683,7 @@
 	
         <tr>
             
-                <td class="name"><code>helpLink</code></td>
+                <td class="name"><code>title</code></td>
             
             
             <td class="type">
@@ -3702,199 +3697,18 @@
             
             
             
-            
-            
-            <td class="description last">A URL to a help page, shown on shift click on the button.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>image</code></td>
-            
-            
-            <td class="type">
-            
+            <td class="description last">
                 
-<span class="param-type">Image</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The scriptui object representing the image.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>label</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">StaticText</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The label</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>optionsPopup</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuPopup.html">DuPopup</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">A popup for .</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>optionsPanel</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Group</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The ScriptUI Group where to add the options (child of the popup).</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onClick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuButton.html#~onClick">DuButton~onClick</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The function to execute when the button is clicked</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onAltClick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuButton.html#~onAltClick">DuButton~onAltClick</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The function to execute when the button is Alt + clicked</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onCtrlClick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuButton.html#~onCtrlClick">DuButton~onCtrlClick</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The function to execute when the button is Ctrl + clicked</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onCtrlAltClick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="DuButton.html#~onCtrlAltClick">DuButton~onCtrlAltClick</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The function to execute when the button is Ctrl + Alt + clicked</td>
+                The title of the progress bar</td>
         </tr>
 	
 	
 	</tbody>
-</table></dl>
-        
+</table>
+    
+    
+    
+<dl class="details">
     
         
     
@@ -3954,14 +3768,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".setBackgroundColor">
+        <h4 class="name" id="addMax">
             
-            <span class="type-signature static">static</span>DuButton.setBackgroundColor<span class="signature">(color)</span>
+            addMax<span class="signature">(<span class="optional">maxValue</span>)</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8825
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11932
         </div>
         
     </div>
@@ -3972,7 +3786,7 @@
     
     
     <div class="description">
-        Changes the background color of the button.
+        Increments the maximum value
     </div>
     
 
@@ -3993,6 +3807,8 @@
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -4003,23 +3819,36 @@
 	
         <tr>
             
-                <td class="name"><code>color</code></td>
+                <td class="name"><code>maxValue</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type"><a href="DuColor.html">DuColor</a></span>
+<span class="param-type">int</span>
 
 
             
             </td>
             
             
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
             
             <td class="description last">
                 
-                the color.</td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The value to add to the maximum</td>
         </tr>
 	
 	
@@ -4070,14 +3899,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".setTextColor">
+        <h4 class="name" id="close">
             
-            <span class="type-signature static">static</span>DuButton.setTextColor<span class="signature">(color)</span>
+            close<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8833
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11949
         </div>
         
     </div>
@@ -4088,7 +3917,149 @@
     
     
     <div class="description">
-        Changes the text color of the button.
+        Closes the progress bar
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="hide">
+            
+            hide<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11941
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Hides the progress bar
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="hit">
+            
+            hit<span class="signature">(<span class="optional">value</span>, <span class="optional">message</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11908
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Updates and increments the progress bar
     </div>
     
 
@@ -4119,13 +4090,13 @@
 	
         <tr>
             
-                <td class="name"><code>color</code></td>
+                <td class="name"><code>value</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type"><a href="DuColor.html">DuColor</a></span>
+<span class="param-type">int</span>
 
 
             
@@ -4135,7 +4106,621 @@
             
             <td class="description last">
                 
-                the color.</td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The new value. if omitted, the bar is just incremented by 1</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A new label</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="msg">
+            
+            msg<span class="signature">(message)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11867
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Changes the text of the label
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The text</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="reset">
+            
+            reset<span class="signature">(<span class="optional">maxValue</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11894
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Resets the progress bar to 0
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>maxValue</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The new maximum value</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setMax">
+            
+            setMax<span class="signature">(maxValue, <span class="optional">onlyIfZero</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11920
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the maximum value
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>maxValue</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The new maximum value</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onlyIfZero</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set to false to change the max value even if it was not 0 before</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="show">
+            
+            show<span class="signature">(<span class="optional">message</span>, <span class="optional">maxValue</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 11884
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Shows the progress bar and updates the value and text
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The text</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>maxValue</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    100
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The maximum value</td>
         </tr>
 	
 	
@@ -4185,294 +4770,6 @@
         </dl>
     
     
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-        
-        <dl>
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="~onAltClick">
-            
-            onAltClick<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8807
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        The function to execute when the button is Alt + clicked.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-            
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="~onClick">
-            
-            onClick<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8801
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        The function to execute when the button is clicked.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-            
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="~onCtrlAltClick">
-            
-            onCtrlAltClick<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8819
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        The function to execute when the button is Ctrl + Alt + clicked.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-            
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="~onCtrlClick">
-            
-            onCtrlClick<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8813
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        The function to execute when the button is Ctrl + clicked.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-            </dl>
     
     
     
