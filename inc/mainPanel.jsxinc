@@ -451,7 +451,7 @@ function getGroups()
     {
         for (var i = 0, n = propList.selection.length; i < n ; i++)
         {
-            if (propList.selection[i].index == 0 && !invertButton.checked) return [];
+            if (propList.selection[i].index == 0 && invertButton.checked) return [];
             groups.push( propList.selection[i].groupName );
         }
     }
@@ -459,7 +459,7 @@ function getGroups()
     {
         for (var i = 0, n = groupList.selection.length; i < n ; i++)
         {
-            if (groupList.selection[i].index == 0 && !invertButton.checked) return [];
+            if (groupList.selection[i].index == 0 && invertButton.checked) return [];
             groups.push( groupList.selection[i].groupName );
         }
     }

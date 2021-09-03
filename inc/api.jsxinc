@@ -488,7 +488,6 @@ DuGR.toggleSolo = function( groups, invert, comp )
         layer.solo = enabled;
         return enabled;
     }
-    
     DuGR.do( groups, f, invert, comp);
 }
 
