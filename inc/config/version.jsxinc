@@ -1,0 +1,12 @@
+var scriptName = "DuGR";
+var scriptVersion = "4.0.3";
+var scriptAbout = 'Group After Effects layers!';
+var companyName = "RxLaboratory";
+
+var chatURL = 'http://chat.rxlab.info';
+var bugReportURL = 'https://github.com/RxLaboratory/DuAEF_DuGR/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D+Short+but+precise+description+of+the+bug';
+var featureRequestURL = 'https://github.com/RxLaboratory/DuAEF_DuGR/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE+REQUEST%5D+Short+but+precise+description+of+the+feature';
+var aboutURL = 'http://rxlaboratory.org/tools/dugr';
+var docURL = 'http://dugr.rxlab.guide';
+var companyURL = 'https://rxlaboratory.org';
+var rxVersionURL = 'http://version.rxlab.io';
