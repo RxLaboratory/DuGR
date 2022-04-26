@@ -1,9 +1,6 @@
 function buildUI()
 {
-    var scriptFile = new File($.fileName);
-    if (DuESF.debug) scriptFile = new File(scriptFile.parent.parent.absoluteURI + '/Dugr.jsx');
-
-    var ui = DuScriptUI.scriptPanel( thisObj, true, true,scriptFile );
+    var ui = DuScriptUI.scriptPanel( thisObj, true, true, mainScriptFile );
  
     ui.addCommonSettings();
 
