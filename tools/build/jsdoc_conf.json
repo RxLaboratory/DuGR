@@ -2,7 +2,7 @@
     "plugins": [],
     "recurseDepth": 1,
     "source": {
-		"include": [ "output/DuAEF_DuGR_api.jsxinc" ],
+		"include": [ "output/DuGR_API/DuAEF_DuGR_api.jsxinc" ],
         "includePattern": ".+\\.jsxinc$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
@@ -14,18 +14,18 @@
     "templates": {
         "cleverLinks": true,
         "monospaceLinks": false,
-        "copyright"             : "Copyright (c) 2017-2021 Nicolas Dufresne and contributors",
+        "copyright"             : "Copyright (c) 2017-2022 Nicolas Dufresne and contributors",
         "includeDate"           : true,
         "search"                : "true"
     },
     "meta": {
-        "title": "DuAEF",
-        "description": "The Duduf After Effects Framework reference",
-        "keyword": "ExtendScript, Adobe, After Effects"
+        "title": "DuGR",
+        "description": "Group your After Effects layers!",
+        "keyword": "ExtendScript, Adobe, After Effects, groups"
     },
 	"opts": {
-        "template": "../DuAEF/DuESF/tools/build/node_modules/jaguarjs-jsdoc",
+        "template": "../../DuAEF/DuESF/tools/build/node_modules/jaguarjs",
 		"recurse": false,
-        "destination": "../docs"
+        "destination": "../../docs"
     }
 }

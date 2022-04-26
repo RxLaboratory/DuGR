@@ -17,7 +17,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":true,"copyright":"Copyright (c) 2017-2021 Nicolas Dufresne and contributors","includeDate":true,"search":"true","default":{}};
+    var config = {"monospaceLinks":false,"cleverLinks":true,"copyright":"Copyright (c) 2017-2022 Nicolas Dufresne and contributors","includeDate":true,"search":"true","default":{}};
     </script>
     
 
@@ -65,6 +65,10 @@
             
                 <li data-name="DuAE.PrefType"><a href="DuAE.html#.PrefType">PrefType</a></li>
             
+                <li data-name="DuAE.SelectionMode"><a href="DuAE.html#.SelectionMode">SelectionMode</a></li>
+            
+                <li data-name="DuAE.TimeAlignment"><a href="DuAE.html#.TimeAlignment">TimeAlignment</a></li>
+            
                 <li data-name="DuAE.Type"><a href="DuAE.html#.Type">Type</a></li>
             
                 <li data-name="DuAE.Unit"><a href="DuAE.html#.Unit">Unit</a></li>
@@ -80,8 +84,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="DuAE.askFilesAndNetworkAccess"><a href="DuAE.html#.askFilesAndNetworkAccess">askFilesAndNetworkAccess</a></li>
             
                 <li data-name="DuAE.beginUndoGroup"><a href="DuAE.html#.beginUndoGroup">beginUndoGroup</a></li>
             
@@ -111,8 +113,6 @@
             
                 <li data-name="DuAE.getPref"><a href="DuAE.html#.getPref">getPref</a></li>
             
-                <li data-name="DuAE.hasFileAndNetworkAccess"><a href="DuAE.html#.hasFileAndNetworkAccess">hasFileAndNetworkAccess</a></li>
-            
                 <li data-name="DuAE.hasPref"><a href="DuAE.html#.hasPref">hasPref</a></li>
             
                 <li data-name="DuAE.isAutoSaveFolder"><a href="DuAE.html#.isAutoSaveFolder">isAutoSaveFolder</a></li>
@@ -128,6 +128,10 @@
                 <li data-name="DuAE.openScriptUIPanel"><a href="DuAE.html#.openScriptUIPanel">openScriptUIPanel</a></li>
             
                 <li data-name="DuAE.paste"><a href="DuAE.html#.paste">paste</a></li>
+            
+                <li data-name="DuAE.scriptFolders"><a href="DuAE.html#.scriptFolders">scriptFolders</a></li>
+            
+                <li data-name="DuAE.toggleLayerControls"><a href="DuAE.html#.toggleLayerControls">toggleLayerControls</a></li>
             
                 <li data-name="DuAE.undo"><a href="DuAE.html#.undo">undo</a></li>
             
@@ -164,11 +168,17 @@
             
                 <li data-name="DuAEComp.addSolid"><a href="DuAEComp.html#.addSolid">addSolid</a></li>
             
+                <li data-name="DuAEComp.bake"><a href="DuAEComp.html#.bake">bake</a></li>
+            
+                <li data-name="DuAEComp.bakeExpressions"><a href="DuAEComp.html#.bakeExpressions">bakeExpressions</a></li>
+            
+                <li data-name="DuAEComp.camera"><a href="DuAEComp.html#.camera">camera</a></li>
+            
                 <li data-name="DuAEComp.checkLayerNames"><a href="DuAEComp.html#.checkLayerNames">checkLayerNames</a></li>
             
-                <li data-name="DuAEComp.doLayers"><a href="DuAEComp.html#.doLayers">doLayers</a></li>
+                <li data-name="DuAEComp.crop"><a href="DuAEComp.html#.crop">crop</a></li>
             
-                <li data-name="DuAEComp.doSelectedLayers"><a href="DuAEComp.html#.doSelectedLayers">doSelectedLayers</a></li>
+                <li data-name="DuAEComp.doLayers"><a href="DuAEComp.html#.doLayers">doLayers</a></li>
             
                 <li data-name="DuAEComp.framesToTime"><a href="DuAEComp.html#.framesToTime">framesToTime</a></li>
             
@@ -186,6 +196,8 @@
             
                 <li data-name="DuAEComp.getSelectedLayers"><a href="DuAEComp.html#.getSelectedLayers">getSelectedLayers</a></li>
             
+                <li data-name="DuAEComp.getSelectedProperty"><a href="DuAEComp.html#.getSelectedProperty">getSelectedProperty</a></li>
+            
                 <li data-name="DuAEComp.getSelectedProps"><a href="DuAEComp.html#.getSelectedProps">getSelectedProps</a></li>
             
                 <li data-name="DuAEComp.newUniqueLayerName"><a href="DuAEComp.html#.newUniqueLayerName">newUniqueLayerName</a></li>
@@ -198,7 +210,11 @@
             
                 <li data-name="DuAEComp.removeCompInExpressions"><a href="DuAEComp.html#.removeCompInExpressions">removeCompInExpressions</a></li>
             
+                <li data-name="DuAEComp.removeLayerInExpressions"><a href="DuAEComp.html#.removeLayerInExpressions">removeLayerInExpressions</a></li>
+            
                 <li data-name="DuAEComp.removeThisCompInExpressions"><a href="DuAEComp.html#.removeThisCompInExpressions">removeThisCompInExpressions</a></li>
+            
+                <li data-name="DuAEComp.removeThisLayerInExpressions"><a href="DuAEComp.html#.removeThisLayerInExpressions">removeThisLayerInExpressions</a></li>
             
                 <li data-name="DuAEComp.replaceInExpressions"><a href="DuAEComp.html#.replaceInExpressions">replaceInExpressions</a></li>
             
@@ -207,6 +223,8 @@
                 <li data-name="DuAEComp.setUniqueCompName"><a href="DuAEComp.html#.setUniqueCompName">setUniqueCompName</a></li>
             
                 <li data-name="DuAEComp.setUniqueLayerNames"><a href="DuAEComp.html#.setUniqueLayerNames">setUniqueLayerNames</a></li>
+            
+                <li data-name="DuAEComp.thumbnail"><a href="DuAEComp.html#.thumbnail">thumbnail</a></li>
             
                 <li data-name="DuAEComp.timeToFrames"><a href="DuAEComp.html#.timeToFrames">timeToFrames</a></li>
             
@@ -230,6 +248,8 @@
             <ul class="members itemMembers">
             
             <span class="subtitle">Members</span>
+            
+                <li data-name="DuAEExpression.BakeAlgorithm"><a href="DuAEExpression.html#.BakeAlgorithm">BakeAlgorithm</a></li>
             
                 <li data-name="DuAEExpression.Id"><a href="DuAEExpression.html#.Id">Id</a></li>
             
@@ -280,13 +300,25 @@
             
                 <li data-name="DuAEExpression.Library."bezierInterpolation""><a href="DuAEExpression.Library.html#.%2522bezierInterpolation%2522">"bezierInterpolation"</a></li>
             
+                <li data-name="DuAEExpression.Library."bounce""><a href="DuAEExpression.Library.html#.%2522bounce%2522">"bounce"</a></li>
+            
                 <li data-name="DuAEExpression.Library."checkDuikEffect""><a href="DuAEExpression.Library.html#.%2522checkDuikEffect%2522">"checkDuikEffect"</a></li>
             
                 <li data-name="DuAEExpression.Library."checkEffect""><a href="DuAEExpression.Library.html#.%2522checkEffect%2522">"checkEffect"</a></li>
             
+                <li data-name="DuAEExpression.Library."continueIn""><a href="DuAEExpression.Library.html#.%2522continueIn%2522">"continueIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."continueOut""><a href="DuAEExpression.Library.html#.%2522continueOut%2522">"continueOut"</a></li>
+            
+                <li data-name="DuAEExpression.Library."cycleIn""><a href="DuAEExpression.Library.html#.%2522cycleIn%2522">"cycleIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."cycleOut""><a href="DuAEExpression.Library.html#.%2522cycleOut%2522">"cycleOut"</a></li>
+            
                 <li data-name="DuAEExpression.Library."dishineritRotation""><a href="DuAEExpression.Library.html#.%2522dishineritRotation%2522">"dishineritRotation"</a></li>
             
                 <li data-name="DuAEExpression.Library."dishineritScale""><a href="DuAEExpression.Library.html#.%2522dishineritScale%2522">"dishineritScale"</a></li>
+            
+                <li data-name="DuAEExpression.Library."expInterpolation""><a href="DuAEExpression.Library.html#.%2522expInterpolation%2522">"expInterpolation"</a></li>
             
                 <li data-name="DuAEExpression.Library."fromGroupToLayer""><a href="DuAEExpression.Library.html#.%2522fromGroupToLayer%2522">"fromGroupToLayer"</a></li>
             
@@ -296,6 +328,8 @@
             
                 <li data-name="DuAEExpression.Library."gaussianInterpolation""><a href="DuAEExpression.Library.html#.%2522gaussianInterpolation%2522">"gaussianInterpolation"</a></li>
             
+                <li data-name="DuAEExpression.Library."gaussianRateToBezierPoints""><a href="DuAEExpression.Library.html#.%2522gaussianRateToBezierPoints%2522">"gaussianRateToBezierPoints"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getCompScale""><a href="DuAEExpression.Library.html#.%2522getCompScale%2522">"getCompScale"</a></li>
             
                 <li data-name="DuAEExpression.Library."getEffectLayer""><a href="DuAEExpression.Library.html#.%2522getEffectLayer%2522">"getEffectLayer"</a></li>
@@ -303,6 +337,8 @@
                 <li data-name="DuAEExpression.Library."getGroupTransformMatrix""><a href="DuAEExpression.Library.html#.%2522getGroupTransformMatrix%2522">"getGroupTransformMatrix"</a></li>
             
                 <li data-name="DuAEExpression.Library."getLayerCompPos""><a href="DuAEExpression.Library.html#.%2522getLayerCompPos%2522">"getLayerCompPos"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getLayerDistance""><a href="DuAEExpression.Library.html#.%2522getLayerDistance%2522">"getLayerDistance"</a></li>
             
                 <li data-name="DuAEExpression.Library."getLayerWorldPos""><a href="DuAEExpression.Library.html#.%2522getLayerWorldPos%2522">"getLayerWorldPos"</a></li>
             
@@ -312,6 +348,8 @@
             
                 <li data-name="DuAEExpression.Library."getNextKey""><a href="DuAEExpression.Library.html#.%2522getNextKey%2522">"getNextKey"</a></li>
             
+                <li data-name="DuAEExpression.Library."getNextStopKey""><a href="DuAEExpression.Library.html#.%2522getNextStopKey%2522">"getNextStopKey"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getOrientation""><a href="DuAEExpression.Library.html#.%2522getOrientation%2522">"getOrientation"</a></li>
             
                 <li data-name="DuAEExpression.Library."getOrientationAtTime""><a href="DuAEExpression.Library.html#.%2522getOrientationAtTime%2522">"getOrientationAtTime"</a></li>
@@ -320,19 +358,29 @@
             
                 <li data-name="DuAEExpression.Library."getPrevKey""><a href="DuAEExpression.Library.html#.%2522getPrevKey%2522">"getPrevKey"</a></li>
             
+                <li data-name="DuAEExpression.Library."getPrevStartKey""><a href="DuAEExpression.Library.html#.%2522getPrevStartKey%2522">"getPrevStartKey"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getPropFromPath""><a href="DuAEExpression.Library.html#.%2522getPropFromPath%2522">"getPropFromPath"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getPropPath""><a href="DuAEExpression.Library.html#.%2522getPropPath%2522">"getPropPath"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getPropWorldSpeed""><a href="DuAEExpression.Library.html#.%2522getPropWorldSpeed%2522">"getPropWorldSpeed"</a></li>
             
                 <li data-name="DuAEExpression.Library."getPropWorldValue""><a href="DuAEExpression.Library.html#.%2522getPropWorldValue%2522">"getPropWorldValue"</a></li>
             
                 <li data-name="DuAEExpression.Library."getPropWorldVelocity""><a href="DuAEExpression.Library.html#.%2522getPropWorldVelocity%2522">"getPropWorldVelocity"</a></li>
             
+                <li data-name="DuAEExpression.Library."getSameProp""><a href="DuAEExpression.Library.html#.%2522getSameProp%2522">"getSameProp"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getScale""><a href="DuAEExpression.Library.html#.%2522getScale%2522">"getScale"</a></li>
             
                 <li data-name="DuAEExpression.Library."inverseGaussian""><a href="DuAEExpression.Library.html#.%2522inverseGaussian%2522">"inverseGaussian"</a></li>
             
-                <li data-name="DuAEExpression.Library."inverseLogisitic""><a href="DuAEExpression.Library.html#.%2522inverseLogisitic%2522">"inverseLogisitic"</a></li>
+                <li data-name="DuAEExpression.Library."inverseLogistic""><a href="DuAEExpression.Library.html#.%2522inverseLogistic%2522">"inverseLogistic"</a></li>
             
                 <li data-name="DuAEExpression.Library."isAfterLastKey""><a href="DuAEExpression.Library.html#.%2522isAfterLastKey%2522">"isAfterLastKey"</a></li>
+            
+                <li data-name="DuAEExpression.Library."isKeyTop""><a href="DuAEExpression.Library.html#.%2522isKeyTop%2522">"isKeyTop"</a></li>
             
                 <li data-name="DuAEExpression.Library."isLayer""><a href="DuAEExpression.Library.html#.%2522isLayer%2522">"isLayer"</a></li>
             
@@ -344,7 +392,15 @@
             
                 <li data-name="DuAEExpression.Library."isStill""><a href="DuAEExpression.Library.html#.%2522isStill%2522">"isStill"</a></li>
             
-                <li data-name="DuAEExpression.Library."logisitic""><a href="DuAEExpression.Library.html#.%2522logisitic%2522">"logisitic"</a></li>
+                <li data-name="DuAEExpression.Library."lastActiveTime""><a href="DuAEExpression.Library.html#.%2522lastActiveTime%2522">"lastActiveTime"</a></li>
+            
+                <li data-name="DuAEExpression.Library."linearExtrapolation""><a href="DuAEExpression.Library.html#.%2522linearExtrapolation%2522">"linearExtrapolation"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logInterpolation""><a href="DuAEExpression.Library.html#.%2522logInterpolation%2522">"logInterpolation"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logistic""><a href="DuAEExpression.Library.html#.%2522logistic%2522">"logistic"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logisticInterpolation""><a href="DuAEExpression.Library.html#.%2522logisticInterpolation%2522">"logisticInterpolation"</a></li>
             
                 <li data-name="DuAEExpression.Library."mean""><a href="DuAEExpression.Library.html#.%2522mean%2522">"mean"</a></li>
             
@@ -352,7 +408,15 @@
             
                 <li data-name="DuAEExpression.Library."multPoints""><a href="DuAEExpression.Library.html#.%2522multPoints%2522">"multPoints"</a></li>
             
+                <li data-name="DuAEExpression.Library."nextActiveTime""><a href="DuAEExpression.Library.html#.%2522nextActiveTime%2522">"nextActiveTime"</a></li>
+            
                 <li data-name="DuAEExpression.Library."normalizeWeights""><a href="DuAEExpression.Library.html#.%2522normalizeWeights%2522">"normalizeWeights"</a></li>
+            
+                <li data-name="DuAEExpression.Library."overshoot""><a href="DuAEExpression.Library.html#.%2522overshoot%2522">"overshoot"</a></li>
+            
+                <li data-name="DuAEExpression.Library."pingPongIn""><a href="DuAEExpression.Library.html#.%2522pingPongIn%2522">"pingPongIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."pingPongOut""><a href="DuAEExpression.Library.html#.%2522pingPongOut%2522">"pingPongOut"</a></li>
             
                 <li data-name="DuAEExpression.Library."subPath""><a href="DuAEExpression.Library.html#.%2522subPath%2522">"subPath"</a></li>
             
@@ -397,13 +461,25 @@
             
                 <li data-name="DuAEExpression.Library."bezierInterpolation""><a href="DuAEExpression.Library.html#.%2522bezierInterpolation%2522">"bezierInterpolation"</a></li>
             
+                <li data-name="DuAEExpression.Library."bounce""><a href="DuAEExpression.Library.html#.%2522bounce%2522">"bounce"</a></li>
+            
                 <li data-name="DuAEExpression.Library."checkDuikEffect""><a href="DuAEExpression.Library.html#.%2522checkDuikEffect%2522">"checkDuikEffect"</a></li>
             
                 <li data-name="DuAEExpression.Library."checkEffect""><a href="DuAEExpression.Library.html#.%2522checkEffect%2522">"checkEffect"</a></li>
             
+                <li data-name="DuAEExpression.Library."continueIn""><a href="DuAEExpression.Library.html#.%2522continueIn%2522">"continueIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."continueOut""><a href="DuAEExpression.Library.html#.%2522continueOut%2522">"continueOut"</a></li>
+            
+                <li data-name="DuAEExpression.Library."cycleIn""><a href="DuAEExpression.Library.html#.%2522cycleIn%2522">"cycleIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."cycleOut""><a href="DuAEExpression.Library.html#.%2522cycleOut%2522">"cycleOut"</a></li>
+            
                 <li data-name="DuAEExpression.Library."dishineritRotation""><a href="DuAEExpression.Library.html#.%2522dishineritRotation%2522">"dishineritRotation"</a></li>
             
                 <li data-name="DuAEExpression.Library."dishineritScale""><a href="DuAEExpression.Library.html#.%2522dishineritScale%2522">"dishineritScale"</a></li>
+            
+                <li data-name="DuAEExpression.Library."expInterpolation""><a href="DuAEExpression.Library.html#.%2522expInterpolation%2522">"expInterpolation"</a></li>
             
                 <li data-name="DuAEExpression.Library."fromGroupToLayer""><a href="DuAEExpression.Library.html#.%2522fromGroupToLayer%2522">"fromGroupToLayer"</a></li>
             
@@ -413,6 +489,8 @@
             
                 <li data-name="DuAEExpression.Library."gaussianInterpolation""><a href="DuAEExpression.Library.html#.%2522gaussianInterpolation%2522">"gaussianInterpolation"</a></li>
             
+                <li data-name="DuAEExpression.Library."gaussianRateToBezierPoints""><a href="DuAEExpression.Library.html#.%2522gaussianRateToBezierPoints%2522">"gaussianRateToBezierPoints"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getCompScale""><a href="DuAEExpression.Library.html#.%2522getCompScale%2522">"getCompScale"</a></li>
             
                 <li data-name="DuAEExpression.Library."getEffectLayer""><a href="DuAEExpression.Library.html#.%2522getEffectLayer%2522">"getEffectLayer"</a></li>
@@ -420,6 +498,8 @@
                 <li data-name="DuAEExpression.Library."getGroupTransformMatrix""><a href="DuAEExpression.Library.html#.%2522getGroupTransformMatrix%2522">"getGroupTransformMatrix"</a></li>
             
                 <li data-name="DuAEExpression.Library."getLayerCompPos""><a href="DuAEExpression.Library.html#.%2522getLayerCompPos%2522">"getLayerCompPos"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getLayerDistance""><a href="DuAEExpression.Library.html#.%2522getLayerDistance%2522">"getLayerDistance"</a></li>
             
                 <li data-name="DuAEExpression.Library."getLayerWorldPos""><a href="DuAEExpression.Library.html#.%2522getLayerWorldPos%2522">"getLayerWorldPos"</a></li>
             
@@ -429,6 +509,8 @@
             
                 <li data-name="DuAEExpression.Library."getNextKey""><a href="DuAEExpression.Library.html#.%2522getNextKey%2522">"getNextKey"</a></li>
             
+                <li data-name="DuAEExpression.Library."getNextStopKey""><a href="DuAEExpression.Library.html#.%2522getNextStopKey%2522">"getNextStopKey"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getOrientation""><a href="DuAEExpression.Library.html#.%2522getOrientation%2522">"getOrientation"</a></li>
             
                 <li data-name="DuAEExpression.Library."getOrientationAtTime""><a href="DuAEExpression.Library.html#.%2522getOrientationAtTime%2522">"getOrientationAtTime"</a></li>
@@ -437,19 +519,29 @@
             
                 <li data-name="DuAEExpression.Library."getPrevKey""><a href="DuAEExpression.Library.html#.%2522getPrevKey%2522">"getPrevKey"</a></li>
             
+                <li data-name="DuAEExpression.Library."getPrevStartKey""><a href="DuAEExpression.Library.html#.%2522getPrevStartKey%2522">"getPrevStartKey"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getPropFromPath""><a href="DuAEExpression.Library.html#.%2522getPropFromPath%2522">"getPropFromPath"</a></li>
+            
+                <li data-name="DuAEExpression.Library."getPropPath""><a href="DuAEExpression.Library.html#.%2522getPropPath%2522">"getPropPath"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getPropWorldSpeed""><a href="DuAEExpression.Library.html#.%2522getPropWorldSpeed%2522">"getPropWorldSpeed"</a></li>
             
                 <li data-name="DuAEExpression.Library."getPropWorldValue""><a href="DuAEExpression.Library.html#.%2522getPropWorldValue%2522">"getPropWorldValue"</a></li>
             
                 <li data-name="DuAEExpression.Library."getPropWorldVelocity""><a href="DuAEExpression.Library.html#.%2522getPropWorldVelocity%2522">"getPropWorldVelocity"</a></li>
             
+                <li data-name="DuAEExpression.Library."getSameProp""><a href="DuAEExpression.Library.html#.%2522getSameProp%2522">"getSameProp"</a></li>
+            
                 <li data-name="DuAEExpression.Library."getScale""><a href="DuAEExpression.Library.html#.%2522getScale%2522">"getScale"</a></li>
             
                 <li data-name="DuAEExpression.Library."inverseGaussian""><a href="DuAEExpression.Library.html#.%2522inverseGaussian%2522">"inverseGaussian"</a></li>
             
-                <li data-name="DuAEExpression.Library."inverseLogisitic""><a href="DuAEExpression.Library.html#.%2522inverseLogisitic%2522">"inverseLogisitic"</a></li>
+                <li data-name="DuAEExpression.Library."inverseLogistic""><a href="DuAEExpression.Library.html#.%2522inverseLogistic%2522">"inverseLogistic"</a></li>
             
                 <li data-name="DuAEExpression.Library."isAfterLastKey""><a href="DuAEExpression.Library.html#.%2522isAfterLastKey%2522">"isAfterLastKey"</a></li>
+            
+                <li data-name="DuAEExpression.Library."isKeyTop""><a href="DuAEExpression.Library.html#.%2522isKeyTop%2522">"isKeyTop"</a></li>
             
                 <li data-name="DuAEExpression.Library."isLayer""><a href="DuAEExpression.Library.html#.%2522isLayer%2522">"isLayer"</a></li>
             
@@ -461,7 +553,15 @@
             
                 <li data-name="DuAEExpression.Library."isStill""><a href="DuAEExpression.Library.html#.%2522isStill%2522">"isStill"</a></li>
             
-                <li data-name="DuAEExpression.Library."logisitic""><a href="DuAEExpression.Library.html#.%2522logisitic%2522">"logisitic"</a></li>
+                <li data-name="DuAEExpression.Library."lastActiveTime""><a href="DuAEExpression.Library.html#.%2522lastActiveTime%2522">"lastActiveTime"</a></li>
+            
+                <li data-name="DuAEExpression.Library."linearExtrapolation""><a href="DuAEExpression.Library.html#.%2522linearExtrapolation%2522">"linearExtrapolation"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logInterpolation""><a href="DuAEExpression.Library.html#.%2522logInterpolation%2522">"logInterpolation"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logistic""><a href="DuAEExpression.Library.html#.%2522logistic%2522">"logistic"</a></li>
+            
+                <li data-name="DuAEExpression.Library."logisticInterpolation""><a href="DuAEExpression.Library.html#.%2522logisticInterpolation%2522">"logisticInterpolation"</a></li>
             
                 <li data-name="DuAEExpression.Library."mean""><a href="DuAEExpression.Library.html#.%2522mean%2522">"mean"</a></li>
             
@@ -469,7 +569,15 @@
             
                 <li data-name="DuAEExpression.Library."multPoints""><a href="DuAEExpression.Library.html#.%2522multPoints%2522">"multPoints"</a></li>
             
+                <li data-name="DuAEExpression.Library."nextActiveTime""><a href="DuAEExpression.Library.html#.%2522nextActiveTime%2522">"nextActiveTime"</a></li>
+            
                 <li data-name="DuAEExpression.Library."normalizeWeights""><a href="DuAEExpression.Library.html#.%2522normalizeWeights%2522">"normalizeWeights"</a></li>
+            
+                <li data-name="DuAEExpression.Library."overshoot""><a href="DuAEExpression.Library.html#.%2522overshoot%2522">"overshoot"</a></li>
+            
+                <li data-name="DuAEExpression.Library."pingPongIn""><a href="DuAEExpression.Library.html#.%2522pingPongIn%2522">"pingPongIn"</a></li>
+            
+                <li data-name="DuAEExpression.Library."pingPongOut""><a href="DuAEExpression.Library.html#.%2522pingPongOut%2522">"pingPongOut"</a></li>
             
                 <li data-name="DuAEExpression.Library."subPath""><a href="DuAEExpression.Library.html#.%2522subPath%2522">"subPath"</a></li>
             
@@ -586,7 +694,11 @@
             
                 <li data-name="DuAELayer.autoDuration"><a href="DuAELayer.html#.autoDuration">autoDuration</a></li>
             
+                <li data-name="DuAELayer.bake"><a href="DuAELayer.html#.bake">bake</a></li>
+            
                 <li data-name="DuAELayer.copyToComp"><a href="DuAELayer.html#.copyToComp">copyToComp</a></li>
+            
+                <li data-name="DuAELayer.createLocator"><a href="DuAELayer.html#.createLocator">createLocator</a></li>
             
                 <li data-name="DuAELayer.doLayers"><a href="DuAELayer.html#.doLayers">doLayers</a></li>
             
@@ -594,13 +706,19 @@
             
                 <li data-name="DuAELayer.firstKeyFrameTime"><a href="DuAELayer.html#.firstKeyFrameTime">firstKeyFrameTime</a></li>
             
+                <li data-name="DuAELayer.getActiveProperty"><a href="DuAELayer.html#.getActiveProperty">getActiveProperty</a></li>
+            
                 <li data-name="DuAELayer.getAnim"><a href="DuAELayer.html#.getAnim">getAnim</a></li>
             
                 <li data-name="DuAELayer.getAnims"><a href="DuAELayer.html#.getAnims">getAnims</a></li>
             
                 <li data-name="DuAELayer.getChildren"><a href="DuAELayer.html#.getChildren">getChildren</a></li>
             
+                <li data-name="DuAELayer.getCreateLayerEffect"><a href="DuAELayer.html#.getCreateLayerEffect">getCreateLayerEffect</a></li>
+            
                 <li data-name="DuAELayer.getDistance"><a href="DuAELayer.html#.getDistance">getDistance</a></li>
+            
+                <li data-name="DuAELayer.getMaxDistance"><a href="DuAELayer.html#.getMaxDistance">getMaxDistance</a></li>
             
                 <li data-name="DuAELayer.getPuppetPins"><a href="DuAELayer.html#.getPuppetPins">getPuppetPins</a></li>
             
@@ -616,9 +734,13 @@
             
                 <li data-name="DuAELayer.haveSelectedKeys"><a href="DuAELayer.html#.haveSelectedKeys">haveSelectedKeys</a></li>
             
+                <li data-name="DuAELayer.height"><a href="DuAELayer.html#.height">height</a></li>
+            
                 <li data-name="DuAELayer.insideComp"><a href="DuAELayer.html#.insideComp">insideComp</a></li>
             
                 <li data-name="DuAELayer.isComp"><a href="DuAELayer.html#.isComp">isComp</a></li>
+            
+                <li data-name="DuAELayer.isRenderable"><a href="DuAELayer.html#.isRenderable">isRenderable</a></li>
             
                 <li data-name="DuAELayer.isSolid"><a href="DuAELayer.html#.isSolid">isSolid</a></li>
             
@@ -640,6 +762,8 @@
             
                 <li data-name="DuAELayer.parentChain"><a href="DuAELayer.html#.parentChain">parentChain</a></li>
             
+                <li data-name="DuAELayer.repositionAnchorPoint"><a href="DuAELayer.html#.repositionAnchorPoint">repositionAnchorPoint</a></li>
+            
                 <li data-name="DuAELayer.reverseAnims"><a href="DuAELayer.html#.reverseAnims">reverseAnims</a></li>
             
                 <li data-name="DuAELayer.sequence"><a href="DuAELayer.html#.sequence">sequence</a></li>
@@ -654,9 +778,15 @@
             
                 <li data-name="DuAELayer.sortByParent"><a href="DuAELayer.html#.sortByParent">sortByParent</a></li>
             
+                <li data-name="DuAELayer.sourceRect"><a href="DuAELayer.html#.sourceRect">sourceRect</a></li>
+            
+                <li data-name="DuAELayer.stack"><a href="DuAELayer.html#.stack">stack</a></li>
+            
                 <li data-name="DuAELayer.toggleEditMode"><a href="DuAELayer.html#.toggleEditMode">toggleEditMode</a></li>
             
                 <li data-name="DuAELayer.unparent"><a href="DuAELayer.html#.unparent">unparent</a></li>
+            
+                <li data-name="DuAELayer.width"><a href="DuAELayer.html#.width">width</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -685,9 +815,15 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="DuAEProject.bakeCompositions"><a href="DuAEProject.html#.bakeCompositions">bakeCompositions</a></li>
+            
+                <li data-name="DuAEProject.bakeExpressions"><a href="DuAEProject.html#.bakeExpressions">bakeExpressions</a></li>
+            
                 <li data-name="DuAEProject.checkCompNames"><a href="DuAEProject.html#.checkCompNames">checkCompNames</a></li>
             
                 <li data-name="DuAEProject.collectFiles"><a href="DuAEProject.html#.collectFiles">collectFiles</a></li>
+            
+                <li data-name="DuAEProject.doComps"><a href="DuAEProject.html#.doComps">doComps</a></li>
             
                 <li data-name="DuAEProject.expressionEngine"><a href="DuAEProject.html#.expressionEngine">expressionEngine</a></li>
             
@@ -703,21 +839,21 @@
             
                 <li data-name="DuAEProject.getPrecompsAtRoot"><a href="DuAEProject.html#.getPrecompsAtRoot">getPrecompsAtRoot</a></li>
             
+                <li data-name="DuAEProject.getSelectedComps"><a href="DuAEProject.html#.getSelectedComps">getSelectedComps</a></li>
+            
                 <li data-name="DuAEProject.getSize"><a href="DuAEProject.html#.getSize">getSize</a></li>
             
                 <li data-name="DuAEProject.getUnusedComps"><a href="DuAEProject.html#.getUnusedComps">getUnusedComps</a></li>
             
                 <li data-name="DuAEProject.getUnusedFootages"><a href="DuAEProject.html#.getUnusedFootages">getUnusedFootages</a></li>
             
+                <li data-name="DuAEProject.name"><a href="DuAEProject.html#.name">name</a></li>
+            
                 <li data-name="DuAEProject.newUniqueCompName"><a href="DuAEProject.html#.newUniqueCompName">newUniqueCompName</a></li>
             
                 <li data-name="DuAEProject.reduce"><a href="DuAEProject.html#.reduce">reduce</a></li>
             
                 <li data-name="DuAEProject.reduceSelected"><a href="DuAEProject.html#.reduceSelected">reduceSelected</a></li>
-            
-                <li data-name="DuAEProject.removeCompInExpressions"><a href="DuAEProject.html#.removeCompInExpressions">removeCompInExpressions</a></li>
-            
-                <li data-name="DuAEProject.removeThisCompInExpressions"><a href="DuAEProject.html#.removeThisCompInExpressions">removeThisCompInExpressions</a></li>
             
                 <li data-name="DuAEProject.replaceInExpressions"><a href="DuAEProject.html#.replaceInExpressions">replaceInExpressions</a></li>
             
@@ -1005,8 +1141,6 @@
             
                 <li data-name="DuESF.donateURL"><a href="DuESF.html#.donateURL">donateURL</a></li>
             
-                <li data-name="DuESF.featureRequestURL"><a href="DuESF.html#.featureRequestURL">featureRequestURL</a></li>
-            
                 <li data-name="DuESF.file"><a href="DuESF.html#.file">file</a></li>
             
                 <li data-name="DuESF.forumURL"><a href="DuESF.html#.forumURL">forumURL</a></li>
@@ -1016,6 +1150,8 @@
                 <li data-name="DuESF.HostApplication"><a href="DuESF.html#.HostApplication">HostApplication</a></li>
             
                 <li data-name="DuESF.hostVersion"><a href="DuESF.html#.hostVersion">hostVersion</a></li>
+            
+                <li data-name="DuESF.isPreRelease"><a href="DuESF.html#.isPreRelease">isPreRelease</a></li>
             
                 <li data-name="DuESF.rxVersionURL"><a href="DuESF.html#.rxVersionURL">rxVersionURL</a></li>
             
@@ -1077,6 +1213,8 @@
                 <li data-name="DuFile.exists"><a href="DuFile.html#.exists">exists</a></li>
             
                 <li data-name="DuFile.getSequenceNumber"><a href="DuFile.html#.getSequenceNumber">getSequenceNumber</a></li>
+            
+                <li data-name="DuFile.move"><a href="DuFile.html#.move">move</a></li>
             
                 <li data-name="DuFile.parseCSV"><a href="DuFile.html#.parseCSV">parseCSV</a></li>
             
@@ -1216,9 +1354,9 @@
             </ul>
         </li>
     
-        <li class="item" data-name="DuMath">
+        <li class="item" data-name="DuInterpolation">
             <span class="title">
-                <a href="DuMath.html">DuMath</a>
+                <a href="DuInterpolation.html">DuInterpolation</a>
                 
                 <span class="static">static</span>
                 
@@ -1233,7 +1371,75 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="DuInterpolation.bezier"><a href="DuInterpolation.html#.bezier">bezier</a></li>
+            
+                <li data-name="DuInterpolation.exponential"><a href="DuInterpolation.html#.exponential">exponential</a></li>
+            
+                <li data-name="DuInterpolation.gaussian"><a href="DuInterpolation.html#.gaussian">gaussian</a></li>
+            
+                <li data-name="DuInterpolation.linear"><a href="DuInterpolation.html#.linear">linear</a></li>
+            
+                <li data-name="DuInterpolation.logarithmic"><a href="DuInterpolation.html#.logarithmic">logarithmic</a></li>
+            
+                <li data-name="DuInterpolation.logistic"><a href="DuInterpolation.html#.logistic">logistic</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DuJSObj">
+            <span class="title">
+                <a href="DuJSObj.html">DuJSObj</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DuJSObj.clear"><a href="DuJSObj.html#.clear">clear</a></li>
+            
+                <li data-name="DuJSObj.sort"><a href="DuJSObj.html#.sort">sort</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DuMath">
+            <span class="title">
+                <a href="DuMath.html">DuMath</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="DuMath.Location"><a href="DuMath.html#.Location">Location</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
                 <li data-name="DuMath.average"><a href="DuMath.html#.average">average</a></li>
+            
+                <li data-name="DuMath.bounds"><a href="DuMath.html#.bounds">bounds</a></li>
             
                 <li data-name="DuMath.clamp"><a href="DuMath.html#.clamp">clamp</a></li>
             
@@ -1241,11 +1447,17 @@
             
                 <li data-name="DuMath.gaussian"><a href="DuMath.html#.gaussian">gaussian</a></li>
             
+                <li data-name="DuMath.gaussRandom"><a href="DuMath.html#.gaussRandom">gaussRandom</a></li>
+            
                 <li data-name="DuMath.inverseGaussian"><a href="DuMath.html#.inverseGaussian">inverseGaussian</a></li>
             
                 <li data-name="DuMath.inverseLogistic"><a href="DuMath.html#.inverseLogistic">inverseLogistic</a></li>
             
                 <li data-name="DuMath.inverseReversedGaussian"><a href="DuMath.html#.inverseReversedGaussian">inverseReversedGaussian</a></li>
+            
+                <li data-name="DuMath.isExtremePoint"><a href="DuMath.html#.isExtremePoint">isExtremePoint</a></li>
+            
+                <li data-name="DuMath.isInflexionPoint"><a href="DuMath.html#.isInflexionPoint">isInflexionPoint</a></li>
             
                 <li data-name="DuMath.isInside"><a href="DuMath.html#.isInside">isInside</a></li>
             
@@ -1399,6 +1611,10 @@
             
                 <li data-name="DuPath.incrementName"><a href="DuPath.html#.incrementName">incrementName</a></li>
             
+                <li data-name="DuPath.isFile"><a href="DuPath.html#.isFile">isFile</a></li>
+            
+                <li data-name="DuPath.isFolder"><a href="DuPath.html#.isFolder">isFolder</a></li>
+            
                 <li data-name="DuPath.join"><a href="DuPath.html#.join">join</a></li>
             
                 <li data-name="DuPath.newUniqueName"><a href="DuPath.html#.newUniqueName">newUniqueName</a></li>
@@ -1425,6 +1641,8 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="DuRegExp.javascriptSymbols"><a href="DuRegExp.html#.javascriptSymbols">javascriptSymbols</a></li>
+            
+                <li data-name="DuRegExp.javascriptSymbolsNoDot"><a href="DuRegExp.html#.javascriptSymbolsNoDot">javascriptSymbolsNoDot</a></li>
             
                 <li data-name="DuRegExp.javascriptVarChars"><a href="DuRegExp.html#.javascriptVarChars">javascriptVarChars</a></li>
             
@@ -1465,6 +1683,10 @@
             
                 <li data-name="DuScriptUI.defaultStackAlignment"><a href="DuScriptUI.html#.defaultStackAlignment">defaultStackAlignment</a></li>
             
+                <li data-name="DuScriptUI.fundingBar"><a href="DuScriptUI.html#.fundingBar">fundingBar</a></li>
+            
+                <li data-name="DuScriptUI.fundingLabel"><a href="DuScriptUI.html#.fundingLabel">fundingLabel</a></li>
+            
                 <li data-name="DuScriptUI.Icon"><a href="DuScriptUI.html#.Icon">Icon</a></li>
             
                 <li data-name="DuScriptUI.progressBar"><a href="DuScriptUI.html#.progressBar">progressBar</a></li>
@@ -1485,11 +1707,7 @@
             
                 <li data-name="DuScriptUI.addEvent"><a href="DuScriptUI.html#.addEvent">addEvent</a></li>
             
-                <li data-name="DuScriptUI.addFeatureRequestButton"><a href="DuScriptUI.html#.addFeatureRequestButton">addFeatureRequestButton</a></li>
-            
                 <li data-name="DuScriptUI.addHelpButton"><a href="DuScriptUI.html#.addHelpButton">addHelpButton</a></li>
-            
-                <li data-name="DuScriptUI.askFilesAndNetworkAccess"><a href="DuScriptUI.html#.askFilesAndNetworkAccess">askFilesAndNetworkAccess</a></li>
             
                 <li data-name="DuScriptUI.askLanguage"><a href="DuScriptUI.html#.askLanguage">askLanguage</a></li>
             
@@ -1525,6 +1743,8 @@
             
                 <li data-name="DuScriptUI.layout"><a href="DuScriptUI.html#.layout">layout</a></li>
             
+                <li data-name="DuScriptUI.library"><a href="DuScriptUI.html#.library">library</a></li>
+            
                 <li data-name="DuScriptUI.mainPanel"><a href="DuScriptUI.html#.mainPanel">mainPanel</a></li>
             
                 <li data-name="DuScriptUI.moveInsideScreen"><a href="DuScriptUI.html#.moveInsideScreen">moveInsideScreen</a></li>
@@ -1536,6 +1756,8 @@
                 <li data-name="DuScriptUI.removeEvent"><a href="DuScriptUI.html#.removeEvent">removeEvent</a></li>
             
                 <li data-name="DuScriptUI.scriptPanel"><a href="DuScriptUI.html#.scriptPanel">scriptPanel</a></li>
+            
+                <li data-name="DuScriptUI.selectionModeSelector"><a href="DuScriptUI.html#.selectionModeSelector">selectionModeSelector</a></li>
             
                 <li data-name="DuScriptUI.selector"><a href="DuScriptUI.html#.selector">selector</a></li>
             
@@ -1555,7 +1777,13 @@
             
                 <li data-name="DuScriptUI.staticText"><a href="DuScriptUI.html#.staticText">staticText</a></li>
             
+                <li data-name="DuScriptUI.stringPrompt"><a href="DuScriptUI.html#.stringPrompt">stringPrompt</a></li>
+            
                 <li data-name="DuScriptUI.tabPanel"><a href="DuScriptUI.html#.tabPanel">tabPanel</a></li>
+            
+                <li data-name="DuScriptUI.titleBar"><a href="DuScriptUI.html#.titleBar">titleBar</a></li>
+            
+                <li data-name="DuScriptUI.toolBar"><a href="DuScriptUI.html#.toolBar">toolBar</a></li>
             
                 <li data-name="DuScriptUI.versionButton"><a href="DuScriptUI.html#.versionButton">versionButton</a></li>
             
@@ -1584,6 +1812,8 @@
             
                 <li data-name="DuString.args"><a href="DuString.html#.args">args</a></li>
             
+                <li data-name="DuString.capitalize"><a href="DuString.html#.capitalize">capitalize</a></li>
+            
                 <li data-name="DuString.endsWith"><a href="DuString.html#.endsWith">endsWith</a></li>
             
                 <li data-name="DuString.fromSize"><a href="DuString.html#.fromSize">fromSize</a></li>
@@ -1602,7 +1832,15 @@
             
                 <li data-name="DuString.rightTrim"><a href="DuString.html#.rightTrim">rightTrim</a></li>
             
+                <li data-name="DuString.startsWith"><a href="DuString.html#.startsWith">startsWith</a></li>
+            
+                <li data-name="DuString.toCamelCase"><a href="DuString.html#.toCamelCase">toCamelCase</a></li>
+            
                 <li data-name="DuString.trim"><a href="DuString.html#.trim">trim</a></li>
+            
+                <li data-name="DuString.trimNumbers"><a href="DuString.html#.trimNumbers">trimNumbers</a></li>
+            
+                <li data-name="DuString.unCapitalize"><a href="DuString.html#.unCapitalize">unCapitalize</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1908,6 +2146,25 @@
             </ul>
         </li>
     
+        <li class="item" data-name="DuAEExpression.Library."FuzzyVeracity"">
+            <span class="title">
+                <a href="DuAEExpression.Library._FuzzyVeracity_.html">DuAEExpression.Library."FuzzyVeracity"</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="DuAEExpression.Library."Matrix"">
             <span class="title">
                 <a href="DuAEExpression.Library._Matrix_.html">DuAEExpression.Library."Matrix"</a>
@@ -1927,9 +2184,9 @@
             </ul>
         </li>
     
-        <li class="item" data-name="DuAEKeyFrame">
+        <li class="item" data-name="DuAEKeyframe">
             <span class="title">
-                <a href="DuAEKeyFrame.html">DuAEKeyFrame</a>
+                <a href="DuAEKeyframe.html">DuAEKeyframe</a>
                 
             </span>
             <ul class="members itemMembers">
@@ -1939,6 +2196,10 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DuAEKeyframe#_clone"><a href="DuAEKeyframe.html#_clone">_clone</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1958,6 +2219,10 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DuAEKeySpatialProperties#_clone"><a href="DuAEKeySpatialProperties.html#_clone">_clone</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2082,17 +2347,7 @@
             
                 <li data-name="DuAEProperty#effect"><a href="DuAEProperty.html#effect">effect</a></li>
             
-                <li data-name="DuAEProperty#isAngle"><a href="DuAEProperty.html#isAngle">isAngle</a></li>
-            
                 <li data-name="DuAEProperty#isEffect"><a href="DuAEProperty.html#isEffect">isEffect</a></li>
-            
-                <li data-name="DuAEProperty#isGroup"><a href="DuAEProperty.html#isGroup">isGroup</a></li>
-            
-                <li data-name="DuAEProperty#isPercent"><a href="DuAEProperty.html#isPercent">isPercent</a></li>
-            
-                <li data-name="DuAEProperty#isPercent"><a href="DuAEProperty.html#isPercent">isPercent</a></li>
-            
-                <li data-name="DuAEProperty#isPixels"><a href="DuAEProperty.html#isPixels">isPixels</a></li>
             
                 <li data-name="DuAEProperty#layer"><a href="DuAEProperty.html#layer">layer</a></li>
             
@@ -2102,8 +2357,6 @@
             
                 <li data-name="DuAEProperty#name"><a href="DuAEProperty.html#name">name</a></li>
             
-                <li data-name="DuAEProperty#unitsText"><a href="DuAEProperty.html#unitsText">unitsText</a></li>
-            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -2111,8 +2364,6 @@
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
-            
-                <li data-name="DuAEProperty.addKey"><a href="DuAEProperty.html#.addKey">addKey</a></li>
             
                 <li data-name="DuAEProperty.getAverageSpeed"><a href="DuAEProperty.html#.getAverageSpeed">getAverageSpeed</a></li>
             
@@ -2126,15 +2377,21 @@
             
                 <li data-name="DuAEProperty.newUniqueMarkerName"><a href="DuAEProperty.html#.newUniqueMarkerName">newUniqueMarkerName</a></li>
             
+                <li data-name="DuAEProperty.pathBounds"><a href="DuAEProperty.html#.pathBounds">pathBounds</a></li>
+            
                 <li data-name="DuAEProperty.pathHorizontalSymetry"><a href="DuAEProperty.html#.pathHorizontalSymetry">pathHorizontalSymetry</a></li>
             
                 <li data-name="DuAEProperty.pathVerticalSymetry"><a href="DuAEProperty.html#.pathVerticalSymetry">pathVerticalSymetry</a></li>
             
                 <li data-name="DuAEProperty.rename"><a href="DuAEProperty.html#.rename">rename</a></li>
             
-                <li data-name="DuAEProperty.setEase"><a href="DuAEProperty.html#.setEase">setEase</a></li>
-            
                 <li data-name="DuAEProperty.setInterpolationType"><a href="DuAEProperty.html#.setInterpolationType">setInterpolationType</a></li>
+            
+                <li data-name="DuAEProperty.shapeValueEquals"><a href="DuAEProperty.html#.shapeValueEquals">shapeValueEquals</a></li>
+            
+                <li data-name="DuAEProperty.textValueEquals"><a href="DuAEProperty.html#.textValueEquals">textValueEquals</a></li>
+            
+                <li data-name="DuAEProperty#addKey"><a href="DuAEProperty.html#addKey">addKey</a></li>
             
                 <li data-name="DuAEProperty#addToEGP"><a href="DuAEProperty.html#addToEGP">addToEGP</a></li>
             
@@ -2142,53 +2399,105 @@
             
                 <li data-name="DuAEProperty#animation"><a href="DuAEProperty.html#animation">animation</a></li>
             
+                <li data-name="DuAEProperty#averageSpeed"><a href="DuAEProperty.html#averageSpeed">averageSpeed</a></li>
+            
+                <li data-name="DuAEProperty#bakeExpression"><a href="DuAEProperty.html#bakeExpression">bakeExpression</a></li>
+            
+                <li data-name="DuAEProperty#bakeExpressions"><a href="DuAEProperty.html#bakeExpressions">bakeExpressions</a></li>
+            
                 <li data-name="DuAEProperty#cleanKeyframes"><a href="DuAEProperty.html#cleanKeyframes">cleanKeyframes</a></li>
             
                 <li data-name="DuAEProperty#dimensions"><a href="DuAEProperty.html#dimensions">dimensions</a></li>
+            
+                <li data-name="DuAEProperty#dimensionsSeparated"><a href="DuAEProperty.html#dimensionsSeparated">dimensionsSeparated</a></li>
+            
+                <li data-name="DuAEProperty#do"><a href="DuAEProperty.html#do">do</a></li>
             
                 <li data-name="DuAEProperty#editable"><a href="DuAEProperty.html#editable">editable</a></li>
             
                 <li data-name="DuAEProperty#exportPathToJsxinc"><a href="DuAEProperty.html#exportPathToJsxinc">exportPathToJsxinc</a></li>
             
+                <li data-name="DuAEProperty#expression"><a href="DuAEProperty.html#expression">expression</a></li>
+            
                 <li data-name="DuAEProperty#expressionLink"><a href="DuAEProperty.html#expressionLink">expressionLink</a></li>
+            
+                <li data-name="DuAEProperty#findInComp"><a href="DuAEProperty.html#findInComp">findInComp</a></li>
             
                 <li data-name="DuAEProperty#firstKeyTime"><a href="DuAEProperty.html#firstKeyTime">firstKeyTime</a></li>
             
                 <li data-name="DuAEProperty#fixSpatialInterpolation"><a href="DuAEProperty.html#fixSpatialInterpolation">fixSpatialInterpolation</a></li>
             
-                <li data-name="DuAEProperty#getAnimatedProps"><a href="DuAEProperty.html#getAnimatedProps">getAnimatedProps</a></li>
+                <li data-name="DuAEProperty#fixValue"><a href="DuAEProperty.html#fixValue">fixValue</a></li>
             
-                <li data-name="DuAEProperty#getMaxVelocity"><a href="DuAEProperty.html#getMaxVelocity">getMaxVelocity</a></li>
+                <li data-name="DuAEProperty#getAnimatedProps"><a href="DuAEProperty.html#getAnimatedProps">getAnimatedProps</a></li>
             
                 <li data-name="DuAEProperty#getProperty"><a href="DuAEProperty.html#getProperty">getProperty</a></li>
             
-                <li data-name="DuAEProperty#getRange"><a href="DuAEProperty.html#getRange">getRange</a></li>
-            
-                <li data-name="DuAEProperty#getSpeed"><a href="DuAEProperty.html#getSpeed">getSpeed</a></li>
-            
                 <li data-name="DuAEProperty#hasSelectedKeys"><a href="DuAEProperty.html#hasSelectedKeys">hasSelectedKeys</a></li>
             
+                <li data-name="DuAEProperty#isAngle"><a href="DuAEProperty.html#isAngle">isAngle</a></li>
+            
+                <li data-name="DuAEProperty#isDropdown"><a href="DuAEProperty.html#isDropdown">isDropdown</a></li>
+            
+                <li data-name="DuAEProperty#isGroup"><a href="DuAEProperty.html#isGroup">isGroup</a></li>
+            
                 <li data-name="DuAEProperty#isMasterProperty"><a href="DuAEProperty.html#isMasterProperty">isMasterProperty</a></li>
+            
+                <li data-name="DuAEProperty#isPercent"><a href="DuAEProperty.html#isPercent">isPercent</a></li>
+            
+                <li data-name="DuAEProperty#isPixels"><a href="DuAEProperty.html#isPixels">isPixels</a></li>
+            
+                <li data-name="DuAEProperty#isProperty"><a href="DuAEProperty.html#isProperty">isProperty</a></li>
+            
+                <li data-name="DuAEProperty#isSeparationLeader"><a href="DuAEProperty.html#isSeparationLeader">isSeparationLeader</a></li>
+            
+                <li data-name="DuAEProperty#isSpatial"><a href="DuAEProperty.html#isSpatial">isSpatial</a></li>
             
                 <li data-name="DuAEProperty#keyAtIndex"><a href="DuAEProperty.html#keyAtIndex">keyAtIndex</a></li>
             
                 <li data-name="DuAEProperty#keyAtTime"><a href="DuAEProperty.html#keyAtTime">keyAtTime</a></li>
             
+                <li data-name="DuAEProperty#keyInSpatialTangent"><a href="DuAEProperty.html#keyInSpatialTangent">keyInSpatialTangent</a></li>
+            
+                <li data-name="DuAEProperty#keyOutSpatialTangent"><a href="DuAEProperty.html#keyOutSpatialTangent">keyOutSpatialTangent</a></li>
+            
                 <li data-name="DuAEProperty#keys"><a href="DuAEProperty.html#keys">keys</a></li>
+            
+                <li data-name="DuAEProperty#keyTime"><a href="DuAEProperty.html#keyTime">keyTime</a></li>
+            
+                <li data-name="DuAEProperty#keyValue"><a href="DuAEProperty.html#keyValue">keyValue</a></li>
+            
+                <li data-name="DuAEProperty#lastKeyTime"><a href="DuAEProperty.html#lastKeyTime">lastKeyTime</a></li>
             
                 <li data-name="DuAEProperty#linkProperties"><a href="DuAEProperty.html#linkProperties">linkProperties</a></li>
             
+                <li data-name="DuAEProperty#maxVelocity"><a href="DuAEProperty.html#maxVelocity">maxVelocity</a></li>
+            
                 <li data-name="DuAEProperty#nearestKeyAtTime"><a href="DuAEProperty.html#nearestKeyAtTime">nearestKeyAtTime</a></li>
+            
+                <li data-name="DuAEProperty#nearestKeyIndex"><a href="DuAEProperty.html#nearestKeyIndex">nearestKeyIndex</a></li>
             
                 <li data-name="DuAEProperty#numerical"><a href="DuAEProperty.html#numerical">numerical</a></li>
             
+                <li data-name="DuAEProperty#numKeys"><a href="DuAEProperty.html#numKeys">numKeys</a></li>
+            
                 <li data-name="DuAEProperty#numProperties"><a href="DuAEProperty.html#numProperties">numProperties</a></li>
+            
+                <li data-name="DuAEProperty#parentProperty"><a href="DuAEProperty.html#parentProperty">parentProperty</a></li>
             
                 <li data-name="DuAEProperty#pathProperty"><a href="DuAEProperty.html#pathProperty">pathProperty</a></li>
             
                 <li data-name="DuAEProperty#pickWhip"><a href="DuAEProperty.html#pickWhip">pickWhip</a></li>
             
                 <li data-name="DuAEProperty#prop"><a href="DuAEProperty.html#prop">prop</a></li>
+            
+                <li data-name="DuAEProperty#propertyValueType"><a href="DuAEProperty.html#propertyValueType">propertyValueType</a></li>
+            
+                <li data-name="DuAEProperty#quickBakeExpression"><a href="DuAEProperty.html#quickBakeExpression">quickBakeExpression</a></li>
+            
+                <li data-name="DuAEProperty#quickBakeExpressions"><a href="DuAEProperty.html#quickBakeExpressions">quickBakeExpressions</a></li>
+            
+                <li data-name="DuAEProperty#range"><a href="DuAEProperty.html#range">range</a></li>
             
                 <li data-name="DuAEProperty#removeAnimation"><a href="DuAEProperty.html#removeAnimation">removeAnimation</a></li>
             
@@ -2198,11 +2507,15 @@
             
                 <li data-name="DuAEProperty#removeExpressions"><a href="DuAEProperty.html#removeExpressions">removeExpressions</a></li>
             
+                <li data-name="DuAEProperty#removeKey"><a href="DuAEProperty.html#removeKey">removeKey</a></li>
+            
                 <li data-name="DuAEProperty#replaceInExpressions"><a href="DuAEProperty.html#replaceInExpressions">replaceInExpressions</a></li>
             
                 <li data-name="DuAEProperty#riggable"><a href="DuAEProperty.html#riggable">riggable</a></li>
             
                 <li data-name="DuAEProperty#scriptifyPath"><a href="DuAEProperty.html#scriptifyPath">scriptifyPath</a></li>
+            
+                <li data-name="DuAEProperty#selectedKeys"><a href="DuAEProperty.html#selectedKeys">selectedKeys</a></li>
             
                 <li data-name="DuAEProperty#selectKeys"><a href="DuAEProperty.html#selectKeys">selectKeys</a></li>
             
@@ -2210,17 +2523,51 @@
             
                 <li data-name="DuAEProperty#setAnimation"><a href="DuAEProperty.html#setAnimation">setAnimation</a></li>
             
+                <li data-name="DuAEProperty#setEase"><a href="DuAEProperty.html#setEase">setEase</a></li>
+            
                 <li data-name="DuAEProperty#setExpression"><a href="DuAEProperty.html#setExpression">setExpression</a></li>
+            
+                <li data-name="DuAEProperty#setInterpolation"><a href="DuAEProperty.html#setInterpolation">setInterpolation</a></li>
             
                 <li data-name="DuAEProperty#setKey"><a href="DuAEProperty.html#setKey">setKey</a></li>
             
                 <li data-name="DuAEProperty#setKeyInterpolation"><a href="DuAEProperty.html#setKeyInterpolation">setKeyInterpolation</a></li>
             
+                <li data-name="DuAEProperty#setKeySpeed"><a href="DuAEProperty.html#setKeySpeed">setKeySpeed</a></li>
+            
+                <li data-name="DuAEProperty#setPropertyParameters"><a href="DuAEProperty.html#setPropertyParameters">setPropertyParameters</a></li>
+            
+                <li data-name="DuAEProperty#setRoving"><a href="DuAEProperty.html#setRoving">setRoving</a></li>
+            
                 <li data-name="DuAEProperty#setSpatialInterpolation"><a href="DuAEProperty.html#setSpatialInterpolation">setSpatialInterpolation</a></li>
+            
+                <li data-name="DuAEProperty#setSpatialInterpolationAtKey"><a href="DuAEProperty.html#setSpatialInterpolationAtKey">setSpatialInterpolationAtKey</a></li>
+            
+                <li data-name="DuAEProperty#setSpatialTangentsAtKey"><a href="DuAEProperty.html#setSpatialTangentsAtKey">setSpatialTangentsAtKey</a></li>
             
                 <li data-name="DuAEProperty#setValue"><a href="DuAEProperty.html#setValue">setValue</a></li>
             
+                <li data-name="DuAEProperty#setValueAtKey"><a href="DuAEProperty.html#setValueAtKey">setValueAtKey</a></li>
+            
                 <li data-name="DuAEProperty#setValueAtTime"><a href="DuAEProperty.html#setValueAtTime">setValueAtTime</a></li>
+            
+                <li data-name="DuAEProperty#smartBakeExpression"><a href="DuAEProperty.html#smartBakeExpression">smartBakeExpression</a></li>
+            
+                <li data-name="DuAEProperty#smartBakeExpressions"><a href="DuAEProperty.html#smartBakeExpressions">smartBakeExpressions</a></li>
+            
+                <li data-name="DuAEProperty#snapKeys"><a href="DuAEProperty.html#snapKeys">snapKeys</a></li>
+            
+                <li data-name="DuAEProperty#speedAtTime"><a href="DuAEProperty.html#speedAtTime">speedAtTime</a></li>
+            
+                <li data-name="DuAEProperty#unit"><a href="DuAEProperty.html#unit">unit</a></li>
+            
+                <li data-name="DuAEProperty#unitsText"><a href="DuAEProperty.html#unitsText">unitsText</a></li>
+            
+                <li data-name="DuAEProperty#value"><a href="DuAEProperty.html#value">value</a></li>
+            
+                <li data-name="DuAEProperty#valueAtTime"><a href="DuAEProperty.html#valueAtTime">valueAtTime</a></li>
+            
+                <li data-name="DuAEProperty#velocityAtTime"><a href="DuAEProperty.html#velocityAtTime">velocityAtTime</a></li>
             
                 <li data-name="DuAEProperty#velocityToPercent"><a href="DuAEProperty.html#velocityToPercent">velocityToPercent</a></li>
             
@@ -2410,6 +2757,8 @@
                 <li data-name="DuButton~onCtrlAltClick"><a href="DuButton.html#~onCtrlAltClick">onCtrlAltClick</a></li>
             
                 <li data-name="DuButton~onCtrlClick"><a href="DuButton.html#~onCtrlClick">onCtrlClick</a></li>
+            
+                <li data-name="DuButton~onOptions"><a href="DuButton.html#~onOptions">onOptions</a></li>
             
             </ul>
             <ul class="methods itemMembers">
@@ -2618,10 +2967,14 @@
             
                 <li data-name="DuEditText~onDeactivate"><a href="DuEditText.html#~onDeactivate">onDeactivate</a></li>
             
+                <li data-name="DuEditText~onEnterPressed"><a href="DuEditText.html#~onEnterPressed">onEnterPressed</a></li>
+            
             </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
+            
+                <li data-name="DuEditText.setPlaceholder"><a href="DuEditText.html#.setPlaceholder">setPlaceholder</a></li>
             
                 <li data-name="DuEditText.setPrefix"><a href="DuEditText.html#.setPrefix">setPrefix</a></li>
             
@@ -2708,6 +3061,70 @@
             </ul>
         </li>
     
+        <li class="item" data-name="DuLibrary">
+            <span class="title">
+                <a href="DuLibrary.html">DuLibrary</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="DuLibrary~onAddItem"><a href="DuLibrary.html#~onAddItem">onAddItem</a></li>
+            
+                <li data-name="DuLibrary~onAddItem"><a href="DuLibrary.html#~onAddItem">onAddItem</a></li>
+            
+                <li data-name="DuLibrary~onAltRun"><a href="DuLibrary.html#~onAltRun">onAltRun</a></li>
+            
+                <li data-name="DuLibrary~onCtrlAltRun"><a href="DuLibrary.html#~onCtrlAltRun">onCtrlAltRun</a></li>
+            
+                <li data-name="DuLibrary~onCtrlRun"><a href="DuLibrary.html#~onCtrlRun">onCtrlRun</a></li>
+            
+                <li data-name="DuLibrary~onEditData"><a href="DuLibrary.html#~onEditData">onEditData</a></li>
+            
+                <li data-name="DuLibrary~onFolderEdited"><a href="DuLibrary.html#~onFolderEdited">onFolderEdited</a></li>
+            
+                <li data-name="DuLibrary~onFolderOpened"><a href="DuLibrary.html#~onFolderOpened">onFolderOpened</a></li>
+            
+                <li data-name="DuLibrary~onRefresh"><a href="DuLibrary.html#~onRefresh">onRefresh</a></li>
+            
+                <li data-name="DuLibrary~onRemoveItem"><a href="DuLibrary.html#~onRemoveItem">onRemoveItem</a></li>
+            
+                <li data-name="DuLibrary~onRun"><a href="DuLibrary.html#~onRun">onRun</a></li>
+            
+                <li data-name="DuLibrary~setLibrary"><a href="DuLibrary.html#~setLibrary">setLibrary</a></li>
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DuLibraryItem">
+            <span class="title">
+                <a href="DuLibraryItem.html">DuLibraryItem</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="DuList">
             <span class="title">
                 <a href="DuList.html">DuList</a>
@@ -2739,25 +3156,19 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="DuList.compare"><a href="DuList.html#.compare">compare</a></li>
-            
-                <li data-name="DuList.getDuplicates"><a href="DuList.html#.getDuplicates">getDuplicates</a></li>
-            
-                <li data-name="DuList.hasDuplicates"><a href="DuList.html#.hasDuplicates">hasDuplicates</a></li>
-            
-                <li data-name="DuList.indexOf"><a href="DuList.html#.indexOf">indexOf</a></li>
-            
                 <li data-name="DuList.isAECollection"><a href="DuList.html#.isAECollection">isAECollection</a></li>
             
                 <li data-name="DuList.isList"><a href="DuList.html#.isList">isList</a></li>
-            
-                <li data-name="DuList.removeDuplicates"><a href="DuList.html#.removeDuplicates">removeDuplicates</a></li>
             
                 <li data-name="DuList#append"><a href="DuList.html#append">append</a></li>
             
                 <li data-name="DuList#appendUnique"><a href="DuList.html#appendUnique">appendUnique</a></li>
             
                 <li data-name="DuList#at"><a href="DuList.html#at">at</a></li>
+            
+                <li data-name="DuList#concat"><a href="DuList.html#concat">concat</a></li>
+            
+                <li data-name="DuList#contains"><a href="DuList.html#contains">contains</a></li>
             
                 <li data-name="DuList#convertToArray"><a href="DuList.html#convertToArray">convertToArray</a></li>
             
@@ -2816,6 +3227,25 @@
                 <li data-name="DuList#replace"><a href="DuList.html#replace">replace</a></li>
             
                 <li data-name="DuList#sort"><a href="DuList.html#sort">sort</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DuListItem">
+            <span class="title">
+                <a href="DuListItem.html">DuListItem</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
             
             </ul>
             <ul class="events itemMembers">
@@ -3211,6 +3641,8 @@
             
                 <li data-name="DuProgressBar#show"><a href="DuProgressBar.html#show">show</a></li>
             
+                <li data-name="DuProgressBar#stg"><a href="DuProgressBar.html#stg">stg</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -3439,6 +3871,31 @@
             </ul>
         </li>
     
+        <li class="item" data-name="DuTitleBar">
+            <span class="title">
+                <a href="DuTitleBar.html">DuTitleBar</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="DuTitleBar~onClose"><a href="DuTitleBar.html#~onClose">onClose</a></li>
+            
+                <li data-name="DuTitleBar~onPin"><a href="DuTitleBar.html#~onPin">onPin</a></li>
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="DuTranslation">
             <span class="title">
                 <a href="DuTranslation.html">DuTranslation</a>
@@ -3597,6 +4054,8 @@
             
                 <li data-name="def"><a href="global.html#def">def</a></li>
             
+                <li data-name="isZero"><a href="global.html#isZero">isZero</a></li>
+            
                 <li data-name="jstype"><a href="global.html#jstype">jstype</a></li>
             
                 <li data-name="tr"><a href="global.html#tr">tr</a></li>
@@ -3641,7 +4100,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8265
+            D:/RxLab/src/RxOT/DuAEF/Dugr/tools/build/output/DuGR_API/DuAEF_DuGR_api.jsxinc, line 9037
         </div>
         
     </div>
@@ -3901,7 +4360,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8291
+            D:/RxLab/src/RxOT/DuAEF/Dugr/tools/build/output/DuGR_API/DuAEF_DuGR_api.jsxinc, line 9063
         </div>
         
     </div>
@@ -3974,7 +4433,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 7821
+            D:/RxLab/src/RxOT/DuAEF/Dugr/tools/build/output/DuGR_API/DuAEF_DuGR_api.jsxinc, line 8577
         </div>
         
     </div>
@@ -4125,7 +4584,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8279
+            D:/RxLab/src/RxOT/DuAEF/Dugr/tools/build/output/DuGR_API/DuAEF_DuGR_api.jsxinc, line 9051
         </div>
         
     </div>
@@ -4196,7 +4655,7 @@
     
         
         <div class="tag-source">
-            D:/DEV_SRC/RxOT/DuAEF/DuAEF_Duik/DuGR/tools/output/DuAEF_DuGR_api.jsxinc, line 8285
+            D:/RxLab/src/RxOT/DuAEF/Dugr/tools/build/output/DuGR_API/DuAEF_DuGR_api.jsxinc, line 9057
         </div>
         
     </div>
@@ -4271,7 +4730,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Sep 03 2021 11:04:15 GMT+0200 (heure d’été d’Europe centrale)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Apr 26 2022 11:16:45 GMT+0200 (heure d’été d’Europe centrale)
         </footer>
     </div>
 </div>
