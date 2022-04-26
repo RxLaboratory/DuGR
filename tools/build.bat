@@ -2,6 +2,14 @@ cd ..
 del /s /q docs
 rmdir /s /q docs
 mkdir docs
+cd DuGR_Docs
+cd src
+mkdocs build
+cd ..
+cd docs
+echo dugr.rxlab.guide > "CNAME"
+cd ..
+cd ..
 cd tools
 mkdir output
 DuBuilder ..\Dugr.jsx output\DuGR.jsx
