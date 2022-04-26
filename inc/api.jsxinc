@@ -330,6 +330,7 @@ DuGR.toggleVisibility = function ( groups, invert, comp )
 {
     function f( layer, enabled)
     {
+        if (layer.isTrackMatte) return;
         enabled = def( enabled, !layer.enabled );
         layer.enabled = enabled;
         return enabled;
