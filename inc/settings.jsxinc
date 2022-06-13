@@ -59,34 +59,34 @@ var lockHiddenButton = DuScriptUI.checkBox(
 
 // Read settings
 ui.onResetSettings = function () {
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     lockedLayersButton.setChecked(allowLockedLayers);
 
-    var warningFrameType = def(DuESF.scriptSettings.data.warningFrame, 2);
+    var warningFrameType = DuESF.scriptSettings.get("warningFrame", 2);
     warningFrameSelector.setCurrentIndex(warningFrameType);
 
-    var useWireframe = def(DuESF.scriptSettings.data.useWireframe, true);
+    var useWireframe = DuESF.scriptSettings.get("useWireframe", true);
     useWireframeButton.setChecked(useWireframe);
 
-    var lockHidden = def(DuESF.scriptSettings.data.lockHidden, true);
+    var lockHidden = DuESF.scriptSettings.get("lockHidden", true);
     lockHiddenButton.setChecked(lockHidden);
 
-    var showTags = def(DuESF.scriptSettings.data.showTags, true);
+    var showTags = DuESF.scriptSettings.get("showTags", true);
     showTagsButton.setChecked(showTags);
 }
 
 // Save settings
 ui.onApplySettings = function () {
-    DuESF.scriptSettings.data.allowLockedLayers = lockedLayersButton.value;
-    DuESF.scriptSettings.data.warningFrame = warningFrameSelector.index;
-    DuESF.scriptSettings.data.useWireframe = useWireframeButton.value;
-    DuESF.scriptSettings.data.lockHidden = lockHiddenButton.value;
-    DuESF.scriptSettings.data.showTags = showTagsButton.value;
+    DuESF.scriptSettings.set("allowLockedLayers", lockedLayersButton.value);
+    DuESF.scriptSettings.set("warningFrame", warningFrameSelector.index);
+    DuESF.scriptSettings.set("useWireframe", useWireframeButton.value);
+    DuESF.scriptSettings.set("lockHidden", lockHiddenButton.value);
+    DuESF.scriptSettings.set("showTags", showTagsButton.value);
 
-    DuAETag.hideTags = !DuESF.scriptSettings.data.showTags;
+    DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);
 
     DuESF.scriptSettings.save();
 }
 
 // Load settings on startup
-DuAETag.hideTags = !def( DuESF.scriptSettings.data.showTags, true) ;
+DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);

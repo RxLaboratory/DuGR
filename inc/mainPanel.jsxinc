@@ -1,5 +1,4 @@
-var commonSettings = def( DuESF.scriptSettings.data.common, {} );
-var uiMode = def(commonSettings.uiMode, 0);
+var uiMode = DuESF.scriptSettings.get("common/uiMode", 0);
 
 // ========= ISOLATE BUTTONS =========
 
@@ -87,13 +86,13 @@ var pinButton = DuScriptUI.checkBox(
     DuScriptUI.Icon.PINNED
 );
 pinButton.alignment = ['center','center'];
-pinButton.setChecked( def(DuESF.scriptSettings.data.interactiveMode, false ) );
+pinButton.setChecked( DuESF.scriptSettings.get("interactiveMode", false); );
 exitButton.visible = !pinButton.checked;
 
 pinButton.onClick = function()
 {
     exitButton.visible = !pinButton.checked;
-    DuESF.scriptSettings.data.interactiveMode = pinButton.checked;
+    DuESF.scriptSettings.set("interactiveMode", pinButton.checked);
     DuESF.scriptSettings.save();
 }
 
@@ -291,7 +290,7 @@ collapseTransformationAEButton.onClick  = function()
     DuAE.beginUndoGroup( DuScriptUI.String.CONTINUOUS_RASTERIZATION );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -304,7 +303,7 @@ guideAEButton.onClick = function()
     DuAE.toggleLayerControls();
 
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -316,7 +315,7 @@ qualityAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.SET_QUALITY );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -328,7 +327,7 @@ effectsActiveAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.TOGGLE_EFFECTS );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -340,7 +339,7 @@ frameBlendingAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.SET_FRAME_BLENDING );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -352,7 +351,7 @@ motionBlurAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.TOGGLE_MOTION_BLUR );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -364,7 +363,7 @@ adjustmentLayerAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.TOGGLE_ADJUSTMENT_LAYER );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -376,7 +375,7 @@ threeDLayerAEButton.onClick = function()
     DuAE.beginUndoGroup( DuScriptUI.String.TOGGLE_3D_LAYER );
     DuAE.toggleLayerControls();
 
-    var allowLockedLayers = def(DuESF.scriptSettings.data.allowLockedLayers, true);
+    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
     DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
     DuAE.toggleLayerControls();
@@ -417,7 +416,7 @@ groupTab.build = function (tab)
 
 mainTabs.onChange = function()
 {
-    DuESF.scriptSettings.data.currentTab = mainTabs.index;
+    DuESF.scriptSettings.set("currentTab", mainTabs.index);
     DuESF.scriptSettings.save();
 }
 
@@ -594,7 +593,7 @@ DuScriptUI.addEvent( refreshPanel, 1000);
 
 // ========== INIT ==============
 
-var currentTab = def( DuESF.scriptSettings.data.currentTab, 0);
+var currentTab = DuESF.scriptSettings.get("currentTab", 0);
 mainTabs.setCurrentIndex( currentTab );
 
 refreshPanel();

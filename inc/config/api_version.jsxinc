@@ -98,7 +98,7 @@
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2022 Nicolas Dufresne, RxLaboratory
- * @version 4.0.3
+ * @version 4.0.4
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @license GPL-3.0 <br />

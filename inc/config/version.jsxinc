@@ -1,6 +1,6 @@
 var isPreRelease = false;
 var scriptName = "DuGR";
-var scriptVersion = "4.0.3";
+var scriptVersion = "4.0.4";
 var scriptAbout = 'Group your layers!';
 var companyName = "RxLaboratory";
 
