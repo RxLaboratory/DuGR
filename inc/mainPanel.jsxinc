@@ -86,7 +86,7 @@ var pinButton = DuScriptUI.checkBox(
     DuScriptUI.Icon.PINNED
 );
 pinButton.alignment = ['center','center'];
-pinButton.setChecked( DuESF.scriptSettings.get("interactiveMode", false); );
+pinButton.setChecked( DuESF.scriptSettings.get("interactiveMode", false) );
 exitButton.visible = !pinButton.checked;
 
 pinButton.onClick = function()
