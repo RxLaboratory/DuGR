@@ -1,5 +1,7 @@
 {
-    "plugins": [],
+    "plugins": [
+        "node_modules/better-docs/category"
+    ],
     "recurseDepth": 1,
     "source": {
 		"include": [ "output/DuGR_API/DuAEF_DuGR_api.jsxinc" ],
@@ -16,7 +18,32 @@
         "monospaceLinks": false,
         "copyright"             : "Copyright (c) 2017-2022 Nicolas Dufresne and contributors",
         "includeDate"           : true,
-        "search"                : "true"
+        "search"                : true,
+        "better-docs": {
+            "name": "DuGR API Reference",
+            "logo": "",
+            "title": "",
+            "css": "jsdoc.css",
+            "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Website",
+                    "href": "https://rxlaboratory.org/tools/dugr"
+                },
+                {
+                    "label": "Source code",
+                    "href": "https://github.com/RxLaboratory/DuGR"
+                },
+                {
+                    "label": "User guide",
+                    "href": "http://dugr.rxlab.guide"
+                },
+                {
+                    "label": "Donate",
+                    "href": "http://donate.rxlab.info"
+                }
+            ]
+        }
     },
     "meta": {
         "title": "DuGR",
@@ -24,7 +51,7 @@
         "keyword": "ExtendScript, Adobe, After Effects, groups"
     },
 	"opts": {
-        "template": "../../DuAEF/DuESF/tools/build/node_modules/jaguarjs",
+        "template": "node_modules/better-docs",
 		"recurse": false,
         "destination": "../../docs"
     }

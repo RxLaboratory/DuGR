@@ -7,9 +7,6 @@ cd DuGR_Docs
 cd src
 mkdocs build
 cd ..
-cd docs
-echo dugr.rxlab.guide > "CNAME"
-cd ..
 cd ..
 cd tools
 cd build
