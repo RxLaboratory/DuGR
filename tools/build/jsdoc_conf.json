@@ -4,7 +4,7 @@
     ],
     "recurseDepth": 1,
     "source": {
-		"include": [ "output/DuGR_API/DuAEF_DuGR_api.jsxinc" ],
+		"include": [ "build/DuGR_API/DuAEF_DuGR_api.jsxinc" ],
         "includePattern": ".+\\.jsxinc$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
