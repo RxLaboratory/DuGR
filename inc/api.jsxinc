@@ -161,7 +161,7 @@ DuGR.CompIsolationMode = {
  * @type {string}
  * @memberof DuScriptUI.String
  */
-DuScriptUI.String.DUGR_FRAME_NAME = "DuGR::" + tr("Isolation")
+DuGR.DUGR_FRAME_NAME = "DuGR::Isolation";
 
 /**
  * The key for DuGR isolation mode
@@ -223,7 +223,7 @@ DuAETag.Key.DUGR_HAD_TAG = 'dugrHadTag'
 DuGR.inGroups = function ( layer, groups, tag )
 {
     // The Dugr layer is not in any group
-    if (layer.name == DuScriptUI.String.DUGR_FRAME_NAME) return false;
+    if (layer.name == i18n._(DuGR.DUGR_FRAME_NAME)) return false;
 
     for( var i = 0, n = groups.length; i < n; i++)
     {
@@ -668,9 +668,9 @@ DuGR.createDugrLayer = function( comp, frameMode, isolationMode )
     sq = comp.layers.addShape();
     sq.shy = true;
     sq.guideLayer = true;
-    sq.name = DuScriptUI.String.DUGR_FRAME_NAME;
+    sq.name = i18n._(DuGR.DUGR_FRAME_NAME);
 
-    var tag = DuAETag.set( sq, DuScriptUI.String.DUGR_FRAME_NAME, undefined );
+    var tag = DuAETag.set( sq, i18n._(DuGR.DUGR_FRAME_NAME), undefined );
     DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode, tag);
 
     if (frameMode != DuGR.WarningFrameMode.ABOVE) sq.moveToEnd();
@@ -712,13 +712,13 @@ DuGR.getDugrLayer = function( comp )
     if (comp.numLayers == 0) return;
 
     //To be faster, check first and last layer first
-    if (comp.layer(1).name == DuScriptUI.String.DUGR_FRAME_NAME) return comp.layer(1);
+    if (comp.layer(1).name == i18n._(DuGR.DUGR_FRAME_NAME)) return comp.layer(1);
 
-    if (comp.layer(comp.numLayers).name == DuScriptUI.String.DUGR_FRAME_NAME)  return comp.layer(comp.numLayers);
+    if (comp.layer(comp.numLayers).name == i18n._(DuGR.DUGR_FRAME_NAME))  return comp.layer(comp.numLayers);
 
     for (var i = 1, n = comp.numLayers; i <= n; i++)
     {
-        if (comp.layer(i).name == DuScriptUI.String.DUGR_FRAME_NAME) return comp.layer(i);
+        if (comp.layer(i).name == i18n._(DuGR.DUGR_FRAME_NAME)) return comp.layer(i);
     }
 
     return null;
@@ -856,7 +856,7 @@ DuGR.saveStatus = function( layer, tag )
 DuGR.hideLayer = function( layer, timeline, compPanel, compIsolationMode, lockHiddenLayers, tag )
 {
     // Ignore the Dugr Layer
-    if (layer.name == DuScriptUI.String.DUGR_FRAME_NAME) return;
+    if (layer.name == i18n._(DuGR.DUGR_FRAME_NAME)) return;
 
     if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
     // Hide

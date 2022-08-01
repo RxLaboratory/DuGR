@@ -4,10 +4,10 @@ groupGroup.alignment = ['fill','fill'];
 groupList = groupGroup.add('listbox',undefined,"Groups",{multiselect: true});
 groupList.alignment = ['fill', 'fill'];
 
-groupList.add('item',tr("All layers")).groupName = DuGR.Group.ALL;
-groupList.add('item',tr("Selected")).groupName = DuGR.Group.SELECTED;
-groupList.add('item',tr("Grouped")).groupName = DuGR.Group.GROUPED;
-groupList.add('item',tr("Ignored")).groupName = DuGR.Group.IGNORED;
+groupList.add('item',i18n._("All layers")).groupName = DuGR.Group.ALL;
+groupList.add('item',i18n._("Selected")).groupName = DuGR.Group.SELECTED;
+groupList.add('item',i18n._("Grouped")).groupName = DuGR.Group.GROUPED;
+groupList.add('item',i18n._("Ignored")).groupName = DuGR.Group.IGNORED;
 
 groupList.onChange = refreshIsolation;
 
