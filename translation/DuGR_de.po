@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 16:07\n"
+"PO-Revision-Date: 2022-08-02 17:21\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Gruppiert"
 #: groupPanel.jsxinc:9
 #, qt-format
 msgid "Ignored"
-msgstr "Ingnoriert"
+msgstr "Ignoriert"
 
 #: propPanel.jsxinc:6
 #, qt-format
@@ -135,37 +135,37 @@ msgstr "Attribut: Hilfsebene"
 #: comp.jsxinc:588
 #, qt-format
 msgid "Null"
-msgstr ""
+msgstr "Nullobjekt"
 
 #: comp.jsxinc:637
 #, qt-format
 msgid "Adjustment layer"
-msgstr ""
+msgstr "Einstellungsebene"
 
 #: comp.jsxinc:666
 #, qt-format
 msgid "Solid"
-msgstr ""
+msgstr "Farbebene"
 
 #: comp.jsxinc:695
 #, qt-format
 msgid "Shape"
-msgstr ""
+msgstr "Formebene"
 
 #: comp.jsxinc:705
 #, qt-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Rechteck"
 
 #: comp.jsxinc:710
 #, qt-format
 msgid "Rounded rectangle"
-msgstr ""
+msgstr "Abgerundetes Rechteck"
 
 #: comp.jsxinc:716
 #, qt-format
 msgid "Circle"
-msgstr ""
+msgstr "Kreis"
 
 #: comp.jsxinc:721
 #, qt-format
@@ -175,49 +175,49 @@ msgstr ""
 #: comp.jsxinc:727
 #, qt-format
 msgid "Star"
-msgstr ""
+msgstr "Stern"
 
 #: duscriptui_extension.jsxinc:161
 #, qt-format
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: duscriptui_extension.jsxinc:203
 #, qt-format
 msgctxt "Select"
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: duscriptui_extension.jsxinc:663
 #, qt-format
 msgid "Select layers"
-msgstr ""
+msgstr "Ebenen auswählen"
 
 #: layer.jsxinc:477
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr ""
+msgstr "Die Pseudo-Effekt-Datei existiert nicht."
 
 #: layer.jsxinc:537
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
-msgstr ""
+msgstr "Ungültige Pseudo-Effekt-Datei oder Namens-Entsprechung."
 
 #: layer.jsxinc:707
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr ""
+msgstr "Bearbeitungs-Modus"
 
 #: layer.jsxinc:1505
 #, qt-format
 msgid "Locator"
-msgstr ""
+msgstr "Ortungshilfe"
 
 #: project.jsxinc:466
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "Projekt-Stammverzeichnis"
 
 #. "short for Left, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:98
@@ -238,35 +238,35 @@ msgstr ""
 #, qt-format
 msgctxt "in layer name, front"
 msgid "Fr"
-msgstr ""
+msgstr "Vorne"
 
 #. "short for Back, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:110
 #, qt-format
 msgctxt "in layer name, back"
 msgid "Bk"
-msgstr ""
+msgstr "Hinten"
 
 #. "short for Tail, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:111
 #, qt-format
 msgctxt "in layer name, tail"
 msgid "Tl"
-msgstr ""
+msgstr "Sch"
 
 #. "short for Middle, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:112
 #, qt-format
 msgctxt "in layer name, middle"
 msgid "Md"
-msgstr ""
+msgstr "M"
 
 #. "short for Above, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:113
 #, qt-format
 msgctxt "in layer name, above"
 msgid "Ab"
-msgstr ""
+msgstr "Oben"
 
 #. "short for Under, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:114
@@ -283,12 +283,12 @@ msgstr ""
 #: oco.jsxinc:393
 #, qt-format
 msgid "Shoulder"
-msgstr ""
+msgstr "Schulter"
 
 #: oco.jsxinc:442
 #, qt-format
 msgid "Forearm"
-msgstr ""
+msgstr "Unterarm"
 
 #: oco.jsxinc:483
 #, qt-format
@@ -298,102 +298,102 @@ msgstr ""
 #: oco.jsxinc:524
 #, qt-format
 msgid "Claws"
-msgstr ""
+msgstr "Klauen"
 
 #: oco.jsxinc:560
 #, qt-format
 msgid "Tip"
-msgstr ""
+msgstr "Tipp"
 
 #: oco.jsxinc:601
 #, qt-format
 msgid "Heel"
-msgstr ""
+msgstr "Ferse"
 
 #: oco.jsxinc:663
 #, qt-format
 msgid "Leg"
-msgstr ""
+msgstr "Bein"
 
 #: oco.jsxinc:702
 #, qt-format
 msgid "Thigh"
-msgstr ""
+msgstr "Oberschenkel"
 
 #: oco.jsxinc:710
 #, qt-format
 msgid "Calf"
-msgstr ""
+msgstr "Unterschenkel"
 
 #: oco.jsxinc:731
 #, qt-format
 msgid "Foot"
-msgstr ""
+msgstr "Fuß"
 
 #: oco.jsxinc:753
 #, qt-format
 msgid "Toes"
-msgstr ""
+msgstr "Zehen"
 
 #: oco.jsxinc:767
 #, qt-format
 msgid "Hoof"
-msgstr ""
+msgstr "Huf"
 
 #: oco.jsxinc:838
 #, qt-format
 msgid "Spine"
-msgstr ""
+msgstr "Wirbelsäule"
 
 #: oco.jsxinc:856
 #, qt-format
 msgid "Hips"
-msgstr ""
+msgstr "Hüfte"
 
 #: oco.jsxinc:877
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "Oberkörper"
 
 #: oco.jsxinc:898
 #, qt-format
 msgid "Neck"
-msgstr ""
+msgstr "Nacken"
 
 #: oco.jsxinc:907
 #, qt-format
 msgid "Head"
-msgstr ""
+msgstr "Kopf"
 
 #: oco.jsxinc:943
 #, qt-format
 msgid "Tail"
-msgstr ""
+msgstr "Schweif"
 
 #: oco.jsxinc:982
 #, qt-format
 msgid "Hair"
-msgstr ""
+msgstr "Haare"
 
 #: oco.jsxinc:1044
 #, qt-format
 msgid "Wing"
-msgstr ""
+msgstr "Flügel"
 
 #: oco.jsxinc:1126
 #, qt-format
 msgid "Feather"
-msgstr ""
+msgstr "Feder"
 
 #: oco.jsxinc:1388
 #, qt-format
 msgid "Fin"
-msgstr ""
+msgstr "Flosse"
 
 #: oco.jsxinc:1409
 #, qt-format
 msgid "Fishbone"
-msgstr ""
+msgstr "Fischgräte"
 
 #: panel.jsxinc:567
 #, qt-format
@@ -403,10 +403,10 @@ msgstr "%1 Einstellungen"
 #: panel.jsxinc:591
 #, qt-format
 msgid "Set the language of the interface."
-msgstr ""
+msgstr "Anzeigesprache einstellen."
 
 #: panel.jsxinc:610
 #, qt-format
 msgid "Settings file"
-msgstr ""
+msgstr "Einstellungs-Datei"
 
