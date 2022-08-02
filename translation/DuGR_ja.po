@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 16:07\n"
+"PO-Revision-Date: 2022-08-02 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr ""
 #: duscriptui_extension.jsxinc:161
 #, qt-format
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: duscriptui_extension.jsxinc:203
 #, qt-format
@@ -191,7 +191,7 @@ msgstr ""
 #: duscriptui_extension.jsxinc:663
 #, qt-format
 msgid "Select layers"
-msgstr ""
+msgstr "レイヤーを選択"
 
 #: layer.jsxinc:477
 #, qt-format
@@ -403,10 +403,10 @@ msgstr "%1 設定"
 #: panel.jsxinc:591
 #, qt-format
 msgid "Set the language of the interface."
-msgstr ""
+msgstr "インターフェースの言語を設定"
 
 #: panel.jsxinc:610
 #, qt-format
 msgid "Settings file"
-msgstr ""
+msgstr "設定ファイル"
 
