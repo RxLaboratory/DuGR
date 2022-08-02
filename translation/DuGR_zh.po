@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 16:07\n"
+"PO-Revision-Date: 2022-08-02 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr ""
 #: duscriptui_extension.jsxinc:161
 #, qt-format
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: duscriptui_extension.jsxinc:203
 #, qt-format
@@ -191,23 +191,23 @@ msgstr ""
 #: duscriptui_extension.jsxinc:663
 #, qt-format
 msgid "Select layers"
-msgstr ""
+msgstr "所选图层"
 
 #: layer.jsxinc:477
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr ""
+msgstr "伪效果文件不存在."
 
 #: layer.jsxinc:537
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
-msgstr ""
+msgstr "非法的伪效果文件或匹配名称."
 
 #: layer.jsxinc:707
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr ""
+msgstr "编辑模式"
 
 #: layer.jsxinc:1505
 #, qt-format
@@ -403,10 +403,10 @@ msgstr "%1 设置"
 #: panel.jsxinc:591
 #, qt-format
 msgid "Set the language of the interface."
-msgstr ""
+msgstr "设置界面的语言."
 
 #: panel.jsxinc:610
 #, qt-format
 msgid "Settings file"
-msgstr ""
+msgstr "设置文件"
 
