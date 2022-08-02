@@ -1,0 +1,575 @@
+# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DuGR 4.0.X\n"
+"POT-Creation-Date: 2022-08-02 18:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Genereated-By: gettext.jsxinc\n"
+"Language: ru\n"
+
+#, qt-format
+msgid "January"
+msgstr "Январь"
+
+#, qt-format
+msgid "February"
+msgstr "Февраль"
+
+#, qt-format
+msgid "March"
+msgstr "Март"
+
+#, qt-format
+msgid "April"
+msgstr "Апрель"
+
+#, qt-format
+msgid "May"
+msgstr "Май"
+
+#, qt-format
+msgid "June"
+msgstr "Июнь"
+
+#, qt-format
+msgid "July"
+msgstr "Июль"
+
+#, qt-format
+msgid "August"
+msgstr "Август"
+
+#, qt-format
+msgid "September"
+msgstr "Сентябрь"
+
+#, qt-format
+msgid "October"
+msgstr "Октябрь"
+
+#, qt-format
+msgid "November"
+msgstr "Ноябрь"
+
+#, qt-format
+msgid "December"
+msgstr "Декабрь"
+
+#, qt-format
+msgid "Isolation"
+msgstr "Изолировать"
+
+#, qt-format
+msgid "DuGR"
+msgstr ""
+
+#, qt-format
+msgid "%1 Settings"
+msgstr "%1 Настройки"
+
+#, qt-format
+msgid "Check for updates"
+msgstr "Проверить обновления"
+
+#, qt-format
+msgid "Back"
+msgstr "Назад"
+
+#, qt-format
+msgid "Close settings"
+msgstr "Закрыть настройки"
+
+#, qt-format
+msgid "Default"
+msgstr "По умолчанию"
+
+#, qt-format
+msgid "Reset the settings to their default values."
+msgstr "Сброс настроек в исходное состояние"
+
+#, qt-format
+msgid "Apply"
+msgstr "Применить"
+
+#, qt-format
+msgid "Apply changes to the settings."
+msgstr "Применить изменения к настройкам"
+
+#, qt-format
+msgid "Bug report"
+msgstr "Отчет об ошибке"
+
+#, qt-format
+msgid "Bug report\n"
+"Tell us what's wrong!"
+msgstr "Отчет об ошибке\n"
+"Расскажи нам что не так!"
+
+#, qt-format
+msgid "Feature request"
+msgstr "Запрос новых функций"
+
+#, qt-format
+msgid "Feature request\n"
+"Request something new."
+msgstr "Запрос новых функций\n"
+"Попросите что то новенькое."
+
+#, qt-format
+msgid "Edit settings"
+msgstr "Редактировать настройки	"
+
+#, qt-format
+msgid "Help"
+msgstr "Помощь"
+
+#, qt-format
+msgid "Get help."
+msgstr "Получить помощь"
+
+#, qt-format
+msgid "Export translation file"
+msgstr "Экспортировать файл перевода"
+
+#, qt-format
+msgid "Export a translation file to be edited with DuTranslator."
+msgstr "Экспортировать файл перевода для редактирования в DuTranslator"
+
+#, qt-format
+msgid "Settings file..."
+msgstr "Файл настроек..."
+
+#, qt-format
+msgid "Set the location of the settings file."
+msgstr "Установить расположение файла настроек."
+
+#, qt-format
+msgid "Path..."
+msgstr "Путь доступа..."
+
+#, qt-format
+msgid "Set the highlight color."
+msgstr "Установить цвет выделения."
+
+#, qt-format
+msgid "Cancel"
+msgstr "Отменить"
+
+#, qt-format
+msgid "After Effects Blue"
+msgstr "Афтер Эффект Синий"
+
+#, qt-format
+msgid "The After Effects highlighting blue"
+msgstr "Афтер Эффект выделяем синим"
+
+#, qt-format
+msgid "RxLab Purple"
+msgstr "ЭрИксЛаб Сиреневый"
+
+#, qt-format
+msgid "The RxLaboratory Purple"
+msgstr "ЭрИкс Лабораторный Сиреневый"
+
+#, qt-format
+msgid "Rainbox Red"
+msgstr "Рэйнбокс Красный"
+
+#, qt-format
+msgid "The Rainbox Productions Red"
+msgstr "Рейнбокс Продакшн Красный"
+
+#, qt-format
+msgid "After Effects Orange (CS6)"
+msgstr "Афтэр Эффект Оранжевый (CS6)"
+
+#, qt-format
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr "Выделение оранжевым из старых,  добрых Афтэр Эеффектов CS6"
+
+#, qt-format
+msgid "Custom..."
+msgstr "Пользовательский..."
+
+#, qt-format
+msgid "Select a custom color"
+msgstr "Выбрать персонализированный цвет"
+
+#, qt-format
+msgid "Select the UI mode."
+msgstr "Выбрать режим интерфейса"
+
+#, qt-format
+msgid "Rookie"
+msgstr "Новичок"
+
+#, qt-format
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr "Наипростейший режим,  но одновременно самый большой интерфейс"
+
+#, qt-format
+msgid "Standard"
+msgstr "Стандартный"
+
+#, qt-format
+msgid "The standard not-too-big UI."
+msgstr "Стандартный не очень большой интерфейс"
+
+#, qt-format
+msgid "Expert"
+msgstr "Экспертный"
+
+#, qt-format
+msgid "The smallest UI, for expert users."
+msgstr "Самый маленький интерфейс,  для пользователей экспертов."
+
+#, qt-format
+msgid "Normal mode"
+msgstr "Нормальный режим"
+
+#, qt-format
+msgid "Use at your own risk!"
+msgstr "Используйте на свой страх и риск!"
+
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr "Закрепленные слои: "
+
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "Что делать если слой закреплен"
+
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "Тип рамки уведомления"
+
+#, qt-format
+msgid "Warning frame: None"
+msgstr "Рамка уведомления: Отсутствует"
+
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "Не использовать рамку уведомления"
+
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "Рамка уведомления: Сверху"
+
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr "Отобразить рамку наверху композиции"
+
+#, qt-format
+msgid "Warning frame: Below"
+msgstr "Рамка уведомления: Снизу"
+
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr "Отобразить рамку уведомления снизу композиции"
+
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "Изоляция: спрятать слои"
+
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr "Метод используемый для изоляции слоев в композиции"
+
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "Закрепить спрятанные слои"
+
+#, qt-format
+msgid "Wether the hidden layers have to be locked."
+msgstr "Седует ли закреплять спрятанные слои."
+
+#, qt-format
+msgid "Isolate"
+msgstr "Изолировать"
+
+#, qt-format
+msgid "Isolate selected groups."
+msgstr "Изолировать выделенные группы."
+
+#, qt-format
+msgid "Timeline"
+msgstr "Монтажная линейка"
+
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Изолировать выделенные группы только на монтажной линейке"
+
+#, qt-format
+msgid "Comp"
+msgstr "Композиция"
+
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Изолировать выделенные группы только в композиционной панели"
+
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr "Установить интерактивный (вязкий) режим."
+
+#, qt-format
+msgid "Show/Hide layers"
+msgstr "Спрятать/Показать слои"
+
+#, qt-format
+msgid "Toggle audio"
+msgstr "Переключить звук"
+
+#, qt-format
+msgid "Toggle solo mode"
+msgstr "Переключить монорежим "
+
+#, qt-format
+msgid "Lock layers"
+msgstr "Закрыть слои"
+
+#, qt-format
+msgid "Shy layers"
+msgstr "Минимизировать слои"
+
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Свернуть трансформации / Непрерывная растеризация"
+
+#, qt-format
+msgid "Guide layers"
+msgstr "Слои направляющих"
+
+#, qt-format
+msgid "Change quality"
+msgstr "Изменить количество"
+
+#, qt-format
+msgid "Toggle effects"
+msgstr "Переключить эффекты	"
+
+#, qt-format
+msgid "Change frame blending"
+msgstr "Изменить смешение кадров"
+
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "Переключить размытие в движении"
+
+#, qt-format
+msgid "Toggle adjutment layer mode"
+msgstr "Переключить режим корректирующих слоев"
+
+#, qt-format
+msgid "Toggle 3D mode"
+msgstr "Переключить 3х мерный режим"
+
+#, qt-format
+msgid "Select layers"
+msgstr "Вуделить слои"
+
+#, qt-format
+msgid "Properties"
+msgstr "Свойства"
+
+#, qt-format
+msgid "Select layer by property or type"
+msgstr "Выбрать слой по типу или по свойствам "
+
+#, qt-format
+msgid "Groups"
+msgstr "Группы"
+
+#, qt-format
+msgid "Select groups"
+msgstr "Выбрать группы"
+
+#, qt-format
+msgid "Invert"
+msgstr "Инвертировать"
+
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "Инвертировать набор групп/свойств"
+
+#, qt-format
+msgid "All layers"
+msgstr "Все слои"
+
+#, qt-format
+msgid "Selected"
+msgstr "Набор"
+
+#, qt-format
+msgid "Grouped"
+msgstr "Сгруппированно"
+
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr "Иерархия: Сироты"
+
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr "Иерархия: Есть дочерние"
+
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr "Тип: Предварительные Композиции"
+
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "Тип: Нулевые Объекты"
+
+#, qt-format
+msgid "Type: Solids"
+msgstr "Тип: Слои Сплошного Цвета"
+
+#, qt-format
+msgid "Type: Shapes"
+msgstr "Тип: Фигуры"
+
+#, qt-format
+msgid "Type: Texts"
+msgstr "Тип: Тексты"
+
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "Тип: Корректируещие"
+
+#, qt-format
+msgid "Type: Lights"
+msgstr "Тип: Освещение"
+
+#, qt-format
+msgid "Type: Cameras"
+msgstr "Тип: Камеры"
+
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "Атрибут: Видимый"
+
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "Атрибут: Имеет Звук"
+
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "Атрибут: Моно"
+
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "Атрибут: Закрыт"
+
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "Атрибут: Спрятан"
+
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "Атрибут: Эффекты"
+
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "Атрибут: Размытие в Движении"
+
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "Атрибут: 3х Мерный"
+
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "Атрибут: Направляющий"
+
+#, qt-format
+msgid "Custom"
+msgstr "Пользовательский"
+
+#, qt-format
+msgid "Dev and Debug mode"
+msgstr "Режим Разработчика и Отладчика"
+
+#, qt-format
+msgid "Set the language of the interface."
+msgstr "Установить язык интерфейса"
+
+#, qt-format
+msgid "Next"
+msgstr "Следующий"
+
+#, qt-format
+msgid "Path"
+msgstr "Путь доступа"
+
+#, qt-format
+msgid "Previous"
+msgstr "Предыдущий"
+
+#, qt-format
+msgid "Settings"
+msgstr "Настройки"
+
+#, qt-format
+msgid "Settings file"
+msgstr "Файл настроек"
+
+#, qt-format
+msgid "%1 needs to be allowed to write files.\n"
+"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+msgstr "%1 требуется разрешить переписывать файлы.\n"
+"Пожалуйста, отметьте пункт \"Разрешить сценариям переписывать файлы....\" в настройках сценариев Афтер Эффектов."
+
+#, qt-format
+msgid "File and network access"
+msgstr "Доступ к сети и файлам"
+
+#, qt-format
+msgid "/!\ ======\n"
+"/!\ It seems something went wrong with %1 the last time you used it.\n"
+"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
+"/!\ ======"
+msgstr "/!\ ======\n"
+"/!\ Видимо что пошло не так с %1 когда вы это использовали в последний раз.\n"
+"/!\ Отметьте пункт ниже для перезапуска %1 и попробуйте использовать это еще раз.\n"
+"/!\ ======"
+
+#, qt-format
+msgid "Re-initialize %1 before launch."
+msgstr "Перезапустить %1 до запуска."
+
+#, qt-format
+msgid "The pseudo effect file does not exist."
+msgstr "Файл псевдо эффектов не найден"
+
+#, qt-format
+msgid "Invalid pseudo effect file or match name."
+msgstr "Ошибочный файл псеводо эффектов или сонаиминований."
+
+#, qt-format
+msgid "Edit mode"
+msgstr "Режим редактирования"
+
+#, qt-format
+msgid "Open preferences"
+msgstr "Открыть настойки"
+
+#, qt-format
+msgid "None"
+msgstr "Отсутствует"
+
+#, qt-format
+msgid "New version available"
+msgstr "Доступна новая версия"
+
+#, qt-format
+msgid "DuGR::Isolation"
+msgstr "DuGR::Изоляция"
+

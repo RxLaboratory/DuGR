@@ -1,0 +1,884 @@
+# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DuGR 4.0.X\n"
+"POT-Creation-Date: 2022-08-02 18:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Genereated-By: gettext.jsxinc\n"
+"Language: ja\n"
+
+#, qt-format
+msgctxt "ABOVE"
+msgid "Above"
+msgstr ""
+
+#, qt-format
+msgctxt "ABOVE_SHORT"
+msgid "Ab"
+msgstr ""
+
+#, qt-format
+msgctxt "AE_BLUE"
+msgid "After Effects Blue"
+msgstr "After Effects ブルー"
+
+#, qt-format
+msgctxt "AE_BLUE_TIP"
+msgid "The After Effects highlighting blue"
+msgstr "After Effects ハイライトブルー"
+
+#, qt-format
+msgctxt "AE_ORANGE"
+msgid "After Effects Orange (CS6)"
+msgstr "After Effects オレンジ (CS6)"
+
+#, qt-format
+msgctxt "AE_ORANGE_TIP"
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr "After Effects CS6 の懐かしいハイライトオレンジ"
+
+#, qt-format
+msgctxt "APPLY"
+msgid "Apply"
+msgstr "適用"
+
+#, qt-format
+msgctxt "APPLY_SETTINGS"
+msgid "Apply changes to the settings."
+msgstr "設定の変更を適用"
+
+#, qt-format
+msgctxt "APPLY_SETTINGS_ALERT"
+msgid "You may need to restart the script for all changes to take effect."
+msgstr "すべての変更を有効にするには、スクリプトを再起動する必要がある場合があります。"
+
+#, qt-format
+msgctxt "BACK_PREVIOUS"
+msgid "Back"
+msgstr "戻る"
+
+#, qt-format
+msgctxt "BACK_LOCATION"
+msgid "Back"
+msgstr ""
+
+#, qt-format
+msgctxt "BACK_LOCATION_SHORT"
+msgid "Bk"
+msgstr ""
+
+#, qt-format
+msgctxt "BUG_REPORT"
+msgid "Bug report"
+msgstr "バグレポート"
+
+#, qt-format
+msgctxt "BUG_REPORT_TIP"
+msgid "Bug report\n"
+"Tell us what's wrong!"
+msgstr "バグレポート\n"
+"何が問題か教えてください！"
+
+#, qt-format
+msgctxt "CANCEL"
+msgid "Cancel"
+msgstr "キャンセル"
+
+#, qt-format
+msgctxt "CHARACTER"
+msgid "Character"
+msgstr ""
+
+#, qt-format
+msgctxt "CHECK_UPDATE"
+msgid "Check for updates"
+msgstr "アップデートの確認"
+
+#, qt-format
+msgctxt "COLOR_HIGHLIGHT_TIP"
+msgid "Set the highlight color."
+msgstr "ハイライトカラーを設定"
+
+#, qt-format
+msgctxt "CUSTOM"
+msgid "Custom"
+msgstr "カスタム"
+
+#, qt-format
+msgctxt "CUSTOM_COLOR_TIP"
+msgid "Select a custom color."
+msgstr "カスタムカラーを選択"
+
+#, qt-format
+msgctxt "CLOSE_SETTINGS"
+msgid "Close settings"
+msgstr "設定を閉じる"
+
+#, qt-format
+msgctxt "DEFAULT"
+msgid "Default"
+msgstr "デフォルト"
+
+#, qt-format
+msgctxt "DEV_MODE"
+msgid "Dev and Debug mode"
+msgstr "開発・デバッグモード"
+
+#, qt-format
+msgctxt "DEV_MODE_TIP"
+msgid "Use at your own risk!"
+msgstr "自己責任で！"
+
+#, qt-format
+msgctxt "EDIT_SETTINGS"
+msgid "Edit settings"
+msgstr "設定の編集"
+
+#, qt-format
+msgctxt "EXPERT"
+msgid "Expert"
+msgstr "エキスパート"
+
+#, qt-format
+msgctxt "EXPERT_UI_TIP"
+msgid "The smallest UI, for expert users."
+msgstr "上級者向けの最小の UI"
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION"
+msgid "Export translation file"
+msgstr "翻訳ファイルのエクスポート"
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION_TIP"
+msgid "Export a translation file to be edited with DuTranslator."
+msgstr "DuTranslator で編集するための翻訳ファイルをエクスポート"
+
+#, qt-format
+msgctxt "FEATURE_REQUEST"
+msgid "Feature request"
+msgstr "機能リクエスト"
+
+#, qt-format
+msgctxt "FEATURE_REQUEST_TIP"
+msgid "Feature request\n"
+"Request something new."
+msgstr "機能リクエスト\n"
+"新しい機能をリクエストする"
+
+#, qt-format
+msgctxt "FRONT"
+msgid "Front"
+msgstr ""
+
+#, qt-format
+msgctxt "FRONT_SHORT"
+msgid "Fr"
+msgstr ""
+
+#, qt-format
+msgctxt "GROUPS"
+msgid "Groups"
+msgstr "グループ"
+
+#, qt-format
+msgctxt "HELP"
+msgid "Help"
+msgstr "ヘルプ"
+
+#, qt-format
+msgctxt "HELP_TIP"
+msgid "Get help."
+msgstr "助けを得る"
+
+#, qt-format
+msgctxt "INVERT"
+msgid "Invert"
+msgstr "反転"
+
+#, qt-format
+msgctxt "INVERTED"
+msgid "Inverted"
+msgstr "反転"
+
+#, qt-format
+msgctxt "ISOLATE"
+msgid "Isolate"
+msgstr "分離"
+
+#, qt-format
+msgctxt "LANGUAGE_TIP"
+msgid "Set the language of the interface."
+msgstr "インターフェースの言語を設定"
+
+#, qt-format
+msgctxt "LEFT"
+msgid "Left"
+msgstr ""
+
+#, qt-format
+msgctxt "LEFT_SHORT"
+msgid "L"
+msgstr ""
+
+#, qt-format
+msgctxt "MIDDLE"
+msgid "Middle"
+msgstr ""
+
+#, qt-format
+msgctxt "MIDDLE_SHORT"
+msgid "Md"
+msgstr ""
+
+#, qt-format
+msgctxt "NEXT"
+msgid "Next"
+msgstr ""
+
+#, qt-format
+msgctxt "NONE"
+msgid "None"
+msgstr ""
+
+#, qt-format
+msgctxt "NORMAL_MODE"
+msgid "Normal mode"
+msgstr "通常モード"
+
+#, qt-format
+msgctxt "OK"
+msgid "OK"
+msgstr ""
+
+#, qt-format
+msgctxt "OPACITY"
+msgid "Opacity"
+msgstr ""
+
+#, qt-format
+msgctxt "PATH"
+msgid "Path"
+msgstr ""
+
+#, qt-format
+msgctxt "PREVIOUS"
+msgid "Previous"
+msgstr ""
+
+#, qt-format
+msgctxt "PROPERTIES"
+msgid "Properties"
+msgstr "プロパティ"
+
+#, qt-format
+msgctxt "RANDOM_TIP"
+msgid "Set a random value."
+msgstr ""
+
+#, qt-format
+msgctxt "RESET_SETTINGS"
+msgid "Reset the settings to their default values."
+msgstr "設定をデフォルト値にリセット"
+
+#, qt-format
+msgctxt "RIGHT"
+msgid "Right"
+msgstr ""
+
+#, qt-format
+msgctxt "RIGHT_SHORT"
+msgid "R"
+msgstr ""
+
+#, qt-format
+msgctxt "ROOKIE"
+msgid "Rookie"
+msgstr "ルーキー"
+
+#, qt-format
+msgctxt "ROOKIE_UI_TIP"
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr "最も使いやすいモードだが、最大の UI でもある"
+
+#, qt-format
+msgctxt "RX_PURPLE"
+msgid "RxLab Purple"
+msgstr "RxLab パープル"
+
+#, qt-format
+msgctxt "RX_PURPLE_TIP"
+msgid "The RxLaboratory Purple"
+msgstr "RxLaboratory パープル"
+
+#, qt-format
+msgctxt "RX_RED"
+msgid "Rainbox Red"
+msgstr "Rainbox レッド"
+
+#, qt-format
+msgctxt "RX_RED_TIP"
+msgid "The Rainbox Productions Red"
+msgstr "Rainbox プロダクト レッド"
+
+#, qt-format
+msgctxt "SELECT_LAYERS"
+msgid "Select layers"
+msgstr "レイヤーを選択"
+
+#, qt-format
+msgctxt "SELECT_GROUPS"
+msgid "Select groups"
+msgstr "グループの選択"
+
+#, qt-format
+msgctxt "SET_QUALITY"
+msgid "Set quality"
+msgstr "品質とサンプリング"
+
+#, qt-format
+msgctxt "SETTINGS"
+msgid "Settings"
+msgstr "設定"
+
+#, qt-format
+msgctxt "SETTINGS_FILE"
+msgid "Settings file"
+msgstr "設定ファイル"
+
+#, qt-format
+msgctxt "SETTINGS_FILE_TIP"
+msgid "Set the location of the settings file."
+msgstr "設定ファイルの場所を設定"
+
+#, qt-format
+msgctxt "SIZE"
+msgid "Size"
+msgstr ""
+
+#, qt-format
+msgctxt "STANDARD"
+msgid "Standard"
+msgstr "標準"
+
+#, qt-format
+msgctxt "STANDARD_UI_TIP"
+msgid "The standard not-too-big UI."
+msgstr "標準の大きすぎない UI"
+
+#, qt-format
+msgctxt "TAIL"
+msgid "Tail"
+msgstr ""
+
+#, qt-format
+msgctxt "TAIL_SHORT"
+msgid "Tl"
+msgstr ""
+
+#, qt-format
+msgctxt "TIMELINE"
+msgid "Timeline"
+msgstr "タイムライン"
+
+#, qt-format
+msgctxt "UI_MODE_TIP"
+msgid "Select the UI mode."
+msgstr "UI モードの選択"
+
+#, qt-format
+msgctxt "UNDER"
+msgid "Under"
+msgstr ""
+
+#, qt-format
+msgctxt "UNDER_SHORT"
+msgid "Un"
+msgstr ""
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS"
+msgid "%1 needs to be allowed to write files.\n"
+"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+msgstr "%1 はファイルへの書き込みの許可が必要です。\n"
+"After Effects の環境設定のスクリプトに関する項目から「スクリプトファイルによるファイルへの書き込みを許可」してください。"
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS_TITLE"
+msgid "File and network access"
+msgstr ""
+
+#, qt-format
+msgctxt "COMPOSITION_SHORT"
+msgid "Comp"
+msgstr "コンポ"
+
+#, qt-format
+msgctxt "COMPOSITION"
+msgid "Composition"
+msgstr "コンポジション"
+
+#, qt-format
+msgctxt "CONTINUOUS_RASTERIZATION"
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "コラップストランスフォーム、連続ラスタライズ"
+
+#, qt-format
+msgctxt "EDIT_MODE"
+msgid "Edit mode"
+msgstr ""
+
+#, qt-format
+msgctxt "GUIDE_LAYERS"
+msgid "Guide layers"
+msgstr "ガイド"
+
+#, qt-format
+msgctxt "INVALID_PSEUDO_EFFECT"
+msgid "Invalid pseudo effect file or match name."
+msgstr ""
+
+#, qt-format
+msgctxt "LOCK_LAYERS"
+msgid "Lock layers"
+msgstr "ロック"
+
+#, qt-format
+msgctxt "MISSING_PSEUDO_EFFECT"
+msgid "The pseudo effect file does not exist."
+msgstr ""
+
+#, qt-format
+msgctxt "NEW_VERSION_TITLE"
+msgid "New version available"
+msgstr "新しいバージョンが利用可能"
+
+#, qt-format
+msgctxt "OPEN_PREFS"
+msgid "Open preferences"
+msgstr ""
+
+#, qt-format
+msgctxt "REINIT_PROMPT"
+msgid "/!\ ======\n"
+"/!\ It seems something went wrong with %1 the last time you used it.\n"
+"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
+"/!\ ======"
+msgstr "/!\ ======\n"
+"/!\ 前回 %1 を使用したとき、何か問題が発生したようです。\n"
+"/!\ 下のチェックボックスをチェックして %1 を再初期化し、再動作させてみてください。\n"
+"/!\ ======"
+
+#, qt-format
+msgctxt "REINIT_SCRIPT"
+msgid "Re-initialize %1 before launch."
+msgstr "起動する前に %1 を再初期化します。"
+
+#, qt-format
+msgctxt "SET_FRAME_BLENDING"
+msgid "Set frame blending mode"
+msgstr "フレームブレンド"
+
+#, qt-format
+msgctxt "SHOW_HIDE_LAYERS_TIP"
+msgid "Show/Hide layers"
+msgstr "レイヤーの表示・非表示"
+
+#, qt-format
+msgctxt "SHY_LAYERS"
+msgid "Shy layers"
+msgstr "シャイ"
+
+#, qt-format
+msgctxt "SOLO_LAYERS"
+msgid "Toggle solo mode"
+msgstr "ソロ"
+
+#, qt-format
+msgctxt "TOGGLE_3D_LAYER"
+msgid "Toggle 3D layer mode"
+msgstr "3D レイヤー"
+
+#, qt-format
+msgctxt "TOGGLE_ADJUSTMENT_LAYER"
+msgid "Toggle adjustment layer mode"
+msgstr "調整レイヤー"
+
+#, qt-format
+msgctxt "TOGGLE_AUDIO"
+msgid "Toggle audio"
+msgstr "オーディオ"
+
+#, qt-format
+msgctxt "TOGGLE_EFFECTS"
+msgid "Toggle effects"
+msgstr "エフェクト"
+
+#, qt-format
+msgctxt "TOGGLE_MOTION_BLUR"
+msgid "Toggle motion blur"
+msgstr "モーションブラー"
+
+#, qt-format
+msgctxt "DUGR_FRAME_NAME"
+msgid "DuGR::Isolation"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIP"
+msgid "Isolate selected groups."
+msgstr "選択したグループを分離"
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIMELINE_TIP"
+msgid "Isolate selected groups, in the timeline only."
+msgstr "タイムラインのみ選択したグループを分離"
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_COMP_TIP"
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "コンポジションパネルのみ選択したグループを分離"
+
+#, qt-format
+msgctxt "DUGR_STICKY_TIP"
+msgid "Set interactive (sticky) mode."
+msgstr "インタラクティブ（スティッキー）モード"
+
+#, qt-format
+msgctxt "DUGR_ADD_LAYERS_TIP"
+msgid "Add selected layers to group."
+msgstr "選択したレイヤーをグループに追加"
+
+#, qt-format
+msgctxt "DUGR_GET_GROUPS_TIP"
+msgid "Get groups from selected layers."
+msgstr "選択したレイヤーからグループを選択"
+
+#, qt-format
+msgctxt "DUGR_REMOVE_LAYERS_TIP"
+msgid "Remove selected layers from group."
+msgstr "選択したレイヤーをグループから削除"
+
+#, qt-format
+msgctxt "DUGR_CREATE_GROUP_TIP"
+msgid "Create new group."
+msgstr "新しいグループを作成"
+
+#, qt-format
+msgctxt "DUGR_RENAME_GROUP_TIP"
+msgid "Change group name"
+msgstr "グループ名を変更"
+
+#, qt-format
+msgctxt "DUGR_REMOVE_GROUP_TIP"
+msgid "Remove group."
+msgstr "グループを削除"
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP"
+msgid "New group"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP_TIP"
+msgid "The name of the group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_UNCHECKED"
+msgid "Locked layers: deny changes"
+msgstr "ロックレイヤー: 変更を禁止する"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_CHECKED"
+msgid "Locked layers: allow changes"
+msgstr "ロックレイヤー: 変更を許可する"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_TIP"
+msgid "What to do if a layer is locked."
+msgstr "レイヤーがロックされている場合の動作"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME"
+msgid "Warning frame: None"
+msgstr "警告フレーム: なし"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME_TIP"
+msgid "Don't use any warning frame."
+msgstr "警告フレームを使用しない"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE"
+msgid "Warning frame: Above"
+msgstr "警告フレーム: 前面"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE_TIP"
+msgid "Draw the frame above the composition."
+msgstr "コンポジションの上にフレームを表示"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW"
+msgid "Warning frame: Below"
+msgstr "警告フレーム: 背面"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW_TIP"
+msgid "Draw the frame below the composition."
+msgstr "コンポジションの下にフレームを表示"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_UNCHECKED"
+msgid "Isolation: hide layers"
+msgstr "分離: レイヤーを非表示"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_CHECKED"
+msgid "Isolation: wireframe"
+msgstr "分離: ワイヤーフレーム"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_TIP"
+msgid "Method used to isolate layers in the composition."
+msgstr "コンポジション内のレイヤーを分離する方法"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_UNCHECKED"
+msgid "Hide markers"
+msgstr "マーカーを非表示"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_CHECKED"
+msgid "Show markers"
+msgstr "マーカーを表示"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_TIP"
+msgid "Whether to show or hide the tags on the layers."
+msgstr "レイヤーにタグを表示するか否か"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_HIDDEN"
+msgid "Lock hidden layers"
+msgstr "非表示レイヤーをロック"
+
+#, qt-format
+msgctxt "DUGR_SETTINGSLOCK_HIDDEN_TIP"
+msgid "Whether the hidden layers have to be locked."
+msgstr "非表示レイヤーをロックする必要があるか否か"
+
+#, qt-format
+msgctxt "DUGR_SELECT_PROP_TIP"
+msgid "Select layer by property or type"
+msgstr "プロパティやタイプによるレイヤーの選択"
+
+#, qt-format
+msgctxt "DUGR_INVERT_TIP"
+msgid "Invert the group/property selection"
+msgstr "グループ・プロパティの選択を反転"
+
+#, qt-format
+msgctxt "DUGR_EXIT_ISOLATION_TIP"
+msgid "Exit isolation."
+msgstr "分離を終了"
+
+#, qt-format
+msgid "January"
+msgstr "1月"
+
+#, qt-format
+msgid "February"
+msgstr "2月"
+
+#, qt-format
+msgid "March"
+msgstr "3月"
+
+#, qt-format
+msgid "April"
+msgstr "4月"
+
+#, qt-format
+msgid "May"
+msgstr "5月"
+
+#, qt-format
+msgid "June"
+msgstr "6月"
+
+#, qt-format
+msgid "July"
+msgstr "7月"
+
+#, qt-format
+msgid "August"
+msgstr "8月"
+
+#, qt-format
+msgid "September"
+msgstr "9月"
+
+#, qt-format
+msgid "October"
+msgstr "10月"
+
+#, qt-format
+msgid "November"
+msgstr "11月"
+
+#, qt-format
+msgid "December"
+msgstr "12月"
+
+#, qt-format
+msgid "Isolation"
+msgstr "分離"
+
+#, qt-format
+msgid "DuGR"
+msgstr ""
+
+#, qt-format
+msgid "%1 Settings"
+msgstr "%1 設定"
+
+#, qt-format
+msgid "English"
+msgstr ""
+
+#, qt-format
+msgid "Français"
+msgstr ""
+
+#, qt-format
+msgid "Settings file..."
+msgstr "設定ファイル..."
+
+#, qt-format
+msgid "Path..."
+msgstr "パス..."
+
+#, qt-format
+msgid "Custom..."
+msgstr "カスタム..."
+
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "使用する警告フレームの種類"
+
+#, qt-format
+msgid "All layers"
+msgstr "すべてのレイヤー"
+
+#, qt-format
+msgid "Selected"
+msgstr "選択したレイヤー"
+
+#, qt-format
+msgid "Grouped"
+msgstr "グループレイヤー"
+
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr "階層: 親なし"
+
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr "階層: 子あり"
+
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr "タイプ: プリコンポジション"
+
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "タイプ: ヌルオブジェクト"
+
+#, qt-format
+msgid "Type: Solids"
+msgstr "タイプ: 平面レイヤー"
+
+#, qt-format
+msgid "Type: Shapes"
+msgstr "タイプ: シェイプレイヤー"
+
+#, qt-format
+msgid "Type: Texts"
+msgstr "タイプ: テキスト"
+
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "タイプ: 調整レイヤー"
+
+#, qt-format
+msgid "Type: Lights"
+msgstr "タイプ: ライト"
+
+#, qt-format
+msgid "Type: Cameras"
+msgstr "タイプ: カメラ"
+
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "属性: 表示"
+
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "属性: オーディオ"
+
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "属性: ソロ"
+
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "属性: ロック"
+
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "属性: シャイ"
+
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "属性: エフェクト"
+
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "属性: モーションブラー"
+
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "属性: 3D"
+
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "属性: ガイド"
+
+#, qt-format
+msgid "Ignored"
+msgstr "無視レイヤー"
+
+#, qt-format
+msgid "Edit group name"
+msgstr "グループ名を編集"
+
+#, qt-format
+msgid "Pin window"
+msgstr "ウィンドウをピン留め"
+
+#, qt-format
+msgid "Close"
+msgstr "閉じる"
+

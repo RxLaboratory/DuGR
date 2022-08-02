@@ -1,0 +1,884 @@
+# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DuGR 4.0.X\n"
+"POT-Creation-Date: 2022-08-02 18:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Genereated-By: gettext.jsxinc\n"
+"Language: pd\n"
+
+#, qt-format
+msgctxt "ABOVE"
+msgid "Above"
+msgstr "ed sus"
+
+#, qt-format
+msgctxt "ABOVE_SHORT"
+msgid "Ab"
+msgstr "Sus"
+
+#, qt-format
+msgctxt "AE_BLUE"
+msgid "After Effects Blue"
+msgstr "Bleu After Effects"
+
+#, qt-format
+msgctxt "AE_BLUE_TIP"
+msgid "The After Effects highlighting blue"
+msgstr "Bleu d'mise in valué d'After Effects."
+
+#, qt-format
+msgctxt "AE_ORANGE"
+msgid "After Effects Orange (CS6)"
+msgstr "Arongue After Effects (CS6)"
+
+#, qt-format
+msgctxt "AE_ORANGE_TIP"
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr "El arongue d'mise in valué del bon viué After Effects CS6."
+
+#, qt-format
+msgctxt "APPLY"
+msgid "Apply"
+msgstr "Appliquer"
+
+#, qt-format
+msgctxt "APPLY_SETTINGS"
+msgid "Apply changes to the settings."
+msgstr "Appliquer els cangemints des préférinches."
+
+#, qt-format
+msgctxt "APPLY_SETTINGS_ALERT"
+msgid "You may need to restart the script for all changes to take effect."
+msgstr "I faut pet-ête erdmarrer el bastrinque por ek tous els cangemints sot prins in compte."
+
+#, qt-format
+msgctxt "BACK_PREVIOUS"
+msgid "Back"
+msgstr "Artour"
+
+#, qt-format
+msgctxt "BACK_LOCATION"
+msgid "Back"
+msgstr "Arièr"
+
+#, qt-format
+msgctxt "BACK_LOCATION_SHORT"
+msgid "Bk"
+msgstr "Ar"
+
+#, qt-format
+msgctxt "BUG_REPORT"
+msgid "Bug report"
+msgstr "Rapport d'abu"
+
+#, qt-format
+msgctxt "BUG_REPORT_TIP"
+msgid "Bug report\n"
+"Tell us what's wrong!"
+msgstr "Rapport d'abu\n"
+"Dites nos es qui'n va pon !"
+
+#, qt-format
+msgctxt "CANCEL"
+msgid "Cancel"
+msgstr "Joqher"
+
+#, qt-format
+msgctxt "CHARACTER"
+msgid "Character"
+msgstr "Gin"
+
+#, qt-format
+msgctxt "CHECK_UPDATE"
+msgid "Check for updates"
+msgstr "Vir el nouvièle version"
+
+#, qt-format
+msgctxt "COLOR_HIGHLIGHT_TIP"
+msgid "Set the highlight color."
+msgstr "Cusir el couleur ed mise in valué."
+
+#, qt-format
+msgctxt "CUSTOM"
+msgid "Custom"
+msgstr "Aute"
+
+#, qt-format
+msgctxt "CUSTOM_COLOR_TIP"
+msgid "Select a custom color."
+msgstr "Cusir une aute couleur."
+
+#, qt-format
+msgctxt "CLOSE_SETTINGS"
+msgid "Close settings"
+msgstr "Freumer els préférinches."
+
+#, qt-format
+msgctxt "DEFAULT"
+msgid "Default"
+msgstr "Défau"
+
+#, qt-format
+msgctxt "DEV_MODE"
+msgid "Dev and Debug mode"
+msgstr "Mode dessin & arfaison"
+
+#, qt-format
+msgctxt "DEV_MODE_TIP"
+msgid "Use at your own risk!"
+msgstr "Usez aveuc risques !"
+
+#, qt-format
+msgctxt "EDIT_SETTINGS"
+msgid "Edit settings"
+msgstr "Canger els préférinches"
+
+#, qt-format
+msgctxt "EXPERT"
+msgid "Expert"
+msgstr ""
+
+#, qt-format
+msgctxt "EXPERT_UI_TIP"
+msgid "The smallest UI, for expert users."
+msgstr "El pus ptiote interfache, por els gins experts."
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION"
+msgid "Export translation file"
+msgstr "Inrguistrer el fikier ed trad'"
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION_TIP"
+msgid "Export a translation file to be edited with DuTranslator."
+msgstr "Inrguistrer un fikier ed traductions à canger aveuc DuTranslator."
+
+#, qt-format
+msgctxt "FEATURE_REQUEST"
+msgid "Feature request"
+msgstr "Edmande ed fonction"
+
+#, qt-format
+msgctxt "FEATURE_REQUEST_TIP"
+msgid "Feature request\n"
+"Request something new."
+msgstr "Edmande ed fonction\n"
+"Edmandez quette cosse ed nouviau."
+
+#, qt-format
+msgctxt "FRONT"
+msgid "Front"
+msgstr "Dvant"
+
+#, qt-format
+msgctxt "FRONT_SHORT"
+msgid "Fr"
+msgstr "Dv"
+
+#, qt-format
+msgctxt "GROUPS"
+msgid "Groups"
+msgstr "Groupes"
+
+#, qt-format
+msgctxt "HELP"
+msgid "Help"
+msgstr "Aïude"
+
+#, qt-format
+msgctxt "HELP_TIP"
+msgid "Get help."
+msgstr "Obtenez ed l'aïude."
+
+#, qt-format
+msgctxt "INVERT"
+msgid "Invert"
+msgstr "Inverser"
+
+#, qt-format
+msgctxt "INVERTED"
+msgid "Inverted"
+msgstr "Inversé"
+
+#, qt-format
+msgctxt "ISOLATE"
+msgid "Isolate"
+msgstr "Isoler"
+
+#, qt-format
+msgctxt "LANGUAGE_TIP"
+msgid "Set the language of the interface."
+msgstr "Canger el parlache del bastringue."
+
+#, qt-format
+msgctxt "LEFT"
+msgid "Left"
+msgstr "Gueuche"
+
+#, qt-format
+msgctxt "LEFT_SHORT"
+msgid "L"
+msgstr "G"
+
+#, qt-format
+msgctxt "MIDDLE"
+msgid "Middle"
+msgstr "Mitant"
+
+#, qt-format
+msgctxt "MIDDLE_SHORT"
+msgid "Md"
+msgstr "M"
+
+#, qt-format
+msgctxt "NEXT"
+msgid "Next"
+msgstr "Suivant"
+
+#, qt-format
+msgctxt "NONE"
+msgid "None"
+msgstr "Aucun"
+
+#, qt-format
+msgctxt "NORMAL_MODE"
+msgid "Normal mode"
+msgstr "Mode normal"
+
+#, qt-format
+msgctxt "OK"
+msgid "OK"
+msgstr ""
+
+#, qt-format
+msgctxt "OPACITY"
+msgid "Opacity"
+msgstr "Transparinche"
+
+#, qt-format
+msgctxt "PATH"
+msgid "Path"
+msgstr "Kmin"
+
+#, qt-format
+msgctxt "PREVIOUS"
+msgid "Previous"
+msgstr "Précédin"
+
+#, qt-format
+msgctxt "PROPERTIES"
+msgid "Properties"
+msgstr "Acrinkillache"
+
+#, qt-format
+msgctxt "RANDOM_TIP"
+msgid "Set a random value."
+msgstr "Cusir eun valeu à l'bukète."
+
+#, qt-format
+msgctxt "RESET_SETTINGS"
+msgid "Reset the settings to their default values."
+msgstr "Arcomincher aveuc els préférinches por défau."
+
+#, qt-format
+msgctxt "RIGHT"
+msgid "Right"
+msgstr "Drote"
+
+#, qt-format
+msgctxt "RIGHT_SHORT"
+msgid "R"
+msgstr "D"
+
+#, qt-format
+msgctxt "ROOKIE"
+msgid "Rookie"
+msgstr "Débutan"
+
+#, qt-format
+msgctxt "ROOKIE_UI_TIP"
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr "El mode el pus aisi, mais auchi el pus grinde interfache."
+
+#, qt-format
+msgctxt "RX_PURPLE"
+msgid "RxLab Purple"
+msgstr "Pourpre RxLab"
+
+#, qt-format
+msgctxt "RX_PURPLE_TIP"
+msgid "The RxLaboratory Purple"
+msgstr "El pourpre RxLaboratory (no pus kèré)"
+
+#, qt-format
+msgctxt "RX_RED"
+msgid "Rainbox Red"
+msgstr "Rouche Rainbox"
+
+#, qt-format
+msgctxt "RX_RED_TIP"
+msgid "The Rainbox Productions Red"
+msgstr "El rouche ed Rainbox Productions"
+
+#, qt-format
+msgctxt "SELECT_LAYERS"
+msgid "Select layers"
+msgstr "Cusir els calques"
+
+#, qt-format
+msgctxt "SELECT_GROUPS"
+msgid "Select groups"
+msgstr "Cusir els groupes"
+
+#, qt-format
+msgctxt "SET_QUALITY"
+msgid "Set quality"
+msgstr "Canger el qualité"
+
+#, qt-format
+msgctxt "SETTINGS"
+msgid "Settings"
+msgstr "Préférinches"
+
+#, qt-format
+msgctxt "SETTINGS_FILE"
+msgid "Settings file"
+msgstr "Fikier ed préférinches"
+
+#, qt-format
+msgctxt "SETTINGS_FILE_TIP"
+msgid "Set the location of the settings file."
+msgstr "Cusir e'liu del fikier ed préférinches."
+
+#, qt-format
+msgctxt "SIZE"
+msgid "Size"
+msgstr "Talle"
+
+#, qt-format
+msgctxt "STANDARD"
+msgid "Standard"
+msgstr "Normal"
+
+#, qt-format
+msgctxt "STANDARD_UI_TIP"
+msgid "The standard not-too-big UI."
+msgstr "L'interfache normale, pon tro grinde."
+
+#, qt-format
+msgctxt "TAIL"
+msgid "Tail"
+msgstr "Keu"
+
+#, qt-format
+msgctxt "TAIL_SHORT"
+msgid "Tl"
+msgstr "K"
+
+#, qt-format
+msgctxt "TIMELINE"
+msgid "Timeline"
+msgstr "Line ed timps"
+
+#, qt-format
+msgctxt "UI_MODE_TIP"
+msgid "Select the UI mode."
+msgstr "Cusir el mode d'interfache."
+
+#, qt-format
+msgctxt "UNDER"
+msgid "Under"
+msgstr "Ed sous"
+
+#, qt-format
+msgctxt "UNDER_SHORT"
+msgid "Un"
+msgstr "Sous"
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS"
+msgid "%1 needs to be allowed to write files.\n"
+"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+msgstr "%1 a dzoin del permission ed récrire eds fickiers.\n"
+"San vo kmander, cochez el case 'Autoriser les scripts à écrire des fichiers...' (in frinché)  dins els préférinches ed bastringues d'After Effects."
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS_TITLE"
+msgid "File and network access"
+msgstr "Daler als fikiers et al résiau"
+
+#, qt-format
+msgctxt "COMPOSITION_SHORT"
+msgid "Comp"
+msgstr "Compo"
+
+#, qt-format
+msgctxt "COMPOSITION"
+msgid "Composition"
+msgstr ""
+
+#, qt-format
+msgctxt "CONTINUOUS_RASTERIZATION"
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Eberzier els transformations / Pixellisation continue"
+
+#, qt-format
+msgctxt "EDIT_MODE"
+msgid "Edit mode"
+msgstr "Mode cangemint"
+
+#, qt-format
+msgctxt "GUIDE_LAYERS"
+msgid "Guide layers"
+msgstr "Calques arpéres"
+
+#, qt-format
+msgctxt "INVALID_PSEUDO_EFFECT"
+msgid "Invalid pseudo effect file or match name."
+msgstr "Fikier ou \"matchName\" del pseudo-effet brisé."
+
+#, qt-format
+msgctxt "LOCK_LAYERS"
+msgid "Lock layers"
+msgstr "Coincher els calques"
+
+#, qt-format
+msgctxt "MISSING_PSEUDO_EFFECT"
+msgid "The pseudo effect file does not exist."
+msgstr "El fikier ed pseudo-effet n'est pon là."
+
+#, qt-format
+msgctxt "NEW_VERSION_TITLE"
+msgid "New version available"
+msgstr "nouvièle version disponible"
+
+#, qt-format
+msgctxt "OPEN_PREFS"
+msgid "Open preferences"
+msgstr "Ouvrir els préférinches"
+
+#, qt-format
+msgctxt "REINIT_PROMPT"
+msgid "/!\ ======\n"
+"/!\ It seems something went wrong with %1 the last time you used it.\n"
+"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
+"/!\ ======"
+msgstr "/!\ ======\n"
+"/!\ In voit quette cosse qu's'est majmint passé aveuc %1 el derne fois qu'vos l'avez usé.\n"
+"/!\ Cochez el case ed sous por arcomincher aveuc eun nouviau %1.\n"
+"/!\ ======"
+
+#, qt-format
+msgctxt "REINIT_SCRIPT"
+msgid "Re-initialize %1 before launch."
+msgstr "Arcomincher aveuc eun nouviau %1."
+
+#, qt-format
+msgctxt "SET_FRAME_BLENDING"
+msgid "Set frame blending mode"
+msgstr "Canger el mode ed fusion d'imaches."
+
+#, qt-format
+msgctxt "SHOW_HIDE_LAYERS_TIP"
+msgid "Show/Hide layers"
+msgstr "Moutrer/mucher els calques"
+
+#, qt-format
+msgctxt "SHY_LAYERS"
+msgid "Shy layers"
+msgstr "Calques sésis"
+
+#, qt-format
+msgctxt "SOLO_LAYERS"
+msgid "Toggle solo mode"
+msgstr "Alleumer/joqher el mode solo"
+
+#, qt-format
+msgctxt "TOGGLE_3D_LAYER"
+msgid "Toggle 3D layer mode"
+msgstr "Alleumer/joqher el mode calque 3D"
+
+#, qt-format
+msgctxt "TOGGLE_ADJUSTMENT_LAYER"
+msgid "Toggle adjustment layer mode"
+msgstr "Alleumer/joqher el mode calque d'effets"
+
+#, qt-format
+msgctxt "TOGGLE_AUDIO"
+msgid "Toggle audio"
+msgstr "Alleumer/joqher l'audio"
+
+#, qt-format
+msgctxt "TOGGLE_EFFECTS"
+msgid "Toggle effects"
+msgstr "Alleumer/joqher els effets"
+
+#, qt-format
+msgctxt "TOGGLE_MOTION_BLUR"
+msgid "Toggle motion blur"
+msgstr "Alleumer/joqher el flou d'armumint"
+
+#, qt-format
+msgctxt "DUGR_FRAME_NAME"
+msgid "DuGR::Isolation"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIP"
+msgid "Isolate selected groups."
+msgstr "Isoler els groupes cusiés."
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIMELINE_TIP"
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Isoler els groupes cusiés, seulmint dins l'line ed timps."
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_COMP_TIP"
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Isoler els groupes cusiés, seulmint dins l'composition."
+
+#, qt-format
+msgctxt "DUGR_STICKY_TIP"
+msgid "Set interactive (sticky) mode."
+msgstr "Alleumer el mode intéractif (persistant)."
+
+#, qt-format
+msgctxt "DUGR_ADD_LAYERS_TIP"
+msgid "Add selected layers to group."
+msgstr "Ragrandir el groupe aveuc els calques cusiés."
+
+#, qt-format
+msgctxt "DUGR_GET_GROUPS_TIP"
+msgid "Get groups from selected layers."
+msgstr "Prindre els groupes dels calques."
+
+#, qt-format
+msgctxt "DUGR_REMOVE_LAYERS_TIP"
+msgid "Remove selected layers from group."
+msgstr "Inlver els calques del groupe."
+
+#, qt-format
+msgctxt "DUGR_CREATE_GROUP_TIP"
+msgid "Create new group."
+msgstr "Créer un nouviau groupe."
+
+#, qt-format
+msgctxt "DUGR_RENAME_GROUP_TIP"
+msgid "Change group name"
+msgstr "Arnommer el groupe."
+
+#, qt-format
+msgctxt "DUGR_REMOVE_GROUP_TIP"
+msgid "Remove group."
+msgstr "Inlver el groupe."
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP"
+msgid "New group"
+msgstr "Nouviau groupe"
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP_TIP"
+msgid "The name of the group."
+msgstr "El nom del groupe."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_UNCHECKED"
+msgid "Locked layers: deny changes"
+msgstr "Calques coinchés : interdire els cangemints"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_CHECKED"
+msgid "Locked layers: allow changes"
+msgstr "Calques coinchés : permette els cangemints"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_TIP"
+msgid "What to do if a layer is locked."
+msgstr "Que faire si un calque est coinché."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME"
+msgid "Warning frame: None"
+msgstr "Cadre d'alerte : Aucun"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME_TIP"
+msgid "Don't use any warning frame."
+msgstr "Ene pon user ed cadre d'alerte."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE"
+msgid "Warning frame: Above"
+msgstr "Cadre d'alerte : ed sus"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE_TIP"
+msgid "Draw the frame above the composition."
+msgstr "Pinturer el cadre ed sus del composition."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW"
+msgid "Warning frame: Below"
+msgstr "Cadre d'alerte : ed sous"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW_TIP"
+msgid "Draw the frame below the composition."
+msgstr "Pinturer el cadre ed sous del composition."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_UNCHECKED"
+msgid "Isolation: hide layers"
+msgstr "Isolation : mucher els calques"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_CHECKED"
+msgid "Isolation: wireframe"
+msgstr "Isolation : fil ed fièr"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_TIP"
+msgid "Method used to isolate layers in the composition."
+msgstr "Fachon ed faire por isoler els calques dins l'composition."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_UNCHECKED"
+msgid "Hide markers"
+msgstr "Mucher els marqueurs."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_CHECKED"
+msgid "Show markers"
+msgstr "Moutrer els marqueurs."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_TIP"
+msgid "Whether to show or hide the tags on the layers."
+msgstr "Cusir ed mucher ou moutrer els marqueurs."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_HIDDEN"
+msgid "Lock hidden layers"
+msgstr "Coincher els calques muchés"
+
+#, qt-format
+msgctxt "DUGR_SETTINGSLOCK_HIDDEN_TIP"
+msgid "Whether the hidden layers have to be locked."
+msgstr "Est-che-que els calques muchés dovitte ête coinchés ?"
+
+#, qt-format
+msgctxt "DUGR_SELECT_PROP_TIP"
+msgid "Select layer by property or type"
+msgstr "Cusir el calque par acrinkillache ou type"
+
+#, qt-format
+msgctxt "DUGR_INVERT_TIP"
+msgid "Invert the group/property selection"
+msgstr "Inverser el cusion ed groupe/acrinkillache"
+
+#, qt-format
+msgctxt "DUGR_EXIT_ISOLATION_TIP"
+msgid "Exit isolation."
+msgstr "Sortir del isolation."
+
+#, qt-format
+msgid "January"
+msgstr "Ginvié"
+
+#, qt-format
+msgid "February"
+msgstr "Févérié"
+
+#, qt-format
+msgid "March"
+msgstr "Marche"
+
+#, qt-format
+msgid "April"
+msgstr "Avri"
+
+#, qt-format
+msgid "May"
+msgstr "Mai"
+
+#, qt-format
+msgid "June"
+msgstr "Join"
+
+#, qt-format
+msgid "July"
+msgstr "Juillé"
+
+#, qt-format
+msgid "August"
+msgstr "Aout"
+
+#, qt-format
+msgid "September"
+msgstr "Siétimbe"
+
+#, qt-format
+msgid "October"
+msgstr "Octobe"
+
+#, qt-format
+msgid "November"
+msgstr "Novimbe"
+
+#, qt-format
+msgid "December"
+msgstr "Déchimbe"
+
+#, qt-format
+msgid "Isolation"
+msgstr ""
+
+#, qt-format
+msgid "DuGR"
+msgstr ""
+
+#, qt-format
+msgid "%1 Settings"
+msgstr "Préférinches ed %1"
+
+#, qt-format
+msgid "English"
+msgstr ""
+
+#, qt-format
+msgid "Français"
+msgstr ""
+
+#, qt-format
+msgid "Settings file..."
+msgstr "Fikier eds préférinches..."
+
+#, qt-format
+msgid "Path..."
+msgstr "Kmin..."
+
+#, qt-format
+msgid "Custom..."
+msgstr "Aute..."
+
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "Type ed cadre d'alerte à user"
+
+#, qt-format
+msgid "All layers"
+msgstr "Tous l'calques"
+
+#, qt-format
+msgid "Selected"
+msgstr "Cusiés"
+
+#, qt-format
+msgid "Grouped"
+msgstr "Groupés"
+
+#, qt-format
+msgid "Ignored"
+msgstr "Ignorés"
+
+#, qt-format
+msgid "Edit group name"
+msgstr "Canger el nom del groupe"
+
+#, qt-format
+msgid "Pin window"
+msgstr "Épiuler el ferniète"
+
+#, qt-format
+msgid "Close"
+msgstr "Freumer"
+
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr "Aïèrquie  : Orphelins"
+
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr "Aïèrquie : Aveuc infants"
+
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr "Type : Pré-compositions"
+
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "Type : Cose Vite"
+
+#, qt-format
+msgid "Type: Solids"
+msgstr "Type : Solites"
+
+#, qt-format
+msgid "Type: Shapes"
+msgstr "Type : Formes"
+
+#, qt-format
+msgid "Type: Texts"
+msgstr "Type : Textes"
+
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "Type : Calques d'effets"
+
+#, qt-format
+msgid "Type: Lights"
+msgstr "Type : Leurmière"
+
+#, qt-format
+msgid "Type: Cameras"
+msgstr "Type : Cameras"
+
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "Attribut : Visipe"
+
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "Attribut : Aveuc audio"
+
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "Attribut : Solo"
+
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "Acrinkillache : Coinché"
+
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "Attribut : Sési"
+
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "Attribut : Effets"
+
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "Attribut : Flou d'armumint"
+
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "Attribut : 3D"
+
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "Attribut : Arpére"
+

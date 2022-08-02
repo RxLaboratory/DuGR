@@ -1,0 +1,938 @@
+# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DuGR 4.0.X\n"
+"POT-Creation-Date: 2022-08-02 18:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Genereated-By: gettext.jsxinc\n"
+"Language: zh\n"
+
+#, qt-format
+msgid "January"
+msgstr "一月"
+
+#, qt-format
+msgid "February"
+msgstr "二月"
+
+#, qt-format
+msgid "March"
+msgstr "三月"
+
+#, qt-format
+msgid "April"
+msgstr "四月"
+
+#, qt-format
+msgid "May"
+msgstr "五月"
+
+#, qt-format
+msgid "June"
+msgstr "六月"
+
+#, qt-format
+msgid "July"
+msgstr "七月"
+
+#, qt-format
+msgid "August"
+msgstr "八月"
+
+#, qt-format
+msgid "September"
+msgstr "九月"
+
+#, qt-format
+msgid "October"
+msgstr "十月"
+
+#, qt-format
+msgid "November"
+msgstr "十一月"
+
+#, qt-format
+msgid "December"
+msgstr "十二月"
+
+#, qt-format
+msgid "Isolation"
+msgstr "隔离"
+
+#, qt-format
+msgid "DuGR"
+msgstr ""
+
+#, qt-format
+msgid "%1 Settings"
+msgstr "%1 设置"
+
+#, qt-format
+msgid "Settings file..."
+msgstr "设置文件..."
+
+#, qt-format
+msgid "Path..."
+msgstr "路径..."
+
+#, qt-format
+msgid "Rainbox Red"
+msgstr "Rainbox 红色"
+
+#, qt-format
+msgid "The Rainbox Productions Red"
+msgstr "The Rainbox Productions 红色"
+
+#, qt-format
+msgid "Custom..."
+msgstr "自定义..."
+
+#, qt-format
+msgid "Rookie"
+msgstr "新手"
+
+#, qt-format
+msgid "Normal mode"
+msgstr "正常模式"
+
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "要使用的警告框类型"
+
+#, qt-format
+msgid "Whether the hidden layers have to be locked."
+msgstr "是否必须锁定隐藏图层."
+
+#, qt-format
+msgid "Change quality"
+msgstr "修改质量"
+
+#, qt-format
+msgid "Change frame blending"
+msgstr "修改帧混合"
+
+#, qt-format
+msgid "Properties"
+msgstr "属性"
+
+#, qt-format
+msgid "All layers"
+msgstr "所有图层"
+
+#, qt-format
+msgid "Selected"
+msgstr "所选"
+
+#, qt-format
+msgid "Grouped"
+msgstr "已分组"
+
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr "层级: 不存在子级"
+
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr "层级: 存在子级"
+
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr "类型: 预合成"
+
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "类型: 空对象"
+
+#, qt-format
+msgid "Type: Solids"
+msgstr "类型: 纯色"
+
+#, qt-format
+msgid "Type: Shapes"
+msgstr "类型: 形状"
+
+#, qt-format
+msgid "Type: Texts"
+msgstr "类型: 文本"
+
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "类型: 调整"
+
+#, qt-format
+msgid "Type: Lights"
+msgstr "类型: 灯光"
+
+#, qt-format
+msgid "Type: Cameras"
+msgstr "类型: 摄像机"
+
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "属性: 可见性"
+
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "属性: 存在音频"
+
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "属性: 单独显示"
+
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "属性: 锁定"
+
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "属性: 害羞"
+
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "属性: 效果"
+
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "属性: 运动模糊"
+
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "属性: 3D"
+
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "属性:参考线"
+
+#, qt-format
+msgid "Next"
+msgstr "下一个"
+
+#, qt-format
+msgid "Path"
+msgstr "路径"
+
+#, qt-format
+msgid "Previous"
+msgstr "上一个"
+
+#, qt-format
+msgid "Re-initialize %1 before launch."
+msgstr "重新初始化 %1 在启动前."
+
+#, qt-format
+msgid "Open preferences"
+msgstr "打开偏好"
+
+#, qt-format
+msgid "None"
+msgstr "无"
+
+#, qt-format
+msgid "New version available"
+msgstr "有新版本可用"
+
+#, qt-format
+msgctxt "ABOVE"
+msgid "Above"
+msgstr ""
+
+#, qt-format
+msgctxt "ABOVE_SHORT"
+msgid "Ab"
+msgstr ""
+
+#, qt-format
+msgctxt "AE_BLUE"
+msgid "After Effects Blue"
+msgstr "After Effects 蓝色"
+
+#, qt-format
+msgctxt "AE_BLUE_TIP"
+msgid "The After Effects highlighting blue"
+msgstr "After Effects 高亮蓝色"
+
+#, qt-format
+msgctxt "AE_ORANGE"
+msgid "After Effects Orange (CS6)"
+msgstr "After Effects 橙色 (CS6)"
+
+#, qt-format
+msgctxt "AE_ORANGE_TIP"
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr "The After Effects CS6 古代高亮橙色"
+
+#, qt-format
+msgctxt "APPLY"
+msgid "Apply"
+msgstr "应用"
+
+#, qt-format
+msgctxt "APPLY_SETTINGS"
+msgid "Apply changes to the settings."
+msgstr "应用修改"
+
+#, qt-format
+msgctxt "APPLY_SETTINGS_ALERT"
+msgid "You may need to restart the script for all changes to take effect."
+msgstr ""
+
+#, qt-format
+msgctxt "BACK_PREVIOUS"
+msgid "Back"
+msgstr "返回"
+
+#, qt-format
+msgctxt "BACK_LOCATION"
+msgid "Back"
+msgstr ""
+
+#, qt-format
+msgctxt "BACK_LOCATION_SHORT"
+msgid "Bk"
+msgstr ""
+
+#  
+#, qt-format
+msgctxt "BUG_REPORT"
+msgid "Bug report"
+msgstr "Bug 反馈"
+
+#, qt-format
+msgctxt "BUG_REPORT_TIP"
+msgid "Bug report\n"
+"Tell us what's wrong!"
+msgstr "Bug 反馈\n"
+"告诉我们哪里出错了!"
+
+#, qt-format
+msgctxt "CANCEL"
+msgid "Cancel"
+msgstr "取消"
+
+#, qt-format
+msgctxt "CHARACTER"
+msgid "Character"
+msgstr ""
+
+#, qt-format
+msgctxt "CHECK_UPDATE"
+msgid "Check for updates"
+msgstr "检查更新"
+
+#, qt-format
+msgctxt "COLOR_HIGHLIGHT_TIP"
+msgid "Set the highlight color."
+msgstr "设置高亮颜色."
+
+#, qt-format
+msgctxt "CUSTOM"
+msgid "Custom"
+msgstr "自定义"
+
+#, qt-format
+msgctxt "CUSTOM_COLOR_TIP"
+msgid "Select a custom color."
+msgstr "选择自定义颜色"
+
+#, qt-format
+msgctxt "CLOSE_SETTINGS"
+msgid "Close settings"
+msgstr "关闭设置"
+
+#, qt-format
+msgctxt "DEFAULT"
+msgid "Default"
+msgstr "默认"
+
+#, qt-format
+msgctxt "DEV_MODE"
+msgid "Dev and Debug mode"
+msgstr "开发和调试模式"
+
+#, qt-format
+msgctxt "DEV_MODE_TIP"
+msgid "Use at your own risk!"
+msgstr "自行承担使用风险!"
+
+#, qt-format
+msgctxt "EDIT_SETTINGS"
+msgid "Edit settings"
+msgstr "编辑设置"
+
+#, qt-format
+msgctxt "EXPERT"
+msgid "Expert"
+msgstr "专家"
+
+#, qt-format
+msgctxt "EXPERT_UI_TIP"
+msgid "The smallest UI, for expert users."
+msgstr "适合专家使用，用户界面最小."
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION"
+msgid "Export translation file"
+msgstr "导出翻译文件"
+
+#, qt-format
+msgctxt "EXPORT_TRANSLATION_TIP"
+msgid "Export a translation file to be edited with DuTranslator."
+msgstr "导出一个可供DuTranslator编辑的翻译文件."
+
+#, qt-format
+msgctxt "FEATURE_REQUEST"
+msgid "Feature request"
+msgstr "功能请求"
+
+#, qt-format
+msgctxt "FEATURE_REQUEST_TIP"
+msgid "Feature request\n"
+"Request something new."
+msgstr "功能请求\n"
+"请求新的功能."
+
+#, qt-format
+msgctxt "FRONT"
+msgid "Front"
+msgstr ""
+
+#, qt-format
+msgctxt "FRONT_SHORT"
+msgid "Fr"
+msgstr ""
+
+#, qt-format
+msgctxt "GROUPS"
+msgid "Groups"
+msgstr "群组"
+
+#, qt-format
+msgctxt "HELP"
+msgid "Help"
+msgstr "帮助"
+
+#, qt-format
+msgctxt "HELP_TIP"
+msgid "Get help."
+msgstr "获得帮助."
+
+#, qt-format
+msgctxt "INVERT"
+msgid "Invert"
+msgstr "反转"
+
+#, qt-format
+msgctxt "INVERTED"
+msgid "Inverted"
+msgstr ""
+
+#, qt-format
+msgctxt "ISOLATE"
+msgid "Isolate"
+msgstr "隔离"
+
+#, qt-format
+msgctxt "LANGUAGE_TIP"
+msgid "Set the language of the interface."
+msgstr "设置界面的语言."
+
+#, qt-format
+msgctxt "LEFT"
+msgid "Left"
+msgstr ""
+
+#, qt-format
+msgctxt "LEFT_SHORT"
+msgid "L"
+msgstr ""
+
+#, qt-format
+msgctxt "MIDDLE"
+msgid "Middle"
+msgstr ""
+
+#, qt-format
+msgctxt "MIDDLE_SHORT"
+msgid "Md"
+msgstr ""
+
+#, qt-format
+msgctxt "NEXT"
+msgid "Next"
+msgstr ""
+
+#, qt-format
+msgctxt "NONE"
+msgid "None"
+msgstr ""
+
+#, qt-format
+msgctxt "NORMAL_MODE"
+msgid "Normal mode"
+msgstr ""
+
+#, qt-format
+msgctxt "OK"
+msgid "OK"
+msgstr ""
+
+#, qt-format
+msgctxt "OPACITY"
+msgid "Opacity"
+msgstr ""
+
+#, qt-format
+msgctxt "PATH"
+msgid "Path"
+msgstr ""
+
+#, qt-format
+msgctxt "PREVIOUS"
+msgid "Previous"
+msgstr ""
+
+#, qt-format
+msgctxt "PROPERTIES"
+msgid "Properties"
+msgstr ""
+
+#, qt-format
+msgctxt "RANDOM_TIP"
+msgid "Set a random value."
+msgstr ""
+
+#, qt-format
+msgctxt "RESET_SETTINGS"
+msgid "Reset the settings to their default values."
+msgstr "还原设置到默认值"
+
+#, qt-format
+msgctxt "RIGHT"
+msgid "Right"
+msgstr ""
+
+#, qt-format
+msgctxt "RIGHT_SHORT"
+msgid "R"
+msgstr ""
+
+#, qt-format
+msgctxt "ROOKIE"
+msgid "Rookie"
+msgstr ""
+
+#, qt-format
+msgctxt "ROOKIE_UI_TIP"
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr "最易使用的模式，同时用户界面也最大."
+
+#, qt-format
+msgctxt "RX_PURPLE"
+msgid "RxLab Purple"
+msgstr "RxLab 紫色"
+
+#, qt-format
+msgctxt "RX_PURPLE_TIP"
+msgid "The RxLaboratory Purple"
+msgstr "The RxLaboratory 紫色"
+
+#, qt-format
+msgctxt "RX_RED"
+msgid "Rainbox Red"
+msgstr ""
+
+#, qt-format
+msgctxt "RX_RED_TIP"
+msgid "The Rainbox Productions Red"
+msgstr ""
+
+#, qt-format
+msgctxt "SELECT_LAYERS"
+msgid "Select layers"
+msgstr "所选图层"
+
+#, qt-format
+msgctxt "SELECT_GROUPS"
+msgid "Select groups"
+msgstr "所选群组"
+
+#, qt-format
+msgctxt "SET_QUALITY"
+msgid "Set quality"
+msgstr ""
+
+#, qt-format
+msgctxt "SETTINGS"
+msgid "Settings"
+msgstr "设置"
+
+#, qt-format
+msgctxt "SETTINGS_FILE"
+msgid "Settings file"
+msgstr "设置文件"
+
+#, qt-format
+msgctxt "SETTINGS_FILE_TIP"
+msgid "Set the location of the settings file."
+msgstr "设定设置文件的路径."
+
+#, qt-format
+msgctxt "SIZE"
+msgid "Size"
+msgstr ""
+
+#, qt-format
+msgctxt "STANDARD"
+msgid "Standard"
+msgstr "标准"
+
+#, qt-format
+msgctxt "STANDARD_UI_TIP"
+msgid "The standard not-too-big UI."
+msgstr "标准模式，用户界面中等大小."
+
+#, qt-format
+msgctxt "TAIL"
+msgid "Tail"
+msgstr ""
+
+#, qt-format
+msgctxt "TAIL_SHORT"
+msgid "Tl"
+msgstr ""
+
+#, qt-format
+msgctxt "TIMELINE"
+msgid "Timeline"
+msgstr "时间线"
+
+#, qt-format
+msgctxt "UI_MODE_TIP"
+msgid "Select the UI mode."
+msgstr "选择用户界面模式"
+
+#, qt-format
+msgctxt "UNDER"
+msgid "Under"
+msgstr ""
+
+#, qt-format
+msgctxt "UNDER_SHORT"
+msgid "Un"
+msgstr ""
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS"
+msgid "%1 needs to be allowed to write files.\n"
+"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
+msgstr "%1 需要允许脚本写入文件.\n"
+"请在AE的首选项里勾选 '允许脚本写入文件...'."
+
+#, qt-format
+msgctxt "ASK_FILES_NETWORK_ACCESS_TITLE"
+msgid "File and network access"
+msgstr "文件和网络访问"
+
+#, qt-format
+msgctxt "COMPOSITION_SHORT"
+msgid "Comp"
+msgstr "合成"
+
+#, qt-format
+msgctxt "COMPOSITION"
+msgid "Composition"
+msgstr ""
+
+#, qt-format
+msgctxt "CONTINUOUS_RASTERIZATION"
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "折叠变换 / 连续栅格化"
+
+#, qt-format
+msgctxt "EDIT_MODE"
+msgid "Edit mode"
+msgstr "编辑模式"
+
+#, qt-format
+msgctxt "GUIDE_LAYERS"
+msgid "Guide layers"
+msgstr "参考图层"
+
+#, qt-format
+msgctxt "INVALID_PSEUDO_EFFECT"
+msgid "Invalid pseudo effect file or match name."
+msgstr "非法的伪效果文件或匹配名称."
+
+#, qt-format
+msgctxt "LOCK_LAYERS"
+msgid "Lock layers"
+msgstr "锁定图层"
+
+#, qt-format
+msgctxt "MISSING_PSEUDO_EFFECT"
+msgid "The pseudo effect file does not exist."
+msgstr "伪效果文件不存在"
+
+#, qt-format
+msgctxt "NEW_VERSION_TITLE"
+msgid "New version available"
+msgstr ""
+
+#, qt-format
+msgctxt "OPEN_PREFS"
+msgid "Open preferences"
+msgstr ""
+
+#, qt-format
+msgctxt "REINIT_PROMPT"
+msgid "/!\ ======\n"
+"/!\ It seems something went wrong with %1 the last time you used it.\n"
+"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
+"/!\ ======"
+msgstr "/!\ ======\n"
+"/!\ 看来你上次使用%1 的时候出了问题.\n"
+"/!\ 勾选下方的复选框，重新初始化 %1 然后尝试再次运行.\n"
+"/!\ ======"
+
+#, qt-format
+msgctxt "REINIT_SCRIPT"
+msgid "Re-initialize %1 before launch."
+msgstr ""
+
+#, qt-format
+msgctxt "SET_FRAME_BLENDING"
+msgid "Set frame blending mode"
+msgstr ""
+
+#, qt-format
+msgctxt "SHOW_HIDE_LAYERS_TIP"
+msgid "Show/Hide layers"
+msgstr "显示/隐藏图层"
+
+#, qt-format
+msgctxt "SHY_LAYERS"
+msgid "Shy layers"
+msgstr "害羞图层"
+
+#, qt-format
+msgctxt "SOLO_LAYERS"
+msgid "Toggle solo mode"
+msgstr "切换单独显示模式"
+
+#  
+#, qt-format
+msgctxt "TOGGLE_3D_LAYER"
+msgid "Toggle 3D layer mode"
+msgstr "切换3D模式"
+
+#, qt-format
+msgctxt "TOGGLE_ADJUSTMENT_LAYER"
+msgid "Toggle adjustment layer mode"
+msgstr "切换调整图层模式"
+
+#, qt-format
+msgctxt "TOGGLE_AUDIO"
+msgid "Toggle audio"
+msgstr "切换音频"
+
+#, qt-format
+msgctxt "TOGGLE_EFFECTS"
+msgid "Toggle effects"
+msgstr "切换效果"
+
+#, qt-format
+msgctxt "TOGGLE_MOTION_BLUR"
+msgid "Toggle motion blur"
+msgstr "切换运动模糊"
+
+#, qt-format
+msgctxt "DUGR_FRAME_NAME"
+msgid "DuGR::Isolation"
+msgstr "DuGR::隔离"
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIP"
+msgid "Isolate selected groups."
+msgstr "隔离所选群组."
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_TIMELINE_TIP"
+msgid "Isolate selected groups, in the timeline only."
+msgstr "仅隔离时间线上的所选群组."
+
+#, qt-format
+msgctxt "DUGR_ISOLATE_COMP_TIP"
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "仅隔离合成面板上的所选群组"
+
+#, qt-format
+msgctxt "DUGR_STICKY_TIP"
+msgid "Set interactive (sticky) mode."
+msgstr "设置交互式 (粘性)模式."
+
+#, qt-format
+msgctxt "DUGR_ADD_LAYERS_TIP"
+msgid "Add selected layers to group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_GET_GROUPS_TIP"
+msgid "Get groups from selected layers."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_REMOVE_LAYERS_TIP"
+msgid "Remove selected layers from group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_CREATE_GROUP_TIP"
+msgid "Create new group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_RENAME_GROUP_TIP"
+msgid "Change group name"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_REMOVE_GROUP_TIP"
+msgid "Remove group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP"
+msgid "New group"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_NEW_GROUP_TIP"
+msgid "The name of the group."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_UNCHECKED"
+msgid "Locked layers: deny changes"
+msgstr "锁定图层: 拒绝修改"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_CHECKED"
+msgid "Locked layers: allow changes"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_TIP"
+msgid "What to do if a layer is locked."
+msgstr "如果图层被锁定，应该怎么做？"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME"
+msgid "Warning frame: None"
+msgstr "警告框: 无"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME_TIP"
+msgid "Don't use any warning frame."
+msgstr "不使用任何警告框"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE"
+msgid "Warning frame: Above"
+msgstr "警告框: 上方"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_ABOVE_TIP"
+msgid "Draw the frame above the composition."
+msgstr "在合成上方绘制警告框."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW"
+msgid "Warning frame: Below"
+msgstr "警告框: 下方"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WARNING_BELOW_TIP"
+msgid "Draw the frame below the composition."
+msgstr "在合成下方绘制警告框."
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_UNCHECKED"
+msgid "Isolation: hide layers"
+msgstr "隔离: 隐藏的图层"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_CHECKED"
+msgid "Isolation: wireframe"
+msgstr "隔离: wireframe"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_WIREFRAME_TIP"
+msgid "Method used to isolate layers in the composition."
+msgstr "用于合成隔离图层的方法"
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_UNCHECKED"
+msgid "Hide markers"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_CHECKED"
+msgid "Show markers"
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_SHOW_TAGS_TIP"
+msgid "Whether to show or hide the tags on the layers."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SETTINGS_LOCK_HIDDEN"
+msgid "Lock hidden layers"
+msgstr "锁定已隐藏图层"
+
+#, qt-format
+msgctxt "DUGR_SETTINGSLOCK_HIDDEN_TIP"
+msgid "Whether the hidden layers have to be locked."
+msgstr ""
+
+#, qt-format
+msgctxt "DUGR_SELECT_PROP_TIP"
+msgid "Select layer by property or type"
+msgstr "按属性或类型选择图层"
+
+#, qt-format
+msgctxt "DUGR_INVERT_TIP"
+msgid "Invert the group/property selection"
+msgstr "反转群组/属性选择"
+
+#, qt-format
+msgctxt "DUGR_EXIT_ISOLATION_TIP"
+msgid "Exit isolation."
+msgstr ""
+
+#, qt-format
+msgid "Ignored"
+msgstr ""
+
+#, qt-format
+msgid "Edit group name"
+msgstr ""
+
+#, qt-format
+msgid "Pin window"
+msgstr ""
+
+#, qt-format
+msgid "Close"
+msgstr ""
+
