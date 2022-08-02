@@ -1,0 +1,415 @@
+# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DuGR 4.0.X\n"
+"POT-Creation-Date: 2022-08-02 15:56\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Genereated-By: gettext.jsxinc\n"
+"Language: fr\n"
+
+#: groupPanel.jsxinc:6
+#, qt-format
+msgid "All layers"
+msgstr ""
+
+#: groupPanel.jsxinc:7
+#, qt-format
+msgid "Selected"
+msgstr ""
+
+#: groupPanel.jsxinc:8
+#, qt-format
+msgid "Grouped"
+msgstr ""
+
+#: groupPanel.jsxinc:9
+#, qt-format
+msgid "Ignored"
+msgstr ""
+
+#: groupPanel.jsxinc:22
+#, qt-format
+msgid "Add selected layers to group."
+msgstr ""
+
+#: groupPanel.jsxinc:29
+#, qt-format
+msgid "Get groups from selected layers."
+msgstr ""
+
+#: groupPanel.jsxinc:36
+#, qt-format
+msgid "Remove selected layers from group."
+msgstr ""
+
+#: groupPanel.jsxinc:46
+#, qt-format
+msgid "Create new group."
+msgstr ""
+
+#: groupPanel.jsxinc:53
+#, qt-format
+msgid "Change group name"
+msgstr ""
+
+#: groupPanel.jsxinc:60
+#, qt-format
+msgid "Remove group."
+msgstr ""
+
+#: groupPanel.jsxinc:70
+#, qt-format
+msgid "New group"
+msgstr ""
+
+#: groupPanel.jsxinc:79
+#, qt-format
+msgid "OK"
+msgstr ""
+
+#: mainPanel.jsxinc:11
+#, qt-format
+msgid "Exit isolation."
+msgstr ""
+
+#: mainPanel.jsxinc:25
+#, qt-format
+msgid "Isolate"
+msgstr ""
+
+#: mainPanel.jsxinc:26
+#, qt-format
+msgid "Isolate selected groups."
+msgstr ""
+
+#: mainPanel.jsxinc:41
+#, qt-format
+msgid "Timeline"
+msgstr ""
+
+#: mainPanel.jsxinc:42
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr ""
+
+#: mainPanel.jsxinc:57
+#, qt-format
+msgid "Comp"
+msgstr ""
+
+#: mainPanel.jsxinc:58
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr ""
+
+#: mainPanel.jsxinc:76
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr ""
+
+#: mainPanel.jsxinc:148
+#, qt-format
+msgid "Show/Hide layers"
+msgstr ""
+
+#: mainPanel.jsxinc:153
+#, qt-format
+msgid "Toggle audio"
+msgstr ""
+
+#: mainPanel.jsxinc:158
+#, qt-format
+msgid "Toggle solo mode"
+msgstr ""
+
+#: mainPanel.jsxinc:163
+#, qt-format
+msgid "Lock layers"
+msgstr ""
+
+#: mainPanel.jsxinc:168
+#, qt-format
+msgid "Shy layers"
+msgstr ""
+
+#: mainPanel.jsxinc:173
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr ""
+
+#: mainPanel.jsxinc:178
+#, qt-format
+msgid "Guide layers"
+msgstr ""
+
+#: mainPanel.jsxinc:184
+#, qt-format
+msgid "Set quality"
+msgstr ""
+
+#: mainPanel.jsxinc:189
+#, qt-format
+msgid "Toggle effects"
+msgstr ""
+
+#: mainPanel.jsxinc:194
+#, qt-format
+msgid "Set frame blending mode"
+msgstr ""
+
+#: mainPanel.jsxinc:199
+#, qt-format
+msgid "Toggle motion blur"
+msgstr ""
+
+#: mainPanel.jsxinc:204
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr ""
+
+#: mainPanel.jsxinc:209
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr ""
+
+#: mainPanel.jsxinc:214
+#, qt-format
+msgid "Select layers"
+msgstr ""
+
+#: mainPanel.jsxinc:393
+#, qt-format
+msgid "Invert"
+msgstr ""
+
+#: mainPanel.jsxinc:395
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr ""
+
+#: propPanel.jsxinc:6
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr ""
+
+#: propPanel.jsxinc:7
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr ""
+
+#: propPanel.jsxinc:8
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr ""
+
+#: propPanel.jsxinc:9
+#, qt-format
+msgid "Type: Null Objects"
+msgstr ""
+
+#: propPanel.jsxinc:10
+#, qt-format
+msgid "Type: Solids"
+msgstr ""
+
+#: propPanel.jsxinc:11
+#, qt-format
+msgid "Type: Shapes"
+msgstr ""
+
+#: propPanel.jsxinc:12
+#, qt-format
+msgid "Type: Texts"
+msgstr ""
+
+#: propPanel.jsxinc:13
+#, qt-format
+msgid "Type: Adjustment"
+msgstr ""
+
+#: propPanel.jsxinc:14
+#, qt-format
+msgid "Type: Lights"
+msgstr ""
+
+#: propPanel.jsxinc:15
+#, qt-format
+msgid "Type: Cameras"
+msgstr ""
+
+#: propPanel.jsxinc:16
+#, qt-format
+msgid "Attribute: Visible"
+msgstr ""
+
+#: propPanel.jsxinc:17
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr ""
+
+#: propPanel.jsxinc:18
+#, qt-format
+msgid "Attribute: Solo"
+msgstr ""
+
+#: propPanel.jsxinc:19
+#, qt-format
+msgid "Attribute: Locked"
+msgstr ""
+
+#: propPanel.jsxinc:20
+#, qt-format
+msgid "Attribute: Shy"
+msgstr ""
+
+#: propPanel.jsxinc:21
+#, qt-format
+msgid "Attribute: Effects"
+msgstr ""
+
+#: propPanel.jsxinc:22
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr ""
+
+#: propPanel.jsxinc:23
+#, qt-format
+msgid "Attribute: 3D"
+msgstr ""
+
+#: propPanel.jsxinc:24
+#, qt-format
+msgid "Attribute: Guide"
+msgstr ""
+
+#: settings.jsxinc:5
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr ""
+
+#: settings.jsxinc:7
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr ""
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr ""
+
+#: settings.jsxinc:15
+#, qt-format
+msgid "Warning frame: None"
+msgstr ""
+
+#: settings.jsxinc:17
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr ""
+
+#: settings.jsxinc:20
+#, qt-format
+msgid "Warning frame: Above"
+msgstr ""
+
+#: settings.jsxinc:22
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr ""
+
+#: settings.jsxinc:25
+#, qt-format
+msgid "Warning frame: Below"
+msgstr ""
+
+#: settings.jsxinc:27
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr ""
+
+#: settings.jsxinc:34
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr ""
+
+#: settings.jsxinc:36
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr ""
+
+#: settings.jsxinc:37
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr ""
+
+#: settings.jsxinc:44
+#, qt-format
+msgid "Hide markers"
+msgstr ""
+
+#: settings.jsxinc:46
+#, qt-format
+msgid "Whether to show or hide the tags on the layers."
+msgstr ""
+
+#: settings.jsxinc:47
+#, qt-format
+msgid "Show markers"
+msgstr ""
+
+#: settings.jsxinc:54
+#, qt-format
+msgid "Lock hidden layers"
+msgstr ""
+
+#: settings.jsxinc:56
+#, qt-format
+msgid "Whether the hidden layers have to be locked."
+msgstr ""
+
+#: duscriptui_extension.jsxinc:160
+#, qt-format
+msgid "Cancel"
+msgstr ""
+
+#: duscriptui_extension.jsxinc:202
+#, qt-format
+msgctxt "Select"
+msgid "None"
+msgstr ""
+
+#: layer.jsxinc:707
+#, qt-format
+msgctxt "in layer name"
+msgid "Edit mode"
+msgstr ""
+
+#: project.jsxinc:466
+#, qt-format
+msgid "Project Root"
+msgstr ""
+
+#: panel.jsxinc:567
+#, qt-format
+msgid "%1 Settings"
+msgstr ""
+
+#: panel.jsxinc:591
+#, qt-format
+msgid "Set the language of the interface."
+msgstr ""
+
+#: panel.jsxinc:610
+#, qt-format
+msgid "Settings file"
+msgstr ""

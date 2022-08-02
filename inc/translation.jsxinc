@@ -13,4 +13,5 @@ DuGR_zh.toFile( outputFolder + 'DuGR_zh.json', false );
 
 // Load
 var currentLanguageName = DuESF.scriptSettings.get("common/currentLanguageName", 'Esperanto');
-i18n.setLanguage(currentLanguageName);
+var currentLocale = DuESF.scriptSettings.get("common/language", 'eo');
+i18n.setLanguage(currentLocale, true);

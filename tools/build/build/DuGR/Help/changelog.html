@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The DuGR comprehensive documentation">
+    <meta name="author" content="Nicolas Dufresne and contributors">
+    <link rel="canonical" href="http://dugr.rxlab.guide/changelog.html">
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    
+    <title>Changelog - DuGR</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+        
+    
+    <link href="style.css" rel="stylesheet">
+    <link href="video.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="index.html">DuGR</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="index.html">v4.0.4</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="install.html">Install</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="introduction.html">Help</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="settings.html">Settings</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="dugr_api.html">Scripting API</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="changelog.html">Changelog</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="credits.html">Credits</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://contact.rxlab.info">Contact</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://chat.rxlab.info">Chat</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://quicktips.rxlab.info">QuickTips</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://tuts.rxlab.info">Tutorials</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://donate.rxlab.info">Donate</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">License</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="license.html">Introduction</a>
+</li>
+
+        
+            
+<li >
+    <a href="gnu-gpl.html">DuGR License</a>
+</li>
+
+        
+            
+<li >
+    <a href="gnu-fdl.html">Documentation license</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="dugr_api.html">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="credits.html">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/RxLaboratory/DuGR_Docs/tree/master/src/docs/changelog.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div id="side-menu">
+    <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
+        <!-- Main navigation -->
+        <ul class="nav bs-sidenav">
+        
+        
+            <li >
+                <a href="index.html">v4.0.4</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="install.html">Install</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="introduction.html">Help</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="settings.html">Settings</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="dugr_api.html">Scripting API</a>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button active-collapse-button">...</button>
+                <ul class="collapsible-content collapsible-content-active">
+                    
+                        
+                        <li class="second-level active"><a href="changelog.html">Changelog</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="credits.html">Credits</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://contact.rxlab.info">Contact</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://chat.rxlab.info">Chat</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://quicktips.rxlab.info">QuickTips</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://tuts.rxlab.info">Tutorials</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://donate.rxlab.info">Donate</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">License</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="license.html">Introduction</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="gnu-gpl.html">DuGR License</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="gnu-fdl.html">Documentation license</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#dugr-changelog">DuGR Changelog</a></li>
+                <li class="second-level"><a href="#404">▹ 4.0.4</a></li>
+                    
+                <li class="second-level"><a href="#403">▹ 4.0.3</a></li>
+                    
+                    <li class="third-level"><a href="#improvements">Improvements</a></li>
+                    <li class="third-level"><a href="#fixes">Fixes</a></li>
+                <li class="second-level"><a href="#402">▹ 4.0.2</a></li>
+                    
+                    <li class="third-level"><a href="#new">New</a></li>
+                    <li class="third-level"><a href="#improvements_1">Improvements</a></li>
+                    <li class="third-level"><a href="#fixes_1">Fixes</a></li>
+                <li class="second-level"><a href="#401">▹ 4.0.1</a></li>
+                    
+                    <li class="third-level"><a href="#new_1">New</a></li>
+                    <li class="third-level"><a href="#improvements_2">Improvements</a></li>
+                    <li class="third-level"><a href="#fixes_2">Fixes</a></li>
+                <li class="second-level"><a href="#400">▹ 4.0.0</a></li>
+                    
+                    <li class="third-level"><a href="#new_2">New</a></li>
+                    <li class="third-level"><a href="#improvements_3">Improvements</a></li>
+                    <li class="third-level"><a href="#fixes_3">Fixes</a></li>
+                <li class="second-level"><a href="#400-beta">▹ 4.0.0-Beta</a></li>
+                    
+                    <li class="third-level"><a href="#new_3">New</a></li>
+                    <li class="third-level"><a href="#improvements_4">Improvements</a></li>
+                    <li class="third-level"><a href="#fixes_4">Fixes</a></li>
+                    <li class="third-level"><a href="#other-changes">Other changes</a></li>
+        </ul>
+    </div>
+    <div class="footer-meta"></div>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><img alt="META" src="license:GNU-FDL;copyright:2021;updated:2021/08/11" /></p>
+<h1 id="dugr-changelog">DuGR Changelog</h1>
+<p>This is the list of what has changed since the previous major version of Dugr (<em>3.02</em>).</p>
+<h2 id="404">▹ 4.0.4</h2>
+<ul>
+<li>Added <strong><em>Russian</em></strong> and <strong><em>German</em></strong> Translations.</li>
+<li>Fixed some issues with the settings.</li>
+</ul>
+<h2 id="403">▹ 4.0.3</h2>
+<h3 id="improvements">Improvements</h3>
+<ul>
+<li>UI tweaks.</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Track Mattes are no longer shown/hidden with the show button.</li>
+<li>The &ldquo;apply&rdquo; button in the settings should now work correctly.</li>
+</ul>
+<h2 id="402">▹ 4.0.2</h2>
+<h3 id="new">New</h3>
+<ul>
+<li>Chinese translation.</li>
+</ul>
+<h3 id="improvements_1">Improvements</h3>
+<ul>
+<li>UI tweaks.</li>
+</ul>
+<h3 id="fixes_1">Fixes</h3>
+<ul>
+<li>Fixed the &ldquo;All layers&rdquo; entry not working.</li>
+</ul>
+<h2 id="401">▹ 4.0.1</h2>
+<h3 id="new_1">New</h3>
+<ul>
+<li>German translation thanks to René Andritsch.</li>
+</ul>
+<h3 id="improvements_2">Improvements</h3>
+<ul>
+<li>UI tweaks.</li>
+<li>Updated Esperanto translation.</li>
+</ul>
+<h3 id="fixes_2">Fixes</h3>
+<ul>
+<li>Fixed ask for file and network access if needed.</li>
+<li>When a layer is moved to the left in the timeline, markers are brought back in the timeline if they&rsquo;re not set to be hidden.</li>
+<li>Colors of the UI are now correctly adjusted according to the brightness setting of the UI of After Effects.</li>
+<li>Added missing tooltip on the &ldquo;Get Info&rdquo; button for the layers/groups.</li>
+</ul>
+<h2 id="400">▹ 4.0.0</h2>
+<h3 id="new_2">New</h3>
+<ul>
+<li>Added <strong>Pre-composition</strong> type to the properties list.</li>
+<li>Added <strong>update check</strong> at script startup.</li>
+<li>Added an option to <strong>hide tags (markers)</strong> from the layers.</li>
+<li>Added <strong>Ch&rsquo;ti | Picard</strong> translation.</li>
+<li>Added <strong>French</strong> translation.</li>
+<li>Added <strong>Spanish</strong> translation.</li>
+<li>Added <strong>Exit Isolation</strong> button for non-interactive (sticky) mode.</li>
+</ul>
+<h3 id="improvements_3">Improvements</h3>
+<ul>
+<li>Creating/Editing groups user experience has been improved: The field is automatically highlit and [Enter] now validates the new group/edit.</li>
+</ul>
+<h3 id="fixes_3">Fixes</h3>
+<ul>
+<li>Creating/Editing group popup no longer fails to show at random.</li>
+<li>Fixed Isolation button getting out of isolation when the interactive (sticky) mode is disabled.</li>
+</ul>
+<h2 id="400-beta">▹ 4.0.0-Beta</h2>
+<p>4.0.0 will be the next major release of <em>DuGR</em> for <em>After Effects</em>, which brings a lot of changes.</p>
+<h3 id="new_3">New</h3>
+<ul>
+<li><strong>New User Interface</strong>: Along with a complete code refactor, <em>DuGR</em> underwent a complete UI redesign. Performance (loading time and isolation) has been improved (<em>a lot</em>), <em>DuGR</em> now fits better in the interface of After Effects, it is more discreet and let you focus on your work.</li>
+<li><em>DuGR</em> now uses <strong>markers</strong> to identify groups on the layers. Note that due to this important change (which improves performance and user experience), it won&rsquo;t be able to detect groups made by previous versions and by older versions of <em>Duik</em>.</li>
+<li>New dynamic groups: <strong>orphans</strong> and <strong>have children</strong> to help you manage your layer parenting.</li>
+<li>New <strong><em>Ignored</em></strong> group; use it to set some layers to be ignored no matter what.</li>
+</ul>
+<h3 id="improvements_4">Improvements</h3>
+<ul>
+<li><strong>Complete code refactor</strong>: <em>DuGR</em> is easier to maintain, code is better organizezd, performance has been improved a lot&hellip;</li>
+<li><em>DuGR</em> now remembers which panel you were on and restores it when opening it.</li>
+<li>Added the <em>Selected</em>, <em>All layers</em> and <em>Grouped</em> groups in the custom groups panel.</li>
+</ul>
+<h3 id="fixes_4">Fixes</h3>
+<h3 id="other-changes">Other changes</h3>
+<ul>
+<li>We&rsquo;ve finally dropped support of <em>After Effects CS6</em>, sorry, it was too much work to keep compatibility for too few users. <em>CS6</em> (<em>v11.0.2</em>) dates back to October 2012, it&rsquo;s time to update! <em>DuGR</em> should now work on all versions of After Effects starting with <em>After Effects CC</em> (<em>v12.0</em>, July 2013).</li>
+</ul></div>
+        
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="dugr_api.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="credits.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+<div></div>
+
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "."</script>
+    
+    <script src="js/base.js"></script>
+    <script src="video.js"></script>
+    <script src="meta.js"></script>
+    <script src="collapser.js"></script>
+    <script src="search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
