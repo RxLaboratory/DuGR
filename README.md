@@ -44,7 +44,7 @@ We need your support to release our free tools. You can [donate](donate.rxlab.in
 
 <!-- progress -->
 **Progress**:  
-[![GitHub milestone](https://img.shields.io/github/milestones/progress-percent/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2) [![GitHub milestone](https://img.shields.io/github/milestones/issues-open/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2) [![GitHub milestone](https://img.shields.io/github/milestones/issues-closed/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2?closed=1) [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/RxLaboratory/DuGR/latest)](https://github.com/RxLaboratory/DuGR/network)<!-- end:progress --><!-- {2} -->
+[![GitHub milestone](https://img.shields.io/github/milestones/progress-percent/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2) [![GitHub milestone](https://img.shields.io/github/milestones/issues-open/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2) [![GitHub milestone](https://img.shields.io/github/milestones/issues-closed/RxLaboratory/DuGR/2)](https://github.com/RxLaboratory/DuGR/milestone/2?closed=1) [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/RxLaboratory/DuGR/latest)](https://github.com/RxLaboratory/DuGR/network)<!-- end:progress --><!-- {2} --> [![Crowdin](https://badges.crowdin.net/dugr/localized.svg)](https://crowdin.com/project/dugr)
 
 <!-- contribution -->
 ## Contribution and development
