@@ -1,884 +1,412 @@
-# Translations template for DuGR.
-# Copyright (C) 2022 RxLaboratory
-# This file is distributed under the same license as the DuGR project.
-# RxLaboratory <contact@rxlaboratory.org>, 2022.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DuGR 4.0.X\n"
-"POT-Creation-Date: 2022-08-02 18:00\n"
-"PO-Revision-Date: \n"
+"Project-Id-Version: dugr\n"
+"POT-Creation-Date: 2022-08-02 15:56\n"
+"PO-Revision-Date: 2022-08-02 16:07\n"
 "Last-Translator: \n"
-"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Genereated-By: gettext.jsxinc\n"
 "Language: eo\n"
-
-#, qt-format
-msgctxt "ABOVE"
-msgid "Above"
-msgstr "Super"
-
-#, qt-format
-msgctxt "ABOVE_SHORT"
-msgid "Ab"
-msgstr "Sup"
-
-#, qt-format
-msgctxt "AE_BLUE"
-msgid "After Effects Blue"
-msgstr "Blua After Effects"
-
-#, qt-format
-msgctxt "AE_BLUE_TIP"
-msgid "The After Effects highlighting blue"
-msgstr "La blua After Effects helo"
-
-#, qt-format
-msgctxt "AE_ORANGE"
-msgid "After Effects Orange (CS6)"
-msgstr "Orangkolora After Effects (CS6)"
-
-#, qt-format
-msgctxt "AE_ORANGE_TIP"
-msgid "The After Effects highlighting orange from good ol'CS6"
-msgstr "La orangkolora After Effects helo de la bona maljuna CS6"
-
-#, qt-format
-msgctxt "APPLY"
-msgid "Apply"
-msgstr "Apliki"
-
-#, qt-format
-msgctxt "APPLY_SETTINGS"
-msgid "Apply changes to the settings."
-msgstr "Apliki ŝanĝojn al la fiksoj."
-
-#, qt-format
-msgctxt "APPLY_SETTINGS_ALERT"
-msgid "You may need to restart the script for all changes to take effect."
-msgstr "Vi devus rekomenci la scripto per apliki la tutajn ŝanĝojn."
-
-#, qt-format
-msgctxt "BACK_PREVIOUS"
-msgid "Back"
-msgstr "Returni"
-
-#, qt-format
-msgctxt "BACK_LOCATION"
-msgid "Back"
-msgstr "Malfronte"
-
-#, qt-format
-msgctxt "BACK_LOCATION_SHORT"
-msgid "Bk"
-msgstr "Mfr"
-
-#, qt-format
-msgctxt "BUG_REPORT"
-msgid "Bug report"
-msgstr "Raporto de eraro"
-
-#, qt-format
-msgctxt "BUG_REPORT_TIP"
-msgid "Bug report\n"
-"Tell us what's wrong!"
-msgstr "Raporto de eraro\n"
-"Diru al ni kio estas malbona!"
-
-#, qt-format
-msgctxt "CANCEL"
-msgid "Cancel"
-msgstr "Nuligi"
-
-#, qt-format
-msgctxt "CHARACTER"
-msgid "Character"
-msgstr "Personeto"
-
-#, qt-format
-msgctxt "CHECK_UPDATE"
-msgid "Check for updates"
-msgstr "Kontroli por ĝisdatigoj"
-
-#, qt-format
-msgctxt "COLOR_HIGHLIGHT_TIP"
-msgid "Set the highlight color."
-msgstr "Fiksi la hela kolora."
-
-#, qt-format
-msgctxt "CUSTOM"
-msgid "Custom"
-msgstr "Propra"
-
-#, qt-format
-msgctxt "CUSTOM_COLOR_TIP"
-msgid "Select a custom color."
-msgstr "Elektiti propran koloron."
-
-#, qt-format
-msgctxt "CLOSE_SETTINGS"
-msgid "Close settings"
-msgstr "Malfermi fiksoj"
-
-#, qt-format
-msgctxt "DEFAULT"
-msgid "Default"
-msgstr "Defaŭlto"
-
-#, qt-format
-msgctxt "DEV_MODE"
-msgid "Dev and Debug mode"
-msgstr "Disvolviĝa kaj elpuriga reĝimo"
-
-#, qt-format
-msgctxt "DEV_MODE_TIP"
-msgid "Use at your own risk!"
-msgstr "Uzu ĉe via propra risko!"
-
-#, qt-format
-msgctxt "EDIT_SETTINGS"
-msgid "Edit settings"
-msgstr "Editi fiksoj"
-
-#, qt-format
-msgctxt "EXPERT"
-msgid "Expert"
-msgstr "Spertulo"
-
-#, qt-format
-msgctxt "EXPERT_UI_TIP"
-msgid "The smallest UI, for expert users."
-msgstr "La malplej granda UF, per lertaj uzantoj."
-
-#, qt-format
-msgctxt "EXPORT_TRANSLATION"
-msgid "Export translation file"
-msgstr "Eksporti traduka dosiero"
-
-#, qt-format
-msgctxt "EXPORT_TRANSLATION_TIP"
-msgid "Export a translation file to be edited with DuTranslator."
-msgstr "Eksporti traduka dosiero per eldoni ĝin kun DuTranslator."
-
-#, qt-format
-msgctxt "FEATURE_REQUEST"
-msgid "Feature request"
-msgstr "ĉefaĵa peto"
-
-#, qt-format
-msgctxt "FEATURE_REQUEST_TIP"
-msgid "Feature request\n"
-"Request something new."
-msgstr "ĉefaĵa peto\n"
-"Demandu ion novan."
-
-#, qt-format
-msgctxt "FRONT"
-msgid "Front"
-msgstr "Antaŭ"
-
-#, qt-format
-msgctxt "FRONT_SHORT"
-msgid "Fr"
-msgstr "Ant"
-
-#, qt-format
-msgctxt "GROUPS"
-msgid "Groups"
-msgstr "Grupo"
-
-#, qt-format
-msgctxt "HELP"
-msgid "Help"
-msgstr "Helpo"
-
-#, qt-format
-msgctxt "HELP_TIP"
-msgid "Get help."
-msgstr "Demandu helpon."
-
-#, qt-format
-msgctxt "INVERT"
-msgid "Invert"
-msgstr "invertiĝi"
-
-#, qt-format
-msgctxt "INVERTED"
-msgid "Inverted"
-msgstr "invertiĝa"
-
-#, qt-format
-msgctxt "ISOLATE"
-msgid "Isolate"
-msgstr "Izoli"
-
-#, qt-format
-msgctxt "LANGUAGE_TIP"
-msgid "Set the language of the interface."
-msgstr "Fiksi la lingvo de la interfaco."
-
-#, qt-format
-msgctxt "LEFT"
-msgid "Left"
-msgstr "Maldekstra"
-
-#, qt-format
-msgctxt "LEFT_SHORT"
-msgid "L"
-msgstr "M"
-
-#, qt-format
-msgctxt "MIDDLE"
-msgid "Middle"
-msgstr "Mezo"
-
-#, qt-format
-msgctxt "MIDDLE_SHORT"
-msgid "Md"
-msgstr "Mz"
-
-#, qt-format
-msgctxt "NEXT"
-msgid "Next"
-msgstr "Sekvonte"
-
-#, qt-format
-msgctxt "NONE"
-msgid "None"
-msgstr "Neniom"
-
-#, qt-format
-msgctxt "NORMAL_MODE"
-msgid "Normal mode"
-msgstr "Normala reĝimo"
-
-#, qt-format
-msgctxt "OK"
-msgid "OK"
-msgstr ""
-
-#, qt-format
-msgctxt "OPACITY"
-msgid "Opacity"
-msgstr "Opakeco"
-
-#, qt-format
-msgctxt "PATH"
-msgid "Path"
-msgstr "Vojeto"
-
-#, qt-format
-msgctxt "PREVIOUS"
-msgid "Previous"
-msgstr "Antaŭa"
-
-#, qt-format
-msgctxt "PROPERTIES"
-msgid "Properties"
-msgstr "Propraĵoj"
-
-#, qt-format
-msgctxt "RANDOM_TIP"
-msgid "Set a random value."
-msgstr "Fiksi hazardon valoron."
-
-#, qt-format
-msgctxt "RESET_SETTINGS"
-msgid "Reset the settings to their default values."
-msgstr "Recomencigi la fiksoj al siaj defaŭltaj valoroj."
-
-#, qt-format
-msgctxt "RIGHT"
-msgid "Right"
-msgstr "Dekstra"
-
-#, qt-format
-msgctxt "RIGHT_SHORT"
-msgid "R"
-msgstr "D"
-
-#, qt-format
-msgctxt "ROOKIE"
-msgid "Rookie"
-msgstr "Komencanto"
-
-#, qt-format
-msgctxt "ROOKIE_UI_TIP"
-msgid "The easiest-to-use mode, but also the biggest UI."
-msgstr "La plej facila reĝimo, sed ankaŭ la plej granda UF."
-
-#, qt-format
-msgctxt "RX_PURPLE"
-msgid "RxLab Purple"
-msgstr "Violkolora RxLab"
-
-#, qt-format
-msgctxt "RX_PURPLE_TIP"
-msgid "The RxLaboratory Purple"
-msgstr "La violkolora de RxLaboratory"
-
-#, qt-format
-msgctxt "RX_RED"
-msgid "Rainbox Red"
-msgstr "Ruĝa Rainbox"
-
-#, qt-format
-msgctxt "RX_RED_TIP"
-msgid "The Rainbox Productions Red"
-msgstr "La ruĝa de Rainbox Productions"
-
-#, qt-format
-msgctxt "SELECT_LAYERS"
-msgid "Select layers"
-msgstr "Elektiti tavoloj"
-
-#, qt-format
-msgctxt "SELECT_GROUPS"
-msgid "Select groups"
-msgstr "Elektiti grupoj"
-
-#, qt-format
-msgctxt "SET_QUALITY"
-msgid "Set quality"
-msgstr "Fiksi altakvaliton"
-
-#, qt-format
-msgctxt "SETTINGS"
-msgid "Settings"
-msgstr "Fiksoj"
-
-#, qt-format
-msgctxt "SETTINGS_FILE"
-msgid "Settings file"
-msgstr "Fiksa dosiero"
-
-#, qt-format
-msgctxt "SETTINGS_FILE_TIP"
-msgid "Set the location of the settings file."
-msgstr "Fiksi la lokon de la fiksa dosiero."
-
-#, qt-format
-msgctxt "SIZE"
-msgid "Size"
-msgstr "Dimensio"
-
-#, qt-format
-msgctxt "STANDARD"
-msgid "Standard"
-msgstr "Norma"
-
-#, qt-format
-msgctxt "STANDARD_UI_TIP"
-msgid "The standard not-too-big UI."
-msgstr "La norma ne grandeja UF."
-
-#, qt-format
-msgctxt "TAIL"
-msgid "Tail"
-msgstr "Vosto"
-
-#, qt-format
-msgctxt "TAIL_SHORT"
-msgid "Tl"
-msgstr "Vo"
-
-#, qt-format
-msgctxt "TIMELINE"
-msgid "Timeline"
-msgstr "Kronologia"
-
-#, qt-format
-msgctxt "UI_MODE_TIP"
-msgid "Select the UI mode."
-msgstr "Elektiti la UF reĝimo."
-
-#, qt-format
-msgctxt "UNDER"
-msgid "Under"
-msgstr "Sub"
-
-#, qt-format
-msgctxt "UNDER_SHORT"
-msgid "Un"
-msgstr "Sub"
-
-#, qt-format
-msgctxt "ASK_FILES_NETWORK_ACCESS"
-msgid "%1 needs to be allowed to write files.\n"
-"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
-msgstr "%1 bezonas rajtigo per skribi dosieron.\n"
-"Bonvenu, selekti la kesto 'Permesu Scriptoj per skribi dosieroj...' en la scriptaj agordoj de After Effects."
-
-#, qt-format
-msgctxt "ASK_FILES_NETWORK_ACCESS_TITLE"
-msgid "File and network access"
-msgstr "Dosieron kaj reta eniro"
-
-#, qt-format
-msgctxt "COMPOSITION_SHORT"
-msgid "Comp"
-msgstr "Komp"
-
-#, qt-format
-msgctxt "COMPOSITION"
-msgid "Composition"
-msgstr "Kompozito"
-
-#, qt-format
-msgctxt "CONTINUOUS_RASTERIZATION"
-msgid "Collapse transformation / Continuous rasterization"
-msgstr "Kunfandi ŝanĝo / Kontinua bilderigo"
-
-#, qt-format
-msgctxt "EDIT_MODE"
-msgid "Edit mode"
-msgstr "Editi reĝimo"
-
-#, qt-format
-msgctxt "GUIDE_LAYERS"
-msgid "Guide layers"
-msgstr "Gvidistaj tavoloj"
-
-#, qt-format
-msgctxt "INVALID_PSEUDO_EFFECT"
-msgid "Invalid pseudo effect file or match name."
-msgstr "La dosiero pseŭdo efikista aŭ \"match name\" nepravas."
-
-#, qt-format
-msgctxt "LOCK_LAYERS"
-msgid "Lock layers"
-msgstr "ŝlosi tavoloj"
-
-#, qt-format
-msgctxt "MISSING_PSEUDO_EFFECT"
-msgid "The pseudo effect file does not exist."
-msgstr "La dosiero pseŭdo efikista ne eksistas."
-
-#, qt-format
-msgctxt "NEW_VERSION_TITLE"
-msgid "New version available"
-msgstr "Nova versio disponebla"
-
-#, qt-format
-msgctxt "OPEN_PREFS"
-msgid "Open preferences"
-msgstr "Malfermi agordoj"
-
-#, qt-format
-msgctxt "REINIT_PROMPT"
-msgid "/!\ ======\n"
-"/!\ It seems something went wrong with %1 the last time you used it.\n"
-"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
-"/!\ ======"
-msgstr "/!\ ======\n"
-"/!\ Ion estis malbona kun %1 la lasta tempo kio vi uzis ĝin.\n"
-"/!\ Kontroli la kesto sub per rekomenci %1 kaj provu fari funkcii ĝin denove.\n"
-"/!\ ======"
-
-#, qt-format
-msgctxt "REINIT_SCRIPT"
-msgid "Re-initialize %1 before launch."
-msgstr "Rekomenci %1 antaŭ ŝalti ĝin."
-
-#, qt-format
-msgctxt "SET_FRAME_BLENDING"
-msgid "Set frame blending mode"
-msgstr "Fiksi la miskan kadron reĝimon"
-
-#, qt-format
-msgctxt "SHOW_HIDE_LAYERS_TIP"
-msgid "Show/Hide layers"
-msgstr "Vidigi/kaŝi tavoloj"
-
-#, qt-format
-msgctxt "SHY_LAYERS"
-msgid "Shy layers"
-msgstr "Timidaj tavoloj"
-
-#, qt-format
-msgctxt "SOLO_LAYERS"
-msgid "Toggle solo mode"
-msgstr "Baskuli la sola reĝimo"
-
-#, qt-format
-msgctxt "TOGGLE_3D_LAYER"
-msgid "Toggle 3D layer mode"
-msgstr "Baskuli la 3D tavolo reĝimo"
-
-#, qt-format
-msgctxt "TOGGLE_ADJUSTMENT_LAYER"
-msgid "Toggle adjustment layer mode"
-msgstr "Baskuli la akomoda tavolo reĝimo"
-
-#, qt-format
-msgctxt "TOGGLE_AUDIO"
-msgid "Toggle audio"
-msgstr "Baskuli la aŭdio"
-
-#, qt-format
-msgctxt "TOGGLE_EFFECTS"
-msgid "Toggle effects"
-msgstr "Baskuli la efikistoj"
-
-#, qt-format
-msgctxt "TOGGLE_MOTION_BLUR"
-msgid "Toggle motion blur"
-msgstr "Baskuli la malklariĝa movo"
-
-#, qt-format
-msgctxt "DUGR_FRAME_NAME"
-msgid "DuGR::Isolation"
-msgstr "DuGR::Izoleco"
-
-#, qt-format
-msgctxt "DUGR_ISOLATE_TIP"
-msgid "Isolate selected groups."
-msgstr "Izoli la selektaj grupoj."
-
-#, qt-format
-msgctxt "DUGR_ISOLATE_TIMELINE_TIP"
-msgid "Isolate selected groups, in the timeline only."
-msgstr "Izoli selektajn grupojn, nur en la kronologio."
-
-#, qt-format
-msgctxt "DUGR_ISOLATE_COMP_TIP"
-msgid "Isolate selected groups, in the composition panel only"
-msgstr "Izoli seletakj grupoj, nur en  la panelo de la kompozito."
-
-#, qt-format
-msgctxt "DUGR_STICKY_TIP"
-msgid "Set interactive (sticky) mode."
-msgstr "Fiksi interaga (adhera) reĝimo."
-
-#, qt-format
-msgctxt "DUGR_ADD_LAYERS_TIP"
-msgid "Add selected layers to group."
-msgstr "Aldoni selektaj tavoloj al la grupon."
-
-#, qt-format
-msgctxt "DUGR_GET_GROUPS_TIP"
-msgid "Get groups from selected layers."
-msgstr "Irpreni grupoj de la selektaj tovoloj."
-
-#, qt-format
-msgctxt "DUGR_REMOVE_LAYERS_TIP"
-msgid "Remove selected layers from group."
-msgstr "Forigi selektaj tavoloj de la grupon."
-
-#, qt-format
-msgctxt "DUGR_CREATE_GROUP_TIP"
-msgid "Create new group."
-msgstr "Krei novan grupon."
-
-#, qt-format
-msgctxt "DUGR_RENAME_GROUP_TIP"
-msgid "Change group name"
-msgstr "ŝanĝi la nomon de la grupo"
-
-#, qt-format
-msgctxt "DUGR_REMOVE_GROUP_TIP"
-msgid "Remove group."
-msgstr "Forigi grupo."
-
-#, qt-format
-msgctxt "DUGR_NEW_GROUP"
-msgid "New group"
-msgstr "Nova grupo"
-
-#, qt-format
-msgctxt "DUGR_NEW_GROUP_TIP"
-msgid "The name of the group."
-msgstr "La nomo de la grupo."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_LOCK_UNCHECKED"
-msgid "Locked layers: deny changes"
-msgstr "ŝlosaj tavoloj: rifuzi ŝanĝoj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_LOCK_CHECKED"
-msgid "Locked layers: allow changes"
-msgstr "ŝlosaj tavoloj: permesi ŝanĝoj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_LOCK_TIP"
-msgid "What to do if a layer is locked."
-msgstr "Kio fari se unu tavolo estas ŝlosa."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME"
-msgid "Warning frame: None"
-msgstr "Avertmesaĝa kadro: Neniom"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_NO_WARNING_FRAME_TIP"
-msgid "Don't use any warning frame."
-msgstr "Ne uzu neniom avertmesaĝan kadron."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WARNING_ABOVE"
-msgid "Warning frame: Above"
-msgstr "Avertmesaĝa kadro: Supra"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WARNING_ABOVE_TIP"
-msgid "Draw the frame above the composition."
-msgstr "Desegni la kadron supra la kompozito."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WARNING_BELOW"
-msgid "Warning frame: Below"
-msgstr "Avertmesaĝa kadro: Sub"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WARNING_BELOW_TIP"
-msgid "Draw the frame below the composition."
-msgstr "Desegni la kadron sub la kompozito."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WIREFRAME_UNCHECKED"
-msgid "Isolation: hide layers"
-msgstr "Izoliĝo: vidigi tavoloj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WIREFRAME_CHECKED"
-msgid "Isolation: wireframe"
-msgstr "Izoliĝo: drata kadro"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_WIREFRAME_TIP"
-msgid "Method used to isolate layers in the composition."
-msgstr "Metodo kion oni uzas per izoli tabolojn en la kompozito."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_SHOW_TAGS_UNCHECKED"
-msgid "Hide markers"
-msgstr "Kaŝi indikiloj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_SHOW_TAGS_CHECKED"
-msgid "Show markers"
-msgstr "Vidig indikiloj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_SHOW_TAGS_TIP"
-msgid "Whether to show or hide the tags on the layers."
-msgstr "Se vidigi au kaŝi la etikedij sur la tavolojn."
-
-#, qt-format
-msgctxt "DUGR_SETTINGS_LOCK_HIDDEN"
-msgid "Lock hidden layers"
-msgstr "ŝlosi: kaŝi tavoloj"
-
-#, qt-format
-msgctxt "DUGR_SETTINGSLOCK_HIDDEN_TIP"
-msgid "Whether the hidden layers have to be locked."
-msgstr "Se la kaŝaj tavoloj devas esti ŝlosi."
-
-#, qt-format
-msgctxt "DUGR_SELECT_PROP_TIP"
-msgid "Select layer by property or type"
-msgstr "Elekti tavolo per propraĵo au tipo"
-
-#, qt-format
-msgctxt "DUGR_INVERT_TIP"
-msgid "Invert the group/property selection"
-msgstr "Inverti la grupo/selekto de la propraĵo"
-
-#, qt-format
-msgctxt "DUGR_EXIT_ISOLATION_TIP"
-msgid "Exit isolation."
-msgstr "Eliri izoliĝo."
-
-#, qt-format
-msgid "January"
-msgstr "Januaro"
-
-#, qt-format
-msgid "February"
-msgstr "Februaro"
-
-#, qt-format
-msgid "March"
-msgstr "Marto"
-
-#, qt-format
-msgid "April"
-msgstr "Aprilo"
-
-#, qt-format
-msgid "May"
-msgstr "Majo"
-
-#, qt-format
-msgid "June"
-msgstr "Junio"
-
-#, qt-format
-msgid "July"
-msgstr "Julio"
-
-#, qt-format
-msgid "August"
-msgstr "Aŭgusto"
-
-#, qt-format
-msgid "September"
-msgstr "Septembro"
-
-#, qt-format
-msgid "October"
-msgstr "Oktobro"
-
-#, qt-format
-msgid "November"
-msgstr "Novembro"
-
-#, qt-format
-msgid "December"
-msgstr "Decembro"
-
-#, qt-format
-msgid "Isolation"
-msgstr "Izoliĝo"
-
-#, qt-format
-msgid "DuGR"
-msgstr ""
-
-#, qt-format
-msgid "%1 Settings"
-msgstr "%1 Fiksoj"
-
-#, qt-format
-msgid "English"
-msgstr ""
-
-#, qt-format
-msgid "Français"
-msgstr ""
-
-#, qt-format
-msgid "Settings file..."
-msgstr "Fiksa dosiero..."
-
-#, qt-format
-msgid "Path..."
-msgstr "Vojeto..."
-
-#, qt-format
-msgid "Custom..."
-msgstr "Propra..."
-
-#, qt-format
-msgid "Type of warning frame to use"
-msgstr "Tipo de la avertmesaĝan kadron kion vi volas uzi"
-
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dugr\n"
+"X-Crowdin-Project-ID: 530368\n"
+"X-Crowdin-Language: eo\n"
+"X-Crowdin-File: /master/translation/DuGR.pot\n"
+"X-Crowdin-File-ID: 12\n"
+
+#: groupPanel.jsxinc:6
 #, qt-format
 msgid "All layers"
 msgstr "La tutan tavolojn"
 
+#: groupPanel.jsxinc:7
 #, qt-format
 msgid "Selected"
 msgstr "Selekta"
 
+#: groupPanel.jsxinc:8
 #, qt-format
 msgid "Grouped"
 msgstr "Grupa"
 
-#, qt-format
-msgid "Hierarchy: Orphans"
-msgstr "Hierarĥio: Orfo"
-
-#, qt-format
-msgid "Hierarchy: Have children"
-msgstr "Hierarĥio: Havas idoj"
-
-#, qt-format
-msgid "Type: Pre-compositions"
-msgstr "Tipo: Pre-kompozitoj"
-
-#, qt-format
-msgid "Type: Null Objects"
-msgstr "Tipo: Nuligajn objektojn"
-
-#, qt-format
-msgid "Type: Solids"
-msgstr "Tipo: Solidoj"
-
-#, qt-format
-msgid "Type: Shapes"
-msgstr "Tipo: Formoj"
-
-#, qt-format
-msgid "Type: Texts"
-msgstr "Tipo: Tekstoj"
-
-#, qt-format
-msgid "Type: Adjustment"
-msgstr "Tipo: ĝustigo"
-
-#, qt-format
-msgid "Type: Lights"
-msgstr "Tipo: Lumoj"
-
-#, qt-format
-msgid "Type: Cameras"
-msgstr "Tipo: Kameraoj"
-
-#, qt-format
-msgid "Attribute: Visible"
-msgstr "Atributo: Videbla"
-
-#, qt-format
-msgid "Attribute: Has Audio"
-msgstr "Atributo: Havas Aŭdio"
-
-#, qt-format
-msgid "Attribute: Solo"
-msgstr "Atributo: Solo"
-
-#, qt-format
-msgid "Attribute: Locked"
-msgstr "Atributo: ŝlosa"
-
-#, qt-format
-msgid "Attribute: Shy"
-msgstr "Atributo: Timida"
-
-#, qt-format
-msgid "Attribute: Effects"
-msgstr "Atributo: Efikistoj"
-
-#, qt-format
-msgid "Attribute: Motion Blur"
-msgstr "Atributo: Malklariĝa movo"
-
-#, qt-format
-msgid "Attribute: 3D"
-msgstr "Atributo: 3D"
-
-#, qt-format
-msgid "Attribute: Guide"
-msgstr "Atributo: Gvido"
-
+#: groupPanel.jsxinc:9
 #, qt-format
 msgid "Ignored"
 msgstr "Ignora"
 
+#: propPanel.jsxinc:6
 #, qt-format
-msgid "Edit group name"
-msgstr "ŝangi la nomon de la grupo"
+msgid "Hierarchy: Orphans"
+msgstr "Hierarĥio: Orfo"
 
+#: propPanel.jsxinc:7
 #, qt-format
-msgid "Pin window"
-msgstr "Pingli fenestro"
+msgid "Hierarchy: Have children"
+msgstr "Hierarĥio: Havas idoj"
 
+#: propPanel.jsxinc:8
 #, qt-format
-msgid "Close"
-msgstr "Fermi"
+msgid "Type: Pre-compositions"
+msgstr "Tipo: Pre-kompozitoj"
+
+#: propPanel.jsxinc:9
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "Tipo: Nuligajn objektojn"
+
+#: propPanel.jsxinc:10
+#, qt-format
+msgid "Type: Solids"
+msgstr "Tipo: Solidoj"
+
+#: propPanel.jsxinc:11
+#, qt-format
+msgid "Type: Shapes"
+msgstr "Tipo: Formoj"
+
+#: propPanel.jsxinc:12
+#, qt-format
+msgid "Type: Texts"
+msgstr "Tipo: Tekstoj"
+
+#: propPanel.jsxinc:13
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "Tipo: ĝustigo"
+
+#: propPanel.jsxinc:14
+#, qt-format
+msgid "Type: Lights"
+msgstr "Tipo: Lumoj"
+
+#: propPanel.jsxinc:15
+#, qt-format
+msgid "Type: Cameras"
+msgstr "Tipo: Kameraoj"
+
+#: propPanel.jsxinc:16
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "Atributo: Videbla"
+
+#: propPanel.jsxinc:17
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "Atributo: Havas Aŭdio"
+
+#: propPanel.jsxinc:18
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "Atributo: Solo"
+
+#: propPanel.jsxinc:19
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "Atributo: ŝlosa"
+
+#: propPanel.jsxinc:20
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "Atributo: Timida"
+
+#: propPanel.jsxinc:21
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "Atributo: Efikistoj"
+
+#: propPanel.jsxinc:22
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "Atributo: Malklariĝa movo"
+
+#: propPanel.jsxinc:23
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "Atributo: 3D"
+
+#: propPanel.jsxinc:24
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "Atributo: Gvido"
+
+#: comp.jsxinc:588
+#, qt-format
+msgid "Null"
+msgstr ""
+
+#: comp.jsxinc:637
+#, qt-format
+msgid "Adjustment layer"
+msgstr ""
+
+#: comp.jsxinc:666
+#, qt-format
+msgid "Solid"
+msgstr ""
+
+#: comp.jsxinc:695
+#, qt-format
+msgid "Shape"
+msgstr ""
+
+#: comp.jsxinc:705
+#, qt-format
+msgid "Rectangle"
+msgstr ""
+
+#: comp.jsxinc:710
+#, qt-format
+msgid "Rounded rectangle"
+msgstr ""
+
+#: comp.jsxinc:716
+#, qt-format
+msgid "Circle"
+msgstr ""
+
+#: comp.jsxinc:721
+#, qt-format
+msgid "Polygon"
+msgstr ""
+
+#: comp.jsxinc:727
+#, qt-format
+msgid "Star"
+msgstr ""
+
+#: duscriptui_extension.jsxinc:161
+#, qt-format
+msgid "Cancel"
+msgstr ""
+
+#: duscriptui_extension.jsxinc:203
+#, qt-format
+msgctxt "Select"
+msgid "None"
+msgstr ""
+
+#: duscriptui_extension.jsxinc:663
+#, qt-format
+msgid "Select layers"
+msgstr ""
+
+#: layer.jsxinc:477
+#, qt-format
+msgid "The pseudo effect file does not exist."
+msgstr ""
+
+#: layer.jsxinc:537
+#, qt-format
+msgid "Invalid pseudo effect file or match name."
+msgstr ""
+
+#: layer.jsxinc:707
+#, qt-format
+msgctxt "in layer name"
+msgid "Edit mode"
+msgstr ""
+
+#: layer.jsxinc:1505
+#, qt-format
+msgid "Locator"
+msgstr ""
+
+#: project.jsxinc:466
+#, qt-format
+msgid "Project Root"
+msgstr ""
+
+#. "short for Left, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:98
+#, qt-format
+msgctxt "in layer name, left"
+msgid "L"
+msgstr ""
+
+#. "short for Right, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:99
+#, qt-format
+msgctxt "in layer name, right"
+msgid "R"
+msgstr ""
+
+#. "short for Front, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:109
+#, qt-format
+msgctxt "in layer name, front"
+msgid "Fr"
+msgstr ""
+
+#. "short for Back, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:110
+#, qt-format
+msgctxt "in layer name, back"
+msgid "Bk"
+msgstr ""
+
+#. "short for Tail, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:111
+#, qt-format
+msgctxt "in layer name, tail"
+msgid "Tl"
+msgstr ""
+
+#. "short for Middle, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:112
+#, qt-format
+msgctxt "in layer name, middle"
+msgid "Md"
+msgstr ""
+
+#. "short for Above, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:113
+#, qt-format
+msgctxt "in layer name, above"
+msgid "Ab"
+msgstr ""
+
+#. "short for Under, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:114
+#, qt-format
+msgctxt "in layer name, under"
+msgid "Un"
+msgstr ""
+
+#: oco.jsxinc:335
+#, qt-format
+msgid "Arm"
+msgstr ""
+
+#: oco.jsxinc:393
+#, qt-format
+msgid "Shoulder"
+msgstr ""
+
+#: oco.jsxinc:442
+#, qt-format
+msgid "Forearm"
+msgstr ""
+
+#: oco.jsxinc:483
+#, qt-format
+msgid "Hand"
+msgstr ""
+
+#: oco.jsxinc:524
+#, qt-format
+msgid "Claws"
+msgstr ""
+
+#: oco.jsxinc:560
+#, qt-format
+msgid "Tip"
+msgstr ""
+
+#: oco.jsxinc:601
+#, qt-format
+msgid "Heel"
+msgstr ""
+
+#: oco.jsxinc:663
+#, qt-format
+msgid "Leg"
+msgstr ""
+
+#: oco.jsxinc:702
+#, qt-format
+msgid "Thigh"
+msgstr ""
+
+#: oco.jsxinc:710
+#, qt-format
+msgid "Calf"
+msgstr ""
+
+#: oco.jsxinc:731
+#, qt-format
+msgid "Foot"
+msgstr ""
+
+#: oco.jsxinc:753
+#, qt-format
+msgid "Toes"
+msgstr ""
+
+#: oco.jsxinc:767
+#, qt-format
+msgid "Hoof"
+msgstr ""
+
+#: oco.jsxinc:838
+#, qt-format
+msgid "Spine"
+msgstr ""
+
+#: oco.jsxinc:856
+#, qt-format
+msgid "Hips"
+msgstr ""
+
+#: oco.jsxinc:877
+#, qt-format
+msgid "Torso"
+msgstr ""
+
+#: oco.jsxinc:898
+#, qt-format
+msgid "Neck"
+msgstr ""
+
+#: oco.jsxinc:907
+#, qt-format
+msgid "Head"
+msgstr ""
+
+#: oco.jsxinc:943
+#, qt-format
+msgid "Tail"
+msgstr ""
+
+#: oco.jsxinc:982
+#, qt-format
+msgid "Hair"
+msgstr ""
+
+#: oco.jsxinc:1044
+#, qt-format
+msgid "Wing"
+msgstr ""
+
+#: oco.jsxinc:1126
+#, qt-format
+msgid "Feather"
+msgstr ""
+
+#: oco.jsxinc:1388
+#, qt-format
+msgid "Fin"
+msgstr ""
+
+#: oco.jsxinc:1409
+#, qt-format
+msgid "Fishbone"
+msgstr ""
+
+#: panel.jsxinc:567
+#, qt-format
+msgid "%1 Settings"
+msgstr "%1 Fiksoj"
+
+#: panel.jsxinc:591
+#, qt-format
+msgid "Set the language of the interface."
+msgstr ""
+
+#: panel.jsxinc:610
+#, qt-format
+msgid "Settings file"
+msgstr ""
 
