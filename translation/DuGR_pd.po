@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 16:07\n"
+"PO-Revision-Date: 2022-08-02 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Ignorés"
 #: propPanel.jsxinc:6
 #, qt-format
 msgid "Hierarchy: Orphans"
-msgstr "Aïèrquie  : Orphelins"
+msgstr "Aïèrquie : Orphelins"
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -180,13 +180,13 @@ msgstr ""
 #: duscriptui_extension.jsxinc:161
 #, qt-format
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: duscriptui_extension.jsxinc:203
 #, qt-format
 msgctxt "Select"
 msgid "None"
-msgstr ""
+msgstr "Nin"
 
 #: duscriptui_extension.jsxinc:663
 #, qt-format
@@ -298,7 +298,7 @@ msgstr ""
 #: oco.jsxinc:524
 #, qt-format
 msgid "Claws"
-msgstr ""
+msgstr "Griffes"
 
 #: oco.jsxinc:560
 #, qt-format
@@ -333,7 +333,7 @@ msgstr ""
 #: oco.jsxinc:753
 #, qt-format
 msgid "Toes"
-msgstr ""
+msgstr "Orteils"
 
 #: oco.jsxinc:767
 #, qt-format
@@ -348,7 +348,7 @@ msgstr ""
 #: oco.jsxinc:856
 #, qt-format
 msgid "Hips"
-msgstr ""
+msgstr "Hanches"
 
 #: oco.jsxinc:877
 #, qt-format
