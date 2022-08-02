@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 16:07\n"
+"PO-Revision-Date: 2022-08-02 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,7 @@ msgstr "Вуделить слои"
 #: layer.jsxinc:477
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr "Файл псевдо эффектов не найден"
+msgstr "Файл псевдо эффектов не найден."
 
 #: layer.jsxinc:537
 #, qt-format
@@ -403,7 +403,7 @@ msgstr "%1 Настройки"
 #: panel.jsxinc:591
 #, qt-format
 msgid "Set the language of the interface."
-msgstr "Установить язык интерфейса"
+msgstr "Установить язык интерфейса."
 
 #: panel.jsxinc:610
 #, qt-format
