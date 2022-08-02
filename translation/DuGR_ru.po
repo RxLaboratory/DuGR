@@ -1,575 +1,412 @@
-# Translations template for DuGR.
-# Copyright (C) 2022 RxLaboratory
-# This file is distributed under the same license as the DuGR project.
-# RxLaboratory <contact@rxlaboratory.org>, 2022.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DuGR 4.0.X\n"
-"POT-Creation-Date: 2022-08-02 18:00\n"
-"PO-Revision-Date: \n"
+"Project-Id-Version: dugr\n"
+"POT-Creation-Date: 2022-08-02 15:56\n"
+"PO-Revision-Date: 2022-08-02 16:07\n"
 "Last-Translator: \n"
-"Language-Team: RxLaboratory <http://rxlaboratory.org>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Genereated-By: gettext.jsxinc\n"
 "Language: ru\n"
-
-#, qt-format
-msgid "January"
-msgstr "Январь"
-
-#, qt-format
-msgid "February"
-msgstr "Февраль"
-
-#, qt-format
-msgid "March"
-msgstr "Март"
-
-#, qt-format
-msgid "April"
-msgstr "Апрель"
-
-#, qt-format
-msgid "May"
-msgstr "Май"
-
-#, qt-format
-msgid "June"
-msgstr "Июнь"
-
-#, qt-format
-msgid "July"
-msgstr "Июль"
-
-#, qt-format
-msgid "August"
-msgstr "Август"
-
-#, qt-format
-msgid "September"
-msgstr "Сентябрь"
-
-#, qt-format
-msgid "October"
-msgstr "Октябрь"
-
-#, qt-format
-msgid "November"
-msgstr "Ноябрь"
-
-#, qt-format
-msgid "December"
-msgstr "Декабрь"
-
-#, qt-format
-msgid "Isolation"
-msgstr "Изолировать"
-
-#, qt-format
-msgid "DuGR"
-msgstr ""
-
-#, qt-format
-msgid "%1 Settings"
-msgstr "%1 Настройки"
-
-#, qt-format
-msgid "Check for updates"
-msgstr "Проверить обновления"
-
-#, qt-format
-msgid "Back"
-msgstr "Назад"
-
-#, qt-format
-msgid "Close settings"
-msgstr "Закрыть настройки"
-
-#, qt-format
-msgid "Default"
-msgstr "По умолчанию"
-
-#, qt-format
-msgid "Reset the settings to their default values."
-msgstr "Сброс настроек в исходное состояние"
-
-#, qt-format
-msgid "Apply"
-msgstr "Применить"
-
-#, qt-format
-msgid "Apply changes to the settings."
-msgstr "Применить изменения к настройкам"
-
-#, qt-format
-msgid "Bug report"
-msgstr "Отчет об ошибке"
-
-#, qt-format
-msgid "Bug report\n"
-"Tell us what's wrong!"
-msgstr "Отчет об ошибке\n"
-"Расскажи нам что не так!"
-
-#, qt-format
-msgid "Feature request"
-msgstr "Запрос новых функций"
-
-#, qt-format
-msgid "Feature request\n"
-"Request something new."
-msgstr "Запрос новых функций\n"
-"Попросите что то новенькое."
-
-#, qt-format
-msgid "Edit settings"
-msgstr "Редактировать настройки	"
-
-#, qt-format
-msgid "Help"
-msgstr "Помощь"
-
-#, qt-format
-msgid "Get help."
-msgstr "Получить помощь"
-
-#, qt-format
-msgid "Export translation file"
-msgstr "Экспортировать файл перевода"
-
-#, qt-format
-msgid "Export a translation file to be edited with DuTranslator."
-msgstr "Экспортировать файл перевода для редактирования в DuTranslator"
-
-#, qt-format
-msgid "Settings file..."
-msgstr "Файл настроек..."
-
-#, qt-format
-msgid "Set the location of the settings file."
-msgstr "Установить расположение файла настроек."
-
-#, qt-format
-msgid "Path..."
-msgstr "Путь доступа..."
-
-#, qt-format
-msgid "Set the highlight color."
-msgstr "Установить цвет выделения."
-
-#, qt-format
-msgid "Cancel"
-msgstr "Отменить"
-
-#, qt-format
-msgid "After Effects Blue"
-msgstr "Афтер Эффект Синий"
-
-#, qt-format
-msgid "The After Effects highlighting blue"
-msgstr "Афтер Эффект выделяем синим"
-
-#, qt-format
-msgid "RxLab Purple"
-msgstr "ЭрИксЛаб Сиреневый"
-
-#, qt-format
-msgid "The RxLaboratory Purple"
-msgstr "ЭрИкс Лабораторный Сиреневый"
-
-#, qt-format
-msgid "Rainbox Red"
-msgstr "Рэйнбокс Красный"
-
-#, qt-format
-msgid "The Rainbox Productions Red"
-msgstr "Рейнбокс Продакшн Красный"
-
-#, qt-format
-msgid "After Effects Orange (CS6)"
-msgstr "Афтэр Эффект Оранжевый (CS6)"
-
-#, qt-format
-msgid "The After Effects highlighting orange from good ol'CS6"
-msgstr "Выделение оранжевым из старых,  добрых Афтэр Эеффектов CS6"
-
-#, qt-format
-msgid "Custom..."
-msgstr "Пользовательский..."
-
-#, qt-format
-msgid "Select a custom color"
-msgstr "Выбрать персонализированный цвет"
-
-#, qt-format
-msgid "Select the UI mode."
-msgstr "Выбрать режим интерфейса"
-
-#, qt-format
-msgid "Rookie"
-msgstr "Новичок"
-
-#, qt-format
-msgid "The easiest-to-use mode, but also the biggest UI."
-msgstr "Наипростейший режим,  но одновременно самый большой интерфейс"
-
-#, qt-format
-msgid "Standard"
-msgstr "Стандартный"
-
-#, qt-format
-msgid "The standard not-too-big UI."
-msgstr "Стандартный не очень большой интерфейс"
-
-#, qt-format
-msgid "Expert"
-msgstr "Экспертный"
-
-#, qt-format
-msgid "The smallest UI, for expert users."
-msgstr "Самый маленький интерфейс,  для пользователей экспертов."
-
-#, qt-format
-msgid "Normal mode"
-msgstr "Нормальный режим"
-
-#, qt-format
-msgid "Use at your own risk!"
-msgstr "Используйте на свой страх и риск!"
-
-#, qt-format
-msgid "Locked layers: deny changes"
-msgstr "Закрепленные слои: "
-
-#, qt-format
-msgid "What to do if a layer is locked."
-msgstr "Что делать если слой закреплен"
-
-#, qt-format
-msgid "Type of warning frame to use"
-msgstr "Тип рамки уведомления"
-
-#, qt-format
-msgid "Warning frame: None"
-msgstr "Рамка уведомления: Отсутствует"
-
-#, qt-format
-msgid "Don't use any warning frame."
-msgstr "Не использовать рамку уведомления"
-
-#, qt-format
-msgid "Warning frame: Above"
-msgstr "Рамка уведомления: Сверху"
-
-#, qt-format
-msgid "Draw the frame above the composition."
-msgstr "Отобразить рамку наверху композиции"
-
-#, qt-format
-msgid "Warning frame: Below"
-msgstr "Рамка уведомления: Снизу"
-
-#, qt-format
-msgid "Draw the frame below the composition."
-msgstr "Отобразить рамку уведомления снизу композиции"
-
-#, qt-format
-msgid "Isolation: hide layers"
-msgstr "Изоляция: спрятать слои"
-
-#, qt-format
-msgid "Method used to isolate layers in the composition."
-msgstr "Метод используемый для изоляции слоев в композиции"
-
-#, qt-format
-msgid "Lock hidden layers"
-msgstr "Закрепить спрятанные слои"
-
-#, qt-format
-msgid "Wether the hidden layers have to be locked."
-msgstr "Седует ли закреплять спрятанные слои."
-
-#, qt-format
-msgid "Isolate"
-msgstr "Изолировать"
-
-#, qt-format
-msgid "Isolate selected groups."
-msgstr "Изолировать выделенные группы."
-
-#, qt-format
-msgid "Timeline"
-msgstr "Монтажная линейка"
-
-#, qt-format
-msgid "Isolate selected groups, in the timeline only."
-msgstr "Изолировать выделенные группы только на монтажной линейке"
-
-#, qt-format
-msgid "Comp"
-msgstr "Композиция"
-
-#, qt-format
-msgid "Isolate selected groups, in the composition panel only"
-msgstr "Изолировать выделенные группы только в композиционной панели"
-
-#, qt-format
-msgid "Set interactive (sticky) mode."
-msgstr "Установить интерактивный (вязкий) режим."
-
-#, qt-format
-msgid "Show/Hide layers"
-msgstr "Спрятать/Показать слои"
-
-#, qt-format
-msgid "Toggle audio"
-msgstr "Переключить звук"
-
-#, qt-format
-msgid "Toggle solo mode"
-msgstr "Переключить монорежим "
-
-#, qt-format
-msgid "Lock layers"
-msgstr "Закрыть слои"
-
-#, qt-format
-msgid "Shy layers"
-msgstr "Минимизировать слои"
-
-#, qt-format
-msgid "Collapse transformation / Continuous rasterization"
-msgstr "Свернуть трансформации / Непрерывная растеризация"
-
-#, qt-format
-msgid "Guide layers"
-msgstr "Слои направляющих"
-
-#, qt-format
-msgid "Change quality"
-msgstr "Изменить количество"
-
-#, qt-format
-msgid "Toggle effects"
-msgstr "Переключить эффекты	"
-
-#, qt-format
-msgid "Change frame blending"
-msgstr "Изменить смешение кадров"
-
-#, qt-format
-msgid "Toggle motion blur"
-msgstr "Переключить размытие в движении"
-
-#, qt-format
-msgid "Toggle adjutment layer mode"
-msgstr "Переключить режим корректирующих слоев"
-
-#, qt-format
-msgid "Toggle 3D mode"
-msgstr "Переключить 3х мерный режим"
-
-#, qt-format
-msgid "Select layers"
-msgstr "Вуделить слои"
-
-#, qt-format
-msgid "Properties"
-msgstr "Свойства"
-
-#, qt-format
-msgid "Select layer by property or type"
-msgstr "Выбрать слой по типу или по свойствам "
-
-#, qt-format
-msgid "Groups"
-msgstr "Группы"
-
-#, qt-format
-msgid "Select groups"
-msgstr "Выбрать группы"
-
-#, qt-format
-msgid "Invert"
-msgstr "Инвертировать"
-
-#, qt-format
-msgid "Invert the group/property selection"
-msgstr "Инвертировать набор групп/свойств"
-
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Crowdin-Project: dugr\n"
+"X-Crowdin-Project-ID: 530368\n"
+"X-Crowdin-Language: ru\n"
+"X-Crowdin-File: /master/translation/DuGR.pot\n"
+"X-Crowdin-File-ID: 12\n"
+
+#: groupPanel.jsxinc:6
 #, qt-format
 msgid "All layers"
 msgstr "Все слои"
 
+#: groupPanel.jsxinc:7
 #, qt-format
 msgid "Selected"
 msgstr "Набор"
 
+#: groupPanel.jsxinc:8
 #, qt-format
 msgid "Grouped"
 msgstr "Сгруппированно"
 
+#: groupPanel.jsxinc:9
+#, qt-format
+msgid "Ignored"
+msgstr ""
+
+#: propPanel.jsxinc:6
 #, qt-format
 msgid "Hierarchy: Orphans"
 msgstr "Иерархия: Сироты"
 
+#: propPanel.jsxinc:7
 #, qt-format
 msgid "Hierarchy: Have children"
 msgstr "Иерархия: Есть дочерние"
 
+#: propPanel.jsxinc:8
 #, qt-format
 msgid "Type: Pre-compositions"
 msgstr "Тип: Предварительные Композиции"
 
+#: propPanel.jsxinc:9
 #, qt-format
 msgid "Type: Null Objects"
 msgstr "Тип: Нулевые Объекты"
 
+#: propPanel.jsxinc:10
 #, qt-format
 msgid "Type: Solids"
 msgstr "Тип: Слои Сплошного Цвета"
 
+#: propPanel.jsxinc:11
 #, qt-format
 msgid "Type: Shapes"
 msgstr "Тип: Фигуры"
 
+#: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Texts"
 msgstr "Тип: Тексты"
 
+#: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Adjustment"
 msgstr "Тип: Корректируещие"
 
+#: propPanel.jsxinc:14
 #, qt-format
 msgid "Type: Lights"
 msgstr "Тип: Освещение"
 
+#: propPanel.jsxinc:15
 #, qt-format
 msgid "Type: Cameras"
 msgstr "Тип: Камеры"
 
+#: propPanel.jsxinc:16
 #, qt-format
 msgid "Attribute: Visible"
 msgstr "Атрибут: Видимый"
 
+#: propPanel.jsxinc:17
 #, qt-format
 msgid "Attribute: Has Audio"
 msgstr "Атрибут: Имеет Звук"
 
+#: propPanel.jsxinc:18
 #, qt-format
 msgid "Attribute: Solo"
 msgstr "Атрибут: Моно"
 
+#: propPanel.jsxinc:19
 #, qt-format
 msgid "Attribute: Locked"
 msgstr "Атрибут: Закрыт"
 
+#: propPanel.jsxinc:20
 #, qt-format
 msgid "Attribute: Shy"
 msgstr "Атрибут: Спрятан"
 
+#: propPanel.jsxinc:21
 #, qt-format
 msgid "Attribute: Effects"
 msgstr "Атрибут: Эффекты"
 
+#: propPanel.jsxinc:22
 #, qt-format
 msgid "Attribute: Motion Blur"
 msgstr "Атрибут: Размытие в Движении"
 
+#: propPanel.jsxinc:23
 #, qt-format
 msgid "Attribute: 3D"
 msgstr "Атрибут: 3х Мерный"
 
+#: propPanel.jsxinc:24
 #, qt-format
 msgid "Attribute: Guide"
 msgstr "Атрибут: Направляющий"
 
+#: comp.jsxinc:588
 #, qt-format
-msgid "Custom"
-msgstr "Пользовательский"
+msgid "Null"
+msgstr ""
 
+#: comp.jsxinc:637
 #, qt-format
-msgid "Dev and Debug mode"
-msgstr "Режим Разработчика и Отладчика"
+msgid "Adjustment layer"
+msgstr ""
 
+#: comp.jsxinc:666
 #, qt-format
-msgid "Set the language of the interface."
-msgstr "Установить язык интерфейса"
+msgid "Solid"
+msgstr ""
 
+#: comp.jsxinc:695
 #, qt-format
-msgid "Next"
-msgstr "Следующий"
+msgid "Shape"
+msgstr ""
 
+#: comp.jsxinc:705
 #, qt-format
-msgid "Path"
-msgstr "Путь доступа"
+msgid "Rectangle"
+msgstr ""
 
+#: comp.jsxinc:710
 #, qt-format
-msgid "Previous"
-msgstr "Предыдущий"
+msgid "Rounded rectangle"
+msgstr ""
 
+#: comp.jsxinc:716
 #, qt-format
-msgid "Settings"
-msgstr "Настройки"
+msgid "Circle"
+msgstr ""
 
+#: comp.jsxinc:721
 #, qt-format
-msgid "Settings file"
-msgstr "Файл настроек"
+msgid "Polygon"
+msgstr ""
 
+#: comp.jsxinc:727
 #, qt-format
-msgid "%1 needs to be allowed to write files.\n"
-"Please, check the box called 'Allow Scripts to write files...' in the scripting preferences of After Effects."
-msgstr "%1 требуется разрешить переписывать файлы.\n"
-"Пожалуйста, отметьте пункт \"Разрешить сценариям переписывать файлы....\" в настройках сценариев Афтер Эффектов."
+msgid "Star"
+msgstr ""
 
+#: duscriptui_extension.jsxinc:161
 #, qt-format
-msgid "File and network access"
-msgstr "Доступ к сети и файлам"
+msgid "Cancel"
+msgstr "Отменить"
 
+#: duscriptui_extension.jsxinc:203
 #, qt-format
-msgid "/!\ ======\n"
-"/!\ It seems something went wrong with %1 the last time you used it.\n"
-"/!\ Check the box below to re-initialize %1 and try to make it work again.\n"
-"/!\ ======"
-msgstr "/!\ ======\n"
-"/!\ Видимо что пошло не так с %1 когда вы это использовали в последний раз.\n"
-"/!\ Отметьте пункт ниже для перезапуска %1 и попробуйте использовать это еще раз.\n"
-"/!\ ======"
+msgctxt "Select"
+msgid "None"
+msgstr ""
 
+#: duscriptui_extension.jsxinc:663
 #, qt-format
-msgid "Re-initialize %1 before launch."
-msgstr "Перезапустить %1 до запуска."
+msgid "Select layers"
+msgstr "Вуделить слои"
 
+#: layer.jsxinc:477
 #, qt-format
 msgid "The pseudo effect file does not exist."
 msgstr "Файл псевдо эффектов не найден"
 
+#: layer.jsxinc:537
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
 msgstr "Ошибочный файл псеводо эффектов или сонаиминований."
 
+#: layer.jsxinc:707
 #, qt-format
+msgctxt "in layer name"
 msgid "Edit mode"
-msgstr "Режим редактирования"
+msgstr ""
 
+#: layer.jsxinc:1505
 #, qt-format
-msgid "Open preferences"
-msgstr "Открыть настойки"
+msgid "Locator"
+msgstr ""
 
+#: project.jsxinc:466
 #, qt-format
-msgid "None"
-msgstr "Отсутствует"
+msgid "Project Root"
+msgstr ""
 
+#. "short for Left, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:98
 #, qt-format
-msgid "New version available"
-msgstr "Доступна новая версия"
+msgctxt "in layer name, left"
+msgid "L"
+msgstr ""
 
+#. "short for Right, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:99
 #, qt-format
-msgid "DuGR::Isolation"
-msgstr "DuGR::Изоляция"
+msgctxt "in layer name, right"
+msgid "R"
+msgstr ""
+
+#. "short for Front, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:109
+#, qt-format
+msgctxt "in layer name, front"
+msgid "Fr"
+msgstr ""
+
+#. "short for Back, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:110
+#, qt-format
+msgctxt "in layer name, back"
+msgid "Bk"
+msgstr ""
+
+#. "short for Tail, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:111
+#, qt-format
+msgctxt "in layer name, tail"
+msgid "Tl"
+msgstr ""
+
+#. "short for Middle, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:112
+#, qt-format
+msgctxt "in layer name, middle"
+msgid "Md"
+msgstr ""
+
+#. "short for Above, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:113
+#, qt-format
+msgctxt "in layer name, above"
+msgid "Ab"
+msgstr ""
+
+#. "short for Under, must be short enough to be used as a tag in layer names"
+#: oco.jsxinc:114
+#, qt-format
+msgctxt "in layer name, under"
+msgid "Un"
+msgstr ""
+
+#: oco.jsxinc:335
+#, qt-format
+msgid "Arm"
+msgstr ""
+
+#: oco.jsxinc:393
+#, qt-format
+msgid "Shoulder"
+msgstr ""
+
+#: oco.jsxinc:442
+#, qt-format
+msgid "Forearm"
+msgstr ""
+
+#: oco.jsxinc:483
+#, qt-format
+msgid "Hand"
+msgstr ""
+
+#: oco.jsxinc:524
+#, qt-format
+msgid "Claws"
+msgstr ""
+
+#: oco.jsxinc:560
+#, qt-format
+msgid "Tip"
+msgstr ""
+
+#: oco.jsxinc:601
+#, qt-format
+msgid "Heel"
+msgstr ""
+
+#: oco.jsxinc:663
+#, qt-format
+msgid "Leg"
+msgstr ""
+
+#: oco.jsxinc:702
+#, qt-format
+msgid "Thigh"
+msgstr ""
+
+#: oco.jsxinc:710
+#, qt-format
+msgid "Calf"
+msgstr ""
+
+#: oco.jsxinc:731
+#, qt-format
+msgid "Foot"
+msgstr ""
+
+#: oco.jsxinc:753
+#, qt-format
+msgid "Toes"
+msgstr ""
+
+#: oco.jsxinc:767
+#, qt-format
+msgid "Hoof"
+msgstr ""
+
+#: oco.jsxinc:838
+#, qt-format
+msgid "Spine"
+msgstr ""
+
+#: oco.jsxinc:856
+#, qt-format
+msgid "Hips"
+msgstr ""
+
+#: oco.jsxinc:877
+#, qt-format
+msgid "Torso"
+msgstr ""
+
+#: oco.jsxinc:898
+#, qt-format
+msgid "Neck"
+msgstr ""
+
+#: oco.jsxinc:907
+#, qt-format
+msgid "Head"
+msgstr ""
+
+#: oco.jsxinc:943
+#, qt-format
+msgid "Tail"
+msgstr ""
+
+#: oco.jsxinc:982
+#, qt-format
+msgid "Hair"
+msgstr ""
+
+#: oco.jsxinc:1044
+#, qt-format
+msgid "Wing"
+msgstr ""
+
+#: oco.jsxinc:1126
+#, qt-format
+msgid "Feather"
+msgstr ""
+
+#: oco.jsxinc:1388
+#, qt-format
+msgid "Fin"
+msgstr ""
+
+#: oco.jsxinc:1409
+#, qt-format
+msgid "Fishbone"
+msgstr ""
+
+#: panel.jsxinc:567
+#, qt-format
+msgid "%1 Settings"
+msgstr "%1 Настройки"
+
+#: panel.jsxinc:591
+#, qt-format
+msgid "Set the language of the interface."
+msgstr "Установить язык интерфейса"
+
+#: panel.jsxinc:610
+#, qt-format
+msgid "Settings file"
+msgstr "Файл настроек"
 
