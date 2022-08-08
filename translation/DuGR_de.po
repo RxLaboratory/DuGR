@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 17:21\n"
+"PO-Revision-Date: 2022-08-08 08:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -170,7 +170,7 @@ msgstr "Kreis"
 #: comp.jsxinc:721
 #, qt-format
 msgid "Polygon"
-msgstr ""
+msgstr "Polygon"
 
 #: comp.jsxinc:727
 #, qt-format
@@ -224,14 +224,14 @@ msgstr "Projekt-Stammverzeichnis"
 #, qt-format
 msgctxt "in layer name, left"
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. "short for Right, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:99
 #, qt-format
 msgctxt "in layer name, right"
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. "short for Front, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:109
@@ -252,7 +252,7 @@ msgstr "Hinten"
 #, qt-format
 msgctxt "in layer name, tail"
 msgid "Tl"
-msgstr "Sch"
+msgstr "Schwanz"
 
 #. "short for Middle, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:112
@@ -273,12 +273,12 @@ msgstr "Oben"
 #, qt-format
 msgctxt "in layer name, under"
 msgid "Un"
-msgstr ""
+msgstr "Unten"
 
 #: oco.jsxinc:335
 #, qt-format
 msgid "Arm"
-msgstr ""
+msgstr "Arm"
 
 #: oco.jsxinc:393
 #, qt-format
@@ -293,7 +293,7 @@ msgstr "Unterarm"
 #: oco.jsxinc:483
 #, qt-format
 msgid "Hand"
-msgstr ""
+msgstr "Hand"
 
 #: oco.jsxinc:524
 #, qt-format
