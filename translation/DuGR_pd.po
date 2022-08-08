@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 17:21\n"
+"PO-Revision-Date: 2022-08-08 11:46\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -135,42 +135,42 @@ msgstr "Attribut : Arpére"
 #: comp.jsxinc:588
 #, qt-format
 msgid "Null"
-msgstr ""
+msgstr "Vite"
 
 #: comp.jsxinc:637
 #, qt-format
 msgid "Adjustment layer"
-msgstr ""
+msgstr "Calque d'effets"
 
 #: comp.jsxinc:666
 #, qt-format
 msgid "Solid"
-msgstr ""
+msgstr "Solite"
 
 #: comp.jsxinc:695
 #, qt-format
 msgid "Shape"
-msgstr ""
+msgstr "Forme"
 
 #: comp.jsxinc:705
 #, qt-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Rectangle"
 
 #: comp.jsxinc:710
 #, qt-format
 msgid "Rounded rectangle"
-msgstr ""
+msgstr "Rectangle aronti"
 
 #: comp.jsxinc:716
 #, qt-format
 msgid "Circle"
-msgstr ""
+msgstr "Chercle"
 
 #: comp.jsxinc:721
 #, qt-format
 msgid "Polygon"
-msgstr ""
+msgstr "Polygone"
 
 #: comp.jsxinc:727
 #, qt-format
@@ -180,7 +180,7 @@ msgstr ""
 #: duscriptui_extension.jsxinc:161
 #, qt-format
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Arsaquer"
 
 #: duscriptui_extension.jsxinc:203
 #, qt-format
@@ -333,7 +333,7 @@ msgstr ""
 #: oco.jsxinc:753
 #, qt-format
 msgid "Toes"
-msgstr "Orteils"
+msgstr "Ortiaux"
 
 #: oco.jsxinc:767
 #, qt-format
