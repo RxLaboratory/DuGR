@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-10 09:47\n"
+"PO-Revision-Date: 2022-08-10 11:13\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -196,104 +196,104 @@ msgstr "Cujir les couques"
 #: layer.jsxinc:477
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr ""
+msgstr "El feu attrintchillage n'existe point."
 
 #: layer.jsxinc:537
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
-msgstr ""
+msgstr "Feu attrintchillage ou \"match name\" poris."
 
 #: layer.jsxinc:707
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr ""
+msgstr "Mode racrivage"
 
 #: layer.jsxinc:1505
 #, qt-format
 msgid "Locator"
-msgstr ""
+msgstr "Localisateur"
 
 #: project.jsxinc:466
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "Rachine del projet"
 
 #. "short for Left, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:98
 #, qt-format
 msgctxt "in layer name, left"
 msgid "L"
-msgstr ""
+msgstr "G"
 
 #. "short for Right, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:99
 #, qt-format
 msgctxt "in layer name, right"
 msgid "R"
-msgstr ""
+msgstr "D"
 
 #. "short for Front, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:109
 #, qt-format
 msgctxt "in layer name, front"
 msgid "Fr"
-msgstr ""
+msgstr "Dv"
 
 #. "short for Back, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:110
 #, qt-format
 msgctxt "in layer name, back"
 msgid "Bk"
-msgstr ""
+msgstr "Dr"
 
 #. "short for Tail, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:111
 #, qt-format
 msgctxt "in layer name, tail"
 msgid "Tl"
-msgstr ""
+msgstr "Tch"
 
 #. "short for Middle, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:112
 #, qt-format
 msgctxt "in layer name, middle"
 msgid "Md"
-msgstr ""
+msgstr "M"
 
 #. "short for Above, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:113
 #, qt-format
 msgctxt "in layer name, above"
 msgid "Ab"
-msgstr ""
+msgstr "D'sus"
 
 #. "short for Under, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:114
 #, qt-format
 msgctxt "in layer name, under"
 msgid "Un"
-msgstr ""
+msgstr "D'sous"
 
 #: oco.jsxinc:335
 #, qt-format
 msgid "Arm"
-msgstr ""
+msgstr "Breus"
 
 #: oco.jsxinc:393
 #, qt-format
 msgid "Shoulder"
-msgstr ""
+msgstr "Épeule"
 
 #: oco.jsxinc:442
 #, qt-format
 msgid "Forearm"
-msgstr ""
+msgstr "Avant-breus"
 
 #: oco.jsxinc:483
 #, qt-format
 msgid "Hand"
-msgstr ""
+msgstr "Main"
 
 #: oco.jsxinc:524
 #, qt-format
@@ -303,32 +303,32 @@ msgstr "Griffes"
 #: oco.jsxinc:560
 #, qt-format
 msgid "Tip"
-msgstr ""
+msgstr "Pointe"
 
 #: oco.jsxinc:601
 #, qt-format
 msgid "Heel"
-msgstr ""
+msgstr "Talon"
 
 #: oco.jsxinc:663
 #, qt-format
 msgid "Leg"
-msgstr ""
+msgstr "Gambe"
 
 #: oco.jsxinc:702
 #, qt-format
 msgid "Thigh"
-msgstr ""
+msgstr "Tchuche"
 
 #: oco.jsxinc:710
 #, qt-format
 msgid "Calf"
-msgstr ""
+msgstr "Mollet"
 
 #: oco.jsxinc:731
 #, qt-format
 msgid "Foot"
-msgstr ""
+msgstr "Pied"
 
 #: oco.jsxinc:753
 #, qt-format
@@ -338,12 +338,12 @@ msgstr "Ortiaux"
 #: oco.jsxinc:767
 #, qt-format
 msgid "Hoof"
-msgstr ""
+msgstr "Chabot"
 
 #: oco.jsxinc:838
 #, qt-format
 msgid "Spine"
-msgstr ""
+msgstr "Colonne"
 
 #: oco.jsxinc:856
 #, qt-format
@@ -353,47 +353,47 @@ msgstr "Hanches"
 #: oco.jsxinc:877
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "Corps"
 
 #: oco.jsxinc:898
 #, qt-format
 msgid "Neck"
-msgstr ""
+msgstr "Cou"
 
 #: oco.jsxinc:907
 #, qt-format
 msgid "Head"
-msgstr ""
+msgstr "Tchiête"
 
 #: oco.jsxinc:943
 #, qt-format
 msgid "Tail"
-msgstr ""
+msgstr "Tcheue"
 
 #: oco.jsxinc:982
 #, qt-format
 msgid "Hair"
-msgstr ""
+msgstr "Gveux"
 
 #: oco.jsxinc:1044
 #, qt-format
 msgid "Wing"
-msgstr ""
+msgstr "Aile"
 
 #: oco.jsxinc:1126
 #, qt-format
 msgid "Feather"
-msgstr ""
+msgstr "Pleume"
 
 #: oco.jsxinc:1388
 #, qt-format
 msgid "Fin"
-msgstr ""
+msgstr "Najoère"
 
 #: oco.jsxinc:1409
 #, qt-format
 msgid "Fishbone"
-msgstr ""
+msgstr "Os ed pichon"
 
 #: panel.jsxinc:567
 #, qt-format
@@ -403,10 +403,10 @@ msgstr "Préférinches ed %1"
 #: panel.jsxinc:591
 #, qt-format
 msgid "Set the language of the interface."
-msgstr ""
+msgstr "Cujir el langue del outi."
 
 #: panel.jsxinc:610
 #, qt-format
 msgid "Settings file"
-msgstr ""
+msgstr "Fichier ed réglage"
 
