@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-02 17:21\n"
+"PO-Revision-Date: 2022-08-10 20:57\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -150,7 +150,7 @@ msgstr ""
 #: comp.jsxinc:695
 #, qt-format
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: comp.jsxinc:705
 #, qt-format
@@ -175,7 +175,7 @@ msgstr "Polígono"
 #: comp.jsxinc:727
 #, qt-format
 msgid "Star"
-msgstr ""
+msgstr "Estrella"
 
 #: duscriptui_extension.jsxinc:161
 #, qt-format
@@ -212,12 +212,12 @@ msgstr "Modo edición"
 #: layer.jsxinc:1505
 #, qt-format
 msgid "Locator"
-msgstr ""
+msgstr "Localizador"
 
 #: project.jsxinc:466
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "Raíz del Proyecto"
 
 #. "short for Left, must be short enough to be used as a tag in layer names"
 #: oco.jsxinc:98
@@ -303,7 +303,7 @@ msgstr "Garras"
 #: oco.jsxinc:560
 #, qt-format
 msgid "Tip"
-msgstr ""
+msgstr "Extremo"
 
 #: oco.jsxinc:601
 #, qt-format
@@ -318,7 +318,7 @@ msgstr "Pierna"
 #: oco.jsxinc:702
 #, qt-format
 msgid "Thigh"
-msgstr ""
+msgstr "Muslo"
 
 #: oco.jsxinc:710
 #, qt-format
@@ -333,7 +333,7 @@ msgstr "Pie"
 #: oco.jsxinc:753
 #, qt-format
 msgid "Toes"
-msgstr ""
+msgstr "Dedos de los Pies"
 
 #: oco.jsxinc:767
 #, qt-format
@@ -343,7 +343,7 @@ msgstr "Pezuña"
 #: oco.jsxinc:838
 #, qt-format
 msgid "Spine"
-msgstr ""
+msgstr "Espina"
 
 #: oco.jsxinc:856
 #, qt-format
@@ -353,7 +353,7 @@ msgstr "Caderas"
 #: oco.jsxinc:877
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "Torso"
 
 #: oco.jsxinc:898
 #, qt-format
@@ -378,7 +378,7 @@ msgstr "Pelo"
 #: oco.jsxinc:1044
 #, qt-format
 msgid "Wing"
-msgstr ""
+msgstr "Ala"
 
 #: oco.jsxinc:1126
 #, qt-format
