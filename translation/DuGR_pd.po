@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-08 11:46\n"
+"PO-Revision-Date: 2022-08-10 09:47\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +175,7 @@ msgstr "Polygone"
 #: comp.jsxinc:727
 #, qt-format
 msgid "Star"
-msgstr ""
+msgstr "Fertille"
 
 #: duscriptui_extension.jsxinc:161
 #, qt-format
@@ -191,7 +191,7 @@ msgstr "Nin"
 #: duscriptui_extension.jsxinc:663
 #, qt-format
 msgid "Select layers"
-msgstr ""
+msgstr "Cujir les couques"
 
 #: layer.jsxinc:477
 #, qt-format
