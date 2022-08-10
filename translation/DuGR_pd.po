@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-10 11:13\n"
+"PO-Revision-Date: 2022-08-10 18:34\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Type : Textes"
 #: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Adjustment"
-msgstr "Type : Calques d'effets"
+msgstr "Type : Attrintchillages"
 
 #: propPanel.jsxinc:14
 #, qt-format
@@ -90,17 +90,17 @@ msgstr "Type : Cameras"
 #: propPanel.jsxinc:16
 #, qt-format
 msgid "Attribute: Visible"
-msgstr "Attribut : Visipe"
+msgstr "Acrinkillache : Visipe"
 
 #: propPanel.jsxinc:17
 #, qt-format
 msgid "Attribute: Has Audio"
-msgstr "Attribut : Aveuc audio"
+msgstr "Acrinkillache : Aveuc audio"
 
 #: propPanel.jsxinc:18
 #, qt-format
 msgid "Attribute: Solo"
-msgstr "Attribut : Solo"
+msgstr "Acrinkillache : Solo"
 
 #: propPanel.jsxinc:19
 #, qt-format
@@ -110,27 +110,27 @@ msgstr "Acrinkillache : Coinché"
 #: propPanel.jsxinc:20
 #, qt-format
 msgid "Attribute: Shy"
-msgstr "Attribut : Sési"
+msgstr "Acrinkillache : Sési"
 
 #: propPanel.jsxinc:21
 #, qt-format
 msgid "Attribute: Effects"
-msgstr "Attribut : Effets"
+msgstr "Acrinkillache : Attrintchillages"
 
 #: propPanel.jsxinc:22
 #, qt-format
 msgid "Attribute: Motion Blur"
-msgstr "Attribut : Flou d'armumint"
+msgstr "Acrinkillache : Flou d'armumint"
 
 #: propPanel.jsxinc:23
 #, qt-format
 msgid "Attribute: 3D"
-msgstr "Attribut : 3D"
+msgstr "Acrinkillache : 3D"
 
 #: propPanel.jsxinc:24
 #, qt-format
 msgid "Attribute: Guide"
-msgstr "Attribut : Arpére"
+msgstr "Acrinkillache : Arpére"
 
 #: comp.jsxinc:588
 #, qt-format
@@ -140,7 +140,7 @@ msgstr "Vite"
 #: comp.jsxinc:637
 #, qt-format
 msgid "Adjustment layer"
-msgstr "Calque d'effets"
+msgstr "Calque d'Attrintchillages"
 
 #: comp.jsxinc:666
 #, qt-format
