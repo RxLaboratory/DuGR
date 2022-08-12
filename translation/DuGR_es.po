@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-10 20:57\n"
+"PO-Revision-Date: 2022-08-12 16:54\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -140,12 +140,12 @@ msgstr "Nulo"
 #: comp.jsxinc:637
 #, qt-format
 msgid "Adjustment layer"
-msgstr ""
+msgstr "Capa de ajuste"
 
 #: comp.jsxinc:666
 #, qt-format
 msgid "Solid"
-msgstr ""
+msgstr "Sólido"
 
 #: comp.jsxinc:695
 #, qt-format
