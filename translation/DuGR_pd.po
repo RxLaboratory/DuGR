@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-10 18:34\n"
+"PO-Revision-Date: 2022-08-14 15:45\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -408,5 +408,5 @@ msgstr "Cujir el langue del outi."
 #: panel.jsxinc:610
 #, qt-format
 msgid "Settings file"
-msgstr "Fichier ed réglage"
+msgstr "Fichier ed réglache"
 
