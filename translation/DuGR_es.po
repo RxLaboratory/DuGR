@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 08:00\n"
+"POT-Creation-Date: 2022-08-15 10:30\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,181 @@ msgstr "Agrupadas"
 #, qt-format
 msgid "Ignored"
 msgstr "Ignoradas"
+
+#: groupPanel.jsxinc:23
+#, qt-format
+msgid "Add selected layers to group."
+msgstr "Añadir las capas seleccionadas al grupo."
+
+#: groupPanel.jsxinc:31
+#, qt-format
+msgid "Get groups from selected layers."
+msgstr "Obtener los grupos de las capas seleccionadas."
+
+#: groupPanel.jsxinc:39
+#, qt-format
+msgid "Remove selected layers from group."
+msgstr "Quitar las capas seleccionadas del grupo."
+
+#: groupPanel.jsxinc:50
+#, qt-format
+msgid "Create new group."
+msgstr "Crear un nuevo grupo."
+
+#: groupPanel.jsxinc:58
+#, qt-format
+msgid "Change group name"
+msgstr "Cambiar el nombre del grupo"
+
+#: groupPanel.jsxinc:66
+#, qt-format
+msgid "Remove group."
+msgstr "Eliminar el grupo."
+
+#: groupPanel.jsxinc:77
+#, qt-format
+msgid "New group"
+msgstr "Nuevo grupo"
+
+#: groupPanel.jsxinc:87
+#, qt-format
+msgid "OK"
+msgstr "OK"
+
+#: mainPanel.jsxinc:12
+#, qt-format
+msgid "Exit isolation."
+msgstr "Salir del aislamiento."
+
+#: mainPanel.jsxinc:27
+#, qt-format
+msgid "Isolate"
+msgstr "Aislado"
+
+#: mainPanel.jsxinc:29
+#, qt-format
+msgid "Isolate selected groups."
+msgstr "Aislar los grupos seleccionados."
+
+#: mainPanel.jsxinc:45
+#, qt-format
+msgid "Timeline"
+msgstr "Línea de tiempo"
+
+#: mainPanel.jsxinc:47
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Aislar los grupos seleccionados, en la línea temporal solamente."
+
+#: mainPanel.jsxinc:63
+#, qt-format
+msgid "Comp"
+msgstr "Compo"
+
+#: mainPanel.jsxinc:65
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Aislar los grupos seleccionados, en el panel de composición solamente"
+
+#: mainPanel.jsxinc:84
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr "Establecer el modo interactivo (pegajoso)."
+
+#: mainPanel.jsxinc:157
+#, qt-format
+msgid "Show/Hide layers"
+msgstr "Mostrar/ocultar las capas"
+
+#: mainPanel.jsxinc:163
+#, qt-format
+msgid "Toggle audio"
+msgstr "(Des)activar el audio"
+
+#: mainPanel.jsxinc:169
+#, qt-format
+msgid "Toggle solo mode"
+msgstr "(Des)activar el modo solo"
+
+#: mainPanel.jsxinc:175
+#, qt-format
+msgid "Lock layers"
+msgstr "Bloquear las capas"
+
+#: mainPanel.jsxinc:181
+#, qt-format
+msgid "Shy layers"
+msgstr "Capas discretas"
+
+#: mainPanel.jsxinc:187
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Reducir las transformaciones / Rasterizado continuo"
+
+#: mainPanel.jsxinc:193
+#, qt-format
+msgid "Guide layers"
+msgstr "Capas de guía"
+
+#: mainPanel.jsxinc:200
+#, qt-format
+msgid "Set quality"
+msgstr "Cambiar la calidad"
+
+#: mainPanel.jsxinc:206
+#, qt-format
+msgid "Toggle effects"
+msgstr "(Des)activar los efectos"
+
+#: mainPanel.jsxinc:212
+#, qt-format
+msgid "Set frame blending mode"
+msgstr "Cambiar el modo de fusión de las imágenes"
+
+#: mainPanel.jsxinc:218
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "(Des)activar el desenfoque de movimientos"
+
+#: mainPanel.jsxinc:224
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr "(Des)activar el modo capa de efectos"
+
+#: mainPanel.jsxinc:230
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr "(Des)activar el modo capa 3D"
+
+#: mainPanel.jsxinc:236
+#, qt-format
+msgid "Select layers"
+msgstr "Seleccionar las capas"
+
+#: mainPanel.jsxinc:401
+#, qt-format
+msgid "Properties"
+msgstr "Propiedades"
+
+#: mainPanel.jsxinc:402
+#, qt-format
+msgid "Groups"
+msgstr "Grupos"
+
+#: mainPanel.jsxinc:433
+#, qt-format
+msgid "Invert"
+msgstr "Invertir"
+
+#: mainPanel.jsxinc:435
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "Invertir la selección de grupo/propiedad"
+
+#: mainPanel.jsxinc:436
+#, qt-format
+msgid "Inverted"
+msgstr "Invertido"
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -132,6 +307,91 @@ msgstr "Atributo: 3D"
 msgid "Attribute: Guide"
 msgstr "Atributo: Guía"
 
+#: settings.jsxinc:6
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr "Capas bloqueadas: denegar cambios"
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "Qué hacer si una capa está bloqueada."
+
+#: settings.jsxinc:9
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr "Capas bloqueadas: permitir cambios"
+
+#: settings.jsxinc:16
+#, qt-format
+msgid "Warning frame: None"
+msgstr "Cuadro de advertencia: ninguno"
+
+#: settings.jsxinc:18
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "No utilizar ningún cuadro de advertencia."
+
+#: settings.jsxinc:21
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "Cuadro de advertencia: sobre"
+
+#: settings.jsxinc:23
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr "Dibujar el cuadro sobre la composición."
+
+#: settings.jsxinc:26
+#, qt-format
+msgid "Warning frame: Below"
+msgstr "Cuadro de advertencia: bajo"
+
+#: settings.jsxinc:28
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr "Dibujar el cuadro debajo de la composición."
+
+#: settings.jsxinc:35
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "Aislamiento: ocultar capas"
+
+#: settings.jsxinc:37
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr "Método utilizado para aislar las capas en la composición."
+
+#: settings.jsxinc:38
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr "Aislamiento: wireframe"
+
+#: settings.jsxinc:45
+#, qt-format
+msgid "Hide markers"
+msgstr "Ocultar marcadores"
+
+#: settings.jsxinc:47
+#, qt-format
+msgid "whether to show or hide the tags on the layers."
+msgstr "Mostrar u ocultar las etiquetas en las capas."
+
+#: settings.jsxinc:48
+#, qt-format
+msgid "Show markers"
+msgstr "Mostrar marcadores"
+
+#: settings.jsxinc:55
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "Bloquear las capas ocultas"
+
+#: settings.jsxinc:57
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr "Si las capas ocultas tienen que ser bloqueadas."
+
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
@@ -187,11 +447,6 @@ msgstr "Cancelar"
 msgctxt "Select"
 msgid "None"
 msgstr "Ninguno"
-
-#: duscriptui_extension.jsxinc:664
-#, qt-format
-msgid "Select layers"
-msgstr "Seleccionar las capas"
 
 #: layer.jsxinc:478
 #, qt-format
@@ -627,11 +882,6 @@ msgstr "Ayuda y opciones"
 #, qt-format
 msgid "Edit settings"
 msgstr "Editar los parámetros"
-
-#: panel.jsxinc:1033
-#, qt-format
-msgid "OK"
-msgstr "OK"
 
 #: progressbar.jsxinc:13
 #, qt-format

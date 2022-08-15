@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 08:00\n"
+"POT-Creation-Date: 2022-08-15 10:30\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,181 @@ msgstr "Groupés"
 #, qt-format
 msgid "Ignored"
 msgstr "Ignorés"
+
+#: groupPanel.jsxinc:23
+#, qt-format
+msgid "Add selected layers to group."
+msgstr "Ajouter les calques sélectionnés au groupe."
+
+#: groupPanel.jsxinc:31
+#, qt-format
+msgid "Get groups from selected layers."
+msgstr "Récupérer les groupes des calques sélectionnés."
+
+#: groupPanel.jsxinc:39
+#, qt-format
+msgid "Remove selected layers from group."
+msgstr "Supprimer les calques sélectionnés du groupe."
+
+#: groupPanel.jsxinc:50
+#, qt-format
+msgid "Create new group."
+msgstr "Créer un nouveau groupe."
+
+#: groupPanel.jsxinc:58
+#, qt-format
+msgid "Change group name"
+msgstr "Modifier le nom du groupe"
+
+#: groupPanel.jsxinc:66
+#, qt-format
+msgid "Remove group."
+msgstr "Supprimer le groupe."
+
+#: groupPanel.jsxinc:77
+#, qt-format
+msgid "New group"
+msgstr "Nouveau groupe"
+
+#: groupPanel.jsxinc:87
+#, qt-format
+msgid "OK"
+msgstr "OK"
+
+#: mainPanel.jsxinc:12
+#, qt-format
+msgid "Exit isolation."
+msgstr "Quitter l'isolation."
+
+#: mainPanel.jsxinc:27
+#, qt-format
+msgid "Isolate"
+msgstr "Isoler"
+
+#: mainPanel.jsxinc:29
+#, qt-format
+msgid "Isolate selected groups."
+msgstr "Isoler les groupes sélectionnés."
+
+#: mainPanel.jsxinc:45
+#, qt-format
+msgid "Timeline"
+msgstr "Ligne temporelle"
+
+#: mainPanel.jsxinc:47
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Isoler les groupes sélectionnés, dans la ligne temporelle seulement."
+
+#: mainPanel.jsxinc:63
+#, qt-format
+msgid "Comp"
+msgstr "Compo"
+
+#: mainPanel.jsxinc:65
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Isoler les groupes sélectionnés, dans le panneau de composition uniquement"
+
+#: mainPanel.jsxinc:84
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr "Utiliser le mode interactif (persistant)."
+
+#: mainPanel.jsxinc:157
+#, qt-format
+msgid "Show/Hide layers"
+msgstr "Afficher/masquer les calques"
+
+#: mainPanel.jsxinc:163
+#, qt-format
+msgid "Toggle audio"
+msgstr "(Dés)activer l'audio"
+
+#: mainPanel.jsxinc:169
+#, qt-format
+msgid "Toggle solo mode"
+msgstr "(Dés)activer le mode solo"
+
+#: mainPanel.jsxinc:175
+#, qt-format
+msgid "Lock layers"
+msgstr "Verrouiller les calques"
+
+#: mainPanel.jsxinc:181
+#, qt-format
+msgid "Shy layers"
+msgstr "Calques discrets"
+
+#: mainPanel.jsxinc:187
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Réduire les transformations / Pixellisation continue"
+
+#: mainPanel.jsxinc:193
+#, qt-format
+msgid "Guide layers"
+msgstr "Calques repères"
+
+#: mainPanel.jsxinc:200
+#, qt-format
+msgid "Set quality"
+msgstr "Changer la qualité"
+
+#: mainPanel.jsxinc:206
+#, qt-format
+msgid "Toggle effects"
+msgstr "(Dés)activer les effets"
+
+#: mainPanel.jsxinc:212
+#, qt-format
+msgid "Set frame blending mode"
+msgstr "Changer le mode de fusion d'images"
+
+#: mainPanel.jsxinc:218
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "(Dés)activer le flou de mouvement"
+
+#: mainPanel.jsxinc:224
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr "(Dés)activer le mode calque d'effets"
+
+#: mainPanel.jsxinc:230
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr "(Dés)activer le mode calque 3D"
+
+#: mainPanel.jsxinc:236
+#, qt-format
+msgid "Select layers"
+msgstr "Sélectionner les calques"
+
+#: mainPanel.jsxinc:401
+#, qt-format
+msgid "Properties"
+msgstr "Propriétés"
+
+#: mainPanel.jsxinc:402
+#, qt-format
+msgid "Groups"
+msgstr "Groupes"
+
+#: mainPanel.jsxinc:433
+#, qt-format
+msgid "Invert"
+msgstr "Inverser"
+
+#: mainPanel.jsxinc:435
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "Inverser la sélection du groupe/propriété"
+
+#: mainPanel.jsxinc:436
+#, qt-format
+msgid "Inverted"
+msgstr "Inversé"
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -132,6 +307,91 @@ msgstr "Attribut : 3D"
 msgid "Attribute: Guide"
 msgstr "Attribut : Repère"
 
+#: settings.jsxinc:6
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr "Calques verrouillés : refuser les modifications"
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "Que faire si un calque est verrouillé."
+
+#: settings.jsxinc:9
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr "Calques verrouillés : autoriser les modifications"
+
+#: settings.jsxinc:16
+#, qt-format
+msgid "Warning frame: None"
+msgstr "Cadre d'avertissement : Aucun"
+
+#: settings.jsxinc:18
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "Ne pas utiliser de cadre d'avertissement."
+
+#: settings.jsxinc:21
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "Cadre d'avertissement : Au-dessus"
+
+#: settings.jsxinc:23
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr "Dessine le cadre au-dessus de la composition."
+
+#: settings.jsxinc:26
+#, qt-format
+msgid "Warning frame: Below"
+msgstr "Cadre d'avertissement : En dessous"
+
+#: settings.jsxinc:28
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr "Dessine le cadre sous la composition."
+
+#: settings.jsxinc:35
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "Isolation : masquer les calques"
+
+#: settings.jsxinc:37
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr "Méthode utilisée pour isoler les calques dans la composition."
+
+#: settings.jsxinc:38
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr "Isolation : filaire"
+
+#: settings.jsxinc:45
+#, qt-format
+msgid "Hide markers"
+msgstr "Masquer les marqueurs"
+
+#: settings.jsxinc:47
+#, qt-format
+msgid "whether to show or hide the tags on the layers."
+msgstr "Afficher ou masquer les tags sur les calques."
+
+#: settings.jsxinc:48
+#, qt-format
+msgid "Show markers"
+msgstr "Afficher les marqueurs"
+
+#: settings.jsxinc:55
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "Verrouiller les calques masqués"
+
+#: settings.jsxinc:57
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr "Les calques masqués doivent-ils être verrouillés ?"
+
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
@@ -187,11 +447,6 @@ msgstr "Annuler"
 msgctxt "Select"
 msgid "None"
 msgstr "Aucun"
-
-#: duscriptui_extension.jsxinc:664
-#, qt-format
-msgid "Select layers"
-msgstr "Sélectionner les calques"
 
 #: layer.jsxinc:478
 #, qt-format
@@ -627,11 +882,6 @@ msgstr "Aide et options"
 #, qt-format
 msgid "Edit settings"
 msgstr "Éditer les paramètres"
-
-#: panel.jsxinc:1033
-#, qt-format
-msgid "OK"
-msgstr "OK"
 
 #: progressbar.jsxinc:13
 #, qt-format

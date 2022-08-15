@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 08:00\n"
+"POT-Creation-Date: 2022-08-15 10:30\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,181 @@ msgstr "已分组"
 #, qt-format
 msgid "Ignored"
 msgstr "已忽略"
+
+#: groupPanel.jsxinc:23
+#, qt-format
+msgid "Add selected layers to group."
+msgstr ""
+
+#: groupPanel.jsxinc:31
+#, qt-format
+msgid "Get groups from selected layers."
+msgstr ""
+
+#: groupPanel.jsxinc:39
+#, qt-format
+msgid "Remove selected layers from group."
+msgstr ""
+
+#: groupPanel.jsxinc:50
+#, qt-format
+msgid "Create new group."
+msgstr ""
+
+#: groupPanel.jsxinc:58
+#, qt-format
+msgid "Change group name"
+msgstr ""
+
+#: groupPanel.jsxinc:66
+#, qt-format
+msgid "Remove group."
+msgstr ""
+
+#: groupPanel.jsxinc:77
+#, qt-format
+msgid "New group"
+msgstr ""
+
+#: groupPanel.jsxinc:87
+#, qt-format
+msgid "OK"
+msgstr "好的"
+
+#: mainPanel.jsxinc:12
+#, qt-format
+msgid "Exit isolation."
+msgstr ""
+
+#: mainPanel.jsxinc:27
+#, qt-format
+msgid "Isolate"
+msgstr "隔离"
+
+#: mainPanel.jsxinc:29
+#, qt-format
+msgid "Isolate selected groups."
+msgstr ""
+
+#: mainPanel.jsxinc:45
+#, qt-format
+msgid "Timeline"
+msgstr "时间线"
+
+#: mainPanel.jsxinc:47
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr ""
+
+#: mainPanel.jsxinc:63
+#, qt-format
+msgid "Comp"
+msgstr "合成"
+
+#: mainPanel.jsxinc:65
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr ""
+
+#: mainPanel.jsxinc:84
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr ""
+
+#: mainPanel.jsxinc:157
+#, qt-format
+msgid "Show/Hide layers"
+msgstr "显示/隐藏图层"
+
+#: mainPanel.jsxinc:163
+#, qt-format
+msgid "Toggle audio"
+msgstr "切换音频"
+
+#: mainPanel.jsxinc:169
+#, qt-format
+msgid "Toggle solo mode"
+msgstr "切换单独显示模式"
+
+#: mainPanel.jsxinc:175
+#, qt-format
+msgid "Lock layers"
+msgstr "锁定图层"
+
+#: mainPanel.jsxinc:181
+#, qt-format
+msgid "Shy layers"
+msgstr "害羞图层"
+
+#: mainPanel.jsxinc:187
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "折叠变换 / 连续栅格化"
+
+#: mainPanel.jsxinc:193
+#, qt-format
+msgid "Guide layers"
+msgstr "参考图层"
+
+#: mainPanel.jsxinc:200
+#, qt-format
+msgid "Set quality"
+msgstr "设定质量"
+
+#: mainPanel.jsxinc:206
+#, qt-format
+msgid "Toggle effects"
+msgstr "切换特效"
+
+#: mainPanel.jsxinc:212
+#, qt-format
+msgid "Set frame blending mode"
+msgstr "设定帧混合模式"
+
+#: mainPanel.jsxinc:218
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "切换运动模糊"
+
+#: mainPanel.jsxinc:224
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr "切换调整图层模式"
+
+#: mainPanel.jsxinc:230
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr "切换3D模式"
+
+#: mainPanel.jsxinc:236
+#, qt-format
+msgid "Select layers"
+msgstr "所选图层"
+
+#: mainPanel.jsxinc:401
+#, qt-format
+msgid "Properties"
+msgstr ""
+
+#: mainPanel.jsxinc:402
+#, qt-format
+msgid "Groups"
+msgstr "群组"
+
+#: mainPanel.jsxinc:433
+#, qt-format
+msgid "Invert"
+msgstr "反转"
+
+#: mainPanel.jsxinc:435
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr ""
+
+#: mainPanel.jsxinc:436
+#, qt-format
+msgid "Inverted"
+msgstr ""
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -132,6 +307,91 @@ msgstr "属性: 3D"
 msgid "Attribute: Guide"
 msgstr "属性:参考线"
 
+#: settings.jsxinc:6
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr ""
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr ""
+
+#: settings.jsxinc:9
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr ""
+
+#: settings.jsxinc:16
+#, qt-format
+msgid "Warning frame: None"
+msgstr ""
+
+#: settings.jsxinc:18
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr ""
+
+#: settings.jsxinc:21
+#, qt-format
+msgid "Warning frame: Above"
+msgstr ""
+
+#: settings.jsxinc:23
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr ""
+
+#: settings.jsxinc:26
+#, qt-format
+msgid "Warning frame: Below"
+msgstr ""
+
+#: settings.jsxinc:28
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr ""
+
+#: settings.jsxinc:35
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr ""
+
+#: settings.jsxinc:37
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr ""
+
+#: settings.jsxinc:38
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr ""
+
+#: settings.jsxinc:45
+#, qt-format
+msgid "Hide markers"
+msgstr ""
+
+#: settings.jsxinc:47
+#, qt-format
+msgid "whether to show or hide the tags on the layers."
+msgstr ""
+
+#: settings.jsxinc:48
+#, qt-format
+msgid "Show markers"
+msgstr ""
+
+#: settings.jsxinc:55
+#, qt-format
+msgid "Lock hidden layers"
+msgstr ""
+
+#: settings.jsxinc:57
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr ""
+
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
@@ -187,11 +447,6 @@ msgstr "取消"
 msgctxt "Select"
 msgid "None"
 msgstr "无"
-
-#: duscriptui_extension.jsxinc:664
-#, qt-format
-msgid "Select layers"
-msgstr "所选图层"
 
 #: layer.jsxinc:478
 #, qt-format
@@ -627,11 +882,6 @@ msgstr "帮助与选项"
 #, qt-format
 msgid "Edit settings"
 msgstr "编辑设置"
-
-#: panel.jsxinc:1033
-#, qt-format
-msgid "OK"
-msgstr "好的"
 
 #: progressbar.jsxinc:13
 #, qt-format

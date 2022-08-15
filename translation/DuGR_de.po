@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 08:00\n"
+"POT-Creation-Date: 2022-08-15 10:30\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,181 @@ msgstr "Gruppiert"
 #, qt-format
 msgid "Ignored"
 msgstr "Ignoriert"
+
+#: groupPanel.jsxinc:23
+#, qt-format
+msgid "Add selected layers to group."
+msgstr "Ausgewählte Ebenen zur Gruppe hinzufügen."
+
+#: groupPanel.jsxinc:31
+#, qt-format
+msgid "Get groups from selected layers."
+msgstr "Lade Gruppen von ausgewählten Ebenen."
+
+#: groupPanel.jsxinc:39
+#, qt-format
+msgid "Remove selected layers from group."
+msgstr "Ausgewählte Ebenen aus Gruppe entfernen."
+
+#: groupPanel.jsxinc:50
+#, qt-format
+msgid "Create new group."
+msgstr "Neue Gruppe erstellen."
+
+#: groupPanel.jsxinc:58
+#, qt-format
+msgid "Change group name"
+msgstr "Gruppennamen ändern"
+
+#: groupPanel.jsxinc:66
+#, qt-format
+msgid "Remove group."
+msgstr "Gruppe entfernen."
+
+#: groupPanel.jsxinc:77
+#, qt-format
+msgid "New group"
+msgstr "Neue Gruppe"
+
+#: groupPanel.jsxinc:87
+#, qt-format
+msgid "OK"
+msgstr "Ok"
+
+#: mainPanel.jsxinc:12
+#, qt-format
+msgid "Exit isolation."
+msgstr "Isolation beenden."
+
+#: mainPanel.jsxinc:27
+#, qt-format
+msgid "Isolate"
+msgstr "Isolieren"
+
+#: mainPanel.jsxinc:29
+#, qt-format
+msgid "Isolate selected groups."
+msgstr "Ausgewählte Gruppen isolieren."
+
+#: mainPanel.jsxinc:45
+#, qt-format
+msgid "Timeline"
+msgstr "Zeitleiste"
+
+#: mainPanel.jsxinc:47
+#, qt-format
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Ausgewählte Gruppen nur in der Zeitleiste isolieren."
+
+#: mainPanel.jsxinc:63
+#, qt-format
+msgid "Comp"
+msgstr "Komp"
+
+#: mainPanel.jsxinc:65
+#, qt-format
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Ausgewählte Gruppen nur im Kompositions-Fenster isolieren"
+
+#: mainPanel.jsxinc:84
+#, qt-format
+msgid "Set interactive (sticky) mode."
+msgstr "Interaktiven (sticky) Modus einstellen."
+
+#: mainPanel.jsxinc:157
+#, qt-format
+msgid "Show/Hide layers"
+msgstr "Ebenen ein-/ausblenden"
+
+#: mainPanel.jsxinc:163
+#, qt-format
+msgid "Toggle audio"
+msgstr "Audio (de-)aktivieren"
+
+#: mainPanel.jsxinc:169
+#, qt-format
+msgid "Toggle solo mode"
+msgstr "Solo-Modus (de-)aktivieren"
+
+#: mainPanel.jsxinc:175
+#, qt-format
+msgid "Lock layers"
+msgstr "Ebenen sperren"
+
+#: mainPanel.jsxinc:181
+#, qt-format
+msgid "Shy layers"
+msgstr "Ebenen tarnen"
+
+#: mainPanel.jsxinc:187
+#, qt-format
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Falten der Transformationen / Kontinuierliches Rastern"
+
+#: mainPanel.jsxinc:193
+#, qt-format
+msgid "Guide layers"
+msgstr "Hilfs-Ebenen"
+
+#: mainPanel.jsxinc:200
+#, qt-format
+msgid "Set quality"
+msgstr "Qualität einstellen"
+
+#: mainPanel.jsxinc:206
+#, qt-format
+msgid "Toggle effects"
+msgstr "Effekte (de-)aktivieren"
+
+#: mainPanel.jsxinc:212
+#, qt-format
+msgid "Set frame blending mode"
+msgstr "Frame-Überblendungsmodus einstellen"
+
+#: mainPanel.jsxinc:218
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "Bewegungsunschärfe (de-)aktivieren"
+
+#: mainPanel.jsxinc:224
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr "Einstellungsebenen-Modus (de-)aktivieren"
+
+#: mainPanel.jsxinc:230
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr "3D-Ebenen-Modus (de-)aktivieren"
+
+#: mainPanel.jsxinc:236
+#, qt-format
+msgid "Select layers"
+msgstr "Ebenen auswählen"
+
+#: mainPanel.jsxinc:401
+#, qt-format
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: mainPanel.jsxinc:402
+#, qt-format
+msgid "Groups"
+msgstr "Gruppen"
+
+#: mainPanel.jsxinc:433
+#, qt-format
+msgid "Invert"
+msgstr "Invertieren"
+
+#: mainPanel.jsxinc:435
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "Auswahl der Gruppe/Eigenschaft umkehren"
+
+#: mainPanel.jsxinc:436
+#, qt-format
+msgid "Inverted"
+msgstr "Invertiert"
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -132,6 +307,91 @@ msgstr "Attribut: 3D"
 msgid "Attribute: Guide"
 msgstr "Attribut: Hilfsebene"
 
+#: settings.jsxinc:6
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr "Gesperrte Ebenen: Änderungen verweigern"
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "Was zu tun ist, wenn eine Ebene gesperrt ist."
+
+#: settings.jsxinc:9
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr "Gesperrte Ebenen: Änderungen erlauben"
+
+#: settings.jsxinc:16
+#, qt-format
+msgid "Warning frame: None"
+msgstr "Warnung Bild: Keine"
+
+#: settings.jsxinc:18
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "Keine Warnung verwenden."
+
+#: settings.jsxinc:21
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "Warnung Bild: Oberhalb"
+
+#: settings.jsxinc:23
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr "Anzeigen des Bildes oberhalb der Komposition."
+
+#: settings.jsxinc:26
+#, qt-format
+msgid "Warning frame: Below"
+msgstr "Warnung Bild: unterhalb"
+
+#: settings.jsxinc:28
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr "Anzeigen des Bildes unterhalb der Komposition."
+
+#: settings.jsxinc:35
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "Isolation: Ebenen ausblenden"
+
+#: settings.jsxinc:37
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr "Benutzte Methode zur Isolierung von Ebenen in der Komposition."
+
+#: settings.jsxinc:38
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr "Isolation: Drahtmodell"
+
+#: settings.jsxinc:45
+#, qt-format
+msgid "Hide markers"
+msgstr "Marker ausblenden"
+
+#: settings.jsxinc:47
+#, qt-format
+msgid "whether to show or hide the tags on the layers."
+msgstr "Ob Tags auf den Ebenen angezeigt oder ausgeblendet werden sollen."
+
+#: settings.jsxinc:48
+#, qt-format
+msgid "Show markers"
+msgstr "Marker einblenden"
+
+#: settings.jsxinc:55
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "Versteckte Ebenen sperren"
+
+#: settings.jsxinc:57
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr "Ob die versteckten Ebenen gesperrt sein müssen."
+
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
@@ -187,11 +447,6 @@ msgstr "Abbrechen"
 msgctxt "Select"
 msgid "None"
 msgstr "Keine"
-
-#: duscriptui_extension.jsxinc:664
-#, qt-format
-msgid "Select layers"
-msgstr "Ebenen auswählen"
 
 #: layer.jsxinc:478
 #, qt-format
@@ -383,12 +638,12 @@ msgstr "Hilfe anfordern."
 #: help.jsxinc:131
 #, qt-format
 msgid "Translate %1"
-msgstr ""
+msgstr "Übersetzen %1"
 
 #: help.jsxinc:132
 #, qt-format
 msgid "Help translating %1 to make it available to more people."
-msgstr ""
+msgstr "Hilf dabei, %1 zu übersetzen, um es mehr Menschen zur Verfügung zu stellen."
 
 #: help.jsxinc:342
 #, qt-format
@@ -621,17 +876,12 @@ msgstr "Das Skript muss eventuell neu gestartet werden, damit alle Änderungen �
 #: panel.jsxinc:910
 #, qt-format
 msgid "Help and options"
-msgstr ""
+msgstr "Hilfe und Optionen"
 
 #: panel.jsxinc:924
 #, qt-format
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
-
-#: panel.jsxinc:1033
-#, qt-format
-msgid "OK"
-msgstr "Ok"
 
 #: progressbar.jsxinc:13
 #, qt-format
