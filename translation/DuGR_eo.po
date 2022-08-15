@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:30\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -170,17 +170,17 @@ msgstr "Fiksi la miskan kadron reĝimon"
 #: mainPanel.jsxinc:218
 #, qt-format
 msgid "Toggle motion blur"
-msgstr ""
+msgstr "Baskuli la malklariĝa movo"
 
 #: mainPanel.jsxinc:224
 #, qt-format
 msgid "Toggle adjustment layer mode"
-msgstr ""
+msgstr "Baskuli la akomoda tavolo reĝimo"
 
 #: mainPanel.jsxinc:230
 #, qt-format
 msgid "Toggle 3D layer mode"
-msgstr ""
+msgstr "Baskuli la 3D tavolo reĝimo"
 
 #: mainPanel.jsxinc:236
 #, qt-format
@@ -190,17 +190,17 @@ msgstr "Elektiti tavoloj"
 #: mainPanel.jsxinc:401
 #, qt-format
 msgid "Properties"
-msgstr ""
+msgstr "Propraĵoj"
 
 #: mainPanel.jsxinc:402
 #, qt-format
 msgid "Groups"
-msgstr ""
+msgstr "Grupo"
 
 #: mainPanel.jsxinc:433
 #, qt-format
 msgid "Invert"
-msgstr ""
+msgstr "Invertiĝi"
 
 #: mainPanel.jsxinc:435
 #, qt-format
@@ -210,7 +210,7 @@ msgstr ""
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Inverted"
-msgstr ""
+msgstr "Invertiĝa"
 
 #: propPanel.jsxinc:7
 #, qt-format
