@@ -1,412 +1,656 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-02 15:56\n"
-"PO-Revision-Date: 2022-08-14 15:45\n"
+"POT-Creation-Date: 2022-08-15 10:00\n"
+"PO-Revision-Date: 2022-08-15 07:56\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Genereated-By: gettext.jsxinc\n"
-"Language: pd\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: dugr\n"
 "X-Crowdin-Project-ID: 530368\n"
 "X-Crowdin-Language: pd\n"
 "X-Crowdin-File: /master/translation/DuGR.pot\n"
 "X-Crowdin-File-ID: 12\n"
+"Language: pd_FR\n"
 
-#: groupPanel.jsxinc:6
+#: groupPanel.jsxinc:7
 #, qt-format
 msgid "All layers"
 msgstr "Tous l'calques"
 
-#: groupPanel.jsxinc:7
+#: groupPanel.jsxinc:8
 #, qt-format
 msgid "Selected"
 msgstr "Cusiés"
 
-#: groupPanel.jsxinc:8
+#: groupPanel.jsxinc:9
 #, qt-format
 msgid "Grouped"
 msgstr "Groupés"
 
-#: groupPanel.jsxinc:9
+#: groupPanel.jsxinc:10
 #, qt-format
 msgid "Ignored"
 msgstr "Ignorés"
 
-#: propPanel.jsxinc:6
+#: propPanel.jsxinc:7
 #, qt-format
 msgid "Hierarchy: Orphans"
 msgstr "Aïèrquie : Orphelins"
 
-#: propPanel.jsxinc:7
+#: propPanel.jsxinc:8
 #, qt-format
 msgid "Hierarchy: Have children"
 msgstr "Aïèrquie : Aveuc infants"
 
-#: propPanel.jsxinc:8
+#: propPanel.jsxinc:9
 #, qt-format
 msgid "Type: Pre-compositions"
 msgstr "Type : Pré-compositions"
 
-#: propPanel.jsxinc:9
+#: propPanel.jsxinc:10
 #, qt-format
 msgid "Type: Null Objects"
 msgstr "Type : Cose Vite"
 
-#: propPanel.jsxinc:10
+#: propPanel.jsxinc:11
 #, qt-format
 msgid "Type: Solids"
 msgstr "Type : Solites"
 
-#: propPanel.jsxinc:11
+#: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Shapes"
 msgstr "Type : Formes"
 
-#: propPanel.jsxinc:12
+#: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Texts"
 msgstr "Type : Textes"
 
-#: propPanel.jsxinc:13
+#: propPanel.jsxinc:14
 #, qt-format
 msgid "Type: Adjustment"
 msgstr "Type : Attrintchillages"
 
-#: propPanel.jsxinc:14
+#: propPanel.jsxinc:15
 #, qt-format
 msgid "Type: Lights"
 msgstr "Type : Leurmière"
 
-#: propPanel.jsxinc:15
+#: propPanel.jsxinc:16
 #, qt-format
 msgid "Type: Cameras"
 msgstr "Type : Cameras"
 
-#: propPanel.jsxinc:16
+#: propPanel.jsxinc:17
 #, qt-format
 msgid "Attribute: Visible"
 msgstr "Acrinkillache : Visipe"
 
-#: propPanel.jsxinc:17
+#: propPanel.jsxinc:18
 #, qt-format
 msgid "Attribute: Has Audio"
 msgstr "Acrinkillache : Aveuc audio"
 
-#: propPanel.jsxinc:18
+#: propPanel.jsxinc:19
 #, qt-format
 msgid "Attribute: Solo"
 msgstr "Acrinkillache : Solo"
 
-#: propPanel.jsxinc:19
+#: propPanel.jsxinc:20
 #, qt-format
 msgid "Attribute: Locked"
 msgstr "Acrinkillache : Coinché"
 
-#: propPanel.jsxinc:20
+#: propPanel.jsxinc:21
 #, qt-format
 msgid "Attribute: Shy"
 msgstr "Acrinkillache : Sési"
 
-#: propPanel.jsxinc:21
+#: propPanel.jsxinc:22
 #, qt-format
 msgid "Attribute: Effects"
 msgstr "Acrinkillache : Attrintchillages"
 
-#: propPanel.jsxinc:22
+#: propPanel.jsxinc:23
 #, qt-format
 msgid "Attribute: Motion Blur"
 msgstr "Acrinkillache : Flou d'armumint"
 
-#: propPanel.jsxinc:23
+#: propPanel.jsxinc:24
 #, qt-format
 msgid "Attribute: 3D"
 msgstr "Acrinkillache : 3D"
 
-#: propPanel.jsxinc:24
+#: propPanel.jsxinc:25
 #, qt-format
 msgid "Attribute: Guide"
 msgstr "Acrinkillache : Arpére"
 
-#: comp.jsxinc:588
+#: comp.jsxinc:589
 #, qt-format
 msgid "Null"
 msgstr "Vite"
 
-#: comp.jsxinc:637
+#: comp.jsxinc:638
 #, qt-format
 msgid "Adjustment layer"
 msgstr "Calque d'Attrintchillages"
 
-#: comp.jsxinc:666
+#: comp.jsxinc:667
 #, qt-format
 msgid "Solid"
 msgstr "Solite"
 
-#: comp.jsxinc:695
+#: comp.jsxinc:696
 #, qt-format
 msgid "Shape"
 msgstr "Forme"
 
-#: comp.jsxinc:705
+#: comp.jsxinc:706
 #, qt-format
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#: comp.jsxinc:710
+#: comp.jsxinc:711
 #, qt-format
 msgid "Rounded rectangle"
 msgstr "Rectangle aronti"
 
-#: comp.jsxinc:716
+#: comp.jsxinc:717
 #, qt-format
 msgid "Circle"
 msgstr "Chercle"
 
-#: comp.jsxinc:721
+#: comp.jsxinc:722
 #, qt-format
 msgid "Polygon"
 msgstr "Polygone"
 
-#: comp.jsxinc:727
+#: comp.jsxinc:728
 #, qt-format
 msgid "Star"
 msgstr "Fertille"
 
-#: duscriptui_extension.jsxinc:161
+#: duscriptui_extension.jsxinc:162
 #, qt-format
 msgid "Cancel"
 msgstr "Arsaquer"
 
-#: duscriptui_extension.jsxinc:203
+#: duscriptui_extension.jsxinc:204
 #, qt-format
 msgctxt "Select"
 msgid "None"
 msgstr "Nin"
 
-#: duscriptui_extension.jsxinc:663
+#: duscriptui_extension.jsxinc:664
 #, qt-format
 msgid "Select layers"
 msgstr "Cujir les couques"
 
-#: layer.jsxinc:477
+#: layer.jsxinc:478
 #, qt-format
 msgid "The pseudo effect file does not exist."
 msgstr "El feu attrintchillage n'existe point."
 
-#: layer.jsxinc:537
+#: layer.jsxinc:538
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
 msgstr "Feu attrintchillage ou \"match name\" poris."
 
-#: layer.jsxinc:707
+#: layer.jsxinc:708
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
 msgstr "Mode racrivage"
 
-#: layer.jsxinc:1505
+#: layer.jsxinc:1506
 #, qt-format
 msgid "Locator"
 msgstr "Localisateur"
 
-#: project.jsxinc:466
+#: project.jsxinc:467
 #, qt-format
 msgid "Project Root"
 msgstr "Rachine del projet"
 
-#. "short for Left, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:98
-#, qt-format
-msgctxt "in layer name, left"
-msgid "L"
-msgstr "G"
-
-#. "short for Right, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:99
-#, qt-format
-msgctxt "in layer name, right"
-msgid "R"
-msgstr "D"
-
-#. "short for Front, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:109
-#, qt-format
-msgctxt "in layer name, front"
-msgid "Fr"
-msgstr "Dv"
-
-#. "short for Back, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:110
-#, qt-format
-msgctxt "in layer name, back"
-msgid "Bk"
-msgstr "Dr"
-
-#. "short for Tail, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:111
-#, qt-format
-msgctxt "in layer name, tail"
-msgid "Tl"
-msgstr "Tch"
-
-#. "short for Middle, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:112
-#, qt-format
-msgctxt "in layer name, middle"
-msgid "Md"
-msgstr "M"
-
-#. "short for Above, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:113
-#, qt-format
-msgctxt "in layer name, above"
-msgid "Ab"
-msgstr "D'sus"
-
-#. "short for Under, must be short enough to be used as a tag in layer names"
-#: oco.jsxinc:114
-#, qt-format
-msgctxt "in layer name, under"
-msgid "Un"
-msgstr "D'sous"
-
-#: oco.jsxinc:335
+#: oco.jsxinc:336
 #, qt-format
 msgid "Arm"
 msgstr "Breus"
 
-#: oco.jsxinc:393
+#: oco.jsxinc:394
 #, qt-format
 msgid "Shoulder"
 msgstr "Épeule"
 
-#: oco.jsxinc:442
+#: oco.jsxinc:443
 #, qt-format
 msgid "Forearm"
 msgstr "Avant-breus"
 
-#: oco.jsxinc:483
+#: oco.jsxinc:484
 #, qt-format
 msgid "Hand"
 msgstr "Main"
 
-#: oco.jsxinc:524
+#: oco.jsxinc:525
 #, qt-format
 msgid "Claws"
 msgstr "Griffes"
 
-#: oco.jsxinc:560
+#: oco.jsxinc:561
 #, qt-format
 msgid "Tip"
 msgstr "Pointe"
 
-#: oco.jsxinc:601
+#: oco.jsxinc:602
 #, qt-format
 msgid "Heel"
 msgstr "Talon"
 
-#: oco.jsxinc:663
+#: oco.jsxinc:664
 #, qt-format
 msgid "Leg"
 msgstr "Gambe"
 
-#: oco.jsxinc:702
+#: oco.jsxinc:703
 #, qt-format
 msgid "Thigh"
 msgstr "Tchuche"
 
-#: oco.jsxinc:710
+#: oco.jsxinc:711
 #, qt-format
 msgid "Calf"
 msgstr "Mollet"
 
-#: oco.jsxinc:731
+#: oco.jsxinc:732
 #, qt-format
 msgid "Foot"
 msgstr "Pied"
 
-#: oco.jsxinc:753
+#: oco.jsxinc:754
 #, qt-format
 msgid "Toes"
 msgstr "Ortiaux"
 
-#: oco.jsxinc:767
+#: oco.jsxinc:768
 #, qt-format
 msgid "Hoof"
 msgstr "Chabot"
 
-#: oco.jsxinc:838
+#: oco.jsxinc:839
 #, qt-format
 msgid "Spine"
 msgstr "Colonne"
 
-#: oco.jsxinc:856
+#: oco.jsxinc:857
 #, qt-format
 msgid "Hips"
 msgstr "Hanches"
 
-#: oco.jsxinc:877
+#: oco.jsxinc:878
 #, qt-format
 msgid "Torso"
 msgstr "Corps"
 
-#: oco.jsxinc:898
+#: oco.jsxinc:899
 #, qt-format
 msgid "Neck"
 msgstr "Cou"
 
-#: oco.jsxinc:907
+#: oco.jsxinc:908
 #, qt-format
 msgid "Head"
 msgstr "Tchiête"
 
-#: oco.jsxinc:943
+#: oco.jsxinc:944
 #, qt-format
 msgid "Tail"
 msgstr "Tcheue"
 
-#: oco.jsxinc:982
+#: oco.jsxinc:983
 #, qt-format
 msgid "Hair"
 msgstr "Gveux"
 
-#: oco.jsxinc:1044
+#: oco.jsxinc:1045
 #, qt-format
 msgid "Wing"
 msgstr "Aile"
 
-#: oco.jsxinc:1126
+#: oco.jsxinc:1127
 #, qt-format
 msgid "Feather"
 msgstr "Pleume"
 
-#: oco.jsxinc:1388
+#: oco.jsxinc:1389
 #, qt-format
 msgid "Fin"
 msgstr "Najoère"
 
-#: oco.jsxinc:1409
+#: oco.jsxinc:1410
 #, qt-format
 msgid "Fishbone"
 msgstr "Os ed pichon"
 
-#: panel.jsxinc:567
+#: button.jsxinc:157
+#, qt-format
+msgid "[Shift]: More options..."
+msgstr ""
+
+#: colorSelector.jsxinc:65
+#, qt-format
+msgid "Set a random value."
+msgstr ""
+
+#. "path for a file or a folder"
+#: fileSelector.jsxinc:65
+#, qt-format
+msgctxt "file system"
+msgid "Path..."
+msgstr ""
+
+#: help.jsxinc:42
+#, qt-format
+msgid "Bug Report or Feature Request"
+msgstr ""
+
+#: help.jsxinc:43
+#, qt-format
+msgid "Bug report\n"
+"Feature request\n\n"
+"Tell us what's wrong or request a new feature."
+msgstr ""
+
+#: help.jsxinc:86
+#, qt-format
+msgid "Help"
+msgstr ""
+
+#: help.jsxinc:87
+#, qt-format
+msgid "Get help."
+msgstr ""
+
+#: help.jsxinc:131
+#, qt-format
+msgid "Translate %1"
+msgstr ""
+
+#: help.jsxinc:132
+#, qt-format
+msgid "Help translating %1 to make it available to more people."
+msgstr ""
+
+#: help.jsxinc:342
+#, qt-format
+msgid "New version"
+msgstr ""
+
+#: help.jsxinc:480
+#, qt-format
+msgid "Thank you for your donations!"
+msgstr ""
+
+#: help.jsxinc:486
+#, qt-format
+msgid "This month, the %1 fund is $%2.\n"
+"That's %3% of our monthly goal ( $%4 )\n\n"
+"Click on this button to join the development fund!"
+msgstr ""
+
+#. "an item in the After Effects project"
+#: library.jsxinc:162
+#, qt-format
+msgctxt "project"
+msgid "Item"
+msgstr ""
+
+#. "as in "run script""
+#: library.jsxinc:163
+#, qt-format
+msgctxt "file"
+msgid "Run"
+msgstr ""
+
+#: library.jsxinc:164
+#, qt-format
+msgid "Open folder"
+msgstr ""
+
+#: library.jsxinc:165
+#, qt-format
+msgid "Add item or category"
+msgstr ""
+
+#: library.jsxinc:166
+#, qt-format
+msgid "Edit item or category"
+msgstr ""
+
+#: library.jsxinc:167
+#, qt-format
+msgid "Remove item or category"
+msgstr ""
+
+#: library.jsxinc:411
+#, qt-format
+msgid "Remove all"
+msgstr ""
+
+#: library.jsxinc:421
+#, qt-format
+msgid "Start typing..."
+msgstr ""
+
+#: library.jsxinc:549
+#, qt-format
+msgid "Refresh"
+msgstr ""
+
+#: library.jsxinc:567
+#, qt-format
+msgid "Category"
+msgstr ""
+
+#: panel.jsxinc:570
 #, qt-format
 msgid "%1 Settings"
 msgstr "Préférinches ed %1"
 
-#: panel.jsxinc:591
+#: panel.jsxinc:595
 #, qt-format
 msgid "Set the language of the interface."
 msgstr "Cujir el langue del outi."
 
-#: panel.jsxinc:610
+#: panel.jsxinc:618
 #, qt-format
 msgid "Settings file"
 msgstr "Fichier ed réglache"
+
+#: panel.jsxinc:620
+#, qt-format
+msgid "Set the location of the settings file."
+msgstr ""
+
+#: panel.jsxinc:631
+#, qt-format
+msgid "Set the highlight color."
+msgstr ""
+
+#: panel.jsxinc:634
+#, qt-format
+msgid "After Effects Blue"
+msgstr ""
+
+#: panel.jsxinc:636
+#, qt-format
+msgid "The After Effects highlighting blue"
+msgstr ""
+
+#: panel.jsxinc:639
+#, qt-format
+msgid "RxLab Purple"
+msgstr ""
+
+#: panel.jsxinc:641
+#, qt-format
+msgid "The RxLaboratory Purple"
+msgstr ""
+
+#: panel.jsxinc:644
+#, qt-format
+msgid "Rainbox Red"
+msgstr ""
+
+#: panel.jsxinc:646
+#, qt-format
+msgid "The Rainbox Productions Red"
+msgstr ""
+
+#: panel.jsxinc:649
+#, qt-format
+msgid "After Effects Orange (CS6)"
+msgstr ""
+
+#: panel.jsxinc:651
+#, qt-format
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr ""
+
+#: panel.jsxinc:654
+#, qt-format
+msgid "Custom..."
+msgstr ""
+
+#: panel.jsxinc:656
+#, qt-format
+msgid "Select a custom color."
+msgstr ""
+
+#: panel.jsxinc:663
+#, qt-format
+msgid "Select the UI mode."
+msgstr ""
+
+#: panel.jsxinc:666
+#, qt-format
+msgid "Rookie"
+msgstr ""
+
+#: panel.jsxinc:668
+#, qt-format
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr ""
+
+#: panel.jsxinc:671
+#, qt-format
+msgid "Standard"
+msgstr ""
+
+#: panel.jsxinc:673
+#, qt-format
+msgid "The standard not-too-big UI."
+msgstr ""
+
+#: panel.jsxinc:676
+#, qt-format
+msgid "Expert"
+msgstr ""
+
+#: panel.jsxinc:678
+#, qt-format
+msgid "The smallest UI, for expert users."
+msgstr ""
+
+#: panel.jsxinc:685
+#, qt-format
+msgid "Normal mode"
+msgstr ""
+
+#: panel.jsxinc:687
+#, qt-format
+msgid "Use at your own risk!"
+msgstr ""
+
+#: panel.jsxinc:688
+#, qt-format
+msgid "Dev and Debug mode"
+msgstr ""
+
+#: panel.jsxinc:770
+#, qt-format
+msgid "Check for updates"
+msgstr ""
+
+#: panel.jsxinc:784
+#, qt-format
+msgid "Default"
+msgstr "Défaut"
+
+#: panel.jsxinc:786
+#, qt-format
+msgid "Reset the settings to their default values."
+msgstr ""
+
+#: panel.jsxinc:793
+#, qt-format
+msgid "Apply"
+msgstr ""
+
+#: panel.jsxinc:795
+#, qt-format
+msgid "Apply settings."
+msgstr ""
+
+#: panel.jsxinc:869
+#, qt-format
+msgid "You may need to restart the script for all changes to take effect."
+msgstr ""
+
+#: panel.jsxinc:910
+#, qt-format
+msgid "Help and options"
+msgstr ""
+
+#: panel.jsxinc:924
+#, qt-format
+msgid "Edit settings"
+msgstr ""
+
+#: panel.jsxinc:1033
+#, qt-format
+msgid "OK"
+msgstr "OK"
+
+#: progressbar.jsxinc:13
+#, qt-format
+msgid "Working"
+msgstr ""
+
+#: progressbar.jsxinc:23
+#, qt-format
+msgid "Magic is happening"
+msgstr ""
+
+#: rssPanel.jsxinc:88
+#, qt-format
+msgid "Previous"
+msgstr ""
+
+#: rssPanel.jsxinc:93
+#, qt-format
+msgid "Next"
+msgstr ""
+
+#: titleBar.jsxinc:55
+#, qt-format
+msgid "Keep this panel open"
+msgstr ""
 
