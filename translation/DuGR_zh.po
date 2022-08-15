@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 07:56\n"
+"PO-Revision-Date: 2022-08-15 08:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -586,75 +586,75 @@ msgstr "自行承担使用风险!"
 #: panel.jsxinc:688
 #, qt-format
 msgid "Dev and Debug mode"
-msgstr ""
+msgstr "开发和调试模式"
 
 #: panel.jsxinc:770
 #, qt-format
 msgid "Check for updates"
-msgstr ""
+msgstr "检查更新"
 
 #: panel.jsxinc:784
 #, qt-format
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 #: panel.jsxinc:786
 #, qt-format
 msgid "Reset the settings to their default values."
-msgstr ""
+msgstr "还原设置到默认值."
 
 #: panel.jsxinc:793
 #, qt-format
 msgid "Apply"
-msgstr ""
+msgstr "应用"
 
 #: panel.jsxinc:795
 #, qt-format
 msgid "Apply settings."
-msgstr ""
+msgstr "应用设置。"
 
 #: panel.jsxinc:869
 #, qt-format
 msgid "You may need to restart the script for all changes to take effect."
-msgstr ""
+msgstr "您可能需要重启脚本才能使所有更改生效。"
 
 #: panel.jsxinc:910
 #, qt-format
 msgid "Help and options"
-msgstr ""
+msgstr "帮助与选项"
 
 #: panel.jsxinc:924
 #, qt-format
 msgid "Edit settings"
-msgstr ""
+msgstr "编辑设置"
 
 #: panel.jsxinc:1033
 #, qt-format
 msgid "OK"
-msgstr ""
+msgstr "好的"
 
 #: progressbar.jsxinc:13
 #, qt-format
 msgid "Working"
-msgstr ""
+msgstr "工作中"
 
 #: progressbar.jsxinc:23
 #, qt-format
 msgid "Magic is happening"
-msgstr ""
+msgstr "神奇的事情正在发生"
 
 #: rssPanel.jsxinc:88
 #, qt-format
 msgid "Previous"
-msgstr ""
+msgstr "上一个"
 
 #: rssPanel.jsxinc:93
 #, qt-format
 msgid "Next"
-msgstr ""
+msgstr "下一个"
 
 #: titleBar.jsxinc:55
 #, qt-format
 msgid "Keep this panel open"
-msgstr ""
+msgstr "保持此面板打开"
 
