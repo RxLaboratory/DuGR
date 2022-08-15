@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:29\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr ""
 #: mainPanel.jsxinc:27
 #, qt-format
 msgid "Isolate"
-msgstr ""
+msgstr "分離"
 
 #: mainPanel.jsxinc:29
 #, qt-format
@@ -95,7 +95,7 @@ msgstr ""
 #: mainPanel.jsxinc:45
 #, qt-format
 msgid "Timeline"
-msgstr ""
+msgstr "タイムライン"
 
 #: mainPanel.jsxinc:47
 #, qt-format
@@ -105,7 +105,7 @@ msgstr ""
 #: mainPanel.jsxinc:63
 #, qt-format
 msgid "Comp"
-msgstr ""
+msgstr "コンポ"
 
 #: mainPanel.jsxinc:65
 #, qt-format
@@ -120,67 +120,67 @@ msgstr ""
 #: mainPanel.jsxinc:157
 #, qt-format
 msgid "Show/Hide layers"
-msgstr ""
+msgstr "レイヤーの表示・非表示"
 
 #: mainPanel.jsxinc:163
 #, qt-format
 msgid "Toggle audio"
-msgstr ""
+msgstr "オーディオ"
 
 #: mainPanel.jsxinc:169
 #, qt-format
 msgid "Toggle solo mode"
-msgstr ""
+msgstr "ソロ"
 
 #: mainPanel.jsxinc:175
 #, qt-format
 msgid "Lock layers"
-msgstr ""
+msgstr "ロック"
 
 #: mainPanel.jsxinc:181
 #, qt-format
 msgid "Shy layers"
-msgstr ""
+msgstr "シャイ"
 
 #: mainPanel.jsxinc:187
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
-msgstr ""
+msgstr "コラップストランスフォーム、連続ラスタライズ"
 
 #: mainPanel.jsxinc:193
 #, qt-format
 msgid "Guide layers"
-msgstr ""
+msgstr "ガイド"
 
 #: mainPanel.jsxinc:200
 #, qt-format
 msgid "Set quality"
-msgstr ""
+msgstr "品質とサンプリング"
 
 #: mainPanel.jsxinc:206
 #, qt-format
 msgid "Toggle effects"
-msgstr ""
+msgstr "エフェクト"
 
 #: mainPanel.jsxinc:212
 #, qt-format
 msgid "Set frame blending mode"
-msgstr ""
+msgstr "フレームブレンド"
 
 #: mainPanel.jsxinc:218
 #, qt-format
 msgid "Toggle motion blur"
-msgstr ""
+msgstr "モーションブラー"
 
 #: mainPanel.jsxinc:224
 #, qt-format
 msgid "Toggle adjustment layer mode"
-msgstr ""
+msgstr "調整レイヤー"
 
 #: mainPanel.jsxinc:230
 #, qt-format
 msgid "Toggle 3D layer mode"
-msgstr ""
+msgstr "3D レイヤー"
 
 #: mainPanel.jsxinc:236
 #, qt-format
@@ -190,17 +190,17 @@ msgstr "レイヤーを選択"
 #: mainPanel.jsxinc:401
 #, qt-format
 msgid "Properties"
-msgstr ""
+msgstr "プロパティ"
 
 #: mainPanel.jsxinc:402
 #, qt-format
 msgid "Groups"
-msgstr ""
+msgstr "グループ"
 
 #: mainPanel.jsxinc:433
 #, qt-format
 msgid "Invert"
-msgstr ""
+msgstr "反転"
 
 #: mainPanel.jsxinc:435
 #, qt-format
@@ -210,7 +210,7 @@ msgstr ""
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Inverted"
-msgstr ""
+msgstr "反転"
 
 #: propPanel.jsxinc:7
 #, qt-format
