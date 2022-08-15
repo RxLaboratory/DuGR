@@ -3,58 +3,58 @@ DuScriptUI.separator(ui.settingsGroup);
 // Locked layers
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    DuScriptUI.String.DUGR_SETTINGS_LOCK_UNCHECKED,
+    i18n._("Locked layers: deny changes"),
     w16_lock,
-    DuScriptUI.String.DUGR_SETTINGS_LOCK_TIP,
-    DuScriptUI.String.DUGR_SETTINGS_LOCK_CHECKED,
+    i18n._("What to do if a layer is locked."),
+    i18n._("Locked layers: allow changes"),
     w16_unlock
 );
 
 // Warning frame
 var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
 warningFrameSelector.addButton(
-    DuScriptUI.String.DUGR_SETTINGS_NO_WARNING_FRAME,
+    i18n._("Warning frame: None"),
     w16_no_frame,
-    DuScriptUI.String.DUGR_SETTINGS_NO_WARNING_FRAME_TIP
+    i18n._("Don't use any warning frame.")
 );
 warningFrameSelector.addButton(
-    DuScriptUI.String.DUGR_SETTINGS_WARNING_ABOVE,
+    i18n._("Warning frame: Above"),
     w16_frame_above,
-    DuScriptUI.String.DUGR_SETTINGS_WARNING_ABOVE_TIP
+    i18n._("Draw the frame above the composition.")
 );
 warningFrameSelector.addButton(
-    DuScriptUI.String.DUGR_SETTINGS_WARNING_BELOW,
+    i18n._("Warning frame: Below"),
     w16_frame_below,
-    DuScriptUI.String.DUGR_SETTINGS_WARNING_BELOW_TIP
+    i18n._("Draw the frame below the composition.")
 );
 warningFrameSelector.setCurrentIndex(2);
 
 // Isolation mode
 var useWireframeButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_UNCHECKED,
+    i18n._("Isolation: hide layers"),
     w16_hide,
-    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_TIP,
-    DuScriptUI.String.DUGR_SETTINGS_WIREFRAME_CHECKED,
+    i18n._("Method used to isolate layers in the composition."),
+    i18n._("Isolation: wireframe"),
     w16_wireframe
 );
 
 // Tags
 var showTagsButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_UNCHECKED,
+    i18n._("Hide markers"),
     w16_no_tag,
-    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_TIP,
-    DuScriptUI.String.DUGR_SETTINGS_SHOW_TAGS_CHECKED,
+    i18n._("whether to show or hide the tags on the layers."),
+    i18n._("Show markers"),
     w16_tag
 );
 
 // Lock hidden
 var lockHiddenButton = DuScriptUI.checkBox(
     ui.settingsGroup,
-    DuScriptUI.String.DUGR_SETTINGS_LOCK_HIDDEN,
+    i18n._("Lock hidden layers"),
     undefined,
-    DuScriptUI.String.DUGR_SETTINGSLOCK_HIDDEN_TIP
+    i18n._("whether the hidden layers have to be locked.")
 );
 
 // Read settings
