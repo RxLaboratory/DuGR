@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:00\n"
-"PO-Revision-Date: 2022-08-15 07:56\n"
+"PO-Revision-Date: 2022-08-15 08:00\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -622,7 +622,7 @@ msgstr ""
 #: panel.jsxinc:924
 #, qt-format
 msgid "Edit settings"
-msgstr ""
+msgstr "Editi fiksoj"
 
 #: panel.jsxinc:1033
 #, qt-format
@@ -642,12 +642,12 @@ msgstr ""
 #: rssPanel.jsxinc:88
 #, qt-format
 msgid "Previous"
-msgstr ""
+msgstr "Antaŭa"
 
 #: rssPanel.jsxinc:93
 #, qt-format
 msgid "Next"
-msgstr ""
+msgstr "Sekvonte"
 
 #: titleBar.jsxinc:55
 #, qt-format
