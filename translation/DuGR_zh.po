@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:29\n"
+"PO-Revision-Date: 2022-08-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -145,42 +145,42 @@ msgstr "害羞图层"
 #: mainPanel.jsxinc:187
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
-msgstr ""
+msgstr "折叠变换 / 连续栅格化"
 
 #: mainPanel.jsxinc:193
 #, qt-format
 msgid "Guide layers"
-msgstr ""
+msgstr "参考图层"
 
 #: mainPanel.jsxinc:200
 #, qt-format
 msgid "Set quality"
-msgstr ""
+msgstr "设定质量"
 
 #: mainPanel.jsxinc:206
 #, qt-format
 msgid "Toggle effects"
-msgstr ""
+msgstr "切换特效"
 
 #: mainPanel.jsxinc:212
 #, qt-format
 msgid "Set frame blending mode"
-msgstr ""
+msgstr "设定帧混合模式"
 
 #: mainPanel.jsxinc:218
 #, qt-format
 msgid "Toggle motion blur"
-msgstr ""
+msgstr "切换运动模糊"
 
 #: mainPanel.jsxinc:224
 #, qt-format
 msgid "Toggle adjustment layer mode"
-msgstr ""
+msgstr "切换调整图层模式"
 
 #: mainPanel.jsxinc:230
 #, qt-format
 msgid "Toggle 3D layer mode"
-msgstr ""
+msgstr "切换3D模式"
 
 #: mainPanel.jsxinc:236
 #, qt-format
@@ -195,12 +195,12 @@ msgstr ""
 #: mainPanel.jsxinc:402
 #, qt-format
 msgid "Groups"
-msgstr ""
+msgstr "群组"
 
 #: mainPanel.jsxinc:433
 #, qt-format
 msgid "Invert"
-msgstr ""
+msgstr "反转"
 
 #: mainPanel.jsxinc:435
 #, qt-format
