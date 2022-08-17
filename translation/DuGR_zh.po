@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-17 06:24\n"
+"PO-Revision-Date: 2022-08-17 07:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -205,7 +205,7 @@ msgstr "反转"
 #: mainPanel.jsxinc:435
 #, qt-format
 msgid "Invert the group/property selection"
-msgstr ""
+msgstr "反转组/属性选择"
 
 #: mainPanel.jsxinc:436
 #, qt-format
@@ -310,12 +310,12 @@ msgstr "属性:参考线"
 #: settings.jsxinc:6
 #, qt-format
 msgid "Locked layers: deny changes"
-msgstr ""
+msgstr "已锁图层：拒绝更改"
 
 #: settings.jsxinc:8
 #, qt-format
 msgid "What to do if a layer is locked."
-msgstr ""
+msgstr "当图层被锁定时要做什么。"
 
 #: settings.jsxinc:9
 #, qt-format
@@ -325,7 +325,7 @@ msgstr "已锁图层：允许更改"
 #: settings.jsxinc:16
 #, qt-format
 msgid "Warning frame: None"
-msgstr ""
+msgstr "警告帧：无"
 
 #: settings.jsxinc:18
 #, qt-format
@@ -355,7 +355,7 @@ msgstr ""
 #: settings.jsxinc:35
 #, qt-format
 msgid "Isolation: hide layers"
-msgstr ""
+msgstr "隔离状态：隐藏图层"
 
 #: settings.jsxinc:37
 #, qt-format
@@ -365,7 +365,7 @@ msgstr ""
 #: settings.jsxinc:38
 #, qt-format
 msgid "Isolation: wireframe"
-msgstr ""
+msgstr "隔离状态：线框"
 
 #: settings.jsxinc:45
 #, qt-format
