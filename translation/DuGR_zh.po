@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:50\n"
+"PO-Revision-Date: 2022-08-17 06:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -40,37 +40,37 @@ msgstr "已忽略"
 #: groupPanel.jsxinc:23
 #, qt-format
 msgid "Add selected layers to group."
-msgstr ""
+msgstr "添加选中的图层到组。"
 
 #: groupPanel.jsxinc:31
 #, qt-format
 msgid "Get groups from selected layers."
-msgstr ""
+msgstr "获取选中的图层的组。"
 
 #: groupPanel.jsxinc:39
 #, qt-format
 msgid "Remove selected layers from group."
-msgstr ""
+msgstr "从组中移除选中的图层。"
 
 #: groupPanel.jsxinc:50
 #, qt-format
 msgid "Create new group."
-msgstr ""
+msgstr "创建新组。"
 
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr ""
+msgstr "更改组名"
 
 #: groupPanel.jsxinc:66
 #, qt-format
 msgid "Remove group."
-msgstr ""
+msgstr "移除组。"
 
 #: groupPanel.jsxinc:77
 #, qt-format
 msgid "New group"
-msgstr ""
+msgstr "新建组"
 
 #: groupPanel.jsxinc:87
 #, qt-format
@@ -80,7 +80,7 @@ msgstr "好的"
 #: mainPanel.jsxinc:12
 #, qt-format
 msgid "Exit isolation."
-msgstr ""
+msgstr "退出隔离状态。"
 
 #: mainPanel.jsxinc:27
 #, qt-format
@@ -90,7 +90,7 @@ msgstr "隔离"
 #: mainPanel.jsxinc:29
 #, qt-format
 msgid "Isolate selected groups."
-msgstr ""
+msgstr "隔离选中的组。"
 
 #: mainPanel.jsxinc:45
 #, qt-format
@@ -100,7 +100,7 @@ msgstr "时间线"
 #: mainPanel.jsxinc:47
 #, qt-format
 msgid "Isolate selected groups, in the timeline only."
-msgstr ""
+msgstr "仅在时间线内隔离选中的小组。"
 
 #: mainPanel.jsxinc:63
 #, qt-format
@@ -190,7 +190,7 @@ msgstr "所选图层"
 #: mainPanel.jsxinc:401
 #, qt-format
 msgid "Properties"
-msgstr ""
+msgstr "属性"
 
 #: mainPanel.jsxinc:402
 #, qt-format
@@ -210,7 +210,7 @@ msgstr ""
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Inverted"
-msgstr ""
+msgstr "反转的"
 
 #: propPanel.jsxinc:7
 #, qt-format
@@ -320,7 +320,7 @@ msgstr ""
 #: settings.jsxinc:9
 #, qt-format
 msgid "Locked layers: allow changes"
-msgstr ""
+msgstr "已锁图层：允许更改"
 
 #: settings.jsxinc:16
 #, qt-format
@@ -330,12 +330,12 @@ msgstr ""
 #: settings.jsxinc:18
 #, qt-format
 msgid "Don't use any warning frame."
-msgstr ""
+msgstr "不使用任何警告帧。"
 
 #: settings.jsxinc:21
 #, qt-format
 msgid "Warning frame: Above"
-msgstr ""
+msgstr "警告帧：以上"
 
 #: settings.jsxinc:23
 #, qt-format
@@ -345,7 +345,7 @@ msgstr ""
 #: settings.jsxinc:26
 #, qt-format
 msgid "Warning frame: Below"
-msgstr ""
+msgstr "警告帧：以下"
 
 #: settings.jsxinc:28
 #, qt-format
@@ -370,7 +370,7 @@ msgstr ""
 #: settings.jsxinc:45
 #, qt-format
 msgid "Hide markers"
-msgstr ""
+msgstr "隐藏标记"
 
 #: settings.jsxinc:47
 #, qt-format
@@ -380,12 +380,12 @@ msgstr ""
 #: settings.jsxinc:48
 #, qt-format
 msgid "Show markers"
-msgstr ""
+msgstr "显示标记"
 
 #: settings.jsxinc:55
 #, qt-format
 msgid "Lock hidden layers"
-msgstr ""
+msgstr "锁定隐藏图层"
 
 #: settings.jsxinc:57
 #, qt-format
