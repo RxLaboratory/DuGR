@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-17 07:24\n"
+"PO-Revision-Date: 2022-08-17 16:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -110,12 +110,12 @@ msgstr "合成"
 #: mainPanel.jsxinc:65
 #, qt-format
 msgid "Isolate selected groups, in the composition panel only"
-msgstr ""
+msgstr "仅隔离在合成面板里选中的组"
 
 #: mainPanel.jsxinc:84
 #, qt-format
 msgid "Set interactive (sticky) mode."
-msgstr ""
+msgstr "设定交互（粘粘）模式。"
 
 #: mainPanel.jsxinc:157
 #, qt-format
@@ -340,7 +340,7 @@ msgstr "警告帧：以上"
 #: settings.jsxinc:23
 #, qt-format
 msgid "Draw the frame above the composition."
-msgstr ""
+msgstr "在合成上方绘制帧。"
 
 #: settings.jsxinc:26
 #, qt-format
@@ -350,7 +350,7 @@ msgstr "警告帧：以下"
 #: settings.jsxinc:28
 #, qt-format
 msgid "Draw the frame below the composition."
-msgstr ""
+msgstr "在合成下方绘制帧。"
 
 #: settings.jsxinc:35
 #, qt-format
@@ -360,7 +360,7 @@ msgstr "隔离状态：隐藏图层"
 #: settings.jsxinc:37
 #, qt-format
 msgid "Method used to isolate layers in the composition."
-msgstr ""
+msgstr "用于隔离合成里的图层的方法。"
 
 #: settings.jsxinc:38
 #, qt-format
@@ -375,7 +375,7 @@ msgstr "隐藏标记"
 #: settings.jsxinc:47
 #, qt-format
 msgid "whether to show or hide the tags on the layers."
-msgstr ""
+msgstr "是否显示或隐藏图层上的标签。"
 
 #: settings.jsxinc:48
 #, qt-format
@@ -390,7 +390,7 @@ msgstr "锁定隐藏图层"
 #: settings.jsxinc:57
 #, qt-format
 msgid "whether the hidden layers have to be locked."
-msgstr ""
+msgstr "是否隐藏的图层必须被锁定。"
 
 #: comp.jsxinc:589
 #, qt-format
