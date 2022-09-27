@@ -98,7 +98,47 @@ DuGR.Group = {
     /**
      * This is a special group: all layers in there will always be ignored by all methods.
      */
-    IGNORED: '::Ignored::'
+    IGNORED: '::Ignored::',
+    /**
+     * Layer styles are enabled.
+     */
+    LAYER_STYLES: 'DuGR.layerStyles',
+    /**
+     * Layer style: Drop shadow is enabled.
+     */
+    STYLE_DROP_SHADOW: 'DuGR.style.dropShadow',
+    /**
+     * Layer style: Inner shadow is enabled.
+     */
+    STYLE_INNER_SHADOW: 'DuGR.style.innerShadow',
+    /**
+     * Layer style: Outer glow is enabled..
+     */
+    STYLE_OUTER_GLOW: 'DuGR.style.outerGlow',
+    /**
+     * Layer style: Inner glow is enabled.
+     */
+    STYLE_INNER_GLOW: 'DuGR.style.innerGlow',
+    /**
+     * Layer style: Bevel is enabled.
+     */
+    STYLE_BEVEL: 'DuGR.style.bevel',
+    /**
+     * Layer style: Satin is enabled.
+     */
+    STYLE_SATIN: 'DuGR.style.satin',
+    /**
+     * Layer style: Color overlay is enabled.
+     */
+    STYLE_COLOR: 'DuGR.style.color',
+    /**
+     * Layer style: Gradient Overlay is enabled.
+     */
+    STYLE_GRADIENT: 'DuGR.style.gradient',
+    /**
+     * Layer style: Stroke is enabled.
+     */
+    LAYER_STROKE: 'DuGR.style.stroke',
 }
 
 /**
@@ -271,6 +311,27 @@ DuGR.inGroups = function ( layer, groups, tag )
         if (group == DuGR.Group.ORPHAN && !layer.parent) return true;
 
         if (group == DuGR.Group.HAS_CHILD && DuAELayer.hasChild(layer)) return true;
+
+        var layerStyles = layer.property("ADBE Layer Styles");
+        if (group == DuGR.Group.LAYER_STYLES && layerStyles.enabled) return true;
+
+        if (group == DuGR.Group.STYLE_DROP_SHADOW && layerStyles.property("dropShadow/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_INNER_SHADOW && layerStyles.property("innerShadow/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_OUTER_GLOW && layerStyles.property("outerGlow/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_INNER_GLOW && layerStyles.property("innerGlow/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_BEVEL && layerStyles.property("bevelEmboss/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_SATIN && layerStyles.property("chromeFX/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_COLOR && layerStyles.property("solidFill/enabled").enabled) return true;
+
+        if (group == DuGR.Group.STYLE_GRADIENT && layerStyles.property("gradientFill/enabled").enabled) return true;
+
+        if (group == DuGR.Group.LAYER_STROKE && layerStyles.property("frameFX/enabled").enabled) return true;
 
         // Get the custom groups
         var layerGroups = DuAETag.getGroups( layer );

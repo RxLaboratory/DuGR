@@ -24,6 +24,17 @@ propList.add('item',i18n._("Attribute: Motion Blur")).groupName = DuGR.Group.MB;
 propList.add('item',i18n._("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
 propList.add('item',i18n._("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
 
+propList.add('item',i18n._("Layer Styles: All")).groupName = DuGR.Group.LAYER_STYLES;
+propList.add('item',i18n._("Layer Styles: Drop Shadow")).groupName = DuGR.Group.STYLE_DROP_SHADOW;
+propList.add('item',i18n._("Layer Styles: Inner Shadow")).groupName = DuGR.Group.STYLE_INNER_SHADOW;
+propList.add('item',i18n._("Layer Styles: Outer Glow")).groupName = DuGR.Group.STYLE_OUTER_GLOW;
+propList.add('item',i18n._("Layer Styles: Inner Glow")).groupName = DuGR.Group.STYLE_INNER_GLOW;
+propList.add('item',i18n._("Layer Styles: Bevel and Emboss")).groupName = DuGR.Group.STYLE_BEVEL;
+propList.add('item',i18n._("Layer Styles: Satin")).groupName = DuGR.Group.STYLE_SATIN;
+propList.add('item',i18n._("Layer Styles: Color Overlay")).groupName = DuGR.Group.STYLE_COLOR;
+propList.add('item',i18n._("Layer Styles: Gradient Overlay")).groupName = DuGR.Group.STYLE_GRADIENT;
+propList.add('item',i18n._("Layer Styles: Stroke")).groupName = DuGR.Group.LAYER_STROKE;
+
 propList.selection = 1;
 
 propList.onChange = refreshIsolation;
