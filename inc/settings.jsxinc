@@ -49,11 +49,18 @@ var showTagsButton = DuScriptUI.checkBox(
     w16_tag
 );
 
+// Auto select
+var autoSelectButton = DuScriptUI.checkBox( ui.settingsGroup, {
+    text: i18n._("Auto-select layers"),
+    helpTip: i18n._("Automatically select layers when selecting groups or properties"),
+    image: w16_select
+});
+
 // Lock hidden
 var lockHiddenButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     i18n._("Lock hidden layers"),
-    undefined,
+    w16_lock_hidden,
     i18n._("whether the hidden layers have to be locked.")
 );
 
@@ -73,6 +80,9 @@ ui.onResetSettings = function () {
 
     var showTags = DuESF.scriptSettings.get("showTags", true);
     showTagsButton.setChecked(showTags);
+
+    var autoSelect = DuESF.scriptSettings.get("autoSelect", true);
+    autoSelectButton.setChecked(autoSelect);
 }
 
 // Save settings
@@ -82,6 +92,7 @@ ui.onApplySettings = function () {
     DuESF.scriptSettings.set("useWireframe", useWireframeButton.value);
     DuESF.scriptSettings.set("lockHidden", lockHiddenButton.value);
     DuESF.scriptSettings.set("showTags", showTagsButton.value);
+    DuESF.scriptSettings.set("autoSelect", autoSelectButton.checked);
 
     DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);
 

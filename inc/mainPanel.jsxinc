@@ -235,6 +235,7 @@ var selectLayerAEButton = DuScriptUI.button(
     select,
     i18n._("Select layers")
 )
+if (DuESF.scriptSettings.get("autoSelect", true)) selectLayerAEButton.visible = false;
 
 enableAEButton.onClick = function()
 {
@@ -529,7 +530,19 @@ function refreshPanel()
 
 function refreshIsolation()
 {
+    var autoSelect = DuESF.scriptSettings.get("autoSelect", true);
+    var sticky = pinButton.checked && DuGR.isolationMode() != DuGR.IsolationMode.NONE;
+    if ( autoSelect && !sticky ) {
+        DuAE.beginUndoGroup( i18n._("Select layers") );
+        DuAE.toggleLayerControls();
+        DuGR.select( getGroups(), invertButton.checked );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
+
     if (!pinButton.checked) return;
+
     if (isolateButton.checked) isolate();
     else if (isolateTLButton.checked) isolateTL();
     else if (isolateCompButton.checked) isolateComp();

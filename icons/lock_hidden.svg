@@ -6,8 +6,8 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="select.svg"
-   inkscape:export-filename="D:\RxLab\src\RxOT\After-Effects\Duik\DuGR\icons\w16\w16_select.png"
+   sodipodi:docname="lock_hidden.svg"
+   inkscape:export-filename="D:\RxLab\src\RxOT\After-Effects\Duik\DuGR\icons\w16\w16_lock_hidden.png"
    inkscape:export-xdpi="48.000004"
    inkscape:export-ydpi="48.000004"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -18,22 +18,7 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs2">
-    <marker
-       style="overflow:visible"
-       id="Arrow1Lstart"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="Arrow1Lstart"
-       inkscape:isstock="true">
-      <path
-         transform="scale(0.8) translate(12.5,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         id="path850" />
-    </marker>
-  </defs>
+     id="defs2" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -41,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="16"
-     inkscape:cx="12.40625"
-     inkscape:cy="25.40625"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="-6.6291261"
+     inkscape:cy="7.3362329"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -88,9 +73,9 @@
      id="layer1"
      transform="translate(0,-288.53334)">
     <path
-       style="fill:#b1b1b1;fill-opacity:1;stroke:none;stroke-width:0.249687px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1.5213542,288.53334 v 8.45815 l 2.5827021,-2.58269 h 3.6350062 z"
-       id="path858"
-       sodipodi:nodetypes="ccccc" />
+       id="path1012"
+       d="M 7.0123708,292.29309 H 6.6369374 v -1.12632 c 0,-1.31089 -1.0668562,-2.37774 -2.3777448,-2.37774 -1.3108884,0 -2.377745,1.06685 -2.377745,2.37774 v 1.12632 H 1.506014 c -0.414541,0 -0.75086678,0.33631 -0.75086678,0.75085 v 3.00347 c 0,0.41454 0.33632578,0.75087 0.75086678,0.75087 h 5.5063568 c 0.4145414,0 0.7508673,-0.33633 0.7508673,-0.75087 v -3.00347 c 0,-0.41454 -0.3363259,-0.75085 -0.7508673,-0.75085 z m -1.6268778,0 H 3.1328923 v -1.12632 c 0,-0.62103 0.5052708,-1.12629 1.1263003,-1.12629 0.6210296,0 1.1263004,0.50526 1.1263004,1.12629 z"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-opacity:1;stroke:#b1b1b1;stroke-width:0.7;stroke-miterlimit:4;stroke-dasharray:0.7, 0.7;stroke-dashoffset:0;stroke-opacity:1" />
   </g>
 </svg>
