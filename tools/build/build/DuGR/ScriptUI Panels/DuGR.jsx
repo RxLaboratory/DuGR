@@ -48,7 +48,7 @@ var mainScriptFile = new File($.fileName);
 
 var isPreRelease = false;
 var scriptName = "DuGR";
-var scriptVersion = "4.0.5";
+var scriptVersion = "5.0.0";
 var scriptAbout = 'Group your layers!';
 var companyName = "RxLaboratory";
 
@@ -11858,6 +11858,18 @@ DuScriptUI.selector = function( container, helpTip, iconOnly )
         }
     }
 
+    selector.setCurrentData = function( data )
+    {
+        for (var i = 0, n = selector.items.length; i < n; i++)
+        {
+            if (selector.items[i][3] == data)
+            {
+                selector.setCurrentIndex(i);
+                break;
+            }
+        }
+    }
+
     selector.clicked = function( e )
     {
         selector.onRefresh();
@@ -19085,6 +19097,52 @@ DuAEProperty.prototype.numKeys = function (recursive) {
     }
 
     return numKeys;
+}
+
+/**
+ * Checks if this property has some keyframes
+ * @param {Boolean} [recursive=true] If true and this is a group, checks all contained properties
+ * @return {Boolean}
+ */
+DuAEProperty.prototype.hasKeys = function (recursive) {
+    recursive = def(recursive, true);
+    if (!recursive && this.isGroup()) return false;
+
+    var prop = this.getProperty();
+
+    if (prop.propertyType == PropertyType.PROPERTY) {
+        if (prop.numKeys > 0) return true;
+    }
+    else {
+        for (var p = 1, num = this.numProperties(); p <= num; p++) {
+            if (this.prop(p).hasKeys()) return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Checks if this property has some expressions
+ * @param {Boolean} [recursive=true] If true and this is a group, checks all contained properties
+ * @return {Boolean}
+ */
+DuAEProperty.prototype.hasExpressions = function (recursive) {
+    recursive = def(recursive, true);
+    if (!recursive && this.isGroup()) return false;
+
+    var prop = this.getProperty();
+
+    if (prop.propertyType == PropertyType.PROPERTY) {
+        if (prop.expression != "") return true;
+    }
+    else {
+        for (var p = 1, num = this.numProperties(); p <= num; p++) {
+            if (this.prop(p).hasExpressions()) return true;
+        }
+    }
+
+    return false;
 }
 
 /**
@@ -28752,6 +28810,35 @@ DuAELayer.setPosition = function( layer, position, world ) {
 
     if (world) layer.parent = p;
     layer.locked = l;
+}
+
+/**
+ * Checks if the layer has some keyframes
+ * @param {Layer} layer The layer
+ * @return {Boolean}
+ */
+DuAELayer.hasKeys = function (layer) {
+    var p = new DuAEProperty(layer);
+    return p.hasKeys();
+}
+
+/**
+ * Checks if the layer has some expressions
+ * @param {Layer} layer The layer
+ * @return {Boolean}
+ */
+DuAELayer.hasExpressions = function (layer) {
+    var p = new DuAEProperty(layer);
+    return p.hasExpressions();
+}
+
+/**
+ * Checks if the layer has some masks
+ * @param {Layer} layer The layer
+ * @return {Boolean}
+ */
+DuAELayer.hasMask = function (layer) {
+    return layer.property("ADBE Mask Parade").numProperties > 0;
 }// ==================== |--------| ====================
 // ==================== | puppet | ====================
 // ==================== |--------| ====================
@@ -29200,7 +29287,7 @@ DuAEPseudoEffect.prototype.apply = function(layer,name)
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2022 Nicolas Dufresne, RxLaboratory
- * @version 4.0.5
+ * @version 5.0.0
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @category DuGR
@@ -29219,6 +29306,7 @@ DuAEPseudoEffect.prototype.apply = function(layer,name)
  * along with DuGR. If not, see {@link http://www.gnu.org/licenses/}.
  */
 var DuGR = {}
+DuGR.version = "5.0.0";
 /**
  * Predefined and automatic groups
  * @enum {string}
@@ -29315,7 +29403,91 @@ DuGR.Group = {
     /**
      * This is a special group: all layers in there will always be ignored by all methods.
      */
-    IGNORED: '::Ignored::'
+    IGNORED: '::Ignored::',
+    /**
+     * Layer styles are enabled.
+     */
+    LAYER_STYLES: 'DuGR.layerStyles',
+    /**
+     * Layer style: Drop shadow is enabled.
+     */
+    STYLE_DROP_SHADOW: 'DuGR.style.dropShadow',
+    /**
+     * Layer style: Inner shadow is enabled.
+     */
+    STYLE_INNER_SHADOW: 'DuGR.style.innerShadow',
+    /**
+     * Layer style: Outer glow is enabled..
+     */
+    STYLE_OUTER_GLOW: 'DuGR.style.outerGlow',
+    /**
+     * Layer style: Inner glow is enabled.
+     */
+    STYLE_INNER_GLOW: 'DuGR.style.innerGlow',
+    /**
+     * Layer style: Bevel is enabled.
+     */
+    STYLE_BEVEL: 'DuGR.style.bevel',
+    /**
+     * Layer style: Satin is enabled.
+     */
+    STYLE_SATIN: 'DuGR.style.satin',
+    /**
+     * Layer style: Color overlay is enabled.
+     */
+    STYLE_COLOR: 'DuGR.style.color',
+    /**
+     * Layer style: Gradient Overlay is enabled.
+     */
+    STYLE_GRADIENT: 'DuGR.style.gradient',
+    /**
+     * Layer style: Stroke is enabled.
+     */
+    STYLE_STROKE: 'DuGR.style.stroke',
+    /**
+     * Animation: at current time.
+     */
+    AT_TIME: 'DuGR.animation.atTime',
+    /**
+     * Animation: in the current time range.
+     */
+    IN_TIME_RANGE: 'DuGR.animation.inTimeRange',
+    /**
+     * Animation: has keyframes.
+     */
+    HAS_KEYFRAMES: 'DuGR.animation.hasKeyframes',
+    /**
+     * Animation: has expressions.
+     */
+    HAS_EXPRESSIONS: 'DuGR.animation.hasExpressions',
+    /**
+     * Matte: has at least one mask.
+     */
+    HAS_MASK: 'DuGR.matte.hasMask',
+    /**
+     * Matte: has track matte.
+     */
+    HAS_MATTE: 'DuGR.matte.hasMatte',
+    /**
+     * Matte: is used as a track matte.
+     */
+    IS_MATTE: 'DuGR.matte.isMatte',
+    /**
+     * Matte: Preserve transparency is enabled.
+     */
+    PRESERVE_TRANSPARENCY: 'DuGR.matte.preserveTransparency',
+    /**
+     * Matte: The blending mode is normal.
+     */
+    NORMAL_BLENDING: 'DuGR.matte.normalBlending',
+    /**
+     * Matte: The blending mode is not normal.
+     */
+    OTHER_BLENDING: 'DuGR.matte.otherBlending',
+    /**
+     * Attribute: has effects.
+     */
+    OTHER_BLENDING: 'DuGR.attr.hasEffects',
 }
 
 /**
@@ -29435,68 +29607,87 @@ DuAETag.Key.DUGR_HAD_TAG = 'dugrHadTag'
  * @param {Layer} layer The layer to test
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
  * @param {MarkerValue} [tag] If you have the tag as returned by {@link DuAETag.get} or {@link DuAETag.set}, providing it here improves performance.
+ * @param {Boolean} [and=false] If false, the layer must be contained in at least one of the groups, otherwise in all the groups.
  * @returns {Boolean} true if the layer belongs to at least one of the given groups
  */
-DuGR.inGroups = function ( layer, groups, tag )
+DuGR.inGroups = function ( layer, groups, tag, and )
 {
+    and = def(and, false);
+
     // The Dugr layer is not in any group
     if (layer.name == i18n._(DuGR.DUGR_FRAME_NAME)) return false;
 
+    var ok = false;
     for( var i = 0, n = groups.length; i < n; i++)
     {
+        ok = false;
+
+        var layerStyles = layer.property("ADBE Layer Styles");
+        var comp = layer.containingComp;
+        var workAreaEnd = comp.workAreaStart + comp.workAreaDuration;
+
         var group = groups[i];
-        if (group == DuGR.Group.ALL) return true;
 
-        if (group == DuGR.Group.SELECTED && layer.selected) return true;
+        if (group == DuGR.Group.ALL) ok = true;
+        else if (group == DuGR.Group.SELECTED ) ok = layer.selected;
+        else if (group == DuGR.Group.GROUPED ) ok = DuAETag.getGroups( layer ).length > 0;
+        else if (group == DuGR.Group.COMP ) ok = DuAELayer.isComp( layer );
+        else if (group == DuGR.Group.NULL ) ok = layer.nullLayer;
+        else if (group == DuGR.Group.SOLID ) ok = DuAELayer.isSolid( layer );
+        else if (group == DuGR.Group.SHAPE ) ok = layer instanceof ShapeLayer;
+        else if (group == DuGR.Group.TEXT ) ok = layer instanceof TextLayer;
+        else if (group == DuGR.Group.ADJUSTMENT ) ok = layer.adjustmentLayer;
+        else if (group == DuGR.Group.LIGHT ) ok =  layer instanceof LightLayer;
+        else if (group == DuGR.Group.CAMERA ) ok = layer instanceof CameraLayer;
+        else if (group == DuGR.Group.VISIBLE ) ok = layer.enabled;
+        else if (group == DuGR.Group.SOUND ) ok = layer.hasAudio;
+        else if (group == DuGR.Group.SOLO ) ok = layer.solo;
+        else if (group == DuGR.Group.LOCKED ) ok = layer.locked;
+        else if (group == DuGR.Group.SHY ) ok = layer.shy;
+        else if (group == DuGR.Group.EFFECTS) ok = layer.effectsActive && layer.property("ADBE Effect Parade").numProperties > 0; 
+        else if (group == DuGR.Group.MB ) ok = layer.motionBlur;
+        else if (group == DuGR.Group.THREE_D ) ok = DuAELayer.isThreeD( layer );
+        else if (group == DuGR.Group.GUIDE ) ok = layer.guideLayer;
+        else if (group == DuGR.Group.ORPHAN ) ok = !layer.parent;
+        else if (group == DuGR.Group.HAS_CHILD ) ok = DuAELayer.hasChild(layer);
 
-        if (group == DuGR.Group.GROUPED && DuAETag.getGroups( layer ).length > 0) return true;
+        else if (group == DuGR.Group.LAYER_STYLES ) ok = layerStyles.enabled;
+        else if (group == DuGR.Group.STYLE_DROP_SHADOW) ok = layerStyles.property("dropShadow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_INNER_SHADOW ) ok = layerStyles.property("innerShadow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_OUTER_GLOW ) ok = layerStyles.property("outerGlow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_INNER_GLOW ) ok = layerStyles.property("innerGlow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_BEVEL ) ok = layerStyles.property("bevelEmboss/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_SATIN ) ok = layerStyles.property("chromeFX/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_COLOR ) ok = layerStyles.property("solidFill/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_GRADIENT ) ok = layerStyles.property("gradientFill/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_STROKE ) ok = layerStyles.property("frameFX/enabled").enabled;
 
-        if (group == DuGR.Group.COMP) return DuAELayer.isComp( layer );
-
-        if (group == DuGR.Group.NULL && layer.nullLayer) return true;
+        else if (group == DuGR.Group.AT_TIME ) ok = layer.inPoint <= comp.time && layer.outPoint >= comp.time;       
+        else if (group == DuGR.Group.IN_TIME_RANGE ) ok = layer.inPoint < workAreaEnd && layer.outPoint > comp.workAreaStart;
+        else if (group == DuGR.Group.HAS_KEYFRAMES ) ok = DuAELayer.hasKeys(layer);
+        else if (group == DuGR.Group.HAS_EXPRESSIONS ) ok = DuAELayer.hasExpressions(layer);
         
-        if (group == DuGR.Group.SOLID) return DuAELayer.isSolid( layer );
+        else if (group == DuGR.Group.HAS_MASK ) ok = DuAELayer.hasMask(layer);
+        else if (group == DuGR.Group.HAS_MATTE ) ok = layer.hasTrackMatte;
+        else if (group == DuGR.Group.IS_MATTE ) ok = layer.isTrackMatte;
+        else if (group == DuGR.Group.PRESERVE_TRANSPARENCY ) ok = layer.preserveTransparency;
+        else if (group == DuGR.Group.NORMAL_BLENDING ) ok = layer.blendingMode == BlendingMode.NORMAL;
+        else if (group == DuGR.Group.OTHER_BLENDING ) ok = layer.blendingMode != BlendingMode.NORMAL;
 
-        if (group == DuGR.Group.SHAPE && layer instanceof ShapeLayer) return true;
-
-        if (group == DuGR.Group.TEXT && layer instanceof TextLayer) return true;
-
-        if (group == DuGR.Group.ADJUSTMENT && layer.adjustmentLayer) return true;
-
-        if (group == DuGR.Group.LIGHT && layer instanceof LightLayer) return true;
-
-        if (group == DuGR.Group.CAMERA && layer instanceof CameraLayer) return true;
-
-        if (group == DuGR.Group.VISIBLE && layer.enabled) return true;
-
-        if (group == DuGR.Group.SOUND && layer.hasAudio) return true;
-
-        if (group == DuGR.Group.SOLO && layer.solo) return true;
-
-        if (group == DuGR.Group.LOCKED && layer.locked) return true;
-
-        if (group == DuGR.Group.SHY && layer.shy) return true;
-
-        if (group == DuGR.Group.EFFECTS && layer.effectsActive && layer.property("ADBE Effect Parade").numProperties > 0) return true; 
-
-        if (group == DuGR.Group.MB && layer.motionBlur) return true;
-
-        if (group == DuGR.Group.THREE_D && DuAELayer.isThreeD( layer )) return true;
-
-        if (group == DuGR.Group.GUIDE && layer.guideLayer) return true;
-
-        if (group == DuGR.Group.ORPHAN && !layer.parent) return true;
-
-        if (group == DuGR.Group.HAS_CHILD && DuAELayer.hasChild(layer)) return true;
-
-        // Get the custom groups
-        var layerGroups = DuAETag.getGroups( layer );
-        if (layerGroups.length == 0) return false;
-        layerGroups = new DuList( layerGroups );
-        if (layerGroups.indexOf(group) >= 0) return true;
+        else
+        {
+            // Get the custom groups
+            var layerGroups = DuAETag.getGroups( layer );
+            if (layerGroups.length == 0) ok = false;
+            layerGroups = new DuList( layerGroups );
+            if (layerGroups.indexOf(group) >= 0) ok = true;
+        }
+        
+        if (ok && !and) return true;
+        if (!ok && and) return false;
     }
 
-    return false;
+    return ok;
 }
 
 /**
@@ -29506,8 +29697,9 @@ DuGR.inGroups = function ( layer, groups, tag )
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
  * @param {DuGR~doNotCallBack} [notCallback] The function to run on each layer IF it is NOT in the groups.
+ * @param {Boolean} [and=false] If false, runs the function on the layers contained in at least one of the groups, otherwise in all the groups.
  */
-DuGR.do = function( groups, callback, invert, comp, notCallback )
+DuGR.do = function( groups, callback, invert, comp, notCallback, and )
 {
     notCallback = def(notCallback, function(){} );
     comp = def(comp, DuAEProject.getActiveComp());
@@ -29519,8 +29711,8 @@ DuGR.do = function( groups, callback, invert, comp, notCallback )
     var returnValue;
 
     new DuList(comp.layers).do( function( layer ){
-        if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
-        var ok = DuGR.inGroups(layer, groups);
+        if (DuGR.inGroups(layer, [DuGR.Group.IGNORED], undefined, and)) return;
+        var ok = DuGR.inGroups(layer, groups, undefined, and);
         if (invert) ok = !ok;
         if (ok) returnValue = callback( layer, returnValue );
         else notCallback( layer );
@@ -29857,8 +30049,9 @@ DuGR.toggleThreeD = function( groups, invert, comp, allowLockedChanges )
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ * @param {Boolean} [and=false] If false, selects the layers contained in at least one of the groups, otherwise in all the groups.
  */
-DuGR.select = function( groups, invert, comp )
+DuGR.select = function( groups, invert, comp, and )
 {
     function f( layer )
     {
@@ -29872,7 +30065,7 @@ DuGR.select = function( groups, invert, comp )
         layer.selected = false;
     }
     
-    DuGR.do( groups, f, invert, comp, nf);
+    DuGR.do( groups, f, invert, comp, nf, and);
 }
 
 // Low level undocumented method. Creates the warning frame.
@@ -29967,7 +30160,7 @@ DuGR.isolationMode = function( comp )
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to isolate.
  * @param {DuGR.WarningFrameMode} [frameMode=DuGR.WarningFrameMode.BELOW] How the warning frame must be shown
  * @param {DuGR.IsolationMode} [isolationMode=DuGR.IsolationMode.BOTH] What needs to be hidden.
- * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.WIREFRAME] How to hide the layers
+ * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.HIDE] How to hide the layers
  * @param {Boolean} [lockHiddenLayers=true] whether to lock the layers being hidden.
  */
 DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
@@ -29978,7 +30171,7 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
 
     frameMode = def(frameMode, DuGR.WarningFrameMode.BELOW);
     isolationMode = def(isolationMode, DuGR.IsolationMode.BOTH);
-    compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.WIREFRAME);
+    compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.HIDE);
     lockHiddenLayers = def(lockHiddenLayers, true);
     invert = def(invert, false);
 
@@ -30363,6 +30556,72 @@ w16_no_tag;
 
 var w16_exit_isolation = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01\x14IDAT8\u008D\u00DD\u0090\u00CDN\u00C2@\x14\u0085\u00BF\u00E9\\d+\u0082\t<\u0080\u0081\u00B0\u00F0!\u00A8+6$\u00F0\u0096$\u00D3.\u00A6e\u00A5@\u00F4\r\u008C?\u00C4\x170\u00EA\x13h\u00C7\u00A9\x0B\u00DA\u00A4)\u00D2\u00BD\u009E\u00DD=3\u00F7\u00BB\u00F7\x1E\u00F8\x7FZ.\u0097gQ\x14u\u00EB\u00BE\u00B5\u00B6\x17\u00C7\u00F1i\u00DD\x0F\u00AAE\x14E\u00DDv\u00BB\u00BD\u00D5Z\u00DF\u00A6i\u00DA/}c\u00CC\u00C0{\x7F\x17\x04\u00C1\u00A6\x0E\u0091j\u00A1\u00B5\x16\u00E0\x04\x18:\u00E76\u00C6\u0098\t\u0080\u0088\u00AC\u0081\u0091R\u00EA9\u00CFs]\u00EDQ\u00F5\u0095\u00D24\u00ED;\u00E7n\u00801\u00F0\x02x`\x04<\x02\u00E1l6{k\x04\x00\u00ACV\u00AB\u00F3,\u00CB\u00AE\u0081\u00CB\u00C2\u00DA9\u00E7&\u008B\u00C5\u00E2\u00B51\u0083RY\u0096\x05\u00B5\u00F3\u00B4\u0088\u00FC:\u00EC\x00`\u008C\x19\x00[`\u009C\u00E7\u00F9\x03p\x0F\\\x00\u00EB\u00E2\u00ED8\u00C0Z\u00DB+\x03\x03\u009E\u00BC\u00F7a\u00AB\u00D5\u00BAb\x7F\u00FFPD\u00D6\u00D6\u00DA\u00DEQ\u0080R\u00EA\x1B\u00F8\x04v\"\x12\u00CE\u00E7\u00F3\u00F7\u00E9t\u00FA\x01\u0084\u00C0\x0E\u00F8*\u00FE\x1CW\u0092$\u009D\u00FA\x14\u00D8\x07\u009B$I\u00A7\u00B1\u00F9o\u00EA\x07\x14\u00B6e\b\x1D\u0098\x03\r\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_exit_isolation.png", "w16" );
 w16_exit_isolation;
+// ==================== |-----------------| ====================
+// ==================== | w16_lock_hidden | ====================
+// ==================== |-----------------| ====================
+
+var w16_lock_hidden = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x02>IDAT8\u008D\u009D\u0091=hSQ\x18\u0086\u00DF\u00EF\u00EB99iZ\u00FC\u0081\u00A2\u0085@\u00D1\u00EAPA\x10\u00FC\x1B\u00B4(\"V!&\u00B7\u00DE\u00E0\u00C5I\x17\u00C5Qpr\u00B5CGG]\u00DC\x04\u0087+4\u009C\u00DEK\u0087.\u0091\u00BA\u00E8f\x11\u00AA\x14\u00A7\u00D6A\u00AATScnN\u0092s\u008FSK\x7F\x02->\u00DB\u00C7\u00F7\u00BE/\u00DF\x0F\u00A1\x0Ba\x18\u00EEWJ-8\u00E7\x1E\x03\u00B0D\u00F4\u00DC\x183\x12\x04\u00C1\u00EAv-m.\u00AA\u00D5\u00AAX[[\u009B\u00CCf\u00B3O\u0093$\x19\u00B3\u00D6\u00BE\x17B\u00A4Dt\u00AE\u00D9l\u00BEUJ=3\u00C6<\n\u0082 Y\u00F7\u00F0\u00E6\u0080z\u00BD~\x1C\u00C0uc\u00CC\x11fn\x0B!\u00C6J\u00A5\u00D2\u008As\u00AE#\u00A5\x1C\x000\u0092\u00CB\u00E5\u008Em\u00F6l\t`\u00E6\u00C4\u00F3\u00BCS\u00C5bq\x01\u00C0M\x00G\u00A7\u00A7\u00A7/\x00\u00A8H)\u00FB=\u00CF\u00BBd\u00AD\u00E5j\u00B5*v\u00ACP\u00A9T\x0E0\u00F3/\x00\u0097\u009Ds\x1Dk\u00EDR\u00B9\\\u00FE\x06\x00SSS\u0087|\u00DF_\u0089\u00E3\u00F8\u00A4\u00B5\u00F6\x133\u009F(\x16\u008B_\u00B6L\u00A0\u0094J\u009Cs\u00D7\u008C1\u00F3\x00&\u0084\x10O\u00D6{B\u0088\u00A2\u00D6\u00FAM\u00A3\u00D1XL\u00D3\u00F4,\u0080\u00A5\x1D+4\u009B\u00CDa\"\x1AUJ\u00F5\x11\u00D1-\x00KZ\u00EB\x1BQ\x14\r8\u00E7\u00EE9\u00E7>J)sDt\x1B\u00C0\u00E9\u008D\u00800\f{\u00B5\u00D6w\u0088\u00A8\x05\u00E0\"3\u00EF\u00F3<\u00EF\x0F\u0080!\"\u00CA\u00B7Z\u00AD,\x00\u00C3\u00CC\u00AF\u009Ds\x19\":\u0093\u00A6\u00A9\u00D3Z_\u0089\u00A2h\u0080*\u0095\u00CAyf\u00FE\u00E0\u009C\x1B\x1A\x1F\x1F_\u00DE\u00FE\u00E7n\u0084a\u0098QJ5\u0088\u00A8L\u00BB\u00CB\u00BB\x13\u00C7\u00F1\u00C1F\u00A3\u00F1WDQ4\u0092\u00A6\u00E9\u00841\u00E6A\x10\x04\u00B5\u00BD\x06Xk'\u00A5\u0094/ywiw\u009Cs\u00C3\u00CC\u00DC\u00F7\u00BF\u00FE\r(\u008A\u00A2\u00D14M\u00DFYk\x0F\u00FB\u00BE\u00BF\u00B2W\u00A3\u00D6\u00FA\x07\x11\u00DD\x17\u00CC\u00FC\u00D5Z[\x02`gff\u00D4\u00F2\u00F2r\u009A\u00CF\u00E7\u00FB\x0B\u0085\u00C2\u00EF\u00D9\u00D9\u00D9\\\u00ADV\u00A3 \b\u00EA\u00EBG\x03\x00)e\x0E\u00C0\u00C3N\u00A7\u00F3\u0099\x0B\u0085\u00C2\u00F7V\u00AB5\u00D7\u00D3\u00D33\u00DFn\u00B7\u00EF\x0E\x0E\x0E^\u00B5\u00D6\u00AE\u00C6q\u00DC\u009B$\u00C9\u008BL&\u00F3\n\x00\u00AC\u00B5?\u0095R\u009ER\u00CAg\u00E6Ef\u009E\u00F3}\x7F\u00F1\x1F\u00EE\u00F6\x04!\u0083=\u00B0\u0080\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_lock_hidden.png", "w16" );
+w16_lock_hidden;
+// ==================== |-------------------| ====================
+// ==================== | w16_unlock_hidden | ====================
+// ==================== |-------------------| ====================
+
+var w16_unlock_hidden = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x02 IDAT8\u008D\u008DS1kSQ\x14\u00FE\u00CEy\u00F7&O#\u00A9Ei\u00E2 \u00E8\u00A0`\x15\u00D1\x16\u00C1\u00C1\x16-8\u00A5\u00BC\u0097.\u00C1E\x10\x14\x07W\u00FF@\u00C0\u00A5k\u00BB\u00BD\x0E\"\x1DC\u0093\u00A6i\x10\u0082\u00A0\u008B:tp\x10Q\u00E8\u00A6 \x14\x1F\x16\x1A\u0082\u00E9\u00BBy\u00F7\x1D\u0087\u00C6\x12\x03\u00D6|\u00CB9\x1F\u009C\u00EF\u00E3;\u00DC{\bC\b\u0082@\x03@>\u009F\u00FF&\"e\"\u00FA\n\u00A0\u00A2\u0094\u00BAX(\x14v\u0086\u00E7i\u00904\x1A\u008D\u00CB\"\u00B2\u00A6\u00B5\u009E\u00ED\u00F5zW\x00\u00FC\u00CCf\u00B3\u00DB\u00C6\x18\u00C7\x18s5I\u0092\u00FB\u00BE\u00EF?\x19\u00D4\u00F0 \u0089\u00E38\x04\u00B0\u00D6\u00E9t:\u00BE\u00EF\u00BF\x01\u00F0\u00A2\u00DDn/w\u00BB\u00DDykm\x06@\u00EE\u009F\t\x1A\u008D\u00C6y\x11\u00F1\u00B2\u00D9l\u00D0n\u00B7W\u0099y9\u008Ec\u00E38\u00CEY\x11y\x0E`\u00C6\u00F7\u00FD\u008F\u00C3\x06\u00EAO\u0093$\u00C94\u0080Ga\x18\u00AE\u00B8\u00AE\u00BB\x0B\u00C0.,,l\x01\u00D8\x02P\x1D\x16\x1E\u0089\u00CD\u00CD\u00CD\u00D3\u0095J\u00E5\u00D8(\u00B3\u0087\t\u00EA\u00F5\u00FA\f\x11\u00ADDQt3I\u0092\x1F\u00AE\u00EBz\x00\u009A\u00FF3 \u00E0`\x7F\x00\x0F\x00D\u00E9tz\u00C9\x18s\u00DDZ{\x03\u00C0\u00AFb\u00B1\x18lll\x04\u00CC\x1C\u00C4q\u00AC\u0098\u00F9!\x11\u00ED\u00EC\u00EF\u00EF/\u0095J\u00A5]\x05\x00\"r\u008F\u0088f=\u00CF\u00BB\u00D37~[\u00AF\u00D7\u00A7\u0088\u00E8D\u009F\u008F[k\u00B5RJ[kO\x01\u00B8\u0095J\u00A5\u00DE\x03h\x1DF)\u0097\u00CB\x7F=\u00E9Q\b\u0082@7\u009B\u00CDq\x00P\u00B5Z\u00ED\u0092\u00E38\u009F\u00AD\u00B5\u0093\x00\u00BE\u008Cb\u0090\u00CB\u00E5\u00E6\u00AD\u00B55\x11av]\u00F7;\u0080R\u00BF\u008E\u0084$I\u00DE\u0089\u00C8]\"\x12\u008E\u00A2\u0088\u0089h<\u008A\u00A2\u0091W\x00p\u0092\u0099\u00A7\x01\u0080EdBD\x16EdbT\u00B5\u00D6\u00FA\u009C\u0088<\x16\x11\x1A\u00FC\u00CAsq\x1C\x7FJ\u00A7\u00D3l\u00AD\u009D\u00F4<\u00EF\u00F5\u00FA\u00FA\u00FA5\"2ccc\u00DB{{{\u00B7\u008D1\x1F\x1C\u00C79\u00AE\u0094\u00BA\u00D0\u00BF\u0095\u0083c\u00AAV\u00ABgD\u00A4\u00C6\u00CC\u00B3\u00BD^oND^\x02\x003?#\u00A2\u00A7a\x18f\u0088\u00E8U*\u0095\u009A\u00D2Z{\x00V[\u00ADV\x06\x00~\x03\u00F2\u00F6\u00EF p\x1F\u008Bj\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_unlock_hidden.png", "w16" );
+w16_unlock_hidden;
+// ==================== |------------| ====================
+// ==================== | w16_select | ====================
+// ==================== |------------| ====================
+
+var w16_select = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x00\u00E4IDAT8\u008D\u009D\u00D1\u00A1N\u00C4@\x14\u0085\u00E1\x7F\u009A&E\u0090U8\x04\x02\u0085l\u00D0\x18\x1E\u0080\u00D6\u00A3@\u0081B\u00E2Hq\u00C8UxV6\u00D9t&\u0093V\u00EE$\u0084'\x1A\u00D9\u00B4s1]A\u00D2\u00EC\u00969j\u0092\u009B\u00F3\u00E5\u00DE\fLi\u00DB\u00F6\u00C2\x18\u00F3\u00C2?\u0093\u00EC\x1F}\u00DF+`\u00AD\u00B5~\u008B\x02\u00F6QJ\u00BDk\u00AD?\u00A2\u0081\ty5\u00C6|VU5;?\nLy\u00CE\u00F3|\u00E3\u009CKc\x01\u0080{\u00EF\u00FD\u00D69w\x12\x0B\x00\u00DCy\u00EF\u00DB\u00BA\u00AEOc\x01\u0080\u00DB,\u00CB\u00BA\u00AE\u00EBV\u00B1\x00\u00C0\u00CD0\f;k\u00EDY,\u0080\u0088\\\u008B\u00C8\u00B7\u00B5\u00F6<\n\u0098\u0090\u00AB\x10\u00C2O\u00D34\u0097\x00\u0087\u00BEh\x14\u0091\u00A74Mws\u00C3$I\u00FC!`\x14\u0091\u00C7\u00B2,7\u00C76\u009A;!,-\u00CF\x01\x01X\\\u00FE\x03(\u00A5F\x11y(\u008A\u00E2ki\x19\u00E0\x17\u00936Y\x05\x19\x18\u00B7v\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_select.png", "w16" );
+w16_select;
+// ==================== |---------------| ====================
+// ==================== | w16_hierarchy | ====================
+// ==================== |---------------| ====================
+
+var w16_hierarchy = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01<IDAT8\u008D\u00A5R\u00BBJ\x03Q\x14\u009C\u00D9M\x11\u00D0\u00C6G\u0092/\u00D1_\u00B0\u00BB\u008B\u00CD6\u0096B\n\x13\u0082\u008D\u009DE\u00BE@\u00C4 \u00C2\u00FA\x01\u00C2\u0082\u0090\u00BBb\u0091\x0F\x12\u0089\u0089\u008F\u00C2\"Y5ca\x027\u00CB]\u0089x\u00BA3gf\u00CE90\u0084\u00A7\u00FA\u00FD\u00FE>\u00C9+\x00\r\x07\x1E\u0091l\x1BcR\u0097\x1B\u00F8\fH\u00F6\nb\x00\u00A8I\u00BA,r\u00BD\x06\x00j%\u00F8v\u009A\u00A6\u00E1*\x06+W\u0099\u00C1\u00A8\x04\x1F\u00C7q\u00FC\u00B5\u008AA\u00C7c2\u0096\u00D4\u00FE\u00C3q@\u00B7\u00DB\r\u00AC\u00B5\u00AF\u00BFq\u00E86\u0083\u00C1`m:\u009D&\u0092\u00F6J\u00AE\u00FB ym\u008C9]\x00\x15w:\u0099LN$\u00BD\u00E5y\u00DE(\u00FE\n\x00i\u009A\u00AEW\u00AB\u00D5\u00BB,\u00CB\"c\u008CEq\x0B\u00C9\u009D0\fo|b\x00\u0088\u00E3\u00F8]\u00D2\u00EDl6\u00DB]z\u00C1Z{@\u00F2B\u00D2\u00E6\x1C\x1F\x028\u008C\u00A2\u00E8~A\u00CC\u00B2,\u0092\u0094\x00\u00A8\u00CF\u00A1g\u0092G\u0081$\x02\u00E89b\u00E0'\u0085g\u00EEvI\u00E7\u008E\x18\x00\u00B6$\u00F5\u0082$I*\x006<\x17\u00D7\x0B\u00BD/\u009D\u00F5\u00FF'\u00B1\u00D9l~\u0092|\u00F1\u00CC\u0086\u0085\u00FE\u00C9\u00C7\tHJR\x0B\u00CB\u00C9{\x00p\u00EC2Iv\x00<\u00BAb\u0092\u00ADo\x1E\u00B1u\u00CD\u00DAS_\x10\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_hierarchy.png", "w16" );
+w16_hierarchy;
+// ==================== |----------------| ====================
+// ==================== | w16_layer_type | ====================
+// ==================== |----------------| ====================
+
+var w16_layer_type = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01>IDAT8\u008D\u00E5\u0091\u00AFJ\u00C3a\x18\u0085\u009F\u00F31\u00C7L\u0082M/\u00C0\x19D\u00ABe`S\u00D9\u00C6\u00C7DP\u00BC\x035\u00CE\u00BBp\x1A\u00C4\u00AC\u00D8d0\u00F8}[\u00D3 \x06Q,\x03\u008BA\u00B1\x18\u00B6b\u00D0 lc\u00DFkY\u0090\u00F9\u00E7\x02\u00F4\u0089\u0087s\u00CE\x0B\u00EF\u0081\u00BFM\ba\u00B2V\u00ABM\u00FC\u00E6\u00D1wb\u00A3\u00D1\u0098\u00EB\u00F7\u00FBeI\u00EB\x03)\u00891VJ\u00A5\u00D2\u00ED\u008F\x05f\u00A6z\u00BD\u00BEhf;\u0092r\u00C0\x19\u00F0\x0E\u00AC\x00\u00A9\u0081\u00ED\u00DC9W)\x14\n\u00E7\u0092\f@\u00D5j5\u009D\u00C9d6b\u008CeI3\x00\u0092\u008Ec\u008C\x15 '\u00E9\x00H\x0F\x1D\u00BE3\u00B3\u00BDn\u00B7{\u00AA\x10\u00C2=0\r\u009C\x00\x17\u0092^b\u008C\u00CB\u0092\u00B6>\x05\u00DE\u0080Q`d\u00B8\u00C8\x01\u00BB\u00C0\u0093\u0099-\u0098\u00D9\u00B8\u0099]\u009A\u00D9\u00AE\u00A4\u0099T*5\u00D1n\u00B7\u00D3\u00DE\u00FB1\u00E0f(\u00FC\b\u00EC;\u00EF\u00FDQ\u00A7\u00D3\u0099\x02v$\u00AD\x01\u00CF\u00CE\u00B9\u00CD^\u00AF\u00F7\u009A\u00CF\u00E7\u00DB\u00ADV\u00AB\u009F$\u00C9*0?\u00F8\u00D5\u00B5\u00A4\u00D5f\u00B3\u0099\u00F5\u00DE\u009F|Y!I\u0092\u009C\u00A42\u00B0$)\x01f\u00CD,\x0B\x04`\u00CF{\x7F\u00F5\u00ED\n\u00C3\u0084\x10\u00B2f\u00B6\u00ED\u009C3I\u0087\u00C5b\u00F1\u00E1'\u00EF\x7F\u00E7\x03v\u009C\u0080m\u009C\u00BEQ%\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_layer_type.png", "w16" );
+w16_layer_type;
+// ==================== |-----------| ====================
+// ==================== | w16_style | ====================
+// ==================== |-----------| ====================
+
+var w16_style = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x02\x07IDAT8\u008D}\u0093\u00BFk\x14A\x1C\u00C5?\u00DFY\u00CC]\u00E3\u0081E\nE!\u008A]\x12\u008E \u0082\u00ED)\x07&\u00C4\u00BB\r\u00C8\x16\u00B6'\\a@\tj\u00A3Al\u00B4\u0092HHa \u00C6\x1F]\u00ACvS\u009C`\u00A2\u0082\x7F\u00C1\x15A\u00B0\u0091`\u0094\x04l\u008CB`f\u00CD~-2\u0091\u00CD\x1A\u00F3\u00AA\u0099\u00C7{\u008F\u00EF\u008F\x19\u00A1\u00808\u008E\x07\u008D1WU\u00F5\x02\u00D0\u00E7\u00E9U`9\b\u0082\u00B9\u00D1\u00D1\u00D1\u0095\u00BC^v\x0F\u009DN\u00A7\u0094\u00A6\u00E9\x14\u00D0\x06L1\u00D8c\x1Bxb\u00AD\u009D\u0088\u00A2\u00C8\u00FD\r\u00F0\u00E6\u00D7@\r\u00B0@i\x1Fs\u009E\x7Fg\u00AD\x1D\u008E\u00A2\u00C8\x19\u00804M\x1F{3\u00AA:\x0E|.\u0098\u00B7D\u00E4r\u00EE~\u00BET*=\x02\u00908\u008E\x07E\u00A4\u00EB\u00CB\u00FET\u00A9T\x06677\u00AF\u0088\u00C8\x0B/\u00FE\u009Ae\u00D9\u00A5\u00B1\u00B1\u00B1n\u0092$\x17\u0081W\u00C0a`[D\u00AAFDZ\"\u00F2\x03\u00B8].\u0097\u00CF\u00D4j\u00B5\u00DFa\x18\u00BET\u00D5s\u00C0\x12p\u00DC\x18\u00F3<\u008E\u00E3\x13\u00C0\u00BC7\x03\x04@\u00CB\x00uU\u00AD\x00\x03\u00CE\u00B9c\x00\u00B3\u00B3\u00B3\u0087D\u00A4\x1F8\u00ED\u00C5U\x11Y\x06\u008E\u00E6\u00FB\u00CA\u00B2\u00AC.I\u0092\u00FC\u00CC\u00A5~\u00B7\u00D6\u009E\u00EA\u00E9\u00E9\x19\x17\u0091\u0087\u008598\u00E0\x1Bp2\u00C7\u00FD*\u00AE\u00AB\u00B7\\.\u00DF\x12\u0091\t\u00FE\u00C5\u00BC\u00AA\u00DE-pj\u0080\u00B5=\u008C\u00EA$\u00D0[\u00E0VT\u00F5\u0081sn\x01Hr\u00FC\x17\u00C3\u00CE\u00A0\u00F2\u0090=\x17\u0091;\u00DDn\u00B7\x1A\u0086\u00E1Z\x14E\u00DB\u00CDf3\x04\u0086\u0081-c\u00CC\u0092\t\u0082`\u008E\u009D\x17\u00B6/T\u00F5\u00FE\u00D0\u00D0\u00D0\u00B3N\u00A7S\x01H\u0092d\x12X\x00JY\u0096\u00CD\u0089'g\u0080k\u00FF\x0B\u00F1A\u00F7T\u00F5\u00831\u00E6\u00BD\u00AFl\u00BA\u00D1h\\7\x00\u00D6\u00DA\tU}{P\u0080\u0088\u00DC0\u00C6\u00ECnfy}}\u00FD&\u00F8O\x13E\u0091s\u00CE\u008D\x003\x07\u00B4s\x048+\"\u00D3\x1B\x1B\x1B#\u00EDv;\u0085\u00C2\u00C0\x00\x16\x17\x17\u00FB\u0081V\u0096eu\x11\u00E9\u00F3\u00E5\u00AF\u008A\u00C8\x1BU}\x1A\u0086\u00E1\u00C7\u00BC\u00FE\x0F2,\u00D1\t[=\u00B9\u00B8\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_style.png", "w16" );
+w16_style;
+// ==================== |----------| ====================
+// ==================== | w16_anim | ====================
+// ==================== |----------| ====================
+
+var w16_anim = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x00\u00B9IDAT8\u008D\u009D\u00D3\u00BD\r\u00C20\x10@\u00E1wV\u0086@\u00A2I\x01\u0083@I\u0081\u00A5\u00EC\u0089\u00A2\u00C4\x03d\f\u009A\x14\x14\x14,a\x1F\x05\x10)\u00C4\u00CE\u008F]\u009E\u00FC\u00BE\u00C6>!q\u009A\u00A69\x00NDTU\u00AF\u00D6\u00DA>vObC\u00E7\u00DC1\u0084\u00D0\x01\u00FB\u00EF\u00E8\u00E5\u00BD?WUu_\x04\"\u00F1\u00EFD\u0091\x110\x13'\u0091\x01X\x11G\x11\u00D9\x18O\x10\u00C9\u0088G\u0088\t!\u00B4\x191\u00C0\u00AE(\u008A\u009B\x11\x11\u00CD\u0088\x01PU5\u00DE\u00FB\x0B\u00F0\u00C8\u00E8\u009F\u0080\x15\u0080\u00BA\u00AEKcL\x07\u0094\x1B\u00E2\u0093\u00B5\u00B6\x1F\u009Eq\x032\u00C4\u00F0\u00F7\u0091V \u00A3x\x02, \u00938\n$\u0090h\u009C\x04\u00E0\u00B3\u00CE\"\u00D2\x02\u00CC\u00AD\u00F3\x1Bj\x16\u00841f\\\x1D\u00E4\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_anim.png", "w16" );
+w16_anim;
+// ==================== |---------------| ====================
+// ==================== | w16_attribute | ====================
+// ==================== |---------------| ====================
+
+var w16_attribute = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x0F\x00\x00\x00\x10\b\x06\x00\x00\x00\u00C9V%\x04\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01\u0087IDAT(\u0091}\u0090\u00BFo\x13A\x10\u0085\u00BFY\u00D9\u00B2]QQ\u0085\u0082$\x05-\u00D0@\x0B=\u00DE\u00B3\u00E2\u009C\x04\u0086\x06hRE\u00A1\r\x02)\u00FCh\u0081\u008A\x02$zK\u00C0\u00ED\u00F9\x0F\u0080\x16\x1AZ\x1A8$BC\u0097\u00CE'\u00CB\u00F7h\u00D6\u00E8t\u009C\u0099f\u00F7\u00CD\u00FB\u00DE\u008Cv\u008D\u0096\n!\u00DC\x06\u008E\u0080\u00D3\u00C0oI\x0F\u0092$y\u00D3\u00E4:maI\u00DBf\u00B6\x11\u00E5\x19\u00E7\u00DCv\x1B\u00E7\u00E2\u00A6\x0BY\u0096\u008D\u00E3}bf\u00D7\x1B\u00C3n\u0084\x10n\x02dY6\u009E\u00CDf\x17\x01l:\u009D\u009E\u00EA\u00F5z_\u0080M\u00A0\u0088\u00E7\u00BA\u00FA\x01\u009C\x05\u008An\u00B7{\u00DE\u00F5\u00FB\u00FD{\u00B5\u00C0\u00FF\u0082\u00C4 \u00C0\u00E6b\u00B18\u00E8H\u00BA\u00B3\x06|/\u00E93p\u00C9\u00CC\u0092\x16\u00FFn\x07\u00B8\x05\u00BC\x04\u00CE\u00AD\u00BAfv4\x1C\x0E\x1F\u00AEt\b\u00E1\x11p\u00BF\x16\u00FCZU\u00D5\u009E\u00F3\u00DE\x7F\x00\u00DE\u00D5\f\u00CD\u00E7\u00F3\x17\u00F5\x15eY>\x03T\x1B\u00FEv4\x1A}t\x00\u0092Tcm0\x18\u00B8z8j\u00FB;=\u00F2.\u0084p\u00C5\u00CCv\u00EApUU\u00FBu\u00BD\\.\x0F\x1A\u00EF\u00DD\u00CD\u00F3\u00FC\u00AA\u0085\x10\u008E\u0081\r\u00FE\u00AD\u00DC\u00CC>\x01\u0097%]k\u00F1\x7F9\u00E0u\u008B\x010\u0094\u00F4dM\x10\u00E0\u0095\u008B\u009FQ\u00C4F\u00B1\x06\u00A4\u00E1\x17eY>wi\u009A\u009E\x00;\u0092v\u00BD\u00F7[\u0092&-C\nI\x13\u00EF\u00FD\u0096\u0099\u008D\u009Ds\u00E34MO\u008C\u0096\u00CA\u00F3\u00FC\u00B1\u00A4\u00C3\u0095\u0096\u00F44I\u0092\u00C3&\u00E7\u009A\u008D\b\x7F\x07~\x02s\u00E0\u00D8\u00CC\u00BE\u00B5q\x7F\x00\u00C9\u00AC\u009FK\u00DB\u00C1\u00DC:\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_attribute.png", "w16" );
+w16_attribute;
+// ==================== |--------------| ====================
+// ==================== | w16_blending | ====================
+// ==================== |--------------| ====================
+
+var w16_blending = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01~IDAT8\u008D\u0095\u0093\u00BFO\u00DBP\x10\u00C7?wv\u00F1\u009F\u0090,\x15\x1D+\u0090\u00E8\u00D4?\x00\u00A9T\x1D\u00E2x\u00F3T\t!@.+\x03+\u00ED\x1FP&\x06\"2\u00A2\x0E\u0099bK\u0091\u00AA\u00B4\x12;#\u00E2\u00D7\u0088\u0098\u0092?\u00C1\u00C1\u00E6:\u00E4\u00A5\u00B2\"\u0082\u00CCwz\u00EF\u00EE\u00DE\u00E7\u00EE\u00F4\u00EE\u00849eY\u00B6jf;\u00C0\x06\u00F0\u00CE\u0099\u00EF\u0081\u00BF\"r\u00DAn\u00B7\u00AF\u00AB\u00F12;t:\u009D7\u00CDf\u00F3\b\u00D8\x03\u00BCy\u00B0S\t\u009C\u00E4y\u00BE\x1F\u00C7\u00F1\u00E4?\u00C0=\x1E\u00B8\u00ACut\u009E\u00E7\u00F9\u00978\u008E'\n\u00D0h4~\u00BA\u00C7\u0093\u009A\u0080\u00F5 \b\u008E\x00\u00A4\u00DF\u00EF\u00AF\u0088\u00C8%\u00A0@\b|\x04\x0Ek@J\x11\u00F9\u00E0\u008B\u00C8.\u00D3\u009E\u00D3(\u008A\x06\u00C0 MSj@<3\u00DBQ\u00E03\u0080\u0099\u009D\u00CD<Q\x14}\x07~\u00D4\u00A8bC\u0081\u00B7\u00EErS\u00F5\u00D4\u0084,+\u00EE'|\u00DF\u00D7yo\r\u00C8\u0093\x02\x0F\x00EQ\u00AC=\x17\u00F1\x12\u00C4\u00CC\x1E\x14\u00F8\x03 \"[\u008B\u00D2,\u0082\u0088\u00C8P=\u00CF\u00EB2\u009D\u00B0Oi\u009A~}\x05\u00A4P\u00D5Sm\u00B5ZW\u00C0\u00893v\u00B3,\u00DB63\u0099\x07\u00F4z=\x0F(\x00s\u00A6\u00E30\f\u00EF\u00C49\u0097\u0082 \u00F8\r\u00AC\u00BB\u00D2.\u00CC\u00EC\u0097\u00AA\u00DE\u0096e\u00E9\x03k\"\u00B2\t\u00BCw\u00BD\x0F\u00C7\u00E3q+I\u0092G\u00A9dXr\u00E3\u00F9\u008D\u00C5\u00CBT\x00\u00C7\u00A3\u00D1\u00E8 I\u0092G\u00A8l\u00E3L\u00CF\u00AC\u00F3\x13\u00D3u\x1E\u00AAj7\f\u00C3\u00BBj\u00FC?>\r\u0088\u00FD\u009E\u00D9\x0B\u00FA\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_blending.png", "w16" );
+w16_blending;
+// ==================== |---------| ====================
+// ==================== | w16_and | ====================
+// ==================== |---------| ====================
+
+var w16_and = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x02\x00IDAT8\u008Du\u0093=h\x14A\x14\u00C7\x7Fo\u00E2\u009A\u009C\u009E\x12\u00B0P\x04\x0B\u0091(*X\u00AA(\x04!\u00A2\b\u00DE\u00CD\x1D\u00C2\u0089M \"H\x10\u00F1\x03\u00ABT\u00A9\u00B4\u00D2\u00CA\u00C2\u008F**\u0088i\u00B2\u00BB!6\x16\x07\u0082\u00CD\x11<\x104\u00A2 )T\x10A0\x04eos\u00FB,nn\x19O\u00EF\u00DF\u00CC\u00BC\u00997?\u00DE\u00FF\u00F1F\u00F0\u00A4\u00AA\x12\u00C7\u00F1EU\x1D\x17\u0091\x11\u00A0\b,\u00A9\u00EA}k\u00ED\x03\x11Qz$~\x10E\u00D1]\u00E0Ro\u0092\u00D3mk\u00ED\u008D\u00BE\u0080\u00B9\u00B9\u00B9]\u00C6\u0098\u008F\u00EEl\x15\u00B8\t\f\x00S@\x01h'I2\\\u00AB\u00D5V}\u00C0\u00BA\u009C$r\u00A8\x0BT\u00D5{\u0095J\u00E5\u0096\u00ABj\x1Fp\x0E\x18(\x14\n\u00BB\u0081\u00D7>\u00C0x\u0080\u00CC\u00DB\x17\u00BC\u009C\u009Dn\u00D54M?\u00F7\u00B5\x10E\u00D1V`\x19\x18\x02~\u0089\u00C8\u0098\u00AA\u009E\x05\u00AE\u00BA\u0094\u00D8Zk{\x01y\x05\u00D6\u00DAo\u00AA:\u00E5\u00C2\r\u00AA\u00FA\u00CA{\u00BC\fL\x02\u0084ax<\u008E\u00E3S\u00FF\x00\u00EA\u00F5\u00FA\u00901f\u00C7\x7F\u00E0o\u0080\u00C3\u00D6\u00DA\u00AF\u00F3\u00F3\u00F3c\"\u00F2BU\u009F\u00C7q|:O\u009A\u009D\u009D]\u00BF\u00B2\u00B2\x12\u00AA\u00EA5\u00F7(\u00F3@{U\u00F5\b@\u00BB\u00DD>\u00DA=T\u00D5-9`ppp\x128\u00E9\u00EE>\x19c\u00F6\x033.\x0ED\u00E4Y\x18\u0086U`4o\u009E\u00C8b\x0EP\u00D5\x0B\x1E\u00F9r\u00A9Tz\u00DFl6\u00CF\u00AB\u00EAc\x1F\"\"\u00C7\\\u00FC\u00A1\\.\u00BF\x050\u00AA*nl;\u00C6\u008DY\x02\u0098\u009E\u009E\u00CEZ\u00AD\u00D6\x04\u00F0\u00A4\x0B\u00A13X\u0088\u00C8\u00C3<\u00DF\u00CD\u00F7w\u00AF\u0082\u0089\u00EE\u00BEV\u00AB\u00B5\u0083 \u00B8\x0E|\u00F1zB\u0096e\u00BFs+\x00Q\x14\u00CD\x00\u00E3\u009E\u00BFF\u0096e\u00EF\u0080\u00ED\"r\x10\x18\u00E6o%Y\u0096\u008DV\u00AB\u00D5\u0086\x00,,,l[[[{\t\u008C\u00D0_\u008B\u00AA\u00FACDNt\u00FB\x10\x04\u00C1\x01\x7F\x127\x01W\u00803\u00C0\x1E:\x1F\u00E8'\u00D0\x00\x1E%I\u00F2\u00B4X,nL\u00D34\x14\u0091\u00CD\u00CE\u00CA\u009D?r9\u00C6\b\u00FB\u00AB\u0096V\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_and.png", "w16" );
+w16_and;
+// ==================== |--------| ====================
+// ==================== | w16_or | ====================
+// ==================== |--------| ====================
+
+var w16_or = new DuBinary( "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x07a\x00\x00\x07a\x01\u0095\u00C3\u00B8\u00B6\x00\x00\x00\x19tEXtSoftware\x00www.inkscape.org\u009B\u00EE<\x1A\x00\x00\x01\bIDAT8\u008D\u0095\u00D1\u00B1J\u00C4@\x10\x06\u00E0\x7FV\x12\u00C2\u0091\u00CAV\u00C4\x07\u00B03\u0095e\x1AS\u0084\u00B5H\u00A3\u00A2\x0F\u0093\u0087Q\x0E\x02\u00C2\u00C1\u0092NLc%\u0082\u00AD\u0088\x0FpX\x06\u00ACbfl6\u00C7r^.\u009B\u00AD\u00F6gv\u00BF]f\b\x13\u00CB\x18\u00B3`\u00E6\x0F\x00\u00C7\x00Z\u00A5T\u00AE\u00B5~\x19\u00EAj\n`\u00E6K{\x19\x00\x0E\u00C20|w\u00EB\u0093\x00\u0080[g\u00FF\u0098e\u00D9\u008F7PU\u00D5!\u0080\u008B\u00CDa\u00A5\x1E\u00B6\u00CF\u00EC\x05\u00A2(\u00BA\x06\x10\u00DA\u00F8\x1D\u00C7\u00F1\u00F3,@D\u00DC\u00EF/\u00D34\u00FD\u00F5\x06\u00EA\u00BA>\x01p>d\"\u00FA\u00F7\u00FD\u00BD@\u00D7uw\x00\u00C8\u00C6/\u00AD\u00F5\u00DB,\u0080\u0088n\u009CxOD\u00E2\r\x18c\u00CE\x00\u009C\x0E\u00B9\u00EF\u00FB\u00E5\u00D8C;\x01f\u00DE4\u008F\u0088^\u008B\u00A2\u00F8\u00F4\x06\u00CA\u00B2T\x00\u00AE\x1Clg\u00F3F\u0081$IR\x00G6\u00F6A\x10T\u00B3\u0080\u00AD\u00D9?\u00E5y\u00BE\u00F6\x06\u009A\u00A6\u0089D\u00A4\x18\u00F2\u00D8\u00ECG\u0081\u00B6m\x13\x00\u00B1\u008Dk\x11YM\x01\x7F\u00C2\u009CN&?F\u00A0g\x00\x00\x00\x00IEND\u00AEB`\u0082", "w16_or.png", "w16" );
+w16_or;
 
 // ==================== |---------------| ====================
 // ==================== | w12_add_layer | ====================
@@ -30614,6 +30873,15 @@ function buildUI()
 
 DuScriptUI.separator(ui.settingsGroup);
 
+// Show ae switches
+var aeSwitchesButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    i18n._("Hide Ae layer switches"),
+    enabled,
+    i18n._("Show or hide the After Effects layer switches buttons."),
+    i18n._("Show Ae layer switches")
+);
+
 // Locked layers
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
@@ -30625,7 +30893,7 @@ var lockedLayersButton = DuScriptUI.checkBox(
 );
 
 // Warning frame
-var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
+var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, i18n._("Type of warning frame to use"));
 warningFrameSelector.addButton(
     i18n._("Warning frame: None"),
     w16_no_frame,
@@ -30663,11 +30931,18 @@ var showTagsButton = DuScriptUI.checkBox(
     w16_tag
 );
 
+// Auto select
+var autoSelectButton = DuScriptUI.checkBox( ui.settingsGroup, {
+    text: i18n._("Auto-select layers"),
+    helpTip: i18n._("Automatically select layers when selecting groups or properties"),
+    image: w16_select
+});
+
 // Lock hidden
 var lockHiddenButton = DuScriptUI.checkBox(
     ui.settingsGroup,
     i18n._("Lock hidden layers"),
-    undefined,
+    w16_lock_hidden,
     i18n._("whether the hidden layers have to be locked.")
 );
 
@@ -30687,6 +30962,12 @@ ui.onResetSettings = function () {
 
     var showTags = DuESF.scriptSettings.get("showTags", true);
     showTagsButton.setChecked(showTags);
+
+    var autoSelect = DuESF.scriptSettings.get("autoSelect", true);
+    autoSelectButton.setChecked(autoSelect);
+    
+    var showAeSwitches = DuESF.scriptSettings.get("aeSwitches", true);
+    aeSwitchesButton.setChecked(showAeSwitches);
 }
 
 // Save settings
@@ -30696,6 +30977,8 @@ ui.onApplySettings = function () {
     DuESF.scriptSettings.set("useWireframe", useWireframeButton.value);
     DuESF.scriptSettings.set("lockHidden", lockHiddenButton.value);
     DuESF.scriptSettings.set("showTags", showTagsButton.value);
+    DuESF.scriptSettings.set("autoSelect", autoSelectButton.checked);
+    DuESF.scriptSettings.set("aeSwitches", aeSwitchesButton.checked);
 
     DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);
 
@@ -30711,6 +30994,36 @@ DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);
 // ==================== |-----------| ====================
 
 var uiMode = DuESF.scriptSettings.get("common/uiMode", 0);
+
+// =========== UTILS =================
+
+function saveListSelection(list) {
+    // Keep selection
+    var currentSelection = [];
+    if (list.selection) {
+        for (var i = 0; i < list.selection.length; i++)
+        {
+            currentSelection.push(list.selection[i].text);
+        }
+    }
+    return currentSelection;
+}
+
+function restoreListSelection(list, sel) {
+    // Reselect
+    var newSelection = [];
+    for (var i = list.items.length -1 ; i >= 0; i-- )
+    {
+        var g = list.items[i].text;
+        for (var j = 0; j < sel.length; j++)
+        {
+            if (g == sel[j]) {
+                newSelection.push(i);
+            }
+        }
+    }
+    list.selection = newSelection;
+}
 
 // ========= ISOLATE BUTTONS =========
 
@@ -30732,7 +31045,6 @@ if (uiMode < 1)
     spacer.margins = 0;
     spacer.minimumSize = [5,-1];
 }
-
 
 var isolateButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -30787,7 +31099,6 @@ if (uiMode < 1)
     spacer.margins = 0;
     spacer.minimumSize = [5,-1];
 }
-
 
 var pinButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -30856,268 +31167,374 @@ isolateCompButton.onClick = function()
 
 // ========= TOGGLE BUTTONS ==========
 
-var aeSwitchesBG = DuScriptUI.group( ui.mainGroup, 'row');
-aeSwitchesBG.alignment = ['fill','top'];
-DuScriptUI.setBackgroundColor( aeSwitchesBG, DuColor.Color.DARK_GREY)
-var aeSwitchesGroup = DuScriptUI.group( aeSwitchesBG, 'column' );
-aeSwitchesGroup.alignment = ['center','top'];
-var aeSwitchesGroup1 = DuScriptUI.group( aeSwitchesGroup );
-var enableAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    enabled,
-    i18n._("Show/Hide layers")
-)
-var audioAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    audioEnabled,
-    i18n._("Toggle audio")
-)
-var soloAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    solo,
-    i18n._("Toggle solo mode")
-)
-var lockAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    locked,
-    i18n._("Lock layers")
-)
-var shyAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    shy,
-    i18n._("Shy layers")
-)
-var collapseTransformationAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    collapseTransformation,
-    i18n._("Collapse transformation / Continuous rasterization")
-)
-var guideAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    guide,
-    i18n._("Guide layers")
-)
-var aeSwitchesGroup2 = DuScriptUI.group( aeSwitchesGroup );
-var qualityAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    quality,
-    i18n._("Set quality")
-)
-var effectsActiveAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    effectsActive,
-    i18n._("Toggle effects")
-)
-var frameBlendingAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    frameBlending,
-    i18n._("Set frame blending mode")
-)
-var motionBlurAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    motionBlur,
-    i18n._("Toggle motion blur")
-)
-var adjustmentLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    adjustmentLayer,
-    i18n._("Toggle adjustment layer mode")
-)
-var threeDLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    threeDLayer,
-    i18n._("Toggle 3D layer mode")
-)
-var selectLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    select,
-    i18n._("Select layers")
-)
-
-enableAEButton.onClick = function()
+if (DuESF.scriptSettings.get("aeSwitches", true))
 {
-    DuAE.beginUndoGroup( i18n._("Show/Hide layers") );
-    DuAE.toggleLayerControls();
 
-    DuGR.toggleVisibility( getGroups(), invertButton.checked );
+    var aeSwitchesBG = DuScriptUI.group( ui.mainGroup, 'row');
+    aeSwitchesBG.alignment = ['fill','top'];
+    DuScriptUI.setBackgroundColor( aeSwitchesBG, DuColor.Color.DARK_GREY)
+    var aeSwitchesGroup = DuScriptUI.group( aeSwitchesBG, 'column' );
+    aeSwitchesGroup.alignment = ['center','top'];
+    var aeSwitchesGroup1 = DuScriptUI.group( aeSwitchesGroup );
+    var enableAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        enabled,
+        i18n._("Show/Hide layers")
+    )
+    var audioAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        audioEnabled,
+        i18n._("Toggle audio")
+    )
+    var soloAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        solo,
+        i18n._("Toggle solo mode")
+    )
+    var lockAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        locked,
+        i18n._("Lock layers")
+    )
+    var shyAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        shy,
+        i18n._("Shy layers")
+    )
+    var collapseTransformationAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        collapseTransformation,
+        i18n._("Collapse transformation / Continuous rasterization")
+    )
+    var guideAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        guide,
+        i18n._("Guide layers")
+    )
+    var aeSwitchesGroup2 = DuScriptUI.group( aeSwitchesGroup );
+    var qualityAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        quality,
+        i18n._("Set quality")
+    )
+    var effectsActiveAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        effectsActive,
+        i18n._("Toggle effects")
+    )
+    var frameBlendingAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        frameBlending,
+        i18n._("Set frame blending mode")
+    )
+    var motionBlurAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        motionBlur,
+        i18n._("Toggle motion blur")
+    )
+    var adjustmentLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        adjustmentLayer,
+        i18n._("Toggle adjustment layer mode")
+    )
+    var threeDLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        threeDLayer,
+        i18n._("Toggle 3D layer mode")
+    )
+    var selectLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        select,
+        i18n._("Select layers")
+    )
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    enableAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Show/Hide layers") );
+        DuAE.toggleLayerControls();
 
-audioAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle audio") );
+        DuGR.toggleVisibility( getGroups(), invertButton.checked );
 
-    DuGR.toggleSound( getGroups(), invertButton.checked );
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    audioAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle audio") );
 
-soloAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle solo mode") );
-    DuAE.toggleLayerControls();
+        DuGR.toggleSound( getGroups(), invertButton.checked );
 
-    DuGR.toggleSolo( getGroups(), invertButton.checked );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    soloAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle solo mode") );
+        DuAE.toggleLayerControls();
 
-lockAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Lock layers") );
+        DuGR.toggleSolo( getGroups(), invertButton.checked );
 
-    DuGR.toggleLocked( getGroups(), invertButton.checked );
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    lockAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Lock layers") );
 
-shyAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Shy layers") );
+        DuGR.toggleLocked( getGroups(), invertButton.checked );
 
-    DuGR.toggleShy( getGroups(), invertButton.checked );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    shyAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Shy layers") );
 
-collapseTransformationAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Collapse transformation / Continuous rasterization") );
-    DuAE.toggleLayerControls();
+        DuGR.toggleShy( getGroups(), invertButton.checked );
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    collapseTransformationAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Collapse transformation / Continuous rasterization") );
+        DuAE.toggleLayerControls();
 
-guideAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Guide layers") );
-    DuAE.toggleLayerControls();
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
+
+    guideAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Guide layers") );
+        DuAE.toggleLayerControls();
 
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-qualityAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Set quality") );
-    DuAE.toggleLayerControls();
+    qualityAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Set quality") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-effectsActiveAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle effects") );
-    DuAE.toggleLayerControls();
+    effectsActiveAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle effects") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-frameBlendingAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Set frame blending mode") );
-    DuAE.toggleLayerControls();
+    frameBlendingAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Set frame blending mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-motionBlurAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle motion blur") );
-    DuAE.toggleLayerControls();
+    motionBlurAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle motion blur") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-adjustmentLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle adjustment layer mode") );
-    DuAE.toggleLayerControls();
+    adjustmentLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle adjustment layer mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-threeDLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle 3D layer mode") );
-    DuAE.toggleLayerControls();
+    threeDLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle 3D layer mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-selectLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Select layers") );
-    DuAE.toggleLayerControls();
+    selectLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Select layers") );
+        DuAE.toggleLayerControls();
 
-    DuGR.select( getGroups(), invertButton.checked );
+        DuGR.select( getGroups(), invertButton.checked );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 }
 
 // ========= PANELS ==========
 
-//DuScriptUI.separator( ui.mainGroup );
-var mainTabs = DuScriptUI.tabPanel( ui.mainGroup, 'column' );
-mainTabs.buttonsGroup.alignment = ['center', 'top'];
-var propTab = mainTabs.addTab( i18n._("Properties"), w16_prop_group, i18n._("Properties") );
-var groupTab = mainTabs.addTab( i18n._("Groups"), w16_layer_group, i18n._("Groups") );
+// Selector
+var selectorGroup = DuScriptUI.group(ui.mainGroup, 'row');
+
+var propSelector = DuScriptUI.selector(selectorGroup);
+propSelector.addButton( i18n._("Custom Groups"),
+                    w16_layer_group,
+                    i18n._("Show custom layer groups"),
+                    ""
+                );
+propSelector.addButton( i18n._("All layer properties"),
+                    w16_prop_group,
+                    i18n._("Show all properties"),
+                    ""
+                );
+propSelector.addButton( i18n._("Hierarchy"),
+                    w16_hierarchy,
+                    i18n._("Show hierarchical (parenting) properties"),
+                    i18n._("Hierarchy")
+                );
+propSelector.addButton( i18n._("Layer types"),
+                    w16_layer_type,
+                    i18n._("Show layer types"),
+                    i18n._("Type")
+                );
+propSelector.addButton( i18n._("Layer attributes"),
+                    w16_attribute,
+                    i18n._("Show layer attributes"),
+                    i18n._("Attribute")
+                );
+propSelector.addButton( i18n._("Animation"),
+                    w16_anim,
+                    i18n._("Show animation properties"),
+                    i18n._("Animation")
+                );
+propSelector.addButton( i18n._("Matte & Blending"),
+                    w16_blending,
+                    i18n._("Show matte, blending, and alpha properties"),
+                    i18n._("Matte")
+                );
+propSelector.addButton( i18n._("Layer styles"),
+                    w16_style,
+                    i18n._("Show layer styles"),
+                    i18n._("Layer Styles")
+                );
+propSelector.setCurrentIndex(1);
+
+var invertButton = DuScriptUI.checkBox(
+    selectorGroup,
+    "",
+    //i18n._("Invert"),
+    w16_invert,
+    i18n._("Invert the group/property selection"),
+    //i18n._("Inverted"),
+    "",
+    w16_inverted,
+    //'column'
+);
+invertButton.alignment = ['right','fill'];
+invertButton.onClick = refreshIsolation;
+
+var andOrButton = DuScriptUI.checkBox(
+    selectorGroup,
+    "",
+    w16_or,
+    i18n._("Use either the AND or OR operator for multiple group selection."),
+    "",
+    w16_and
+);
+andOrButton.setChecked( DuESF.scriptSettings.get("andOr", false) );
+andOrButton.onClick = function()
+{
+    DuESF.scriptSettings.set("andOr", andOrButton.checked );
+    DuESF.scriptSettings.save();
+    refreshIsolation();
+}
+
+var searchGroup = DuScriptUI.group(ui.mainGroup, 'row');
+searchGroup.spacing = 3;
+searchGroup.alignment = ['fill', 'top'];
+
+var clearButton = DuScriptUI.button(
+    searchGroup,
+    '',
+    DuScriptUI.Icon.CLOSE,
+    i18n._("Remove all")
+);
+clearButton.alignment = ['left', 'fill'];
+clearButton.onClick = function() { searchEdit.setText(""); search(""); };
+
+var searchEdit = DuScriptUI.editText(
+    searchGroup,
+    '',
+    '',
+    '',
+    i18n._("Search...")
+);
+searchEdit.alignment = ['fill', 'fill'];
+searchEdit.onChange = function() { search(searchEdit.text) };
+
+var mainTabs = DuScriptUI.group( ui.mainGroup, 'stacked' );
+mainTabs.alignment = ['fill', 'fill'];
 
 var propList;
 var groupList;
 
+var propTab = DuScriptUI.group( mainTabs, 'column' );
+propTab.built = false;
+var groupTab = DuScriptUI.group( mainTabs, 'column');
+groupTab.built = false;
+
 propTab.build = function (tab)
 {
+    propTab.built = true;
 // ==================== |-----------| ====================
 // ==================== | propPanel | ====================
 // ==================== |-----------| ====================
@@ -31125,35 +31542,108 @@ propTab.build = function (tab)
 propList = tab.add('listbox',undefined,"Groups",{multiselect: true});
 propList.alignment = ['fill', 'fill'];
 
-propList.add('item',i18n._("All layers")).groupName = DuGR.Group.ALL;
-propList.add('item',i18n._("Selected")).groupName = DuGR.Group.SELECTED;
-propList.add('item',i18n._("Grouped")).groupName = DuGR.Group.GROUPED;
-propList.add('item',i18n._("Hierarchy: Orphans")).groupName = DuGR.Group.ORPHAN;
-propList.add('item',i18n._("Hierarchy: Have children")).groupName = DuGR.Group.HAS_CHILD;
-propList.add('item',i18n._("Type: Pre-compositions")).groupName = DuGR.Group.COMP;
-propList.add('item',i18n._("Type: Null Objects")).groupName = DuGR.Group.NULL;
-propList.add('item',i18n._("Type: Solids")).groupName = DuGR.Group.SOLID;
-propList.add('item',i18n._("Type: Shapes")).groupName = DuGR.Group.SHAPE;
-propList.add('item',i18n._("Type: Texts")).groupName = DuGR.Group.TEXT;
-propList.add('item',i18n._("Type: Adjustment")).groupName = DuGR.Group.ADJUSTMENT;
-propList.add('item',i18n._("Type: Lights")).groupName = DuGR.Group.LIGHT;
-propList.add('item',i18n._("Type: Cameras")).groupName = DuGR.Group.CAMERA;
-propList.add('item',i18n._("Attribute: Visible")).groupName = DuGR.Group.VISIBLE;
-propList.add('item',i18n._("Attribute: Has Audio")).groupName = DuGR.Group.SOUND;
-propList.add('item',i18n._("Attribute: Solo")).groupName = DuGR.Group.SOLO;
-propList.add('item',i18n._("Attribute: Locked")).groupName = DuGR.Group.LOCKED;
-propList.add('item',i18n._("Attribute: Shy")).groupName = DuGR.Group.SHY;
-propList.add('item',i18n._("Attribute: Effects")).groupName = DuGR.Group.EFFECTS;
-propList.add('item',i18n._("Attribute: Motion Blur")).groupName = DuGR.Group.MB;
-propList.add('item',i18n._("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
-propList.add('item',i18n._("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
+var propItems = {}
+propItems[ i18n._("All layers") ] = DuGR.Group.ALL;
+propItems[ i18n._("Selected") ] = DuGR.Group.SELECTED;
+propItems[ i18n._("Grouped") ] = DuGR.Group.GROUPED;
 
-propList.selection = 1;
+propItems[ i18n._("Hierarchy: Orphans") ] = DuGR.Group.ORPHAN;
+propItems[ i18n._("Hierarchy: Have children") ] = DuGR.Group.HAS_CHILD;
 
-propList.onChange = refreshIsolation;}
+propItems[ i18n._("Type: Pre-compositions") ] = DuGR.Group.COMP;
+propItems[ i18n._("Type: Null Objects") ] = DuGR.Group.NULL;
+propItems[ i18n._("Type: Solids") ] = DuGR.Group.SOLID;
+propItems[ i18n._("Type: Shapes") ] = DuGR.Group.SHAPE;
+propItems[ i18n._("Type: Texts") ] = DuGR.Group.TEXT;
+propItems[ i18n._("Type: Adjustment") ] = DuGR.Group.ADJUSTMENT;
+propItems[ i18n._("Type: Lights") ] = DuGR.Group.LIGHT;
+propItems[ i18n._("Type: Cameras") ] = DuGR.Group.CAMERA;
+
+propItems[ i18n._("Attribute: Visible") ] = DuGR.Group.VISIBLE;
+propItems[ i18n._("Attribute: Has Audio") ] = DuGR.Group.SOUND;
+propItems[ i18n._("Attribute: Solo") ] = DuGR.Group.SOLO;
+propItems[ i18n._("Attribute: Locked") ] = DuGR.Group.LOCKED;
+propItems[ i18n._("Attribute: Shy") ] = DuGR.Group.SHY;
+propItems[ i18n._("Attribute: Effects") ] = DuGR.Group.EFFECTS;
+propItems[ i18n._("Attribute: Motion Blur") ] = DuGR.Group.MB;
+propItems[ i18n._("Attribute: 3D") ] = DuGR.Group.THREE_D;
+propItems[ i18n._("Attribute: Guide") ] = DuGR.Group.GUIDE;
+
+propItems[ i18n._("Animation: At current time") ] = DuGR.Group.AT_TIME;
+propItems[ i18n._("Animation: In preview range") ] = DuGR.Group.IN_TIME_RANGE;
+propItems[ i18n._("Animation: Has keyframes") ] = DuGR.Group.HAS_KEYFRAMES;
+propItems[ i18n._("Animation: Has expressions") ] = DuGR.Group.HAS_EXPRESSIONS;
+
+propItems[ i18n._("Matte & Blending: Has mask") ] = DuGR.Group.HAS_MASK;
+propItems[ i18n._("Matte & Blending: Has track matte") ] = DuGR.Group.HAS_MATTE;
+propItems[ i18n._("Matte & Blending: Is track matte") ] = DuGR.Group.IS_MATTE;
+propItems[ i18n._("Matte & Blending: Preserve transparency") ] = DuGR.Group.PRESERVE_TRANSPARENCY;
+propItems[ i18n._("Matte & Blending: Normal blending mode") ] = DuGR.Group.NORMAL_BLENDING;
+propItems[ i18n._("Matte & Blending: Other blending mode") ] = DuGR.Group.OTHER_BLENDING;
+
+propItems[ i18n._("Layer Styles: All") ] = DuGR.Group.LAYER_STYLES;
+propItems[ i18n._("Layer Styles: Drop Shadow") ] = DuGR.Group.STYLE_DROP_SHADOW;
+propItems[ i18n._("Layer Styles: Inner Shadow") ] = DuGR.Group.STYLE_INNER_SHADOW;
+propItems[ i18n._("Layer Styles: Outer Glow") ] = DuGR.Group.STYLE_OUTER_GLOW;
+propItems[ i18n._("Layer Styles: Inner Glow") ] = DuGR.Group.STYLE_INNER_GLOW;
+propItems[ i18n._("Layer Styles: Bevel and Emboss") ] = DuGR.Group.STYLE_BEVEL;
+propItems[ i18n._("Layer Styles: Satin") ] = DuGR.Group.STYLE_SATIN;
+propItems[ i18n._("Layer Styles: Color Overlay") ] = DuGR.Group.STYLE_COLOR;
+propItems[ i18n._("Layer Styles: Gradient Overlay") ] = DuGR.Group.STYLE_GRADIENT;
+propItems[ i18n._("Layer Styles: Stroke") ] = DuGR.Group.STYLE_STROKE;
+
+propList.resetItems = function (filter) {
+    filter = def(filter , propList.currentFilter);
+    propList.currentFilter = filter;
+
+    // Keep selection
+    var currentSelection = saveListSelection(propList);
+
+    propList.removeAll();
+    var text;
+    for (text in propItems) {
+        if (!propItems.hasOwnProperty(text)) continue;
+        if (filter == "" || text.indexOf(filter) >= 0) {
+            propList.add('item',text).groupName = propItems[text];
+        }
+    }
+
+    // Reselect
+    restoreListSelection(propList, currentSelection);
+}
+propList.currentFilter = "";
+propList.currentSearch = "";
+
+propList.searchItems = function (search) {
+    search = def(search , "");
+    if (search == propList.currentSearch) return;
+    propList.currentSearch = search;
+
+    if (search == "") {
+        propList.resetItems();
+        return;
+    }
+
+    // Keep selection
+    var currentSelection = saveListSelection(propList);
+
+    for (var i = propList.items.length - 1; i >= 0; i--) {
+        if ( propList.items[i].text.indexOf(search) < 0 ) {
+            propList.remove(i);
+        }
+    }
+
+    // Reselect
+    restoreListSelection(propList, currentSelection);
+}
+
+propList.onChange = refreshIsolation;
+propList.resetItems();    DuScriptUI.showUI(tab);
+}
 
 groupTab.build = function (tab)
 {
+    groupTab.built = true;
 // ==================== |------------| ====================
 // ==================== | groupPanel | ====================
 // ==================== |------------| ====================
@@ -31382,41 +31872,35 @@ nameEditor.tieTo( addGroupButton );
 nameEditor.tieTo( editGroupButton );
 
 // Init
-refreshPanel();}
+refreshPanel();    DuScriptUI.showUI(tab);
+}
 
-mainTabs.onChange = function()
+propSelector.onChange = function()
 {
-    DuESF.scriptSettings.set("currentTab", mainTabs.index);
+    var i = propSelector.index
+    DuESF.scriptSettings.set("currentTab", i);
     DuESF.scriptSettings.save();
+    if (i == 0 && !groupTab.built) groupTab.build(groupTab);
+    if (i > 0 && !propTab.built) propTab.build(propTab);
+
+    groupTab.visible = i == 0;
+    propTab.visible = i != 0;
+
+    if (i > 0 && propList) propList.resetItems( propSelector.currentData );
 }
-
-if (uiMode < 1)
-{
-    var spacer = mainTabs.buttonsGroup.add('group');
-    spacer.spacing = 0;
-    spacer.margins = 0;
-    spacer.minimumSize = [5,-1];
-}
-
-var invertButton = DuScriptUI.checkBox(
-    mainTabs.buttonsGroup,
-    i18n._("Invert"),
-    w16_invert,
-    i18n._("Invert the group/property selection"),
-    i18n._("Inverted"),
-    w16_inverted,
-    'column'
-)
-
-invertButton.alignment = ['left','fill'];
-invertButton.onClick = refreshIsolation;
 
 // =========== GENERAL METHODS ========
+
+function search( text )
+{
+    pinButton.setChecked(false);
+    refreshPanel();
+}
 
 function getGroups()
 {
     var groups = [];
-    if (mainTabs.index == 0 && propList.selection)
+    if (propSelector.index > 0 && propList.selection)
     {
         for (var i = 0, n = propList.selection.length; i < n ; i++)
         {
@@ -31424,7 +31908,7 @@ function getGroups()
             groups.push( propList.selection[i].groupName );
         }
     }
-    else if (mainTabs.index == 1 && groupList.selection)
+    else if (propSelector.index == 0 && groupList.selection)
     {
         for (var i = 0, n = groupList.selection.length; i < n ; i++)
         {
@@ -31448,25 +31932,52 @@ function refreshPanel()
     {
         var groups = DuGR.listGroups();
 
+        // Keep selection
+        var currentSelection = saveListSelection(groupList);
+
         // Remove groups not in the list
         for (var i = groupList.items.length -1 ; i > 3; i-- )
         {
             var g = groupList.items[i].groupName;
             if (groups.indexOf(g) < 0) groupList.remove(i);
-            else groups.removeAll(g);
         }
-       
-        // Add new groups
-        groups.do(function( group )
-        {
-            if (group != DuGR.Group.IGNORED) groupList.add('item', group).groupName = group;
-        } );
+
+        // Insert new ones
+        groups.do(function (group) {
+            var index = groups.current + 4;
+            if (index >= groupList.items.length) {
+                groupList.add('item', group).groupName = group;
+                return;
+            }
+
+            if (groupList.items[index].text != group) {
+                groupList.add('item', group, index).groupName = group;
+            }
+        });
+
+        // Reselect
+        restoreListSelection(groupList, currentSelection);
     }
+
+    if (propList) propList.searchItems( searchEdit.text );
 }
 
 function refreshIsolation()
 {
+    var autoSelect = DuESF.scriptSettings.get("autoSelect", true);
+    var sticky = pinButton.checked && DuGR.isolationMode() != DuGR.IsolationMode.NONE;
+    if ( autoSelect && !sticky ) {
+        DuAE.beginUndoGroup( i18n._("Select layers") );
+        DuAE.toggleLayerControls();
+
+        DuGR.select( getGroups(), invertButton.checked, undefined, andOrButton.checked );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
+
     if (!pinButton.checked) return;
+
     if (isolateButton.checked) isolate();
     else if (isolateTLButton.checked) isolateTL();
     else if (isolateCompButton.checked) isolateComp();
@@ -31564,7 +32075,7 @@ DuScriptUI.addEvent( refreshPanel, 1000);
 // ========== INIT ==============
 
 var currentTab = DuESF.scriptSettings.get("currentTab", 0);
-mainTabs.setCurrentIndex( currentTab );
+propSelector.setCurrentIndex( currentTab );
 
 refreshPanel();
     DuScriptUI.showUI(ui);

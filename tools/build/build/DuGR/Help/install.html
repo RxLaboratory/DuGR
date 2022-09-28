@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="index.html">v4.0.5</a>
+                        <a href="index.html">v5.0.0</a>
                     </li>
                 
                 
@@ -95,8 +95,41 @@
                 
                 
                 
-                    <li >
-                        <a href="dugr_api.html">Scripting API</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scripting API <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="api/index.html">Introduction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/getting-started.html">Getting started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/first-script.html">Your First Script</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/shortcuts.html">Keyboard shortcuts</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://dugr.rxlab.io">API reference</a>
+</li>
+
+                        
+                        </ul>
                     </li>
                 
                 
@@ -214,7 +247,7 @@
         
         
             <li >
-                <a href="index.html">v4.0.5</a>
+                <a href="index.html">v5.0.0</a>
             </li>
         
         
@@ -237,8 +270,31 @@
         
         
         
-            <li >
-                <a href="dugr_api.html">Scripting API</a>
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">Scripting API</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="api/index.html">Introduction</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/getting-started.html">Getting started</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/first-script.html">Your First Script</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/shortcuts.html">Keyboard shortcuts</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://dugr.rxlab.io">API reference</a></li>
+                        
+                    
+                </ul>
             </li>
         
         
@@ -304,18 +360,16 @@
     </div>
     <div class="bs-sidebar hidden-print affix well" role="complementary">
         <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#how-to-install-dugr">How to install DuGR</a></li>
+            <li class="first-level active"><a href="#install-dugr">Install DuGR</a></li>
                 <li class="second-level"><a href="#supported-versions-of-after-effects">Supported versions of After Effects</a></li>
                     
                 <li class="second-level"><a href="#installation">Installation</a></li>
                     
                     <li class="third-level"><a href="#1-download-dugr-from-the-official-website">1 - Download DuGR from the official website.</a></li>
                     <li class="third-level"><a href="#2-unzip-the-files-you-have-downloaded">2 - Unzip the files you have downloaded.</a></li>
-                    <li class="third-level"><a href="#3-there-are-several-ways-to-easily-install-dugr">3 - There are several ways to easily install DuGR:</a></li>
-                    <li class="third-level"><a href="#4-restart-after-effects-and-dugr-will-be-available-in-the-window-menu">4 - Restart After Effects and DuGR will be available in the "Window" menu.</a></li>
-                <li class="second-level"><a href="#without-installation">Without installation</a></li>
-                    
-                <li class="second-level"><a href="#first-run">First Run</a></li>
+                    <li class="third-level"><a href="#3-install">3 - Install</a></li>
+                    <li class="third-level"><a href="#4-first-run">4 - First Run</a></li>
+                <li class="second-level"><a href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
                     
         </ul>
     </div>
@@ -323,57 +377,100 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2021;updated:2021/08/11" /></p>
-<h1 id="how-to-install-dugr">How to install DuGR</h1>
+<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2021-2022;updated:2022/09/28" /></p>
+<h1 id="install-dugr">Install DuGR</h1>
 <h2 id="supported-versions-of-after-effects">Supported versions of After Effects</h2>
-<p>DuGR is always developped and tested using <strong>the two latest versions of <em>After Effects</em></strong> and also <strong>the current <em>Beta</em> version</strong> of <em>After Effects</em> and should work smoothly on these versions.</p>
-<p>It is also known to be working decently on all previous versions back to <em>After Effects CC</em> from 2013.</p>
+<p><strong>DuGR is always tested and works with the most recent release and beta versions of After Effects</strong>, on all platforms compatible with After Effects.</p>
+<p>It should also work with previous versions back to <em>After Effects CC (12.x)</em>.</p>
+<p>It does not work on <em>After Effects CS6 (11.x)</em> and earlier versions.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="1-download-dugr-from-the-official-website"><strong>1 - Download</strong> DuGR from the <a href="https://rxlaboratory.org/en/tools/dugr/">official website</a>.</h3>
+<h3 id="2-unzip-the-files-you-have-downloaded"><strong>2 - Unzip</strong> the files you have downloaded.</h3>
+<p>You&rsquo;ll find several folders and files.</p>
+<ul>
+<li><em>README.txt</em> contains a lot of information to help you get started with DuGR.</li>
+<li>The <em>Help</em> folder contains these help pages. Double click on the file <em>index.html</em> to open it.</li>
+<li>The <em>Tools</em> folder may contain some useful tools.</li>
+<li>The <em>ScriptUI Panels</em> folder contains the actual <em>DuGR</em> script you need to install.  </li>
+<li>The <em>Scriptlets</em> folder contains small scripts you can assign to <a href="#keyboard-shortcuts">keyboard shortcuts</a> for example.</li>
+</ul>
+<h3 id="3-install"><strong>3 - Install</strong></h3>
+<p>You can choose one of these three options to use DuGR:</p>
+<ul>
+<li>Manually <strong>copy the files</strong> to the main ScriptUI Panels.
+  For this to work, you need to have administrator rights on the computer. DuGR will be available to all users.</li>
+<li><strong>Install from within After Effects</strong>.
+  You don&rsquo;t need administrator rights this  way, but DuGR will be available only for the current user.</li>
+<li>You can also <strong>use DuGR without installation</strong>.
+  DuGR will not be dockable into the After Effects workspace, it will be a floating panel.</li>
+</ul>
+<h4 id="copy-the-files">Copy the files</h4>
+<ul>
+<li><strong>Copy</strong> the files of your choice from the <em>ScriptUI Panels</em> folder to:<ul>
+<li>Windows: <code>C:/Program Files/Adobe/Adobe After Effects XXXX/Support Files/Scripts/ScriptUI Panels/</code>  </li>
+<li>Mac OS: <code>/Applications/Adobe After Effects XXXX/Scripts/ScriptUI Panels</code></li>
+</ul>
+</li>
+</ul>
+<p>You&rsquo;ll need administrator privileges to install DuGR this way. If you don&rsquo;t have them, see the other ways below.</p>
+<ul>
+<li><strong>Restart</strong> After Effects</li>
+</ul>
+<h4 id="install-from-within-after-effects">Install from within After Effects</h4>
+<ul>
+<li><strong>Open</strong> After Effects</li>
+<li>Use the <code>File &gt; Scritps &gt; Install ScriptUI Panel...</code> <strong>menu</strong> to select and install the panels of your choice from the <em>ScriptUI Panels</em> folder.</li>
+<li><strong>Restart</strong> After Effects</li>
+</ul>
+<h4 id="use-without-installing">Use without installing</h4>
+<p>You&rsquo;ll always be able to run DuGR without even installing it.</p>
+<ul>
+<li><strong>Open</strong> After Effects</li>
+<li>Use the <code>File&gt; Scritps &gt; Run script file...</code> <strong>menu</strong> to select and run the panel of your choice from the <em>ScriptUI Panels</em> folder.</li>
+</ul>
+<h3 id="4-first-run"><strong>4 - First Run</strong></h3>
+<h4 id="file-and-network-access">File and network access</h4>
+<p>On first run, DuGR may first ask for file and network access, this is mandatory to make it work<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><img alt="" src="img/dugr/install/file_network_access.png" /></p>
+<p>If you see this window, click on <em>Open preferences</em>. This opens After Effects scripting preferences.</p>
+<p><img alt="" src="img/ae/file_network_access.png" /></p>
+<p>Check the box called <em>Allow Scripts to Write Files and Access Network</em>, then click the <em>OK</em> button.</p>
+<h4 id="select-language">Select language</h4>
+<p>By default, the language is set to <a href="https://en.wikipedia.org/wiki/Esperanto"><em>Esperanto</em></a><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
+<p><img alt="" src="img/dugr/install/language.png" /></p>
+<p>Select the language of your choice and click the <em>Apply</em> button.</p>
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>DuGR comes with a few <em>scriptlets</em> which can be used as keyboard shortcuts. These scriptlets are in the <em>Scriptlets</em> folder in the zip you&rsquo;ve downloaded.</p>
+<p>To test one of these scriptlets, use the <code>File &gt; Scritps &gt; Run script file...</code> menu entry in After Effects.</p>
+<ul>
+<li>
+<p>To permanently install any of these scriptlets and be able to assign them keyboard shortcuts, use the <code>File &gt; Scritps &gt; Install script file...</code> menu entry. Be careful, you&rsquo;ll need to install the <code>DuGR_api.jsxinc</code> file along with them, and to be able to select it you may have to adjust the file type filter of the file selection dialog.</p>
+</li>
+<li>
+<p>Then, restart After Effects</p>
+</li>
+<li>
+<p>You can now assign keyboard shortcuts to these scripts, using the <code>Edit &gt; Keyboard shortcuts...</code> menu entry.</p>
+</li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All versions before and including <em>CS6</em> (2012 and before) will have issues running DuGR, and it will probably just not work at all, sorry! It’s time to update…</p>
+<p>If the scriplets don&rsquo;t work correctly after installation, make sure you have also installed the <code>DuGR_api.jsxinc</code> file.</p>
 </div>
-<h2 id="installation">Installation</h2>
-<h3 id="1-download-dugr-from-the-official-website"><strong>1 -</strong> Download <em>DuGR</em> from the <a href="http://rxlaboratory.org/tools/dugr"><strong>official website</strong></a>.</h3>
-<h3 id="2-unzip-the-files-you-have-downloaded"><strong>2 -</strong> <strong>Unzip</strong> the files you have downloaded.</h3>
-<p>You’ll find several folders and files.</p>
-<ul>
-<li>The <code>Help</code> folder contains these help pages. Double click on the file <code>index.html</code> to open it.</li>
-<li>The <code>ScriptUI Panels</code> folder contains the actual DuGR script you need to install.</li>
-</ul>
-<h3 id="3-there-are-several-ways-to-easily-install-dugr"><strong>3 -</strong> There are several ways to easily <strong>install</strong> <em>DuGR</em>:</h3>
-<h4 id="a-copy-the-files">a. Copy the files</h4>
-<p>Copy all the files from the <em>ScriptUI Panels</em> folder to:</p>
-<ul>
-<li>Windows: <code>C:/Program Files/Adobe/Adobe After Effects CC/Support Files/Scripts/ScriptUI Panels/</code>  </li>
-<li>Mac OS: <code>/Applications/Adobe After Effects CC/Scripts/ScriptUI Panels</code></li>
-</ul>
-<p>You may need administrator privileges to install Duik this way. If you don&rsquo;t have them, see the other ways below.</p>
-<h4 id="b-using-the-menu-for-after-effects-cc2019-and-more-recent">b. Using the menu for <strong><em>After Effects CC2019</em></strong> and more recent</h4>
-<ul>
-<li>Open After Effects  </li>
-<li>Use the <code>File/Scritps/Install ScriptUI Panel...</code> menu to select and install <code>DuGR.jsx</code>.  </li>
-</ul>
-<h4 id="c-shortcut-for-after-effects-cc2018-and-more-recent">c. Shortcut for <strong><em>After Effects CC2018</em></strong> and more recent</h4>
-<ul>
-<li>Open <em>After Effects</em>  </li>
-<li><em>Windows</em>: Holding the <code>Alt</code> and <code>Shift</code> keys, drag and drop the file <code>DuGR.jsx</code> onto the Project panel.  </li>
-<li><em>Mac OS</em>: Holding the <code>Options</code> and <code>Shift</code> keys, drag and drop the file <code>DuGR.jsx</code> onto the Project panel.  </li>
-</ul>
-<h3 id="4-restart-after-effects-and-dugr-will-be-available-in-the-window-menu"><strong>4 - Restart</strong> <em>After Effects</em> and <em>DuGR</em> will be available in the &ldquo;Window&rdquo; menu.</h3>
-<h2 id="without-installation">Without installation</h2>
-<p>You&rsquo;ll always be able to run DuGR without even installing it. This is a good way to use it if you do not have administrator privileges on an older version of <em>After Effects</em>.</p>
-<ul>
-<li>Unzip all the files in any folder.  </li>
-<li>Launch <em>After Effects</em>, and start <em>DuGR</em> via the <code>File/Scripts/Run script file...</code> menu.</li>
-</ul>
-<h2 id="first-run">First Run</h2>
-<p>On first run, DuGR may first ask for file and network access, this is mandatory to make it work (DuGR needs to write its icon files, effects, settings, etc.).</p>
-<p><img alt="" src="img/file_network_access.png" /></p>
-<p>Click on <em>Open Preferences</em> to go to the scripting preferences of <em>After Effects</em> and check the &ldquo;Authorize file and network access&rdquo; checkbox.</p>
-<p>Then, <em>DuGR</em> will ask for the language you wish to use; it is set on <a href="https://en.wikipedia.org/wiki/Esperanto" target="_blank"><em>Esperanto</em></a> by default, but many other languages are available.</p>
-<p><img alt="" src="img/language.png" /></p>
-<p>Click on &ldquo;Apliki&rdquo; to apply the language you&rsquo;ve chosen.</p>
-<p>It can still be changed later in the <a href="settings.html">settings</a> panel.</p></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>DuGR needs this option in order to be able to:<br />
+• Write the images and icons it needs to the disk.<br />
+• Access the network to check for updates. DuGR only accesses <code>http://api.rxlab.io</code> and does not share any personal data.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><em>Esperanto</em> is the world&rsquo;s most widely spoken constructed international auxiliary language. Created by Warsaw-based ophthalmologist L. L. Zamenhof in 1887, it was intended to be a universal second language for international communication, or &ldquo;the international language&rdquo; (la lingvo internacia).<br />
+Read more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Esperanto">en.wikipedia.org/wiki/Esperanto</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         
             <div class="nav-footer">
             <ul>

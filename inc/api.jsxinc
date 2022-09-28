@@ -855,7 +855,7 @@ DuGR.isolationMode = function( comp )
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to isolate.
  * @param {DuGR.WarningFrameMode} [frameMode=DuGR.WarningFrameMode.BELOW] How the warning frame must be shown
  * @param {DuGR.IsolationMode} [isolationMode=DuGR.IsolationMode.BOTH] What needs to be hidden.
- * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.WIREFRAME] How to hide the layers
+ * @param {DuGR.CompIsolationMode} [compIsolationMode=DuGR.CompIsolationMode.HIDE] How to hide the layers
  * @param {Boolean} [lockHiddenLayers=true] whether to lock the layers being hidden.
  */
 DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIsolationMode, lockHiddenLayers )
@@ -866,7 +866,7 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
 
     frameMode = def(frameMode, DuGR.WarningFrameMode.BELOW);
     isolationMode = def(isolationMode, DuGR.IsolationMode.BOTH);
-    compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.WIREFRAME);
+    compIsolationMode = def(compIsolationMode, DuGR.CompIsolationMode.HIDE);
     lockHiddenLayers = def(lockHiddenLayers, true);
     invert = def(invert, false);
 

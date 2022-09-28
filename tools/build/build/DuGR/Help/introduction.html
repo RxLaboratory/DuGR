@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="index.html">v4.0.5</a>
+                        <a href="index.html">v5.0.0</a>
                     </li>
                 
                 
@@ -95,8 +95,41 @@
                 
                 
                 
-                    <li >
-                        <a href="dugr_api.html">Scripting API</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scripting API <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="api/index.html">Introduction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/getting-started.html">Getting started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/first-script.html">Your First Script</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="api/shortcuts.html">Keyboard shortcuts</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://dugr.rxlab.io">API reference</a>
+</li>
+
+                        
+                        </ul>
                     </li>
                 
                 
@@ -214,7 +247,7 @@
         
         
             <li >
-                <a href="index.html">v4.0.5</a>
+                <a href="index.html">v5.0.0</a>
             </li>
         
         
@@ -237,8 +270,31 @@
         
         
         
-            <li >
-                <a href="dugr_api.html">Scripting API</a>
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">Scripting API</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="api/index.html">Introduction</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/getting-started.html">Getting started</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/first-script.html">Your First Script</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="api/shortcuts.html">Keyboard shortcuts</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://dugr.rxlab.io">API reference</a></li>
+                        
+                    
+                </ul>
             </li>
         
         
@@ -305,14 +361,14 @@
     <div class="bs-sidebar hidden-print affix well" role="complementary">
         <ul class="nav bs-sidenav">
             <li class="first-level active"><a href="#dugr-help">DuGR Help</a></li>
-                <li class="second-level"><a href="#tabs-and-group-lists">Tabs and group lists</a></li>
+                <li class="second-level"><a href="#group-lists">Group lists</a></li>
                     
                 <li class="second-level"><a href="#isolation">Isolation</a></li>
                     
                     <li class="third-level"><a href="#interactive-sticky-mode">Interactive / Sticky mode</a></li>
                 <li class="second-level"><a href="#layer-properties">Layer properties</a></li>
                     
-                <li class="second-level"><a href="#managing-groups">Managing groups</a></li>
+                <li class="second-level"><a href="#managing-custom-groups">Managing custom groups</a></li>
                     
                     <li class="third-level"><a href="#layer-buttons">Layer buttons</a></li>
                     <li class="third-level"><a href="#group-buttons">Group buttons</a></li>
@@ -323,19 +379,23 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2021;updated:2021/07/30" /></p>
+<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2021-2022;updated:2022/09/28" /></p>
 <h1 id="dugr-help">DuGR Help</h1>
 <p><img alt="" src="img/group_timeline.png" /></p>
 <p>Dugr lets you to tag the layers so they belong to groups. Those groups are listed in the panel, and it is easy to isolate them in the composition, change their attributes, etc.</p>
-<h2 id="tabs-and-group-lists">Tabs and group lists</h2>
-<p>There are two tabs on the panel:</p>
+<h2 id="group-lists">Group lists</h2>
+<p>With the selector just above the list, you can select what is shown in the list.</p>
 <ul>
-<li><img alt="" src="img/icons/prop_group.svg" style="width:20px;" /> <strong><em>Properties</em></strong> allows you to select the layers by type, property or hierarchy.</li>
+<li><img alt="" src="img/icons/prop_group.svg" style="width:20px;" /> <strong><em>Properties</em></strong> allows you to select the layers by type, property or hierarchy or other After Effects attributes.</li>
+</ul>
+<p><img alt="" src="img/properties.png" /></p>
+<ul>
 <li><img alt="" src="img/icons/layer_group.svg" style="width:20px;" /> <strong><em>Groups</em></strong> contains the list of tags/custom groups you&rsquo;ve added.</li>
 </ul>
-<p><img alt="" src="img/tabs.png" /></p>
-<p>You can select the group of layers you need to manipulate from these two lists.</p>
-<p>The <img alt="" src="img/icons/invert.svg" style="width:20px;" /> <strong><em>Invert</em></strong> button can be used to manipulate layers <strong>not</strong> contained in the selected groups.</p>
+<p><img alt="" src="img/groups.png" /></p>
+<p>You can select the group of layers you need to manipulate from this list.</p>
+<p>The <img alt="" src="img/icons/invert.svg" style="width:20px;" /> <strong><em>Invert</em></strong> button on the right-hand side can be used to manipulate layers <strong>not</strong> contained in the selected groups.</p>
+<p>The <img alt="" src="img/icons/and.svg" style="width:20px;" /> <strong><em>And</em></strong> <img alt="" src="img/icons/or.svg" style="width:20px;" /> <strong><em>Or</em></strong> button on the right-hand side is used to choose how multiple group selection is made, either using <strong>all</strong> groups (<em>and</em>) or <strong>any</strong> group (<em>or</em>).</p>
 <h2 id="isolation">Isolation</h2>
 <p>The top line buttons are toggles to isolate the layers belonging to the selected groups.</p>
 <ul>
@@ -345,6 +405,10 @@
 <li><img alt="" src="img/icons/pin.svg" style="width:20px;" /> The <em>pin</em> button toggles the <strong><em>Interactive</em></strong> or <strong><em>Sticky</em></strong> mode. When checked, the isolation is updated as soon as you change the group selection. When disabled, you have to manually change the isolation mode after changing group selection. With heavy compositions containing a lot of layers, keeping it disabled improves the performance.</li>
 <li><img alt="" src="img/icons/close.svg" style="width:20px;" /> The <em>exit isolation</em> button can be used to de-activate the isolation when <em>not</em> in <em>interactive / sticky</em> mode.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can assign keyboard shortcuts to these functions, using the provided <a href="install.html#keyboard-shortcuts"><em>Scriptlets</em></a>!</p>
+</div>
 <h3 id="interactive-sticky-mode">Interactive / Sticky mode</h3>
 <p>There are two ways to use <em>DuGR</em> to isolate layers:</p>
 <ul>
@@ -354,7 +418,7 @@
 <h2 id="layer-properties">Layer properties</h2>
 <p>The two middle lines of small icons can be used to quickly change the usual properties of the layers contained in the selected groups.</p>
 <p>The extra <img alt="" src="img/icons/select.svg" style="width:12px;" /> <em>arrow</em> icon selects the layers contained in the selected groups.</p>
-<h2 id="managing-groups">Managing groups</h2>
+<h2 id="managing-custom-groups">Managing custom groups</h2>
 <p>!<img alt="" src="img/groups.png" /></p>
 <p>On the <strong><em>custom groups tab</em></strong>, a few extra buttons allow you to create, edit and remove groups.</p>
 <h3 id="layer-buttons">Layer buttons</h3>

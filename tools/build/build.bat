@@ -16,6 +16,7 @@ md "%build_path%"
 md "%build_path%\DuGR"
 md "%build_path%\DuGR\ScriptUI Panels"
 md "%build_path%\DuGR\Help"
+md "%build_path%\DuGR\Tools"
 md "%build_path%\DuGR_API"
 
 :: Build API
@@ -25,14 +26,20 @@ DuBuilder "%repoPath%\inc\api_all.jsxinc" --no-banner "%build_path%\DuGR_API\DuA
 :: Build DuGR
 DuBuilder "%repoPath%\DuGR.jsx" --no-banner "%build_path%\DuGR\ScriptUI Panels\DuGR.jsx"
 
+:: API for scriptlets
+xcopy "%build_path%\DuGR_API\DuAEF_DuGR_api.jsxinc" "%repoPath%\scriptlets\DuGR_api.jsxinc" /y
+
+:: Copy scriptlets
+xcopy "%repoPath%\scriptlets" "%build_path%\DuGR\Scriptlets\" /E /y
+
 :: Build API reference
 :: clean first
 rd /s /q "%repoPath%\docs"
 md "%repoPath%\docs"
 cmd /c jsdoc -c jsdoc_conf.json
 echo " " > "%repoPath%\docs\jsdoc.css"
-xcopy "%repoPath%\tools\build\jsdoc.css" "%repoPath%\docs\jsdoc.css"
-xcopy "%repoPath%\docs\DuGR.html" "%repoPath%\docs\index.html"
+xcopy "%repoPath%\tools\build\jsdoc.css" "%repoPath%\docs\jsdoc.css" /y
+xcopy "%repoPath%\docs\DuGR.html" "%repoPath%\docs\index.html" /y
 
 :: Build Guide
 cd "%repoPath%\DuGR_Docs\src"
@@ -45,11 +52,13 @@ echo " " > "%build_path%\DuGR\LICENSE.txt"
 echo " " > "%build_path%\DuGR\README.txt"
 echo " " > "%build_path%\DuGR_API\LICENSE.md"
 echo " " > "%build_path%\DuGR_API\LICENSE.txt"
+echo " " > "%build_path%\DuGR\Tools\DuSI.jsx"
 xcopy /Y "%repoPath%\tools\build\items\LICENSE.md" "%build_path%\DuGR\LICENSE.md"
 xcopy /Y "%repoPath%\tools\build\items\LICENSE.txt" "%build_path%\DuGR\LICENSE.txt"
 xcopy /Y "%repoPath%\tools\build\items\README.txt" "%build_path%\DuGR\README.txt"
 xcopy /Y "%repoPath%\tools\build\items\LICENSE.md" "%build_path%\DuGR_API\LICENSE.md"
 xcopy /Y "%repoPath%\tools\build\items\LICENSE.txt" "%build_path%\DuGR_API\LICENSE.txt"
+xcopy /Y "%repoPath%\tools\build\items\DuSI.jsx" "%build_path%\DuGR\Tools\DuSI.jsx"
 
 :: Copy the API doc
 xcopy /S /I /Y "%repoPath%\docs" "%build_path%\DuGR_API\docs"
