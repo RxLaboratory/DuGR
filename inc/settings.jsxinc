@@ -20,7 +20,7 @@ var lockedLayersButton = DuScriptUI.checkBox(
 );
 
 // Warning frame
-var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, "Type of warning frame to use");
+var warningFrameSelector = DuScriptUI.selector(ui.settingsGroup, i18n._("Type of warning frame to use"));
 warningFrameSelector.addButton(
     i18n._("Warning frame: None"),
     w16_no_frame,
