@@ -138,7 +138,47 @@ DuGR.Group = {
     /**
      * Layer style: Stroke is enabled.
      */
-    LAYER_STROKE: 'DuGR.style.stroke',
+    STYLE_STROKE: 'DuGR.style.stroke',
+    /**
+     * Animation: at current time.
+     */
+    AT_TIME: 'DuGR.animation.atTime',
+    /**
+     * Animation: in the current time range.
+     */
+    IN_TIME_RANGE: 'DuGR.animation.inTimeRange',
+    /**
+     * Animation: has keyframes.
+     */
+    HAS_KEYFRAMES: 'DuGR.animation.hasKeyframes',
+    /**
+     * Animation: has expressions.
+     */
+    HAS_EXPRESSIONS: 'DuGR.animation.hasExpressions',
+    /**
+     * Matte: has at least one mask.
+     */
+    HAS_MASK: 'DuGR.matte.hasMask',
+    /**
+     * Matte: has track matte.
+     */
+    HAS_MATTE: 'DuGR.matte.hasMatte',
+    /**
+     * Matte: is used as a track matte.
+     */
+    IS_MATTE: 'DuGR.matte.isMatte',
+    /**
+     * Matte: Preserve transparency is enabled.
+     */
+    PRESERVE_TRANSPARENCY: 'DuGR.matte.preserveTransparency',
+    /**
+     * Matte: The blending mode is normal.
+     */
+    NORMAL_BLENDING: 'DuGR.matte.normalBlending',
+    /**
+     * Matte: The blending mode is not normal.
+     */
+    OTHER_BLENDING: 'DuGR.matte.otherBlending',
 }
 
 /**
@@ -331,7 +371,29 @@ DuGR.inGroups = function ( layer, groups, tag )
 
         if (group == DuGR.Group.STYLE_GRADIENT && layerStyles.property("gradientFill/enabled").enabled) return true;
 
-        if (group == DuGR.Group.LAYER_STROKE && layerStyles.property("frameFX/enabled").enabled) return true;
+        if (group == DuGR.Group.STYLE_STROKE && layerStyles.property("frameFX/enabled").enabled) return true;
+
+        var comp = layer.containingComp;
+        if (group == DuGR.Group.AT_TIME && layer.inPoint <= comp.time && layer.outPoint >= comp.time) return true;
+
+        var workAreaEnd = comp.workAreaStart + comp.workAreaDuration;
+        if (group == DuGR.Group.IN_TIME_RANGE && layer.inPoint < workAreaEnd && layer.outPoint > comp.workAreaStart) return true;
+
+        if (group == DuGR.Group.HAS_KEYFRAMES && DuAELayer.hasKeys(layer)) return true;
+
+        if (group == DuGR.Group.HAS_EXPRESSIONS && DuAELayer.hasExpressions(layer)) return true;
+
+        if (group == DuGR.Group.HAS_MASK && DuAELayer.hasMask(layer)) return true;
+
+        if (group == DuGR.Group.HAS_MATTE && layer.hasTrackMatte) return true;
+
+        if (group == DuGR.Group.IS_MATTE && layer.isTrackMatte) return true;
+
+        if (group == DuGR.Group.PRESERVE_TRANSPARENCY && layer.preserveTransparency) return true;
+
+        if (group == DuGR.Group.NORMAL_BLENDING && layer.blendingMode == BlendingMode.NORMAL) return true;
+
+        if (group == DuGR.Group.OTHER_BLENDING && layer.blendingMode != BlendingMode.NORMAL) return true;
 
         // Get the custom groups
         var layerGroups = DuAETag.getGroups( layer );

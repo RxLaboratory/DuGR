@@ -235,7 +235,6 @@ var selectLayerAEButton = DuScriptUI.button(
     select,
     i18n._("Select layers")
 )
-if (DuESF.scriptSettings.get("autoSelect", true)) selectLayerAEButton.visible = false;
 
 enableAEButton.onClick = function()
 {
