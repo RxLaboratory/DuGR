@@ -18,6 +18,12 @@
 #include "icons/w16_lock_hidden.png.jsxinc"
 #include "icons/w16_unlock_hidden.png.jsxinc"
 #include "icons/w16_select.png.jsxinc"
+#include "icons/w16_hierarchy.png.jsxinc"
+#include "icons/w16_layer_type.png.jsxinc"
+#include "icons/w16_style.png.jsxinc"
+#include "icons/w16_anim.png.jsxinc"
+#include "icons/w16_attribute.png.jsxinc"
+#include "icons/w16_blending.png.jsxinc"
 
 #include "icons/w12_add_layer.png.jsxinc"
 #include "icons/w12_add.png.jsxinc"

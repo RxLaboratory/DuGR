@@ -395,58 +395,140 @@ selectLayerAEButton.onClick = function()
 
 // ========= PANELS ==========
 
-//DuScriptUI.separator( ui.mainGroup );
-var mainTabs = DuScriptUI.tabPanel( ui.mainGroup, 'column' );
-mainTabs.buttonsGroup.alignment = ['center', 'top'];
-var propTab = mainTabs.addTab( i18n._("Properties"), w16_prop_group, i18n._("Properties") );
-var groupTab = mainTabs.addTab( i18n._("Groups"), w16_layer_group, i18n._("Groups") );
+// Selector
+var selectorGroup = DuScriptUI.group(ui.mainGroup, 'row');
+
+var propSelector = DuScriptUI.selector(selectorGroup);
+propSelector.addButton( i18n._("Custom Groups"),
+                    w16_layer_group,
+                    i18n._("Show custom layer groups"),
+                    ""
+                );
+propSelector.addButton( i18n._("All layer properties"),
+                    w16_prop_group,
+                    i18n._("Show all properties"),
+                    ""
+                );
+propSelector.addButton( i18n._("Hierarchy"),
+                    w16_hierarchy,
+                    i18n._("Show hierarchical (parenting) properties"),
+                    i18n._("Hierarchy")
+                );
+propSelector.addButton( i18n._("Layer types"),
+                    w16_layer_type,
+                    i18n._("Show layer types"),
+                    i18n._("Type")
+                );
+propSelector.addButton( i18n._("Layer attributes"),
+                    w16_attribute,
+                    i18n._("Show layer attributes"),
+                    i18n._("Attribute")
+                );
+propSelector.addButton( i18n._("Animation"),
+                    w16_anim,
+                    i18n._("Show animation properties"),
+                    i18n._("Animation")
+                );
+propSelector.addButton( i18n._("Matte & Blending"),
+                    w16_blending,
+                    i18n._("Show matte, blending, and alpha properties"),
+                    i18n._("Matte")
+                );
+propSelector.addButton( i18n._("Layer styles"),
+                    w16_style,
+                    i18n._("Show layer styles"),
+                    i18n._("Layer Styles")
+                );
+propSelector.setCurrentIndex(1);
+
+var invertButton = DuScriptUI.checkBox(
+    selectorGroup,
+    "",
+    //i18n._("Invert"),
+    w16_invert,
+    i18n._("Invert the group/property selection"),
+    //i18n._("Inverted"),
+    "",
+    w16_inverted,
+    //'column'
+)
+invertButton.alignment = ['right','fill'];
+invertButton.onClick = refreshIsolation;
+
+var searchGroup = DuScriptUI.group(ui.mainGroup, 'row');
+searchGroup.spacing = 3;
+searchGroup.alignment = ['fill', 'top'];
+
+var clearButton = DuScriptUI.button(
+    searchGroup,
+    '',
+    DuScriptUI.Icon.CLOSE,
+    i18n._("Remove all")
+);
+clearButton.alignment = ['left', 'fill'];
+clearButton.onClick = function() { searchEdit.setText(""); search(""); };
+
+var searchEdit = DuScriptUI.editText(
+    searchGroup,
+    '',
+    '',
+    '',
+    i18n._("Search...")
+);
+searchEdit.alignment = ['fill', 'fill'];
+searchEdit.onChange = function() { search(searchEdit.text) };
+
+var mainTabs = DuScriptUI.group( ui.mainGroup, 'stacked' );
+mainTabs.alignment = ['fill', 'fill'];
 
 var propList;
 var groupList;
 
+var propTab = DuScriptUI.group( mainTabs, 'column' );
+propTab.built = false;
+var groupTab = DuScriptUI.group( mainTabs, 'column');
+groupTab.built = false;
+
 propTab.build = function (tab)
 {
+    propTab.built = true;
     #include "propPanel.jsxinc"
+    DuScriptUI.showUI(tab);
 }
 
 groupTab.build = function (tab)
 {
+    groupTab.built = true;
     #include "groupPanel.jsxinc"
+    DuScriptUI.showUI(tab);
 }
 
-mainTabs.onChange = function()
+propSelector.onChange = function()
 {
-    DuESF.scriptSettings.set("currentTab", mainTabs.index);
+    var i = propSelector.index
+    DuESF.scriptSettings.set("currentTab", i);
     DuESF.scriptSettings.save();
+    if (i == 0 && !groupTab.built) groupTab.build(groupTab);
+    if (i > 0 && !propTab.built) propTab.build(propTab);
+
+    groupTab.visible = i == 0;
+    propTab.visible = i != 0;
+
+    if (i > 0 && propList) propList.resetItems( propSelector.currentData );
 }
-
-if (uiMode < 1)
-{
-    var spacer = mainTabs.buttonsGroup.add('group');
-    spacer.spacing = 0;
-    spacer.margins = 0;
-    spacer.minimumSize = [5,-1];
-}
-
-var invertButton = DuScriptUI.checkBox(
-    mainTabs.buttonsGroup,
-    i18n._("Invert"),
-    w16_invert,
-    i18n._("Invert the group/property selection"),
-    i18n._("Inverted"),
-    w16_inverted,
-    'column'
-)
-
-invertButton.alignment = ['left','fill'];
-invertButton.onClick = refreshIsolation;
 
 // =========== GENERAL METHODS ========
+
+function search( text )
+{
+    pinButton.setChecked(false);
+    refreshPanel();
+}
 
 function getGroups()
 {
     var groups = [];
-    if (mainTabs.index == 0 && propList.selection)
+    if (propSelector.index > 0 && propList.selection)
     {
         for (var i = 0, n = propList.selection.length; i < n ; i++)
         {
@@ -454,7 +536,7 @@ function getGroups()
             groups.push( propList.selection[i].groupName );
         }
     }
-    else if (mainTabs.index == 1 && groupList.selection)
+    else if (propSelector.index < 0 && groupList.selection)
     {
         for (var i = 0, n = groupList.selection.length; i < n ; i++)
         {
@@ -495,11 +577,11 @@ function refreshPanel()
             // Add new groups
             groups.do(function( group )
             {
-                if (group != DuGR.Group.IGNORED) groupList.add('item', group).groupName = group;
+                if (group != DuGR.Group.IGNORED && (searchEdit.text == "" || group.indexOf(searchEdit.text) >= 0)) groupList.add('item', group).groupName = group;
             } );
 
             // Reselect
-            for (var i = groupList.items.length -1 ; i > 3; i-- )
+            for (var i = groupList.items.length -1 ; i >= 0; i-- )
             {
                 var g = groupList.items[i].text;
                 if (g == currentSelection) {
@@ -525,6 +607,8 @@ function refreshPanel()
             } );
         }        
     }
+
+    if (propList) propList.searchItems( searchEdit.text );
 }
 
 function refreshIsolation()
@@ -534,6 +618,7 @@ function refreshIsolation()
     if ( autoSelect && !sticky ) {
         DuAE.beginUndoGroup( i18n._("Select layers") );
         DuAE.toggleLayerControls();
+
         DuGR.select( getGroups(), invertButton.checked );
 
         DuAE.toggleLayerControls();
@@ -639,6 +724,6 @@ DuScriptUI.addEvent( refreshPanel, 1000);
 // ========== INIT ==============
 
 var currentTab = DuESF.scriptSettings.get("currentTab", 0);
-mainTabs.setCurrentIndex( currentTab );
+propSelector.setCurrentIndex( currentTab );
 
 refreshPanel();

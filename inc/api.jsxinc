@@ -179,6 +179,10 @@ DuGR.Group = {
      * Matte: The blending mode is not normal.
      */
     OTHER_BLENDING: 'DuGR.matte.otherBlending',
+    /**
+     * Attribute: has effects.
+     */
+    OTHER_BLENDING: 'DuGR.attr.hasEffects',
 }
 
 /**

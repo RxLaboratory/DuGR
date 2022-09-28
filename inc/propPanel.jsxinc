@@ -1,55 +1,80 @@
 propList = tab.add('listbox',undefined,"Groups",{multiselect: true});
 propList.alignment = ['fill', 'fill'];
 
-propList.add('item',i18n._("All layers")).groupName = DuGR.Group.ALL;
-propList.add('item',i18n._("Selected")).groupName = DuGR.Group.SELECTED;
-propList.add('item',i18n._("Grouped")).groupName = DuGR.Group.GROUPED;
+var propItems = {}
+propItems[ i18n._("All layers") ] = DuGR.Group.ALL;
+propItems[ i18n._("Selected") ] = DuGR.Group.SELECTED;
+propItems[ i18n._("Grouped") ] = DuGR.Group.GROUPED;
 
-propList.add('item',i18n._("Hierarchy: Orphans")).groupName = DuGR.Group.ORPHAN;
-propList.add('item',i18n._("Hierarchy: Have children")).groupName = DuGR.Group.HAS_CHILD;
+propItems[ i18n._("Hierarchy: Orphans") ] = DuGR.Group.ORPHAN;
+propItems[ i18n._("Hierarchy: Have children") ] = DuGR.Group.HAS_CHILD;
 
-propList.add('item',i18n._("Type: Pre-compositions")).groupName = DuGR.Group.COMP;
-propList.add('item',i18n._("Type: Null Objects")).groupName = DuGR.Group.NULL;
-propList.add('item',i18n._("Type: Solids")).groupName = DuGR.Group.SOLID;
-propList.add('item',i18n._("Type: Shapes")).groupName = DuGR.Group.SHAPE;
-propList.add('item',i18n._("Type: Texts")).groupName = DuGR.Group.TEXT;
-propList.add('item',i18n._("Type: Adjustment")).groupName = DuGR.Group.ADJUSTMENT;
-propList.add('item',i18n._("Type: Lights")).groupName = DuGR.Group.LIGHT;
-propList.add('item',i18n._("Type: Cameras")).groupName = DuGR.Group.CAMERA;
+propItems[ i18n._("Type: Pre-compositions") ] = DuGR.Group.COMP;
+propItems[ i18n._("Type: Null Objects") ] = DuGR.Group.NULL;
+propItems[ i18n._("Type: Solids") ] = DuGR.Group.SOLID;
+propItems[ i18n._("Type: Shapes") ] = DuGR.Group.SHAPE;
+propItems[ i18n._("Type: Texts") ] = DuGR.Group.TEXT;
+propItems[ i18n._("Type: Adjustment") ] = DuGR.Group.ADJUSTMENT;
+propItems[ i18n._("Type: Lights") ] = DuGR.Group.LIGHT;
+propItems[ i18n._("Type: Cameras") ] = DuGR.Group.CAMERA;
 
-propList.add('item',i18n._("Attribute: Visible")).groupName = DuGR.Group.VISIBLE;
-propList.add('item',i18n._("Attribute: Has Audio")).groupName = DuGR.Group.SOUND;
-propList.add('item',i18n._("Attribute: Solo")).groupName = DuGR.Group.SOLO;
-propList.add('item',i18n._("Attribute: Locked")).groupName = DuGR.Group.LOCKED;
-propList.add('item',i18n._("Attribute: Shy")).groupName = DuGR.Group.SHY;
-propList.add('item',i18n._("Attribute: Effects")).groupName = DuGR.Group.EFFECTS;
-propList.add('item',i18n._("Attribute: Motion Blur")).groupName = DuGR.Group.MB;
-propList.add('item',i18n._("Attribute: 3D")).groupName = DuGR.Group.THREE_D;
-propList.add('item',i18n._("Attribute: Guide")).groupName = DuGR.Group.GUIDE;
+propItems[ i18n._("Attribute: Visible") ] = DuGR.Group.VISIBLE;
+propItems[ i18n._("Attribute: Has Audio") ] = DuGR.Group.SOUND;
+propItems[ i18n._("Attribute: Solo") ] = DuGR.Group.SOLO;
+propItems[ i18n._("Attribute: Locked") ] = DuGR.Group.LOCKED;
+propItems[ i18n._("Attribute: Shy") ] = DuGR.Group.SHY;
+propItems[ i18n._("Attribute: Effects") ] = DuGR.Group.EFFECTS;
+propItems[ i18n._("Attribute: Motion Blur") ] = DuGR.Group.MB;
+propItems[ i18n._("Attribute: 3D") ] = DuGR.Group.THREE_D;
+propItems[ i18n._("Attribute: Guide") ] = DuGR.Group.GUIDE;
 
-propList.add('item',i18n._("Animation: At current time")).groupName = DuGR.Group.AT_TIME;
-propList.add('item',i18n._("Animation: In preview range")).groupName = DuGR.Group.IN_TIME_RANGE;
-propList.add('item',i18n._("Animation: Has keyframes")).groupName = DuGR.Group.HAS_KEYFRAMES;
-propList.add('item',i18n._("Animation: Has expressions")).groupName = DuGR.Group.HAS_EXPRESSIONS;
+propItems[ i18n._("Animation: At current time") ] = DuGR.Group.AT_TIME;
+propItems[ i18n._("Animation: In preview range") ] = DuGR.Group.IN_TIME_RANGE;
+propItems[ i18n._("Animation: Has keyframes") ] = DuGR.Group.HAS_KEYFRAMES;
+propItems[ i18n._("Animation: Has expressions") ] = DuGR.Group.HAS_EXPRESSIONS;
 
-propList.add('item',i18n._("Matte & Blending: Has mask")).groupName = DuGR.Group.HAS_MASK;
-propList.add('item',i18n._("Matte & Blending: Has track matte")).groupName = DuGR.Group.HAS_MATTE;
-propList.add('item',i18n._("Matte & Blending: Is track matte")).groupName = DuGR.Group.IS_MATTE;
-propList.add('item',i18n._("Matte & Blending: Preserve transparency")).groupName = DuGR.Group.PRESERVE_TRANSPARENCY;
-propList.add('item',i18n._("Matte & Blending: Normal blending mode")).groupName = DuGR.Group.NORMAL_BLENDING;
-propList.add('item',i18n._("Matte & Blending: Other blending mode")).groupName = DuGR.Group.OTHER_BLENDING;
+propItems[ i18n._("Matte & Blending: Has mask") ] = DuGR.Group.HAS_MASK;
+propItems[ i18n._("Matte & Blending: Has track matte") ] = DuGR.Group.HAS_MATTE;
+propItems[ i18n._("Matte & Blending: Is track matte") ] = DuGR.Group.IS_MATTE;
+propItems[ i18n._("Matte & Blending: Preserve transparency") ] = DuGR.Group.PRESERVE_TRANSPARENCY;
+propItems[ i18n._("Matte & Blending: Normal blending mode") ] = DuGR.Group.NORMAL_BLENDING;
+propItems[ i18n._("Matte & Blending: Other blending mode") ] = DuGR.Group.OTHER_BLENDING;
 
-propList.add('item',i18n._("Layer Styles: All")).groupName = DuGR.Group.LAYER_STYLES;
-propList.add('item',i18n._("Layer Styles: Drop Shadow")).groupName = DuGR.Group.STYLE_DROP_SHADOW;
-propList.add('item',i18n._("Layer Styles: Inner Shadow")).groupName = DuGR.Group.STYLE_INNER_SHADOW;
-propList.add('item',i18n._("Layer Styles: Outer Glow")).groupName = DuGR.Group.STYLE_OUTER_GLOW;
-propList.add('item',i18n._("Layer Styles: Inner Glow")).groupName = DuGR.Group.STYLE_INNER_GLOW;
-propList.add('item',i18n._("Layer Styles: Bevel and Emboss")).groupName = DuGR.Group.STYLE_BEVEL;
-propList.add('item',i18n._("Layer Styles: Satin")).groupName = DuGR.Group.STYLE_SATIN;
-propList.add('item',i18n._("Layer Styles: Color Overlay")).groupName = DuGR.Group.STYLE_COLOR;
-propList.add('item',i18n._("Layer Styles: Gradient Overlay")).groupName = DuGR.Group.STYLE_GRADIENT;
-propList.add('item',i18n._("Layer Styles: Stroke")).groupName = DuGR.Group.STYLE_STROKE;
+propItems[ i18n._("Layer Styles: All") ] = DuGR.Group.LAYER_STYLES;
+propItems[ i18n._("Layer Styles: Drop Shadow") ] = DuGR.Group.STYLE_DROP_SHADOW;
+propItems[ i18n._("Layer Styles: Inner Shadow") ] = DuGR.Group.STYLE_INNER_SHADOW;
+propItems[ i18n._("Layer Styles: Outer Glow") ] = DuGR.Group.STYLE_OUTER_GLOW;
+propItems[ i18n._("Layer Styles: Inner Glow") ] = DuGR.Group.STYLE_INNER_GLOW;
+propItems[ i18n._("Layer Styles: Bevel and Emboss") ] = DuGR.Group.STYLE_BEVEL;
+propItems[ i18n._("Layer Styles: Satin") ] = DuGR.Group.STYLE_SATIN;
+propItems[ i18n._("Layer Styles: Color Overlay") ] = DuGR.Group.STYLE_COLOR;
+propItems[ i18n._("Layer Styles: Gradient Overlay") ] = DuGR.Group.STYLE_GRADIENT;
+propItems[ i18n._("Layer Styles: Stroke") ] = DuGR.Group.STYLE_STROKE;
 
-propList.selection = 1;
+propList.resetItems = function (filter) {
+    filter = def(filter , propList.currentFilter);
+    propList.currentFilter = filter;
+    propList.removeAll();
+    var text;
+    for (text in propItems) {
+        if (!propItems.hasOwnProperty(text)) continue;
+        if (filter == "" || text.indexOf(filter) >= 0) {
+            propList.add('item',text).groupName = propItems[text];
+        }
+    }
+}
+propList.currentFilter = "";
+
+propList.searchItems = function (search) {
+    search = def(search , "");
+    if (search == "") propList.resetItems();
+
+    for (var i = propList.items.length - 1; i >= 0; i--) {
+        if ( propList.items[i].text.indexOf(search) < 0 ) {
+            propList.remove(i);
+        }
+    }
+}
 
 propList.onChange = refreshIsolation;
+propList.resetItems();
