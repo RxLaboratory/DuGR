@@ -302,111 +302,87 @@ DuAETag.Key.DUGR_HAD_TAG = 'dugrHadTag'
  * @param {Layer} layer The layer to test
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
  * @param {MarkerValue} [tag] If you have the tag as returned by {@link DuAETag.get} or {@link DuAETag.set}, providing it here improves performance.
+ * @param {Boolean} [and=false] If false, the layer must be contained in at least one of the groups, otherwise in all the groups.
  * @returns {Boolean} true if the layer belongs to at least one of the given groups
  */
-DuGR.inGroups = function ( layer, groups, tag )
+DuGR.inGroups = function ( layer, groups, tag, and )
 {
+    and = def(and, false);
+
     // The Dugr layer is not in any group
     if (layer.name == i18n._(DuGR.DUGR_FRAME_NAME)) return false;
 
+    var ok = false;
     for( var i = 0, n = groups.length; i < n; i++)
     {
-        var group = groups[i];
-        if (group == DuGR.Group.ALL) return true;
-
-        if (group == DuGR.Group.SELECTED && layer.selected) return true;
-
-        if (group == DuGR.Group.GROUPED && DuAETag.getGroups( layer ).length > 0) return true;
-
-        if (group == DuGR.Group.COMP) return DuAELayer.isComp( layer );
-
-        if (group == DuGR.Group.NULL && layer.nullLayer) return true;
-        
-        if (group == DuGR.Group.SOLID) return DuAELayer.isSolid( layer );
-
-        if (group == DuGR.Group.SHAPE && layer instanceof ShapeLayer) return true;
-
-        if (group == DuGR.Group.TEXT && layer instanceof TextLayer) return true;
-
-        if (group == DuGR.Group.ADJUSTMENT && layer.adjustmentLayer) return true;
-
-        if (group == DuGR.Group.LIGHT && layer instanceof LightLayer) return true;
-
-        if (group == DuGR.Group.CAMERA && layer instanceof CameraLayer) return true;
-
-        if (group == DuGR.Group.VISIBLE && layer.enabled) return true;
-
-        if (group == DuGR.Group.SOUND && layer.hasAudio) return true;
-
-        if (group == DuGR.Group.SOLO && layer.solo) return true;
-
-        if (group == DuGR.Group.LOCKED && layer.locked) return true;
-
-        if (group == DuGR.Group.SHY && layer.shy) return true;
-
-        if (group == DuGR.Group.EFFECTS && layer.effectsActive && layer.property("ADBE Effect Parade").numProperties > 0) return true; 
-
-        if (group == DuGR.Group.MB && layer.motionBlur) return true;
-
-        if (group == DuGR.Group.THREE_D && DuAELayer.isThreeD( layer )) return true;
-
-        if (group == DuGR.Group.GUIDE && layer.guideLayer) return true;
-
-        if (group == DuGR.Group.ORPHAN && !layer.parent) return true;
-
-        if (group == DuGR.Group.HAS_CHILD && DuAELayer.hasChild(layer)) return true;
+        ok = false;
 
         var layerStyles = layer.property("ADBE Layer Styles");
-        if (group == DuGR.Group.LAYER_STYLES && layerStyles.enabled) return true;
-
-        if (group == DuGR.Group.STYLE_DROP_SHADOW && layerStyles.property("dropShadow/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_INNER_SHADOW && layerStyles.property("innerShadow/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_OUTER_GLOW && layerStyles.property("outerGlow/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_INNER_GLOW && layerStyles.property("innerGlow/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_BEVEL && layerStyles.property("bevelEmboss/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_SATIN && layerStyles.property("chromeFX/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_COLOR && layerStyles.property("solidFill/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_GRADIENT && layerStyles.property("gradientFill/enabled").enabled) return true;
-
-        if (group == DuGR.Group.STYLE_STROKE && layerStyles.property("frameFX/enabled").enabled) return true;
-
         var comp = layer.containingComp;
-        if (group == DuGR.Group.AT_TIME && layer.inPoint <= comp.time && layer.outPoint >= comp.time) return true;
-
         var workAreaEnd = comp.workAreaStart + comp.workAreaDuration;
-        if (group == DuGR.Group.IN_TIME_RANGE && layer.inPoint < workAreaEnd && layer.outPoint > comp.workAreaStart) return true;
 
-        if (group == DuGR.Group.HAS_KEYFRAMES && DuAELayer.hasKeys(layer)) return true;
+        var group = groups[i];
 
-        if (group == DuGR.Group.HAS_EXPRESSIONS && DuAELayer.hasExpressions(layer)) return true;
+        if (group == DuGR.Group.ALL) ok = true;
+        else if (group == DuGR.Group.SELECTED ) ok = layer.selected;
+        else if (group == DuGR.Group.GROUPED ) ok = DuAETag.getGroups( layer ).length > 0;
+        else if (group == DuGR.Group.COMP ) ok = DuAELayer.isComp( layer );
+        else if (group == DuGR.Group.NULL ) ok = layer.nullLayer;
+        else if (group == DuGR.Group.SOLID ) ok = DuAELayer.isSolid( layer );
+        else if (group == DuGR.Group.SHAPE ) ok = layer instanceof ShapeLayer;
+        else if (group == DuGR.Group.TEXT ) ok = layer instanceof TextLayer;
+        else if (group == DuGR.Group.ADJUSTMENT ) ok = layer.adjustmentLayer;
+        else if (group == DuGR.Group.LIGHT ) ok =  layer instanceof LightLayer;
+        else if (group == DuGR.Group.CAMERA ) ok = layer instanceof CameraLayer;
+        else if (group == DuGR.Group.VISIBLE ) ok = layer.enabled;
+        else if (group == DuGR.Group.SOUND ) ok = layer.hasAudio;
+        else if (group == DuGR.Group.SOLO ) ok = layer.solo;
+        else if (group == DuGR.Group.LOCKED ) ok = layer.locked;
+        else if (group == DuGR.Group.SHY ) ok = layer.shy;
+        else if (group == DuGR.Group.EFFECTS) ok = layer.effectsActive && layer.property("ADBE Effect Parade").numProperties > 0; 
+        else if (group == DuGR.Group.MB ) ok = layer.motionBlur;
+        else if (group == DuGR.Group.THREE_D ) ok = DuAELayer.isThreeD( layer );
+        else if (group == DuGR.Group.GUIDE ) ok = layer.guideLayer;
+        else if (group == DuGR.Group.ORPHAN ) ok = !layer.parent;
+        else if (group == DuGR.Group.HAS_CHILD ) ok = DuAELayer.hasChild(layer);
 
-        if (group == DuGR.Group.HAS_MASK && DuAELayer.hasMask(layer)) return true;
+        else if (group == DuGR.Group.LAYER_STYLES ) ok = layerStyles.enabled;
+        else if (group == DuGR.Group.STYLE_DROP_SHADOW) ok = layerStyles.property("dropShadow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_INNER_SHADOW ) ok = layerStyles.property("innerShadow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_OUTER_GLOW ) ok = layerStyles.property("outerGlow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_INNER_GLOW ) ok = layerStyles.property("innerGlow/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_BEVEL ) ok = layerStyles.property("bevelEmboss/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_SATIN ) ok = layerStyles.property("chromeFX/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_COLOR ) ok = layerStyles.property("solidFill/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_GRADIENT ) ok = layerStyles.property("gradientFill/enabled").enabled;
+        else if (group == DuGR.Group.STYLE_STROKE ) ok = layerStyles.property("frameFX/enabled").enabled;
 
-        if (group == DuGR.Group.HAS_MATTE && layer.hasTrackMatte) return true;
+        else if (group == DuGR.Group.AT_TIME ) ok = layer.inPoint <= comp.time && layer.outPoint >= comp.time;       
+        else if (group == DuGR.Group.IN_TIME_RANGE ) ok = layer.inPoint < workAreaEnd && layer.outPoint > comp.workAreaStart;
+        else if (group == DuGR.Group.HAS_KEYFRAMES ) ok = DuAELayer.hasKeys(layer);
+        else if (group == DuGR.Group.HAS_EXPRESSIONS ) ok = DuAELayer.hasExpressions(layer);
+        
+        else if (group == DuGR.Group.HAS_MASK ) ok = DuAELayer.hasMask(layer);
+        else if (group == DuGR.Group.HAS_MATTE ) ok = layer.hasTrackMatte;
+        else if (group == DuGR.Group.IS_MATTE ) ok = layer.isTrackMatte;
+        else if (group == DuGR.Group.PRESERVE_TRANSPARENCY ) ok = layer.preserveTransparency;
+        else if (group == DuGR.Group.NORMAL_BLENDING ) ok = layer.blendingMode == BlendingMode.NORMAL;
+        else if (group == DuGR.Group.OTHER_BLENDING ) ok = layer.blendingMode != BlendingMode.NORMAL;
 
-        if (group == DuGR.Group.IS_MATTE && layer.isTrackMatte) return true;
-
-        if (group == DuGR.Group.PRESERVE_TRANSPARENCY && layer.preserveTransparency) return true;
-
-        if (group == DuGR.Group.NORMAL_BLENDING && layer.blendingMode == BlendingMode.NORMAL) return true;
-
-        if (group == DuGR.Group.OTHER_BLENDING && layer.blendingMode != BlendingMode.NORMAL) return true;
-
-        // Get the custom groups
-        var layerGroups = DuAETag.getGroups( layer );
-        if (layerGroups.length == 0) return false;
-        layerGroups = new DuList( layerGroups );
-        if (layerGroups.indexOf(group) >= 0) return true;
+        else
+        {
+            // Get the custom groups
+            var layerGroups = DuAETag.getGroups( layer );
+            if (layerGroups.length == 0) ok = false;
+            layerGroups = new DuList( layerGroups );
+            if (layerGroups.indexOf(group) >= 0) ok = true;
+        }
+        
+        if (ok && !and) return true;
+        if (!ok && and) return false;
     }
 
-    return false;
+    return ok;
 }
 
 /**
@@ -416,8 +392,9 @@ DuGR.inGroups = function ( layer, groups, tag )
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
  * @param {DuGR~doNotCallBack} [notCallback] The function to run on each layer IF it is NOT in the groups.
+ * @param {Boolean} [and=false] If false, runs the function on the layers contained in at least one of the groups, otherwise in all the groups.
  */
-DuGR.do = function( groups, callback, invert, comp, notCallback )
+DuGR.do = function( groups, callback, invert, comp, notCallback, and )
 {
     notCallback = def(notCallback, function(){} );
     comp = def(comp, DuAEProject.getActiveComp());
@@ -429,8 +406,8 @@ DuGR.do = function( groups, callback, invert, comp, notCallback )
     var returnValue;
 
     new DuList(comp.layers).do( function( layer ){
-        if (DuGR.inGroups(layer, [DuGR.Group.IGNORED])) return;
-        var ok = DuGR.inGroups(layer, groups);
+        if (DuGR.inGroups(layer, [DuGR.Group.IGNORED], undefined, and)) return;
+        var ok = DuGR.inGroups(layer, groups, undefined, and);
         if (invert) ok = !ok;
         if (ok) returnValue = callback( layer, returnValue );
         else notCallback( layer );
@@ -767,8 +744,9 @@ DuGR.toggleThreeD = function( groups, invert, comp, allowLockedChanges )
  * @param {string[]} groups The list of group names. It can include custom groups, or predefined names taken from {@link DuGR.Group}.
  * @param {Boolean} [invert=false] When true, the list of groups is a blacklist and the layer must not be contained in any one of them.
  * @param {CompItem} [comp=DuAEProject.getActiveComp] The composition to update.
+ * @param {Boolean} [and=false] If false, selects the layers contained in at least one of the groups, otherwise in all the groups.
  */
-DuGR.select = function( groups, invert, comp )
+DuGR.select = function( groups, invert, comp, and )
 {
     function f( layer )
     {
@@ -782,7 +760,7 @@ DuGR.select = function( groups, invert, comp )
         layer.selected = false;
     }
     
-    DuGR.do( groups, f, invert, comp, nf);
+    DuGR.do( groups, f, invert, comp, nf, and);
 }
 
 // Low level undocumented method. Creates the warning frame.

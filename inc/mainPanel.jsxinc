@@ -1,5 +1,35 @@
 var uiMode = DuESF.scriptSettings.get("common/uiMode", 0);
 
+// =========== UTILS =================
+
+function saveListSelection(list) {
+    // Keep selection
+    var currentSelection = [];
+    if (list.selection) {
+        for (var i = 0; i < list.selection.length; i++)
+        {
+            currentSelection.push(list.selection[i].text);
+        }
+    }
+    return currentSelection;
+}
+
+function restoreListSelection(list, sel) {
+    // Reselect
+    var newSelection = [];
+    for (var i = list.items.length -1 ; i >= 0; i-- )
+    {
+        var g = list.items[i].text;
+        for (var j = 0; j < sel.length; j++)
+        {
+            if (g == sel[j]) {
+                newSelection.push(i);
+            }
+        }
+    }
+    list.selection = newSelection;
+}
+
 // ========= ISOLATE BUTTONS =========
 
 var isolateGroup = DuScriptUI.group( ui.mainGroup);
@@ -20,7 +50,6 @@ if (uiMode < 1)
     spacer.margins = 0;
     spacer.minimumSize = [5,-1];
 }
-
 
 var isolateButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -75,7 +104,6 @@ if (uiMode < 1)
     spacer.margins = 0;
     spacer.minimumSize = [5,-1];
 }
-
 
 var pinButton = DuScriptUI.checkBox(
     isolateGroup,
@@ -455,9 +483,25 @@ var invertButton = DuScriptUI.checkBox(
     "",
     w16_inverted,
     //'column'
-)
+);
 invertButton.alignment = ['right','fill'];
 invertButton.onClick = refreshIsolation;
+
+var andOrButton = DuScriptUI.checkBox(
+    selectorGroup,
+    "",
+    w16_or,
+    i18n._("Use either the AND or OR operator for multiple group selection."),
+    "",
+    w16_and
+);
+andOrButton.setChecked( DuESF.scriptSettings.get("andOr", false) );
+andOrButton.onClick = function()
+{
+    DuESF.scriptSettings.set("andOr", andOrButton.checked );
+    DuESF.scriptSettings.save();
+    refreshIsolation();
+}
 
 var searchGroup = DuScriptUI.group(ui.mainGroup, 'row');
 searchGroup.spacing = 3;
@@ -540,7 +584,7 @@ function getGroups()
             groups.push( propList.selection[i].groupName );
         }
     }
-    else if (propSelector.index < 0 && groupList.selection)
+    else if (propSelector.index == 0 && groupList.selection)
     {
         for (var i = 0, n = groupList.selection.length; i < n ; i++)
         {
@@ -569,8 +613,7 @@ function refreshPanel()
         if ( (sticky && isolationMode == DuGR.IsolationMode.NONE) || !sticky )
         {
             // Keep selection
-            if (groupList.selection)
-                var currentSelection = groupList.selection[0].text;
+            var currentSelection = saveListSelection(groupList);
 
             groupList.removeAll();
             groupList.add('item',i18n._("All layers")).groupName = DuGR.Group.ALL;
@@ -585,14 +628,7 @@ function refreshPanel()
             } );
 
             // Reselect
-            for (var i = groupList.items.length -1 ; i >= 0; i-- )
-            {
-                var g = groupList.items[i].text;
-                if (g == currentSelection) {
-                    groupList.selection = [i];
-                    break;
-                }
-            }
+            restoreListSelection(groupList, currentSelection);
         }
         else
         {
@@ -623,7 +659,7 @@ function refreshIsolation()
         DuAE.beginUndoGroup( i18n._("Select layers") );
         DuAE.toggleLayerControls();
 
-        DuGR.select( getGroups(), invertButton.checked );
+        DuGR.select( getGroups(), invertButton.checked, undefined, andOrButton.checked );
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();

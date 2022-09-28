@@ -54,6 +54,10 @@ propItems[ i18n._("Layer Styles: Stroke") ] = DuGR.Group.STYLE_STROKE;
 propList.resetItems = function (filter) {
     filter = def(filter , propList.currentFilter);
     propList.currentFilter = filter;
+
+    // Keep selection
+    var currentSelection = saveListSelection(propList);
+
     propList.removeAll();
     var text;
     for (text in propItems) {
@@ -62,18 +66,34 @@ propList.resetItems = function (filter) {
             propList.add('item',text).groupName = propItems[text];
         }
     }
+
+    // Reselect
+    restoreListSelection(propList, currentSelection);
 }
 propList.currentFilter = "";
+propList.currentSearch = "";
 
 propList.searchItems = function (search) {
     search = def(search , "");
-    if (search == "") propList.resetItems();
+    if (search == propList.currentSearch) return;
+    propList.currentSearch = search;
+
+    if (search == "") {
+        propList.resetItems();
+        return;
+    }
+
+    // Keep selection
+    var currentSelection = saveListSelection(propList);
 
     for (var i = propList.items.length - 1; i >= 0; i--) {
         if ( propList.items[i].text.indexOf(search) < 0 ) {
             propList.remove(i);
         }
     }
+
+    // Reselect
+    restoreListSelection(propList, currentSelection);
 }
 
 propList.onChange = refreshIsolation;
