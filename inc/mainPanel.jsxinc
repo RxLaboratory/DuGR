@@ -608,44 +608,31 @@ function refreshPanel()
     {
         var groups = DuGR.listGroups();
 
-        // If we're not in interactive mode, refresh all to keep the order
-        var sticky = pinButton.checked;
-        if ( (sticky && isolationMode == DuGR.IsolationMode.NONE) || !sticky )
+        // Keep selection
+        var currentSelection = saveListSelection(groupList);
+
+        // Remove groups not in the list
+        for (var i = groupList.items.length -1 ; i > 3; i-- )
         {
-            // Keep selection
-            var currentSelection = saveListSelection(groupList);
-
-            groupList.removeAll();
-            groupList.add('item',i18n._("All layers")).groupName = DuGR.Group.ALL;
-            groupList.add('item',i18n._("Selected")).groupName = DuGR.Group.SELECTED;
-            groupList.add('item',i18n._("Grouped")).groupName = DuGR.Group.GROUPED;
-            groupList.add('item',i18n._("Ignored")).groupName = DuGR.Group.IGNORED;
-
-            // Add new groups
-            groups.do(function( group )
-            {
-                if (group != DuGR.Group.IGNORED && (searchEdit.text == "" || group.indexOf(searchEdit.text) >= 0)) groupList.add('item', group).groupName = group;
-            } );
-
-            // Reselect
-            restoreListSelection(groupList, currentSelection);
+            var g = groupList.items[i].groupName;
+            if (groups.indexOf(g) < 0) groupList.remove(i);
         }
-        else
-        {
-            // Remove groups not in the list
-            for (var i = groupList.items.length -1 ; i > 3; i-- )
-            {
-                var g = groupList.items[i].groupName;
-                if (groups.indexOf(g) < 0) groupList.remove(i);
-                else groups.removeAll(g);
+
+        // Insert new ones
+        groups.do(function (group) {
+            var index = groups.current + 4;
+            if (index >= groupList.items.length) {
+                groupList.add('item', group).groupName = group;
+                return;
             }
-        
-            // Add new groups
-            groups.do(function( group )
-            {
-                if (group != DuGR.Group.IGNORED) groupList.add('item', group).groupName = group;
-            } );
-        }        
+
+            if (groupList.items[index].text != group) {
+                groupList.add('item', group, index).groupName = group;
+            }
+        });
+
+        // Reselect
+        restoreListSelection(groupList, currentSelection);
     }
 
     if (propList) propList.searchItems( searchEdit.text );
