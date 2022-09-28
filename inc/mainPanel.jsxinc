@@ -144,253 +144,257 @@ isolateCompButton.onClick = function()
 
 // ========= TOGGLE BUTTONS ==========
 
-var aeSwitchesBG = DuScriptUI.group( ui.mainGroup, 'row');
-aeSwitchesBG.alignment = ['fill','top'];
-DuScriptUI.setBackgroundColor( aeSwitchesBG, DuColor.Color.DARK_GREY)
-var aeSwitchesGroup = DuScriptUI.group( aeSwitchesBG, 'column' );
-aeSwitchesGroup.alignment = ['center','top'];
-var aeSwitchesGroup1 = DuScriptUI.group( aeSwitchesGroup );
-var enableAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    enabled,
-    i18n._("Show/Hide layers")
-)
-var audioAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    audioEnabled,
-    i18n._("Toggle audio")
-)
-var soloAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    solo,
-    i18n._("Toggle solo mode")
-)
-var lockAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    locked,
-    i18n._("Lock layers")
-)
-var shyAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    shy,
-    i18n._("Shy layers")
-)
-var collapseTransformationAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    collapseTransformation,
-    i18n._("Collapse transformation / Continuous rasterization")
-)
-var guideAEButton = DuScriptUI.button(
-    aeSwitchesGroup1,
-    "",
-    guide,
-    i18n._("Guide layers")
-)
-var aeSwitchesGroup2 = DuScriptUI.group( aeSwitchesGroup );
-var qualityAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    quality,
-    i18n._("Set quality")
-)
-var effectsActiveAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    effectsActive,
-    i18n._("Toggle effects")
-)
-var frameBlendingAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    frameBlending,
-    i18n._("Set frame blending mode")
-)
-var motionBlurAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    motionBlur,
-    i18n._("Toggle motion blur")
-)
-var adjustmentLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    adjustmentLayer,
-    i18n._("Toggle adjustment layer mode")
-)
-var threeDLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    threeDLayer,
-    i18n._("Toggle 3D layer mode")
-)
-var selectLayerAEButton = DuScriptUI.button(
-    aeSwitchesGroup2,
-    "",
-    select,
-    i18n._("Select layers")
-)
-
-enableAEButton.onClick = function()
+if (DuESF.scriptSettings.get("aeSwitches", true))
 {
-    DuAE.beginUndoGroup( i18n._("Show/Hide layers") );
-    DuAE.toggleLayerControls();
 
-    DuGR.toggleVisibility( getGroups(), invertButton.checked );
+    var aeSwitchesBG = DuScriptUI.group( ui.mainGroup, 'row');
+    aeSwitchesBG.alignment = ['fill','top'];
+    DuScriptUI.setBackgroundColor( aeSwitchesBG, DuColor.Color.DARK_GREY)
+    var aeSwitchesGroup = DuScriptUI.group( aeSwitchesBG, 'column' );
+    aeSwitchesGroup.alignment = ['center','top'];
+    var aeSwitchesGroup1 = DuScriptUI.group( aeSwitchesGroup );
+    var enableAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        enabled,
+        i18n._("Show/Hide layers")
+    )
+    var audioAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        audioEnabled,
+        i18n._("Toggle audio")
+    )
+    var soloAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        solo,
+        i18n._("Toggle solo mode")
+    )
+    var lockAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        locked,
+        i18n._("Lock layers")
+    )
+    var shyAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        shy,
+        i18n._("Shy layers")
+    )
+    var collapseTransformationAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        collapseTransformation,
+        i18n._("Collapse transformation / Continuous rasterization")
+    )
+    var guideAEButton = DuScriptUI.button(
+        aeSwitchesGroup1,
+        "",
+        guide,
+        i18n._("Guide layers")
+    )
+    var aeSwitchesGroup2 = DuScriptUI.group( aeSwitchesGroup );
+    var qualityAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        quality,
+        i18n._("Set quality")
+    )
+    var effectsActiveAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        effectsActive,
+        i18n._("Toggle effects")
+    )
+    var frameBlendingAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        frameBlending,
+        i18n._("Set frame blending mode")
+    )
+    var motionBlurAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        motionBlur,
+        i18n._("Toggle motion blur")
+    )
+    var adjustmentLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        adjustmentLayer,
+        i18n._("Toggle adjustment layer mode")
+    )
+    var threeDLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        threeDLayer,
+        i18n._("Toggle 3D layer mode")
+    )
+    var selectLayerAEButton = DuScriptUI.button(
+        aeSwitchesGroup2,
+        "",
+        select,
+        i18n._("Select layers")
+    )
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    enableAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Show/Hide layers") );
+        DuAE.toggleLayerControls();
 
-audioAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle audio") );
+        DuGR.toggleVisibility( getGroups(), invertButton.checked );
 
-    DuGR.toggleSound( getGroups(), invertButton.checked );
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    audioAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle audio") );
 
-soloAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle solo mode") );
-    DuAE.toggleLayerControls();
+        DuGR.toggleSound( getGroups(), invertButton.checked );
 
-    DuGR.toggleSolo( getGroups(), invertButton.checked );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    soloAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle solo mode") );
+        DuAE.toggleLayerControls();
 
-lockAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Lock layers") );
+        DuGR.toggleSolo( getGroups(), invertButton.checked );
 
-    DuGR.toggleLocked( getGroups(), invertButton.checked );
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    lockAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Lock layers") );
 
-shyAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Shy layers") );
+        DuGR.toggleLocked( getGroups(), invertButton.checked );
 
-    DuGR.toggleShy( getGroups(), invertButton.checked );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.endUndoGroup();
-}
+    shyAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Shy layers") );
 
-collapseTransformationAEButton.onClick  = function()
-{
-    DuAE.beginUndoGroup( i18n._("Collapse transformation / Continuous rasterization") );
-    DuAE.toggleLayerControls();
+        DuGR.toggleShy( getGroups(), invertButton.checked );
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        DuAE.endUndoGroup();
+    }
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+    collapseTransformationAEButton.onClick  = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Collapse transformation / Continuous rasterization") );
+        DuAE.toggleLayerControls();
 
-guideAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Guide layers") );
-    DuAE.toggleLayerControls();
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
+
+    guideAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Guide layers") );
+        DuAE.toggleLayerControls();
 
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-qualityAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Set quality") );
-    DuAE.toggleLayerControls();
+    qualityAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Set quality") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-effectsActiveAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle effects") );
-    DuAE.toggleLayerControls();
+    effectsActiveAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle effects") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-frameBlendingAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Set frame blending mode") );
-    DuAE.toggleLayerControls();
+    frameBlendingAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Set frame blending mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-motionBlurAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle motion blur") );
-    DuAE.toggleLayerControls();
+    motionBlurAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle motion blur") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-adjustmentLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle adjustment layer mode") );
-    DuAE.toggleLayerControls();
+    adjustmentLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle adjustment layer mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-threeDLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Toggle 3D layer mode") );
-    DuAE.toggleLayerControls();
+    threeDLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Toggle 3D layer mode") );
+        DuAE.toggleLayerControls();
 
-    var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-    DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
+        DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
-}
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 
-selectLayerAEButton.onClick = function()
-{
-    DuAE.beginUndoGroup( i18n._("Select layers") );
-    DuAE.toggleLayerControls();
+    selectLayerAEButton.onClick = function()
+    {
+        DuAE.beginUndoGroup( i18n._("Select layers") );
+        DuAE.toggleLayerControls();
 
-    DuGR.select( getGroups(), invertButton.checked );
+        DuGR.select( getGroups(), invertButton.checked );
 
-    DuAE.toggleLayerControls();
-    DuAE.endUndoGroup();
+        DuAE.toggleLayerControls();
+        DuAE.endUndoGroup();
+    }
 }
 
 // ========= PANELS ==========

@@ -1,5 +1,14 @@
 DuScriptUI.separator(ui.settingsGroup);
 
+// Show ae switches
+var aeSwitchesButton = DuScriptUI.checkBox(
+    ui.settingsGroup,
+    i18n._("Hide Ae layer switches"),
+    enabled,
+    i18n._("Show or hide the After Effects layer switches buttons."),
+    i18n._("Show Ae layer switches")
+);
+
 // Locked layers
 var lockedLayersButton = DuScriptUI.checkBox(
     ui.settingsGroup,
@@ -83,6 +92,9 @@ ui.onResetSettings = function () {
 
     var autoSelect = DuESF.scriptSettings.get("autoSelect", true);
     autoSelectButton.setChecked(autoSelect);
+    
+    var showAeSwitches = DuESF.scriptSettings.get("aeSwitches", true);
+    aeSwitchesButton.setChecked(showAeSwitches);
 }
 
 // Save settings
@@ -93,6 +105,7 @@ ui.onApplySettings = function () {
     DuESF.scriptSettings.set("lockHidden", lockHiddenButton.value);
     DuESF.scriptSettings.set("showTags", showTagsButton.value);
     DuESF.scriptSettings.set("autoSelect", autoSelectButton.checked);
+    DuESF.scriptSettings.set("aeSwitches", aeSwitchesButton.checked);
 
     DuAETag.hideTags = !DuESF.scriptSettings.get("showTags", true);
 
