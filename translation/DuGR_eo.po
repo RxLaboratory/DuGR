@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 17:32\n"
+"PO-Revision-Date: 2022-09-29 18:36\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: groupPanel.jsxinc:7
 #, qt-format
 msgid "All layers"
-msgstr "La tutan tavolojn"
+msgstr "Ĉiuj tavoloj"
 
 #: groupPanel.jsxinc:8
 #, qt-format
@@ -200,12 +200,12 @@ msgstr "Montri proprajn grupojn de tavoloj"
 #: mainPanel.jsxinc:439
 #, qt-format
 msgid "All layer properties"
-msgstr "Tiuj la propraĵoj de tavoloj"
+msgstr "Ĉiuj propraĵoj de tavolo"
 
 #: mainPanel.jsxinc:441
 #, qt-format
 msgid "Show all properties"
-msgstr "Montri tiujn la propraĵoj"
+msgstr "Montri la ĉiujn propraĵoj"
 
 #: mainPanel.jsxinc:444
 #, qt-format
@@ -290,52 +290,52 @@ msgstr "Tipoj de tavolo"
 #: mainPanel.jsxinc:479
 #, qt-format
 msgid "Invert"
-msgstr "Invertiĝi"
+msgstr "Inversigi"
 
 #: mainPanel.jsxinc:481
 #, qt-format
 msgid "Invert the group/property selection"
-msgstr ""
+msgstr "Inversigi la selekton de la grupo/propraĵo"
 
 #: mainPanel.jsxinc:482
 #, qt-format
 msgid "Inverted"
-msgstr "Invertiĝa"
+msgstr "Inversa"
 
 #: mainPanel.jsxinc:494
 #, qt-format
 msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
-msgstr ""
+msgstr "Uzi la klavon KAJ(&) aŭ la klavon AŬ(/) por la selekto de obloj grupoj."
 
 #: mainPanel.jsxinc:514
 #, qt-format
 msgid "Remove all"
-msgstr ""
+msgstr "Forigi ĉiujn"
 
 #: mainPanel.jsxinc:524
 #, qt-format
 msgid "Search..."
-msgstr ""
+msgstr "Serĉi..."
 
 #: propPanel.jsxinc:9
 #, qt-format
 msgid "Hierarchy: Orphans"
-msgstr "Hierarĥio: Orfo"
+msgstr "Hierarkio: Orfoj"
 
 #: propPanel.jsxinc:10
 #, qt-format
 msgid "Hierarchy: Have children"
-msgstr "Hierarĥio: Havas idoj"
+msgstr "Hierarkio: Kun idoj"
 
 #: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Pre-compositions"
-msgstr "Tipo: Pre-kompozitoj"
+msgstr "Tipo: Pre-komponaĵoj"
 
 #: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Null Objects"
-msgstr "Tipo: Nuligajn objektojn"
+msgstr "Tipo: Nulaj objektoj"
 
 #: propPanel.jsxinc:14
 #, qt-format
@@ -355,7 +355,7 @@ msgstr "Tipo: Tekstoj"
 #: propPanel.jsxinc:17
 #, qt-format
 msgid "Type: Adjustment"
-msgstr "Tipo: ĝustigo"
+msgstr "Tipo: Ĝustigo"
 
 #: propPanel.jsxinc:18
 #, qt-format
@@ -415,22 +415,22 @@ msgstr "Atributo: Gvido"
 #: propPanel.jsxinc:31
 #, qt-format
 msgid "Animation: At current time"
-msgstr ""
+msgstr "Animacio: En la nuna momento"
 
 #: propPanel.jsxinc:32
 #, qt-format
 msgid "Animation: In preview range"
-msgstr ""
+msgstr "Animacio: En la rango de la vidaĵo"
 
 #: propPanel.jsxinc:33
 #, qt-format
 msgid "Animation: Has keyframes"
-msgstr ""
+msgstr "Animacio: Kun grava-bildoj"
 
 #: propPanel.jsxinc:34
 #, qt-format
 msgid "Animation: Has expressions"
-msgstr ""
+msgstr "Animacio: Kun esprimoj"
 
 #: propPanel.jsxinc:36
 #, qt-format
