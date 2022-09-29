@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 12:33\n"
+"PO-Revision-Date: 2022-09-29 16:37\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -40,42 +40,42 @@ msgstr "Ignora"
 #: groupPanel.jsxinc:23
 #, qt-format
 msgid "Add selected layers to group."
-msgstr ""
+msgstr "Aldoni la elektitajn tavolojn al la grupo."
 
 #: groupPanel.jsxinc:31
 #, qt-format
 msgid "Get groups from selected layers."
-msgstr ""
+msgstr "Preni grupojn de la elektitaj tavoloj."
 
 #: groupPanel.jsxinc:39
 #, qt-format
 msgid "Remove selected layers from group."
-msgstr ""
+msgstr "Forigi la elektitajn tavolojn el la grupo."
 
 #: groupPanel.jsxinc:50
 #, qt-format
 msgid "Create new group."
-msgstr ""
+msgstr "Krei novan grupon."
 
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr ""
+msgstr "Ŝanĝiĝi la nomo de la grupo"
 
 #: groupPanel.jsxinc:66
 #, qt-format
 msgid "Remove group."
-msgstr ""
+msgstr "Forigi la grupon."
 
 #: groupPanel.jsxinc:77
 #, qt-format
 msgid "New group"
-msgstr ""
+msgstr "Nova grupo"
 
 #: groupPanel.jsxinc:87
 #, qt-format
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: mainPanel.jsxinc:42
 #, qt-format
