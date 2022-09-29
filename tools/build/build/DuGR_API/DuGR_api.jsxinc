@@ -453,11 +453,11 @@ DuGR.inGroups = function ( layer, groups, tag, and )
         else if (group == DuGR.Group.SELECTED ) ok = layer.selected;
         else if (group == DuGR.Group.GROUPED ) ok = DuAETag.getGroups( layer ).length > 0;
         else if (group == DuGR.Group.COMP ) ok = DuAELayer.isComp( layer );
-        else if (group == DuGR.Group.NULL ) ok = layer.nullLayer;
+        else if (group == DuGR.Group.NULL ) ok = DuAELayer.isNull( layer );
         else if (group == DuGR.Group.SOLID ) ok = DuAELayer.isSolid( layer );
         else if (group == DuGR.Group.SHAPE ) ok = layer instanceof ShapeLayer;
         else if (group == DuGR.Group.TEXT ) ok = layer instanceof TextLayer;
-        else if (group == DuGR.Group.ADJUSTMENT ) ok = layer.adjustmentLayer;
+        else if (group == DuGR.Group.ADJUSTMENT ) ok = DuAELayer.isAdjustment( layer );
         else if (group == DuGR.Group.LIGHT ) ok =  layer instanceof LightLayer;
         else if (group == DuGR.Group.CAMERA ) ok = layer instanceof CameraLayer;
         else if (group == DuGR.Group.VISIBLE ) ok = layer.enabled;
