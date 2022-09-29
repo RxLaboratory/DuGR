@@ -491,7 +491,7 @@ var andOrButton = DuScriptUI.checkBox(
     selectorGroup,
     "",
     w16_or,
-    i18n._("Use either the AND or OR operator for multiple group selection."),
+    i18n._("Use either the AND(&) or OR(/) operator for multiple group selection."),
     "",
     w16_and
 );

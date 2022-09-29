@@ -303,7 +303,7 @@ msgstr ""
 
 #: mainPanel.jsxinc:494
 #, qt-format
-msgid "Use either the AND or OR operator for multiple group selection."
+msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
 msgstr ""
 
 #: mainPanel.jsxinc:514
