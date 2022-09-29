@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 16:37\n"
+"PO-Revision-Date: 2022-09-29 17:32\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr "OK"
 #: mainPanel.jsxinc:42
 #, qt-format
 msgid "Exit isolation."
-msgstr ""
+msgstr "Eliri izoleco."
 
 #: mainPanel.jsxinc:56
 #, qt-format
@@ -90,7 +90,7 @@ msgstr "Izoli"
 #: mainPanel.jsxinc:58
 #, qt-format
 msgid "Isolate selected groups."
-msgstr ""
+msgstr "Izoli la elektitajn grupojn."
 
 #: mainPanel.jsxinc:74
 #, qt-format
@@ -100,7 +100,7 @@ msgstr "Kronologia"
 #: mainPanel.jsxinc:76
 #, qt-format
 msgid "Isolate selected groups, in the timeline only."
-msgstr ""
+msgstr "Izoli la elektitajn grupojn, nur en la tempo-fadeno."
 
 #: mainPanel.jsxinc:92
 #, qt-format
@@ -110,17 +110,17 @@ msgstr "Kompo"
 #: mainPanel.jsxinc:94
 #, qt-format
 msgid "Isolate selected groups, in the composition panel only"
-msgstr ""
+msgstr "Izoli la elektitajn grupojn, nur en la panelo de la komponaĵo"
 
 #: mainPanel.jsxinc:112
 #, qt-format
 msgid "Set interactive (sticky) mode."
-msgstr ""
+msgstr "Meti la ageman (gluecan) reĝimon."
 
 #: mainPanel.jsxinc:188
 #, qt-format
 msgid "Show/Hide layers"
-msgstr "Vidi/Kaŝi tavolojn"
+msgstr "Montri/Kaŝi tavolojn"
 
 #: mainPanel.jsxinc:194
 #, qt-format
@@ -190,102 +190,102 @@ msgstr "Elektiti tavoloj"
 #: mainPanel.jsxinc:434
 #, qt-format
 msgid "Custom Groups"
-msgstr ""
+msgstr "Propraj grupoj"
 
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Show custom layer groups"
-msgstr ""
+msgstr "Montri proprajn grupojn de tavoloj"
 
 #: mainPanel.jsxinc:439
 #, qt-format
 msgid "All layer properties"
-msgstr ""
+msgstr "Tiuj la propraĵoj de tavoloj"
 
 #: mainPanel.jsxinc:441
 #, qt-format
 msgid "Show all properties"
-msgstr ""
+msgstr "Montri tiujn la propraĵoj"
 
 #: mainPanel.jsxinc:444
 #, qt-format
 msgid "Hierarchy"
-msgstr ""
+msgstr "Hierarkio"
 
 #: mainPanel.jsxinc:446
 #, qt-format
 msgid "Show hierarchical (parenting) properties"
-msgstr ""
+msgstr "Montri hierarkiaj (muntilo) propraĵoj"
 
 #: mainPanel.jsxinc:449
 #, qt-format
 msgid "Layer types"
-msgstr ""
+msgstr "Tipoj de tavolo"
 
 #: mainPanel.jsxinc:451
 #, qt-format
 msgid "Show layer types"
-msgstr ""
+msgstr "Montri la tipojn de tavolo"
 
 #: mainPanel.jsxinc:452
 #, qt-format
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: mainPanel.jsxinc:454
 #, qt-format
 msgid "Layer attributes"
-msgstr ""
+msgstr "Atributoj de la tavolo"
 
 #: mainPanel.jsxinc:456
 #, qt-format
 msgid "Show layer attributes"
-msgstr ""
+msgstr "Montri la atributojn de la tavolo"
 
 #: mainPanel.jsxinc:457
 #, qt-format
 msgid "Attribute"
-msgstr ""
+msgstr "Atributo"
 
 #: mainPanel.jsxinc:459
 #, qt-format
 msgid "Animation"
-msgstr ""
+msgstr "Animacio"
 
 #: mainPanel.jsxinc:461
 #, qt-format
 msgid "Show animation properties"
-msgstr ""
+msgstr "Montri la propraĵojn de animacio"
 
 #: mainPanel.jsxinc:464
 #, qt-format
 msgid "Matte & Blending"
-msgstr ""
+msgstr "Tegilo kaj Miksa"
 
 #: mainPanel.jsxinc:466
 #, qt-format
 msgid "Show matte, blending, and alpha properties"
-msgstr ""
+msgstr "Montri tegilon, miksan kaj propraĵojn de alfo"
 
 #: mainPanel.jsxinc:467
 #, qt-format
 msgid "Matte"
-msgstr ""
+msgstr "Tavolo de tegilo"
 
 #: mainPanel.jsxinc:469
 #, qt-format
 msgid "Layer styles"
-msgstr ""
+msgstr "Tipoj de tavolo"
 
 #: mainPanel.jsxinc:471
 #, qt-format
 msgid "Show layer styles"
-msgstr ""
+msgstr "Montri la tipojn de tavolo"
 
 #: mainPanel.jsxinc:472
 #, qt-format
 msgid "Layer Styles"
-msgstr ""
+msgstr "Tipoj de tavolo"
 
 #: mainPanel.jsxinc:479
 #, qt-format
