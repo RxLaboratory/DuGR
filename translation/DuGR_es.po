@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 07:59\n"
+"PO-Revision-Date: 2022-09-29 09:03\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -195,37 +195,37 @@ msgstr "Grupos personalizados"
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Show custom layer groups"
-msgstr ""
+msgstr "Mostrar grupos de capas personalizados"
 
 #: mainPanel.jsxinc:439
 #, qt-format
 msgid "All layer properties"
-msgstr ""
+msgstr "Todas las propiedades de capa"
 
 #: mainPanel.jsxinc:441
 #, qt-format
 msgid "Show all properties"
-msgstr ""
+msgstr "Mostrar todas las propiedades"
 
 #: mainPanel.jsxinc:444
 #, qt-format
 msgid "Hierarchy"
-msgstr ""
+msgstr "Jerarquía"
 
 #: mainPanel.jsxinc:446
 #, qt-format
 msgid "Show hierarchical (parenting) properties"
-msgstr ""
+msgstr "Mostrar las propiedades de jerarquía (emparentamiento)"
 
 #: mainPanel.jsxinc:449
 #, qt-format
 msgid "Layer types"
-msgstr ""
+msgstr "Tipos de capa"
 
 #: mainPanel.jsxinc:451
 #, qt-format
 msgid "Show layer types"
-msgstr ""
+msgstr "Mostrar tipos de capa"
 
 #: mainPanel.jsxinc:452
 #, qt-format
@@ -240,12 +240,12 @@ msgstr "Atributos de capa"
 #: mainPanel.jsxinc:456
 #, qt-format
 msgid "Show layer attributes"
-msgstr ""
+msgstr "Mostrar atributos de capas"
 
 #: mainPanel.jsxinc:457
 #, qt-format
 msgid "Attribute"
-msgstr ""
+msgstr "Atributo"
 
 #: mainPanel.jsxinc:459
 #, qt-format
@@ -255,37 +255,37 @@ msgstr "Animación"
 #: mainPanel.jsxinc:461
 #, qt-format
 msgid "Show animation properties"
-msgstr ""
+msgstr "Mostrar propiedades de animación"
 
 #: mainPanel.jsxinc:464
 #, qt-format
 msgid "Matte & Blending"
-msgstr ""
+msgstr "Mate y fusión"
 
 #: mainPanel.jsxinc:466
 #, qt-format
 msgid "Show matte, blending, and alpha properties"
-msgstr ""
+msgstr "Mostrar mate, fusión y propiedades de alfa"
 
 #: mainPanel.jsxinc:467
 #, qt-format
 msgid "Matte"
-msgstr ""
+msgstr "Mate"
 
 #: mainPanel.jsxinc:469
 #, qt-format
 msgid "Layer styles"
-msgstr ""
+msgstr "Estilos de capa"
 
 #: mainPanel.jsxinc:471
 #, qt-format
 msgid "Show layer styles"
-msgstr ""
+msgstr "Mostrar estilos de capa"
 
 #: mainPanel.jsxinc:472
 #, qt-format
 msgid "Layer Styles"
-msgstr ""
+msgstr "Estilos de Capa"
 
 #: mainPanel.jsxinc:479
 #, qt-format
@@ -305,7 +305,7 @@ msgstr "Invertido"
 #: mainPanel.jsxinc:494
 #, qt-format
 msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
-msgstr ""
+msgstr "Utilizar el operador Y(&) o el operador O(/) para la selección de múltiples grupos."
 
 #: mainPanel.jsxinc:514
 #, qt-format
@@ -315,7 +315,7 @@ msgstr "Eliminar todo"
 #: mainPanel.jsxinc:524
 #, qt-format
 msgid "Search..."
-msgstr ""
+msgstr "Buscar..."
 
 #: propPanel.jsxinc:9
 #, qt-format
@@ -415,117 +415,117 @@ msgstr "Atributo: Guía"
 #: propPanel.jsxinc:31
 #, qt-format
 msgid "Animation: At current time"
-msgstr ""
+msgstr "Animación: En el momento actual"
 
 #: propPanel.jsxinc:32
 #, qt-format
 msgid "Animation: In preview range"
-msgstr ""
+msgstr "Animación: En el rango de vista previa"
 
 #: propPanel.jsxinc:33
 #, qt-format
 msgid "Animation: Has keyframes"
-msgstr ""
+msgstr "Animación: Tiene fotogramas clave"
 
 #: propPanel.jsxinc:34
 #, qt-format
 msgid "Animation: Has expressions"
-msgstr ""
+msgstr "Animación: Tiene expresiones"
 
 #: propPanel.jsxinc:36
 #, qt-format
 msgid "Matte & Blending: Has mask"
-msgstr ""
+msgstr "Mate y fusión: Tiene máscara"
 
 #: propPanel.jsxinc:37
 #, qt-format
 msgid "Matte & Blending: Has track matte"
-msgstr ""
+msgstr "Mate y fusión: Tiene capa de mate"
 
 #: propPanel.jsxinc:38
 #, qt-format
 msgid "Matte & Blending: Is track matte"
-msgstr ""
+msgstr "Mate y fusión: Es capa de mate"
 
 #: propPanel.jsxinc:39
 #, qt-format
 msgid "Matte & Blending: Preserve transparency"
-msgstr ""
+msgstr "Mate y fusión: Conservar transparencia"
 
 #: propPanel.jsxinc:40
 #, qt-format
 msgid "Matte & Blending: Normal blending mode"
-msgstr ""
+msgstr "Mate y fusión: Modo de fusión normal"
 
 #: propPanel.jsxinc:41
 #, qt-format
 msgid "Matte & Blending: Other blending mode"
-msgstr ""
+msgstr "Mate y fusión: Otro modo de fusión"
 
 #: propPanel.jsxinc:43
 #, qt-format
 msgid "Layer Styles: All"
-msgstr ""
+msgstr "Estilos de capa: Todos"
 
 #: propPanel.jsxinc:44
 #, qt-format
 msgid "Layer Styles: Drop Shadow"
-msgstr ""
+msgstr "Estilos de capa: Sombra proyectada"
 
 #: propPanel.jsxinc:45
 #, qt-format
 msgid "Layer Styles: Inner Shadow"
-msgstr ""
+msgstr "Estilos de capa: Sombra interior"
 
 #: propPanel.jsxinc:46
 #, qt-format
 msgid "Layer Styles: Outer Glow"
-msgstr ""
+msgstr "Estilos de capa: Resplandor exterior"
 
 #: propPanel.jsxinc:47
 #, qt-format
 msgid "Layer Styles: Inner Glow"
-msgstr ""
+msgstr "Estilos de capa: Resplandor interior"
 
 #: propPanel.jsxinc:48
 #, qt-format
 msgid "Layer Styles: Bevel and Emboss"
-msgstr ""
+msgstr "Estilos de capa: Bisel y relieve"
 
 #: propPanel.jsxinc:49
 #, qt-format
 msgid "Layer Styles: Satin"
-msgstr ""
+msgstr "Estilos de capa: Satinado"
 
 #: propPanel.jsxinc:50
 #, qt-format
 msgid "Layer Styles: Color Overlay"
-msgstr ""
+msgstr "Estilos de capa: Superposición de color"
 
 #: propPanel.jsxinc:51
 #, qt-format
 msgid "Layer Styles: Gradient Overlay"
-msgstr ""
+msgstr "Estilos de capa: Superposición de degradado"
 
 #: propPanel.jsxinc:52
 #, qt-format
 msgid "Layer Styles: Stroke"
-msgstr ""
+msgstr "Estilos de capa: Trazo"
 
 #: settings.jsxinc:6
 #, qt-format
 msgid "Hide Ae layer switches"
-msgstr ""
+msgstr "Ocultar los definidores de capa"
 
 #: settings.jsxinc:8
 #, qt-format
 msgid "Show or hide the After Effects layer switches buttons."
-msgstr ""
+msgstr "Mostrar u ocultar los definidores de capa de After Effects."
 
 #: settings.jsxinc:9
 #, qt-format
 msgid "Show Ae layer switches"
-msgstr ""
+msgstr "Mostrar los definidores de capa"
 
 #: settings.jsxinc:15
 #, qt-format
@@ -545,7 +545,7 @@ msgstr "Capas bloqueadas: permitir cambios"
 #: settings.jsxinc:23
 #, qt-format
 msgid "Type of warning frame to use"
-msgstr ""
+msgstr "Tipo de marco de advertencia a utilizar"
 
 #: settings.jsxinc:25
 #, qt-format
@@ -610,12 +610,12 @@ msgstr "Mostrar marcadores"
 #: settings.jsxinc:63
 #, qt-format
 msgid "Auto-select layers"
-msgstr ""
+msgstr "Autoseleccionar capas"
 
 #: settings.jsxinc:64
 #, qt-format
 msgid "Automatically select layers when selecting groups or properties"
-msgstr ""
+msgstr "Seleccionar automáticamente las capas al seleccionar grupos o propiedades"
 
 #: settings.jsxinc:71
 #, qt-format
