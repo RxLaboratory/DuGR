@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 06:41\n"
+"PO-Revision-Date: 2022-09-29 07:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -304,7 +304,7 @@ msgstr "反转的"
 
 #: mainPanel.jsxinc:494
 #, qt-format
-msgid "Use either the AND or OR operator for multiple group selection."
+msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
 msgstr ""
 
 #: mainPanel.jsxinc:514
