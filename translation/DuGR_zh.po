@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:50\n"
+"POT-Creation-Date: 2022-09-28 10:30\n"
+"PO-Revision-Date: 2022-09-29 07:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -40,357 +40,592 @@ msgstr "已忽略"
 #: groupPanel.jsxinc:23
 #, qt-format
 msgid "Add selected layers to group."
-msgstr ""
+msgstr "添加选中的图层到组。"
 
 #: groupPanel.jsxinc:31
 #, qt-format
 msgid "Get groups from selected layers."
-msgstr ""
+msgstr "获取选中的图层的组。"
 
 #: groupPanel.jsxinc:39
 #, qt-format
 msgid "Remove selected layers from group."
-msgstr ""
+msgstr "从组中移除选中的图层。"
 
 #: groupPanel.jsxinc:50
 #, qt-format
 msgid "Create new group."
-msgstr ""
+msgstr "创建新组。"
 
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr ""
+msgstr "更改组名"
 
 #: groupPanel.jsxinc:66
 #, qt-format
 msgid "Remove group."
-msgstr ""
+msgstr "移除组。"
 
 #: groupPanel.jsxinc:77
 #, qt-format
 msgid "New group"
-msgstr ""
+msgstr "新建组"
 
 #: groupPanel.jsxinc:87
 #, qt-format
 msgid "OK"
 msgstr "好的"
 
-#: mainPanel.jsxinc:12
+#: mainPanel.jsxinc:42
 #, qt-format
 msgid "Exit isolation."
-msgstr ""
+msgstr "退出隔离状态。"
 
-#: mainPanel.jsxinc:27
+#: mainPanel.jsxinc:56
 #, qt-format
 msgid "Isolate"
 msgstr "隔离"
 
-#: mainPanel.jsxinc:29
+#: mainPanel.jsxinc:58
 #, qt-format
 msgid "Isolate selected groups."
-msgstr ""
+msgstr "隔离选中的组。"
 
-#: mainPanel.jsxinc:45
+#: mainPanel.jsxinc:74
 #, qt-format
 msgid "Timeline"
 msgstr "时间线"
 
-#: mainPanel.jsxinc:47
+#: mainPanel.jsxinc:76
 #, qt-format
 msgid "Isolate selected groups, in the timeline only."
-msgstr ""
+msgstr "仅在时间线内隔离选中的小组。"
 
-#: mainPanel.jsxinc:63
+#: mainPanel.jsxinc:92
 #, qt-format
 msgid "Comp"
 msgstr "合成"
 
-#: mainPanel.jsxinc:65
+#: mainPanel.jsxinc:94
 #, qt-format
 msgid "Isolate selected groups, in the composition panel only"
-msgstr ""
+msgstr "仅隔离在合成面板里选中的组"
 
-#: mainPanel.jsxinc:84
+#: mainPanel.jsxinc:112
 #, qt-format
 msgid "Set interactive (sticky) mode."
-msgstr ""
+msgstr "设定交互（粘粘）模式。"
 
-#: mainPanel.jsxinc:157
+#: mainPanel.jsxinc:188
 #, qt-format
 msgid "Show/Hide layers"
 msgstr "显示/隐藏图层"
 
-#: mainPanel.jsxinc:163
+#: mainPanel.jsxinc:194
 #, qt-format
 msgid "Toggle audio"
 msgstr "切换音频"
 
-#: mainPanel.jsxinc:169
+#: mainPanel.jsxinc:200
 #, qt-format
 msgid "Toggle solo mode"
 msgstr "切换单独显示模式"
 
-#: mainPanel.jsxinc:175
+#: mainPanel.jsxinc:206
 #, qt-format
 msgid "Lock layers"
 msgstr "锁定图层"
 
-#: mainPanel.jsxinc:181
+#: mainPanel.jsxinc:212
 #, qt-format
 msgid "Shy layers"
 msgstr "害羞图层"
 
-#: mainPanel.jsxinc:187
+#: mainPanel.jsxinc:218
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
 msgstr "折叠变换 / 连续栅格化"
 
-#: mainPanel.jsxinc:193
+#: mainPanel.jsxinc:224
 #, qt-format
 msgid "Guide layers"
 msgstr "参考图层"
 
-#: mainPanel.jsxinc:200
+#: mainPanel.jsxinc:231
 #, qt-format
 msgid "Set quality"
 msgstr "设定质量"
 
-#: mainPanel.jsxinc:206
+#: mainPanel.jsxinc:237
 #, qt-format
 msgid "Toggle effects"
 msgstr "切换特效"
 
-#: mainPanel.jsxinc:212
+#: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
 msgstr "设定帧混合模式"
 
-#: mainPanel.jsxinc:218
+#: mainPanel.jsxinc:249
 #, qt-format
 msgid "Toggle motion blur"
 msgstr "切换运动模糊"
 
-#: mainPanel.jsxinc:224
+#: mainPanel.jsxinc:255
 #, qt-format
 msgid "Toggle adjustment layer mode"
 msgstr "切换调整图层模式"
 
-#: mainPanel.jsxinc:230
+#: mainPanel.jsxinc:261
 #, qt-format
 msgid "Toggle 3D layer mode"
 msgstr "切换3D模式"
 
-#: mainPanel.jsxinc:236
+#: mainPanel.jsxinc:267
 #, qt-format
 msgid "Select layers"
 msgstr "所选图层"
 
-#: mainPanel.jsxinc:401
+#: mainPanel.jsxinc:434
 #, qt-format
-msgid "Properties"
-msgstr ""
-
-#: mainPanel.jsxinc:402
-#, qt-format
-msgid "Groups"
-msgstr "群组"
-
-#: mainPanel.jsxinc:433
-#, qt-format
-msgid "Invert"
-msgstr "反转"
-
-#: mainPanel.jsxinc:435
-#, qt-format
-msgid "Invert the group/property selection"
+msgid "Custom Groups"
 msgstr ""
 
 #: mainPanel.jsxinc:436
 #, qt-format
-msgid "Inverted"
+msgid "Show custom layer groups"
 msgstr ""
 
-#: propPanel.jsxinc:7
+#: mainPanel.jsxinc:439
+#, qt-format
+msgid "All layer properties"
+msgstr ""
+
+#: mainPanel.jsxinc:441
+#, qt-format
+msgid "Show all properties"
+msgstr ""
+
+#: mainPanel.jsxinc:444
+#, qt-format
+msgid "Hierarchy"
+msgstr ""
+
+#: mainPanel.jsxinc:446
+#, qt-format
+msgid "Show hierarchical (parenting) properties"
+msgstr ""
+
+#: mainPanel.jsxinc:449
+#, qt-format
+msgid "Layer types"
+msgstr ""
+
+#: mainPanel.jsxinc:451
+#, qt-format
+msgid "Show layer types"
+msgstr ""
+
+#: mainPanel.jsxinc:452
+#, qt-format
+msgid "Type"
+msgstr "类型"
+
+#: mainPanel.jsxinc:454
+#, qt-format
+msgid "Layer attributes"
+msgstr "图层属性"
+
+#: mainPanel.jsxinc:456
+#, qt-format
+msgid "Show layer attributes"
+msgstr ""
+
+#: mainPanel.jsxinc:457
+#, qt-format
+msgid "Attribute"
+msgstr ""
+
+#: mainPanel.jsxinc:459
+#, qt-format
+msgid "Animation"
+msgstr "动画"
+
+#: mainPanel.jsxinc:461
+#, qt-format
+msgid "Show animation properties"
+msgstr ""
+
+#: mainPanel.jsxinc:464
+#, qt-format
+msgid "Matte & Blending"
+msgstr ""
+
+#: mainPanel.jsxinc:466
+#, qt-format
+msgid "Show matte, blending, and alpha properties"
+msgstr ""
+
+#: mainPanel.jsxinc:467
+#, qt-format
+msgid "Matte"
+msgstr ""
+
+#: mainPanel.jsxinc:469
+#, qt-format
+msgid "Layer styles"
+msgstr ""
+
+#: mainPanel.jsxinc:471
+#, qt-format
+msgid "Show layer styles"
+msgstr ""
+
+#: mainPanel.jsxinc:472
+#, qt-format
+msgid "Layer Styles"
+msgstr ""
+
+#: mainPanel.jsxinc:479
+#, qt-format
+msgid "Invert"
+msgstr "反转"
+
+#: mainPanel.jsxinc:481
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "反转组/属性选择"
+
+#: mainPanel.jsxinc:482
+#, qt-format
+msgid "Inverted"
+msgstr "反转的"
+
+#: mainPanel.jsxinc:494
+#, qt-format
+msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
+msgstr ""
+
+#: mainPanel.jsxinc:514
+#, qt-format
+msgid "Remove all"
+msgstr "全部移除"
+
+#: mainPanel.jsxinc:524
+#, qt-format
+msgid "Search..."
+msgstr ""
+
+#: propPanel.jsxinc:9
 #, qt-format
 msgid "Hierarchy: Orphans"
 msgstr "层级: 不存在子级"
 
-#: propPanel.jsxinc:8
+#: propPanel.jsxinc:10
 #, qt-format
 msgid "Hierarchy: Have children"
 msgstr "层级: 存在子级"
 
-#: propPanel.jsxinc:9
+#: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Pre-compositions"
 msgstr "类型: 预合成"
 
-#: propPanel.jsxinc:10
+#: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Null Objects"
 msgstr "类型: 空对象"
 
-#: propPanel.jsxinc:11
+#: propPanel.jsxinc:14
 #, qt-format
 msgid "Type: Solids"
 msgstr "类型: 纯色"
 
-#: propPanel.jsxinc:12
+#: propPanel.jsxinc:15
 #, qt-format
 msgid "Type: Shapes"
 msgstr "类型: 形状"
 
-#: propPanel.jsxinc:13
+#: propPanel.jsxinc:16
 #, qt-format
 msgid "Type: Texts"
 msgstr "类型: 文本"
 
-#: propPanel.jsxinc:14
+#: propPanel.jsxinc:17
 #, qt-format
 msgid "Type: Adjustment"
 msgstr "类型: 调整"
 
-#: propPanel.jsxinc:15
+#: propPanel.jsxinc:18
 #, qt-format
 msgid "Type: Lights"
 msgstr "类型: 灯光"
 
-#: propPanel.jsxinc:16
+#: propPanel.jsxinc:19
 #, qt-format
 msgid "Type: Cameras"
 msgstr "类型: 摄像机"
 
-#: propPanel.jsxinc:17
+#: propPanel.jsxinc:21
 #, qt-format
 msgid "Attribute: Visible"
 msgstr "属性: 可见性"
 
-#: propPanel.jsxinc:18
+#: propPanel.jsxinc:22
 #, qt-format
 msgid "Attribute: Has Audio"
 msgstr "属性: 存在音频"
 
-#: propPanel.jsxinc:19
+#: propPanel.jsxinc:23
 #, qt-format
 msgid "Attribute: Solo"
 msgstr "属性: 单独显示"
 
-#: propPanel.jsxinc:20
+#: propPanel.jsxinc:24
 #, qt-format
 msgid "Attribute: Locked"
 msgstr "属性: 锁定"
 
-#: propPanel.jsxinc:21
+#: propPanel.jsxinc:25
 #, qt-format
 msgid "Attribute: Shy"
 msgstr "属性: 害羞"
 
-#: propPanel.jsxinc:22
+#: propPanel.jsxinc:26
 #, qt-format
 msgid "Attribute: Effects"
 msgstr "属性: 效果"
 
-#: propPanel.jsxinc:23
+#: propPanel.jsxinc:27
 #, qt-format
 msgid "Attribute: Motion Blur"
 msgstr "属性: 运动模糊"
 
-#: propPanel.jsxinc:24
+#: propPanel.jsxinc:28
 #, qt-format
 msgid "Attribute: 3D"
 msgstr "属性: 3D"
 
-#: propPanel.jsxinc:25
+#: propPanel.jsxinc:29
 #, qt-format
 msgid "Attribute: Guide"
 msgstr "属性:参考线"
 
+#: propPanel.jsxinc:31
+#, qt-format
+msgid "Animation: At current time"
+msgstr ""
+
+#: propPanel.jsxinc:32
+#, qt-format
+msgid "Animation: In preview range"
+msgstr ""
+
+#: propPanel.jsxinc:33
+#, qt-format
+msgid "Animation: Has keyframes"
+msgstr ""
+
+#: propPanel.jsxinc:34
+#, qt-format
+msgid "Animation: Has expressions"
+msgstr ""
+
+#: propPanel.jsxinc:36
+#, qt-format
+msgid "Matte & Blending: Has mask"
+msgstr ""
+
+#: propPanel.jsxinc:37
+#, qt-format
+msgid "Matte & Blending: Has track matte"
+msgstr ""
+
+#: propPanel.jsxinc:38
+#, qt-format
+msgid "Matte & Blending: Is track matte"
+msgstr ""
+
+#: propPanel.jsxinc:39
+#, qt-format
+msgid "Matte & Blending: Preserve transparency"
+msgstr ""
+
+#: propPanel.jsxinc:40
+#, qt-format
+msgid "Matte & Blending: Normal blending mode"
+msgstr ""
+
+#: propPanel.jsxinc:41
+#, qt-format
+msgid "Matte & Blending: Other blending mode"
+msgstr ""
+
+#: propPanel.jsxinc:43
+#, qt-format
+msgid "Layer Styles: All"
+msgstr ""
+
+#: propPanel.jsxinc:44
+#, qt-format
+msgid "Layer Styles: Drop Shadow"
+msgstr ""
+
+#: propPanel.jsxinc:45
+#, qt-format
+msgid "Layer Styles: Inner Shadow"
+msgstr ""
+
+#: propPanel.jsxinc:46
+#, qt-format
+msgid "Layer Styles: Outer Glow"
+msgstr ""
+
+#: propPanel.jsxinc:47
+#, qt-format
+msgid "Layer Styles: Inner Glow"
+msgstr ""
+
+#: propPanel.jsxinc:48
+#, qt-format
+msgid "Layer Styles: Bevel and Emboss"
+msgstr ""
+
+#: propPanel.jsxinc:49
+#, qt-format
+msgid "Layer Styles: Satin"
+msgstr ""
+
+#: propPanel.jsxinc:50
+#, qt-format
+msgid "Layer Styles: Color Overlay"
+msgstr ""
+
+#: propPanel.jsxinc:51
+#, qt-format
+msgid "Layer Styles: Gradient Overlay"
+msgstr ""
+
+#: propPanel.jsxinc:52
+#, qt-format
+msgid "Layer Styles: Stroke"
+msgstr ""
+
 #: settings.jsxinc:6
 #, qt-format
-msgid "Locked layers: deny changes"
+msgid "Hide Ae layer switches"
 msgstr ""
 
 #: settings.jsxinc:8
 #, qt-format
-msgid "What to do if a layer is locked."
+msgid "Show or hide the After Effects layer switches buttons."
 msgstr ""
 
 #: settings.jsxinc:9
 #, qt-format
-msgid "Locked layers: allow changes"
+msgid "Show Ae layer switches"
 msgstr ""
 
-#: settings.jsxinc:16
+#: settings.jsxinc:15
 #, qt-format
-msgid "Warning frame: None"
-msgstr ""
+msgid "Locked layers: deny changes"
+msgstr "已锁图层：拒绝更改"
+
+#: settings.jsxinc:17
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "当图层被锁定时要做什么。"
 
 #: settings.jsxinc:18
 #, qt-format
-msgid "Don't use any warning frame."
-msgstr ""
-
-#: settings.jsxinc:21
-#, qt-format
-msgid "Warning frame: Above"
-msgstr ""
+msgid "Locked layers: allow changes"
+msgstr "已锁图层：允许更改"
 
 #: settings.jsxinc:23
 #, qt-format
+msgid "Type of warning frame to use"
+msgstr ""
+
+#: settings.jsxinc:25
+#, qt-format
+msgid "Warning frame: None"
+msgstr "警告帧：无"
+
+#: settings.jsxinc:27
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "不使用任何警告帧。"
+
+#: settings.jsxinc:30
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "警告帧：以上"
+
+#: settings.jsxinc:32
+#, qt-format
 msgid "Draw the frame above the composition."
-msgstr ""
-
-#: settings.jsxinc:26
-#, qt-format
-msgid "Warning frame: Below"
-msgstr ""
-
-#: settings.jsxinc:28
-#, qt-format
-msgid "Draw the frame below the composition."
-msgstr ""
+msgstr "在合成上方绘制帧。"
 
 #: settings.jsxinc:35
 #, qt-format
-msgid "Isolation: hide layers"
-msgstr ""
+msgid "Warning frame: Below"
+msgstr "警告帧：以下"
 
 #: settings.jsxinc:37
 #, qt-format
+msgid "Draw the frame below the composition."
+msgstr "在合成下方绘制帧。"
+
+#: settings.jsxinc:44
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "隔离状态：隐藏图层"
+
+#: settings.jsxinc:46
+#, qt-format
 msgid "Method used to isolate layers in the composition."
-msgstr ""
-
-#: settings.jsxinc:38
-#, qt-format
-msgid "Isolation: wireframe"
-msgstr ""
-
-#: settings.jsxinc:45
-#, qt-format
-msgid "Hide markers"
-msgstr ""
+msgstr "用于隔离合成里的图层的方法。"
 
 #: settings.jsxinc:47
 #, qt-format
+msgid "Isolation: wireframe"
+msgstr "隔离状态：线框"
+
+#: settings.jsxinc:54
+#, qt-format
+msgid "Hide markers"
+msgstr "隐藏标记"
+
+#: settings.jsxinc:56
+#, qt-format
 msgid "whether to show or hide the tags on the layers."
-msgstr ""
-
-#: settings.jsxinc:48
-#, qt-format
-msgid "Show markers"
-msgstr ""
-
-#: settings.jsxinc:55
-#, qt-format
-msgid "Lock hidden layers"
-msgstr ""
+msgstr "是否显示或隐藏图层上的标签。"
 
 #: settings.jsxinc:57
 #, qt-format
-msgid "whether the hidden layers have to be locked."
+msgid "Show markers"
+msgstr "显示标记"
+
+#: settings.jsxinc:63
+#, qt-format
+msgid "Auto-select layers"
 msgstr ""
+
+#: settings.jsxinc:64
+#, qt-format
+msgid "Automatically select layers when selecting groups or properties"
+msgstr ""
+
+#: settings.jsxinc:71
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "锁定隐藏图层"
+
+#: settings.jsxinc:73
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr "是否隐藏的图层必须被锁定。"
 
 #: comp.jsxinc:589
 #, qt-format
@@ -697,11 +932,6 @@ msgstr "编辑项目或类别"
 #, qt-format
 msgid "Remove item or category"
 msgstr "移除项目或类别"
-
-#: library.jsxinc:411
-#, qt-format
-msgid "Remove all"
-msgstr "全部移除"
 
 #: library.jsxinc:421
 #, qt-format

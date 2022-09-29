@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-08-15 10:30\n"
-"PO-Revision-Date: 2022-08-15 08:50\n"
+"POT-Creation-Date: 2022-09-28 10:30\n"
+"PO-Revision-Date: 2022-09-29 09:03\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -77,317 +77,552 @@ msgstr "Nuevo grupo"
 msgid "OK"
 msgstr "OK"
 
-#: mainPanel.jsxinc:12
+#: mainPanel.jsxinc:42
 #, qt-format
 msgid "Exit isolation."
 msgstr "Salir del aislamiento."
 
-#: mainPanel.jsxinc:27
+#: mainPanel.jsxinc:56
 #, qt-format
 msgid "Isolate"
 msgstr "Aislado"
 
-#: mainPanel.jsxinc:29
+#: mainPanel.jsxinc:58
 #, qt-format
 msgid "Isolate selected groups."
 msgstr "Aislar los grupos seleccionados."
 
-#: mainPanel.jsxinc:45
+#: mainPanel.jsxinc:74
 #, qt-format
 msgid "Timeline"
 msgstr "Línea de tiempo"
 
-#: mainPanel.jsxinc:47
+#: mainPanel.jsxinc:76
 #, qt-format
 msgid "Isolate selected groups, in the timeline only."
 msgstr "Aislar los grupos seleccionados, en la línea temporal solamente."
 
-#: mainPanel.jsxinc:63
+#: mainPanel.jsxinc:92
 #, qt-format
 msgid "Comp"
 msgstr "Compo"
 
-#: mainPanel.jsxinc:65
+#: mainPanel.jsxinc:94
 #, qt-format
 msgid "Isolate selected groups, in the composition panel only"
 msgstr "Aislar los grupos seleccionados, en el panel de composición solamente"
 
-#: mainPanel.jsxinc:84
+#: mainPanel.jsxinc:112
 #, qt-format
 msgid "Set interactive (sticky) mode."
 msgstr "Establecer el modo interactivo (pegajoso)."
 
-#: mainPanel.jsxinc:157
+#: mainPanel.jsxinc:188
 #, qt-format
 msgid "Show/Hide layers"
 msgstr "Mostrar/ocultar las capas"
 
-#: mainPanel.jsxinc:163
+#: mainPanel.jsxinc:194
 #, qt-format
 msgid "Toggle audio"
 msgstr "(Des)activar el audio"
 
-#: mainPanel.jsxinc:169
+#: mainPanel.jsxinc:200
 #, qt-format
 msgid "Toggle solo mode"
 msgstr "(Des)activar el modo solo"
 
-#: mainPanel.jsxinc:175
+#: mainPanel.jsxinc:206
 #, qt-format
 msgid "Lock layers"
 msgstr "Bloquear las capas"
 
-#: mainPanel.jsxinc:181
+#: mainPanel.jsxinc:212
 #, qt-format
 msgid "Shy layers"
 msgstr "Capas discretas"
 
-#: mainPanel.jsxinc:187
+#: mainPanel.jsxinc:218
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
 msgstr "Reducir las transformaciones / Rasterizado continuo"
 
-#: mainPanel.jsxinc:193
+#: mainPanel.jsxinc:224
 #, qt-format
 msgid "Guide layers"
 msgstr "Capas de guía"
 
-#: mainPanel.jsxinc:200
+#: mainPanel.jsxinc:231
 #, qt-format
 msgid "Set quality"
 msgstr "Cambiar la calidad"
 
-#: mainPanel.jsxinc:206
+#: mainPanel.jsxinc:237
 #, qt-format
 msgid "Toggle effects"
 msgstr "(Des)activar los efectos"
 
-#: mainPanel.jsxinc:212
+#: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
 msgstr "Cambiar el modo de fusión de las imágenes"
 
-#: mainPanel.jsxinc:218
+#: mainPanel.jsxinc:249
 #, qt-format
 msgid "Toggle motion blur"
 msgstr "(Des)activar el desenfoque de movimientos"
 
-#: mainPanel.jsxinc:224
+#: mainPanel.jsxinc:255
 #, qt-format
 msgid "Toggle adjustment layer mode"
 msgstr "(Des)activar el modo capa de efectos"
 
-#: mainPanel.jsxinc:230
+#: mainPanel.jsxinc:261
 #, qt-format
 msgid "Toggle 3D layer mode"
 msgstr "(Des)activar el modo capa 3D"
 
-#: mainPanel.jsxinc:236
+#: mainPanel.jsxinc:267
 #, qt-format
 msgid "Select layers"
 msgstr "Seleccionar las capas"
 
-#: mainPanel.jsxinc:401
+#: mainPanel.jsxinc:434
 #, qt-format
-msgid "Properties"
-msgstr "Propiedades"
+msgid "Custom Groups"
+msgstr "Grupos personalizados"
 
-#: mainPanel.jsxinc:402
+#: mainPanel.jsxinc:436
 #, qt-format
-msgid "Groups"
-msgstr "Grupos"
+msgid "Show custom layer groups"
+msgstr "Mostrar grupos de capas personalizados"
 
-#: mainPanel.jsxinc:433
+#: mainPanel.jsxinc:439
+#, qt-format
+msgid "All layer properties"
+msgstr "Todas las propiedades de capa"
+
+#: mainPanel.jsxinc:441
+#, qt-format
+msgid "Show all properties"
+msgstr "Mostrar todas las propiedades"
+
+#: mainPanel.jsxinc:444
+#, qt-format
+msgid "Hierarchy"
+msgstr "Jerarquía"
+
+#: mainPanel.jsxinc:446
+#, qt-format
+msgid "Show hierarchical (parenting) properties"
+msgstr "Mostrar las propiedades de jerarquía (emparentamiento)"
+
+#: mainPanel.jsxinc:449
+#, qt-format
+msgid "Layer types"
+msgstr "Tipos de capa"
+
+#: mainPanel.jsxinc:451
+#, qt-format
+msgid "Show layer types"
+msgstr "Mostrar tipos de capa"
+
+#: mainPanel.jsxinc:452
+#, qt-format
+msgid "Type"
+msgstr "Tipo"
+
+#: mainPanel.jsxinc:454
+#, qt-format
+msgid "Layer attributes"
+msgstr "Atributos de capa"
+
+#: mainPanel.jsxinc:456
+#, qt-format
+msgid "Show layer attributes"
+msgstr "Mostrar atributos de capas"
+
+#: mainPanel.jsxinc:457
+#, qt-format
+msgid "Attribute"
+msgstr "Atributo"
+
+#: mainPanel.jsxinc:459
+#, qt-format
+msgid "Animation"
+msgstr "Animación"
+
+#: mainPanel.jsxinc:461
+#, qt-format
+msgid "Show animation properties"
+msgstr "Mostrar propiedades de animación"
+
+#: mainPanel.jsxinc:464
+#, qt-format
+msgid "Matte & Blending"
+msgstr "Mate y fusión"
+
+#: mainPanel.jsxinc:466
+#, qt-format
+msgid "Show matte, blending, and alpha properties"
+msgstr "Mostrar mate, fusión y propiedades de alfa"
+
+#: mainPanel.jsxinc:467
+#, qt-format
+msgid "Matte"
+msgstr "Mate"
+
+#: mainPanel.jsxinc:469
+#, qt-format
+msgid "Layer styles"
+msgstr "Estilos de capa"
+
+#: mainPanel.jsxinc:471
+#, qt-format
+msgid "Show layer styles"
+msgstr "Mostrar estilos de capa"
+
+#: mainPanel.jsxinc:472
+#, qt-format
+msgid "Layer Styles"
+msgstr "Estilos de Capa"
+
+#: mainPanel.jsxinc:479
 #, qt-format
 msgid "Invert"
 msgstr "Invertir"
 
-#: mainPanel.jsxinc:435
+#: mainPanel.jsxinc:481
 #, qt-format
 msgid "Invert the group/property selection"
 msgstr "Invertir la selección de grupo/propiedad"
 
-#: mainPanel.jsxinc:436
+#: mainPanel.jsxinc:482
 #, qt-format
 msgid "Inverted"
 msgstr "Invertido"
 
-#: propPanel.jsxinc:7
+#: mainPanel.jsxinc:494
+#, qt-format
+msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
+msgstr "Utilizar el operador Y(&) o el operador O(/) para la selección de múltiples grupos."
+
+#: mainPanel.jsxinc:514
+#, qt-format
+msgid "Remove all"
+msgstr "Eliminar todo"
+
+#: mainPanel.jsxinc:524
+#, qt-format
+msgid "Search..."
+msgstr "Buscar..."
+
+#: propPanel.jsxinc:9
 #, qt-format
 msgid "Hierarchy: Orphans"
 msgstr "Jerarquía: Huérfanos"
 
-#: propPanel.jsxinc:8
+#: propPanel.jsxinc:10
 #, qt-format
 msgid "Hierarchy: Have children"
 msgstr "Jerarquía: Con hijos"
 
-#: propPanel.jsxinc:9
+#: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Pre-compositions"
 msgstr "Tipo: Pre-composiciones"
 
-#: propPanel.jsxinc:10
+#: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Null Objects"
 msgstr "Tipo: Objetos nulos"
 
-#: propPanel.jsxinc:11
+#: propPanel.jsxinc:14
 #, qt-format
 msgid "Type: Solids"
 msgstr "Tipo: Sólidos"
 
-#: propPanel.jsxinc:12
+#: propPanel.jsxinc:15
 #, qt-format
 msgid "Type: Shapes"
 msgstr "Tipo: Formas"
 
-#: propPanel.jsxinc:13
+#: propPanel.jsxinc:16
 #, qt-format
 msgid "Type: Texts"
 msgstr "Tipo: Textos"
 
-#: propPanel.jsxinc:14
+#: propPanel.jsxinc:17
 #, qt-format
 msgid "Type: Adjustment"
 msgstr "Tipo: Capas de efectos"
 
-#: propPanel.jsxinc:15
+#: propPanel.jsxinc:18
 #, qt-format
 msgid "Type: Lights"
 msgstr "Tipo: Luces"
 
-#: propPanel.jsxinc:16
+#: propPanel.jsxinc:19
 #, qt-format
 msgid "Type: Cameras"
 msgstr "Tipo: Cámaras"
 
-#: propPanel.jsxinc:17
+#: propPanel.jsxinc:21
 #, qt-format
 msgid "Attribute: Visible"
 msgstr "Atributo: Visible"
 
-#: propPanel.jsxinc:18
+#: propPanel.jsxinc:22
 #, qt-format
 msgid "Attribute: Has Audio"
 msgstr "Atributo: Con audio"
 
-#: propPanel.jsxinc:19
+#: propPanel.jsxinc:23
 #, qt-format
 msgid "Attribute: Solo"
 msgstr "Atributo: Solo"
 
-#: propPanel.jsxinc:20
+#: propPanel.jsxinc:24
 #, qt-format
 msgid "Attribute: Locked"
 msgstr "Atributo: Bloqueado"
 
-#: propPanel.jsxinc:21
+#: propPanel.jsxinc:25
 #, qt-format
 msgid "Attribute: Shy"
 msgstr "Atributo: Discreto"
 
-#: propPanel.jsxinc:22
+#: propPanel.jsxinc:26
 #, qt-format
 msgid "Attribute: Effects"
 msgstr "Atributo: Efectos"
 
-#: propPanel.jsxinc:23
+#: propPanel.jsxinc:27
 #, qt-format
 msgid "Attribute: Motion Blur"
 msgstr "Atributo: Desenfoque de movimientos"
 
-#: propPanel.jsxinc:24
+#: propPanel.jsxinc:28
 #, qt-format
 msgid "Attribute: 3D"
 msgstr "Atributo: 3D"
 
-#: propPanel.jsxinc:25
+#: propPanel.jsxinc:29
 #, qt-format
 msgid "Attribute: Guide"
 msgstr "Atributo: Guía"
 
+#: propPanel.jsxinc:31
+#, qt-format
+msgid "Animation: At current time"
+msgstr "Animación: En el momento actual"
+
+#: propPanel.jsxinc:32
+#, qt-format
+msgid "Animation: In preview range"
+msgstr "Animación: En el rango de vista previa"
+
+#: propPanel.jsxinc:33
+#, qt-format
+msgid "Animation: Has keyframes"
+msgstr "Animación: Tiene fotogramas clave"
+
+#: propPanel.jsxinc:34
+#, qt-format
+msgid "Animation: Has expressions"
+msgstr "Animación: Tiene expresiones"
+
+#: propPanel.jsxinc:36
+#, qt-format
+msgid "Matte & Blending: Has mask"
+msgstr "Mate y fusión: Tiene máscara"
+
+#: propPanel.jsxinc:37
+#, qt-format
+msgid "Matte & Blending: Has track matte"
+msgstr "Mate y fusión: Tiene capa de mate"
+
+#: propPanel.jsxinc:38
+#, qt-format
+msgid "Matte & Blending: Is track matte"
+msgstr "Mate y fusión: Es capa de mate"
+
+#: propPanel.jsxinc:39
+#, qt-format
+msgid "Matte & Blending: Preserve transparency"
+msgstr "Mate y fusión: Conservar transparencia"
+
+#: propPanel.jsxinc:40
+#, qt-format
+msgid "Matte & Blending: Normal blending mode"
+msgstr "Mate y fusión: Modo de fusión normal"
+
+#: propPanel.jsxinc:41
+#, qt-format
+msgid "Matte & Blending: Other blending mode"
+msgstr "Mate y fusión: Otro modo de fusión"
+
+#: propPanel.jsxinc:43
+#, qt-format
+msgid "Layer Styles: All"
+msgstr "Estilos de capa: Todos"
+
+#: propPanel.jsxinc:44
+#, qt-format
+msgid "Layer Styles: Drop Shadow"
+msgstr "Estilos de capa: Sombra proyectada"
+
+#: propPanel.jsxinc:45
+#, qt-format
+msgid "Layer Styles: Inner Shadow"
+msgstr "Estilos de capa: Sombra interior"
+
+#: propPanel.jsxinc:46
+#, qt-format
+msgid "Layer Styles: Outer Glow"
+msgstr "Estilos de capa: Resplandor exterior"
+
+#: propPanel.jsxinc:47
+#, qt-format
+msgid "Layer Styles: Inner Glow"
+msgstr "Estilos de capa: Resplandor interior"
+
+#: propPanel.jsxinc:48
+#, qt-format
+msgid "Layer Styles: Bevel and Emboss"
+msgstr "Estilos de capa: Bisel y relieve"
+
+#: propPanel.jsxinc:49
+#, qt-format
+msgid "Layer Styles: Satin"
+msgstr "Estilos de capa: Satinado"
+
+#: propPanel.jsxinc:50
+#, qt-format
+msgid "Layer Styles: Color Overlay"
+msgstr "Estilos de capa: Superposición de color"
+
+#: propPanel.jsxinc:51
+#, qt-format
+msgid "Layer Styles: Gradient Overlay"
+msgstr "Estilos de capa: Superposición de degradado"
+
+#: propPanel.jsxinc:52
+#, qt-format
+msgid "Layer Styles: Stroke"
+msgstr "Estilos de capa: Trazo"
+
 #: settings.jsxinc:6
+#, qt-format
+msgid "Hide Ae layer switches"
+msgstr "Ocultar los definidores de capa"
+
+#: settings.jsxinc:8
+#, qt-format
+msgid "Show or hide the After Effects layer switches buttons."
+msgstr "Mostrar u ocultar los definidores de capa de After Effects."
+
+#: settings.jsxinc:9
+#, qt-format
+msgid "Show Ae layer switches"
+msgstr "Mostrar los definidores de capa"
+
+#: settings.jsxinc:15
 #, qt-format
 msgid "Locked layers: deny changes"
 msgstr "Capas bloqueadas: denegar cambios"
 
-#: settings.jsxinc:8
+#: settings.jsxinc:17
 #, qt-format
 msgid "What to do if a layer is locked."
 msgstr "Qué hacer si una capa está bloqueada."
 
-#: settings.jsxinc:9
+#: settings.jsxinc:18
 #, qt-format
 msgid "Locked layers: allow changes"
 msgstr "Capas bloqueadas: permitir cambios"
 
-#: settings.jsxinc:16
+#: settings.jsxinc:23
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "Tipo de marco de advertencia a utilizar"
+
+#: settings.jsxinc:25
 #, qt-format
 msgid "Warning frame: None"
 msgstr "Cuadro de advertencia: ninguno"
 
-#: settings.jsxinc:18
+#: settings.jsxinc:27
 #, qt-format
 msgid "Don't use any warning frame."
 msgstr "No utilizar ningún cuadro de advertencia."
 
-#: settings.jsxinc:21
+#: settings.jsxinc:30
 #, qt-format
 msgid "Warning frame: Above"
 msgstr "Cuadro de advertencia: sobre"
 
-#: settings.jsxinc:23
+#: settings.jsxinc:32
 #, qt-format
 msgid "Draw the frame above the composition."
 msgstr "Dibujar el cuadro sobre la composición."
 
-#: settings.jsxinc:26
+#: settings.jsxinc:35
 #, qt-format
 msgid "Warning frame: Below"
 msgstr "Cuadro de advertencia: bajo"
 
-#: settings.jsxinc:28
+#: settings.jsxinc:37
 #, qt-format
 msgid "Draw the frame below the composition."
 msgstr "Dibujar el cuadro debajo de la composición."
 
-#: settings.jsxinc:35
+#: settings.jsxinc:44
 #, qt-format
 msgid "Isolation: hide layers"
 msgstr "Aislamiento: ocultar capas"
 
-#: settings.jsxinc:37
+#: settings.jsxinc:46
 #, qt-format
 msgid "Method used to isolate layers in the composition."
 msgstr "Método utilizado para aislar las capas en la composición."
 
-#: settings.jsxinc:38
+#: settings.jsxinc:47
 #, qt-format
 msgid "Isolation: wireframe"
 msgstr "Aislamiento: wireframe"
 
-#: settings.jsxinc:45
+#: settings.jsxinc:54
 #, qt-format
 msgid "Hide markers"
 msgstr "Ocultar marcadores"
 
-#: settings.jsxinc:47
+#: settings.jsxinc:56
 #, qt-format
 msgid "whether to show or hide the tags on the layers."
 msgstr "Mostrar u ocultar las etiquetas en las capas."
 
-#: settings.jsxinc:48
+#: settings.jsxinc:57
 #, qt-format
 msgid "Show markers"
 msgstr "Mostrar marcadores"
 
-#: settings.jsxinc:55
+#: settings.jsxinc:63
+#, qt-format
+msgid "Auto-select layers"
+msgstr "Autoseleccionar capas"
+
+#: settings.jsxinc:64
+#, qt-format
+msgid "Automatically select layers when selecting groups or properties"
+msgstr "Seleccionar automáticamente las capas al seleccionar grupos o propiedades"
+
+#: settings.jsxinc:71
 #, qt-format
 msgid "Lock hidden layers"
 msgstr "Bloquear las capas ocultas"
 
-#: settings.jsxinc:57
+#: settings.jsxinc:73
 #, qt-format
 msgid "whether the hidden layers have to be locked."
 msgstr "Si las capas ocultas tienen que ser bloqueadas."
@@ -697,11 +932,6 @@ msgstr "Editar elemento o categoría"
 #, qt-format
 msgid "Remove item or category"
 msgstr "Eliminar elemento o categoría"
-
-#: library.jsxinc:411
-#, qt-format
-msgid "Remove all"
-msgstr "Eliminar todo"
 
 #: library.jsxinc:421
 #, qt-format
