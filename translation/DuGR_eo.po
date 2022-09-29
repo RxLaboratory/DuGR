@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 08:00\n"
+"PO-Revision-Date: 2022-09-29 11:38\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgstr ""
 #: mainPanel.jsxinc:92
 #, qt-format
 msgid "Comp"
-msgstr "Komp"
+msgstr "Kompo"
 
 #: mainPanel.jsxinc:94
 #, qt-format
@@ -120,12 +120,12 @@ msgstr ""
 #: mainPanel.jsxinc:188
 #, qt-format
 msgid "Show/Hide layers"
-msgstr "Vidigi/kaŝi tavoloj"
+msgstr "Vidi/Kaŝi tavolojn"
 
 #: mainPanel.jsxinc:194
 #, qt-format
 msgid "Toggle audio"
-msgstr "Baskuli la aŭdio"
+msgstr "Baskuli la sono"
 
 #: mainPanel.jsxinc:200
 #, qt-format
@@ -135,7 +135,7 @@ msgstr "Baskuli la sola reĝimo"
 #: mainPanel.jsxinc:206
 #, qt-format
 msgid "Lock layers"
-msgstr "Ŝlosi tavoloj"
+msgstr "Ŝlosi tavolojn"
 
 #: mainPanel.jsxinc:212
 #, qt-format
@@ -145,7 +145,7 @@ msgstr "Timidaj tavoloj"
 #: mainPanel.jsxinc:218
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
-msgstr "Kunfandi ŝanĝo / Kontinua bilderigo"
+msgstr "Kunfandi transformon / Kontinua bilderigo"
 
 #: mainPanel.jsxinc:224
 #, qt-format
