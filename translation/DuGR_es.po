@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 06:41\n"
+"PO-Revision-Date: 2022-09-29 07:39\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -190,7 +190,7 @@ msgstr "Seleccionar las capas"
 #: mainPanel.jsxinc:434
 #, qt-format
 msgid "Custom Groups"
-msgstr ""
+msgstr "Grupos personalizados"
 
 #: mainPanel.jsxinc:436
 #, qt-format
@@ -230,12 +230,12 @@ msgstr ""
 #: mainPanel.jsxinc:452
 #, qt-format
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: mainPanel.jsxinc:454
 #, qt-format
 msgid "Layer attributes"
-msgstr ""
+msgstr "Atributos de capa"
 
 #: mainPanel.jsxinc:456
 #, qt-format
@@ -250,7 +250,7 @@ msgstr ""
 #: mainPanel.jsxinc:459
 #, qt-format
 msgid "Animation"
-msgstr ""
+msgstr "Animación"
 
 #: mainPanel.jsxinc:461
 #, qt-format
