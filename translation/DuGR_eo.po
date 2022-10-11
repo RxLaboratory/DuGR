@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 19:40\n"
+"PO-Revision-Date: 2022-10-11 15:54\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -450,17 +450,17 @@ msgstr "Tegilo kaj Miksa: Estas tavolo de tegilo"
 #: propPanel.jsxinc:39
 #, qt-format
 msgid "Matte & Blending: Preserve transparency"
-msgstr ""
+msgstr "Tegilo & Miksa: Konservi la travideblan"
 
 #: propPanel.jsxinc:40
 #, qt-format
 msgid "Matte & Blending: Normal blending mode"
-msgstr ""
+msgstr "Tegilo & Miksa: Normala miksa reĝimo"
 
 #: propPanel.jsxinc:41
 #, qt-format
 msgid "Matte & Blending: Other blending mode"
-msgstr ""
+msgstr "Tegilo & Miksa: Alia miksa reĝimo"
 
 #: propPanel.jsxinc:43
 #, qt-format
