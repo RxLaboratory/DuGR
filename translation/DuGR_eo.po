@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-11 15:54\n"
+"PO-Revision-Date: 2022-10-11 19:19\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -465,117 +465,117 @@ msgstr "Tegilo & Miksa: Alia miksa reĝimo"
 #: propPanel.jsxinc:43
 #, qt-format
 msgid "Layer Styles: All"
-msgstr ""
+msgstr "Tipoj de tavolo: Ĉiaj"
 
 #: propPanel.jsxinc:44
 #, qt-format
 msgid "Layer Styles: Drop Shadow"
-msgstr ""
+msgstr "Stiloj de tavolo: Donanta ombron"
 
 #: propPanel.jsxinc:45
 #, qt-format
 msgid "Layer Styles: Inner Shadow"
-msgstr ""
+msgstr "Stiloj de tavolo: Interna ombro"
 
 #: propPanel.jsxinc:46
 #, qt-format
 msgid "Layer Styles: Outer Glow"
-msgstr ""
+msgstr "Stiloj de tavolo: Ekstera lumo"
 
 #: propPanel.jsxinc:47
 #, qt-format
 msgid "Layer Styles: Inner Glow"
-msgstr ""
+msgstr "Stiloj de tavolo: Interna lumo"
 
 #: propPanel.jsxinc:48
 #, qt-format
 msgid "Layer Styles: Bevel and Emboss"
-msgstr ""
+msgstr "Stiloj de tavolo: Ĉizi kaj Reliefiĝi"
 
 #: propPanel.jsxinc:49
 #, qt-format
 msgid "Layer Styles: Satin"
-msgstr ""
+msgstr "Stiloj de tavolo: Sateno"
 
 #: propPanel.jsxinc:50
 #, qt-format
 msgid "Layer Styles: Color Overlay"
-msgstr ""
+msgstr "Stiloj de tavolo: Kolora tegilo"
 
 #: propPanel.jsxinc:51
 #, qt-format
 msgid "Layer Styles: Gradient Overlay"
-msgstr ""
+msgstr "Stiloj de tavolo: Koloran degradi tegilo"
 
 #: propPanel.jsxinc:52
 #, qt-format
 msgid "Layer Styles: Stroke"
-msgstr ""
+msgstr "Stiloj de tavolo: Streko"
 
 #: settings.jsxinc:6
 #, qt-format
 msgid "Hide Ae layer switches"
-msgstr ""
+msgstr "Kaŝi la tavolo-ŝaltilojn de Ae"
 
 #: settings.jsxinc:8
 #, qt-format
 msgid "Show or hide the After Effects layer switches buttons."
-msgstr ""
+msgstr "Montri aŭ kaŝi la butonon de la tavolo-ŝaltiloj de After Effects."
 
 #: settings.jsxinc:9
 #, qt-format
 msgid "Show Ae layer switches"
-msgstr ""
+msgstr "Montri la tavolo-ŝaltilojn de Ae"
 
 #: settings.jsxinc:15
 #, qt-format
 msgid "Locked layers: deny changes"
-msgstr ""
+msgstr "Ŝlosi tavolojn: negi ŝanĝojn"
 
 #: settings.jsxinc:17
 #, qt-format
 msgid "What to do if a layer is locked."
-msgstr ""
+msgstr "Kio oni devas fari se unu tavolo estas ŝlosa."
 
 #: settings.jsxinc:18
 #, qt-format
 msgid "Locked layers: allow changes"
-msgstr ""
+msgstr "Ŝlosi tavolojn: permesi ŝanĝojn"
 
 #: settings.jsxinc:23
 #, qt-format
 msgid "Type of warning frame to use"
-msgstr ""
+msgstr "Tipo de bildo de averto uzata"
 
 #: settings.jsxinc:25
 #, qt-format
 msgid "Warning frame: None"
-msgstr ""
+msgstr "Bildo de averto: Nenio"
 
 #: settings.jsxinc:27
 #, qt-format
 msgid "Don't use any warning frame."
-msgstr ""
+msgstr "Uzi nenian bildon de averto."
 
 #: settings.jsxinc:30
 #, qt-format
 msgid "Warning frame: Above"
-msgstr ""
+msgstr "Bildo de averto: Supre"
 
 #: settings.jsxinc:32
 #, qt-format
 msgid "Draw the frame above the composition."
-msgstr ""
+msgstr "Desegni la kadron supre la komponaĵo."
 
 #: settings.jsxinc:35
 #, qt-format
 msgid "Warning frame: Below"
-msgstr ""
+msgstr "Bildo de averto: Malsupre"
 
 #: settings.jsxinc:37
 #, qt-format
 msgid "Draw the frame below the composition."
-msgstr ""
+msgstr "Desegni la kadron malsupre la komponaĵo."
 
 #: settings.jsxinc:44
 #, qt-format
