@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-12 16:20\n"
+"PO-Revision-Date: 2022-10-12 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -895,56 +895,58 @@ msgstr "Dankon pro viaj donacoj!"
 msgid "This month, the %1 fund is $%2.\n"
 "That's %3% of our monthly goal ( $%4 )\n\n"
 "Click on this button to join the development fund!"
-msgstr ""
+msgstr "Ĉimonate, la fonduso de %1 estas %2.\n"
+"Tio estas %3% de nia celo ($%4)\n\n"
+"Klaku ĉi tiu butono per aniĝi la fonduso de niaj laboriloj!"
 
 #. "an item in the After Effects project"
 #: library.jsxinc:162
 #, qt-format
 msgctxt "project"
 msgid "Item"
-msgstr ""
+msgstr "Elemento"
 
 #. "as in "run script""
 #: library.jsxinc:163
 #, qt-format
 msgctxt "file"
 msgid "Run"
-msgstr ""
+msgstr "Kuri"
 
 #: library.jsxinc:164
 #, qt-format
 msgid "Open folder"
-msgstr ""
+msgstr "Malfermi la dosierujon"
 
 #: library.jsxinc:165
 #, qt-format
 msgid "Add item or category"
-msgstr ""
+msgstr "Aldoni la elementon aŭ la kategorion"
 
 #: library.jsxinc:166
 #, qt-format
 msgid "Edit item or category"
-msgstr ""
+msgstr "Ŝanĝi elementon aŭ kategorion"
 
 #: library.jsxinc:167
 #, qt-format
 msgid "Remove item or category"
-msgstr ""
+msgstr "Forigi elementon aŭ kategorion"
 
 #: library.jsxinc:421
 #, qt-format
 msgid "Start typing..."
-msgstr ""
+msgstr "Startu skribi..."
 
 #: library.jsxinc:549
 #, qt-format
 msgid "Refresh"
-msgstr ""
+msgstr "Refreŝigi"
 
 #: library.jsxinc:567
 #, qt-format
 msgid "Category"
-msgstr ""
+msgstr "Kategorio"
 
 #: panel.jsxinc:570
 #, qt-format
@@ -1014,7 +1016,7 @@ msgstr "La oranĝkolora After Effects helo de la bona maljuna CS6"
 #: panel.jsxinc:654
 #, qt-format
 msgid "Custom..."
-msgstr ""
+msgstr "Proprigi..."
 
 #: panel.jsxinc:656
 #, qt-format
@@ -1094,7 +1096,7 @@ msgstr "Apliki"
 #: panel.jsxinc:795
 #, qt-format
 msgid "Apply settings."
-msgstr ""
+msgstr "Apliki agordojn."
 
 #: panel.jsxinc:869
 #, qt-format
@@ -1104,7 +1106,7 @@ msgstr "Vi devus rekomenci la scripto per apliki la tutajn ŝanĝojn."
 #: panel.jsxinc:910
 #, qt-format
 msgid "Help and options"
-msgstr ""
+msgstr "Helpo kaj opcioj"
 
 #: panel.jsxinc:924
 #, qt-format
@@ -1114,12 +1116,12 @@ msgstr "Editi fiksoj"
 #: progressbar.jsxinc:13
 #, qt-format
 msgid "Working"
-msgstr ""
+msgstr "Laborante"
 
 #: progressbar.jsxinc:23
 #, qt-format
 msgid "Magic is happening"
-msgstr ""
+msgstr "La Magio okasas"
 
 #: rssPanel.jsxinc:88
 #, qt-format
@@ -1134,5 +1136,5 @@ msgstr "Sekvonte"
 #: titleBar.jsxinc:55
 #, qt-format
 msgid "Keep this panel open"
-msgstr ""
+msgstr "Teni ĉi tiun panelon malfermatan"
 
