@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-11 19:19\n"
+"PO-Revision-Date: 2022-10-12 12:16\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -580,7 +580,7 @@ msgstr "Desegni la kadron malsupre la komponaĵo."
 #: settings.jsxinc:44
 #, qt-format
 msgid "Isolation: hide layers"
-msgstr ""
+msgstr "Izoleco: kaŝi tavolojn"
 
 #: settings.jsxinc:46
 #, qt-format
