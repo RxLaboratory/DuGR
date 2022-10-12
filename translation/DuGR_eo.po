@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-12 13:15\n"
+"PO-Revision-Date: 2022-10-12 16:20\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -595,82 +595,82 @@ msgstr "Izoleco: drato-bildo"
 #: settings.jsxinc:54
 #, qt-format
 msgid "Hide markers"
-msgstr ""
+msgstr "Kaŝi markojn"
 
 #: settings.jsxinc:56
 #, qt-format
 msgid "whether to show or hide the tags on the layers."
-msgstr ""
+msgstr "ĉu montri aŭ kaŝi la etikedojn en la tavoloj."
 
 #: settings.jsxinc:57
 #, qt-format
 msgid "Show markers"
-msgstr ""
+msgstr "Montri markojn"
 
 #: settings.jsxinc:63
 #, qt-format
 msgid "Auto-select layers"
-msgstr ""
+msgstr "Aŭto-elektiti tavoloj"
 
 #: settings.jsxinc:64
 #, qt-format
 msgid "Automatically select layers when selecting groups or properties"
-msgstr ""
+msgstr "Aŭtomate elektiti la tavolo kiam oni elektas grupojn aŭ propraĵojn"
 
 #: settings.jsxinc:71
 #, qt-format
 msgid "Lock hidden layers"
-msgstr ""
+msgstr "Ŝlosi la kaŝitajn tavolojn"
 
 #: settings.jsxinc:73
 #, qt-format
 msgid "whether the hidden layers have to be locked."
-msgstr ""
+msgstr "ĉu la kaŝintaj tavoloj devas ŝlosiĝi aŭ ne."
 
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
-msgstr ""
+msgstr "Nuligo"
 
 #: comp.jsxinc:638
 #, qt-format
 msgid "Adjustment layer"
-msgstr ""
+msgstr "Tavolo de adapto"
 
 #: comp.jsxinc:667
 #, qt-format
 msgid "Solid"
-msgstr ""
+msgstr "Solido"
 
 #: comp.jsxinc:696
 #, qt-format
 msgid "Shape"
-msgstr ""
+msgstr "Formo"
 
 #: comp.jsxinc:706
 #, qt-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Rektangulo"
 
 #: comp.jsxinc:711
 #, qt-format
 msgid "Rounded rectangle"
-msgstr ""
+msgstr "Cirkla rektangulo"
 
 #: comp.jsxinc:717
 #, qt-format
 msgid "Circle"
-msgstr ""
+msgstr "Cirklo"
 
 #: comp.jsxinc:722
 #, qt-format
 msgid "Polygon"
-msgstr ""
+msgstr "Plurlatero"
 
 #: comp.jsxinc:728
 #, qt-format
 msgid "Star"
-msgstr ""
+msgstr "Stelo"
 
 #: duscriptui_extension.jsxinc:162
 #, qt-format
@@ -702,102 +702,102 @@ msgstr "Editi reĝimo"
 #: layer.jsxinc:1506
 #, qt-format
 msgid "Locator"
-msgstr ""
+msgstr "Lokalizilo"
 
 #: project.jsxinc:467
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "Radiko de la projekto"
 
 #: oco.jsxinc:336
 #, qt-format
 msgid "Arm"
-msgstr ""
+msgstr "Brako"
 
 #: oco.jsxinc:394
 #, qt-format
 msgid "Shoulder"
-msgstr ""
+msgstr "Ŝultro"
 
 #: oco.jsxinc:443
 #, qt-format
 msgid "Forearm"
-msgstr ""
+msgstr "Antaŭbrako"
 
 #: oco.jsxinc:484
 #, qt-format
 msgid "Hand"
-msgstr ""
+msgstr "Mano"
 
 #: oco.jsxinc:525
 #, qt-format
 msgid "Claws"
-msgstr ""
+msgstr "Ungegoj"
 
 #: oco.jsxinc:561
 #, qt-format
 msgid "Tip"
-msgstr ""
+msgstr "Pinto"
 
 #: oco.jsxinc:602
 #, qt-format
 msgid "Heel"
-msgstr ""
+msgstr "Kalkano"
 
 #: oco.jsxinc:664
 #, qt-format
 msgid "Leg"
-msgstr ""
+msgstr "Kruro"
 
 #: oco.jsxinc:703
 #, qt-format
 msgid "Thigh"
-msgstr ""
+msgstr "Femuro"
 
 #: oco.jsxinc:711
 #, qt-format
 msgid "Calf"
-msgstr ""
+msgstr "Suro"
 
 #: oco.jsxinc:732
 #, qt-format
 msgid "Foot"
-msgstr ""
+msgstr "Piedo"
 
 #: oco.jsxinc:754
 #, qt-format
 msgid "Toes"
-msgstr ""
+msgstr "Piedfingroj"
 
 #: oco.jsxinc:768
 #, qt-format
 msgid "Hoof"
-msgstr ""
+msgstr "Hufo"
 
 #: oco.jsxinc:839
 #, qt-format
 msgid "Spine"
-msgstr ""
+msgstr "Spino"
 
 #: oco.jsxinc:857
 #, qt-format
 msgid "Hips"
-msgstr ""
+msgstr "Koksoj"
 
 #: oco.jsxinc:878
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "Torso"
 
 #: oco.jsxinc:899
 #, qt-format
 msgid "Neck"
-msgstr ""
+msgstr "Kolo"
 
 #: oco.jsxinc:908
 #, qt-format
 msgid "Head"
-msgstr ""
+msgstr "Kapo"
 
 #: oco.jsxinc:944
 #, qt-format
@@ -807,32 +807,32 @@ msgstr "Vosto"
 #: oco.jsxinc:983
 #, qt-format
 msgid "Hair"
-msgstr ""
+msgstr "Haro"
 
 #: oco.jsxinc:1045
 #, qt-format
 msgid "Wing"
-msgstr ""
+msgstr "Alo"
 
 #: oco.jsxinc:1127
 #, qt-format
 msgid "Feather"
-msgstr ""
+msgstr "Plumo"
 
 #: oco.jsxinc:1389
 #, qt-format
 msgid "Fin"
-msgstr ""
+msgstr "Naĝilo"
 
 #: oco.jsxinc:1410
 #, qt-format
 msgid "Fishbone"
-msgstr ""
+msgstr "Ostofiŝoj"
 
 #: button.jsxinc:157
 #, qt-format
 msgid "[Shift]: More options..."
-msgstr ""
+msgstr "[Shift]: Pli da opcioj..."
 
 #: colorSelector.jsxinc:65
 #, qt-format
@@ -844,19 +844,21 @@ msgstr "Fiksi hazardon valoron."
 #, qt-format
 msgctxt "file system"
 msgid "Path..."
-msgstr ""
+msgstr "Vojeto..."
 
 #: help.jsxinc:42
 #, qt-format
 msgid "Bug Report or Feature Request"
-msgstr ""
+msgstr "Raporto de Eraro aŭ Ĉefaĵa Peto"
 
 #: help.jsxinc:43
 #, qt-format
 msgid "Bug report\n"
 "Feature request\n\n"
 "Tell us what's wrong or request a new feature."
-msgstr ""
+msgstr "Raporto de eraro\n"
+"Ĉefaĵa peto\n\n"
+"Diru al ni tio kion ne estas bone aŭ demandu novan peton."
 
 #: help.jsxinc:86
 #, qt-format
@@ -871,22 +873,22 @@ msgstr "Demandu helpon."
 #: help.jsxinc:131
 #, qt-format
 msgid "Translate %1"
-msgstr ""
+msgstr "Traduki %1"
 
 #: help.jsxinc:132
 #, qt-format
 msgid "Help translating %1 to make it available to more people."
-msgstr ""
+msgstr "Helpu traduki %1 por fari ĝin pli disponebla pri plej homoj."
 
 #: help.jsxinc:342
 #, qt-format
 msgid "New version"
-msgstr ""
+msgstr "Nova versio"
 
 #: help.jsxinc:480
 #, qt-format
 msgid "Thank you for your donations!"
-msgstr ""
+msgstr "Dankon pro viaj donacoj!"
 
 #: help.jsxinc:486
 #, qt-format
