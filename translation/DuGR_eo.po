@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-13 12:32\n"
+"PO-Revision-Date: 2022-10-13 13:29\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -868,7 +868,7 @@ msgstr "Helpo"
 #: help.jsxinc:87
 #, qt-format
 msgid "Get help."
-msgstr "Demandu helpon."
+msgstr "Petu helpon."
 
 #: help.jsxinc:131
 #, qt-format
@@ -921,7 +921,7 @@ msgstr "Malfermi la dosierujon"
 #: library.jsxinc:165
 #, qt-format
 msgid "Add item or category"
-msgstr "Aldoni la elementon aŭ la kategorion"
+msgstr "Aldoni elementon aŭ kategorion"
 
 #: library.jsxinc:166
 #, qt-format
@@ -951,12 +951,12 @@ msgstr "Kategorio"
 #: panel.jsxinc:570
 #, qt-format
 msgid "%1 Settings"
-msgstr "%1 Fiksoj"
+msgstr "%1 Agordoj"
 
 #: panel.jsxinc:595
 #, qt-format
 msgid "Set the language of the interface."
-msgstr "Fiksi la lingvo de la interfaco."
+msgstr "Agordi la lingvon de la interfaco."
 
 #: panel.jsxinc:618
 #, qt-format
