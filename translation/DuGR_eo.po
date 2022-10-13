@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-13 11:31\n"
+"PO-Revision-Date: 2022-10-13 12:32\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -155,17 +155,17 @@ msgstr "Gvidistaj tavoloj"
 #: mainPanel.jsxinc:231
 #, qt-format
 msgid "Set quality"
-msgstr "Fiksi altakvaliton"
+msgstr "Fiksi kvaliton"
 
 #: mainPanel.jsxinc:237
 #, qt-format
 msgid "Toggle effects"
-msgstr "Baskuli la efikistoj"
+msgstr "Baskuli la efikoj"
 
 #: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
-msgstr "Fiksi la miskan kadron reĝimon"
+msgstr "Fiksi la miksan kadron reĝimon"
 
 #: mainPanel.jsxinc:249
 #, qt-format
@@ -205,7 +205,7 @@ msgstr "Ĉiuj propraĵoj de tavolo"
 #: mainPanel.jsxinc:441
 #, qt-format
 msgid "Show all properties"
-msgstr "Montri la ĉiujn propraĵoj"
+msgstr "Montri ĉiujn propraĵoj"
 
 #: mainPanel.jsxinc:444
 #, qt-format
@@ -305,7 +305,7 @@ msgstr "Inversa"
 #: mainPanel.jsxinc:494
 #, qt-format
 msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
-msgstr "Uzi la klavon KAJ(&) aŭ la klavon AŬ(/) por la selekto de obloj grupoj."
+msgstr "Uzi la klavon KAJ(&) aŭ la klavon AŬ(/) por selekti plurajn grupojn."
 
 #: mainPanel.jsxinc:514
 #, qt-format
@@ -330,7 +330,7 @@ msgstr "Hierarkio: Kun idoj"
 #: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Pre-compositions"
-msgstr "Tipo: Pre-komponaĵoj"
+msgstr "Tipo: Prekomponaĵoj"
 
 #: propPanel.jsxinc:13
 #, qt-format
@@ -470,7 +470,7 @@ msgstr "Tipoj de tavolo: Ĉiaj"
 #: propPanel.jsxinc:44
 #, qt-format
 msgid "Layer Styles: Drop Shadow"
-msgstr "Stiloj de tavolo: Donanta ombron"
+msgstr "Stiloj de tavolo: Donanta ombro"
 
 #: propPanel.jsxinc:45
 #, qt-format
@@ -505,7 +505,7 @@ msgstr "Stiloj de tavolo: Kolora tegilo"
 #: propPanel.jsxinc:51
 #, qt-format
 msgid "Layer Styles: Gradient Overlay"
-msgstr "Stiloj de tavolo: Koloran degradi tegilo"
+msgstr "Stiloj de tavolo: Koloro degrada tegilo"
 
 #: propPanel.jsxinc:52
 #, qt-format
@@ -535,7 +535,7 @@ msgstr "Ŝlosi tavolojn: negi ŝanĝojn"
 #: settings.jsxinc:17
 #, qt-format
 msgid "What to do if a layer is locked."
-msgstr "Kio oni devas fari se unu tavolo estas ŝlosa."
+msgstr "Kio oni devas fari se unu tavolo ŝlosiĝas."
 
 #: settings.jsxinc:18
 #, qt-format
@@ -545,7 +545,7 @@ msgstr "Ŝlosi tavolojn: permesi ŝanĝojn"
 #: settings.jsxinc:23
 #, qt-format
 msgid "Type of warning frame to use"
-msgstr "Tipo de bildo de averto uzata"
+msgstr "Tipo de bildo de averto uzanta"
 
 #: settings.jsxinc:25
 #, qt-format
@@ -585,7 +585,7 @@ msgstr "Izoleco: kaŝi tavolojn"
 #: settings.jsxinc:46
 #, qt-format
 msgid "Method used to isolate layers in the composition."
-msgstr "Uzata metodo por izoli tavolojn en la komponaĵo."
+msgstr "Uzanta metodo por izoli tavolojn en la komponaĵo."
 
 #: settings.jsxinc:47
 #, qt-format
@@ -615,7 +615,7 @@ msgstr "Aŭto-elektiti tavoloj"
 #: settings.jsxinc:64
 #, qt-format
 msgid "Automatically select layers when selecting groups or properties"
-msgstr "Aŭtomate elektiti la tavolo kiam oni elektas grupojn aŭ propraĵojn"
+msgstr "Aŭtomate elekti la tavolon kiam oni elektas grupojn aŭ propraĵojn"
 
 #: settings.jsxinc:71
 #, qt-format
@@ -630,7 +630,7 @@ msgstr "ĉu la kaŝintaj tavoloj devas ŝlosiĝi aŭ ne."
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
-msgstr "Nuligo"
+msgstr "Nulo"
 
 #: comp.jsxinc:638
 #, qt-format
@@ -697,7 +697,7 @@ msgstr "La dosiero pseŭdo efiko aŭ \"match name\" nepravas."
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr "Editi reĝimo"
+msgstr "Redakta reĝimo"
 
 #: layer.jsxinc:1506
 #, qt-format
