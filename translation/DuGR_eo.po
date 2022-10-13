@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-12 17:21\n"
+"PO-Revision-Date: 2022-10-13 11:31\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Krei novan grupon."
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr "Ŝanĝiĝi la nomo de la grupo"
+msgstr "Ŝanĝi la nomon de la grupo"
 
 #: groupPanel.jsxinc:66
 #, qt-format
