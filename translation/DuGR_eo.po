@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-14 13:29\n"
+"PO-Revision-Date: 2022-10-14 15:54\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -1101,7 +1101,7 @@ msgstr "Apliki agordojn."
 #: panel.jsxinc:869
 #, qt-format
 msgid "You may need to restart the script for all changes to take effect."
-msgstr "Vi devus rekomenci la scripto per apliki la tutajn ŝanĝojn."
+msgstr "Vi devus rekomenciĝi la skripton per apliki la tutajn ŝanĝojn."
 
 #: panel.jsxinc:910
 #, qt-format
@@ -1121,12 +1121,12 @@ msgstr "Laborante"
 #: progressbar.jsxinc:23
 #, qt-format
 msgid "Magic is happening"
-msgstr "La Magio okasas"
+msgstr "La Magio okazas"
 
 #: rssPanel.jsxinc:88
 #, qt-format
 msgid "Previous"
-msgstr "Antaŭa"
+msgstr "Antaŭe"
 
 #: rssPanel.jsxinc:93
 #, qt-format
@@ -1136,5 +1136,5 @@ msgstr "Sekvonte"
 #: titleBar.jsxinc:55
 #, qt-format
 msgid "Keep this panel open"
-msgstr "Teni ĉi tiun panelon malfermatan"
+msgstr "Teni ĉi tiun panelon malferman"
 
