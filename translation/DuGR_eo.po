@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-10-13 13:29\n"
+"PO-Revision-Date: 2022-10-14 12:31\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgstr "Izoli la elektitajn grupojn, nur en la panelo de la komponaĵo"
 #: mainPanel.jsxinc:112
 #, qt-format
 msgid "Set interactive (sticky) mode."
-msgstr "Meti la ageman (gluecan) reĝimon."
+msgstr "Agordi la ageman (gluecan) reĝimon."
 
 #: mainPanel.jsxinc:188
 #, qt-format
@@ -155,7 +155,7 @@ msgstr "Gvidistaj tavoloj"
 #: mainPanel.jsxinc:231
 #, qt-format
 msgid "Set quality"
-msgstr "Fiksi kvaliton"
+msgstr "Agordi la kvaliton"
 
 #: mainPanel.jsxinc:237
 #, qt-format
@@ -165,7 +165,7 @@ msgstr "Baskuli la efikoj"
 #: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
-msgstr "Fiksi la miksan kadron reĝimon"
+msgstr "Agordi la miksan kadron reĝimon"
 
 #: mainPanel.jsxinc:249
 #, qt-format
@@ -837,7 +837,7 @@ msgstr "[Shift]: Pli da opcioj..."
 #: colorSelector.jsxinc:65
 #, qt-format
 msgid "Set a random value."
-msgstr "Fiksi hazardon valoron."
+msgstr "Agordi hazardon valoron."
 
 #. "path for a file or a folder"
 #: fileSelector.jsxinc:65
@@ -961,17 +961,17 @@ msgstr "Agordi la lingvon de la interfaco."
 #: panel.jsxinc:618
 #, qt-format
 msgid "Settings file"
-msgstr "Fiksa dosiero"
+msgstr "Dosiero de agordoj"
 
 #: panel.jsxinc:620
 #, qt-format
 msgid "Set the location of the settings file."
-msgstr "Fiksi la lokon de la fiksa dosiero."
+msgstr "Agordi la lokon de la dosiero de agordoj."
 
 #: panel.jsxinc:631
 #, qt-format
 msgid "Set the highlight color."
-msgstr "Fiksi la hela kolora."
+msgstr "Agordi la helan koloron."
 
 #: panel.jsxinc:634
 #, qt-format
