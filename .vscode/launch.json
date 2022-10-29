@@ -7,6 +7,13 @@
         {
             "type": "extendscript-debug",
             "request": "launch",
+            "name": "bin2Jsx",
+            "program": "${workspaceFolder}/DuAEF/DuESF/tools/binToJsxinc.jsx",
+            "stopOnEntry": false
+        },
+        {
+            "type": "extendscript-debug",
+            "request": "launch",
             "name": "Dugr",
             "program": "${workspaceFolder}/Dugr.jsx",
             "stopOnEntry": false
