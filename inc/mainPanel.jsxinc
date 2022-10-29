@@ -604,7 +604,7 @@ function refreshPanel()
     isolateCompButton.setChecked( isolationMode == DuGR.IsolationMode.COMP_PANEL );
 
     // Get group list
-    if (groupList)
+    if (groupList && groupList.visible)
     {
         var groups = DuGR.listGroups();
 
@@ -635,7 +635,7 @@ function refreshPanel()
         restoreListSelection(groupList, currentSelection);
     }
 
-    if (propList) propList.searchItems( searchEdit.text );
+    if (propList && propList.visible) propList.searchItems( searchEdit.text );
 }
 
 function refreshIsolation()
@@ -746,7 +746,7 @@ function exit()
     if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
 }
 
-DuScriptUI.addEvent( refreshPanel, 1000);
+DuScriptUI.addEvent( refreshPanel, 3000);
 
 // ========== INIT ==============
 
