@@ -48,7 +48,7 @@ var mainScriptFile = new File($.fileName);
 
 var isPreRelease = false;
 var scriptName = "DuGR";
-var scriptVersion = "5.0.0";
+var scriptVersion = "5.0.1";
 var scriptAbout = 'Group your layers!';
 var companyName = "RxLaboratory";
 
@@ -1179,10 +1179,13 @@ DuDebug.log = function (message,level)
  * The error is actually thrown only if JS Debugging is enabled in the host application, otherwise it is just shown in an alert.
  * @param {Error|string} error - An error thrown and catched
  */
-DuDebug.error = function (error)
+DuDebug.error = function (error, msg)
 {
+	msg = def(msg, "");
 	var file = new File( error.fileName );
-	var errorString = 'An error has occured in file\n\n' + file.name + '\n\nlocated in:\n' + file.parent.fsName + '\n\nat line ' + error.line + '\n\n' + error.description;
+	var errorString = 'An error has occured in file\n\n' + file.name + '\n\nlocated in:\n' + file.parent.fsName + '\n\nat line ' + error.line + '\n\n';
+	if (msg == "") errorString += error.description;
+	else errorString += msg;
 	DuDebug.log( errorString, DuDebug.LogLevel.WARNING );
 	if ( DuESF.debug )
 	{
@@ -5536,6 +5539,157 @@ colorPicker.prototype.initSetting = function(){
     $.global.colorPicker = colorPicker;
     return colorPicker;
 })();
+// ==================== |--------| ====================
+// ==================== | base64 | ====================
+// ==================== |--------| ====================
+
+/**
+ * Base64 codec.
+ * @name Base64
+ * @namespace
+ * @see {@link https://github.com/dankogai/js-base64}
+ * @license BSD-3-Clause http://opensource.org/licenses/BSD-3-Clause
+ * @category DuESF
+ * @subcategory Third Party
+ * @version 2.6.4
+ * @copyright 2014, Dan Kogai All rights reserved.
+ */
+
+
+var Base64 = (function() {
+    var version = "2.6.4";
+    // constants
+    var b64chars
+        = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    var b64tab = function(bin) {
+        var t = {};
+        for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i;
+        return t;
+    }(b64chars);
+    var fromCharCode = String.fromCharCode;
+    // encoder stuff
+    var cb_utob = function(c) {
+        if (c.length < 2) {
+            var cc = c.charCodeAt(0);
+            return cc < 0x80 ? c
+                : cc < 0x800 ? (fromCharCode(0xc0 | (cc >>> 6))
+                                + fromCharCode(0x80 | (cc & 0x3f)))
+                : (fromCharCode(0xe0 | ((cc >>> 12) & 0x0f))
+                    + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+                    + fromCharCode(0x80 | ( cc         & 0x3f)));
+        } else {
+            var cc = 0x10000
+                + (c.charCodeAt(0) - 0xD800) * 0x400
+                + (c.charCodeAt(1) - 0xDC00);
+            return (fromCharCode(0xf0 | ((cc >>> 18) & 0x07))
+                    + fromCharCode(0x80 | ((cc >>> 12) & 0x3f))
+                    + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+                    + fromCharCode(0x80 | ( cc         & 0x3f)));
+        }
+    };
+    var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+    var utob = function(u) {
+        return u.replace(re_utob, cb_utob);
+    };
+    var cb_encode = function(ccc) {
+        var padlen = [0, 2, 1][ccc.length % 3],
+        ord = ccc.charCodeAt(0) << 16
+            | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8)
+            | ((ccc.length > 2 ? ccc.charCodeAt(2) : 0)),
+        chars = [
+            b64chars.charAt( ord >>> 18),
+            b64chars.charAt((ord >>> 12) & 63),
+            padlen >= 2 ? '=' : b64chars.charAt((ord >>> 6) & 63),
+            padlen >= 1 ? '=' : b64chars.charAt(ord & 63)
+        ];
+        return chars.join('');
+    };
+    var btoa = function(b) {
+        if (b.match(/[^\x00-\xFF]/)) throw new RangeError(
+            'The string contains invalid characters.'
+        );
+        return b.replace(/[\s\S]{1,3}/g, cb_encode);
+    };
+    var _encode = function(u) {
+        return btoa(utob(String(u)));
+    };
+    var encode = function(u) {
+        return _encode(u);
+    };
+    var encodeURI = function(u) { return encode(u, true) };
+    // decoder stuff
+    var re_btou = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
+    var cb_btou = function(cccc) {
+        switch(cccc.length) {
+        case 4:
+            var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
+                |    ((0x3f & cccc.charCodeAt(1)) << 12)
+                |    ((0x3f & cccc.charCodeAt(2)) <<  6)
+                |     (0x3f & cccc.charCodeAt(3)),
+            offset = cp - 0x10000;
+            return (fromCharCode((offset  >>> 10) + 0xD800)
+                    + fromCharCode((offset & 0x3FF) + 0xDC00));
+        case 3:
+            return fromCharCode(
+                ((0x0f & cccc.charCodeAt(0)) << 12)
+                    | ((0x3f & cccc.charCodeAt(1)) << 6)
+                    |  (0x3f & cccc.charCodeAt(2))
+            );
+        default:
+            return  fromCharCode(
+                ((0x1f & cccc.charCodeAt(0)) << 6)
+                    |  (0x3f & cccc.charCodeAt(1))
+            );
+        }
+    };
+    var btou = function(b) {
+        return b.replace(re_btou, cb_btou);
+    };
+    var cb_decode = function(cccc) {
+        var len = cccc.length,
+        padlen = len % 4,
+        n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0)
+            | (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0)
+            | (len > 2 ? b64tab[cccc.charAt(2)] <<  6 : 0)
+            | (len > 3 ? b64tab[cccc.charAt(3)]       : 0),
+        chars = [
+            fromCharCode( n >>> 16),
+            fromCharCode((n >>>  8) & 0xff),
+            fromCharCode( n         & 0xff)
+        ];
+        chars.length -= [0, 0, 2, 1][padlen];
+        return chars.join('');
+    };
+    var _atob = function(a){
+        return a.replace(/\S{1,4}/g, cb_decode);
+    };
+    var atob = function(a) {
+        return _atob(String(a).replace(/[^A-Za-z0-9\+\/]/g, ''));
+    };
+    var _decode = function(a) { return btou(_atob(a)) };
+    var _fromURI = function(a) {
+        return String(a).replace(/[-_]/g, function(m0) {
+            return m0 == '-' ? '+' : '/'
+        }).replace(/[^A-Za-z0-9\+\/]/g, '');
+    };
+    var decode = function(a){
+        return _decode(_fromURI(a));
+    };
+
+    // export Base64
+    return {
+        VERSION: version,
+        atob: atob,
+        btoa: btoa,
+        fromBase64: decode,
+        toBase64: encode,
+        utob: utob,
+        encode: encode,
+        encodeURI: encodeURI,
+        btou: btou,
+        decode: decode
+    };
+})();
 // ==================== |---------| ====================
 // ==================== | version | ====================
 // ==================== |---------| ====================
@@ -6076,6 +6230,77 @@ DuString.unCapitalize = function(text) {
 var DuFile = {};
 
 /**
+ * The list of legit characters for base64 encoding
+ * @type {string[]}
+ */
+DuFile.base64Chars = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"H",
+	"I",
+	"J",
+	"K",
+	"L",
+	"M",
+	"N",
+	"O",
+	"P",
+	"Q",
+	"R",
+	"S",
+	"T",
+	"U",
+	"V",
+	"W",
+	"X",
+	"Y",
+	"Z",
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i",
+	"j",
+	"k",
+	"l",
+	"m",
+	"n",
+	"o",
+	"p",
+	"q",
+	"r",
+	"s",
+	"t",
+	"u",
+	"v",
+	"w",
+	"x",
+	"y",
+	"z",
+	"0",
+	"1",
+	"2",
+	"3",
+	"4",
+	"5",
+	"6",
+	"7",
+	"8",
+	"9",
+	"+",
+	"/",
+];
+
+/**
 	* Checks if the given path exists
 	* @param {string}	 [path]	- The file path
 	* @return {boolean} True or false
@@ -6131,6 +6356,7 @@ DuFile.read = function(file,encoding)
 */
 DuFile.write = function(file, content, append, encoding)
 {
+	if (!(file instanceof File)) file = new File(file);
 	append = def(append, false);
 	encoding = def(encoding, 'UTF-8');
 	//open and parse file
@@ -6255,6 +6481,74 @@ DuFile.parseCSV = function(file,delimiter,textSeparator)
 		}
 	}
 	return data;
+}
+
+/**
+ * Encodes a file to a base64 string.
+ * @param {string|File} file The file or its path
+ * @return {string} The base64 string
+ */
+DuFile.toBase64 = function( file )
+{
+	if (!(file instanceof File)) file = new File(file);
+    if (!file.exists) return "";
+
+    file.encoding = "binary";
+    file.open("r");
+    var bin = file.read();
+    file.close();
+
+    var ecdStr = Base64.btoa(bin);
+
+    return ecdStr;
+}
+
+/**
+ * Checks if the base64 string seems valid
+ * @param {string} b64 The string to check
+ * @return {bool}
+ */
+DuFile.checkBase64 = function ( b64 )
+{
+	var len = b64.length
+
+    if (len % 4 > 0) {
+        return false;
+    }
+
+    // If there's a dot, that's probably a file name
+    if ( b64.indexOf(".") >= 0 )
+        return false;
+
+    return true;
+}
+
+/**
+ * Writes a file from a base64 string.
+ * @param {string} b64 The base64 string
+ * @param {string|File} file The destination file or its path
+ * @return {File|null} The File object or null if it fails
+ */
+DuFile.fromBase64 = function( b64, file )
+{
+	if (b64 == "") return null;
+    if (!DuFile.checkBase64(b64)) return null;
+
+    // Convert to bin
+    var bin = Base64.atob(b64);
+
+    // Write to file
+    if (!(file instanceof File)) file = new File( file );
+    file.encoding = 'BINARY';
+
+    try
+	{
+        if (!file.open('w')) return null;
+        file.write(bin);
+		file.close();
+		return file;
+    }
+    catch (e) { return null; }
 }
 
 /**
@@ -9796,6 +10090,9 @@ DuScriptUI.scriptPanel = function( container, addSettingsButton, addHelpButton, 
     bottomUberGroup.margins = 0;
     bottomUberGroup.spacing = 0;*/
 
+    // Add a progress bar
+    panel.progressBar = new DuProgressBar("", bottomUberGroup);
+
     // Draw a thin line like other panels.
     //var bottomLine = DuScriptUI.separator( bottomUberGroup );
     if ( DuESF.rxVersionURL != '' ) {
@@ -9968,6 +10265,18 @@ DuScriptUI.stringPrompt = function ( title, defaultString )
     nameEditor.addEventListener('enterkey', nameEditor.accept );
 
     return nameEditor;
+}
+
+/**
+ * Finds the window containing this ScriptUI Control
+ * @param {Control} scriptUIControl The ScriptUI Control
+ * @return {Window} The containing ScriptUI Window
+ */
+DuScriptUI.parentWindow = function ( scriptUIControl )
+{
+    var p = scriptUIControl;
+    while(p.parent) p = p.parent;
+    return p;
 }// ==================== |--------| ====================
 // ==================== | button | ====================
 // ==================== |--------| ====================
@@ -12367,6 +12676,7 @@ DuScriptUI.folderSelector = function ( container, text, textField, helpTip, orie
  * @param {string} [helpTip=''] - The helptip for this control.
  * @param {string|DuBinary} [image] - The image to use as an icon; a "file" icon by default.
  * @param {string} [mode='open'] - The open mode, either 'open' or 'save'.
+ * @param {string} [filters] - The file type filters.
  * @param {string} [orientation='row'] - The orientation of the control (button+edittext).
  * @return {DuFileSelector} The control.
  */
@@ -13332,25 +13642,83 @@ DuScriptUI.multiButton = function( container, text, image, helpTip, ignoreUIMode
     * @classdesc A simple progress bar.<br />
     * This was inspired by {@link https://github.com/indiscripts/extendscript/blob/master/scriptui/ProgressBar.jsx the progress bar}
     * by {@link  https://www.indiscripts.com/ Marc Autret / IndiScripts}.
-    * @param {string} title The title of the progress bar
+    * @param {string} [title="Magic is happening"] The title of the progress bar
+    * @param {Group} [container] A ScriptUI Group to add the progress bar. If not provided, the bar will be added in a new window popup
  * @category DuScriptUI
  */
-DuProgressBar = function( )
+DuProgressBar = function( title, container )
 {
-    this.window = new Window('palette', '', [0,0,360,86]);
-    this.stage = this.window.add( 'statictext', { x:20, y:15, width:320, height:16 }, i18n._("Working"));
-    
-    var barGroup = this.window.add('group', { x:20, y:37, width:320, height:12 });
-    barGroup.orientation = 'stacked';
-    barGroup.margins = 0;
-    this.bar = barGroup.add( 'progressbar', { x:0, y:0, width:320, height:12 }, 0, 0);
-    this.image = barGroup.add( 'image', { x:0, y:0, width:320, height:12 }, DuScriptUI.Icon.PROGRESS.binAsString );
-    
-    this.label = this.window.add( 'statictext', { x:20, y:51, width:320, height:16 });
+    title = def(title, i18n._("Magic is happening"));
+    if (title == "") title = i18n._("Magic is happening");
+    this.container = def(container, null );
+    this.isPopup = !this.container;
+    if (!this.isPopup) this.window = DuScriptUI.parentWindow(this.container);
+    else this.window = null;
 
-    this.message =  i18n._("Magic is happening") + ' %1';
+    this.built = false;
 
-    this.window.center();
+    // Create ui
+    this.__setupUI = function()
+    {
+        if (this.built) return;
+
+        if (this.isPopup)
+        {
+            this.window = new Window('palette', '', [0,0,360,86]);
+            this.container = this.window;
+        }
+
+        this.rootGroup = this.container.add('group');
+        this.rootGroup.margins = 0;
+        this.rootGroup.orientation = 'column';
+
+        this.stage = this.rootGroup.add( 'statictext', this.isPopup ? { x:20, y:15, width:320, height:16 } : undefined, i18n._("Working"));
+
+        this.barGroup = this.rootGroup.add('group', this.isPopup ? { x:20, y:37, width:320, height:12 } : undefined);
+        this.barGroup.orientation = 'stacked';
+        this.barGroup.margins = 0;
+        this.bar = this.barGroup.add( 'progressbar', this.isPopup ? { x:0, y:0, width:320, height:12 } : undefined, 0, 0);
+        this.image = this.barGroup.add( 'image', this.isPopup ? { x:0, y:0, width:320, height:12 } : undefined, DuScriptUI.Icon.PROGRESS.binAsString );
+        
+        this.label = this.rootGroup.add( 'statictext', this.isPopup ? { x:20, y:51, width:320, height:16 } : undefined);
+
+        this.message =  title + ' %1';
+
+        if (this.isPopup) this.window.center();
+
+        DuScriptUI.layout( this.container );
+
+        this.built = true;
+    }
+
+    // Destroy ui
+    this.__delete = function()
+    {
+        if (!this.built) return;
+        // Remove controls
+        this.rootGroup.remove( this.label );
+        this.barGroup.remove( this.bar );
+        this.barGroup.remove( this.image );
+        this.rootGroup.remove( this.barGroup );
+        this.rootGroup.remove( this.stage );
+        this.container.remove( this.rootGroup );
+        // Delete to (try to) free memory
+        delete this.label;
+        delete this.image;
+        delete this.bar;
+        delete this.barGroup;
+        delete this.stage;
+        delete this.rootGroup;
+        if (this.isPopup)
+        {
+            delete this.container;
+            delete this.window;
+        }
+        this.built = false;
+
+        // Garbage collection
+        $.gc();
+    }
 
     // A private method to update with the message and the value
     this.__ = function()
@@ -13360,7 +13728,7 @@ DuProgressBar = function( )
         else this.label.text = i18n._("Magic is happening") + '!';
         this.bar.visible = ok;
         this.image.visible = !ok;
-        this.window.update();
+        if (this.window.update) this.window.update();
     };
 }
 
@@ -13370,6 +13738,7 @@ DuProgressBar = function( )
  */
 DuProgressBar.prototype.msg = function( message )
 {
+    this.__setupUI();
     if(isdef( message )) this.message = message;
     this.__();
 }
@@ -13380,6 +13749,7 @@ DuProgressBar.prototype.msg = function( message )
  */
 DuProgressBar.prototype.stg = function( stage )
 {
+    this.__setupUI();
     this.stage.text = stage;
     this.msg();
 }
@@ -13391,21 +13761,20 @@ DuProgressBar.prototype.stg = function( stage )
  */
 DuProgressBar.prototype.show = function( message )
 {
-    this.window.show();
+    this.__setupUI();
+    this.rootGroup.show();
+    if (this.isPopup) this.window.show();
     this.msg(message);  
 }
 
 /**
- * Resets the progress bar to 0
- * @param {int} [maxValue=0] The new maximum value
+ * Hides and resets the progress bar to 0 and default texts
  */
-DuProgressBar.prototype.reset = function( maxValue )
+DuProgressBar.prototype.reset = function(  )
 {
-    maxValue = def(maxValue, 0);
-    this.bar.value = 0;
-    this.bar.maxvalue = maxValue;
-    this.stg( i18n._("Working") );
-    this.msg( i18n._("Magic is happening") + ' %1' );
+    this.hide();
+    this.close();
+    this.__delete();
 }
 
 /**
@@ -13415,6 +13784,7 @@ DuProgressBar.prototype.reset = function( maxValue )
  */
 DuProgressBar.prototype.hit = function( value, message )
 {
+    this.__setupUI();
     value = def(value, 1);
     this.bar.value += value;
     this.msg(message);
@@ -13427,6 +13797,7 @@ DuProgressBar.prototype.hit = function( value, message )
  */
 DuProgressBar.prototype.setMax = function( maxValue, onlyIfZero )
 {
+    this.__setupUI();
     onlyIfZero = def(onlyIfZero, true);
     if (onlyIfZero && this.bar.maxvalue != 0) return;
     this.bar.maxvalue = maxValue;
@@ -13439,6 +13810,7 @@ DuProgressBar.prototype.setMax = function( maxValue, onlyIfZero )
  */
 DuProgressBar.prototype.addMax = function( maxValue )
 {
+    this.__setupUI();
     maxValue = def(maxValue, 1);
     this.setMax(this.bar.maxvalue + maxValue, false);
 }
@@ -13448,7 +13820,10 @@ DuProgressBar.prototype.addMax = function( maxValue )
  */
 DuProgressBar.prototype.hide = function( )
 {
-    this.window.hide();
+    if (!this.built) return;
+    this.rootGroup.hide();
+    this.__delete();
+    if (!this.isPopup) DuScriptUI.layout( this.container );
 }
 
 /**
@@ -13456,7 +13831,9 @@ DuProgressBar.prototype.hide = function( )
  */
 DuProgressBar.prototype.close = function( )
 {
-    this.window.close();
+    if (!this.built) return;
+    if (this.isPopup) this.window.close();
+    this.hide();
 }
 
 DuProgressBar.init = function()
@@ -13931,7 +14308,9 @@ DuScriptUI.library = function( container, library, options ) {
     };
 
     duLibrary.refresh = function () {
-        duLibrary.onRefresh(duLibrary.currentCategory);
+        // Only if visible
+        if (!duLibrary.visible) return;
+        //duLibrary.onRefresh(duLibrary.currentCategory);
         setCategory(duLibrary.currentCategory);
         updateBreadCrumbs();
     };
@@ -14174,7 +14553,7 @@ DuScriptUI.library = function( container, library, options ) {
     setCategory(duLibrary.library);
 
     // Refresh
-    if (options.refreshInterval > 0) DuScriptUI.addEvent(duLibrary.refresh, 10000);
+    if (options.refreshInterval > 0) DuScriptUI.addEvent(duLibrary.refresh, options.refreshInterval);
 
     return duLibrary;
 }// ==================== |--------------| ====================
@@ -14371,17 +14750,17 @@ DuScriptUI.dimControls = function( )
 // ==================== |-----| ====================
 
 /**
- * Methods to load and create OCO Documents and armatures
+ * Methods to load and create OCO (Open Cut Out) Documents and armatures
  * @namespace
- * @category DuOCO
+ * @category OCO
  */
-var DuOCO = {};
+var OCO = {};
 
 /**
  * Types of OCO armatures
  * @enum {string}
  */
-DuOCO.Type = {
+OCO.Type = {
     /**
      * A meta-rig, used to automatically create a default armature to be used with an auto-rig.
      */
@@ -14396,7 +14775,7 @@ DuOCO.Type = {
  * Predefined limbs
  * @enum {string}
  */
-DuOCO.Limb = {
+OCO.Limb = {
     SPINE: 'spine',
     ARM: 'arm',
     LEG: 'leg',
@@ -14413,7 +14792,7 @@ DuOCO.Limb = {
  * Some bone identifierss
  * @enum {string}
  */
-DuOCO.Bone = {
+OCO.Bone = {
     CUSTOM: 'custom',
     TIP: 'tip',
     CLAVICLE: 'clavicle',
@@ -14453,7 +14832,7 @@ DuOCO.Bone = {
  * Types of limbs
  * @enum {string}
  */
-DuOCO.LimbType = {
+OCO.LimbType = {
     HOMINOID: 'hominoid',
     PLANTIGRADE: 'plantigrade',
     DIGITIGRADE: 'digitigrade',
@@ -14463,22 +14842,22 @@ DuOCO.LimbType = {
 }
 
 /**
- * Sides for the limbs Use these with {@link DuOCO.Location} to differenciate similar limbs,<br />
+ * Sides for the limbs Use these with {@link OCO.Location} to differenciate similar limbs,<br />
  * for example, a leg can be Front-Right, Front-Left, Back-Right, Back-Left, etc.
  * @enum {string}
  */
-DuOCO.Side = {
+OCO.Side = {
     LEFT: "L",
     RIGHT: "R",
     NONE: ''
 }
 
 /**
- * Locations for the limbs. Use these with {@link DuOCO.Side} to differenciate similar limbs,<br />
+ * Locations for the limbs. Use these with {@link OCO.Side} to differenciate similar limbs,<br />
  * for example, a leg can be Front-Right, Front-Left, Back-Right, Back-Left, etc.
  * @enum {string}
  */
-DuOCO.Location = {
+OCO.Location = {
     FRONT: "Fr",
     BACK: "Bk",
     TAIL: "Tl",
@@ -14488,7 +14867,11 @@ DuOCO.Location = {
     NONE: ''
 }
 
-DuOCO.View = {
+/**
+ * View axis for limbs.
+ * @enum {int}
+ */
+OCO.View = {
     FRONT: 0,
     LEFT: 1,
     RIGHT: 2,
@@ -14498,11 +14881,227 @@ DuOCO.View = {
 }
 
 /**
+ * How images are encoded in the OCO file
+ * @enum {string}
+ */
+OCO.ImageEncoding = {
+    PNG_BASE64: 'PNG/BASE64',
+    RELATIVE_PATH: 'PATH',
+    ABSOLUTE_PATH: 'ABS_PATH'
+}
+
+/**
+ * The path where the OCO Library is stored.
+ * This is in the User Documents/OCO/OCO Library if the script has write access in this folder.<br/>
+ * In rare cases on MacOS we can't write files in the documents folder. In this case the default library path in a temp folder.<br/>
+ * You can change this path to a custom path before using the OCO API.
+ * @type {string}
+ */
+OCO.libraryPath = "";
+
+// === PRIVATE ===
+
+// Gets a value or a default value if it is undefined
+OCO._d = function( val, defaultVal )
+{
+	return typeof val !== 'undefined' ? val : defaultVal;
+}
+
+OCO._escapeRegEx = function (string)
+{
+	return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+// Generates a unique string
+OCO._uniqueString = function( newString, stringList, increment)
+{
+    increment = def(increment, true);
+    if (!increment) newString += ' ';
+
+    //detect digits
+    var reg = "( *)(\\d+)([.,]?\\d*)$";
+    //clean input
+    var regexClean = new RegExp(reg);
+    newString = newString.replace(regexClean, "");
+    //go!
+    var regex = new RegExp(OCO._escapeRegEx(newString) + reg);
+    //The greatest number found
+    var greatestNumber = 0;
+    //The number of digits for the number as string
+    var numDigits = 0;
+    var spaceString = "";
+    for (var i = 0; i < stringList.length; i++) {
+        var currentNumberMatch = stringList[i].match(regex);
+        if (stringList[i] === newString && greatestNumber == 0) greatestNumber++;
+        else if (currentNumberMatch !== null) {
+            //if its a decimal number, keep only the integer part
+            var numberAsString = currentNumberMatch[2];
+            //convert to int
+            var numberAsInt = parseInt(currentNumberMatch[2], 10);
+            if (isNaN(numberAsInt)) continue;
+            if (numberAsInt >= greatestNumber) {
+                greatestNumber = numberAsInt + 1;
+                spaceString = currentNumberMatch[1];
+            }
+            //check if there are zeroes before the number, count the digits
+            if (numberAsInt.toString().length < numberAsString.length && numDigits < numberAsString.length) numDigits = numberAsString.length;
+        }
+    }
+
+    //add leading 0 if needed
+    if (greatestNumber > 0) {
+        //convert to string with leading zeroes
+        if (greatestNumber == 1) {
+            greatestNumber++;
+            spaceString = " ";
+        }
+        newString += spaceString;
+        greatestNumber = OCO._numberToString(greatestNumber, numDigits);
+        newString += greatestNumber;
+    }
+
+    if (!increment) newString = newString.substr(0, newString.length - 1);
+
+    return newString;
+}
+
+// Converts a number to a string, with leading zeroes
+OCO._numberToString = function (num, numDigits, base)
+{
+    if (base == undefined) base = 10;
+	var result = num.toString(base);
+	while(numDigits > result.length)
+	{
+		result  = "0" + result ;
+	}
+	return result;
+}
+
+// Interpolates a value
+OCO._linearInterpolation = function(value, min, max, targetMin, targetMax, clamp) {
+    min = def(min, 0);
+    max = def(max, 1);
+    targetMin = def(targetMin, 0);
+    targetMax = def(targetMax, 1);
+    clamp = def(clamp, false);
+
+    // Handle stupid values
+    if (min == targetMin && max == targetMax) return value;
+    if (min == max) return value;
+    if (targetMin == targetMax) return targetMin;
+    if (value == min) return targetMin;
+    if (value == max) return targetMax;
+
+    var result = targetMin + (value - min) / (max - min) * (targetMax - targetMin);
+    if (clamp) result = OCO._clamp(value, targetMin, targetMax);
+    return result;
+}
+
+// Clamps the value
+OCO._clamp = function(values, min, max) {
+    if (!isdef( min )) min = 0;
+    if (!isdef( max )) max = 1;
+
+    if (max < min) {
+        var t = max;
+        max = min;
+        min = t;
+    }
+
+    var isArray = true;
+    var result = [];
+    if (!(values instanceof Array)) {
+        isArray = false;
+        values = [values];
+    }
+    for (var i = 0, num = values.length; i < num; i++) {
+        var v = values[i];
+        if (v < min) v = min;
+        if (v > max) v = max;
+        result.push(v);
+    }
+    if (isArray) return result;
+    else return result[0];
+}
+
+// Checks if the script can write files in the folder
+OCO._canWrite = function( folder ) {
+    if ( !(folder instanceof Folder) ) folder = new Folder(folder);
+	if ( !folder.exists ) return false;
+
+	var content = 'test-write-access';
+	var f = new File(folder.absoluteURI + '/' + content);
+
+	if (f.open('w')) {
+		try {
+			f.write(content);
+			f.close();
+			f.remove();
+			return true;
+		}
+		catch(e) { return false };
+	} else return false;
+}
+
+// Encodes a file as a base64 string
+OCO._base64 = function( file ) {
+    if (!(file instanceof File)) file = new File(file);
+    if (!file.exists) return "";
+
+    file.encoding = "binary";
+    file.open("r");
+    var bin = file.read();
+    file.close();
+
+    var ecdStr = Base64.btoa(bin);
+
+    return ecdStr;
+}
+
+// Checks if this is a valid base64 encoding
+OCO._checkBase64 = function( b64 ) {
+    var len = b64.length;
+
+    if (len % 4 > 0) {
+        return false;
+    }
+
+    // If there's a dot, that's probably a file name
+    if ( b64.indexOf(".") >= 0 )
+        return false;
+
+    return true;
+}
+
+// Decodes base64 content to a file; returns the File object or null
+OCO._fromBase64 = function( b64, file )
+{
+    if (b64 == "") return null;
+    if (!DuFile.checkBase64(b64)) return null;
+
+    // Convert to bin
+    var bin = Base64.atob(b64);
+
+    // Write to file
+    if (!(file instanceof File)) file = new File( file );
+    file.encoding = 'BINARY';
+
+    try
+	{
+        if (!file.open('w')) return null;
+        file.write(bin);
+		file.close();
+		return file;
+    }
+    catch (e) { return null; }
+}
+
+/**
  * Gets the boundaries of an armature (a chain of bones)
- * @param {DuOCOBone[]} armature The chain of bones
+ * @param {OCOBone[]} armature The chain of bones
  * @returns {float[]} [left, top, right, bottom]
  */
-DuOCO.getBounds = function ( armature )
+OCO.getBounds = function ( armature )
 {
     var left = 9999;
     var right = -9999;
@@ -14518,7 +15117,7 @@ DuOCO.getBounds = function ( armature )
         if (b.y < bottom) bottom = b.y;
         if (b.y > top) top = b.y;
         // Check children
-        var childBounds = DuOCO.getBounds( b.children );
+        var childBounds = OCO.getBounds( b.children );
         if (childBounds[0] < left) left = childBounds[0];
         if (childBounds[1] < top) top = childBounds[1];
         if (childBounds[2] < right) right = childBounds[2];
@@ -14537,67 +15136,202 @@ DuOCO.getBounds = function ( armature )
     return [left, top, right, bottom];
 }
 
+// Makes a path relative to a file
+OCO._relativePath = function ( path, destinationFile )
+{
+    if (!(destinationFile instanceof File)) destinationFile = new File(destinationFile);
+    var sourceFile = new File( path );
+    var sourceFolder = sourceFile.parent;
+    var destFolder = destinationFile.parent;
+    var destPath = destFolder.absoluteURI;
+    var sourcePath = sourceFolder.absoluteURI;
+    var count = 0;
+    while (sourcePath.indexOf(destPath) != 0)
+    {
+        // Up one folder and check again
+        count++;
+        destFolder = destFolder.parent;
+        if (!destFolder) destPath = "";
+        else destPath = destFolder.absoluteURI;
+    }
+    // Add ups
+    var relativePath = "";
+    for (var i = 0; i < count; i++)
+    {
+        relativePath += '../';
+    }
+    if (destPath.length > 0)
+        relativePath += sourcePath.substr( destPath.length + 1 ) + '/';
+    else
+        relativePath += sourcePath + '/';
+    relativePath += sourceFile.name;
+    return relativePath;
+}
+
+// Makes a path absolute
+OCO._absolutePath = function ( path, relativeTo )
+{
+    if (!(relativeTo instanceof File)) relativeTo = new File(relativeTo);
+    var absFolder = relativeTo.parent;
+    while (path.indexOf("../") == 0)
+    {
+        path = path.substr(3);
+        absFolder = absFolder.parent;
+    }
+    var absPath = absFolder.absoluteURI + '/' + path;
+    return absPath;
+}
+
+OCO._parseJsonFile = function (file )
+{
+    if (!(file instanceof File)) file = new File(file);
+    file.encoding = 'UTF-8';
+    if (!file.open('r')) return null;
+    var json = file.read();
+    file.close();
+    if (json == '') return null;
+    var data = {};
+    try { data  = JSON.parse(json); } catch (e) { return null; }
+    return data;
+}
+
+/**
+ * Measures the vector length between two points
+ * @param {int[]} value1 - The first value
+ * @param {int[]} value2 - The second value
+ * @return {float} The length
+ */
+OCO._length = function(value1, value2) {
+    if (typeof value1 !== typeof value2) {
+        return null;
+    }
+    if (value1.length > 0) {
+        var result = 0;
+        for (var dim = 0; dim < value1.length; dim++) {
+            result += (value1[dim] - value2[dim]) * (value1[dim] - value2[dim]);
+        }
+        result = Math.sqrt(result);
+        return result;
+    } else return Math.abs(value1 - value2);
+}
+
+// === INIT ===
+if ( OCO._canWrite( Folder.myDocuments ) ) OCO.libraryPath = Folder.myDocuments.absoluteURI + "/OCO/OCO Library";
+else OCO.libraryPath = Folder.temp.absoluteURI + "/OCO/OCO Library";
+
 /**
  * Creates a new OCO Document.
  * @class
  * @classdesc An Open Cut-Out character or meta-rig document.
  * @param {string} name The name of the character or the meta rig
- * @category DuOCO
+ * @category OCO
  */
-function DuOCODoc(name)
+function OCODoc(name)
 {
     /**
      * The type of this OCO Doc
      * @name type
-     * @memberof DuOCODoc
+     * @memberof OCODoc
      * @type {string}
      */
-    this.type = DuOCO.Type.META;
+    this.type = OCO.Type.META;
     /**
      * The name of this OCO Doc
      * @name name
-     * @memberof DuOCODoc
+     * @memberof OCODoc
      * @type {string}
      */
     this.name = name;
     /**
      * The height of the character. Should always be 1!
      * @name height
-     * @memberof DuOCODoc
+     * @memberof OCODoc
      * @type {float}
      */
     this.height = 185.0;
     /**
      * The width of the character.
      * @name width
-     * @memberof DuOCODoc
+     * @memberof OCODoc
      * @type {float}
      */
     this.width = 60.0,
     /**
      * The coordinates of the center of mass of the character. [X, Y].
      * @name centerOfMass
-     * @memberof DuOCODoc
+     * @memberof OCODoc
      * @type {float[]}
      */
     this.centerOfMass = [0.0, 107.0];
     /**
      * The limbs/ Armatures
      * @name limbs
-     * @memberof DuOCOLimb
-     * @type {DuOCOLimb[]}
+     * @memberof OCOLimb
+     * @type {OCOLimb[]}
      */
     this.limbs = [];
+    /**
+     * The resolution, in pixels, of the document
+     * @type {int[]}
+     */
     this.resolution = [1920,1080];
+    /**
+     * The world origin in pixels in the document
+     * @type {float[]}
+     */
     this.world = [960,980];
+    /**
+     * The definition
+     * @type {float}
+     */
     this.pixelsPerCm = 4.22;
+    /**
+     * An icon or thumbnail path
+     * @type {string}
+     */
+    this.icon = ""
+    /**
+     * How images should be encoded when exporting the doc to a file/folder
+     * @type {OCO.ImageEncoding}
+     */
+    this.imageEncoding = OCO.ImageEncoding.PATH;
+
+    // Private: Converts a pixel coordinate relative to the world to a coordinate relative to the top left corner
+    this.fromWorld = function( point )
+    {
+        var x = point[0] + this.world[0];
+        var y = this.world[1] - point[1];
+        return [x,y];
+    }
+
+    // Private: Converts a pixel coordinate relative to the top left corner to a coordinate relative to the world
+    this.toWorld = function( point )
+    {
+        var x = point[0] - this.world[0];
+        var y = this.world[1] - point[1];
+        return [x, y];
+    }
+}
+
+/**
+    * Counts the total number of bones in this doc
+    * @return {int}
+    */
+OCODoc.prototype.numBones = function ()
+{
+    var count = 0;
+    for (var i = 0, ni = this.limbs.length; i < ni; i++ )
+    {
+        count += this.limbs[i].numBones();
+    }
+    return count;
 }
 
 /**
  * Gets the boundaries of the doc
  * @returns {float[]} [left, top, right, bottom]
  */
-DuOCODoc.prototype.bounds = function ()
+OCODoc.prototype.bounds = function ()
 {
     var left = 9999;
     var right = -9999;
@@ -14620,7 +15354,7 @@ DuOCODoc.prototype.bounds = function ()
  * Updates the width and height of the character, according to the content.<br />
  * This method should be called each time a limb/bone is added/removed/edited and the bounds may change.
  */
-DuOCODoc.prototype.updateSize = function()
+OCODoc.prototype.updateSize = function()
 {
     // Update doc width & height
     var bounds = this.bounds();
@@ -14632,23 +15366,23 @@ DuOCODoc.prototype.updateSize = function()
 
 /**
  * Creates a new limb and adds it to the doc
- * @param {DuOCO.Limb} [limb=DuOCO.Limb.CUSTOM] A Predefined limb
- * @param {DuOCO.Side} [side=DuOCO.Side.NONE] - The side of the limb
- * @param {DuOCO.Location} [location=DuOCO.Location.NONE] - The location of the limb
- * @param {DuOCO.LimbType} [type=DuOCO.LimbType.CUSTOM] - The type of the limb
- * @return {DuOCOLimb} The new limb
+ * @param {OCO.Limb} [limb=OCO.Limb.CUSTOM] A Predefined limb
+ * @param {OCO.Side} [side=OCO.Side.NONE] - The side of the limb
+ * @param {OCO.Location} [location=OCO.Location.NONE] - The location of the limb
+ * @param {OCO.LimbType} [type=OCO.LimbType.CUSTOM] - The type of the limb
+ * @return {OCOLimb} The new limb
  */
-DuOCODoc.prototype.newLimb = function( limb, side, location, type )
+OCODoc.prototype.newLimb = function( limb, side, location, type )
 {
-    var l = new DuOCOLimb( limb, side, location, type );
+    var l = new OCOLimb( limb, side, location, type );
     this.limbs.push(l);
     return l;
 }
 
 /**
  * Creates a new arm.
- * @param {DuOCO.LimbType} [type=DuOCO.LimbType.HOMINOID] The type of limb
- * @param {DuOCO.Side} [side=DuOCO.Side.LEFT] The side
+ * @param {OCO.LimbType} [type=OCO.LimbType.HOMINOID] The type of limb
+ * @param {OCO.Side} [side=OCO.Side.LEFT] The side
  * @param {Boolean} [shoulder=false] Whether to create a shoulder
  * @param {Boolean} [arm=true]  Whether to create an arm / humerus
  * @param {Boolean} [forearm=true]  Whether to create a forearm
@@ -14656,41 +15390,41 @@ DuOCODoc.prototype.newLimb = function( limb, side, location, type )
  * @param {Boolean} [claws=false]  Whether to add claws
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @param {DuOCO.Location} [location=DuOCO.Location.FRONT] The location of the limb
- * @param {DuOCO.View} [view] The view
- * @returns {DuOCOLimb} The arm
+ * @param {OCO.Location} [location=OCO.Location.FRONT] The location of the limb
+ * @param {OCO.View} [view] The view
+ * @returns {OCOLimb} The arm
  */
-DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, claws, position, location, view )
+OCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, claws, position, location, view )
 {
-    side = def(side, DuOCO.Side.LEFT);
-    type = def(type, DuOCO.LimbType.HOMINOID);
-    location = def(location, DuOCO.Location.FRONT);
+    side = OCO._d(side, OCO.Side.LEFT);
+    type = OCO._d(type, OCO.LimbType.HOMINOID);
+    location = OCO._d(location, OCO.Location.FRONT);
 
-    shoulder = def( shoulder, false );
-    arm = def( arm, true );
-    forearm = def( forearm, true );
-    hand = def( hand, true );
-    claws = def( claws, false );
+    shoulder = OCO._d( shoulder, false );
+    arm = OCO._d( arm, true );
+    forearm = OCO._d( forearm, true );
+    hand = OCO._d( hand, true );
+    claws = OCO._d( claws, false );
 
     // Unit
     var u = this.height;
 
     // type
-    var hum = type == DuOCO.LimbType.HOMINOID;
-    var hum = type == DuOCO.LimbType.PLANTIGRADE && !claws;
-    var plan = type == DuOCO.LimbType.PLANTIGRADE && claws;
-    var dig = type == DuOCO.LimbType.DIGITIGRADE;
-    var ung = type == DuOCO.LimbType.UNGULATE;
-    var artF = type == DuOCO.LimbType.ARTHROPOD && location != DuOCO.Location.MIDDLE && location != DuOCO.Location.BACK;
-    var artM = type == DuOCO.LimbType.ARTHROPOD && location == DuOCO.Location.MIDDLE;
-    var artB = type == DuOCO.LimbType.ARTHROPOD && location == DuOCO.Location.BACK;
+    var hum = type == OCO.LimbType.HOMINOID;
+    var hum = type == OCO.LimbType.PLANTIGRADE && !claws;
+    var plan = type == OCO.LimbType.PLANTIGRADE && claws;
+    var dig = type == OCO.LimbType.DIGITIGRADE;
+    var ung = type == OCO.LimbType.UNGULATE;
+    var artF = type == OCO.LimbType.ARTHROPOD && location != OCO.Location.MIDDLE && location != OCO.Location.BACK;
+    var artM = type == OCO.LimbType.ARTHROPOD && location == OCO.Location.MIDDLE;
+    var artB = type == OCO.LimbType.ARTHROPOD && location == OCO.Location.BACK;
     if ( !hum && !plan && !dig && !ung && !artF && !artM && !artB ) hum = true;
 
     // View
-    if (!isdef( view ))
+    if (typeof view === 'undefined')
     {
-        if (type == DuOCO.LimbType.PLANTIGRADE && !claws) view = DuOCO.View.FRONT;
-        else view = DuOCO.View.RIGHT;
+        if (type == OCO.LimbType.PLANTIGRADE && !claws) view = OCO.View.FRONT;
+        else view = OCO.View.RIGHT;
     }
 
     // count how many bones we need
@@ -14704,14 +15438,14 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.ARM, side, location, type );
+    var limb = this.newLimb( OCO.Limb.ARM, side, location, type );
     var b = limb.newArmature( i18n._("Arm"), num );
 
     // side
     var s = 1;
-    if ( side == DuOCO.Side.RIGHT && view == DuOCO.View.FRONT ) s = -1;
-    else if ( side == DuOCO.Side.LEFT && view == DuOCO.View.BACK ) s = -1;
-    else if ( view == DuOCO.View.LEFT ) s = -1;  
+    if ( side == OCO.Side.RIGHT && view == OCO.View.FRONT ) s = -1;
+    else if ( side == OCO.Side.LEFT && view == OCO.View.BACK ) s = -1;
+    else if ( view == OCO.View.LEFT ) s = -1;  
 
     // shoulder position
     var x, y;
@@ -14754,7 +15488,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     }
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -14764,7 +15498,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if ( shoulder )
     {
         b.name = i18n._("Shoulder");
-        b.type = DuOCO.Bone.CLAVICLE;
+        b.type = OCO.Bone.CLAVICLE;
         b.x = x + ox;
         b.y = y + oy;
         if (b.children.length > 0) b = b.children[0];
@@ -14772,7 +15506,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if ( arm )
     {
         b.name = i18n._("Arm");
-        b.type = DuOCO.Bone.HUMERUS;
+        b.type = OCO.Bone.HUMERUS;
         if (hum)
         {
             b.x = s * u * .12 + ox;
@@ -14813,7 +15547,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if ( forearm )
     {
         b.name = i18n._("Forearm");
-        b.type = DuOCO.Bone.RADIUS;
+        b.type = OCO.Bone.RADIUS;
         if (hum)
         {
             b.x = s * u * .15 + ox;
@@ -14854,7 +15588,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if ( hand )
     {
         b.name = i18n._("Hand");
-        b.type = DuOCO.Bone.CARPUS;
+        b.type = OCO.Bone.CARPUS;
         if (hum)
         {
             b.x = s * u * .12 + ox;
@@ -14895,7 +15629,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     if ( claws )
     {
         b.name = i18n._("Claws");
-        b.type = DuOCO.Bone.FINGER;
+        b.type = OCO.Bone.FINGER;
         if (plan)
         {
             b.x = s * u * .455 + ox;
@@ -14931,7 +15665,7 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     // Tip
     b.name = i18n._("Arm") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     if (hum)
     {
         b.x = s * u * .08 + ox;
@@ -14971,8 +15705,8 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
     //Heel
     if (plan)
     {
-        var heelBone = new DuOCOBone( i18n._("Heel") );
-        heelBone.type = DuOCO.Bone.HEEL;
+        var heelBone = new OCOBone( i18n._("Heel") );
+        heelBone.type = OCO.Bone.HEEL;
         heelBone.x = s * u * .38 + ox;
         heelBone.y = 0 + oy;
         b.children.push(heelBone);
@@ -14983,43 +15717,43 @@ DuOCODoc.prototype.newArm = function( type, side, shoulder, arm, forearm, hand, 
 
 /**
  * Creates a new leg.
- * @param {DuOCO.LimbType} [type=DuOCO.LimbType.HOMINOID] The type of limb
- * @param {DuOCO.Side} [side=DuOCO.Side.LEFT] The side
+ * @param {OCO.LimbType} [type=OCO.LimbType.HOMINOID] The type of limb
+ * @param {OCO.Side} [side=OCO.Side.LEFT] The side
  * @param {Boolean} [thigh=true]  Whether to create a thigh
  * @param {Boolean} [calf=true]  Whether to create a calf
  * @param {Boolean} [foot=true]  Whether to create a foot
  * @param {Boolean} [claws=false]  Whether to add claws
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @param {DuOCO.Location} [location=DuOCO.Location.BACK] The location of the limb
- * @param {DuOCO.View} [view] The view
- * @returns {DuOCOLimb} The leg
+ * @param {OCO.Location} [location=OCO.Location.BACK] The location of the limb
+ * @param {OCO.View} [view] The view
+ * @returns {OCOLimb} The leg
  */
-DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, position, location, view )
+OCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, position, location, view )
 {
-    side = def(side, DuOCO.Side.LEFT);
-    type = def(type, DuOCO.LimbType.HOMINOID);
-    location = def(location, DuOCO.Location.BACK);
+    side = OCO._d(side, OCO.Side.LEFT);
+    type = OCO._d(type, OCO.LimbType.HOMINOID);
+    location = OCO._d(location, OCO.Location.BACK);
 
-    thigh = def( thigh, true );
-    calf = def( calf, true );
-    foot = def( foot, true );
-    claws = def( claws, false );
+    thigh = OCO._d( thigh, true );
+    calf = OCO._d( calf, true );
+    foot = OCO._d( foot, true );
+    claws = OCO._d( claws, false );
 
     // Unit
     var u = this.height;
 
     // type
-    var plan = type == DuOCO.LimbType.PLANTIGRADE;
-    var dig = type == DuOCO.LimbType.DIGITIGRADE;
-    var ung = type == DuOCO.LimbType.UNGULATE;
-    var hum = type == DuOCO.LimbType.HOMINOID;
+    var plan = type == OCO.LimbType.PLANTIGRADE;
+    var dig = type == OCO.LimbType.DIGITIGRADE;
+    var ung = type == OCO.LimbType.UNGULATE;
+    var hum = type == OCO.LimbType.HOMINOID;
 
     // View
-    if (!isdef( view ))
+    if (typeof view === 'undefined')
     {
-        if (type == DuOCO.LimbType.PLANTIGRADE) view = DuOCO.View.FRONT;
-        else view = DuOCO.View.RIGHT;
+        if (type == OCO.LimbType.PLANTIGRADE) view = OCO.View.FRONT;
+        else view = OCO.View.RIGHT;
     }
 
     // count how many bones we need
@@ -15032,15 +15766,15 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.LEG, side, location, type );
+    var limb = this.newLimb( OCO.Limb.LEG, side, location, type );
     var b = limb.newArmature( i18n._("Leg"), num );
 
     // side
     var s = 1;
 
-    if ( side == DuOCO.Side.RIGHT && view == DuOCO.View.FRONT ) s = -1;
-    else if ( side == DuOCO.Side.LEFT && view == DuOCO.View.BACK ) s = -1;
-    else if ( view == DuOCO.View.LEFT ) s = -1;
+    if ( side == OCO.Side.RIGHT && view == OCO.View.FRONT ) s = -1;
+    else if ( side == OCO.Side.LEFT && view == OCO.View.BACK ) s = -1;
+    else if ( view == OCO.View.LEFT ) s = -1;
 
     // thigh position
     var x, y;
@@ -15063,7 +15797,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     }
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -15073,7 +15807,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     if ( thigh )
     {
         b.name = i18n._("Thigh");
-        b.type = DuOCO.Bone.FEMUR;
+        b.type = OCO.Bone.FEMUR;
         b.x = x + ox;
         b.y = y + oy;
         if (b.children.length > 0) b = b.children[0];
@@ -15081,7 +15815,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     if ( calf )
     {
         b.name = i18n._("Calf");
-        b.type = DuOCO.Bone.TIBIA;
+        b.type = OCO.Bone.TIBIA;
         if (plan || hum)
         {
             b.x = s * u * .05 + ox;
@@ -15102,7 +15836,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     if ( foot )
     {
         b.name = i18n._("Foot");
-        b.type = DuOCO.Bone.TARSUS;
+        b.type = OCO.Bone.TARSUS;
         if (plan || hum)
         {
             b.x = s * u * .036 + ox;
@@ -15124,7 +15858,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     {
         b.name = i18n._("Claws");
         if (hum) b.name = i18n._("Toes");
-        b.type = DuOCO.Bone.TOE;
+        b.type = OCO.Bone.TOE;
         if (plan || hum)
         {
             b.x = s * u * .10 + ox;
@@ -15146,7 +15880,7 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     // Tip
     b.name = i18n._("Leg") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     if (plan || hum)
     {
         b.x = s * u * .145 + ox;
@@ -15166,8 +15900,8 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
     //Heel
     if ((plan || hum) && claws)
     {
-        var heelBone = new DuOCOBone( i18n._("Heel") );
-        heelBone.type = DuOCO.Bone.HEEL;
+        var heelBone = new OCOBone( i18n._("Heel") );
+        heelBone.type = OCO.Bone.HEEL;
         heelBone.x = s * u * .01 + ox;
         heelBone.y = oy;
         b.children.push(heelBone);
@@ -15184,15 +15918,15 @@ DuOCODoc.prototype.newLeg = function( type, side, thigh, calf, foot, claws, posi
  * @param {Boolean} [hips=true]  Whether to create hips
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @param {DuOCO.View} [view] The view
- * @returns {DuOCOLimb} The spine
+ * @param {OCO.View} [view] The view
+ * @returns {OCOLimb} The spine
  */
-DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
+OCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
 {
-    head = def( head, true );
-    neck = def( neck, 1 );
-    spine = def( spine, 2 );
-    hips = def( hips, false );
+    head = OCO._d( head, true );
+    neck = OCO._d( neck, 1 );
+    spine = OCO._d( spine, 2 );
+    hips = OCO._d( hips, false );
 
     // Unit
     var u = this.height;
@@ -15207,7 +15941,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.SPINE, DuOCO.Side.NONE, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.SPINE, OCO.Side.NONE, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Spine"), num );
 
     // hips position
@@ -15217,7 +15951,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     var y = u * .53;
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -15227,7 +15961,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     if ( hips )
     {
         b.name = i18n._("Hips");
-        b.type = DuOCO.Bone.HIPS;
+        b.type = OCO.Bone.HIPS;
         b.x = x + ox;
         b.y = y + oy;
         if (b.children.length > 0) b = b.children[0];
@@ -15241,14 +15975,14 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
         for (var i = 0; i < spine-1; i++)
         {
             b.name = i18n._("Spine");
-            b.type = DuOCO.Bone.SPINE;
+            b.type = OCO.Bone.SPINE;
             b.y = spineStart + i*spineLength + oy;
             b.x = ox;
             if (b.children.length > 0) b = b.children[0];
         }
         // Torso
         b.name = i18n._("Torso");
-        b.type = DuOCO.Bone.TORSO;
+        b.type = OCO.Bone.TORSO;
         b.y = spineStart + (spine-1)*spineLength + oy;
         b.x = ox;
         if (b.children.length > 0) b = b.children[0];
@@ -15257,7 +15991,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     {
         // Torso
         b.name = i18n._("Torso");
-        b.type = DuOCO.Bone.TORSO;
+        b.type = OCO.Bone.TORSO;
         b.x = ox;
         b.y = u*.56 + oy;
         if (b.children.length > 0) b = b.children[0];
@@ -15269,7 +16003,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
         for (var i = 0; i < neck; i++)
         {
             b.name = i18n._("Neck");
-            b.type = DuOCO.Bone.NECK;
+            b.type = OCO.Bone.NECK;
             b.y = neckStart + i*neckLength + oy;
             b.x = ox;
             if (b.children.length > 0) b = b.children[0];
@@ -15278,7 +16012,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     if ( head )
     {
         b.name = i18n._("Head");
-        b.type = DuOCO.Bone.SKULL;
+        b.type = OCO.Bone.SKULL;
         b.x = ox;
         b.y = u*.89 + oy;
         if (b.children.length > 0) b = b.children[0];
@@ -15287,7 +16021,7 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
     // Tip
     b.name = i18n._("Spine") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     b.x = ox;
     b.y = u + oy;
 
@@ -15297,11 +16031,11 @@ DuOCODoc.prototype.newSpine = function( head, neck, spine, hips, position )
 /**
  * Creates a new tail.
  * @param {int} [numBones=3] Number of tail bones
- * @returns {DuOCOLimb} The spine
+ * @returns {OCOLimb} The spine
  */
-DuOCODoc.prototype.newTail = function( numBones )
+OCODoc.prototype.newTail = function( numBones )
 {
-    numBones = def( numBones, 3 );
+    numBones = OCO._d( numBones, 3 );
 
     // Unit
     var u = this.height;
@@ -15312,23 +16046,23 @@ DuOCODoc.prototype.newTail = function( numBones )
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.TAIL, DuOCO.Side.NONE, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.TAIL, OCO.Side.NONE, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Tail"), num );
 
     // for each part, adjust name and type
     for (var i = 0, n = num-1; i < n; i++)
     {
         b.name = i18n._("Tail");
-        if ( i <= (n-1) / 3) b.type = DuOCO.Bone.TAIL_ROOT;
-        else if ( i <= (n-1)*2 / 3) b.type = DuOCO.Bone.TAIL_MID;
-        else b.type = DuOCO.Bone.TAIL_END;
+        if ( i <= (n-1) / 3) b.type = OCO.Bone.TAIL_ROOT;
+        else if ( i <= (n-1)*2 / 3) b.type = OCO.Bone.TAIL_MID;
+        else b.type = OCO.Bone.TAIL_END;
         
         if (b.children.length > 0) b = b.children[0];
     }
 
     b.name = i18n._("Tail") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
 
     return limb;
 }
@@ -15336,11 +16070,11 @@ DuOCODoc.prototype.newTail = function( numBones )
 /**
  * Creates a new hair strand.
  * @param {int} [numBones=3] Number of hair bones
- * @returns {DuOCOLimb} The hair
+ * @returns {OCOLimb} The hair
  */
-DuOCODoc.prototype.newHairStrand = function( numBones )
+OCODoc.prototype.newHairStrand = function( numBones )
 {
-    numBones = def( numBones, 3 );
+    numBones = OCO._d( numBones, 3 );
 
     // Unit
     var u = this.height;
@@ -15351,7 +16085,7 @@ DuOCODoc.prototype.newHairStrand = function( numBones )
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.HAIR, DuOCO.Side.NONE, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.HAIR, OCO.Side.NONE, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Hair"), num );
 
     var l = 100 / numBones;
@@ -15360,9 +16094,9 @@ DuOCODoc.prototype.newHairStrand = function( numBones )
     for (var i = 0, n = num-1; i < n; i++)
     {
         b.name = i18n._("Hair");
-        if ( i <= (n-1) / 3) b.type = DuOCO.Bone.HAIR_ROOT;
-        else if ( i <= (n-1)*2 / 3) b.type = DuOCO.Bone.HAIR_MID;
-        else b.type = DuOCO.Bone.HAIR_END;
+        if ( i <= (n-1) / 3) b.type = OCO.Bone.HAIR_ROOT;
+        else if ( i <= (n-1)*2 / 3) b.type = OCO.Bone.HAIR_MID;
+        else b.type = OCO.Bone.HAIR_END;
 
         b.x = 0;
         b.y = 150 - i*l;
@@ -15372,7 +16106,7 @@ DuOCODoc.prototype.newHairStrand = function( numBones )
 
     b.name = i18n._("Hair") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     b.x = 0;
     b.y = 50;
 
@@ -15381,25 +16115,25 @@ DuOCODoc.prototype.newHairStrand = function( numBones )
 
 /**
  * Creates a new wing.
- * @param {DuOCO.Side} [side=DuOCO.Side.LEFT] The side
+ * @param {OCO.Side} [side=OCO.Side.LEFT] The side
  * @param {Boolean} [arm=true]  Whether to create an arm / humerus
  * @param {Boolean} [forearm=true]  Whether to create a forearm
  * @param {Boolean} [hand=true]  Whether to create a hand
  * @param {int} [feathers=5]  Number of feathers
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @param {DuOCO.View} [view=DuOCO.View.TOP] The view
- * @returns {DuOCOLimb} The wing
+ * @param {OCO.View} [view=OCO.View.TOP] The view
+ * @returns {OCOLimb} The wing
  */
-DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, position, view )
+OCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, position, view )
 {
-    side = def(side, DuOCO.Side.LEFT);
-    view = def(view, DuOCO.View.TOP);
+    side = OCO._d(side, OCO.Side.LEFT);
+    view = OCO._d(view, OCO.View.TOP);
 
-    arm = def( arm, true );
-    forearm = def( forearm, true );
-    hand = def( hand, true );
-    feathers = def( feathers, 5 );
+    arm = OCO._d( arm, true );
+    forearm = OCO._d( forearm, true );
+    hand = OCO._d( hand, true );
+    feathers = OCO._d( feathers, 5 );
 
     // Unit
     var u = this.height;
@@ -15413,18 +16147,18 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.WING, side, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.WING, side, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Wing"), num );
 
     // side
     var s = 1;
-    if ( side == DuOCO.Side.RIGHT && (view == DuOCO.View.TOP || view == DuOCO.View.BACK) ) s = -1;
-    else if ( side == DuOCO.Side.LEFT && (view == DuOCO.View.BOTTOM || view == DuOCO.View.FRONT) ) s = -1;
-    else if ( view == DuOCO.View.LEFT ) s = -1;
+    if ( side == OCO.Side.RIGHT && (view == OCO.View.TOP || view == OCO.View.BACK) ) s = -1;
+    else if ( side == OCO.Side.LEFT && (view == OCO.View.BOTTOM || view == OCO.View.FRONT) ) s = -1;
+    else if ( view == OCO.View.LEFT ) s = -1;
 
     // arm position
     var x, y;
-    if ( view == DuOCO.View.TOP || view == DuOCO.View.BOTTOM )
+    if ( view == OCO.View.TOP || view == OCO.View.BOTTOM )
     {
         x = s * u * -.12;
         y = u * .64;
@@ -15434,7 +16168,7 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     var oy = 0;
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -15447,7 +16181,7 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     if ( arm )
     {
         b.name = i18n._("Arm");
-        b.type = DuOCO.Bone.HUMERUS;
+        b.type = OCO.Bone.HUMERUS;
         b.x = x + ox;
         b.y = y + oy;
 
@@ -15462,7 +16196,7 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     if (forearm)
     {
         b.name = i18n._("Forearm");
-        b.type = DuOCO.Bone.RADIUS;
+        b.type = OCO.Bone.RADIUS;
         b.x = s * u * -.22 + ox;
         b.y = u * .53 + oy;
 
@@ -15474,7 +16208,7 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     if (hand)
     {
         b.name = i18n._("Hand");
-        b.type = DuOCO.Bone.CARPUS;
+        b.type = OCO.Bone.CARPUS;
         b.x = s * u * -.37 + ox;
         b.y = u * .64 + oy;
 
@@ -15487,7 +16221,7 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     // Tip
     b.name = i18n._("Wing") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     b.x = s * u * -.53 + ox;
     b.y = u * .66 + oy;
 
@@ -15496,17 +16230,17 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
 
     function createFeather( xr, yr, xt, yt, p )
     {
-        var boneName = DuString.generateUnique( i18n._("Feather"), names);
-        b = new DuOCOBone( boneName );
-        b.type = DuOCO.Bone.FEATHER;
+        var boneName = OCO._uniqueString( i18n._("Feather"), names);
+        b = new OCOBone( boneName );
+        b.type = OCO.Bone.FEATHER;
         b.x = s * u * xr + ox;
         b.y = u * yr + oy;
 
         // tip
-        var boneName = DuString.generateUnique( i18n._("Feather") +
+        var boneName = OCO._uniqueString( i18n._("Feather") +
             '_' + i18n._("Tip"), names);
-        var bt = new DuOCOBone( boneName );
-        bt.type = DuOCO.Bone.TIP;
+        var bt = new OCOBone( boneName );
+        bt.type = OCO.Bone.TIP;
         bt.x = s * u * xt + ox;
         bt.y = u * yt + oy;
 
@@ -15529,18 +16263,18 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
     {
         if ( i < n/2)
         {
-            var x = DuMath.linear( i, 0, n/2, -.54, -.38);
-            var y = DuMath.linear( i, 0, n/2, .66, .63);
-            var xt = DuMath.linear( i, 0, n/2, -.96, -.56);
-            var yt = DuMath.linear( i, 0, n/2, .62, .28);
+            var x = OCO._linearInterpolation( i, 0, n/2, -.54, -.38);
+            var y = OCO._linearInterpolation( i, 0, n/2, .66, .63);
+            var xt = OCO._linearInterpolation( i, 0, n/2, -.96, -.56);
+            var yt = OCO._linearInterpolation( i, 0, n/2, .62, .28);
             createFeather( x, y, xt, yt, parent2 );
         }
         else 
         {
-            var x = DuMath.linear( i, n/2, n-1, -.38, -.22);
-            var y = DuMath.linear( i, n/2, n-1, .63, .51);
-            var xt = DuMath.linear( i, n/2, n-1, -.56, -.08);
-            var yt = DuMath.linear( i, n/2, n-1, .28, .39);
+            var x = OCO._linearInterpolation( i, n/2, n-1, -.38, -.22);
+            var y = OCO._linearInterpolation( i, n/2, n-1, .63, .51);
+            var xt = OCO._linearInterpolation( i, n/2, n-1, -.56, -.08);
+            var yt = OCO._linearInterpolation( i, n/2, n-1, .28, .39);
             createFeather( x, y, xt, yt, parent1 );
         }
     }
@@ -15554,12 +16288,12 @@ DuOCODoc.prototype.newWing = function( side, arm, forearm, hand, feathers, posit
  * @param {int} [spine=5] Number of spine bones
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @returns {DuOCOLimb} The snake spine
+ * @returns {OCOLimb} The snake spine
  */
-DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
+OCODoc.prototype.newSnakeSpine = function( head, spine, position )
 {
-    head = def( head, true );
-    spine = def( spine, 5 );
+    head = OCO._d( head, true );
+    spine = OCO._d( spine, 5 );
 
     // Unit
     var u = this.height;
@@ -15570,7 +16304,7 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.SNAKE_SPINE, DuOCO.Side.NONE, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.SNAKE_SPINE, OCO.Side.NONE, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Spine"), num );
 
     // hips position
@@ -15580,7 +16314,7 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
     var y = u * .5;
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -15591,9 +16325,9 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
     for (var i = 0; i < spine; i++)
     {
         b.name = i18n._("Spine");
-        if ( i <= (spine-1) / 3) b.type = DuOCO.Bone.SNAKE_SPINE_ROOT;
-        else if ( i <= (spine-1)*2 / 3) b.type = DuOCO.Bone.SNAKE_SPINE_MID;
-        else b.type = DuOCO.Bone.SNAKE_SPINE_END;
+        if ( i <= (spine-1) / 3) b.type = OCO.Bone.SNAKE_SPINE_ROOT;
+        else if ( i <= (spine-1)*2 / 3) b.type = OCO.Bone.SNAKE_SPINE_MID;
+        else b.type = OCO.Bone.SNAKE_SPINE_END;
         b.y = y + oy;
         b.x = x - spineLength*i - ox;
         if (b.children.length > 0) b = b.children[0];
@@ -15602,15 +16336,15 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
     // Tip
     b.name = i18n._("Spine") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     b.x = -u *.75;
     b.y = y + oy;
 
     // Head
     if (head)
     {
-        var b = new DuOCOBone( i18n._("Head") );
-        b.type = DuOCO.Bone.SKULL;
+        var b = new OCOBone( i18n._("Head") );
+        b.type = OCO.Bone.SKULL;
         b.x = x;
         b.y = y;
 
@@ -15619,9 +16353,9 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
         limb.armature.push(b);
         b.children.push(s);
 
-        var bt = new DuOCOBone( i18n._("Head") +
+        var bt = new OCOBone( i18n._("Head") +
             '_' + i18n._("Tip") );
-        bt.type = DuOCO.Bone.SKULL_TIP;
+        bt.type = OCO.Bone.SKULL_TIP;
         bt.x = x + u*.2;
         bt.y = y;
         bt.attached = true;
@@ -15638,12 +16372,12 @@ DuOCODoc.prototype.newSnakeSpine = function( head, spine, position )
  * @param {int} [spine=3] Number of spine bones
  * @param {float[]} [position] The position of the first bone of the spine.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @returns {DuOCOLimb} The fish spine
+ * @returns {OCOLimb} The fish spine
  */
-DuOCODoc.prototype.newFishSpine = function( head, spine, position )
+OCODoc.prototype.newFishSpine = function( head, spine, position )
 {
-    head = def( head, true );
-    spine = def( spine, 3 );
+    head = OCO._d( head, true );
+    spine = OCO._d( spine, 3 );
 
     // Unit
     var u = this.height;
@@ -15654,7 +16388,7 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
     if (num == 1) return null;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.FISH_SPINE, DuOCO.Side.NONE, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.FISH_SPINE, OCO.Side.NONE, OCO.Location.NONE );
     var b = limb.newArmature( i18n._("Spine"), num );
 
     // hips position
@@ -15664,7 +16398,7 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
     var y = u * .5;
 
     // offset
-    if (isdef( position ) )
+    if (typeof position !== 'undefined')
     {
         ox = position[0] - x;
         oy = position[1] - y;
@@ -15675,9 +16409,9 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
     for (var i = 0; i < spine; i++)
     {
         b.name = i18n._("Spine");
-        if ( i <= (spine-1) / 3) b.type = DuOCO.Bone.FISH_SPINE_ROOT;
-        else if ( i <= (spine-1)*2 / 3) b.type = DuOCO.Bone.FISH_SPINE_MID;
-        else b.type = DuOCO.Bone.FISH_SPINE_END;
+        if ( i <= (spine-1) / 3) b.type = OCO.Bone.FISH_SPINE_ROOT;
+        else if ( i <= (spine-1)*2 / 3) b.type = OCO.Bone.FISH_SPINE_MID;
+        else b.type = OCO.Bone.FISH_SPINE_END;
         b.y = y + oy;
         b.x = x - spineLength*i - ox;
         if (b.children.length > 0) b = b.children[0];
@@ -15686,15 +16420,15 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
     // Tip
     b.name = i18n._("Spine") +
         '_' + i18n._("Tip");
-    b.type = DuOCO.Bone.TIP;
+    b.type = OCO.Bone.TIP;
     b.x = -u *.25;
     b.y = y + oy;
 
     // Head
     if (head)
     {
-        var b = new DuOCOBone( i18n._("Head") );
-        b.type = DuOCO.Bone.SKULL;
+        var b = new OCOBone( i18n._("Head") );
+        b.type = OCO.Bone.SKULL;
         b.x = x;
         b.y = y;
 
@@ -15703,9 +16437,9 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
         limb.armature.push(b);
         b.children.push(s);
 
-        var bt = new DuOCOBone( i18n._("Head") +
+        var bt = new OCOBone( i18n._("Head") +
             '_' + i18n._("Tip") );
-        bt.type = DuOCO.Bone.SKULL_TIP;
+        bt.type = OCO.Bone.SKULL_TIP;
         bt.x = x + u*.3;
         bt.y = y;
         bt.attached = true;
@@ -15718,31 +16452,31 @@ DuOCODoc.prototype.newFishSpine = function( head, spine, position )
 
 /**
  * Creates a new fin.
- * @param {DuOCO.Side} [side=DuOCO.Side.LEFT] The side
+ * @param {OCO.Side} [side=OCO.Side.LEFT] The side
  * @param {int} [fishbones=5]  Number of feathers
  * @param {float[]} [position] The position of the first bone of the arm.<br />
  * If omitted, computed automatically according to the current character in the doc.
- * @param {DuOCO.View} [view=DuOCO.View.RIGHT] The view
- * @returns {DuOCOLimb} The fin
+ * @param {OCO.View} [view=OCO.View.RIGHT] The view
+ * @returns {OCOLimb} The fin
  */
-DuOCODoc.prototype.newFin = function( side, fishbones, view, position )
+OCODoc.prototype.newFin = function( side, fishbones, view, position )
 {
-    side = def(side, DuOCO.Side.LEFT);
-    view = def(view, DuOCO.View.RIGHT);
+    side = OCO._d(side, OCO.Side.LEFT);
+    view = OCO._d(view, OCO.View.RIGHT);
 
-    fishbones = def( fishbones, 5 );
+    fishbones = OCO._d( fishbones, 5 );
 
     // Unit
     var u = this.height;
 
     // Create limb
-    var limb = this.newLimb( DuOCO.Limb.FIN, side, DuOCO.Location.NONE );
+    var limb = this.newLimb( OCO.Limb.FIN, side, OCO.Location.NONE );
 
     // side
     var s = 1;
-    if ( side == DuOCO.Side.RIGHT && (view == DuOCO.View.TOP || view == DuOCO.View.BACK) ) s = -1;
-    else if ( side == DuOCO.Side.LEFT && (view == DuOCO.View.BOTTOM || view == DuOCO.View.FRONT) ) s = -1;
-    else if ( view == DuOCO.View.LEFT ) s = -1;
+    if ( side == OCO.Side.RIGHT && (view == OCO.View.TOP || view == OCO.View.BACK) ) s = -1;
+    else if ( side == OCO.Side.LEFT && (view == OCO.View.BOTTOM || view == OCO.View.FRONT) ) s = -1;
+    else if ( view == OCO.View.LEFT ) s = -1;
 
     // arm position
     var x = s * u * -.17;
@@ -15751,22 +16485,22 @@ DuOCODoc.prototype.newFin = function( side, fishbones, view, position )
     var oy = 0;
 
     // offset
-    if ( isdef(position) )
+    if ( typeof position !== 'undefined' )
     {
         ox = position[0] - x;
         oy = position[1] - y;
     }
 
     // Create root
-    var rootBone = new DuOCOBone( i18n._("Fin") );
-    rootBone.type = DuOCO.Bone.FIN;
+    var rootBone = new OCOBone( i18n._("Fin") );
+    rootBone.type = OCO.Bone.FIN;
     rootBone.x = x + ox;
     rootBone.y = y + oy;
     limb.armature.push(rootBone);
     // Tip
-    var bt = new DuOCOBone( i18n._("Fin") +
+    var bt = new OCOBone( i18n._("Fin") +
         '_' + i18n._("Tip") );
-    bt.type = DuOCO.Bone.TIP;
+    bt.type = OCO.Bone.TIP;
     bt.x = s * u * -.24 + ox;
     bt.y = u * .62 + oy;
     bt.attached = true;
@@ -15779,17 +16513,17 @@ DuOCODoc.prototype.newFin = function( side, fishbones, view, position )
 
     function createFishbone( xr, yr, xt, yt )
     {
-        var boneName = DuString.generateUnique( i18n._("Fishbone"), names);
-        b = new DuOCOBone( boneName );
-        b.type = DuOCO.Bone.FIN_FISHBONE;
+        var boneName = OCO._uniqueString( i18n._("Fishbone"), names);
+        b = new OCOBone( boneName );
+        b.type = OCO.Bone.FIN_FISHBONE;
         b.x = s * u * xr + ox;
         b.y = u * yr + oy;
 
         // tip
-        var boneName = DuString.generateUnique( i18n._("Fishbone") +
+        var boneName = OCO._uniqueString( i18n._("Fishbone") +
             '_' + i18n._("Tip"), names);
-        var bt = new DuOCOBone( boneName );
-        bt.type = DuOCO.Bone.TIP;
+        var bt = new OCOBone( boneName );
+        bt.type = OCO.Bone.TIP;
         bt.x = s * u * xt + ox;
         bt.y = u * yt + oy;
         bt.attached = true;
@@ -15807,10 +16541,10 @@ DuOCODoc.prototype.newFin = function( side, fishbones, view, position )
 
     for (var i = 0, n = fishbones; i < n; i++)
     {
-        var x = DuMath.linear( i, 0, n-1, -.24, -.15);
-        var y = DuMath.linear( i, 0, n-1, .63, .41);
-        var xt = DuMath.linear( i, 0, n-1, -.82, -.17);
-        var yt = DuMath.linear( i, 0, n-1, .60, .29);
+        var x = OCO._linearInterpolation( i, 0, n-1, -.24, -.15);
+        var y = OCO._linearInterpolation( i, 0, n-1, .63, .41);
+        var xt = OCO._linearInterpolation( i, 0, n-1, -.82, -.17);
+        var yt = OCO._linearInterpolation( i, 0, n-1, .60, .29);
         createFishbone( x, y, xt, yt );
     }
 
@@ -15818,97 +16552,256 @@ DuOCODoc.prototype.newFin = function( side, fishbones, view, position )
 }
 
 /**
- * Converts a doc coordinate in centimeters to pixel coordinates
+ * Converts a doc coordinate/value in centimeters to pixel coordinates.<br/>
+ * For multidimensionnal values (coordinates), the origin is adjusted from doc to image.
  * @param {float[]} point The coordinate to convert
- * @returns {int[]} The coordinates in pixels relative to the comp
+ * @returns {int[]} The coordinates in pixels
  */
-DuOCODoc.prototype.toPixels = function( point )
+OCODoc.prototype.toPixels = function( point )
 {
-    // First, convert to pixels
-    var x = point[0]*this.pixelsPerCm;
-    // minus because in 2D apps, 0 is top
-    var y = -point[1]*this.pixelsPerCm;
-    // We're relative to the world, add its coordinates
-    x += this.world[0];
-    y += this.world[1];
-    return [x, y];
+    if (point.length)
+    {
+        // First, convert to pixels
+        var x = point[0]*this.pixelsPerCm;
+        var y = point[1]*this.pixelsPerCm;
+        // We're relative to the world, adjust
+        return this.fromWorld( [x, y] );
+    }
+    return point * this.pixelsPerCm;
 }
 
 /**
- * Converts a pixel coordinate in pixels to centimeters doc coordinates
- * @param {int[]} point The coordinate to convert
- * @returns {float[]} The coordinates in centimeters relative to the doc
+ * Converts coordinates in pixels in the world to centimeters coordinates in the doc<br/>
+ * For multidimensionnal values (coordinates), the origin is adjusted image to doc.
+ * @param {float[]|float} point The coordinate to convert
+ * @returns {float[]|float} The coordinates in centimeters relative to the doc
  */
-DuOCODoc.prototype.fromPixels = function( point )
+OCODoc.prototype.fromPixels = function( point )
 {
-    var x = point[0];
-    var y = point[1];
-    // We're relative to the world, remove its coordinates
-    x -= this.world[0];
-    y -= this.world[1];
-    // Convert to cm
-    x /= this.pixelsPerCm;
-    // Y coordinate is at bottm in OCO, top in 2D docs
-    y /= -this.pixelsPerCm;
-    return [x, y];
+    if (point.length)
+    {
+        // We need to be relative to the world
+        point = this.toWorld(point);
+        var x = point[0];
+        var y = point[1];
+        // Convert to cm
+        x /= this.pixelsPerCm;
+        // Y coordinate is at bottom in OCO, top in 2D docs
+        y /= this.pixelsPerCm;
+        return [x, y];
+    }
+    return point / this.pixelsPerCm;
+}
+
+/**
+ * Creates a js object containing this document data.<br/>
+ * This object could then be exported to JSON for example.
+ * @return {Object} the JS Object
+ */
+OCODoc.prototype.toObject = function()
+{
+    var data = {
+        'type': this.type,
+        'name': this.name,
+        'height': this.height,
+        'width': this.width,
+        'centerOfMass': this.centerOfMass,
+        'limbs': [],
+        'resolution': this.resolution,
+        'world': this.world,
+        'pixelsPerCm': this.pixelsPerCm,
+        'icon': this.icon,
+        'imageEncoding': this.imageEncoding
+    }
+
+    for (var i = 0, n  = this.limbs.length; i < n; i++)
+    {
+        var limbData = this.limbs[i].toObject();
+        data['limbs'].push(limbData);
+    }
+
+    return data;
+}
+
+/**
+ * Creates a JSON string representing this document
+ * @param {OCO.ImageEncoding} [imageEncoding=OCO.ImageEncoding.PATH] How to encode images in the OCO File
+ * @param {File} [destinationFile] If imageEncoding is `OCO.ImageEncoding.PATH`, you must provide the OCO file to make the paths relative to it.
+ * @return {string} the JSON document
+ */
+OCODoc.prototype.toJson = function( destinationFile )
+{
+    var data  = this.toObject();
+
+    if (data.imageEncoding == OCO.ImageEncoding.PNG_BASE64) {
+        data.icon = OCO._base64( data.icon );
+    }
+    else if (data.imageEncoding == OCO.ImageEncoding.PATH) {
+        data.icon = OCO._relativePath( data.icon, destinationFile );
+    }
+    else if (data.imageEncoding == OCO.ImageEncoding.ABS_PATH) {
+        var iconFile = new File( data.icon );
+        data.icon = iconFile.absoluteURI();
+    }
+
+    return JSON.stringify(data, null, 4);
+}
+
+/**
+ * Exports the current document to an oco file
+ * @param {File|string} file The file.
+ * @return {File} the file.
+ */
+OCODoc.prototype.toFile = function ( file )
+{
+    if (!(file instanceof File)) file = new File(file);
+    file.encoding = 'UTF-8';
+    var data = this.toJson( );
+
+    if (!file.open('w')) return file;
+    file.write(data);
+    file.close();
+
+    return file;
+}
+
+/**
+ * Extracts the icon from the OCO file
+ * @param {string|File} file The OCO file
+ * @param {string|File} [destination] The destination file if the file is included in the OCO file. Next to the OCO file by default.
+ * @return {File} The icon file, or null if there was no icon/the file could not be written.
+ */
+OCODoc.extractIcon = function( file, destination )
+{
+    if (!(file instanceof File)) file = new File(file);
+
+    // Check if there's an icon to extract
+    var data = OCO._parseJsonFile( file );
+    if (data.icon == "") return null;
+    if (data.imageEncoding == OCO.ImageEncoding.ABS_PATH) return new File(data.icon);
+    if (data.imageEncoding == OCO.ImageEncoding.PATH)
+    {
+        destination = OCO._absolutePath( data.icon, file);
+        return new File(destination);
+    }
+    if (data.icon != "" && data.imageEncoding == OCO.ImageEncoding.PNG_BASE64) 
+    {
+        destination = OCO._d(destination, file.parent.absoluteURI + "/" + file.displayName.replace(".oco", ".png"));
+        return OCO._fromBase64(data.icon, destination);
+    }
+    return null;
+ 
+}
+
+/**
+ * Creates a new doc by reading a file
+ * @param {File|string} file The file
+ * @return {OCODoc|null} The document or null if the file couldn't be read or parsed
+ */
+OCODoc.fromFile = function ( file )
+{
+    var data = OCO._parseJsonFile( file );
+    
+    var doc = new OCODoc( OCO._d( data.name, "Character" ) );
+    doc.type = OCO._d( data.type, OCO.Type.META );
+    doc.height = OCO._d( data.height, 185 );
+    doc.width = OCO._d( data.width, 60 );
+    doc.centerOfMass = OCO._d( data.centerOfMass, [0.0, 107.0] );
+    doc.resolution = OCO._d( data.resolution, [1920, 1080] );
+    doc.world = OCO._d( data.world, [960, 980] );
+    doc.pixelsPerCm = OCO._d( data.pixelsPerCm, 4.22 );
+    doc.icon = OCO._d( data.icon, "" );
+    doc.imageEncoding = OCO._d( data.imageEncoding, OCO.ImageEncoding.PATH );
+
+    // Check Data
+    if (doc.resolution[0] <= 0 || doc.resolution[0] > 30000)
+        throw "Invalid resolution; the width must be in the range [0, 30000]";
+
+    if (doc.resolution[1] <= 0 || doc.resolution[1] > 30000)
+        throw "Invalid resolution; the height must be in the range [0, 30000]";
+
+
+    // Parse limbs
+    data.limbs = OCO._d( data.limbs, [] );
+    for (var i = 0, ni = data.limbs.length; i < ni; i++)
+    {
+        doc.limbs.push( OCOLimb.fromObject(data.limbs[i]) );
+    }
+
+
+    return doc;
 }
 
 /**
  * Creates a new OCO Limb.
  * @class
  * @classdesc A limb contained in an OCO Doc.
- * @param {DuOCO.Limb} [limb=DuOCO.Limb.CUSTOM] A Predefined limb
- * @param {DuOCO.Side} [side=DuOCO.Side.NONE] - The side of the limb
- * @param {DuOCO.Location} [location=DuOCO.Location.NONE] - The location of the limb
- * @param {DuOCO.LimbType} [type=DuOCO.LimbType.CUSTOM] - The type of the limb
- * @category DuOCO
+ * @param {OCO.Limb} [limb=OCO.Limb.CUSTOM] A Predefined limb
+ * @param {OCO.Side} [side=OCO.Side.NONE] - The side of the limb
+ * @param {OCO.Location} [location=OCO.Location.NONE] - The location of the limb
+ * @param {OCO.LimbType} [type=OCO.LimbType.CUSTOM] - The type of the limb
+ * @category OCO
  */
-function DuOCOLimb(limb, side, location, type )
+function OCOLimb(limb, side, location, type )
 {
     /**
      * The predefined limb
      * @name limb
-     * @memberof DuOCOLimb
-     * @type {DuOCO.Limb}
+     * @memberof OCOLimb
+     * @type {OCO.Limb}
      */
-    this.limb = def(limb, DuOCO.Limb.CUSTOM);
+    this.limb = OCO._d(limb, OCO.Limb.CUSTOM);
     /**
      * The type of the limb
      * @name type
-     * @memberof DuOCOLimb
-     * @type {DuOCO.LimbType}
+     * @memberof OCOLimb
+     * @type {OCO.LimbType}
      */
-    this.type = def(type, DuOCO.LimbType.CUSTOM);
+    this.type = OCO._d(type, OCO.LimbType.CUSTOM);
     /**
      * The sided of the limb
      * @name side
-     * @memberof DuOCOLimb
-     * @type {DuOCO.Side}
+     * @memberof OCOLimb
+     * @type {OCO.Side}
      */
-    this.side = def( side, DuOCO.Side.NONE);
+    this.side = OCO._d( side, OCO.Side.NONE);
     /**
      * The location of the limb
      * @name location
-     * @memberof DuOCOLimb
-     * @type { DuOCO.Location}
+     * @memberof OCOLimb
+     * @type { OCO.Location}
      */
-    this.location = def( location, DuOCO.Location.NONE);
+    this.location = OCO._d( location, OCO.Location.NONE);
     /**
      * The bones of the limb
      * @name location
-     * @memberof DuOCOLimb
-     * @type {DuOCOBone[]}
+     * @memberof OCOLimb
+     * @type {OCOBone[]}
      */
     this.armature = [];
+}
+
+/**
+    * Counts the total number of bones in this limb
+    * @return {int}
+    */
+OCOLimb.prototype.numBones = function ()
+{
+    var count = 0;
+    for (var i = 0, ni = this.armature.length; i < ni; i++ )
+    {
+        count += this.armature[i].numBones();
+    }
+    return count;
 }
 
 /**
  * Gets the boundaries of the limb
  * @returns {float[]} [left, top, right, bottom]
  */
-DuOCOLimb.prototype.bounds = function( )
+OCOLimb.prototype.bounds = function( )
 {
-    return DuOCO.getBounds( this.armature );
+    return OCO.getBounds( this.armature );
 }
 
 /**
@@ -15916,12 +16809,12 @@ DuOCOLimb.prototype.bounds = function( )
  * @param {string} name The name of the bones (will increment if needed)
  * @param {int} [num=2] The number of bones in the chain
  * @param {float} [length=100.0] The length in centimeters
- * @return {DuOCOBone} The root bone.
+ * @return {OCOBone} The root bone.
  */
-DuOCOLimb.prototype.newArmature = function( name, num, length )
+OCOLimb.prototype.newArmature = function( name, num, length )
 {
-    num = def(num, 2);
-    length = def(length, 100.0);
+    num = OCO._d(num, 2);
+    length = OCO._d(length, 100.0);
     var boneLength = length / (num-1);
 
     var x = -length / 2;
@@ -15931,8 +16824,8 @@ DuOCOLimb.prototype.newArmature = function( name, num, length )
 
     for (var i = 0; i < num; i++)
     {
-        var boneName = DuString.generateUnique(name, names);
-        var bone = new DuOCOBone( boneName );
+        var boneName = OCO._uniqueString(name, names);
+        var bone = new OCOBone( boneName );
         names.push(boneName);
         bone.y = 100;
         bone.x = x;
@@ -15956,63 +16849,158 @@ DuOCOLimb.prototype.newArmature = function( name, num, length )
 }
 
 /**
+ * Creates a js object containing this limb data.<br/>
+ * This object could then be exported to JSON for example.
+ * @return {Object} The JS Object
+ */
+OCOLimb.prototype.toObject = function()
+{
+    var data = {
+        'limb': this.limb,
+        'type': this.type,
+        'side': this.side,
+        'location': this.location,
+        'armature': []
+    }
+
+    for (var i = 0, n = this.armature.length; i < n; i++)
+    {
+        var boneData = this.armature[i].toObject();
+        data['armature'].push(boneData);
+    }
+
+    return data;
+}
+
+/**
+ * Creates a limb from a js object.
+ * @param {Object} data The js object representing the limb
+ * @return {OCOLimb} The new limb
+ */
+OCOLimb.fromObject = function( data )
+{
+    var limb = OCO._d( data.limb, OCO.Limb.CUSTOM);
+    var side = OCO._d( data.side, OCO.Side.NONE);
+    var location = OCO._d( data.location, OCO.Location.NONE);
+    var type = OCO._d( data.type, OCO.LimbType.CUSTOM);
+    var l = new OCOLimb( limb, side, location, type);
+
+    // Parse armature
+    data.armature = OCO._d( data.armature, [] );
+    for (var i = 0, ni = data.armature.length; i < ni; i++)
+    {
+        l.armature.push( OCOBone.fromObject( data.armature[i] ) );
+    }
+    return l;
+}
+
+/**
  * Creates a new OCO Bone.
  * @class
  * @classdesc A bone contained in an OCO Limb.
  * @param {string} name The name
- * @category DuOCO
+ * @category OCO
  */
-function DuOCOBone(name)
+function OCOBone(name)
 {
     /**
      * The name of the bone
      * @name name
-     * @memberof DuOCOBone
+     * @memberof OCOBone
      * @type {string}
      */
     this.name = name;
     /**
      * The x coordinate of the bone
      * @name x
-     * @memberof DuOCOBone
+     * @memberof OCOBone
      * @type {float}
      */
     this.x = 0.0;
     /**
      * The y coordinate of the bone
      * @name y
-     * @memberof DuOCOBone
+     * @memberof OCOBone
      * @type {float}
      */
     this.y = 0.0;
     /**
      * true if this bone is attached to its parent.
      * @name attached
-     * @memberof DuOCOBone
+     * @memberof OCOBone
      * @type {Boolean}
      */
     this.attached = false;
     /**
      * The child bones.
      * @name children
-     * @memberof DuOCOBone
-     * @type {DuOCOBone[]}
+     * @memberof OCOBone
+     * @type {OCOBone[]}
      */
     this.children = [];
     /**
      * The child limbs.
      * @name limbs
-     * @memberof DuOCOBone
-     * @type {DuOCOLimb[]}
+     * @memberof OCOBone
+     * @type {OCOLimb[]}
      */
     this.limbs = [];
     /**
      * The type of bone.
      * @name type
-     * @memberof DuOCOBone
-     * @type {DuOCO.Bone}
+     * @memberof OCOBone
+     * @type {OCO.Bone}
      */
-    this.type = DuOCO.Bone.CUSTOM;
+    this.type = OCO.Bone.CUSTOM;
+    /**
+     * The envelop of the bone,<br/>
+     * In a meta rig, this is a silhouette which will contain the design,
+     * and can be used to help locate the joint, link the design to the bone, etc.<br/>
+     * In a rigged character, this should be a simple silhouette close to the artwork silhouette.
+     */
+    this.envelop = {};
+    /**
+     * The width of the envelop, around the joint
+     * @type {float}
+     */
+    this.envelop.width = 0.0;
+    /**
+     * The offset of the envelop, in the local X-axis<br/>
+     * 0.0 is centered around the joint,<br/>
+     * positive values are on the right of the joint when the bone is oriented towards the ground,<br/>
+     * negative values are on the left of the joint when the bone is oriented towards the ground.
+     * @type {float}
+     */
+    this.envelop.offset = 0.0;
+}
+
+/**
+ * The length of the bone (this distance with its first child)
+ * @return {int} The length
+ */
+OCOBone.prototype.length = function ()
+{
+    if (this.children.length == 0) return 0;
+    var child = this.children[0];
+    return OCO._length([this.x, this.y], [child.x, child.y]);
+}
+
+/**
+    * Counts the total number of child bones
+    * @return {int}
+    */
+OCOBone.prototype.numBones = function ()
+{
+    var count = 1;
+    for (var i = 0, ni = this.children.length; i < ni; i++ )
+    {
+        count += this.children[i].numBones();
+    }
+    for (var i = 0, ni = this.limbs.length; i < ni; i++ )
+    {
+        count += this.limbs[i].numBones();
+    }
+    return count;
 }
 
 /**
@@ -16021,10 +17009,10 @@ function DuOCOBone(name)
  * @param {int} [y=0] The vertical offset
  * @param {bool} [translateChildren=true] If false, the children stay at their current location
  */
-DuOCOBone.prototype.translate = function( x, y, translateChildren ) {
-    translateChildren = def(translateChildren, true);
-    x = def(x, 0);
-    y = def(y, 0);
+OCOBone.prototype.translate = function( x, y, translateChildren ) {
+    translateChildren = OCO._d(translateChildren, true);
+    x = OCO._d(x, 0);
+    y = OCO._d(y, 0);
 
     this.x += x;
     this.y += y;
@@ -16042,10 +17030,10 @@ DuOCOBone.prototype.translate = function( x, y, translateChildren ) {
  * @param {int} [y] The new Y value. If omitted, moves the layer horizontally
  * @param {bool} [translateChildren=true] If false, the children stay at their current location
  */
-DuOCOBone.prototype.translateTo = function( x, y, translateChildren ) {
-    translateChildren = def(translateChildren, true);
-    x = def(x, this.x);
-    y = def(y, this.y);
+OCOBone.prototype.translateTo = function( x, y, translateChildren ) {
+    translateChildren = OCO._d(translateChildren, true);
+    x = OCO._d(x, this.x);
+    y = OCO._d(y, this.y);
 
     var offsetX = x - this.x;
     var offsetY = y - this.y;
@@ -16058,7 +17046,86 @@ DuOCOBone.prototype.translateTo = function( x, y, translateChildren ) {
             this.children[i].translate(offsetX, offsetY);
         }
     }
+}
+
+/**
+ * Creates a js object containing this bone data.<br/>
+ * This object could then be exported to JSON for example.
+ * @return {Object} the JS Object
+ */
+OCOBone.prototype.toObject = function()
+{
+    var data = {
+        'name': this.name,
+        'x': this.x,
+        'y': this.y,
+        'attached': this.attached,
+        'children': [],
+        'limbs': [],
+        'type': this.type
+    }
+    data.envelop = {};
+    data.envelop.width = this.envelop.width;
+    data.envelop.offset = this.envelop.offset;
+
+    for (var i = 0, n = this.children.length; i < n; i++)
+    {
+        var boneData = this.children[i].toObject();
+        data['children'].push(boneData);
+    }
+
+    for (var i = 0, n = this.limbs.length; i < n; i++)
+    {
+        var limbData = this.limbs[i].toObject();
+        data['limbs'].push(limbData);
+    }
+
+    return data;
+}
+
+/**
+ * Creates a bone from a js object.
+ * @param {Object} data The js object representing the bone
+ * @return {OCOBone} The new bone
+ */
+OCOBone.fromObject = function( data )
+{
+    var bone = new OCOBone( OCO._d(data.name, "Bone"));
+    bone.x = OCO._d(data.x, 0.0);
+    bone.y = OCO._d(data.y, 0.0);
+    bone.attached = OCO._d(data.attached, false);
+    bone.type = OCO._d(data.type, OCO.Bone.CUSTOM);
+    data.envelop = OCO._d(data.envelop, {});
+    bone.envelop.width = OCO._d(data.envelop.width, bone.envelop.width);
+    bone.envelop.offset = OCO._d(data.envelop.offset, bone.envelop.offset);
+
+
+    // Parse children
+    data.children = OCO._d(data.children, []);
+    for( var i = 0, ni = data.children.length; i < ni; i++)
+    {
+        bone.children.push( OCOBone.fromObject(data.children[i]) );
+    }
+
+    // Parse limbs
+    data.limbs = OCO._d(data.limbs, []);
+    for (var i = 0, ni = data.limbs.length; i < ni; i++)
+    {
+        bone.limbs.push( OCOLimb.fromObject(data.limbs[i]) );
+    }
+
+    return bone;
 }//*/
+// ==================== |---------| ====================
+// ==================== | presets | ====================
+// ==================== |---------| ====================
+
+// ==================== |-------------| ====================
+// ==================== | preset_null | ====================
+// ==================== |-------------| ====================
+
+var preset_null = new DuBinary( "RIFX\x00\x00\u00BF\u00BEFaFXhead\x00\x00\x00\x10\x00\x00\x00\x03\x00\x00\x00]\x00\x00\x00\x19\x01\x00\x00\x00LIST\x00\x00\u00BF\u009Abescbeso\x00\x00\x008\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00x\x00\x00\x1E\x00\x00\x00\x00\x00\x04\x00\x01\x00\x01\x048\x048?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u00FF\u00FF\u00FF\u00FFLIST\x00\x00\x00dtdsptdot\x00\x00\x00\x04\u00FF\u00FF\u00FF\u00FFtdpl\x00\x00\x00\x04\x00\x00\x00\x01LIST\x00\x00\x00@tdsitdix\x00\x00\x00\x04\u00FF\u00FF\u00FF\u00FFtdmn\x00\x00\x00(ADBE Root Vectors Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdsn\x00\x00\x00\x10Utf8\x00\x00\x00\bContentsLIST\x00\x00\x00dtdsptdot\x00\x00\x00\x04\u00FF\u00FF\u00FF\u00FFtdpl\x00\x00\x00\x04\x00\x00\x00\x01LIST\x00\x00\x00@tdsitdix\x00\x00\x00\x04\u00FF\u00FF\u00FF\u00FFtdmn\x00\x00\x00(ADBE End of path sentinel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\u00BE^tdgptdsb\x00\x00\x00\x04\x00\x00\x04\x01tdsn\x00\x00\x00\x10Utf8\x00\x00\x00\bContentstdmn\x00\x00\x00(ADBE Vector Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00ODtdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06Anchortdmn\x00\x00\x00(ADBE Vector Blend Mode\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vectors Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\n\u00B2tdgptdsb\x00\x00\x00\x04\x00\x00\x04\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Shape - Ellipse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x03\u00E4tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x16Utf8\x00\x00\x00\x0EEllipse Path 1tdmn\x00\x00\x00(ADBE Vector Shape Direction\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Ellipse Size\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\"tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00P@\x10\x00\x00\x00\x00\x00\x00@\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0\u00DF@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\u00DF@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Ellipse Position\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Graphic - Fill\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x06\btdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06Fill 1tdmn\x00\x00\x00(ADBE Vector Blend Mode\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Composite Order\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Fill Rule\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Fill Color\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Fill Opacity\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Transform Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\bltdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Anchor\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Position\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Scale\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\"tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00P@Y\x00\x00\x00\x00\x00\x00@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0\u00DF@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\u00DF@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Skew\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0U@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@U@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Skew Axis\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Rotation\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Group Opacity\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Materials Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00:\x16tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vec3D Front RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00nRtdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\fUtf8\x00\x00\x00\x04Icontdmn\x00\x00\x00(ADBE Vector Blend Mode\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vectors Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00)\u00C2tdgptdsb\x00\x00\x00\x04\x00\x00\x04\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Shape - Rect\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x05\x18tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x18Utf8\x00\x00\x00\x10Rectangle Path 1tdmn\x00\x00\x00(ADBE Vector Shape Direction\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Rect Size\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\"tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00P@Y\x00\x00\x00\x00\x00\x00@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0\u00DF@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\u00DF@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Rect Position\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Rect Roundness\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Graphic - Stroke\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00#\u00E4tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x10Utf8\x00\x00\x00\bStroke 1tdmn\x00\x00\x00(ADBE Vector Blend Mode\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Composite Order\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Color\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@g\u009F`H\u00A0\x00\x00@G\x7F\u008D[\u0080\x00\x00@h\x7F\u00C6\u00A1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Opacity\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Width\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Line Cap\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Line Join\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Miter Limit\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Dashes\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\b\u00B4tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Stroke Dash 1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Gap 1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Dash 2\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Gap 2\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Dash 3\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Gap 3\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Offset\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Taper\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\n\u00F8tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Taper Length Units\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Start Length\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper End Length\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper StartWidthPx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper EndWidthPx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Start Width\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper End Width\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Start Ease\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper End Ease\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Stroke Wave\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x06\x10tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Taper Wave Amount\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Wave Units\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\x00\x00\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Wavelength\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Wave Cycles\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Taper Wave Phase\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Transform Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\bltdgptdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vector Anchor\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Position\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00E2tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x0F\x00\x03\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Scale\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\"tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x02\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00P@Y\x00\x00\x00\x00\x00\x00@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0\u00DF@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\u00DF@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Skew\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\u00C0U@\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@U@\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Skew Axis\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Rotation\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00DAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Group Opacity\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x01tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vector Materials Group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00:\x16tdgptdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdmn\x00\x00\x00(ADBE Vec3D Front RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Front IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Bevel IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Side IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back RGB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x01\x12tdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x04\x00\x07\x00\x00\x00\x02\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00`@o\u00E0\x00\x00\x00\x00\x00@o\u00E0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Ambient\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Diffuse\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Specular\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@I\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Shininess\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Metal\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Reflection\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Gloss\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(@Y\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Fresnel\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back Xparency\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back XparRoll\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\x00\x01\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@Y\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Vec3D Back IOR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00LIST\x00\x00\x00\u00FAtdbstdsb\x00\x00\x00\x04\x00\x00\x00\x03tdsn\x00\x00\x00\x0EUtf8\x00\x00\x00\x06-_0_/-tdb4\x00\x00\x00|\u00DB\u0099\x00\x01\x00\x01\x00\x00\u00FF\u00FF\u00FF\u00FF\x00\x00x\x00?\x1A6\u00E2\u00EB\x1CC-?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cdat\x00\x00\x00(?\u00F0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdum\x00\x00\x00\b?\u00F0\x00\x00\x00\x00\x00\x00tduM\x00\x00\x00\b@\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tdmn\x00\x00\x00(ADBE Group End\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00<?xpacket begin=\"\u00EF\u00BB\u00BF\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 6.0-c003 79.164527, 2020/10/15-17:48:32        \">\n   <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n      <rdf:Description rdf:about=\"\"\n            xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n            xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\"\n            xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\"\n            xmlns:stEvt=\"http://ns.adobe.com/xap/1.0/sType/ResourceEvent#\">\n         <dc:format>application/vnd.adobe.aftereffects.preset-animation</dc:format>\n         <xmp:CreateDate>2022-10-18T11:57:12+02:00</xmp:CreateDate>\n         <xmp:MetadataDate>2022-10-18T11:57:12+02:00</xmp:MetadataDate>\n         <xmp:ModifyDate>2022-10-18T11:57:12+02:00</xmp:ModifyDate>\n         <xmpMM:InstanceID>xmp.iid:4cc606c5-542c-464f-b36e-056c3c1176da</xmpMM:InstanceID>\n         <xmpMM:DocumentID>xmp.did:4cc606c5-542c-464f-b36e-056c3c1176da</xmpMM:DocumentID>\n         <xmpMM:OriginalDocumentID>xmp.did:4cc606c5-542c-464f-b36e-056c3c1176da</xmpMM:OriginalDocumentID>\n         <xmpMM:History>\n            <rdf:Seq>\n               <rdf:li rdf:parseType=\"Resource\">\n                  <stEvt:action>created</stEvt:action>\n                  <stEvt:instanceID>xmp.iid:4cc606c5-542c-464f-b36e-056c3c1176da</stEvt:instanceID>\n                  <stEvt:when>2022-10-18T11:57:12+02:00</stEvt:when>\n               </rdf:li>\n            </rdf:Seq>\n         </xmpMM:History>\n      </rdf:Description>\n   </rdf:RDF>\n</x:xmpmeta>\n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                           \n<?xpacket end=\"w\"?>", "preset_null.ffx", "presets" );
+preset_null;
 // ==================== |-------| ====================
 // ==================== | icons | ====================
 // ==================== |-------| ====================
@@ -26673,29 +27740,7 @@ DuAEComp.addNull = function(comp, size, layer) {
     nullLayer.name = i18n._("Null");
     nullLayer.label = 1;
 
-    var anchorGroup = nullLayer("ADBE Root Vectors Group").addProperty("ADBE Vector Group");
-    anchorGroup.name = 'Anchor';
-    var anchorContent = anchorGroup.property("ADBE Vectors Group");
-    var centerCircle = anchorContent.addProperty("ADBE Vector Shape - Ellipse");
-    centerCircle("ADBE Vector Ellipse Size").setValue([4, 4]);
-    var fill = anchorContent.addProperty("ADBE Vector Graphic - Fill");
-    fill("ADBE Vector Fill Color").setValue([0, 0, 0, 1]);
-
-    var squareGroup = nullLayer("ADBE Root Vectors Group").addProperty("ADBE Vector Group");
-    squareGroup.name = 'Icon';
-    var squareContent = squareGroup.property("ADBE Vectors Group");
-    var square = squareContent.addProperty("ADBE Vector Shape - Rect");
-    square('ADBE Vector Rect Size').setValue([size, size]);
-    var stroke = squareContent.addProperty("ADBE Vector Graphic - Stroke");
-    stroke("ADBE Vector Stroke Color").setValue(DuColor.Color.APP_HIGHLIGHT_COLOR.floatRGBA());
-    stroke("ADBE Vector Stroke Width").setValue(1);
-    stroke("ADBE Vector Stroke Line Cap").setValue(2);
-    stroke("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
-    stroke("ADBE Vector Stroke Dashes")("ADBE Vector Stroke Dash 1").setValue(2);
-
-    // Select and close
-    nullLayer.selected = true;
-    DuAE.executeCommand(DuAE.MenuCommandID.REVEAL_EXPRESSION_ERRORS, true);
+    DuAELayer.applyPreset(nullLayer, preset_null.toFile());
 
     if (layer != null) {
         layerParent = layer.parent;
@@ -27601,26 +28646,30 @@ DuAELayer.getWorldPos = function(layer, point, time) {
  * @param {Layer} layer - The layer
  * @param {File} preset - The preset file
  * @param {string} matchName - The pseudo Effect matchName
- * @return {PropertyGroup|null} The effect corresponding to matchName or null if anything went wrong
+ * @return {PropertyGroup|null} The effect corresponding matchName or null if anything went wrong
  */
 DuAELayer.applyPreset = function(layer, preset, matchName) {
-    if (!isdef( layer )) return null;
-    if (!isdef( preset )) return null;
+
+    if (!isdef( layer )) { DuDebug.throwUndefinedError('layer', 'DuAELayer.applyPreset'); return null; }
+    if (!isdef( preset )) { DuDebug.throwUndefinedError('preset', 'DuAELayer.applyPreset'); return null; }
     matchName = def(matchName, '');
     if (preset instanceof DuBinary) preset = preset.toFile();
+    if (!(preset instanceof File)) preset = new File(preset);
     if (!preset.exists) throw new Error( i18n._("The pseudo effect file does not exist."));
 
     //remove layer selection
     var comp = layer.containingComp;
     var selection = DuAEComp.unselectLayers(comp);
-
     layer.selected = true;
+
     layer.applyPreset(preset);
 
     //applying a preset gets out of progress mode
-    if (DuAEProject.progressMode) DuAEProject.setProgressMode(true);
+    //if (DuAEProject.progressMode) DuAEProject.setProgressMode(true);
 
-    var effect = layer.property("ADBE Effect Parade")( layer.property("ADBE Effect Parade").numProperties );
+    var effect = null;
+    if (layer.property("ADBE Effect Parade").numProperties > 0)
+        effect = layer.property("ADBE Effect Parade")( layer.property("ADBE Effect Parade").numProperties );
 
     //restore selection
     DuAEComp.selectLayers(selection);
@@ -29395,7 +30444,7 @@ DuAEPseudoEffect.prototype.apply = function(layer,name)
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2022 Nicolas Dufresne, RxLaboratory
- * @version 5.0.0
+ * @version 5.0.1
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @category DuGR
@@ -29414,7 +30463,7 @@ DuAEPseudoEffect.prototype.apply = function(layer,name)
  * along with DuGR. If not, see {@link http://www.gnu.org/licenses/}.
  */
 var DuGR = {}
-DuGR.version = "5.0.0";
+DuGR.version = "5.0.1";
 /**
  * Predefined and automatic groups
  * @enum {string}
@@ -30871,19 +31920,19 @@ select;
 // ==================== | DuGR_de | ====================
 // ==================== |---------| ====================
 
-var DuGR_de = new DuBinary( "{\"\": {\"language\": \"de_DE\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"Alle Ebenen\", \"Selected\": \"Ausgew\\u00e4hlt\", \"Grouped\": \"Gruppiert\", \"Ignored\": \"Ignoriert\", \"Add selected layers to group.\": \"Ausgew\\u00e4hlte Ebenen zur Gruppe hinzuf\\u00fcgen.\", \"Get groups from selected layers.\": \"Lade Gruppen von ausgew\\u00e4hlten Ebenen.\", \"Remove selected layers from group.\": \"Ausgew\\u00e4hlte Ebenen aus Gruppe entfernen.\", \"Create new group.\": \"Neue Gruppe erstellen.\", \"Change group name\": \"Gruppennamen \\u00e4ndern\", \"Remove group.\": \"Gruppe entfernen.\", \"New group\": \"Neue Gruppe\", \"OK\": \"Ok\", \"Exit isolation.\": \"Isolation beenden.\", \"Isolate\": \"Isolieren\", \"Isolate selected groups.\": \"Ausgew\\u00e4hlte Gruppen isolieren.\", \"Timeline\": \"Zeitleiste\", \"Isolate selected groups, in the timeline only.\": \"Ausgew\\u00e4hlte Gruppen nur in der Zeitleiste isolieren.\", \"Comp\": \"Komp\", \"Isolate selected groups, in the composition panel only\": \"Ausgew\\u00e4hlte Gruppen nur im Kompositions-Fenster isolieren\", \"Set interactive (sticky) mode.\": \"Interaktiven (sticky) Modus einstellen.\", \"Show/Hide layers\": \"Ebenen ein-/ausblenden\", \"Toggle audio\": \"Audio (de-)aktivieren\", \"Toggle solo mode\": \"Solo-Modus (de-)aktivieren\", \"Lock layers\": \"Ebenen sperren\", \"Shy layers\": \"Ebenen tarnen\", \"Collapse transformation / Continuous rasterization\": \"Falten der Transformationen / Kontinuierliches Rastern\", \"Guide layers\": \"Hilfs-Ebenen\", \"Set quality\": \"Qualit\\u00e4t einstellen\", \"Toggle effects\": \"Effekte (de-)aktivieren\", \"Set frame blending mode\": \"Frame-\\u00dcberblendungsmodus einstellen\", \"Toggle motion blur\": \"Bewegungsunsch\\u00e4rfe (de-)aktivieren\", \"Toggle adjustment layer mode\": \"Einstellungsebenen-Modus (de-)aktivieren\", \"Toggle 3D layer mode\": \"3D-Ebenen-Modus (de-)aktivieren\", \"Select layers\": \"Ebenen ausw\\u00e4hlen\", \"Type\": \"Typ\", \"Layer attributes\": \"Ebenen-Eigenschaften\", \"Animation\": \"Animation\", \"Invert\": \"Invertieren\", \"Invert the group/property selection\": \"Auswahl der Gruppe/Eigenschaft umkehren\", \"Inverted\": \"Invertiert\", \"Remove all\": \"Alle entfernen\", \"Hierarchy: Orphans\": \"Hierarchie: Waisen\", \"Hierarchy: Have children\": \"Hierarchie: Mit untergeordneten Kompositionen\", \"Type: Pre-compositions\": \"Typ: Unterkompositionen\", \"Type: Null Objects\": \"Typ: Nullobjekt\", \"Type: Solids\": \"Typ: Farbfl\\u00e4chen\", \"Type: Shapes\": \"Typ: Vektorformen\", \"Type: Texts\": \"Typ: Text\", \"Type: Adjustment\": \"Typ: Einstellungsebene\", \"Type: Lights\": \"Typ: Lichter\", \"Type: Cameras\": \"Typ: Kameras\", \"Attribute: Visible\": \"Attribut: Sichtbar\", \"Attribute: Has Audio\": \"Attribut: Mit Audio\", \"Attribute: Solo\": \"Attribut: Solo\", \"Attribute: Locked\": \"Attribut: Gesperrt\", \"Attribute: Shy\": \"Attribut: Getarnt\", \"Attribute: Effects\": \"Attribut: Effekte\", \"Attribute: Motion Blur\": \"Attribut: Bewegungsunsch\\u00e4rfe\", \"Attribute: 3D\": \"Attribut: 3D\", \"Attribute: Guide\": \"Attribut: Hilfsebene\", \"Locked layers: deny changes\": \"Gesperrte Ebenen: \\u00c4nderungen verweigern\", \"What to do if a layer is locked.\": \"Was zu tun ist, wenn eine Ebene gesperrt ist.\", \"Locked layers: allow changes\": \"Gesperrte Ebenen: \\u00c4nderungen erlauben\", \"Warning frame: None\": \"Warnung Bild: Keine\", \"Don't use any warning frame.\": \"Keine Warnung verwenden.\", \"Warning frame: Above\": \"Warnung Bild: Oberhalb\", \"Draw the frame above the composition.\": \"Anzeigen des Bildes oberhalb der Komposition.\", \"Warning frame: Below\": \"Warnung Bild: unterhalb\", \"Draw the frame below the composition.\": \"Anzeigen des Bildes unterhalb der Komposition.\", \"Isolation: hide layers\": \"Isolation: Ebenen ausblenden\", \"Method used to isolate layers in the composition.\": \"Benutzte Methode zur Isolierung von Ebenen in der Komposition.\", \"Isolation: wireframe\": \"Isolation: Drahtmodell\", \"Hide markers\": \"Marker ausblenden\", \"whether to show or hide the tags on the layers.\": \"Ob Tags auf den Ebenen angezeigt oder ausgeblendet werden sollen.\", \"Show markers\": \"Marker einblenden\", \"Lock hidden layers\": \"Versteckte Ebenen sperren\", \"whether the hidden layers have to be locked.\": \"Ob die versteckten Ebenen gesperrt sein m\\u00fcssen.\", \"Null\": \"Nullobjekt\", \"Adjustment layer\": \"Einstellungsebene\", \"Solid\": \"Farbebene\", \"Shape\": \"Formebene\", \"Rectangle\": \"Rechteck\", \"Rounded rectangle\": \"Abgerundetes Rechteck\", \"Circle\": \"Kreis\", \"Polygon\": \"Polygon\", \"Star\": \"Stern\", \"Cancel\": \"Abbrechen\", \"Select\\u0004None\": \"Keine\", \"The pseudo effect file does not exist.\": \"Die Pseudo-Effekt-Datei existiert nicht.\", \"Invalid pseudo effect file or match name.\": \"Ung\\u00fcltige Pseudo-Effekt-Datei oder Namens-Entsprechung.\", \"in layer name\\u0004Edit mode\": \"Bearbeitungs-Modus\", \"Locator\": \"Ortungshilfe\", \"Project Root\": \"Projekt-Stammverzeichnis\", \"Arm\": \"Arm\", \"Shoulder\": \"Schulter\", \"Forearm\": \"Unterarm\", \"Hand\": \"Hand\", \"Claws\": \"Klauen\", \"Tip\": \"Tipp\", \"Heel\": \"Ferse\", \"Leg\": \"Bein\", \"Thigh\": \"Oberschenkel\", \"Calf\": \"Unterschenkel\", \"Foot\": \"Fu\\u00df\", \"Toes\": \"Zehen\", \"Hoof\": \"Huf\", \"Spine\": \"Wirbels\\u00e4ule\", \"Hips\": \"H\\u00fcfte\", \"Torso\": \"Oberk\\u00f6rper\", \"Neck\": \"Nacken\", \"Head\": \"Kopf\", \"Tail\": \"Schweif\", \"Hair\": \"Haare\", \"Wing\": \"Fl\\u00fcgel\", \"Feather\": \"Feder\", \"Fin\": \"Flosse\", \"Fishbone\": \"Fischgr\\u00e4te\", \"[Shift]: More options...\": \"[Shift]: Weitere Optionen...\", \"Set a random value.\": \"Zufallswert setzen.\", \"file system\\u0004Path...\": \"Pfad...\", \"Bug Report or Feature Request\": \"Fehlerberichte oder Funktionsanfragen\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"Fehlerbericht\\nFunktionswunsch\\n\\nMelde uns einen Fehler oder w\\u00fcnsche dir eine neue Funktion.\", \"Help\": \"Hilfe\", \"Get help.\": \"Hilfe anfordern.\", \"Translate %1\": \"\\u00dcbersetzen %1\", \"Help translating %1 to make it available to more people.\": \"Hilf dabei, %1 zu \\u00fcbersetzen, um es mehr Menschen zur Verf\\u00fcgung zu stellen.\", \"New version\": \"Neue Version\", \"Thank you for your donations!\": \"Vielen Dank f\\u00fcr die Spenden!\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"In diesem Monat betr\\u00e4gt die %1 Unterst\\u00fctzung $%2.\\nDas sind %3% unseres monatlichen Ziels ( $%4 )\\n\\nClick on this button to join the development fund!\", \"project\\u0004Item\": \"Element\", \"file\\u0004Run\": \"Laufen\", \"Open folder\": \"Ordner \\u00f6ffnen\", \"Add item or category\": \"Element oder Kategorie hinzuf\\u00fcgen\", \"Edit item or category\": \"Ausgew\\u00e4hltes Element oder Kategorie bearbeiten\", \"Remove item or category\": \"Ausgew\\u00e4hltes Element oder Kategorie entfernen\", \"Start typing...\": \"Beginne mit der Eingabe...\", \"Refresh\": \"Aktualisieren\", \"Category\": \"Kategorie\", \"%1 Settings\": \"%1 Einstellungen\", \"Set the language of the interface.\": \"Anzeigesprache einstellen.\", \"Settings file\": \"Einstellungs-Datei\", \"Set the location of the settings file.\": \"Speicherort der Einstellungsdatei festlegen.\", \"Set the highlight color.\": \"Hervorhebungsfarbe einstellen.\", \"After Effects Blue\": \"After Effects Blau\", \"The After Effects highlighting blue\": \"Blaue Hervorhebungsfarbe After Effects\", \"RxLab Purple\": \"RxLab-Lila\", \"The RxLaboratory Purple\": \"Das RxLab-Lila\", \"Rainbox Red\": \"Rainbox-Rot\", \"The Rainbox Productions Red\": \"Das Rot von Rainbox Productions\", \"After Effects Orange (CS6)\": \"After Effects Orange (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"Die orange Hervorhebungsfarbe vom guten alten After Effects CS6\", \"Custom...\": \"Benutzerdefiniert...\", \"Select a custom color.\": \"W\\u00e4hlen Sie eine benutzerdefinierte Farbe aus.\", \"Select the UI mode.\": \"UI-Modus ausw\\u00e4hlen.\", \"Rookie\": \"Anf\\u00e4nger\", \"The easiest-to-use mode, but also the biggest UI.\": \"Der NutzerInnen-freundlichste Modus, jedoch mit dem gr\\u00f6\\u00dften UI.\", \"Standard\": \"Standard\", \"The standard not-too-big UI.\": \"Standar-UI \\u2013 nicht zu gro\\u00df.\", \"Expert\": \"Experte\", \"The smallest UI, for expert users.\": \"Das kleinste UI f\\u00fcr Experten.\", \"Normal mode\": \"Normal-Modus\", \"Use at your own risk!\": \"Benutzung auf eigene Gefahr!\", \"Dev and Debug mode\": \"Entwickler- und Debugging-Modus\", \"Check for updates\": \"Auf Aktualisierungen pr\\u00fcfen\", \"Default\": \"Standard\", \"Reset the settings to their default values.\": \"Die Einstellungen auf Standard-Werte zur\\u00fccksetzen.\", \"Apply\": \"Anwenden\", \"Apply settings.\": \"Einstellungen anwenden.\", \"You may need to restart the script for all changes to take effect.\": \"Das Skript muss eventuell neu gestartet werden, damit alle \\u00c4nderungen \\u00fcbernommen werden.\", \"Help and options\": \"Hilfe und Optionen\", \"Edit settings\": \"Einstellungen bearbeiten\", \"Working\": \"In Arbeit\", \"Magic is happening\": \"Es wird gezaubert\", \"Previous\": \"Vorige\", \"Next\": \"N\\u00e4chste\", \"Keep this panel open\": \"H\\u00e4lt dieses Bedienfeld ge\\u00f6ffnet\"}", "DuGR_de.json", "tr" );
+var DuGR_de = new DuBinary( "{\"\": {\"language\": \"de_DE\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"Alle Ebenen\", \"Selected\": \"Ausgew\\u00e4hlt\", \"Grouped\": \"Gruppiert\", \"Ignored\": \"Ignoriert\", \"Add selected layers to group.\": \"Ausgew\\u00e4hlte Ebenen zur Gruppe hinzuf\\u00fcgen.\", \"Get groups from selected layers.\": \"Lade Gruppen von ausgew\\u00e4hlten Ebenen.\", \"Remove selected layers from group.\": \"Ausgew\\u00e4hlte Ebenen aus Gruppe entfernen.\", \"Create new group.\": \"Neue Gruppe erstellen.\", \"Change group name\": \"Gruppennamen \\u00e4ndern\", \"Remove group.\": \"Gruppe entfernen.\", \"New group\": \"Neue Gruppe\", \"OK\": \"Ok\", \"Exit isolation.\": \"Isolation beenden.\", \"Isolate\": \"Isolieren\", \"Isolate selected groups.\": \"Ausgew\\u00e4hlte Gruppen isolieren.\", \"Timeline\": \"Zeitleiste\", \"Isolate selected groups, in the timeline only.\": \"Ausgew\\u00e4hlte Gruppen nur in der Zeitleiste isolieren.\", \"Comp\": \"Komp\", \"Isolate selected groups, in the composition panel only\": \"Ausgew\\u00e4hlte Gruppen nur im Kompositions-Fenster isolieren\", \"Set interactive (sticky) mode.\": \"Interaktiven (sticky) Modus einstellen.\", \"Show/Hide layers\": \"Ebenen ein-/ausblenden\", \"Toggle audio\": \"Audio (de-)aktivieren\", \"Toggle solo mode\": \"Solo-Modus (de-)aktivieren\", \"Lock layers\": \"Ebenen sperren\", \"Shy layers\": \"Ebenen tarnen\", \"Collapse transformation / Continuous rasterization\": \"Falten der Transformationen / Kontinuierliches Rastern\", \"Guide layers\": \"Hilfs-Ebenen\", \"Set quality\": \"Qualit\\u00e4t einstellen\", \"Toggle effects\": \"Effekte (de-)aktivieren\", \"Set frame blending mode\": \"Frame-\\u00dcberblendungsmodus einstellen\", \"Toggle motion blur\": \"Bewegungsunsch\\u00e4rfe (de-)aktivieren\", \"Toggle adjustment layer mode\": \"Einstellungsebenen-Modus (de-)aktivieren\", \"Toggle 3D layer mode\": \"3D-Ebenen-Modus (de-)aktivieren\", \"Select layers\": \"Ebenen ausw\\u00e4hlen\", \"Custom Groups\": \"Eigene Gruppen\", \"Show custom layer groups\": \"Eigene Ebenengruppen anzeigen\", \"All layer properties\": \"Alle Ebenen Eigenschaften\", \"Show all properties\": \"Alle Eigenschaften anzeigen\", \"Hierarchy\": \"Hierarchie\", \"Show hierarchical (parenting) properties\": \"Hierarchische (Eltern-) Eigenschaften anzeigen\", \"Layer types\": \"Ebenenart\", \"Show layer types\": \"Ebenentypen anzeigen\", \"Type\": \"Typ\", \"Layer attributes\": \"Ebenen-Eigenschaften\", \"Show layer attributes\": \"Ebenenattribute anzeigen\", \"Attribute\": \"Attribut\", \"Animation\": \"Animation\", \"Show animation properties\": \"Animationseigenschaften anzeigen\", \"Matte & Blending\": \"Matte & Blenden\", \"Show matte, blending, and alpha properties\": \"Zeige Matte, Blenden und Alpha Eigenschaften\", \"Matte\": \"Matte\", \"Layer styles\": \"Ebenen Stile\", \"Show layer styles\": \"Ebenen Stile anzeigen\", \"Layer Styles\": \"Ebenen Stile\", \"Invert\": \"Invertieren\", \"Invert the group/property selection\": \"Auswahl der Gruppe/Eigenschaft umkehren\", \"Inverted\": \"Invertiert\", \"Use either the AND(&) or OR(/) operator for multiple group selection.\": \"Verwenden Sie entweder den AND(&) oder OR(/) Operator f\\u00fcr mehrere Gruppenauswahl.\", \"Remove all\": \"Alle entfernen\", \"Search...\": \"Suche...\", \"Hierarchy: Orphans\": \"Hierarchie: Waisen\", \"Hierarchy: Have children\": \"Hierarchie: Mit untergeordneten Kompositionen\", \"Type: Pre-compositions\": \"Typ: Unterkompositionen\", \"Type: Null Objects\": \"Typ: Nullobjekt\", \"Type: Solids\": \"Typ: Farbfl\\u00e4chen\", \"Type: Shapes\": \"Typ: Vektorformen\", \"Type: Texts\": \"Typ: Text\", \"Type: Adjustment\": \"Typ: Einstellungsebene\", \"Type: Lights\": \"Typ: Lichter\", \"Type: Cameras\": \"Typ: Kameras\", \"Attribute: Visible\": \"Attribut: Sichtbar\", \"Attribute: Has Audio\": \"Attribut: Mit Audio\", \"Attribute: Solo\": \"Attribut: Solo\", \"Attribute: Locked\": \"Attribut: Gesperrt\", \"Attribute: Shy\": \"Attribut: Getarnt\", \"Attribute: Effects\": \"Attribut: Effekte\", \"Attribute: Motion Blur\": \"Attribut: Bewegungsunsch\\u00e4rfe\", \"Attribute: 3D\": \"Attribut: 3D\", \"Attribute: Guide\": \"Attribut: Hilfsebene\", \"Animation: At current time\": \"Animation: Zur aktuellen Zeit\", \"Animation: In preview range\": \"Animation: Im Vorschaubereich\", \"Animation: Has keyframes\": \"Animation: hat Keyframes\", \"Animation: Has expressions\": \"Animation: hat Expressions\", \"Matte & Blending: Has mask\": \"Matte & Blend-Modi: Hat Maske\", \"Matte & Blending: Has track matte\": \"Matte & Blend-Modi: Hat Track Maske\", \"Matte & Blending: Is track matte\": \"Matte & Blend-Modi: Ist Track Maske\", \"Matte & Blending: Preserve transparency\": \"Matte & Blend-Modi:: Transparenz bewahren\", \"Matte & Blending: Normal blending mode\": \"Matte & Blend-Modi:: Normaler Blendmodus\", \"Matte & Blending: Other blending mode\": \"Matte & Blend-Modi:: anderen Blendmodus\", \"Layer Styles: All\": \"Ebenenstile: Alle\", \"Layer Styles: Drop Shadow\": \"Layer Stile: Drop Shadow\", \"Layer Styles: Inner Shadow\": \"Ebenenstile: Innerer Schatten\", \"Layer Styles: Outer Glow\": \"Ebenenstile: \\u00c4u\\u00dferes Leuchten\", \"Layer Styles: Inner Glow\": \"Ebenenstile: Inneres Leuchten\", \"Layer Styles: Bevel and Emboss\": \"Ebenenstile: Bevel und Relief\", \"Layer Styles: Satin\": \"Ebenenstile: Satin\", \"Layer Styles: Color Overlay\": \"Ebenenstile: Farb\\u00fcberlagerung\", \"Layer Styles: Gradient Overlay\": \"Ebenenstile: Farbverlauf-\\u00dcberzug\", \"Layer Styles: Stroke\": \"Ebenenstile: Kante\", \"Hide Ae layer switches\": \"Ae Layer-Schalter ausblenden\", \"Show or hide the After Effects layer switches buttons.\": \"Ein- oder Ausblenden der Ebenen Umschalt Schaltfl\\u00e4chen.\", \"Show Ae layer switches\": \"Zeige Ae Layer-Schalter\", \"Locked layers: deny changes\": \"Gesperrte Ebenen: \\u00c4nderungen verweigern\", \"What to do if a layer is locked.\": \"Was zu tun ist, wenn eine Ebene gesperrt ist.\", \"Locked layers: allow changes\": \"Gesperrte Ebenen: \\u00c4nderungen erlauben\", \"Type of warning frame to use\": \"Art des zu verwendenden Warnrahmens\", \"Warning frame: None\": \"Warnung Bild: Keine\", \"Don't use any warning frame.\": \"Keine Warnung verwenden.\", \"Warning frame: Above\": \"Warnung Bild: Oberhalb\", \"Draw the frame above the composition.\": \"Anzeigen des Bildes oberhalb der Komposition.\", \"Warning frame: Below\": \"Warnung Bild: unterhalb\", \"Draw the frame below the composition.\": \"Anzeigen des Bildes unterhalb der Komposition.\", \"Isolation: hide layers\": \"Isolation: Ebenen ausblenden\", \"Method used to isolate layers in the composition.\": \"Benutzte Methode zur Isolierung von Ebenen in der Komposition.\", \"Isolation: wireframe\": \"Isolation: Drahtmodell\", \"Hide markers\": \"Marker ausblenden\", \"whether to show or hide the tags on the layers.\": \"Ob Tags auf den Ebenen angezeigt oder ausgeblendet werden sollen.\", \"Show markers\": \"Marker einblenden\", \"Auto-select layers\": \"Ebenen automatisch ausw\\u00e4hlen\", \"Automatically select layers when selecting groups or properties\": \"Ebenen automatisch ausw\\u00e4hlen, wenn Gruppen oder Eigenschaften ausgew\\u00e4hlt werden\", \"Lock hidden layers\": \"Versteckte Ebenen sperren\", \"whether the hidden layers have to be locked.\": \"Ob die versteckten Ebenen gesperrt sein m\\u00fcssen.\", \"Null\": \"Nullobjekt\", \"Adjustment layer\": \"Einstellungsebene\", \"Solid\": \"Farbebene\", \"Shape\": \"Formebene\", \"Rectangle\": \"Rechteck\", \"Rounded rectangle\": \"Abgerundetes Rechteck\", \"Circle\": \"Kreis\", \"Polygon\": \"Polygon\", \"Star\": \"Stern\", \"Cancel\": \"Abbrechen\", \"Select\\u0004None\": \"Keine\", \"The pseudo effect file does not exist.\": \"Die Pseudo-Effekt-Datei existiert nicht.\", \"Invalid pseudo effect file or match name.\": \"Ung\\u00fcltige Pseudo-Effekt-Datei oder Namens-Entsprechung.\", \"in layer name\\u0004Edit mode\": \"Bearbeitungs-Modus\", \"Locator\": \"Ortungshilfe\", \"Project Root\": \"Projekt-Stammverzeichnis\", \"Arm\": \"Arm\", \"Shoulder\": \"Schulter\", \"Forearm\": \"Unterarm\", \"Hand\": \"Hand\", \"Claws\": \"Klauen\", \"Tip\": \"Tipp\", \"Heel\": \"Ferse\", \"Leg\": \"Bein\", \"Thigh\": \"Oberschenkel\", \"Calf\": \"Unterschenkel\", \"Foot\": \"Fu\\u00df\", \"Toes\": \"Zehen\", \"Hoof\": \"Huf\", \"Spine\": \"Wirbels\\u00e4ule\", \"Hips\": \"H\\u00fcfte\", \"Torso\": \"Oberk\\u00f6rper\", \"Neck\": \"Nacken\", \"Head\": \"Kopf\", \"Tail\": \"Schweif\", \"Hair\": \"Haare\", \"Wing\": \"Fl\\u00fcgel\", \"Feather\": \"Feder\", \"Fin\": \"Flosse\", \"Fishbone\": \"Fischgr\\u00e4te\", \"[Shift]: More options...\": \"[Shift]: Weitere Optionen...\", \"Set a random value.\": \"Zufallswert setzen.\", \"file system\\u0004Path...\": \"Pfad...\", \"Bug Report or Feature Request\": \"Fehlerberichte oder Funktionsanfragen\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"Fehlerbericht\\nFunktionswunsch\\n\\nMelde uns einen Fehler oder w\\u00fcnsche dir eine neue Funktion.\", \"Help\": \"Hilfe\", \"Get help.\": \"Hilfe anfordern.\", \"Translate %1\": \"\\u00dcbersetzen %1\", \"Help translating %1 to make it available to more people.\": \"Hilf dabei, %1 zu \\u00fcbersetzen, um es mehr Menschen zur Verf\\u00fcgung zu stellen.\", \"New version\": \"Neue Version\", \"Thank you for your donations!\": \"Vielen Dank f\\u00fcr die Spenden!\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"In diesem Monat betr\\u00e4gt die %1 Unterst\\u00fctzung $%2.\\nDas sind %3% unseres monatlichen Ziels ( $%4 )\\n\\nClick on this button to join the development fund!\", \"project\\u0004Item\": \"Element\", \"file\\u0004Run\": \"Laufen\", \"Open folder\": \"Ordner \\u00f6ffnen\", \"Add item or category\": \"Element oder Kategorie hinzuf\\u00fcgen\", \"Edit item or category\": \"Ausgew\\u00e4hltes Element oder Kategorie bearbeiten\", \"Remove item or category\": \"Ausgew\\u00e4hltes Element oder Kategorie entfernen\", \"Start typing...\": \"Beginne mit der Eingabe...\", \"Refresh\": \"Aktualisieren\", \"Category\": \"Kategorie\", \"%1 Settings\": \"%1 Einstellungen\", \"Set the language of the interface.\": \"Anzeigesprache einstellen.\", \"Settings file\": \"Einstellungs-Datei\", \"Set the location of the settings file.\": \"Speicherort der Einstellungsdatei festlegen.\", \"Set the highlight color.\": \"Hervorhebungsfarbe einstellen.\", \"After Effects Blue\": \"After Effects Blau\", \"The After Effects highlighting blue\": \"Blaue Hervorhebungsfarbe After Effects\", \"RxLab Purple\": \"RxLab-Lila\", \"The RxLaboratory Purple\": \"Das RxLab-Lila\", \"Rainbox Red\": \"Rainbox-Rot\", \"The Rainbox Productions Red\": \"Das Rot von Rainbox Productions\", \"After Effects Orange (CS6)\": \"After Effects Orange (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"Die orange Hervorhebungsfarbe vom guten alten After Effects CS6\", \"Custom...\": \"Benutzerdefiniert...\", \"Select a custom color.\": \"W\\u00e4hlen Sie eine benutzerdefinierte Farbe aus.\", \"Select the UI mode.\": \"UI-Modus ausw\\u00e4hlen.\", \"Rookie\": \"Anf\\u00e4nger\", \"The easiest-to-use mode, but also the biggest UI.\": \"Der NutzerInnen-freundlichste Modus, jedoch mit dem gr\\u00f6\\u00dften UI.\", \"Standard\": \"Standard\", \"The standard not-too-big UI.\": \"Standar-UI \\u2013 nicht zu gro\\u00df.\", \"Expert\": \"Experte\", \"The smallest UI, for expert users.\": \"Das kleinste UI f\\u00fcr Experten.\", \"Normal mode\": \"Normal-Modus\", \"Use at your own risk!\": \"Benutzung auf eigene Gefahr!\", \"Dev and Debug mode\": \"Entwickler- und Debugging-Modus\", \"Check for updates\": \"Auf Aktualisierungen pr\\u00fcfen\", \"Default\": \"Standard\", \"Reset the settings to their default values.\": \"Die Einstellungen auf Standard-Werte zur\\u00fccksetzen.\", \"Apply\": \"Anwenden\", \"Apply settings.\": \"Einstellungen anwenden.\", \"You may need to restart the script for all changes to take effect.\": \"Das Skript muss eventuell neu gestartet werden, damit alle \\u00c4nderungen \\u00fcbernommen werden.\", \"Help and options\": \"Hilfe und Optionen\", \"Edit settings\": \"Einstellungen bearbeiten\", \"Working\": \"In Arbeit\", \"Magic is happening\": \"Es wird gezaubert\", \"Previous\": \"Vorige\", \"Next\": \"N\\u00e4chste\", \"Keep this panel open\": \"H\\u00e4lt dieses Bedienfeld ge\\u00f6ffnet\"}", "DuGR_de.json", "tr" );
 DuGR_de;
 // ==================== |---------| ====================
 // ==================== | DuGR_eo | ====================
 // ==================== |---------| ====================
 
-var DuGR_eo = new DuBinary( "{\"\": {\"language\": \"eo_UY\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"La tutan tavolojn\", \"Selected\": \"Selekta\", \"Grouped\": \"Grupa\", \"Ignored\": \"Ignora\", \"Add selected layers to group.\": \"Aldoni la elektitajn tavolojn al la grupo.\", \"Get groups from selected layers.\": \"Preni grupojn de la elektitaj tavoloj.\", \"Remove selected layers from group.\": \"Forigi la elektitajn tavolojn el la grupo.\", \"Create new group.\": \"Krei novan grupon.\", \"Change group name\": \"\\u015can\\u011di\\u011di la nomo de la grupo\", \"Remove group.\": \"Forigi la grupon.\", \"New group\": \"Nova grupo\", \"OK\": \"OK\", \"Isolate\": \"Izoli\", \"Timeline\": \"Kronologia\", \"Comp\": \"Kompo\", \"Show/Hide layers\": \"Vidi/Ka\\u015di tavolojn\", \"Toggle audio\": \"Baskuli la sono\", \"Toggle solo mode\": \"Baskuli la sola re\\u011dimo\", \"Lock layers\": \"\\u015closi tavolojn\", \"Shy layers\": \"Timidaj tavoloj\", \"Collapse transformation / Continuous rasterization\": \"Kunfandi transformon / Kontinua rastrumero\", \"Guide layers\": \"Gvidistaj tavoloj\", \"Set quality\": \"Fiksi altakvaliton\", \"Toggle effects\": \"Baskuli la efikistoj\", \"Set frame blending mode\": \"Fiksi la miskan kadron re\\u011dimon\", \"Toggle motion blur\": \"Baskuli la malklari\\u011da movo\", \"Toggle adjustment layer mode\": \"Baskuli la akomoda tavolo re\\u011dimo\", \"Toggle 3D layer mode\": \"Baskuli la 3D tavolo re\\u011dimo\", \"Select layers\": \"Elektiti tavoloj\", \"Invert\": \"Inverti\\u011di\", \"Inverted\": \"Inverti\\u011da\", \"Hierarchy: Orphans\": \"Hierar\\u0125io: Orfo\", \"Hierarchy: Have children\": \"Hierar\\u0125io: Havas idoj\", \"Type: Pre-compositions\": \"Tipo: Pre-kompozitoj\", \"Type: Null Objects\": \"Tipo: Nuligajn objektojn\", \"Type: Solids\": \"Tipo: Solidoj\", \"Type: Shapes\": \"Tipo: Formoj\", \"Type: Texts\": \"Tipo: Tekstoj\", \"Type: Adjustment\": \"Tipo: \\u011dustigo\", \"Type: Lights\": \"Tipo: Lumoj\", \"Type: Cameras\": \"Tipo: Kameraoj\", \"Attribute: Visible\": \"Atributo: Videbla\", \"Attribute: Has Audio\": \"Atributo: Havas A\\u016ddio\", \"Attribute: Solo\": \"Atributo: Solo\", \"Attribute: Locked\": \"Atributo: \\u015dlosa\", \"Attribute: Shy\": \"Atributo: Timida\", \"Attribute: Effects\": \"Atributo: Efikistoj\", \"Attribute: Motion Blur\": \"Atributo: Malklari\\u011da movo\", \"Attribute: 3D\": \"Atributo: 3D\", \"Attribute: Guide\": \"Atributo: Gvido\", \"Cancel\": \"Nuligi\", \"Select\\u0004None\": \"Neniom\", \"The pseudo effect file does not exist.\": \"La dosiero pse\\u016ddo efiko ne ekzistas.\", \"Invalid pseudo effect file or match name.\": \"La dosiero pse\\u016ddo efiko a\\u016d \\\"match name\\\" nepravas.\", \"in layer name\\u0004Edit mode\": \"Editi re\\u011dimo\", \"Tail\": \"Vosto\", \"Set a random value.\": \"Fiksi hazardon valoron.\", \"Help\": \"Helpo\", \"Get help.\": \"Demandu helpon.\", \"%1 Settings\": \"%1 Fiksoj\", \"Set the language of the interface.\": \"Fiksi la lingvo de la interfaco.\", \"Settings file\": \"Fiksa dosiero\", \"Set the location of the settings file.\": \"Fiksi la lokon de la fiksa dosiero.\", \"Set the highlight color.\": \"Fiksi la hela kolora.\", \"After Effects Blue\": \"Blua After Effects\", \"The After Effects highlighting blue\": \"La blua After Effects helo\", \"RxLab Purple\": \"Violkolora RxLab\", \"The RxLaboratory Purple\": \"La violkolora de RxLaboratory\", \"Rainbox Red\": \"Ru\\u011da Rainbox\", \"The Rainbox Productions Red\": \"La ru\\u011da de Rainbox Productions\", \"After Effects Orange (CS6)\": \"Oran\\u011dkolora After Effects (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"La oran\\u011dkolora After Effects helo de la bona maljuna CS6\", \"Select a custom color.\": \"Elektiti propran koloron.\", \"Select the UI mode.\": \"Elektiti la UF re\\u011dimo.\", \"Rookie\": \"Komencanto\", \"The easiest-to-use mode, but also the biggest UI.\": \"La plej facila re\\u011dimo, sed anka\\u016d la plej granda UF.\", \"Standard\": \"Norma\", \"The standard not-too-big UI.\": \"La norma ne grandeja UF.\", \"Expert\": \"Spertulo\", \"The smallest UI, for expert users.\": \"La malplej granda UF, per lertaj uzantoj.\", \"Normal mode\": \"Normala re\\u011dimo\", \"Use at your own risk!\": \"Uzu \\u0109e via propra risko!\", \"Dev and Debug mode\": \"Disvolvi\\u011da kaj elpuriga re\\u011dimo\", \"Check for updates\": \"Kontroli por \\u011disdatigoj\", \"Default\": \"Defa\\u016dlto\", \"Reset the settings to their default values.\": \"Rekomencigi la fiksoj al siaj defa\\u016dltaj valoroj.\", \"Apply\": \"Apliki\", \"You may need to restart the script for all changes to take effect.\": \"Vi devus rekomenci la scripto per apliki la tutajn \\u015dan\\u011dojn.\", \"Edit settings\": \"Editi fiksoj\", \"Previous\": \"Anta\\u016da\", \"Next\": \"Sekvonte\"}", "DuGR_eo.json", "tr" );
+var DuGR_eo = new DuBinary( "{\"\": {\"language\": \"eo_UY\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"\\u0108iuj tavoloj\", \"Selected\": \"Elekta\", \"Grouped\": \"Grupa\", \"Ignored\": \"Ignora\", \"Add selected layers to group.\": \"Aldoni la elektitajn tavolojn al la grupo.\", \"Get groups from selected layers.\": \"Preni grupojn de la elektitaj tavoloj.\", \"Remove selected layers from group.\": \"Forigi la elektitajn tavolojn el la grupo.\", \"Create new group.\": \"Krei novan grupon.\", \"Change group name\": \"\\u015can\\u011di la nomon de la grupo\", \"Remove group.\": \"Forigi la grupon.\", \"New group\": \"Nova grupo\", \"OK\": \"OK\", \"Exit isolation.\": \"Eliri izoleco.\", \"Isolate\": \"Izoli\", \"Isolate selected groups.\": \"Izoli la elektitajn grupojn.\", \"Timeline\": \"Kronologia\", \"Isolate selected groups, in the timeline only.\": \"Izoli la elektitajn grupojn, nur en la tempo-fadeno.\", \"Comp\": \"Kompo\", \"Isolate selected groups, in the composition panel only\": \"Izoli la elektitajn grupojn, nur en la panelo de la kompona\\u0135o\", \"Set interactive (sticky) mode.\": \"Agordi la ageman (gluecan) re\\u011dimon.\", \"Show/Hide layers\": \"Montri/Ka\\u015di tavolojn\", \"Toggle audio\": \"Baskuli la sono\", \"Toggle solo mode\": \"Baskuli la sola re\\u011dimo\", \"Lock layers\": \"\\u015closi tavolojn\", \"Shy layers\": \"Timidaj tavoloj\", \"Collapse transformation / Continuous rasterization\": \"Kunfandi transformon / Kontinua rastrumero\", \"Guide layers\": \"Gvidistaj tavoloj\", \"Set quality\": \"Agordi la kvaliton\", \"Toggle effects\": \"Baskuli la efikoj\", \"Set frame blending mode\": \"Agordi la miksan kadron re\\u011dimon\", \"Toggle motion blur\": \"Baskuli la malklari\\u011da movo\", \"Toggle adjustment layer mode\": \"Baskuli la akomoda tavolo re\\u011dimo\", \"Toggle 3D layer mode\": \"Baskuli la 3D tavolo re\\u011dimo\", \"Select layers\": \"Elektiti tavoloj\", \"Custom Groups\": \"Propraj grupoj\", \"Show custom layer groups\": \"Montri proprajn grupojn de tavoloj\", \"All layer properties\": \"\\u0108iuj propra\\u0135oj de tavolo\", \"Show all properties\": \"Montri \\u0109iujn propra\\u0135oj\", \"Hierarchy\": \"Hierarkio\", \"Show hierarchical (parenting) properties\": \"Montri hierarkiaj (muntilo) propra\\u0135oj\", \"Layer types\": \"Tipoj de tavolo\", \"Show layer types\": \"Montri la tipojn de tavolo\", \"Type\": \"Tipo\", \"Layer attributes\": \"Atributoj de la tavolo\", \"Show layer attributes\": \"Montri la atributojn de la tavolo\", \"Attribute\": \"Atributo\", \"Animation\": \"Animacio\", \"Show animation properties\": \"Montri la propra\\u0135ojn de animacio\", \"Matte & Blending\": \"Tegilo kaj Miksa\", \"Show matte, blending, and alpha properties\": \"Montri tegilon, miksan kaj propra\\u0135ojn de alfo\", \"Matte\": \"Tavolo de tegilo\", \"Layer styles\": \"Tipoj de tavolo\", \"Show layer styles\": \"Montri la tipojn de tavolo\", \"Layer Styles\": \"Tipoj de tavolo\", \"Invert\": \"Inversigi\", \"Invert the group/property selection\": \"Inversigi la elekton de la grupo/propra\\u0135o\", \"Inverted\": \"Inversa\", \"Use either the AND(&) or OR(/) operator for multiple group selection.\": \"Uzi la klavon KAJ(&) a\\u016d la klavon A\\u016c(/) por elekti plurajn grupojn.\", \"Remove all\": \"Forigi \\u0109iujn\", \"Search...\": \"Ser\\u0109i...\", \"Hierarchy: Orphans\": \"Hierarkio: Orfoj\", \"Hierarchy: Have children\": \"Hierarkio: Kun idoj\", \"Type: Pre-compositions\": \"Tipo: Prekompona\\u0135oj\", \"Type: Null Objects\": \"Tipo: Nulaj objektoj\", \"Type: Solids\": \"Tipo: Solidoj\", \"Type: Shapes\": \"Tipo: Formoj\", \"Type: Texts\": \"Tipo: Tekstoj\", \"Type: Adjustment\": \"Tipo: \\u011custigo\", \"Type: Lights\": \"Tipo: Lumoj\", \"Type: Cameras\": \"Tipo: Kameraoj\", \"Attribute: Visible\": \"Atributo: Videbla\", \"Attribute: Has Audio\": \"Atributo: Havas A\\u016ddio\", \"Attribute: Solo\": \"Atributo: Solo\", \"Attribute: Locked\": \"Atributo: \\u015dlosa\", \"Attribute: Shy\": \"Atributo: Timida\", \"Attribute: Effects\": \"Atributo: Efikistoj\", \"Attribute: Motion Blur\": \"Atributo: Malklari\\u011da movo\", \"Attribute: 3D\": \"Atributo: 3D\", \"Attribute: Guide\": \"Atributo: Gvido\", \"Animation: At current time\": \"Animacio: En la nuna momento\", \"Animation: In preview range\": \"Animacio: En la rango de la vida\\u0135o\", \"Animation: Has keyframes\": \"Animacio: Kun grava-bildoj\", \"Animation: Has expressions\": \"Animacio: Kun esprimoj\", \"Matte & Blending: Has mask\": \"Tegilo kaj Miksa: Kun masko\", \"Matte & Blending: Has track matte\": \"Tegilo kaj Miksa: Kun tavolo de tegilo\", \"Matte & Blending: Is track matte\": \"Tegilo kaj Miksa: Estas tavolo de tegilo\", \"Matte & Blending: Preserve transparency\": \"Tegilo & Miksa: Konservi la travideblan\", \"Matte & Blending: Normal blending mode\": \"Tegilo & Miksa: Normala miksa re\\u011dimo\", \"Matte & Blending: Other blending mode\": \"Tegilo & Miksa: Alia miksa re\\u011dimo\", \"Layer Styles: All\": \"Tipoj de tavolo: \\u0108iaj\", \"Layer Styles: Drop Shadow\": \"Stiloj de tavolo: Donanta ombro\", \"Layer Styles: Inner Shadow\": \"Stiloj de tavolo: Interna ombro\", \"Layer Styles: Outer Glow\": \"Stiloj de tavolo: Ekstera lumo\", \"Layer Styles: Inner Glow\": \"Stiloj de tavolo: Interna lumo\", \"Layer Styles: Bevel and Emboss\": \"Stiloj de tavolo: \\u0108izi kaj Reliefi\\u011di\", \"Layer Styles: Satin\": \"Stiloj de tavolo: Sateno\", \"Layer Styles: Color Overlay\": \"Stiloj de tavolo: Kolora tegilo\", \"Layer Styles: Gradient Overlay\": \"Stiloj de tavolo: Koloro degrada tegilo\", \"Layer Styles: Stroke\": \"Stiloj de tavolo: Streko\", \"Hide Ae layer switches\": \"Ka\\u015di la tavolo-\\u015daltilojn de Ae\", \"Show or hide the After Effects layer switches buttons.\": \"Montri a\\u016d ka\\u015di la butonon de la tavolo-\\u015daltiloj de After Effects.\", \"Show Ae layer switches\": \"Montri la tavolo-\\u015daltilojn de Ae\", \"Locked layers: deny changes\": \"\\u015closi tavolojn: negi \\u015dan\\u011dojn\", \"What to do if a layer is locked.\": \"Kio oni devas fari se unu tavolo \\u015dlosi\\u011das.\", \"Locked layers: allow changes\": \"\\u015closi tavolojn: permesi \\u015dan\\u011dojn\", \"Type of warning frame to use\": \"Tipo de bildo de averto uzanta\", \"Warning frame: None\": \"Bildo de averto: Nenio\", \"Don't use any warning frame.\": \"Uzi nenian bildon de averto.\", \"Warning frame: Above\": \"Bildo de averto: Supre\", \"Draw the frame above the composition.\": \"Desegni la kadron supre la kompona\\u0135o.\", \"Warning frame: Below\": \"Bildo de averto: Malsupre\", \"Draw the frame below the composition.\": \"Desegni la kadron malsupre la kompona\\u0135o.\", \"Isolation: hide layers\": \"Izoleco: ka\\u015di tavolojn\", \"Method used to isolate layers in the composition.\": \"Uzanta metodo por izoli tavolojn en la kompona\\u0135o.\", \"Isolation: wireframe\": \"Izoleco: drato-bildo\", \"Hide markers\": \"Ka\\u015di markojn\", \"whether to show or hide the tags on the layers.\": \"\\u0109u montri a\\u016d ka\\u015di la etikedojn en la tavoloj.\", \"Show markers\": \"Montri markojn\", \"Auto-select layers\": \"A\\u016dto-elektiti tavoloj\", \"Automatically select layers when selecting groups or properties\": \"A\\u016dtomate elekti la tavolon kiam oni elektas grupojn a\\u016d propra\\u0135ojn\", \"Lock hidden layers\": \"\\u015closi la ka\\u015ditajn tavolojn\", \"whether the hidden layers have to be locked.\": \"\\u0109u la ka\\u015dintaj tavoloj devas \\u015dlosi\\u011di a\\u016d ne.\", \"Null\": \"Nulo\", \"Adjustment layer\": \"Tavolo de adapto\", \"Solid\": \"Solido\", \"Shape\": \"Formo\", \"Rectangle\": \"Rektangulo\", \"Rounded rectangle\": \"Cirkla rektangulo\", \"Circle\": \"Cirklo\", \"Polygon\": \"Plurlatero\", \"Star\": \"Stelo\", \"Cancel\": \"Nuligi\", \"Select\\u0004None\": \"Neniom\", \"The pseudo effect file does not exist.\": \"La dosiero pse\\u016ddo efiko ne ekzistas.\", \"Invalid pseudo effect file or match name.\": \"La dosiero pse\\u016ddo efiko a\\u016d \\\"match name\\\" nepravas.\", \"in layer name\\u0004Edit mode\": \"Redakta re\\u011dimo\", \"Locator\": \"Lokalizilo\", \"Project Root\": \"Radiko de la projekto\", \"Arm\": \"Brako\", \"Shoulder\": \"\\u015cultro\", \"Forearm\": \"Anta\\u016dbrako\", \"Hand\": \"Mano\", \"Claws\": \"Ungegoj\", \"Tip\": \"Pinto\", \"Heel\": \"Kalkano\", \"Leg\": \"Kruro\", \"Thigh\": \"Femuro\", \"Calf\": \"Suro\", \"Foot\": \"Piedo\", \"Toes\": \"Piedfingroj\", \"Hoof\": \"Hufo\", \"Spine\": \"Spino\", \"Hips\": \"Koksoj\", \"Torso\": \"Torso\", \"Neck\": \"Kolo\", \"Head\": \"Kapo\", \"Tail\": \"Vosto\", \"Hair\": \"Haro\", \"Wing\": \"Alo\", \"Feather\": \"Plumo\", \"Fin\": \"Na\\u011dilo\", \"Fishbone\": \"Ostofi\\u015doj\", \"[Shift]: More options...\": \"[Shift]: Pli da opcioj...\", \"Set a random value.\": \"Agordi hazardon valoron.\", \"file system\\u0004Path...\": \"Vojeto...\", \"Bug Report or Feature Request\": \"Raporto de Eraro a\\u016d \\u0108efa\\u0135a Peto\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"Raporto de eraro\\n\\u0108efa\\u0135a peto\\n\\nDiru al ni tio kion ne estas bone a\\u016d demandu novan peton.\", \"Help\": \"Helpo\", \"Get help.\": \"Petu helpon.\", \"Translate %1\": \"Traduki %1\", \"Help translating %1 to make it available to more people.\": \"Helpu traduki %1 por fari \\u011din pli disponebla pri plej homoj.\", \"New version\": \"Nova versio\", \"Thank you for your donations!\": \"Dankon pro viaj donacoj!\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"\\u0108imonate, la fonduso de %1 estas %2.\\nTio estas %3% de nia celo ($%4)\\n\\nKlaku \\u0109i tiu butono per ani\\u011di la fonduso de niaj laboriloj!\", \"project\\u0004Item\": \"Elemento\", \"file\\u0004Run\": \"Kuri\", \"Open folder\": \"Malfermi la dosierujon\", \"Add item or category\": \"Aldoni elementon a\\u016d kategorion\", \"Edit item or category\": \"\\u015can\\u011di elementon a\\u016d kategorion\", \"Remove item or category\": \"Forigi elementon a\\u016d kategorion\", \"Start typing...\": \"Startu skribi...\", \"Refresh\": \"Refre\\u015digi\", \"Category\": \"Kategorio\", \"%1 Settings\": \"%1 Agordoj\", \"Set the language of the interface.\": \"Agordi la lingvon de la interfaco.\", \"Settings file\": \"Dosiero de agordoj\", \"Set the location of the settings file.\": \"Agordi la lokon de la dosiero de agordoj.\", \"Set the highlight color.\": \"Agordi la koloron de la heligo.\", \"After Effects Blue\": \"Blua After Effects\", \"The After Effects highlighting blue\": \"La blua heligo de After Effects\", \"RxLab Purple\": \"Violkolora RxLab\", \"The RxLaboratory Purple\": \"La violkolora de RxLaboratory\", \"Rainbox Red\": \"Ru\\u011da Rainbox\", \"The Rainbox Productions Red\": \"La ru\\u011da de Rainbox Productions\", \"After Effects Orange (CS6)\": \"Oran\\u011dkolora After Effects (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"La oran\\u011dkolora heligo de After Effects de la bona antikva CS6\", \"Custom...\": \"Proprigi...\", \"Select a custom color.\": \"Elektiti propran koloron.\", \"Select the UI mode.\": \"Elektiti la UF re\\u011dimo.\", \"Rookie\": \"Komencanto\", \"The easiest-to-use mode, but also the biggest UI.\": \"La plej facila re\\u011dimo, sed anka\\u016d la plej granda UF.\", \"Standard\": \"Normo\", \"The standard not-too-big UI.\": \"La normo ne tro grandega UF.\", \"Expert\": \"Spertulo\", \"The smallest UI, for expert users.\": \"La malplej granda UF, per lertaj uzantoj.\", \"Normal mode\": \"Normala re\\u011dimo\", \"Use at your own risk!\": \"Uzi\\u011du \\u0109e via propra risko!\", \"Dev and Debug mode\": \"Disvolvi\\u011da kaj elpuriga re\\u011dimo\", \"Check for updates\": \"Kontroli por \\u011disdatigoj\", \"Default\": \"Defa\\u016dlto\", \"Reset the settings to their default values.\": \"Rekomencigi la agordojn al liaj defa\\u016dltaj valoroj.\", \"Apply\": \"Apliki\", \"Apply settings.\": \"Apliki agordojn.\", \"You may need to restart the script for all changes to take effect.\": \"Vi devus rekomenci\\u011di la skripton per apliki la tutajn \\u015dan\\u011dojn.\", \"Help and options\": \"Helpo kaj opcioj\", \"Edit settings\": \"Modifi agordojn\", \"Working\": \"Laborante\", \"Magic is happening\": \"La Magio okazas\", \"Previous\": \"Anta\\u016de\", \"Next\": \"Sekvonte\", \"Keep this panel open\": \"Teni \\u0109i tiun panelon malferman\"}", "DuGR_eo.json", "tr" );
 DuGR_eo;
 // ==================== |---------| ====================
 // ==================== | DuGR_es | ====================
 // ==================== |---------| ====================
 
-var DuGR_es = new DuBinary( "{\"\": {\"language\": \"es_ES\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"Todas las capas\", \"Selected\": \"Seleccionadas\", \"Grouped\": \"Agrupadas\", \"Ignored\": \"Ignoradas\", \"Add selected layers to group.\": \"A\\u00f1adir las capas seleccionadas al grupo.\", \"Get groups from selected layers.\": \"Obtener los grupos de las capas seleccionadas.\", \"Remove selected layers from group.\": \"Quitar las capas seleccionadas del grupo.\", \"Create new group.\": \"Crear un nuevo grupo.\", \"Change group name\": \"Cambiar el nombre del grupo\", \"Remove group.\": \"Eliminar el grupo.\", \"New group\": \"Nuevo grupo\", \"OK\": \"OK\", \"Exit isolation.\": \"Salir del aislamiento.\", \"Isolate\": \"Aislado\", \"Isolate selected groups.\": \"Aislar los grupos seleccionados.\", \"Timeline\": \"L\\u00ednea de tiempo\", \"Isolate selected groups, in the timeline only.\": \"Aislar los grupos seleccionados, en la l\\u00ednea temporal solamente.\", \"Comp\": \"Compo\", \"Isolate selected groups, in the composition panel only\": \"Aislar los grupos seleccionados, en el panel de composici\\u00f3n solamente\", \"Set interactive (sticky) mode.\": \"Establecer el modo interactivo (pegajoso).\", \"Show/Hide layers\": \"Mostrar/ocultar las capas\", \"Toggle audio\": \"(Des)activar el audio\", \"Toggle solo mode\": \"(Des)activar el modo solo\", \"Lock layers\": \"Bloquear las capas\", \"Shy layers\": \"Capas discretas\", \"Collapse transformation / Continuous rasterization\": \"Reducir las transformaciones / Rasterizado continuo\", \"Guide layers\": \"Capas de gu\\u00eda\", \"Set quality\": \"Cambiar la calidad\", \"Toggle effects\": \"(Des)activar los efectos\", \"Set frame blending mode\": \"Cambiar el modo de fusi\\u00f3n de las im\\u00e1genes\", \"Toggle motion blur\": \"(Des)activar el desenfoque de movimientos\", \"Toggle adjustment layer mode\": \"(Des)activar el modo capa de efectos\", \"Toggle 3D layer mode\": \"(Des)activar el modo capa 3D\", \"Select layers\": \"Seleccionar las capas\", \"Custom Groups\": \"Grupos personalizados\", \"Show custom layer groups\": \"Mostrar grupos de capas personalizados\", \"All layer properties\": \"Todas las propiedades de capa\", \"Show all properties\": \"Mostrar todas las propiedades\", \"Hierarchy\": \"Jerarqu\\u00eda\", \"Show hierarchical (parenting) properties\": \"Mostrar las propiedades de jerarqu\\u00eda (emparentamiento)\", \"Layer types\": \"Tipos de capa\", \"Show layer types\": \"Mostrar tipos de capa\", \"Type\": \"Tipo\", \"Layer attributes\": \"Atributos de capa\", \"Show layer attributes\": \"Mostrar atributos de capas\", \"Attribute\": \"Atributo\", \"Animation\": \"Animaci\\u00f3n\", \"Show animation properties\": \"Mostrar propiedades de animaci\\u00f3n\", \"Matte & Blending\": \"Mate y fusi\\u00f3n\", \"Show matte, blending, and alpha properties\": \"Mostrar mate, fusi\\u00f3n y propiedades de alfa\", \"Matte\": \"Mate\", \"Layer styles\": \"Estilos de capa\", \"Show layer styles\": \"Mostrar estilos de capa\", \"Layer Styles\": \"Estilos de Capa\", \"Invert\": \"Invertir\", \"Invert the group/property selection\": \"Invertir la selecci\\u00f3n de grupo/propiedad\", \"Inverted\": \"Invertido\", \"Use either the AND(&) or OR(/) operator for multiple group selection.\": \"Utilizar el operador Y(&) o el operador O(/) para la selecci\\u00f3n de m\\u00faltiples grupos.\", \"Remove all\": \"Eliminar todo\", \"Search...\": \"Buscar...\", \"Hierarchy: Orphans\": \"Jerarqu\\u00eda: Hu\\u00e9rfanos\", \"Hierarchy: Have children\": \"Jerarqu\\u00eda: Con hijos\", \"Type: Pre-compositions\": \"Tipo: Pre-composiciones\", \"Type: Null Objects\": \"Tipo: Objetos nulos\", \"Type: Solids\": \"Tipo: S\\u00f3lidos\", \"Type: Shapes\": \"Tipo: Formas\", \"Type: Texts\": \"Tipo: Textos\", \"Type: Adjustment\": \"Tipo: Capas de efectos\", \"Type: Lights\": \"Tipo: Luces\", \"Type: Cameras\": \"Tipo: C\\u00e1maras\", \"Attribute: Visible\": \"Atributo: Visible\", \"Attribute: Has Audio\": \"Atributo: Con audio\", \"Attribute: Solo\": \"Atributo: Solo\", \"Attribute: Locked\": \"Atributo: Bloqueado\", \"Attribute: Shy\": \"Atributo: Discreto\", \"Attribute: Effects\": \"Atributo: Efectos\", \"Attribute: Motion Blur\": \"Atributo: Desenfoque de movimientos\", \"Attribute: 3D\": \"Atributo: 3D\", \"Attribute: Guide\": \"Atributo: Gu\\u00eda\", \"Animation: At current time\": \"Animaci\\u00f3n: En el momento actual\", \"Animation: In preview range\": \"Animaci\\u00f3n: En el rango de vista previa\", \"Animation: Has keyframes\": \"Animaci\\u00f3n: Tiene fotogramas clave\", \"Animation: Has expressions\": \"Animaci\\u00f3n: Tiene expresiones\", \"Matte & Blending: Has mask\": \"Mate y fusi\\u00f3n: Tiene m\\u00e1scara\", \"Matte & Blending: Has track matte\": \"Mate y fusi\\u00f3n: Tiene capa de mate\", \"Matte & Blending: Is track matte\": \"Mate y fusi\\u00f3n: Es capa de mate\", \"Matte & Blending: Preserve transparency\": \"Mate y fusi\\u00f3n: Conservar transparencia\", \"Matte & Blending: Normal blending mode\": \"Mate y fusi\\u00f3n: Modo de fusi\\u00f3n normal\", \"Matte & Blending: Other blending mode\": \"Mate y fusi\\u00f3n: Otro modo de fusi\\u00f3n\", \"Layer Styles: All\": \"Estilos de capa: Todos\", \"Layer Styles: Drop Shadow\": \"Estilos de capa: Sombra proyectada\", \"Layer Styles: Inner Shadow\": \"Estilos de capa: Sombra interior\", \"Layer Styles: Outer Glow\": \"Estilos de capa: Resplandor exterior\", \"Layer Styles: Inner Glow\": \"Estilos de capa: Resplandor interior\", \"Layer Styles: Bevel and Emboss\": \"Estilos de capa: Bisel y relieve\", \"Layer Styles: Satin\": \"Estilos de capa: Satinado\", \"Layer Styles: Color Overlay\": \"Estilos de capa: Superposici\\u00f3n de color\", \"Layer Styles: Gradient Overlay\": \"Estilos de capa: Superposici\\u00f3n de degradado\", \"Layer Styles: Stroke\": \"Estilos de capa: Trazo\", \"Hide Ae layer switches\": \"Ocultar los definidores de capa\", \"Show or hide the After Effects layer switches buttons.\": \"Mostrar u ocultar los definidores de capa de After Effects.\", \"Show Ae layer switches\": \"Mostrar los definidores de capa\", \"Locked layers: deny changes\": \"Capas bloqueadas: denegar cambios\", \"What to do if a layer is locked.\": \"Qu\\u00e9 hacer si una capa est\\u00e1 bloqueada.\", \"Locked layers: allow changes\": \"Capas bloqueadas: permitir cambios\", \"Type of warning frame to use\": \"Tipo de marco de advertencia a utilizar\", \"Warning frame: None\": \"Cuadro de advertencia: ninguno\", \"Don't use any warning frame.\": \"No utilizar ning\\u00fan cuadro de advertencia.\", \"Warning frame: Above\": \"Cuadro de advertencia: sobre\", \"Draw the frame above the composition.\": \"Dibujar el cuadro sobre la composici\\u00f3n.\", \"Warning frame: Below\": \"Cuadro de advertencia: bajo\", \"Draw the frame below the composition.\": \"Dibujar el cuadro debajo de la composici\\u00f3n.\", \"Isolation: hide layers\": \"Aislamiento: ocultar capas\", \"Method used to isolate layers in the composition.\": \"M\\u00e9todo utilizado para aislar las capas en la composici\\u00f3n.\", \"Isolation: wireframe\": \"Aislamiento: wireframe\", \"Hide markers\": \"Ocultar marcadores\", \"whether to show or hide the tags on the layers.\": \"Mostrar u ocultar las etiquetas en las capas.\", \"Show markers\": \"Mostrar marcadores\", \"Auto-select layers\": \"Autoseleccionar capas\", \"Automatically select layers when selecting groups or properties\": \"Seleccionar autom\\u00e1ticamente las capas al seleccionar grupos o propiedades\", \"Lock hidden layers\": \"Bloquear las capas ocultas\", \"whether the hidden layers have to be locked.\": \"Si las capas ocultas tienen que ser bloqueadas.\", \"Null\": \"Nulo\", \"Adjustment layer\": \"Capa de ajuste\", \"Solid\": \"S\\u00f3lido\", \"Shape\": \"Forma\", \"Rectangle\": \"Rect\\u00e1ngulo\", \"Rounded rectangle\": \"Rect\\u00e1ngulo redondeado\", \"Circle\": \"C\\u00edrculo\", \"Polygon\": \"Pol\\u00edgono\", \"Star\": \"Estrella\", \"Cancel\": \"Cancelar\", \"Select\\u0004None\": \"Ninguno\", \"The pseudo effect file does not exist.\": \"El archivo del pseudo efecto no existe.\", \"Invalid pseudo effect file or match name.\": \"Archivo o \\\"matchName\\\" del pseudo efecto incorrecto.\", \"in layer name\\u0004Edit mode\": \"Modo edici\\u00f3n\", \"Locator\": \"Localizador\", \"Project Root\": \"Ra\\u00edz del Proyecto\", \"Arm\": \"Brazo\", \"Shoulder\": \"Hombro\", \"Forearm\": \"Antebrazo\", \"Hand\": \"Mano\", \"Claws\": \"Garras\", \"Tip\": \"Extremo\", \"Heel\": \"Tal\\u00f3n\", \"Leg\": \"Pierna\", \"Thigh\": \"Muslo\", \"Calf\": \"Pantorrilla\", \"Foot\": \"Pie\", \"Toes\": \"Dedos de los Pies\", \"Hoof\": \"Pezu\\u00f1a\", \"Spine\": \"Espina\", \"Hips\": \"Caderas\", \"Torso\": \"Torso\", \"Neck\": \"Cuello\", \"Head\": \"Cabeza\", \"Tail\": \"Cola\", \"Hair\": \"Pelo\", \"Wing\": \"Ala\", \"Feather\": \"Pluma\", \"Fin\": \"Aleta\", \"Fishbone\": \"Hueso de pez\", \"[Shift]: More options...\": \"[May]: M\\u00e1s opciones...\", \"Set a random value.\": \"Aplicar un valor aleatorio.\", \"file system\\u0004Path...\": \"Ruta...\", \"Bug Report or Feature Request\": \"Informes de errores o solicitud de funcionalidad\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"Informar de un error\\nSugiere una caracter\\u00edstica\\n\\nDinos qu\\u00e9 est\\u00e1 mal o sugiere una nueva funci\\u00f3n.\", \"Help\": \"Ayuda\", \"Get help.\": \"Obtenga ayuda.\", \"Translate %1\": \"Traducir %1\", \"Help translating %1 to make it available to more people.\": \"Ayuda a traducir %1 para que est\\u00e9 disponible para m\\u00e1s personas.\", \"New version\": \"Nueva versi\\u00f3n\", \"Thank you for your donations!\": \"\\u00a1Gracias por vuestras donaciones!\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"Este mes, el %1 financiado es %2$.\\nEso equivale a %3% de nuestro objetivo mensual (%4$)\\n\\n\\u00a1Seleccione aqu\\u00ed para promover el desarrollo de nuestras herramientas!\", \"project\\u0004Item\": \"Elemento\", \"file\\u0004Run\": \"Ejecutar\", \"Open folder\": \"Abrir carpeta\", \"Add item or category\": \"A\\u00f1adir elemento o categor\\u00eda\", \"Edit item or category\": \"Editar elemento o categor\\u00eda\", \"Remove item or category\": \"Eliminar elemento o categor\\u00eda\", \"Start typing...\": \"Empezar a escribir...\", \"Refresh\": \"Actualizar\", \"Category\": \"Categor\\u00eda\", \"%1 Settings\": \"Par\\u00e1metros de %1\", \"Set the language of the interface.\": \"Seleccionar el idioma de la interfaz.\", \"Settings file\": \"Archivo de par\\u00e1metros\", \"Set the location of the settings file.\": \"Seleccionar la ubicaci\\u00f3n del archivo de par\\u00e1metros.\", \"Set the highlight color.\": \"Establecer el color del resaltado.\", \"After Effects Blue\": \"Azul After Effects\", \"The After Effects highlighting blue\": \"Azul resaltado de After Effects\", \"RxLab Purple\": \"P\\u00farpura RxLab\", \"The RxLaboratory Purple\": \"El p\\u00farpura de RxLaboratory (nuestro preferido)\", \"Rainbox Red\": \"Rojo Rainbox\", \"The Rainbox Productions Red\": \"El rojo de Rainbox Productions\", \"After Effects Orange (CS6)\": \"Naranja After Effects (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"Naranja resaltado del antiguo gran After Effects CS6\", \"Custom...\": \"Personalizado...\", \"Select a custom color.\": \"Selecciona un color personalizado.\", \"Select the UI mode.\": \"Seleccionar el modo de la interfaz.\", \"Rookie\": \"Principiante\", \"The easiest-to-use mode, but also the biggest UI.\": \"El modo m\\u00e1s f\\u00e1cil, pero tambi\\u00e9n la m\\u00e1s grande interfaz.\", \"Standard\": \"Est\\u00e1ndar\", \"The standard not-too-big UI.\": \"La interfaz est\\u00e1ndar, no muy grande.\", \"Expert\": \"Experto\", \"The smallest UI, for expert users.\": \"La IU m\\u00e1s peque\\u00f1a, para los usuarios expertos.\", \"Normal mode\": \"Modo normal\", \"Use at your own risk!\": \"\\u00a1Utilizar bajo su propio riesgo!\", \"Dev and Debug mode\": \"Modo desarrollo y depuraci\\u00f3n\", \"Check for updates\": \"Verificar las actualizaciones\", \"Default\": \"Por defecto\", \"Reset the settings to their default values.\": \"Reiniciar los par\\u00e1metros a sus valores por defecto.\", \"Apply\": \"Aplicar\", \"Apply settings.\": \"Aplicar ajustes.\", \"You may need to restart the script for all changes to take effect.\": \"Quiz\\u00e1s sea necesario reiniciar el script para que todos los cambios sean tenidos en cuenta.\", \"Help and options\": \"Ayuda y opciones\", \"Edit settings\": \"Editar los par\\u00e1metros\", \"Working\": \"Trabajando\", \"Magic is happening\": \"La magia est\\u00e1 ocurriendo\", \"Previous\": \"Anterior\", \"Next\": \"Siguiente\", \"Keep this panel open\": \"Mantener este panel abierto\"}", "DuGR_es.json", "tr" );
+var DuGR_es = new DuBinary( "{\"\": {\"language\": \"es_ES\", \"plural-forms\": \"nplurals=2; plural=(n != 1);\"}, \"All layers\": \"Todas las capas\", \"Selected\": \"Seleccionadas\", \"Grouped\": \"Agrupadas\", \"Ignored\": \"Ignoradas\", \"Add selected layers to group.\": \"A\\u00f1adir las capas seleccionadas al grupo.\", \"Get groups from selected layers.\": \"Obtener los grupos de las capas seleccionadas.\", \"Remove selected layers from group.\": \"Quitar las capas seleccionadas del grupo.\", \"Create new group.\": \"Crear un nuevo grupo.\", \"Change group name\": \"Cambiar el nombre del grupo\", \"Remove group.\": \"Eliminar el grupo.\", \"New group\": \"Nuevo grupo\", \"OK\": \"OK\", \"Exit isolation.\": \"Salir del aislamiento.\", \"Isolate\": \"Aislado\", \"Isolate selected groups.\": \"Aislar los grupos seleccionados.\", \"Timeline\": \"L\\u00ednea de tiempo\", \"Isolate selected groups, in the timeline only.\": \"Aislar los grupos seleccionados, en la l\\u00ednea temporal solamente.\", \"Comp\": \"Compo\", \"Isolate selected groups, in the composition panel only\": \"Aislar los grupos seleccionados, en el panel de composici\\u00f3n solamente\", \"Set interactive (sticky) mode.\": \"Establecer el modo interactivo (pegajoso).\", \"Show/Hide layers\": \"Mostrar/ocultar las capas\", \"Toggle audio\": \"(Des)activar el audio\", \"Toggle solo mode\": \"(Des)activar el modo solo\", \"Lock layers\": \"Bloquear las capas\", \"Shy layers\": \"Capas discretas\", \"Collapse transformation / Continuous rasterization\": \"Reducir las transformaciones / Rasterizado continuo\", \"Guide layers\": \"Capas de gu\\u00eda\", \"Set quality\": \"Cambiar la calidad\", \"Toggle effects\": \"(Des)activar los efectos\", \"Set frame blending mode\": \"Cambiar el modo de fusi\\u00f3n de las im\\u00e1genes\", \"Toggle motion blur\": \"(Des)activar el desenfoque de movimientos\", \"Toggle adjustment layer mode\": \"(Des)activar el modo capa de efectos\", \"Toggle 3D layer mode\": \"(Des)activar el modo capa 3D\", \"Select layers\": \"Seleccionar las capas\", \"Custom Groups\": \"Grupos personalizados\", \"Show custom layer groups\": \"Mostrar grupos de capas personalizados\", \"All layer properties\": \"Todas las propiedades de capa\", \"Show all properties\": \"Mostrar todas las propiedades\", \"Hierarchy\": \"Jerarqu\\u00eda\", \"Show hierarchical (parenting) properties\": \"Mostrar las propiedades de jerarqu\\u00eda (emparentamiento)\", \"Layer types\": \"Tipos de capa\", \"Show layer types\": \"Mostrar tipos de capa\", \"Type\": \"Tipo\", \"Layer attributes\": \"Atributos de capa\", \"Show layer attributes\": \"Mostrar atributos de capas\", \"Attribute\": \"Atributo\", \"Animation\": \"Animaci\\u00f3n\", \"Show animation properties\": \"Mostrar propiedades de animaci\\u00f3n\", \"Matte & Blending\": \"Mate y fusi\\u00f3n\", \"Show matte, blending, and alpha properties\": \"Mostrar mate, fusi\\u00f3n y propiedades de alfa\", \"Matte\": \"Mate\", \"Layer styles\": \"Estilos de capa\", \"Show layer styles\": \"Mostrar estilos de capa\", \"Layer Styles\": \"Estilos de Capa\", \"Invert\": \"Invertir\", \"Invert the group/property selection\": \"Invertir la selecci\\u00f3n de grupo/propiedad\", \"Inverted\": \"Invertido\", \"Use either the AND(&) or OR(/) operator for multiple group selection.\": \"Utilizar el operador Y(&) o el operador O(/) para la selecci\\u00f3n de m\\u00faltiples grupos.\", \"Remove all\": \"Eliminar todo\", \"Search...\": \"Buscar...\", \"Hierarchy: Orphans\": \"Jerarqu\\u00eda: Hu\\u00e9rfanos\", \"Hierarchy: Have children\": \"Jerarqu\\u00eda: Con hijos\", \"Type: Pre-compositions\": \"Tipo: Pre-composiciones\", \"Type: Null Objects\": \"Tipo: Objetos nulos\", \"Type: Solids\": \"Tipo: S\\u00f3lidos\", \"Type: Shapes\": \"Tipo: Formas\", \"Type: Texts\": \"Tipo: Textos\", \"Type: Adjustment\": \"Tipo: Capas de efectos\", \"Type: Lights\": \"Tipo: Luces\", \"Type: Cameras\": \"Tipo: C\\u00e1maras\", \"Attribute: Visible\": \"Atributo: Visible\", \"Attribute: Has Audio\": \"Atributo: Con audio\", \"Attribute: Solo\": \"Atributo: Solo\", \"Attribute: Locked\": \"Atributo: Bloqueado\", \"Attribute: Shy\": \"Atributo: Discreto\", \"Attribute: Effects\": \"Atributo: Efectos\", \"Attribute: Motion Blur\": \"Atributo: Desenfoque de movimientos\", \"Attribute: 3D\": \"Atributo: 3D\", \"Attribute: Guide\": \"Atributo: Gu\\u00eda\", \"Animation: At current time\": \"Animaci\\u00f3n: En el momento actual\", \"Animation: In preview range\": \"Animaci\\u00f3n: En el rango de vista previa\", \"Animation: Has keyframes\": \"Animaci\\u00f3n: Tiene fotogramas clave\", \"Animation: Has expressions\": \"Animaci\\u00f3n: Tiene expresiones\", \"Matte & Blending: Has mask\": \"Mate y fusi\\u00f3n: Tiene m\\u00e1scara\", \"Matte & Blending: Has track matte\": \"Mate y fusi\\u00f3n: Tiene capa de mate\", \"Matte & Blending: Is track matte\": \"Mate y fusi\\u00f3n: Es capa de mate\", \"Matte & Blending: Preserve transparency\": \"Mate y fusi\\u00f3n: Conservar transparencia\", \"Matte & Blending: Normal blending mode\": \"Mate y fusi\\u00f3n: Modo de fusi\\u00f3n normal\", \"Matte & Blending: Other blending mode\": \"Mate y fusi\\u00f3n: Otro modo de fusi\\u00f3n\", \"Layer Styles: All\": \"Estilos de capa: Todos\", \"Layer Styles: Drop Shadow\": \"Estilos de capa: Sombra proyectada\", \"Layer Styles: Inner Shadow\": \"Estilos de capa: Sombra interior\", \"Layer Styles: Outer Glow\": \"Estilos de capa: Resplandor exterior\", \"Layer Styles: Inner Glow\": \"Estilos de capa: Resplandor interior\", \"Layer Styles: Bevel and Emboss\": \"Estilos de capa: Bisel y relieve\", \"Layer Styles: Satin\": \"Estilos de capa: Satinado\", \"Layer Styles: Color Overlay\": \"Estilos de capa: Superposici\\u00f3n de color\", \"Layer Styles: Gradient Overlay\": \"Estilos de capa: Superposici\\u00f3n de degradado\", \"Layer Styles: Stroke\": \"Estilos de capa: Trazo\", \"Hide Ae layer switches\": \"Ocultar los definidores de capa\", \"Show or hide the After Effects layer switches buttons.\": \"Mostrar u ocultar los definidores de capa de After Effects.\", \"Show Ae layer switches\": \"Mostrar los definidores de capa\", \"Locked layers: deny changes\": \"Capas bloqueadas: denegar cambios\", \"What to do if a layer is locked.\": \"Qu\\u00e9 hacer si una capa est\\u00e1 bloqueada.\", \"Locked layers: allow changes\": \"Capas bloqueadas: permitir cambios\", \"Type of warning frame to use\": \"Tipo de marco de advertencia a utilizar\", \"Warning frame: None\": \"Cuadro de advertencia: ninguno\", \"Don't use any warning frame.\": \"No utilizar ning\\u00fan cuadro de advertencia.\", \"Warning frame: Above\": \"Cuadro de advertencia: sobre\", \"Draw the frame above the composition.\": \"Dibujar el cuadro sobre la composici\\u00f3n.\", \"Warning frame: Below\": \"Cuadro de advertencia: bajo\", \"Draw the frame below the composition.\": \"Dibujar el cuadro debajo de la composici\\u00f3n.\", \"Isolation: hide layers\": \"Aislamiento: ocultar capas\", \"Method used to isolate layers in the composition.\": \"M\\u00e9todo utilizado para aislar las capas en la composici\\u00f3n.\", \"Isolation: wireframe\": \"Aislamiento: estructura met\\u00e1lica\", \"Hide markers\": \"Ocultar marcadores\", \"whether to show or hide the tags on the layers.\": \"Mostrar u ocultar las etiquetas en las capas.\", \"Show markers\": \"Mostrar marcadores\", \"Auto-select layers\": \"Autoseleccionar capas\", \"Automatically select layers when selecting groups or properties\": \"Seleccionar autom\\u00e1ticamente las capas al seleccionar grupos o propiedades\", \"Lock hidden layers\": \"Bloquear las capas ocultas\", \"whether the hidden layers have to be locked.\": \"Si las capas ocultas tienen que ser bloqueadas.\", \"Null\": \"Nulo\", \"Adjustment layer\": \"Capa de ajuste\", \"Solid\": \"S\\u00f3lido\", \"Shape\": \"Forma\", \"Rectangle\": \"Rect\\u00e1ngulo\", \"Rounded rectangle\": \"Rect\\u00e1ngulo redondeado\", \"Circle\": \"C\\u00edrculo\", \"Polygon\": \"Pol\\u00edgono\", \"Star\": \"Estrella\", \"Cancel\": \"Cancelar\", \"Select\\u0004None\": \"Ninguno\", \"The pseudo effect file does not exist.\": \"El archivo del pseudo efecto no existe.\", \"Invalid pseudo effect file or match name.\": \"Archivo o \\\"matchName\\\" del pseudo efecto incorrecto.\", \"in layer name\\u0004Edit mode\": \"Modo edici\\u00f3n\", \"Locator\": \"Localizador\", \"Project Root\": \"Ra\\u00edz del Proyecto\", \"Arm\": \"Brazo\", \"Shoulder\": \"Hombro\", \"Forearm\": \"Antebrazo\", \"Hand\": \"Mano\", \"Claws\": \"Garras\", \"Tip\": \"Extremo\", \"Heel\": \"Tal\\u00f3n\", \"Leg\": \"Pierna\", \"Thigh\": \"Muslo\", \"Calf\": \"Pantorrilla\", \"Foot\": \"Pie\", \"Toes\": \"Dedos de los Pies\", \"Hoof\": \"Pezu\\u00f1a\", \"Spine\": \"Espina\", \"Hips\": \"Caderas\", \"Torso\": \"Torso\", \"Neck\": \"Cuello\", \"Head\": \"Cabeza\", \"Tail\": \"Cola\", \"Hair\": \"Pelo\", \"Wing\": \"Ala\", \"Feather\": \"Pluma\", \"Fin\": \"Aleta\", \"Fishbone\": \"Hueso de pez\", \"[Shift]: More options...\": \"[May]: M\\u00e1s opciones...\", \"Set a random value.\": \"Aplicar un valor aleatorio.\", \"file system\\u0004Path...\": \"Ruta...\", \"Bug Report or Feature Request\": \"Informes de errores o solicitud de funcionalidad\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"Informar de un error\\nSugiere una caracter\\u00edstica\\n\\nDinos qu\\u00e9 est\\u00e1 mal o sugiere una nueva funci\\u00f3n.\", \"Help\": \"Ayuda\", \"Get help.\": \"Obtenga ayuda.\", \"Translate %1\": \"Traducir %1\", \"Help translating %1 to make it available to more people.\": \"Ayuda a traducir %1 para que est\\u00e9 disponible para m\\u00e1s personas.\", \"New version\": \"Nueva versi\\u00f3n\", \"Thank you for your donations!\": \"\\u00a1Gracias por vuestras donaciones!\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"Este mes, el %1 financiado es %2$.\\nEso equivale a %3% de nuestro objetivo mensual (%4$)\\n\\n\\u00a1Seleccione aqu\\u00ed para promover el desarrollo de nuestras herramientas!\", \"project\\u0004Item\": \"Elemento\", \"file\\u0004Run\": \"Ejecutar\", \"Open folder\": \"Abrir carpeta\", \"Add item or category\": \"A\\u00f1adir elemento o categor\\u00eda\", \"Edit item or category\": \"Editar elemento o categor\\u00eda\", \"Remove item or category\": \"Eliminar elemento o categor\\u00eda\", \"Start typing...\": \"Empezar a escribir...\", \"Refresh\": \"Actualizar\", \"Category\": \"Categor\\u00eda\", \"%1 Settings\": \"Par\\u00e1metros de %1\", \"Set the language of the interface.\": \"Seleccionar el idioma de la interfaz.\", \"Settings file\": \"Archivo de par\\u00e1metros\", \"Set the location of the settings file.\": \"Seleccionar la ubicaci\\u00f3n del archivo de par\\u00e1metros.\", \"Set the highlight color.\": \"Establecer el color del resaltado.\", \"After Effects Blue\": \"Azul After Effects\", \"The After Effects highlighting blue\": \"Azul resaltado de After Effects\", \"RxLab Purple\": \"P\\u00farpura RxLab\", \"The RxLaboratory Purple\": \"El p\\u00farpura de RxLaboratory (nuestro preferido)\", \"Rainbox Red\": \"Rojo Rainbox\", \"The Rainbox Productions Red\": \"El rojo de Rainbox Productions\", \"After Effects Orange (CS6)\": \"Naranja After Effects (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"Naranja resaltado del antiguo gran After Effects CS6\", \"Custom...\": \"Personalizado...\", \"Select a custom color.\": \"Selecciona un color personalizado.\", \"Select the UI mode.\": \"Seleccionar el modo de la interfaz.\", \"Rookie\": \"Principiante\", \"The easiest-to-use mode, but also the biggest UI.\": \"El modo m\\u00e1s f\\u00e1cil, pero tambi\\u00e9n la m\\u00e1s grande interfaz.\", \"Standard\": \"Est\\u00e1ndar\", \"The standard not-too-big UI.\": \"La interfaz est\\u00e1ndar, no muy grande.\", \"Expert\": \"Experto\", \"The smallest UI, for expert users.\": \"La IU m\\u00e1s peque\\u00f1a, para los usuarios expertos.\", \"Normal mode\": \"Modo normal\", \"Use at your own risk!\": \"\\u00a1Utilizar bajo su propio riesgo!\", \"Dev and Debug mode\": \"Modo desarrollo y depuraci\\u00f3n\", \"Check for updates\": \"Verificar las actualizaciones\", \"Default\": \"Por defecto\", \"Reset the settings to their default values.\": \"Reiniciar los par\\u00e1metros a sus valores por defecto.\", \"Apply\": \"Aplicar\", \"Apply settings.\": \"Aplicar ajustes.\", \"You may need to restart the script for all changes to take effect.\": \"Quiz\\u00e1s sea necesario reiniciar el script para que todos los cambios sean tenidos en cuenta.\", \"Help and options\": \"Ayuda y opciones\", \"Edit settings\": \"Editar los par\\u00e1metros\", \"Working\": \"Trabajando\", \"Magic is happening\": \"La magia est\\u00e1 ocurriendo\", \"Previous\": \"Anterior\", \"Next\": \"Siguiente\", \"Keep this panel open\": \"Mantener este panel abierto\"}", "DuGR_es.json", "tr" );
 DuGR_es;
 // ==================== |---------| ====================
 // ==================== | DuGR_fr | ====================
@@ -30913,7 +31962,7 @@ DuGR_ru;
 // ==================== | DuGR_zh | ====================
 // ==================== |---------| ====================
 
-var DuGR_zh = new DuBinary( "{\"\": {\"language\": \"pd_FR\", \"plural-forms\": \"nplurals=2; plural=(n > 1);\"}, \"All layers\": \"Tous l'calques\", \"Selected\": \"Cusi\\u00e9s\", \"Grouped\": \"Group\\u00e9s\", \"Ignored\": \"Ignor\\u00e9s\", \"OK\": \"OK\", \"Select layers\": \"Cujir les couques\", \"Hierarchy: Orphans\": \"A\\u00ef\\u00e8rquie : Orphelins\", \"Hierarchy: Have children\": \"A\\u00ef\\u00e8rquie : Aveuc infants\", \"Type: Pre-compositions\": \"Type : Pr\\u00e9-compositions\", \"Type: Null Objects\": \"Type : Cose Vite\", \"Type: Solids\": \"Type : Solites\", \"Type: Shapes\": \"Type : Formes\", \"Type: Texts\": \"Type : Textes\", \"Type: Adjustment\": \"Type : Attrintchillages\", \"Type: Lights\": \"Type : Leurmi\\u00e8re\", \"Type: Cameras\": \"Type : Cameras\", \"Attribute: Visible\": \"Acrinkillache : Visipe\", \"Attribute: Has Audio\": \"Acrinkillache : Aveuc audio\", \"Attribute: Solo\": \"Acrinkillache : Solo\", \"Attribute: Locked\": \"Acrinkillache : Coinch\\u00e9\", \"Attribute: Shy\": \"Acrinkillache : S\\u00e9si\", \"Attribute: Effects\": \"Acrinkillache : Attrintchillages\", \"Attribute: Motion Blur\": \"Acrinkillache : Flou d'armumint\", \"Attribute: 3D\": \"Acrinkillache : 3D\", \"Attribute: Guide\": \"Acrinkillache : Arp\\u00e9re\", \"Null\": \"Vite\", \"Adjustment layer\": \"Calque d'Attrintchillages\", \"Solid\": \"Solite\", \"Shape\": \"Forme\", \"Rectangle\": \"Rectangle\", \"Rounded rectangle\": \"Rectangle aronti\", \"Circle\": \"Chercle\", \"Polygon\": \"Polygone\", \"Star\": \"Fertille\", \"Cancel\": \"Arsaquer\", \"Select\\u0004None\": \"Nin\", \"The pseudo effect file does not exist.\": \"El feu attrintchillage n'existe point.\", \"Invalid pseudo effect file or match name.\": \"Feu attrintchillage ou \\\"match name\\\" poris.\", \"in layer name\\u0004Edit mode\": \"Mode racrivage\", \"Locator\": \"Localisateur\", \"Project Root\": \"Rachine del projet\", \"Arm\": \"Breus\", \"Shoulder\": \"\\u00c9peule\", \"Forearm\": \"Avant-breus\", \"Hand\": \"Main\", \"Claws\": \"Griffes\", \"Tip\": \"Pointe\", \"Heel\": \"Talon\", \"Leg\": \"Gambe\", \"Thigh\": \"Tchuche\", \"Calf\": \"Mollet\", \"Foot\": \"Pied\", \"Toes\": \"Ortiaux\", \"Hoof\": \"Chabot\", \"Spine\": \"Colonne\", \"Hips\": \"Hanches\", \"Torso\": \"Corps\", \"Neck\": \"Cou\", \"Head\": \"Tchi\\u00eate\", \"Tail\": \"Tcheue\", \"Hair\": \"Gveux\", \"Wing\": \"Aile\", \"Feather\": \"Pleume\", \"Fin\": \"Najo\\u00e8re\", \"Fishbone\": \"Os ed pichon\", \"%1 Settings\": \"Pr\\u00e9f\\u00e9rinches ed %1\", \"Set the language of the interface.\": \"Cujir el langue del outi.\", \"Settings file\": \"Fichier ed r\\u00e9glache\", \"Default\": \"D\\u00e9faut\"}", "DuGR_zh.json", "tr" );
+var DuGR_zh = new DuBinary( "{\"\": {\"language\": \"zh_CN\", \"plural-forms\": \"nplurals=1; plural=0;\"}, \"All layers\": \"\\u6240\\u6709\\u56fe\\u5c42\", \"Selected\": \"\\u6240\\u9009\", \"Grouped\": \"\\u5df2\\u5206\\u7ec4\", \"Ignored\": \"\\u5df2\\u5ffd\\u7565\", \"Add selected layers to group.\": \"\\u6dfb\\u52a0\\u9009\\u4e2d\\u7684\\u56fe\\u5c42\\u5230\\u7ec4\\u3002\", \"Get groups from selected layers.\": \"\\u83b7\\u53d6\\u9009\\u4e2d\\u7684\\u56fe\\u5c42\\u7684\\u7ec4\\u3002\", \"Remove selected layers from group.\": \"\\u4ece\\u7ec4\\u4e2d\\u79fb\\u9664\\u9009\\u4e2d\\u7684\\u56fe\\u5c42\\u3002\", \"Create new group.\": \"\\u521b\\u5efa\\u65b0\\u7ec4\\u3002\", \"Change group name\": \"\\u66f4\\u6539\\u7ec4\\u540d\", \"Remove group.\": \"\\u79fb\\u9664\\u7ec4\\u3002\", \"New group\": \"\\u65b0\\u5efa\\u7ec4\", \"OK\": \"\\u597d\\u7684\", \"Exit isolation.\": \"\\u9000\\u51fa\\u9694\\u79bb\\u72b6\\u6001\\u3002\", \"Isolate\": \"\\u9694\\u79bb\", \"Isolate selected groups.\": \"\\u9694\\u79bb\\u9009\\u4e2d\\u7684\\u7ec4\\u3002\", \"Timeline\": \"\\u65f6\\u95f4\\u7ebf\", \"Isolate selected groups, in the timeline only.\": \"\\u4ec5\\u5728\\u65f6\\u95f4\\u7ebf\\u5185\\u9694\\u79bb\\u9009\\u4e2d\\u7684\\u5c0f\\u7ec4\\u3002\", \"Comp\": \"\\u5408\\u6210\", \"Isolate selected groups, in the composition panel only\": \"\\u4ec5\\u9694\\u79bb\\u5728\\u5408\\u6210\\u9762\\u677f\\u91cc\\u9009\\u4e2d\\u7684\\u7ec4\", \"Set interactive (sticky) mode.\": \"\\u8bbe\\u5b9a\\u4ea4\\u4e92\\uff08\\u7c98\\u7c98\\uff09\\u6a21\\u5f0f\\u3002\", \"Show/Hide layers\": \"\\u663e\\u793a/\\u9690\\u85cf\\u56fe\\u5c42\", \"Toggle audio\": \"\\u5207\\u6362\\u97f3\\u9891\", \"Toggle solo mode\": \"\\u5207\\u6362\\u5355\\u72ec\\u663e\\u793a\\u6a21\\u5f0f\", \"Lock layers\": \"\\u9501\\u5b9a\\u56fe\\u5c42\", \"Shy layers\": \"\\u5bb3\\u7f9e\\u56fe\\u5c42\", \"Collapse transformation / Continuous rasterization\": \"\\u6298\\u53e0\\u53d8\\u6362 / \\u8fde\\u7eed\\u6805\\u683c\\u5316\", \"Guide layers\": \"\\u53c2\\u8003\\u56fe\\u5c42\", \"Set quality\": \"\\u8bbe\\u5b9a\\u8d28\\u91cf\", \"Toggle effects\": \"\\u5207\\u6362\\u7279\\u6548\", \"Set frame blending mode\": \"\\u8bbe\\u5b9a\\u5e27\\u6df7\\u5408\\u6a21\\u5f0f\", \"Toggle motion blur\": \"\\u5207\\u6362\\u8fd0\\u52a8\\u6a21\\u7cca\", \"Toggle adjustment layer mode\": \"\\u5207\\u6362\\u8c03\\u6574\\u56fe\\u5c42\\u6a21\\u5f0f\", \"Toggle 3D layer mode\": \"\\u5207\\u63623D\\u6a21\\u5f0f\", \"Select layers\": \"\\u6240\\u9009\\u56fe\\u5c42\", \"Type\": \"\\u7c7b\\u578b\", \"Layer attributes\": \"\\u56fe\\u5c42\\u5c5e\\u6027\", \"Animation\": \"\\u52a8\\u753b\", \"Invert\": \"\\u53cd\\u8f6c\", \"Invert the group/property selection\": \"\\u53cd\\u8f6c\\u7ec4/\\u5c5e\\u6027\\u9009\\u62e9\", \"Inverted\": \"\\u53cd\\u8f6c\\u7684\", \"Remove all\": \"\\u5168\\u90e8\\u79fb\\u9664\", \"Hierarchy: Orphans\": \"\\u5c42\\u7ea7: \\u4e0d\\u5b58\\u5728\\u5b50\\u7ea7\", \"Hierarchy: Have children\": \"\\u5c42\\u7ea7: \\u5b58\\u5728\\u5b50\\u7ea7\", \"Type: Pre-compositions\": \"\\u7c7b\\u578b: \\u9884\\u5408\\u6210\", \"Type: Null Objects\": \"\\u7c7b\\u578b: \\u7a7a\\u5bf9\\u8c61\", \"Type: Solids\": \"\\u7c7b\\u578b: \\u7eaf\\u8272\", \"Type: Shapes\": \"\\u7c7b\\u578b: \\u5f62\\u72b6\", \"Type: Texts\": \"\\u7c7b\\u578b: \\u6587\\u672c\", \"Type: Adjustment\": \"\\u7c7b\\u578b: \\u8c03\\u6574\", \"Type: Lights\": \"\\u7c7b\\u578b: \\u706f\\u5149\", \"Type: Cameras\": \"\\u7c7b\\u578b: \\u6444\\u50cf\\u673a\", \"Attribute: Visible\": \"\\u5c5e\\u6027: \\u53ef\\u89c1\\u6027\", \"Attribute: Has Audio\": \"\\u5c5e\\u6027: \\u5b58\\u5728\\u97f3\\u9891\", \"Attribute: Solo\": \"\\u5c5e\\u6027: \\u5355\\u72ec\\u663e\\u793a\", \"Attribute: Locked\": \"\\u5c5e\\u6027: \\u9501\\u5b9a\", \"Attribute: Shy\": \"\\u5c5e\\u6027: \\u5bb3\\u7f9e\", \"Attribute: Effects\": \"\\u5c5e\\u6027: \\u6548\\u679c\", \"Attribute: Motion Blur\": \"\\u5c5e\\u6027: \\u8fd0\\u52a8\\u6a21\\u7cca\", \"Attribute: 3D\": \"\\u5c5e\\u6027: 3D\", \"Attribute: Guide\": \"\\u5c5e\\u6027:\\u53c2\\u8003\\u7ebf\", \"Locked layers: deny changes\": \"\\u5df2\\u9501\\u56fe\\u5c42\\uff1a\\u62d2\\u7edd\\u66f4\\u6539\", \"What to do if a layer is locked.\": \"\\u5f53\\u56fe\\u5c42\\u88ab\\u9501\\u5b9a\\u65f6\\u8981\\u505a\\u4ec0\\u4e48\\u3002\", \"Locked layers: allow changes\": \"\\u5df2\\u9501\\u56fe\\u5c42\\uff1a\\u5141\\u8bb8\\u66f4\\u6539\", \"Warning frame: None\": \"\\u8b66\\u544a\\u5e27\\uff1a\\u65e0\", \"Don't use any warning frame.\": \"\\u4e0d\\u4f7f\\u7528\\u4efb\\u4f55\\u8b66\\u544a\\u5e27\\u3002\", \"Warning frame: Above\": \"\\u8b66\\u544a\\u5e27\\uff1a\\u4ee5\\u4e0a\", \"Draw the frame above the composition.\": \"\\u5728\\u5408\\u6210\\u4e0a\\u65b9\\u7ed8\\u5236\\u5e27\\u3002\", \"Warning frame: Below\": \"\\u8b66\\u544a\\u5e27\\uff1a\\u4ee5\\u4e0b\", \"Draw the frame below the composition.\": \"\\u5728\\u5408\\u6210\\u4e0b\\u65b9\\u7ed8\\u5236\\u5e27\\u3002\", \"Isolation: hide layers\": \"\\u9694\\u79bb\\u72b6\\u6001\\uff1a\\u9690\\u85cf\\u56fe\\u5c42\", \"Method used to isolate layers in the composition.\": \"\\u7528\\u4e8e\\u9694\\u79bb\\u5408\\u6210\\u91cc\\u7684\\u56fe\\u5c42\\u7684\\u65b9\\u6cd5\\u3002\", \"Isolation: wireframe\": \"\\u9694\\u79bb\\u72b6\\u6001\\uff1a\\u7ebf\\u6846\", \"Hide markers\": \"\\u9690\\u85cf\\u6807\\u8bb0\", \"whether to show or hide the tags on the layers.\": \"\\u662f\\u5426\\u663e\\u793a\\u6216\\u9690\\u85cf\\u56fe\\u5c42\\u4e0a\\u7684\\u6807\\u7b7e\\u3002\", \"Show markers\": \"\\u663e\\u793a\\u6807\\u8bb0\", \"Lock hidden layers\": \"\\u9501\\u5b9a\\u9690\\u85cf\\u56fe\\u5c42\", \"whether the hidden layers have to be locked.\": \"\\u662f\\u5426\\u9690\\u85cf\\u7684\\u56fe\\u5c42\\u5fc5\\u987b\\u88ab\\u9501\\u5b9a\\u3002\", \"Null\": \"\\u7a7a\", \"Adjustment layer\": \"\\u8c03\\u6574\\u56fe\\u5c42\", \"Solid\": \"\\u56fa\\u6001\", \"Shape\": \"\\u5f62\\u72b6\", \"Rectangle\": \"\\u77e9\\u5f62\", \"Rounded rectangle\": \"\\u5706\\u89d2\\u77e9\\u5f62\", \"Circle\": \"\\u5706\\u5f62\", \"Polygon\": \"\\u591a\\u8fb9\\u5f62\", \"Star\": \"\\u661f\\u5f62\", \"Cancel\": \"\\u53d6\\u6d88\", \"Select\\u0004None\": \"\\u65e0\", \"The pseudo effect file does not exist.\": \"\\u4f2a\\u6548\\u679c\\u6587\\u4ef6\\u4e0d\\u5b58\\u5728.\", \"Invalid pseudo effect file or match name.\": \"\\u975e\\u6cd5\\u7684\\u4f2a\\u6548\\u679c\\u6587\\u4ef6\\u6216\\u5339\\u914d\\u540d\\u79f0.\", \"in layer name\\u0004Edit mode\": \"\\u7f16\\u8f91\\u6a21\\u5f0f\", \"Locator\": \"\\u5b9a\\u4f4d\\u5668\", \"Project Root\": \"\\u5de5\\u7a0b\\u6839\\u76ee\\u5f55\", \"Arm\": \"\\u624b\\u81c2\", \"Shoulder\": \"\\u80a9\\u8180\", \"Forearm\": \"\\u524d\\u81c2\", \"Hand\": \"\\u624b\\u90e8\", \"Claws\": \"\\u722a\\u5b50\", \"Tip\": \"\\u63d0\\u793a\", \"Heel\": \"\\u811a\\u8ddf\", \"Leg\": \"\\u817f\\u90e8\", \"Thigh\": \"\\u5927\\u817f\", \"Calf\": \"\\u817f\\u809a\", \"Foot\": \"\\u8db3\\u90e8\", \"Toes\": \"\\u811a\\u8dbe\", \"Hoof\": \"\\u8e44\\u5b50\", \"Spine\": \"\\u810a\\u67f1\", \"Hips\": \"\\u81c0\\u90e8\", \"Torso\": \"\\u8eaf\\u5e72\", \"Neck\": \"\\u9888\\u90e8\", \"Head\": \"\\u5934\\u90e8\", \"Tail\": \"\\u5c3e\\u5df4\", \"Hair\": \"\\u5934\\u53d1\", \"Wing\": \"\\u7fc5\\u8180\", \"Feather\": \"\\u7fbd\\u5316\", \"Fin\": \"\\u9ccd\", \"Fishbone\": \"\\u9c7c\\u9aa8\", \"[Shift]: More options...\": \"[Shift]\\ufe30\\u66f4\\u591a\\u9009\\u9879...\", \"Set a random value.\": \"\\u8bbe\\u7f6e\\u4e00\\u4e2a\\u968f\\u673a\\u503c\\u3002\", \"file system\\u0004Path...\": \"\\u8def\\u5f84...\", \"Bug Report or Feature Request\": \"\\u9519\\u8bef\\u62a5\\u544a\\u6216\\u529f\\u80fd\\u8bf7\\u6c42\", \"Bug report\\nFeature request\\n\\nTell us what's wrong or request a new feature.\": \"\\u9519\\u8bef\\u62a5\\u544a\\n\\u529f\\u80fd\\u8bf7\\u6c42\\n\\n\\u544a\\u8bc9\\u6211\\u4eec\\u600e\\u4e48\\u4e86\\u6216\\u8bf7\\u6c42\\u4e00\\u4e2a\\u65b0\\u529f\\u80fd\\u3002\", \"Help\": \"\\u5e2e\\u52a9\", \"Get help.\": \"\\u83b7\\u5f97\\u5e2e\\u52a9.\", \"Translate %1\": \"\\u7ffb\\u8bd1 %1\", \"Help translating %1 to make it available to more people.\": \"\\u5e2e\\u52a9\\u7ffb\\u8bd1 %1 \\u4ee5\\u4f7f\\u5176\\u53ef\\u4f9b\\u66f4\\u591a\\u4eba\\u4f7f\\u7528\\u3002\", \"New version\": \"\\u65b0\\u7248\\u672c\", \"Thank you for your donations!\": \"\\u611f\\u8c22\\u60a8\\u7684\\u6350\\u8d60\\uff01\", \"This month, the %1 fund is $%2.\\nThat's %3% of our monthly goal ( $%4 )\\n\\nClick on this button to join the development fund!\": \"\\u672c\\u6708\\uff0c %1 \\u7684\\u57fa\\u91d1\\u4e3a %2 \\u7f8e\\u5143\\u3002\\n\\u8fd9\\u662f\\u6211\\u4eec\\u6bcf\\u6708\\u76ee\\u6807\\u7684 %3 % ( $ %4 )\\n\\n\\u70b9\\u51fb\\u6b64\\u6309\\u94ae\\u52a0\\u5165\\u5f00\\u53d1\\u57fa\\u91d1\\uff01\", \"project\\u0004Item\": \"\\u9879\\u76ee\", \"file\\u0004Run\": \"\\u6267\\u884c\", \"Open folder\": \"\\u6253\\u5f00\\u6587\\u4ef6\\u5939\", \"Add item or category\": \"\\u6dfb\\u52a0\\u9879\\u76ee\\u6216\\u7c7b\\u522b\", \"Edit item or category\": \"\\u7f16\\u8f91\\u9879\\u76ee\\u6216\\u7c7b\\u522b\", \"Remove item or category\": \"\\u79fb\\u9664\\u9879\\u76ee\\u6216\\u7c7b\\u522b\", \"Start typing...\": \"\\u5f00\\u59cb\\u8f93\\u5165...\", \"Refresh\": \"\\u5237\\u65b0\", \"Category\": \"\\u7c7b\\u522b\", \"%1 Settings\": \"%1 \\u8bbe\\u7f6e\", \"Set the language of the interface.\": \"\\u8bbe\\u7f6e\\u754c\\u9762\\u7684\\u8bed\\u8a00.\", \"Settings file\": \"\\u8bbe\\u7f6e\\u6587\\u4ef6\", \"Set the location of the settings file.\": \"\\u8bbe\\u5b9a\\u8bbe\\u7f6e\\u6587\\u4ef6\\u7684\\u8def\\u5f84.\", \"Set the highlight color.\": \"\\u8bbe\\u7f6e\\u9ad8\\u4eae\\u989c\\u8272.\", \"After Effects Blue\": \"After Effects \\u84dd\\u8272\", \"The After Effects highlighting blue\": \"After Effects \\u9ad8\\u4eae\\u84dd\\u8272\", \"RxLab Purple\": \"RxLab \\u7d2b\\u8272\", \"The RxLaboratory Purple\": \"The RxLaboratory \\u7d2b\\u8272\", \"Rainbox Red\": \"Rainbox \\u7ea2\\u8272\", \"The Rainbox Productions Red\": \"Rainbox Productions \\u7ea2\", \"After Effects Orange (CS6)\": \"After Effects \\u6a59\\u8272 (CS6)\", \"The After Effects highlighting orange from good ol'CS6\": \"The After Effects CS6 \\u53e4\\u4ee3\\u9ad8\\u4eae\\u6a59\\u8272\", \"Custom...\": \"\\u81ea\\u5b9a\\u4e49...\", \"Select a custom color.\": \"\\u9009\\u62e9\\u81ea\\u5b9a\\u4e49\\u989c\\u8272.\", \"Select the UI mode.\": \"\\u9009\\u62e9\\u7528\\u6237\\u754c\\u9762\\u6a21\\u5f0f.\", \"Rookie\": \"\\u521d\\u6765\\u4e4d\\u5230\", \"The easiest-to-use mode, but also the biggest UI.\": \"\\u6700\\u5bb9\\u6613\\u4f7f\\u7528\\u7684\\u6a21\\u5f0f\\uff0c\\u4f46\\u4e5f\\u662f\\u6700\\u5927\\u7684\\u754c\\u9762\\u3002\", \"Standard\": \"\\u6807\\u51c6\", \"The standard not-too-big UI.\": \"\\u6807\\u51c6\\u6a21\\u5f0f\\uff0c\\u7528\\u6237\\u754c\\u9762\\u4e2d\\u7b49\\u5927\\u5c0f.\", \"Expert\": \"\\u4e13\\u5bb6\", \"The smallest UI, for expert users.\": \"\\u9002\\u5408\\u4e13\\u5bb6\\u4f7f\\u7528\\uff0c\\u7528\\u6237\\u754c\\u9762\\u6700\\u5c0f.\", \"Normal mode\": \"\\u5e38\\u89c4\\u6a21\\u5f0f\", \"Use at your own risk!\": \"\\u81ea\\u884c\\u627f\\u62c5\\u4f7f\\u7528\\u98ce\\u9669!\", \"Dev and Debug mode\": \"\\u5f00\\u53d1\\u548c\\u8c03\\u8bd5\\u6a21\\u5f0f\", \"Check for updates\": \"\\u68c0\\u67e5\\u66f4\\u65b0\", \"Default\": \"\\u9ed8\\u8ba4\", \"Reset the settings to their default values.\": \"\\u8fd8\\u539f\\u8bbe\\u7f6e\\u5230\\u9ed8\\u8ba4\\u503c.\", \"Apply\": \"\\u5e94\\u7528\", \"Apply settings.\": \"\\u5e94\\u7528\\u8bbe\\u7f6e\\u3002\", \"You may need to restart the script for all changes to take effect.\": \"\\u60a8\\u53ef\\u80fd\\u9700\\u8981\\u91cd\\u542f\\u811a\\u672c\\u624d\\u80fd\\u4f7f\\u6240\\u6709\\u66f4\\u6539\\u751f\\u6548\\u3002\", \"Help and options\": \"\\u5e2e\\u52a9\\u4e0e\\u9009\\u9879\", \"Edit settings\": \"\\u7f16\\u8f91\\u8bbe\\u7f6e\", \"Working\": \"\\u5de5\\u4f5c\\u4e2d\", \"Magic is happening\": \"\\u795e\\u5947\\u7684\\u4e8b\\u60c5\\u6b63\\u5728\\u53d1\\u751f\", \"Previous\": \"\\u4e0a\\u4e00\\u4e2a\", \"Next\": \"\\u4e0b\\u4e00\\u4e2a\", \"Keep this panel open\": \"\\u4fdd\\u6301\\u6b64\\u9762\\u677f\\u6253\\u5f00\"}", "DuGR_zh.json", "tr" );
 DuGR_zh;
 
 DuESF.preInitMethods.push(function ()
@@ -32036,7 +33085,7 @@ function refreshPanel()
     isolateCompButton.setChecked( isolationMode == DuGR.IsolationMode.COMP_PANEL );
 
     // Get group list
-    if (groupList)
+    if (groupList && groupList.visible)
     {
         var groups = DuGR.listGroups();
 
@@ -32067,7 +33116,7 @@ function refreshPanel()
         restoreListSelection(groupList, currentSelection);
     }
 
-    if (propList) propList.searchItems( searchEdit.text );
+    if (propList && propList.visible) propList.searchItems( searchEdit.text );
 }
 
 function refreshIsolation()
@@ -32178,7 +33227,7 @@ function exit()
     if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
 }
 
-DuScriptUI.addEvent( refreshPanel, 1000);
+DuScriptUI.addEvent( refreshPanel, 3000);
 
 // ========== INIT ==============
 

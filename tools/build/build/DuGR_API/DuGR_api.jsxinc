@@ -108,7 +108,7 @@
  * @namespace
  * @author Nicolas Dufresne and contributors
  * @copyright 2017 - 2022 Nicolas Dufresne, RxLaboratory
- * @version 5.0.0
+ * @version 5.0.1
  * @requires DuAEF>=1.0.0
  * @see {@link DuAETag} for low-level group management
  * @category DuGR
@@ -127,7 +127,7 @@
  * along with DuGR. If not, see {@link http://www.gnu.org/licenses/}.
  */
 var DuGR = {}
-DuGR.version = "5.0.0";
+DuGR.version = "5.0.1";
 /**
  * Predefined and automatic groups
  * @enum {string}
