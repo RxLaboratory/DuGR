@@ -431,45 +431,45 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 var selectorGroup = DuScriptUI.group(ui.mainGroup, 'row');
 
 var propSelector = DuScriptUI.selector(selectorGroup);
-propSelector.addButton( i18n._("Custom Groups"),
+propSelector.addButton( i18n._p("DuGR selector", "Custom Groups"),
                     w16_layer_group,
-                    i18n._("Show custom layer groups"),
+                    i18n._p("DuGR selector", "Show custom layer groups"),
                     ""
                 );
-propSelector.addButton( i18n._("All layer properties"),
+propSelector.addButton( i18n._p("DuGR selector", "All layer properties"),
                     w16_prop_group,
-                    i18n._("Show all properties"),
+                    i18n._p("DuGR selector", "Show all properties"),
                     ""
                 );
-propSelector.addButton( i18n._("Hierarchy"),
+propSelector.addButton( i18n._p("DuGR selector", "Hierarchy"),
                     w16_hierarchy,
-                    i18n._("Show hierarchical (parenting) properties"),
-                    i18n._("Hierarchy")
+                    i18n._p("DuGR selector", "Show hierarchical (parenting) properties"),
+                    i18n._p("DuGR selector", "Hierarchy")
                 );
-propSelector.addButton( i18n._("Layer types"),
+propSelector.addButton( i18n._p("DuGR selector", "Layer types"),
                     w16_layer_type,
-                    i18n._("Show layer types"),
-                    i18n._("Type")
+                    i18n._p("DuGR selector", "Show layer types"),
+                    i18n._p("DuGR selector", "Type") /// TRANSLATORS: a type, as a kind (layer types)
                 );
-propSelector.addButton( i18n._("Layer attributes"),
+propSelector.addButton( i18n._p("DuGR selector", "Layer attributes"),
                     w16_attribute,
-                    i18n._("Show layer attributes"),
-                    i18n._("Attribute")
+                    i18n._p("DuGR selector", "Show layer attributes"),
+                    i18n._p("DuGR selector", "Attribute")
                 );
-propSelector.addButton( i18n._("Animation"),
+propSelector.addButton( i18n._p("DuGR selector", "Animation"),
                     w16_anim,
-                    i18n._("Show animation properties"),
-                    i18n._("Animation")
+                    i18n._p("DuGR selector", "Show animation properties"),
+                    i18n._p(""DuGR selector", Animation")
                 );
-propSelector.addButton( i18n._("Matte & Blending"),
+propSelector.addButton( i18n._p("DuGR selector", "Matte & Blending"),
                     w16_blending,
-                    i18n._("Show matte, blending, and alpha properties"),
-                    i18n._("Matte")
+                    i18n._p("DuGR selector", "Show matte, blending, and alpha properties"),
+                    i18n._p("DuGR selector", "Matte")
                 );
-propSelector.addButton( i18n._("Layer styles"),
+propSelector.addButton( i18n._p("DuGR selector", "Layer styles"),
                     w16_style,
-                    i18n._("Show layer styles"),
-                    i18n._("Layer Styles")
+                    i18n._p("DuGR selector", "Show layer styles"),
+                    i18n._p("DuGR selector", "Layer Styles")
                 );
 propSelector.setCurrentIndex(1);
 
