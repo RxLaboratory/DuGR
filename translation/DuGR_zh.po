@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 07:59\n"
+"PO-Revision-Date: 2023-03-03 09:34\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -565,7 +565,7 @@ msgstr "警告帧：以上"
 #: settings.jsxinc:32
 #, qt-format
 msgid "Draw the frame above the composition."
-msgstr "在合成上方绘制帧。"
+msgstr "在合成顶部绘制帧动画"
 
 #: settings.jsxinc:35
 #, qt-format
