@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 07:59\n"
+"PO-Revision-Date: 2023-07-10 00:53\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -450,7 +450,7 @@ msgstr ""
 #: propPanel.jsxinc:39
 #, qt-format
 msgid "Matte & Blending: Preserve transparency"
-msgstr ""
+msgstr "123"
 
 #: propPanel.jsxinc:40
 #, qt-format
