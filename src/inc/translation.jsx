@@ -1,4 +1,4 @@
-#include "config/translations.jsxinc"
+#include "config/translations.jsx"
 
 DuESF.preInitMethods.push(function ()
 {

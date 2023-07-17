@@ -6,6 +6,11 @@
     "configurations": [
         {
             "type": "extendscript-debug",
+            "request": "attach",
+            "name": "Attach to ExtendScript Engine"
+        },
+        {
+            "type": "extendscript-debug",
             "request": "launch",
             "name": "bin2Jsx",
             "program": "${workspaceFolder}/DuAEF/DuESF/tools/binToJsxinc.jsx",
@@ -15,7 +20,7 @@
             "type": "extendscript-debug",
             "request": "launch",
             "name": "Dugr",
-            "program": "${workspaceFolder}/Dugr.jsx",
+            "program": "${workspaceFolder}/src/Dugr.jsx",
             "stopOnEntry": false
         }
     ]

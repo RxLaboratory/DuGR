@@ -1,11 +1,10 @@
 var isPreRelease = false;
 var scriptName = "DuGR";
-var scriptVersion = "5.0.1";
+var scriptVersion = "{dugrVersion}";
 var scriptAbout = 'Group your layers!';
 var companyName = "RxLaboratory";
 
 var chatURL = 'http://chat.rxlab.info';
-var bugReportURL = 'https://github.com/RxLaboratory/DuGR/issues/new/choose';
 var aboutURL = 'http://rxlaboratory.org/tools/dugr';
 var docURL = 'http://dugr.rxlab.guide';
 var companyURL = 'https://rxlaboratory.org';

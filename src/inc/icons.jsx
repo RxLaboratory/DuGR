@@ -26,6 +26,9 @@
 #include "icons/w16_blending.png.jsxinc"
 #include "icons/w16_and.png.jsxinc"
 #include "icons/w16_or.png.jsxinc"
+#include "icons/w16_composition.png.jsxinc"
+#include "icons/w16_compositions.png.jsxinc"
+#include "icons/w16_precompositions.png.jsxinc"
 
 #include "icons/w12_add_layer.png.jsxinc"
 #include "icons/w12_add.png.jsxinc"

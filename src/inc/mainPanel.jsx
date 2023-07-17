@@ -459,7 +459,7 @@ propSelector.addButton( i18n._p("DuGR selector", "Layer attributes"),
 propSelector.addButton( i18n._p("DuGR selector", "Animation"),
                     w16_anim,
                     i18n._p("DuGR selector", "Show animation properties"),
-                    i18n._p(""DuGR selector", Animation")
+                    i18n._p("DuGR selector", "Animation")
                 );
 propSelector.addButton( i18n._p("DuGR selector", "Matte & Blending"),
                     w16_blending,
@@ -503,6 +503,8 @@ andOrButton.onClick = function()
     refreshIsolation();
 }
 
+var compSelector = DuScriptUI.selector(ui.mainGroup);
+
 var searchGroup = DuScriptUI.group(ui.mainGroup, 'row');
 searchGroup.spacing = 3;
 searchGroup.alignment = ['fill', 'top'];
@@ -540,14 +542,14 @@ groupTab.built = false;
 propTab.build = function (tab)
 {
     propTab.built = true;
-    #include "propPanel.jsxinc"
+    #include "propPanel.jsx"
     DuScriptUI.showUI(tab);
 }
 
 groupTab.build = function (tab)
 {
     groupTab.built = true;
-    #include "groupPanel.jsxinc"
+    #include "groupPanel.jsx"
     DuScriptUI.showUI(tab);
 }
 

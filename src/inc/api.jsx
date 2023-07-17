@@ -1,6 +1,6 @@
 // The API which extends DuAEF & DuESF
 
-#include "config/api_version.jsxinc"
+#include "config/api_version.jsx"
 
 /**
  * Predefined and automatic groups

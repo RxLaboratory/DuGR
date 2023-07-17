@@ -1,14 +1,13 @@
 function buildUI()
 {
     var ui = DuScriptUI.scriptPanel( thisObj, true, true, mainScriptFile );
- 
     ui.addCommonSettings();
 
     // Settings
-    #include "settings.jsxinc"
+    #include "settings.jsx"
 
     // Build ui in ui.mainGroup
-    #include "mainPanel.jsxinc"
+    #include "mainPanel.jsx"
 
     DuScriptUI.showUI(ui);
 }

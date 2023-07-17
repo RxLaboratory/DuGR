@@ -1,7 +1,7 @@
-#include "config/version.jsxinc"
+#include "config/version.jsx"
 
 // Setup!
-#include "../DuAEF/setup.jsxinc";
+#include "modules/setup.jsxinc";
 if (!askFilesAndNetworkAccess( scriptName ))
 {
     alert("Sorry, " + scriptName + " can't run without accessing the files and/or the network.");
