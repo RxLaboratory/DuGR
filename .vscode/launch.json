@@ -21,7 +21,8 @@
             "request": "launch",
             "name": "Dugr",
             "program": "${workspaceFolder}/src/Dugr.jsx",
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "hostAppSpecifier": "aftereffects-23"
         }
     ]
 }

@@ -187,9 +187,9 @@ DuGR.Group = {
 
 /**
  * The way the warning frame can be displayed
- * @enum {int}
+ * @enum {Number}
  * @readonly
- */
+ * @ts-ignore */
 DuGR.WarningFrameMode = {
     /**
      * No frame at all
@@ -207,9 +207,9 @@ DuGR.WarningFrameMode = {
 
 /**
  * The way layers are isolated
- * @enum {int}
+ * @enum {Number}
  * @readonly
- */
+ * @ts-ignore */
 DuGR.IsolationMode = {
     /**
      * No isolation
@@ -231,9 +231,9 @@ DuGR.IsolationMode = {
 
 /**
  * How to isolate layers in the comp panel
- * @enum {string}
+ * @enum {Number}
  * @readonly
- */
+ * @ts-ignore */
 DuGR.CompIsolationMode = {
     HIDE: 0,
     WIREFRAME: 1
@@ -527,6 +527,7 @@ DuGR.toggleCollapseTransformation = function( groups, invert, comp, allowLockedC
     function f( layer, enabled)
     {
         if (layer.locked && !allowLockedChanges) return enabled;
+        if (!layer.canSetCollapseTransformation) return enabled;
 
         var locked = layer.locked;
         layer.locked = false;
@@ -870,7 +871,7 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
     lockHiddenLayers = def(lockHiddenLayers, true);
     invert = def(invert, false);
 
-    if (isolationMode == DuGR.IsolationMode.NONE) DuGR.exitIsolation( comp );
+    if (isolationMode == DuGR.IsolationMode.NONE) DuGR.exitIsolation( comp, compositions );
 
     var timeline = isolationMode == DuGR.IsolationMode.BOTH || isolationMode == DuGR.IsolationMode.TIMELINE;
     var compPanel = isolationMode == DuGR.IsolationMode.BOTH || isolationMode == DuGR.IsolationMode.COMP_PANEL;
@@ -887,7 +888,7 @@ DuGR.isolate = function( groups, invert, comp, frameMode, isolationMode, compIso
     else
     {
         dugrFrameLayer = DuGR.getDugrLayer(comp);
-        DuAETag.setValue(sq, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode);
+        DuAETag.setValue(dugrFrameLayer, DuAETag.Key.DUGR_ISOLATION_MODE, isolationMode);
     }
 
     // Restore the selection

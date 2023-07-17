@@ -269,10 +269,16 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     enableAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Show/Hide layers") );
         DuAE.toggleLayerControls();
 
-        DuGR.toggleVisibility( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleVisibility( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -280,19 +286,31 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     audioAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Toggle audio") );
 
-        DuGR.toggleSound( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleSound( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.endUndoGroup();
     }
 
     soloAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups();
+
         DuAE.beginUndoGroup( i18n._("Toggle solo mode") );
         DuAE.toggleLayerControls();
 
-        DuGR.toggleSolo( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleSolo( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -300,29 +318,47 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     lockAEButton.onClick  = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Lock layers") );
 
-        DuGR.toggleLocked( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleLocked( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.endUndoGroup();
     }
 
     shyAEButton.onClick  = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Shy layers") );
 
-        DuGR.toggleShy( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleShy( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.endUndoGroup();
     }
 
     collapseTransformationAEButton.onClick  = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Collapse transformation / Continuous rasterization") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleCollapseTransformation( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleCollapseTransformation( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -330,24 +366,35 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     guideAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Guide layers") );
         DuAE.toggleLayerControls();
 
-
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleGuide( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleGuide( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
     }
 
     qualityAEButton.onClick = function()
-    {
+    {   
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Set quality") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleQuality( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleQuality( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -355,11 +402,17 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     effectsActiveAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Toggle effects") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleEffects( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleEffects( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -367,11 +420,17 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     frameBlendingAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Set frame blending mode") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleFrameBlending( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleFrameBlending( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -379,11 +438,17 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     motionBlurAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Toggle motion blur") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleMotionBlur( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleMotionBlur( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -391,11 +456,17 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     adjustmentLayerAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Toggle adjustment layer mode") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleAdjustment( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleAdjustment( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -403,11 +474,17 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     threeDLayerAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Toggle 3D layer mode") );
         DuAE.toggleLayerControls();
 
         var allowLockedLayers = DuESF.scriptSettings.get("allowLockedLayers", true);
-        DuGR.toggleThreeD( getGroups(), invertButton.checked, undefined, allowLockedLayers );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.toggleThreeD( groups, invertButton.checked, comps[i], allowLockedLayers );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -415,10 +492,16 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 
     selectLayerAEButton.onClick = function()
     {
+        var comps = getComps();
+        if (comps.length == 0) return;
+        var groups =  getGroups(false);
+
         DuAE.beginUndoGroup( i18n._("Select layers") );
         DuAE.toggleLayerControls();
 
-        DuGR.select( getGroups(), invertButton.checked );
+        for (var i = 0, ni = comps.length; i < ni; i++) {
+            DuGR.select( groups, invertButton.checked, comps[i] );
+        }
 
         DuAE.toggleLayerControls();
         DuAE.endUndoGroup();
@@ -426,6 +509,25 @@ if (DuESF.scriptSettings.get("aeSwitches", true))
 }
 
 // ========= PANELS ==========
+
+var compSelector = DuScriptUI.selector(ui.mainGroup);
+
+compSelector.addButton( i18n._("Active Composition"),
+    w16_composition,
+    "",
+    ""
+    );
+compSelector.addButton( i18n._("Active and Pre-compositions"),
+    w16_precompositions,
+    "",
+    ""
+    );
+compSelector.addButton( i18n._("All Composition"),
+    w16_compositions,
+    "",
+    ""
+    );
+compSelector.setCurrentIndex(1);
 
 // Selector
 var selectorGroup = DuScriptUI.group(ui.mainGroup, 'row');
@@ -503,8 +605,6 @@ andOrButton.onClick = function()
     refreshIsolation();
 }
 
-var compSelector = DuScriptUI.selector(ui.mainGroup);
-
 var searchGroup = DuScriptUI.group(ui.mainGroup, 'row');
 searchGroup.spacing = 3;
 searchGroup.alignment = ['fill', 'top'];
@@ -575,8 +675,10 @@ function search( text )
     refreshPanel();
 }
 
-function getGroups()
+function getGroups(incComps)
 {
+    incComps = def(incComps, true);
+
     var groups = [];
     if (propSelector.index > 0 && propList.selection)
     {
@@ -594,7 +696,27 @@ function getGroups()
             groups.push( groupList.selection[i].groupName );
         }
     }
+
+    // Keep precomps if not working just in the active comp
+    if (incComps && compSelector.index != 0) {
+        groups.push( DuGR.Group.COMP );
+    }
+
     return groups;
+}
+
+function getComps() {
+    
+    if (compSelector.index == 0) return [ DuAEProject.getActiveComp() ];
+
+    if (compSelector.index == 1) {
+        var comp = DuAEProject.getActiveComp();
+        var comps = DuAEComp.getPrecomps(comp, true);
+        comps.push(comp);
+        return comps.list;
+    }
+
+    return DuAEProject.getComps();
 }
 
 function refreshPanel()
@@ -676,15 +798,20 @@ function isolate()
         return;
     }
 
-    DuGR.isolate(
-        groups,
-        invertButton.checked,
-        undefined,
-        stgs.warningFrame,
-        DuGR.IsolationMode.BOTH,
-        stgs.useWireframe,
-        stgs.lockHidden
-        );
+    var comps = getComps();
+    if (comps.length == 0) return;
+
+    for (var i = 0, ni = comps.length; i < ni; i++) {
+        DuGR.isolate(
+            groups,
+            invertButton.checked,
+            comps[i],
+            stgs.warningFrame,
+            DuGR.IsolationMode.BOTH,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+    }
 
     DuAE.toggleLayerControls();
     DuAE.endUndoGroup();
@@ -699,15 +826,20 @@ function isolateTL()
     DuAE.beginUndoGroup( "Isolation" );
     DuAE.toggleLayerControls();
 
-    DuGR.isolate(
-        getGroups(),
-        invertButton.checked,
-        undefined,
-        stgs.warningFrame,
-        DuGR.IsolationMode.TIMELINE,
-        stgs.useWireframe,
-        stgs.lockHidden
-        );
+    var comps = getComps();
+    if (comps.length == 0) return;
+
+    for (var i = 0, ni = comps.length; i < ni; i++) {
+        DuGR.isolate(
+            getGroups(),
+            invertButton.checked,
+            comps[i],
+            stgs.warningFrame,
+            DuGR.IsolationMode.TIMELINE,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+    }
 
     DuAE.toggleLayerControls();
     DuAE.endUndoGroup();
@@ -722,15 +854,20 @@ function isolateComp()
     DuAE.beginUndoGroup( "Isolation" );
     DuAE.toggleLayerControls();
 
-    DuGR.isolate(
-        getGroups(),
-        invertButton.checked,
-        undefined,
-        stgs.warningFrame,
-        DuGR.IsolationMode.COMP_PANEL,
-        stgs.useWireframe,
-        stgs.lockHidden
-        );
+    var comps = getComps();
+    if (comps.length == 0) return;
+
+    for (var i = 0, ni = comps.length; i < ni; i++) {
+        DuGR.isolate(
+            getGroups(),
+            invertButton.checked,
+            comps[i],
+            stgs.warningFrame,
+            DuGR.IsolationMode.COMP_PANEL,
+            stgs.useWireframe,
+            stgs.lockHidden
+            );
+    }
 
     DuAE.toggleLayerControls();
     DuAE.endUndoGroup();
@@ -742,7 +879,14 @@ function exit()
     if (DuESF.debug) $.hiresTimer;
     DuAE.beginUndoGroup( "Exit Isolation" );
     DuAE.toggleLayerControls();
-    DuGR.exitIsolation();
+
+    var comps = getComps();
+    if (comps.length == 0) return;
+
+    for (var i = 0, ni = comps.length; i < ni; i++) {
+        DuGR.exitIsolation(comps[i]);
+    }
+
     DuAE.toggleLayerControls();
     DuAE.endUndoGroup();
     if (DuESF.debug) alert($.hiresTimer / 1000000 + ' seconds');
