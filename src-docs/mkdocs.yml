@@ -1,0 +1,54 @@
+site_name: DuGR
+site_url: http://dugr.rxlab.guide
+repo_url: https://github.com/RxLaboratory/DuGR_Docs/
+edit_uri: tree/master/src/docs/
+site_description: The DuGR comprehensive documentation
+site_author: Nicolas Dufresne and contributors
+copyright: 'Copyright © 2021-2022 <a href="https://rxlaboratory.org" target="_blank">Rainbox Laboratory</a> and <a href="http://duduf.com" target="_blank">Nicolas Dufresne</a>'
+use_directory_urls: false
+theme:
+    name: null
+    custom_dir: 'cinder'
+    colorscheme: zenburn
+extra:
+    collapse_toc: true
+markdown_extensions:
+    - smarty
+    - footnotes
+    - tables
+    - admonition
+    - fenced_code
+    - toc
+    - attr_list
+extra_css:
+    - style.css
+    - video.css
+extra_javascript:
+    - video.js
+    - meta.js
+    - collapser.js
+site_dir: ../docs/
+dev_addr: '127.0.0.1:8002'
+nav:
+    - v5.0.1: index.md
+    - Install: install.md
+    - Help: introduction.md
+    - Settings: settings.md
+    - Scripting API:
+        - Introduction: advanced/index.md
+        - Getting started: advanced/getting-started.md
+        - Your First Script: advanced/first-script.md
+        - Keyboard shortcuts: advanced/shortcuts.md
+        - API reference: http://dugr.rxlab.io
+    - ...:
+        - Changelog: changelog.md
+        - Credits: credits.md
+        - Contact: http://contact.rxlab.info
+        - Chat: http://chat.rxlab.info
+        - QuickTips: http://quicktips.rxlab.info
+        - Tutorials: http://tuts.rxlab.info
+        - Donate: http://donate.rxlab.info
+        - License:
+            - Introduction: license.md
+            - DuGR License: gnu-gpl.md
+            - Documentation license: gnu-fdl.md

@@ -1,2 +1,6 @@
 node_modules
-tools/build/build/*
+tools/build/build/
+tools/build/output/
+tools/dev/output/
+
+.foldex.*

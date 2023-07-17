@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The DuGR comprehensive documentation">
+    <meta name="author" content="Nicolas Dufresne and contributors">
+    <link rel="canonical" href="http://dugr.rxlab.guide/install.html">
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    
+    <title>Install - DuGR</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+        
+    
+    <link href="style.css" rel="stylesheet">
+    <link href="video.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="index.html">DuGR</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="index.html">v5.0.1</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="install.html">Install</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="introduction.html">Help</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="settings.html">Settings</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scripting API <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="advanced/index.html">Introduction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="advanced/getting-started.html">Getting started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="advanced/first-script.html">Your First Script</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="advanced/shortcuts.html">Keyboard shortcuts</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://dugr.rxlab.io">API reference</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="changelog.html">Changelog</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="credits.html">Credits</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://contact.rxlab.info">Contact</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://chat.rxlab.info">Chat</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://quicktips.rxlab.info">QuickTips</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://tuts.rxlab.info">Tutorials</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://donate.rxlab.info">Donate</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">License</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="license.html">Introduction</a>
+</li>
+
+        
+            
+<li >
+    <a href="gnu-gpl.html">DuGR License</a>
+</li>
+
+        
+            
+<li >
+    <a href="gnu-fdl.html">Documentation license</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="index.html">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="introduction.html">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/RxLaboratory/DuGR_Docs/tree/master/src/docs/install.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div id="side-menu">
+    <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
+        <!-- Main navigation -->
+        <ul class="nav bs-sidenav">
+        
+        
+            <li >
+                <a href="index.html">v5.0.1</a>
+            </li>
+        
+        
+        
+            <li class="active">
+                <a href="install.html">Install</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="introduction.html">Help</a>
+            </li>
+        
+        
+        
+            <li >
+                <a href="settings.html">Settings</a>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">Scripting API</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="advanced/index.html">Introduction</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="advanced/getting-started.html">Getting started</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="advanced/first-script.html">Your First Script</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="advanced/shortcuts.html">Keyboard shortcuts</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://dugr.rxlab.io">API reference</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">...</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="changelog.html">Changelog</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="credits.html">Credits</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://contact.rxlab.info">Contact</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://chat.rxlab.info">Chat</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://quicktips.rxlab.info">QuickTips</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://tuts.rxlab.info">Tutorials</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://donate.rxlab.info">Donate</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">License</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="license.html">Introduction</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="gnu-gpl.html">DuGR License</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="gnu-fdl.html">Documentation license</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#install-dugr">Install DuGR</a></li>
+                <li class="second-level"><a href="#supported-versions-of-after-effects">Supported versions of After Effects</a></li>
+                    
+                <li class="second-level"><a href="#installation">Installation</a></li>
+                    
+                    <li class="third-level"><a href="#1-download-dugr-from-the-official-website">1 - Download DuGR from the official website.</a></li>
+                    <li class="third-level"><a href="#2-unzip-the-files-you-have-downloaded">2 - Unzip the files you have downloaded.</a></li>
+                    <li class="third-level"><a href="#3-install">3 - Install</a></li>
+                    <li class="third-level"><a href="#4-first-run">4 - First Run</a></li>
+                <li class="second-level"><a href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+                    
+        </ul>
+    </div>
+    <div class="footer-meta"></div>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2021-2022;updated:2022/09/28" /></p>
+<h1 id="install-dugr">Install DuGR</h1>
+<h2 id="supported-versions-of-after-effects">Supported versions of After Effects</h2>
+<p><strong>DuGR is always tested and works with the most recent release and beta versions of After Effects</strong>, on all platforms compatible with After Effects.</p>
+<p>It should also work with previous versions back to <em>After Effects CC (12.x)</em>.</p>
+<p>It does not work on <em>After Effects CS6 (11.x)</em> and earlier versions.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="1-download-dugr-from-the-official-website"><strong>1 - Download</strong> DuGR from the <a href="https://rxlaboratory.org/en/tools/dugr/">official website</a>.</h3>
+<h3 id="2-unzip-the-files-you-have-downloaded"><strong>2 - Unzip</strong> the files you have downloaded.</h3>
+<p>You&rsquo;ll find several folders and files.</p>
+<ul>
+<li><em>README.txt</em> contains a lot of information to help you get started with DuGR.</li>
+<li>The <em>Help</em> folder contains these help pages. Double click on the file <em>index.html</em> to open it.</li>
+<li>The <em>Tools</em> folder may contain some useful tools.</li>
+<li>The <em>ScriptUI Panels</em> folder contains the actual <em>DuGR</em> script you need to install.  </li>
+<li>The <em>Scriptlets</em> folder contains small scripts you can assign to <a href="#keyboard-shortcuts">keyboard shortcuts</a> for example.</li>
+</ul>
+<h3 id="3-install"><strong>3 - Install</strong></h3>
+<p>You can choose one of these three options to use DuGR:</p>
+<ul>
+<li>Manually <strong>copy the files</strong> to the main ScriptUI Panels.
+  For this to work, you need to have administrator rights on the computer. DuGR will be available to all users.</li>
+<li><strong>Install from within After Effects</strong>.
+  You don&rsquo;t need administrator rights this  way, but DuGR will be available only for the current user.</li>
+<li>You can also <strong>use DuGR without installation</strong>.
+  DuGR will not be dockable into the After Effects workspace, it will be a floating panel.</li>
+</ul>
+<h4 id="copy-the-files">Copy the files</h4>
+<ul>
+<li><strong>Copy</strong> the files of your choice from the <em>ScriptUI Panels</em> folder to:<ul>
+<li>Windows: <code>C:/Program Files/Adobe/Adobe After Effects XXXX/Support Files/Scripts/ScriptUI Panels/</code>  </li>
+<li>Mac OS: <code>/Applications/Adobe After Effects XXXX/Scripts/ScriptUI Panels</code></li>
+</ul>
+</li>
+</ul>
+<p>You&rsquo;ll need administrator privileges to install DuGR this way. If you don&rsquo;t have them, see the other ways below.</p>
+<ul>
+<li><strong>Restart</strong> After Effects</li>
+</ul>
+<h4 id="install-from-within-after-effects">Install from within After Effects</h4>
+<ul>
+<li><strong>Open</strong> After Effects</li>
+<li>Use the <code>File &gt; Scritps &gt; Install ScriptUI Panel...</code> <strong>menu</strong> to select and install the panels of your choice from the <em>ScriptUI Panels</em> folder.</li>
+<li><strong>Restart</strong> After Effects</li>
+</ul>
+<h4 id="use-without-installing">Use without installing</h4>
+<p>You&rsquo;ll always be able to run DuGR without even installing it.</p>
+<ul>
+<li><strong>Open</strong> After Effects</li>
+<li>Use the <code>File&gt; Scritps &gt; Run script file...</code> <strong>menu</strong> to select and run the panel of your choice from the <em>ScriptUI Panels</em> folder.</li>
+</ul>
+<h3 id="4-first-run"><strong>4 - First Run</strong></h3>
+<h4 id="file-and-network-access">File and network access</h4>
+<p>On first run, DuGR may first ask for file and network access, this is mandatory to make it work<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><img alt="" src="img/dugr/install/file_network_access.png" /></p>
+<p>If you see this window, click on <em>Open preferences</em>. This opens After Effects scripting preferences.</p>
+<p><img alt="" src="img/ae/file_network_access.png" /></p>
+<p>Check the box called <em>Allow Scripts to Write Files and Access Network</em>, then click the <em>OK</em> button.</p>
+<h4 id="select-language">Select language</h4>
+<p>By default, the language is set to <a href="https://en.wikipedia.org/wiki/Esperanto"><em>Esperanto</em></a><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
+<p><img alt="" src="img/dugr/install/language.png" /></p>
+<p>Select the language of your choice and click the <em>Apply</em> button.</p>
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>DuGR comes with a few <em>scriptlets</em> which can be used as keyboard shortcuts. These scriptlets are in the <em>Scriptlets</em> folder in the zip you&rsquo;ve downloaded.</p>
+<p>To test one of these scriptlets, use the <code>File &gt; Scritps &gt; Run script file...</code> menu entry in After Effects.</p>
+<ul>
+<li>
+<p>To permanently install any of these scriptlets and be able to assign them keyboard shortcuts, use the <code>File &gt; Scritps &gt; Install script file...</code> menu entry. Be careful, you&rsquo;ll need to install the <code>DuGR_api.jsxinc</code> file along with them, and to be able to select it you may have to adjust the file type filter of the file selection dialog.</p>
+</li>
+<li>
+<p>Then, restart After Effects</p>
+</li>
+<li>
+<p>You can now assign keyboard shortcuts to these scripts, using the <code>Edit &gt; Keyboard shortcuts...</code> menu entry.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the scriplets don&rsquo;t work correctly after installation, make sure you have also installed the <code>DuGR_api.jsxinc</code> file.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>DuGR needs this option in order to be able to:<br />
+• Write the images and icons it needs to the disk.<br />
+• Access the network to check for updates. DuGR only accesses <code>http://api.rxlab.io</code> and does not share any personal data.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><em>Esperanto</em> is the world&rsquo;s most widely spoken constructed international auxiliary language. Created by Warsaw-based ophthalmologist L. L. Zamenhof in 1887, it was intended to be a universal second language for international communication, or &ldquo;the international language&rdquo; (la lingvo internacia).<br />
+Read more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Esperanto">en.wikipedia.org/wiki/Esperanto</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="index.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="introduction.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+<div></div>
+
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "."</script>
+    
+    <script src="js/base.js"></script>
+    <script src="video.js"></script>
+    <script src="meta.js"></script>
+    <script src="collapser.js"></script>
+    <script src="search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
+    </body>
+
+</html>
