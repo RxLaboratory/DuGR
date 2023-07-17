@@ -35,23 +35,40 @@ h3 {
     margin-top: 40px;
 }
 
+blockquote {
+    border-left-width: 3px;
+    border-color: #6f6f6f;
+    font-style: italic;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
 figcaption {
     font-style: italic;
     margin-bottom: 15px;
     color: #636363;
 }
 
+blockquote figcaption {
+    font-style: normal;
+    margin-bottom: 0px;
+}
+
 figure {
     margin-top: 25px;
 }
 
-.admonition{
+.admonition {
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: -50px;
     margin-right: 0px;
     padding-left: 43px;
     border-left: 7px solid;
+}
+
+.admonition.tip {
+    border-left-color: #4bdf52;
 }
 
 .navbar-default {

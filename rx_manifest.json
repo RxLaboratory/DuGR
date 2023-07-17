@@ -1,0 +1,20 @@
+{
+    "title": "DuGR",
+    "hosts": [
+        {
+            "name": "aftereffects",
+            "title": "After Effects"
+        }
+    ],
+    "os": [
+        {
+            "name": "mac",
+            "title": "macOS"
+        },
+        {
+            "name": "win",
+            "title": "Windows"
+        }
+    ],
+    "userGuide": "http://dugr.rxlab.guide"
+}
