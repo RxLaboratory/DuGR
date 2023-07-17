@@ -16,7 +16,7 @@
     "templates": {
         "cleverLinks": true,
         "monospaceLinks": false,
-        "copyright"             : "Copyright (c) 2017-2022 Nicolas Dufresne and contributors",
+        "copyright"             : "Copyright (c) 2017-2023 Nicolas Dufresne and contributors",
         "includeDate"           : true,
         "search"                : true,
         "better-docs": {
@@ -53,6 +53,6 @@
 	"opts": {
         "template": "node_modules/better-docs",
 		"recurse": false,
-        "destination": "../../docs"
+        "destination": "../../docs/api"
     }
 }
