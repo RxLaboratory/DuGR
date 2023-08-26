@@ -16,5 +16,9 @@
             "title": "Windows"
         }
     ],
-    "userGuide": "http://dugr.rxlab.guide"
+    "userGuide": "http://dugr.rxlab.guide",
+    "apiReference": "http://dugr.rxlab.io/",
+    "website": "https://rxlaboratory.org/tools/dugr/",
+    "description": "Group and isolate layers in After Effects.",
+    "tutorials": ""
 }
