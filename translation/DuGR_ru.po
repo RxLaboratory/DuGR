@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2023-09-15 08:50\n"
+"PO-Revision-Date: 2023-09-15 10:26\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -55,17 +55,17 @@ msgstr ""
 #: groupPanel.jsxinc:50
 #, qt-format
 msgid "Create new group."
-msgstr ""
+msgstr "Создать новую группу."
 
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr ""
+msgstr "Поменять имя группы"
 
 #: groupPanel.jsxinc:66
 #, qt-format
 msgid "Remove group."
-msgstr ""
+msgstr "Удалить группу."
 
 #: groupPanel.jsxinc:77
 #, qt-format
@@ -95,7 +95,7 @@ msgstr ""
 #: mainPanel.jsxinc:74
 #, qt-format
 msgid "Timeline"
-msgstr ""
+msgstr "Временная шкала"
 
 #: mainPanel.jsxinc:76
 #, qt-format
@@ -130,7 +130,7 @@ msgstr ""
 #: mainPanel.jsxinc:200
 #, qt-format
 msgid "Toggle solo mode"
-msgstr ""
+msgstr "Переключатель в одиночном режиме"
 
 #: mainPanel.jsxinc:206
 #, qt-format
@@ -165,7 +165,7 @@ msgstr ""
 #: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
-msgstr ""
+msgstr "Установить режим смешения кадров"
 
 #: mainPanel.jsxinc:249
 #, qt-format
@@ -175,7 +175,7 @@ msgstr ""
 #: mainPanel.jsxinc:255
 #, qt-format
 msgid "Toggle adjustment layer mode"
-msgstr ""
+msgstr "Переключение режима корректирующего слоя"
 
 #: mainPanel.jsxinc:261
 #, qt-format
@@ -190,7 +190,7 @@ msgstr "Вуделить слои"
 #: mainPanel.jsxinc:434
 #, qt-format
 msgid "Custom Groups"
-msgstr ""
+msgstr "Настраиваемые Группы"
 
 #: mainPanel.jsxinc:436
 #, qt-format
@@ -225,7 +225,7 @@ msgstr ""
 #: mainPanel.jsxinc:451
 #, qt-format
 msgid "Show layer types"
-msgstr ""
+msgstr "Показать типы слоёв"
 
 #: mainPanel.jsxinc:452
 #, qt-format
@@ -240,7 +240,7 @@ msgstr ""
 #: mainPanel.jsxinc:456
 #, qt-format
 msgid "Show layer attributes"
-msgstr ""
+msgstr "Показать свойства слоя"
 
 #: mainPanel.jsxinc:457
 #, qt-format
@@ -250,7 +250,7 @@ msgstr ""
 #: mainPanel.jsxinc:459
 #, qt-format
 msgid "Animation"
-msgstr ""
+msgstr "Анимация"
 
 #: mainPanel.jsxinc:461
 #, qt-format
@@ -260,7 +260,7 @@ msgstr ""
 #: mainPanel.jsxinc:464
 #, qt-format
 msgid "Matte & Blending"
-msgstr ""
+msgstr "Матовость и Смешивание"
 
 #: mainPanel.jsxinc:466
 #, qt-format
@@ -290,7 +290,7 @@ msgstr ""
 #: mainPanel.jsxinc:479
 #, qt-format
 msgid "Invert"
-msgstr ""
+msgstr "Инвертировать"
 
 #: mainPanel.jsxinc:481
 #, qt-format
@@ -485,7 +485,7 @@ msgstr ""
 #: propPanel.jsxinc:47
 #, qt-format
 msgid "Layer Styles: Inner Glow"
-msgstr ""
+msgstr "Стили Слоя: Внутреннее Свечение"
 
 #: propPanel.jsxinc:48
 #, qt-format
@@ -500,12 +500,12 @@ msgstr ""
 #: propPanel.jsxinc:50
 #, qt-format
 msgid "Layer Styles: Color Overlay"
-msgstr ""
+msgstr "Стили Слоя: Наложение Цвета"
 
 #: propPanel.jsxinc:51
 #, qt-format
 msgid "Layer Styles: Gradient Overlay"
-msgstr ""
+msgstr "Стили слоёв: Градиент Наложения"
 
 #: propPanel.jsxinc:52
 #, qt-format
@@ -515,7 +515,7 @@ msgstr ""
 #: settings.jsxinc:6
 #, qt-format
 msgid "Hide Ae layer switches"
-msgstr ""
+msgstr "Скрыть слои Ае переключателей"
 
 #: settings.jsxinc:8
 #, qt-format
@@ -550,7 +550,7 @@ msgstr ""
 #: settings.jsxinc:25
 #, qt-format
 msgid "Warning frame: None"
-msgstr ""
+msgstr "Предупреждающий кадр: нет"
 
 #: settings.jsxinc:27
 #, qt-format
@@ -605,7 +605,7 @@ msgstr ""
 #: settings.jsxinc:57
 #, qt-format
 msgid "Show markers"
-msgstr ""
+msgstr "Показать маркеры"
 
 #: settings.jsxinc:63
 #, qt-format
@@ -665,7 +665,7 @@ msgstr ""
 #: comp.jsxinc:722
 #, qt-format
 msgid "Polygon"
-msgstr ""
+msgstr "Полигон"
 
 #: comp.jsxinc:728
 #, qt-format
@@ -787,7 +787,7 @@ msgstr ""
 #: oco.jsxinc:878
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "Торс"
 
 #: oco.jsxinc:899
 #, qt-format
@@ -1012,7 +1012,7 @@ msgstr ""
 #: panel.jsxinc:654
 #, qt-format
 msgid "Custom..."
-msgstr ""
+msgstr "Настраиваемый..."
 
 #: panel.jsxinc:656
 #, qt-format
@@ -1027,7 +1027,7 @@ msgstr ""
 #: panel.jsxinc:666
 #, qt-format
 msgid "Rookie"
-msgstr ""
+msgstr "Новичок"
 
 #: panel.jsxinc:668
 #, qt-format
@@ -1067,7 +1067,7 @@ msgstr ""
 #: panel.jsxinc:688
 #, qt-format
 msgid "Dev and Debug mode"
-msgstr ""
+msgstr "Режим разработчика и дебага"
 
 #: panel.jsxinc:770
 #, qt-format
@@ -1087,7 +1087,7 @@ msgstr ""
 #: panel.jsxinc:793
 #, qt-format
 msgid "Apply"
-msgstr ""
+msgstr "Принять"
 
 #: panel.jsxinc:795
 #, qt-format
