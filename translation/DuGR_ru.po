@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2023-07-10 00:53\n"
+"PO-Revision-Date: 2023-09-15 08:50\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,7 @@ msgstr ""
 #: mainPanel.jsxinc:206
 #, qt-format
 msgid "Lock layers"
-msgstr ""
+msgstr "Закрытые слои"
 
 #: mainPanel.jsxinc:212
 #, qt-format
