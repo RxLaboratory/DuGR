@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2023-09-14 12:31\n"
+"PO-Revision-Date: 2024-03-18 07:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -190,32 +190,32 @@ msgstr "所选图层"
 #: mainPanel.jsxinc:434
 #, qt-format
 msgid "Custom Groups"
-msgstr ""
+msgstr "自定义组"
 
 #: mainPanel.jsxinc:436
 #, qt-format
 msgid "Show custom layer groups"
-msgstr ""
+msgstr "显示自定义图层组"
 
 #: mainPanel.jsxinc:439
 #, qt-format
 msgid "All layer properties"
-msgstr ""
+msgstr "所有图层属性"
 
 #: mainPanel.jsxinc:441
 #, qt-format
 msgid "Show all properties"
-msgstr ""
+msgstr "显示所有属性"
 
 #: mainPanel.jsxinc:444
 #, qt-format
 msgid "Hierarchy"
-msgstr ""
+msgstr "层级"
 
 #: mainPanel.jsxinc:446
 #, qt-format
 msgid "Show hierarchical (parenting) properties"
-msgstr ""
+msgstr "显示层级（父级）属性"
 
 #: mainPanel.jsxinc:449
 #, qt-format
@@ -225,7 +225,7 @@ msgstr "图层类型"
 #: mainPanel.jsxinc:451
 #, qt-format
 msgid "Show layer types"
-msgstr ""
+msgstr "显示图层类型"
 
 #: mainPanel.jsxinc:452
 #, qt-format
@@ -240,12 +240,12 @@ msgstr "图层属性"
 #: mainPanel.jsxinc:456
 #, qt-format
 msgid "Show layer attributes"
-msgstr ""
+msgstr "显示图层属性"
 
 #: mainPanel.jsxinc:457
 #, qt-format
 msgid "Attribute"
-msgstr ""
+msgstr "属性"
 
 #: mainPanel.jsxinc:459
 #, qt-format
@@ -255,37 +255,37 @@ msgstr "动画"
 #: mainPanel.jsxinc:461
 #, qt-format
 msgid "Show animation properties"
-msgstr ""
+msgstr "显示动画属性"
 
 #: mainPanel.jsxinc:464
 #, qt-format
 msgid "Matte & Blending"
-msgstr ""
+msgstr "遮罩与混合"
 
 #: mainPanel.jsxinc:466
 #, qt-format
 msgid "Show matte, blending, and alpha properties"
-msgstr ""
+msgstr "显示遮罩、混合和 Alpha 属性"
 
 #: mainPanel.jsxinc:467
 #, qt-format
 msgid "Matte"
-msgstr ""
+msgstr "遮罩"
 
 #: mainPanel.jsxinc:469
 #, qt-format
 msgid "Layer styles"
-msgstr ""
+msgstr "图层样式"
 
 #: mainPanel.jsxinc:471
 #, qt-format
 msgid "Show layer styles"
-msgstr ""
+msgstr "显示图层样式"
 
 #: mainPanel.jsxinc:472
 #, qt-format
 msgid "Layer Styles"
-msgstr ""
+msgstr "图层样式"
 
 #: mainPanel.jsxinc:479
 #, qt-format
@@ -305,7 +305,7 @@ msgstr "反转的"
 #: mainPanel.jsxinc:494
 #, qt-format
 msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
-msgstr ""
+msgstr "使用 AND（&）或 OR（/）来进行多组选择。"
 
 #: mainPanel.jsxinc:514
 #, qt-format
@@ -315,7 +315,7 @@ msgstr "全部移除"
 #: mainPanel.jsxinc:524
 #, qt-format
 msgid "Search..."
-msgstr ""
+msgstr "搜索..."
 
 #: propPanel.jsxinc:9
 #, qt-format
@@ -415,117 +415,117 @@ msgstr "属性:参考线"
 #: propPanel.jsxinc:31
 #, qt-format
 msgid "Animation: At current time"
-msgstr ""
+msgstr "动画：在当前时间"
 
 #: propPanel.jsxinc:32
 #, qt-format
 msgid "Animation: In preview range"
-msgstr ""
+msgstr "动画：预览范围内"
 
 #: propPanel.jsxinc:33
 #, qt-format
 msgid "Animation: Has keyframes"
-msgstr ""
+msgstr "动画：有关键帧"
 
 #: propPanel.jsxinc:34
 #, qt-format
 msgid "Animation: Has expressions"
-msgstr ""
+msgstr "动画：有表达式"
 
 #: propPanel.jsxinc:36
 #, qt-format
 msgid "Matte & Blending: Has mask"
-msgstr ""
+msgstr "遮罩与混合：有蒙版"
 
 #: propPanel.jsxinc:37
 #, qt-format
 msgid "Matte & Blending: Has track matte"
-msgstr ""
+msgstr "蒙版与混合：有轨道遮罩"
 
 #: propPanel.jsxinc:38
 #, qt-format
 msgid "Matte & Blending: Is track matte"
-msgstr ""
+msgstr "遮罩与混合：是轨道遮罩"
 
 #: propPanel.jsxinc:39
 #, qt-format
 msgid "Matte & Blending: Preserve transparency"
-msgstr ""
+msgstr "遮罩与混合：保持透明度"
 
 #: propPanel.jsxinc:40
 #, qt-format
 msgid "Matte & Blending: Normal blending mode"
-msgstr ""
+msgstr "遮罩与混合：正常混合模式"
 
 #: propPanel.jsxinc:41
 #, qt-format
 msgid "Matte & Blending: Other blending mode"
-msgstr ""
+msgstr "遮罩与混合：其他混合模式"
 
 #: propPanel.jsxinc:43
 #, qt-format
 msgid "Layer Styles: All"
-msgstr ""
+msgstr "图层样式：全部"
 
 #: propPanel.jsxinc:44
 #, qt-format
 msgid "Layer Styles: Drop Shadow"
-msgstr ""
+msgstr "图层样式：投影"
 
 #: propPanel.jsxinc:45
 #, qt-format
 msgid "Layer Styles: Inner Shadow"
-msgstr ""
+msgstr "图层样式：内阴影"
 
 #: propPanel.jsxinc:46
 #, qt-format
 msgid "Layer Styles: Outer Glow"
-msgstr ""
+msgstr "图层样式：外发光"
 
 #: propPanel.jsxinc:47
 #, qt-format
 msgid "Layer Styles: Inner Glow"
-msgstr ""
+msgstr "图层样式：内发光"
 
 #: propPanel.jsxinc:48
 #, qt-format
 msgid "Layer Styles: Bevel and Emboss"
-msgstr ""
+msgstr "图层样式：斜面和浮雕"
 
 #: propPanel.jsxinc:49
 #, qt-format
 msgid "Layer Styles: Satin"
-msgstr ""
+msgstr "图层样式：光泽"
 
 #: propPanel.jsxinc:50
 #, qt-format
 msgid "Layer Styles: Color Overlay"
-msgstr ""
+msgstr "图层样式：颜色叠加"
 
 #: propPanel.jsxinc:51
 #, qt-format
 msgid "Layer Styles: Gradient Overlay"
-msgstr ""
+msgstr "图层样式：渐变叠加"
 
 #: propPanel.jsxinc:52
 #, qt-format
 msgid "Layer Styles: Stroke"
-msgstr ""
+msgstr "图层样式：描边"
 
 #: settings.jsxinc:6
 #, qt-format
 msgid "Hide Ae layer switches"
-msgstr ""
+msgstr "隐藏 Ae 图层开关"
 
 #: settings.jsxinc:8
 #, qt-format
 msgid "Show or hide the After Effects layer switches buttons."
-msgstr ""
+msgstr "显示或隐藏 Ae 图层开关按钮。"
 
 #: settings.jsxinc:9
 #, qt-format
 msgid "Show Ae layer switches"
-msgstr ""
+msgstr "显示 Ae 图层开关"
 
 #: settings.jsxinc:15
 #, qt-format
@@ -545,7 +545,7 @@ msgstr "已锁图层：允许更改"
 #: settings.jsxinc:23
 #, qt-format
 msgid "Type of warning frame to use"
-msgstr ""
+msgstr "要使用的警告帧类型"
 
 #: settings.jsxinc:25
 #, qt-format
@@ -610,12 +610,12 @@ msgstr "显示标记"
 #: settings.jsxinc:63
 #, qt-format
 msgid "Auto-select layers"
-msgstr ""
+msgstr "自动选择图层"
 
 #: settings.jsxinc:64
 #, qt-format
 msgid "Automatically select layers when selecting groups or properties"
-msgstr ""
+msgstr "选择组或属性时自动选择图层"
 
 #: settings.jsxinc:71
 #, qt-format
