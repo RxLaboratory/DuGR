@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2024-04-07 17:44\n"
+"PO-Revision-Date: 2024-04-07 19:51\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -45,37 +45,37 @@ msgstr "把選取的圖層加入群組。"
 #: groupPanel.jsxinc:31
 #, qt-format
 msgid "Get groups from selected layers."
-msgstr ""
+msgstr "從已選取的圖層取得群組。"
 
 #: groupPanel.jsxinc:39
 #, qt-format
 msgid "Remove selected layers from group."
-msgstr ""
+msgstr "從群組移除選取的圖層。"
 
 #: groupPanel.jsxinc:50
 #, qt-format
 msgid "Create new group."
-msgstr ""
+msgstr "建立新的群組。"
 
 #: groupPanel.jsxinc:58
 #, qt-format
 msgid "Change group name"
-msgstr ""
+msgstr "編輯群組名稱"
 
 #: groupPanel.jsxinc:66
 #, qt-format
 msgid "Remove group."
-msgstr ""
+msgstr "移除群組。"
 
 #: groupPanel.jsxinc:77
 #, qt-format
 msgid "New group"
-msgstr ""
+msgstr "新增群組"
 
 #: groupPanel.jsxinc:87
 #, qt-format
 msgid "OK"
-msgstr ""
+msgstr "確定"
 
 #: mainPanel.jsxinc:42
 #, qt-format
@@ -95,7 +95,7 @@ msgstr ""
 #: mainPanel.jsxinc:74
 #, qt-format
 msgid "Timeline"
-msgstr ""
+msgstr "時間軸"
 
 #: mainPanel.jsxinc:76
 #, qt-format
@@ -105,7 +105,7 @@ msgstr ""
 #: mainPanel.jsxinc:92
 #, qt-format
 msgid "Comp"
-msgstr ""
+msgstr "合成"
 
 #: mainPanel.jsxinc:94
 #, qt-format
@@ -120,52 +120,52 @@ msgstr ""
 #: mainPanel.jsxinc:188
 #, qt-format
 msgid "Show/Hide layers"
-msgstr ""
+msgstr "顯示/隱藏圖層"
 
 #: mainPanel.jsxinc:194
 #, qt-format
 msgid "Toggle audio"
-msgstr ""
+msgstr "開關音訊"
 
 #: mainPanel.jsxinc:200
 #, qt-format
 msgid "Toggle solo mode"
-msgstr ""
+msgstr "開關獨立顯示模式"
 
 #: mainPanel.jsxinc:206
 #, qt-format
 msgid "Lock layers"
-msgstr ""
+msgstr "鎖定圖層"
 
 #: mainPanel.jsxinc:212
 #, qt-format
 msgid "Shy layers"
-msgstr ""
+msgstr "害羞圖層"
 
 #: mainPanel.jsxinc:218
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
-msgstr ""
+msgstr "折疊變形 / 連續柵格化"
 
 #: mainPanel.jsxinc:224
 #, qt-format
 msgid "Guide layers"
-msgstr ""
+msgstr "參考圖層"
 
 #: mainPanel.jsxinc:231
 #, qt-format
 msgid "Set quality"
-msgstr ""
+msgstr "設定質量"
 
 #: mainPanel.jsxinc:237
 #, qt-format
 msgid "Toggle effects"
-msgstr ""
+msgstr "開關效果"
 
 #: mainPanel.jsxinc:243
 #, qt-format
 msgid "Set frame blending mode"
-msgstr ""
+msgstr "設定影格混合模式"
 
 #: mainPanel.jsxinc:249
 #, qt-format
@@ -240,12 +240,12 @@ msgstr ""
 #: mainPanel.jsxinc:456
 #, qt-format
 msgid "Show layer attributes"
-msgstr ""
+msgstr "顯示圖層特性"
 
 #: mainPanel.jsxinc:457
 #, qt-format
 msgid "Attribute"
-msgstr ""
+msgstr "特性"
 
 #: mainPanel.jsxinc:459
 #, qt-format
@@ -275,22 +275,22 @@ msgstr ""
 #: mainPanel.jsxinc:469
 #, qt-format
 msgid "Layer styles"
-msgstr ""
+msgstr "圖層樣式"
 
 #: mainPanel.jsxinc:471
 #, qt-format
 msgid "Show layer styles"
-msgstr ""
+msgstr "顯示圖層樣式"
 
 #: mainPanel.jsxinc:472
 #, qt-format
 msgid "Layer Styles"
-msgstr ""
+msgstr "圖層樣式"
 
 #: mainPanel.jsxinc:479
 #, qt-format
 msgid "Invert"
-msgstr ""
+msgstr "反轉"
 
 #: mainPanel.jsxinc:481
 #, qt-format
@@ -310,12 +310,12 @@ msgstr ""
 #: mainPanel.jsxinc:514
 #, qt-format
 msgid "Remove all"
-msgstr ""
+msgstr "移除全部"
 
 #: mainPanel.jsxinc:524
 #, qt-format
 msgid "Search..."
-msgstr ""
+msgstr "搜尋..."
 
 #: propPanel.jsxinc:9
 #, qt-format
@@ -330,42 +330,42 @@ msgstr ""
 #: propPanel.jsxinc:12
 #, qt-format
 msgid "Type: Pre-compositions"
-msgstr ""
+msgstr "類型: 預先合成"
 
 #: propPanel.jsxinc:13
 #, qt-format
 msgid "Type: Null Objects"
-msgstr ""
+msgstr "類型: 空物件"
 
 #: propPanel.jsxinc:14
 #, qt-format
 msgid "Type: Solids"
-msgstr ""
+msgstr "類型: 純色"
 
 #: propPanel.jsxinc:15
 #, qt-format
 msgid "Type: Shapes"
-msgstr ""
+msgstr "類型: 形狀"
 
 #: propPanel.jsxinc:16
 #, qt-format
 msgid "Type: Texts"
-msgstr ""
+msgstr "類型: 文字"
 
 #: propPanel.jsxinc:17
 #, qt-format
 msgid "Type: Adjustment"
-msgstr ""
+msgstr "類型: 調整"
 
 #: propPanel.jsxinc:18
 #, qt-format
 msgid "Type: Lights"
-msgstr ""
+msgstr "類型: 燈光"
 
 #: propPanel.jsxinc:19
 #, qt-format
 msgid "Type: Cameras"
-msgstr ""
+msgstr "類型: 攝影機"
 
 #: propPanel.jsxinc:21
 #, qt-format
@@ -595,7 +595,7 @@ msgstr ""
 #: settings.jsxinc:54
 #, qt-format
 msgid "Hide markers"
-msgstr ""
+msgstr "隱藏標記"
 
 #: settings.jsxinc:56
 #, qt-format
@@ -605,424 +605,428 @@ msgstr ""
 #: settings.jsxinc:57
 #, qt-format
 msgid "Show markers"
-msgstr ""
+msgstr "顯示標記"
 
 #: settings.jsxinc:63
 #, qt-format
 msgid "Auto-select layers"
-msgstr ""
+msgstr "自動選取圖層"
 
 #: settings.jsxinc:64
 #, qt-format
 msgid "Automatically select layers when selecting groups or properties"
-msgstr ""
+msgstr "當選取群組或屬性時自動選取圖層。"
 
 #: settings.jsxinc:71
 #, qt-format
 msgid "Lock hidden layers"
-msgstr ""
+msgstr "鎖定隱藏圖層"
 
 #: settings.jsxinc:73
 #, qt-format
 msgid "whether the hidden layers have to be locked."
-msgstr ""
+msgstr "是否必須鎖定隱藏的圖層。"
 
 #: comp.jsxinc:589
 #, qt-format
 msgid "Null"
-msgstr ""
+msgstr "空"
 
 #: comp.jsxinc:638
 #, qt-format
 msgid "Adjustment layer"
-msgstr ""
+msgstr "調整圖層"
 
 #: comp.jsxinc:667
 #, qt-format
 msgid "Solid"
-msgstr ""
+msgstr "純色"
 
 #: comp.jsxinc:696
 #, qt-format
 msgid "Shape"
-msgstr ""
+msgstr "形狀"
 
 #: comp.jsxinc:706
 #, qt-format
 msgid "Rectangle"
-msgstr ""
+msgstr "矩形"
 
 #: comp.jsxinc:711
 #, qt-format
 msgid "Rounded rectangle"
-msgstr ""
+msgstr "圓角矩形"
 
 #: comp.jsxinc:717
 #, qt-format
 msgid "Circle"
-msgstr ""
+msgstr "圓形"
 
 #: comp.jsxinc:722
 #, qt-format
 msgid "Polygon"
-msgstr ""
+msgstr "多邊形"
 
 #: comp.jsxinc:728
 #, qt-format
 msgid "Star"
-msgstr ""
+msgstr "星形"
 
 #: duscriptui_extension.jsxinc:162
 #, qt-format
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: duscriptui_extension.jsxinc:204
 #, qt-format
 msgctxt "Select"
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: layer.jsxinc:478
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr ""
+msgstr "偽效果檔案不存在。"
 
 #: layer.jsxinc:538
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
-msgstr ""
+msgstr "無效的偽效果檔案或不符合名稱。"
 
 #: layer.jsxinc:708
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr ""
+msgstr "編輯模式"
 
 #: layer.jsxinc:1506
 #, qt-format
 msgid "Locator"
-msgstr ""
+msgstr "定位器"
 
 #: project.jsxinc:467
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "專案根目錄"
 
 #: oco.jsxinc:336
 #, qt-format
 msgid "Arm"
-msgstr ""
+msgstr "手臂"
 
 #: oco.jsxinc:394
 #, qt-format
 msgid "Shoulder"
-msgstr ""
+msgstr "肩部"
 
 #: oco.jsxinc:443
 #, qt-format
 msgid "Forearm"
-msgstr ""
+msgstr "前臂"
 
 #: oco.jsxinc:484
 #, qt-format
 msgid "Hand"
-msgstr ""
+msgstr "手部"
 
 #: oco.jsxinc:525
 #, qt-format
 msgid "Claws"
-msgstr ""
+msgstr "爪"
 
 #: oco.jsxinc:561
 #, qt-format
 msgid "Tip"
-msgstr ""
+msgstr "提示"
 
 #: oco.jsxinc:602
 #, qt-format
 msgid "Heel"
-msgstr ""
+msgstr "腳跟"
 
 #: oco.jsxinc:664
 #, qt-format
 msgid "Leg"
-msgstr ""
+msgstr "腿部"
 
 #: oco.jsxinc:703
 #, qt-format
 msgid "Thigh"
-msgstr ""
+msgstr "大腿"
 
 #: oco.jsxinc:711
 #, qt-format
 msgid "Calf"
-msgstr ""
+msgstr "小腿"
 
 #: oco.jsxinc:732
 #, qt-format
 msgid "Foot"
-msgstr ""
+msgstr "足部"
 
 #: oco.jsxinc:754
 #, qt-format
 msgid "Toes"
-msgstr ""
+msgstr "脚趾"
 
 #: oco.jsxinc:768
 #, qt-format
 msgid "Hoof"
-msgstr ""
+msgstr "蹄"
 
 #: oco.jsxinc:839
 #, qt-format
 msgid "Spine"
-msgstr ""
+msgstr "脊椎"
 
 #: oco.jsxinc:857
 #, qt-format
 msgid "Hips"
-msgstr ""
+msgstr "臀部"
 
 #: oco.jsxinc:878
 #, qt-format
 msgid "Torso"
-msgstr ""
+msgstr "軀體"
 
 #: oco.jsxinc:899
 #, qt-format
 msgid "Neck"
-msgstr ""
+msgstr "頸部"
 
 #: oco.jsxinc:908
 #, qt-format
 msgid "Head"
-msgstr ""
+msgstr "頭部"
 
 #: oco.jsxinc:944
 #, qt-format
 msgid "Tail"
-msgstr ""
+msgstr "尾部"
 
 #: oco.jsxinc:983
 #, qt-format
 msgid "Hair"
-msgstr ""
+msgstr "頭髮"
 
 #: oco.jsxinc:1045
 #, qt-format
 msgid "Wing"
-msgstr ""
+msgstr "翅膀"
 
 #: oco.jsxinc:1127
 #, qt-format
 msgid "Feather"
-msgstr ""
+msgstr "羽毛"
 
 #: oco.jsxinc:1389
 #, qt-format
 msgid "Fin"
-msgstr ""
+msgstr "鰭"
 
 #: oco.jsxinc:1410
 #, qt-format
 msgid "Fishbone"
-msgstr ""
+msgstr "魚骨"
 
 #: button.jsxinc:157
 #, qt-format
 msgid "[Shift]: More options..."
-msgstr ""
+msgstr "[Shift]: 更多選項…"
 
 #: colorSelector.jsxinc:65
 #, qt-format
 msgid "Set a random value."
-msgstr ""
+msgstr "設定一個隨機數值。"
 
 #. "path for a file or a folder"
 #: fileSelector.jsxinc:65
 #, qt-format
 msgctxt "file system"
 msgid "Path..."
-msgstr ""
+msgstr "路徑..."
 
 #: help.jsxinc:42
 #, qt-format
 msgid "Bug Report or Feature Request"
-msgstr ""
+msgstr "錯誤回報或功能建議"
 
 #: help.jsxinc:43
 #, qt-format
 msgid "Bug report\n"
 "Feature request\n\n"
 "Tell us what's wrong or request a new feature."
-msgstr ""
+msgstr "問題回報\n"
+"功能建議\n\n"
+"告訴我們哪裡有問題或提出一個新功能建議。"
 
 #: help.jsxinc:86
 #, qt-format
 msgid "Help"
-msgstr ""
+msgstr "說明"
 
 #: help.jsxinc:87
 #, qt-format
 msgid "Get help."
-msgstr ""
+msgstr "取得說明。"
 
 #: help.jsxinc:131
 #, qt-format
 msgid "Translate %1"
-msgstr ""
+msgstr "翻譯 %1"
 
 #: help.jsxinc:132
 #, qt-format
 msgid "Help translating %1 to make it available to more people."
-msgstr ""
+msgstr "協助翻譯 %1 讓更多人可以使用。"
 
 #: help.jsxinc:342
 #, qt-format
 msgid "New version"
-msgstr ""
+msgstr "新版本"
 
 #: help.jsxinc:480
 #, qt-format
 msgid "Thank you for your donations!"
-msgstr ""
+msgstr "感謝您的贊助！"
 
 #: help.jsxinc:486
 #, qt-format
 msgid "This month, the %1 fund is $%2.\n"
 "That's %3% of our monthly goal ( $%4 )\n\n"
 "Click on this button to join the development fund!"
-msgstr ""
+msgstr "本月的 %1 資金為 $%2。\n"
+"是我們每月目標 (%4) 的 %3% \n\n"
+"點這個按鈕加入開發資金！"
 
 #. "an item in the After Effects project"
 #: library.jsxinc:162
 #, qt-format
 msgctxt "project"
 msgid "Item"
-msgstr ""
+msgstr "項目"
 
 #. "as in "run script""
 #: library.jsxinc:163
 #, qt-format
 msgctxt "file"
 msgid "Run"
-msgstr ""
+msgstr "執行"
 
 #: library.jsxinc:164
 #, qt-format
 msgid "Open folder"
-msgstr ""
+msgstr "開啟資料夾"
 
 #: library.jsxinc:165
 #, qt-format
 msgid "Add item or category"
-msgstr ""
+msgstr "加入項目或類別"
 
 #: library.jsxinc:166
 #, qt-format
 msgid "Edit item or category"
-msgstr ""
+msgstr "編輯項目或類別"
 
 #: library.jsxinc:167
 #, qt-format
 msgid "Remove item or category"
-msgstr ""
+msgstr "移除項目或類別"
 
 #: library.jsxinc:421
 #, qt-format
 msgid "Start typing..."
-msgstr ""
+msgstr "開始輸入..."
 
 #: library.jsxinc:549
 #, qt-format
 msgid "Refresh"
-msgstr ""
+msgstr "重新整理"
 
 #: library.jsxinc:567
 #, qt-format
 msgid "Category"
-msgstr ""
+msgstr "類別"
 
 #: panel.jsxinc:570
 #, qt-format
 msgid "%1 Settings"
-msgstr ""
+msgstr "%1 設定"
 
 #: panel.jsxinc:595
 #, qt-format
 msgid "Set the language of the interface."
-msgstr ""
+msgstr "設定介面的語言。"
 
 #: panel.jsxinc:618
 #, qt-format
 msgid "Settings file"
-msgstr ""
+msgstr "設定檔案"
 
 #: panel.jsxinc:620
 #, qt-format
 msgid "Set the location of the settings file."
-msgstr ""
+msgstr "設定設定檔案的位置。"
 
 #: panel.jsxinc:631
 #, qt-format
 msgid "Set the highlight color."
-msgstr ""
+msgstr "設定突顯的顏色。"
 
 #: panel.jsxinc:634
 #, qt-format
 msgid "After Effects Blue"
-msgstr ""
+msgstr "After Effects 藍"
 
 #: panel.jsxinc:636
 #, qt-format
 msgid "The After Effects highlighting blue"
-msgstr ""
+msgstr "The After Effects 突顯藍"
 
 #: panel.jsxinc:639
 #, qt-format
 msgid "RxLab Purple"
-msgstr ""
+msgstr "RxLab 紫"
 
 #: panel.jsxinc:641
 #, qt-format
 msgid "The RxLaboratory Purple"
-msgstr ""
+msgstr "RxLaboratory 紫"
 
 #: panel.jsxinc:644
 #, qt-format
 msgid "Rainbox Red"
-msgstr ""
+msgstr "Rainbox 紅"
 
 #: panel.jsxinc:646
 #, qt-format
 msgid "The Rainbox Productions Red"
-msgstr ""
+msgstr "Rainbox Productions 紅"
 
 #: panel.jsxinc:649
 #, qt-format
 msgid "After Effects Orange (CS6)"
-msgstr ""
+msgstr "After Effects 橘 (CS6)"
 
 #: panel.jsxinc:651
 #, qt-format
 msgid "The After Effects highlighting orange from good ol'CS6"
-msgstr ""
+msgstr "After Effects 經典 CS6 突顯橘"
 
 #: panel.jsxinc:654
 #, qt-format
 msgid "Custom..."
-msgstr ""
+msgstr "自訂..."
 
 #: panel.jsxinc:656
 #, qt-format
 msgid "Select a custom color."
-msgstr ""
+msgstr "選擇一個自訂的顏色。"
 
 #: panel.jsxinc:663
 #, qt-format
 msgid "Select the UI mode."
-msgstr ""
+msgstr "選擇使用者介面模式。"
 
 #: panel.jsxinc:666
 #, qt-format
