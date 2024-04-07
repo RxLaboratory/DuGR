@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2024-03-18 07:52\n"
+"PO-Revision-Date: 2024-04-07 17:44\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,27 +20,27 @@ msgstr ""
 #: groupPanel.jsxinc:7
 #, qt-format
 msgid "All layers"
-msgstr ""
+msgstr "全部圖層"
 
 #: groupPanel.jsxinc:8
 #, qt-format
 msgid "Selected"
-msgstr ""
+msgstr "已選取"
 
 #: groupPanel.jsxinc:9
 #, qt-format
 msgid "Grouped"
-msgstr ""
+msgstr "已群組"
 
 #: groupPanel.jsxinc:10
 #, qt-format
 msgid "Ignored"
-msgstr ""
+msgstr "已忽略"
 
 #: groupPanel.jsxinc:23
 #, qt-format
 msgid "Add selected layers to group."
-msgstr ""
+msgstr "把選取的圖層加入群組。"
 
 #: groupPanel.jsxinc:31
 #, qt-format
@@ -1027,110 +1027,110 @@ msgstr ""
 #: panel.jsxinc:666
 #, qt-format
 msgid "Rookie"
-msgstr ""
+msgstr "新手"
 
 #: panel.jsxinc:668
 #, qt-format
 msgid "The easiest-to-use mode, but also the biggest UI."
-msgstr ""
+msgstr "最容易使用的模式，但也是最大的使用者介面。"
 
 #: panel.jsxinc:671
 #, qt-format
 msgid "Standard"
-msgstr ""
+msgstr "標準"
 
 #: panel.jsxinc:673
 #, qt-format
 msgid "The standard not-too-big UI."
-msgstr ""
+msgstr "標準大小適中的使用者介面。"
 
 #: panel.jsxinc:676
 #, qt-format
 msgid "Expert"
-msgstr ""
+msgstr "專家"
 
 #: panel.jsxinc:678
 #, qt-format
 msgid "The smallest UI, for expert users."
-msgstr ""
+msgstr "最小的使用者介面，針對專家使用者。"
 
 #: panel.jsxinc:685
 #, qt-format
 msgid "Normal mode"
-msgstr ""
+msgstr "普通模式"
 
 #: panel.jsxinc:687
 #, qt-format
 msgid "Use at your own risk!"
-msgstr ""
+msgstr "使用需自行承擔風險！"
 
 #: panel.jsxinc:688
 #, qt-format
 msgid "Dev and Debug mode"
-msgstr ""
+msgstr "開發和除錯模式"
 
 #: panel.jsxinc:770
 #, qt-format
 msgid "Check for updates"
-msgstr ""
+msgstr "檢查更新"
 
 #: panel.jsxinc:784
 #, qt-format
 msgid "Default"
-msgstr ""
+msgstr "預設值"
 
 #: panel.jsxinc:786
 #, qt-format
 msgid "Reset the settings to their default values."
-msgstr ""
+msgstr "將設定重設為其預設值。"
 
 #: panel.jsxinc:793
 #, qt-format
 msgid "Apply"
-msgstr ""
+msgstr "套用"
 
 #: panel.jsxinc:795
 #, qt-format
 msgid "Apply settings."
-msgstr ""
+msgstr "套用設定。"
 
 #: panel.jsxinc:869
 #, qt-format
 msgid "You may need to restart the script for all changes to take effect."
-msgstr ""
+msgstr "您需要重新啟動腳本好讓全部的更改生效。"
 
 #: panel.jsxinc:910
 #, qt-format
 msgid "Help and options"
-msgstr ""
+msgstr "說明和選項"
 
 #: panel.jsxinc:924
 #, qt-format
 msgid "Edit settings"
-msgstr ""
+msgstr "編輯設定"
 
 #: progressbar.jsxinc:13
 #, qt-format
 msgid "Working"
-msgstr ""
+msgstr "工作中"
 
 #: progressbar.jsxinc:23
 #, qt-format
 msgid "Magic is happening"
-msgstr ""
+msgstr "魔法正在發生"
 
 #: rssPanel.jsxinc:88
 #, qt-format
 msgid "Previous"
-msgstr ""
+msgstr "上一個"
 
 #: rssPanel.jsxinc:93
 #, qt-format
 msgid "Next"
-msgstr ""
+msgstr "下一個"
 
 #: titleBar.jsxinc:55
 #, qt-format
 msgid "Keep this panel open"
-msgstr ""
+msgstr "保持開啟這個面板"
 
