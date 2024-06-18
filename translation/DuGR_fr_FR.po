@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
-"POT-Creation-Date: 2022-09-28 10:30\n"
-"PO-Revision-Date: 2022-09-29 09:03\n"
+"POT-Creation-Date: 2024-03-26 10:30\n"
+"PO-Revision-Date: 2024-06-18 12:05\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -17,841 +17,548 @@ msgstr ""
 "X-Crowdin-File-ID: 12\n"
 "Language: fr_FR\n"
 
-#: groupPanel.jsxinc:7
-#, qt-format
-msgid "All layers"
-msgstr "Tous les calques"
-
-#: groupPanel.jsxinc:8
-#, qt-format
-msgid "Selected"
-msgstr "Sélectionnés"
-
-#: groupPanel.jsxinc:9
-#, qt-format
-msgid "Grouped"
-msgstr "Groupés"
-
-#: groupPanel.jsxinc:10
-#, qt-format
-msgid "Ignored"
-msgstr "Ignorés"
-
-#: groupPanel.jsxinc:23
-#, qt-format
-msgid "Add selected layers to group."
-msgstr "Ajouter les calques sélectionnés au groupe."
-
-#: groupPanel.jsxinc:31
-#, qt-format
-msgid "Get groups from selected layers."
-msgstr "Récupérer les groupes des calques sélectionnés."
-
-#: groupPanel.jsxinc:39
-#, qt-format
-msgid "Remove selected layers from group."
-msgstr "Supprimer les calques sélectionnés du groupe."
-
-#: groupPanel.jsxinc:50
-#, qt-format
-msgid "Create new group."
-msgstr "Créer un nouveau groupe."
-
-#: groupPanel.jsxinc:58
-#, qt-format
-msgid "Change group name"
-msgstr "Modifier le nom du groupe"
-
-#: groupPanel.jsxinc:66
-#, qt-format
-msgid "Remove group."
-msgstr "Supprimer le groupe."
-
-#: groupPanel.jsxinc:77
-#, qt-format
-msgid "New group"
-msgstr "Nouveau groupe"
-
-#: groupPanel.jsxinc:87
-#, qt-format
-msgid "OK"
-msgstr "OK"
-
-#: mainPanel.jsxinc:42
-#, qt-format
-msgid "Exit isolation."
-msgstr "Quitter l'isolation."
-
-#: mainPanel.jsxinc:56
-#, qt-format
-msgid "Isolate"
-msgstr "Isoler"
-
-#: mainPanel.jsxinc:58
-#, qt-format
-msgid "Isolate selected groups."
-msgstr "Isoler les groupes sélectionnés."
-
-#: mainPanel.jsxinc:74
-#, qt-format
-msgid "Timeline"
-msgstr "Ligne temporelle"
-
-#: mainPanel.jsxinc:76
-#, qt-format
-msgid "Isolate selected groups, in the timeline only."
-msgstr "Isoler les groupes sélectionnés, dans la ligne temporelle seulement."
-
-#: mainPanel.jsxinc:92
-#, qt-format
-msgid "Comp"
-msgstr "Compo"
-
-#: mainPanel.jsxinc:94
-#, qt-format
-msgid "Isolate selected groups, in the composition panel only"
-msgstr "Isoler les groupes sélectionnés, dans le panneau de composition uniquement"
-
-#: mainPanel.jsxinc:112
-#, qt-format
-msgid "Set interactive (sticky) mode."
-msgstr "Utiliser le mode interactif (persistant)."
-
-#: mainPanel.jsxinc:188
-#, qt-format
-msgid "Show/Hide layers"
-msgstr "Afficher/masquer les calques"
-
-#: mainPanel.jsxinc:194
-#, qt-format
-msgid "Toggle audio"
-msgstr "(Dés)activer l'audio"
-
-#: mainPanel.jsxinc:200
-#, qt-format
-msgid "Toggle solo mode"
-msgstr "(Dés)activer le mode solo"
-
-#: mainPanel.jsxinc:206
-#, qt-format
-msgid "Lock layers"
-msgstr "Verrouiller les calques"
-
-#: mainPanel.jsxinc:212
-#, qt-format
-msgid "Shy layers"
-msgstr "Calques discrets"
-
-#: mainPanel.jsxinc:218
-#, qt-format
-msgid "Collapse transformation / Continuous rasterization"
-msgstr "Réduire les transformations / Pixellisation continue"
-
-#: mainPanel.jsxinc:224
-#, qt-format
-msgid "Guide layers"
-msgstr "Calques repères"
-
-#: mainPanel.jsxinc:231
-#, qt-format
-msgid "Set quality"
-msgstr "Changer la qualité"
-
-#: mainPanel.jsxinc:237
-#, qt-format
-msgid "Toggle effects"
-msgstr "(Dés)activer les effets"
-
-#: mainPanel.jsxinc:243
-#, qt-format
-msgid "Set frame blending mode"
-msgstr "Changer le mode de fusion d'images"
-
-#: mainPanel.jsxinc:249
-#, qt-format
-msgid "Toggle motion blur"
-msgstr "(Dés)activer le flou de mouvement"
-
-#: mainPanel.jsxinc:255
-#, qt-format
-msgid "Toggle adjustment layer mode"
-msgstr "(Dés)activer le mode calque d'effets"
-
-#: mainPanel.jsxinc:261
-#, qt-format
-msgid "Toggle 3D layer mode"
-msgstr "(Dés)activer le mode calque 3D"
-
-#: mainPanel.jsxinc:267
-#, qt-format
-msgid "Select layers"
-msgstr "Sélectionner les calques"
-
-#: mainPanel.jsxinc:434
-#, qt-format
-msgid "Custom Groups"
-msgstr "Groupes personnalisés"
-
-#: mainPanel.jsxinc:436
-#, qt-format
-msgid "Show custom layer groups"
-msgstr "Afficher les groupes de calques personnalisés"
-
-#: mainPanel.jsxinc:439
-#, qt-format
-msgid "All layer properties"
-msgstr "Toutes les propriétés de calque"
-
-#: mainPanel.jsxinc:441
-#, qt-format
-msgid "Show all properties"
-msgstr "Voir toutes les propriétés"
-
-#: mainPanel.jsxinc:444
-#, qt-format
-msgid "Hierarchy"
-msgstr "Hiérarchie"
-
-#: mainPanel.jsxinc:446
-#, qt-format
-msgid "Show hierarchical (parenting) properties"
-msgstr "Afficher les propriétés hiérarchiques (parentage)"
-
-#: mainPanel.jsxinc:449
-#, qt-format
-msgid "Layer types"
-msgstr "Types de calque"
-
-#: mainPanel.jsxinc:451
-#, qt-format
-msgid "Show layer types"
-msgstr "Afficher les types de calque"
-
-#: mainPanel.jsxinc:452
-#, qt-format
-msgid "Type"
-msgstr "Type"
-
-#: mainPanel.jsxinc:454
-#, qt-format
-msgid "Layer attributes"
-msgstr "Attributs de calque"
-
-#: mainPanel.jsxinc:456
-#, qt-format
-msgid "Show layer attributes"
-msgstr "Afficher les attributs de calque"
-
-#: mainPanel.jsxinc:457
-#, qt-format
-msgid "Attribute"
-msgstr "Attribut"
-
-#: mainPanel.jsxinc:459
-#, qt-format
-msgid "Animation"
-msgstr "Animation"
-
-#: mainPanel.jsxinc:461
-#, qt-format
-msgid "Show animation properties"
-msgstr "Afficher les propriétés d'animation"
-
-#: mainPanel.jsxinc:464
-#, qt-format
-msgid "Matte & Blending"
-msgstr "Cache et Fusion"
-
-#: mainPanel.jsxinc:466
-#, qt-format
-msgid "Show matte, blending, and alpha properties"
-msgstr "Afficher les caches, fusions et propriétés alpha"
-
-#: mainPanel.jsxinc:467
-#, qt-format
-msgid "Matte"
-msgstr "Cache"
-
-#: mainPanel.jsxinc:469
-#, qt-format
-msgid "Layer styles"
-msgstr "Styles de calque"
-
-#: mainPanel.jsxinc:471
-#, qt-format
-msgid "Show layer styles"
-msgstr "Afficher les styles de calque"
-
-#: mainPanel.jsxinc:472
-#, qt-format
-msgid "Layer Styles"
-msgstr "Styles de Calques"
-
-#: mainPanel.jsxinc:479
-#, qt-format
-msgid "Invert"
-msgstr "Inverser"
-
-#: mainPanel.jsxinc:481
-#, qt-format
-msgid "Invert the group/property selection"
-msgstr "Inverser la sélection du groupe/propriété"
-
-#: mainPanel.jsxinc:482
-#, qt-format
-msgid "Inverted"
-msgstr "Inversé"
-
-#: mainPanel.jsxinc:494
-#, qt-format
-msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
-msgstr "Utiliser soit l'opérateur ET(&) soit l'opérateur OU(/) pour la sélection de plusieurs groupes."
-
-#: mainPanel.jsxinc:514
-#, qt-format
-msgid "Remove all"
-msgstr "Tout supprimer"
-
-#: mainPanel.jsxinc:524
-#, qt-format
-msgid "Search..."
-msgstr "Chercher..."
-
-#: propPanel.jsxinc:9
-#, qt-format
-msgid "Hierarchy: Orphans"
-msgstr "Hiérarchie : Orphelins"
-
-#: propPanel.jsxinc:10
-#, qt-format
-msgid "Hierarchy: Have children"
-msgstr "Hiérarchie : Avec enfants"
-
-#: propPanel.jsxinc:12
-#, qt-format
-msgid "Type: Pre-compositions"
-msgstr "Type : Pré-compositions"
-
-#: propPanel.jsxinc:13
-#, qt-format
-msgid "Type: Null Objects"
-msgstr "Type : Objects Nuls"
-
-#: propPanel.jsxinc:14
-#, qt-format
-msgid "Type: Solids"
-msgstr "Type : Solides"
-
-#: propPanel.jsxinc:15
-#, qt-format
-msgid "Type: Shapes"
-msgstr "Type : Formes"
-
-#: propPanel.jsxinc:16
-#, qt-format
-msgid "Type: Texts"
-msgstr "Type : Textes"
-
-#: propPanel.jsxinc:17
-#, qt-format
-msgid "Type: Adjustment"
-msgstr "Type : Calques d'effets"
-
-#: propPanel.jsxinc:18
-#, qt-format
-msgid "Type: Lights"
-msgstr "Type : Lumières"
-
-#: propPanel.jsxinc:19
-#, qt-format
-msgid "Type: Cameras"
-msgstr "Type : Cameras"
-
-#: propPanel.jsxinc:21
-#, qt-format
-msgid "Attribute: Visible"
-msgstr "Attribut : Visible"
-
-#: propPanel.jsxinc:22
-#, qt-format
-msgid "Attribute: Has Audio"
-msgstr "Attribut : Avec audio"
-
-#: propPanel.jsxinc:23
-#, qt-format
-msgid "Attribute: Solo"
-msgstr "Attribut : Solo"
-
-#: propPanel.jsxinc:24
-#, qt-format
-msgid "Attribute: Locked"
-msgstr "Attribut : Verrouillé"
-
-#: propPanel.jsxinc:25
-#, qt-format
-msgid "Attribute: Shy"
-msgstr "Attribut : Discret"
-
-#: propPanel.jsxinc:26
-#, qt-format
-msgid "Attribute: Effects"
-msgstr "Attribut : Effets"
-
-#: propPanel.jsxinc:27
-#, qt-format
-msgid "Attribute: Motion Blur"
-msgstr "Attribut : Flou de mouvement"
-
-#: propPanel.jsxinc:28
-#, qt-format
-msgid "Attribute: 3D"
-msgstr "Attribut : 3D"
-
-#: propPanel.jsxinc:29
-#, qt-format
-msgid "Attribute: Guide"
-msgstr "Attribut : Repère"
-
-#: propPanel.jsxinc:31
-#, qt-format
-msgid "Animation: At current time"
-msgstr "Animation : À l'instant courant"
-
-#: propPanel.jsxinc:32
-#, qt-format
-msgid "Animation: In preview range"
-msgstr "Animation : Dans la zone de travail"
-
-#: propPanel.jsxinc:33
-#, qt-format
-msgid "Animation: Has keyframes"
-msgstr "Animation : Avec images clefs"
-
-#: propPanel.jsxinc:34
-#, qt-format
-msgid "Animation: Has expressions"
-msgstr "Animation : Avec expressions"
-
-#: propPanel.jsxinc:36
-#, qt-format
-msgid "Matte & Blending: Has mask"
-msgstr "Cache et Fusion : Avec masque"
-
-#: propPanel.jsxinc:37
-#, qt-format
-msgid "Matte & Blending: Has track matte"
-msgstr "Cache et Fusion : Avec calque de cache"
-
-#: propPanel.jsxinc:38
-#, qt-format
-msgid "Matte & Blending: Is track matte"
-msgstr "Cache et Fusion : Est calque de cache"
-
-#: propPanel.jsxinc:39
-#, qt-format
-msgid "Matte & Blending: Preserve transparency"
-msgstr "Cache et Fusion : Préserver la transparence"
-
-#: propPanel.jsxinc:40
-#, qt-format
-msgid "Matte & Blending: Normal blending mode"
-msgstr "Cache et Fusion : Mode de fusion normal"
-
-#: propPanel.jsxinc:41
-#, qt-format
-msgid "Matte & Blending: Other blending mode"
-msgstr "Cache et Fusion : Autre mode de fusion"
-
-#: propPanel.jsxinc:43
-#, qt-format
-msgid "Layer Styles: All"
-msgstr "Styles de calque : Tous"
-
-#: propPanel.jsxinc:44
-#, qt-format
-msgid "Layer Styles: Drop Shadow"
-msgstr "Styles de calque : Ombre portée"
-
-#: propPanel.jsxinc:45
-#, qt-format
-msgid "Layer Styles: Inner Shadow"
-msgstr "Styles de calques : Ombre interne"
-
-#: propPanel.jsxinc:46
-#, qt-format
-msgid "Layer Styles: Outer Glow"
-msgstr "Styles de calque : Luminescence externe"
-
-#: propPanel.jsxinc:47
-#, qt-format
-msgid "Layer Styles: Inner Glow"
-msgstr "Styles de calque : Luminescence interne"
-
-#: propPanel.jsxinc:48
-#, qt-format
-msgid "Layer Styles: Bevel and Emboss"
-msgstr "Styles de calque : Biseau et estampage"
-
-#: propPanel.jsxinc:49
-#, qt-format
-msgid "Layer Styles: Satin"
-msgstr "Styles de calque : Satin"
-
-#: propPanel.jsxinc:50
-#, qt-format
-msgid "Layer Styles: Color Overlay"
-msgstr "Styles de calque : Incrustation de couleur"
-
-#: propPanel.jsxinc:51
-#, qt-format
-msgid "Layer Styles: Gradient Overlay"
-msgstr "Styles de calque : Incrustation de dégradé"
-
-#: propPanel.jsxinc:52
-#, qt-format
-msgid "Layer Styles: Stroke"
-msgstr "Styles de calque : Contour"
-
-#: settings.jsxinc:6
-#, qt-format
-msgid "Hide Ae layer switches"
-msgstr "Masquer les options de calque Ae"
-
-#: settings.jsxinc:8
-#, qt-format
-msgid "Show or hide the After Effects layer switches buttons."
-msgstr "Afficher/Masquer les boutons d'options de calque After Effects."
-
-#: settings.jsxinc:9
-#, qt-format
-msgid "Show Ae layer switches"
-msgstr "Afficher les options de calque Ae"
-
-#: settings.jsxinc:15
-#, qt-format
-msgid "Locked layers: deny changes"
-msgstr "Calques verrouillés : refuser les modifications"
-
-#: settings.jsxinc:17
-#, qt-format
-msgid "What to do if a layer is locked."
-msgstr "Que faire si un calque est verrouillé."
-
-#: settings.jsxinc:18
-#, qt-format
-msgid "Locked layers: allow changes"
-msgstr "Calques verrouillés : autoriser les modifications"
-
-#: settings.jsxinc:23
-#, qt-format
-msgid "Type of warning frame to use"
-msgstr "Type de cadre d'avertissement à utiliser"
-
-#: settings.jsxinc:25
-#, qt-format
-msgid "Warning frame: None"
-msgstr "Cadre d'avertissement : Aucun"
-
-#: settings.jsxinc:27
-#, qt-format
-msgid "Don't use any warning frame."
-msgstr "Ne pas utiliser de cadre d'avertissement."
-
-#: settings.jsxinc:30
-#, qt-format
-msgid "Warning frame: Above"
-msgstr "Cadre d'avertissement : Au-dessus"
-
-#: settings.jsxinc:32
-#, qt-format
-msgid "Draw the frame above the composition."
-msgstr "Dessine le cadre au-dessus de la composition."
-
-#: settings.jsxinc:35
-#, qt-format
-msgid "Warning frame: Below"
-msgstr "Cadre d'avertissement : En dessous"
-
-#: settings.jsxinc:37
-#, qt-format
-msgid "Draw the frame below the composition."
-msgstr "Dessine le cadre sous la composition."
-
-#: settings.jsxinc:44
-#, qt-format
-msgid "Isolation: hide layers"
-msgstr "Isolation : masquer les calques"
-
-#: settings.jsxinc:46
-#, qt-format
-msgid "Method used to isolate layers in the composition."
-msgstr "Méthode utilisée pour isoler les calques dans la composition."
-
-#: settings.jsxinc:47
-#, qt-format
-msgid "Isolation: wireframe"
-msgstr "Isolation : filaire"
-
-#: settings.jsxinc:54
-#, qt-format
-msgid "Hide markers"
-msgstr "Masquer les marqueurs"
-
-#: settings.jsxinc:56
-#, qt-format
-msgid "whether to show or hide the tags on the layers."
-msgstr "Afficher ou masquer les tags sur les calques."
-
-#: settings.jsxinc:57
-#, qt-format
-msgid "Show markers"
-msgstr "Afficher les marqueurs"
-
-#: settings.jsxinc:63
-#, qt-format
-msgid "Auto-select layers"
-msgstr "Sélection automatique des calques"
-
-#: settings.jsxinc:64
-#, qt-format
-msgid "Automatically select layers when selecting groups or properties"
-msgstr "Sélectionner automatiquement les calques lors de la sélection de groupes ou de propriétés"
-
-#: settings.jsxinc:71
-#, qt-format
-msgid "Lock hidden layers"
-msgstr "Verrouiller les calques masqués"
-
-#: settings.jsxinc:73
-#, qt-format
-msgid "whether the hidden layers have to be locked."
-msgstr "Les calques masqués doivent-ils être verrouillés ?"
-
-#: comp.jsxinc:589
-#, qt-format
-msgid "Null"
-msgstr "Nul"
-
-#: comp.jsxinc:638
-#, qt-format
-msgid "Adjustment layer"
-msgstr "Calque d'effets"
-
-#: comp.jsxinc:667
-#, qt-format
-msgid "Solid"
-msgstr "Solide"
-
-#: comp.jsxinc:696
-#, qt-format
-msgid "Shape"
-msgstr "Forme"
-
-#: comp.jsxinc:706
-#, qt-format
-msgid "Rectangle"
-msgstr "Rectangle"
-
-#: comp.jsxinc:711
-#, qt-format
-msgid "Rounded rectangle"
-msgstr "Rectangle arrondi"
-
-#: comp.jsxinc:717
-#, qt-format
-msgid "Circle"
-msgstr "Cercle"
-
-#: comp.jsxinc:722
-#, qt-format
-msgid "Polygon"
-msgstr "Polygone"
-
-#: comp.jsxinc:728
-#, qt-format
-msgid "Star"
-msgstr "Étoile"
-
-#: duscriptui_extension.jsxinc:162
+#: DuGR_isolateGroup.jsx:22
 #, qt-format
 msgid "Cancel"
 msgstr "Annuler"
 
-#: duscriptui_extension.jsxinc:204
+#: DuGR_isolateGroup.jsx:23
 #, qt-format
-msgctxt "Select"
-msgid "None"
-msgstr "Aucun"
+msgid "Exit isolation"
+msgstr ""
 
-#: layer.jsxinc:478
+#: DuGR_isolateGroup.jsx:24
 #, qt-format
-msgid "The pseudo effect file does not exist."
-msgstr "Le fichier de pseudo-effet n'existe pas."
+msgid "Isolate"
+msgstr "Isoler"
 
-#: layer.jsxinc:538
+#: DuGR_isolateGroup.jsx:56
 #, qt-format
-msgid "Invalid pseudo effect file or match name."
-msgstr "Fichier ou \"matchName\" du pseudo-effet incorrect."
+msgid "All layers"
+msgstr "Tous les calques"
 
-#: layer.jsxinc:708
+#: DuGR_isolateGroup.jsx:57
 #, qt-format
-msgctxt "in layer name"
-msgid "Edit mode"
-msgstr "Mode édition"
+msgid "Selected"
+msgstr "Sélectionnés"
 
-#: layer.jsxinc:1506
+#: DuGR_isolateGroup.jsx:58
 #, qt-format
-msgid "Locator"
-msgstr "Localisateur"
+msgid "Grouped"
+msgstr "Groupés"
 
-#: project.jsxinc:467
+#: DuGR_isolateGroup.jsx:59
 #, qt-format
-msgid "Project Root"
-msgstr "Racine du projet"
+msgid "Ignored"
+msgstr "Ignorés"
 
-#: oco.jsxinc:336
+#: groupPanel.jsx:23
 #, qt-format
-msgid "Arm"
-msgstr "Bras"
+msgid "Add selected layers to group."
+msgstr "Ajouter les calques sélectionnés au groupe."
 
-#: oco.jsxinc:394
+#: groupPanel.jsx:31
 #, qt-format
-msgid "Shoulder"
-msgstr "Épaule"
+msgid "Get groups from selected layers."
+msgstr "Récupérer les groupes des calques sélectionnés."
 
-#: oco.jsxinc:443
+#: groupPanel.jsx:39
 #, qt-format
-msgid "Forearm"
-msgstr "Avant-Bras"
+msgid "Remove selected layers from group."
+msgstr "Supprimer les calques sélectionnés du groupe."
 
-#: oco.jsxinc:484
+#: groupPanel.jsx:50
 #, qt-format
-msgid "Hand"
-msgstr "Main"
+msgid "Create new group."
+msgstr "Créer un nouveau groupe."
 
-#: oco.jsxinc:525
+#: groupPanel.jsx:58
 #, qt-format
-msgid "Claws"
-msgstr "Griffes"
+msgid "Change group name"
+msgstr "Modifier le nom du groupe"
 
-#: oco.jsxinc:561
+#: groupPanel.jsx:66
 #, qt-format
-msgid "Tip"
-msgstr "Bout"
+msgid "Remove group."
+msgstr "Supprimer le groupe."
 
-#: oco.jsxinc:602
+#: groupPanel.jsx:77
 #, qt-format
-msgid "Heel"
-msgstr "Talon"
+msgid "New group"
+msgstr "Nouveau groupe"
 
-#: oco.jsxinc:664
+#: groupPanel.jsx:87
 #, qt-format
-msgid "Leg"
-msgstr "Jambe"
+msgid "OK"
+msgstr "OK"
 
-#: oco.jsxinc:703
+#: mainPanel.jsx:42
 #, qt-format
-msgid "Thigh"
-msgstr "Cuisse"
+msgid "Exit isolation."
+msgstr "Quitter l'isolation."
 
-#: oco.jsxinc:711
+#: mainPanel.jsx:58
 #, qt-format
-msgid "Calf"
-msgstr "Mollet"
+msgid "Isolate selected groups."
+msgstr "Isoler les groupes sélectionnés."
 
-#: oco.jsxinc:732
+#: mainPanel.jsx:74
 #, qt-format
-msgid "Foot"
-msgstr "Pied"
+msgid "Timeline"
+msgstr "Ligne temporelle"
 
-#: oco.jsxinc:754
+#: mainPanel.jsx:76
 #, qt-format
-msgid "Toes"
-msgstr "Orteils"
+msgid "Isolate selected groups, in the timeline only."
+msgstr "Isoler les groupes sélectionnés, dans la ligne temporelle seulement."
 
-#: oco.jsxinc:768
+#: mainPanel.jsx:92
 #, qt-format
-msgid "Hoof"
-msgstr "Sabot"
+msgid "Comp"
+msgstr "Compo"
 
-#: oco.jsxinc:839
+#: mainPanel.jsx:94
 #, qt-format
-msgid "Spine"
-msgstr "Colonne"
+msgid "Isolate selected groups, in the composition panel only"
+msgstr "Isoler les groupes sélectionnés, dans le panneau de composition uniquement"
 
-#: oco.jsxinc:857
+#: mainPanel.jsx:112
 #, qt-format
-msgid "Hips"
-msgstr "Hanches"
+msgid "Set interactive (sticky) mode."
+msgstr "Utiliser le mode interactif (persistant)."
 
-#: oco.jsxinc:878
+#: mainPanel.jsx:188
 #, qt-format
-msgid "Torso"
-msgstr "Torse"
+msgid "Show/Hide layers"
+msgstr "Afficher/masquer les calques"
 
-#: oco.jsxinc:899
+#: mainPanel.jsx:194
 #, qt-format
-msgid "Neck"
-msgstr "Cou"
+msgid "Toggle audio"
+msgstr "(Dés)activer l'audio"
 
-#: oco.jsxinc:908
+#: mainPanel.jsx:200
 #, qt-format
-msgid "Head"
-msgstr "Tête"
+msgid "Toggle solo mode"
+msgstr "(Dés)activer le mode solo"
 
-#: oco.jsxinc:944
+#: mainPanel.jsx:206
 #, qt-format
-msgid "Tail"
-msgstr "Queue"
+msgid "Lock layers"
+msgstr "Verrouiller les calques"
 
-#: oco.jsxinc:983
+#: mainPanel.jsx:212
 #, qt-format
-msgid "Hair"
-msgstr "Cheveux"
+msgid "Shy layers"
+msgstr "Calques discrets"
 
-#: oco.jsxinc:1045
+#: mainPanel.jsx:218
 #, qt-format
-msgid "Wing"
-msgstr "Aile"
+msgid "Collapse transformation / Continuous rasterization"
+msgstr "Réduire les transformations / Pixellisation continue"
 
-#: oco.jsxinc:1127
+#: mainPanel.jsx:224
 #, qt-format
-msgid "Feather"
-msgstr "Plume"
+msgid "Guide layers"
+msgstr "Calques repères"
 
-#: oco.jsxinc:1389
+#: mainPanel.jsx:231
 #, qt-format
-msgid "Fin"
-msgstr "Nageoire"
+msgid "Set quality"
+msgstr "Changer la qualité"
 
-#: oco.jsxinc:1410
+#: mainPanel.jsx:237
 #, qt-format
-msgid "Fishbone"
-msgstr "Arrête"
+msgid "Toggle effects"
+msgstr "(Dés)activer les effets"
 
-#: button.jsxinc:157
+#: mainPanel.jsx:243
+#, qt-format
+msgid "Set frame blending mode"
+msgstr "Changer le mode de fusion d'images"
+
+#: mainPanel.jsx:249
+#, qt-format
+msgid "Toggle motion blur"
+msgstr "(Dés)activer le flou de mouvement"
+
+#: mainPanel.jsx:255
+#, qt-format
+msgid "Toggle adjustment layer mode"
+msgstr "(Dés)activer le mode calque d'effets"
+
+#: mainPanel.jsx:261
+#, qt-format
+msgid "Toggle 3D layer mode"
+msgstr "(Dés)activer le mode calque 3D"
+
+#: mainPanel.jsx:267
+#, qt-format
+msgid "Select layers"
+msgstr "Sélectionner les calques"
+
+#: mainPanel.jsx:515
+#, qt-format
+msgid "Active Composition"
+msgstr ""
+
+#: mainPanel.jsx:520
+#, qt-format
+msgid "Active and Pre-compositions"
+msgstr ""
+
+#: mainPanel.jsx:525
+#, qt-format
+msgid "All Composition"
+msgstr ""
+
+#: mainPanel.jsx:536
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Custom Groups"
+msgstr ""
+
+#: mainPanel.jsx:538
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show custom layer groups"
+msgstr ""
+
+#: mainPanel.jsx:541
+#, qt-format
+msgctxt "DuGR selector"
+msgid "All layer properties"
+msgstr ""
+
+#: mainPanel.jsx:543
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show all properties"
+msgstr ""
+
+#: mainPanel.jsx:546
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Hierarchy"
+msgstr ""
+
+#: mainPanel.jsx:548
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show hierarchical (parenting) properties"
+msgstr ""
+
+#: mainPanel.jsx:551
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Layer types"
+msgstr ""
+
+#: mainPanel.jsx:553
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show layer types"
+msgstr ""
+
+#. "a type, as a kind (layer types)"
+#: mainPanel.jsx:554
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Type"
+msgstr ""
+
+#: mainPanel.jsx:556
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Layer attributes"
+msgstr ""
+
+#: mainPanel.jsx:558
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show layer attributes"
+msgstr ""
+
+#: mainPanel.jsx:559
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Attribute"
+msgstr ""
+
+#: mainPanel.jsx:561
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Animation"
+msgstr ""
+
+#: mainPanel.jsx:563
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show animation properties"
+msgstr ""
+
+#: mainPanel.jsx:566
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Matte & Blending"
+msgstr ""
+
+#: mainPanel.jsx:568
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show matte, blending, and alpha properties"
+msgstr ""
+
+#: mainPanel.jsx:569
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Matte"
+msgstr ""
+
+#: mainPanel.jsx:571
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Layer styles"
+msgstr ""
+
+#: mainPanel.jsx:573
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Show layer styles"
+msgstr ""
+
+#: mainPanel.jsx:574
+#, qt-format
+msgctxt "DuGR selector"
+msgid "Layer Styles"
+msgstr ""
+
+#: mainPanel.jsx:581
+#, qt-format
+msgid "Invert"
+msgstr "Inverser"
+
+#: mainPanel.jsx:583
+#, qt-format
+msgid "Invert the group/property selection"
+msgstr "Inverser la sélection du groupe/propriété"
+
+#: mainPanel.jsx:584
+#, qt-format
+msgid "Inverted"
+msgstr "Inversé"
+
+#: mainPanel.jsx:596
+#, qt-format
+msgid "Use either the AND(&) or OR(/) operator for multiple group selection."
+msgstr "Utiliser soit l'opérateur ET(&) soit l'opérateur OU(/) pour la sélection de plusieurs groupes."
+
+#: mainPanel.jsx:616
+#, qt-format
+msgid "Remove all"
+msgstr "Tout supprimer"
+
+#: mainPanel.jsx:626
+#, qt-format
+msgid "Search..."
+msgstr "Chercher..."
+
+#: DuAEF.jsxinc:3162
+#, qt-format
+msgid "Test failed!"
+msgstr ""
+
+#: DuAEF.jsxinc:10244
+#, qt-format
+msgid "Keep this panel open"
+msgstr "Garder ce panneau ouvert"
+
+#: DuAEF.jsxinc:10845
+#, qt-format
+msgid "%1 Settings"
+msgstr "Paramètres de %1"
+
+#: DuAEF.jsxinc:10870
+#, qt-format
+msgid "Set the language of the interface."
+msgstr "Choisir la langue de l'interface."
+
+#: DuAEF.jsxinc:10893
+#, qt-format
+msgid "Settings file"
+msgstr "Fichier de paramètres"
+
+#: DuAEF.jsxinc:10895
+#, qt-format
+msgid "Set the location of the settings file."
+msgstr "Choisir l'emplacement du fichier de paramètres."
+
+#: DuAEF.jsxinc:10906
+#, qt-format
+msgid "Set the highlight color."
+msgstr "Choisir la couleur de mise en valeur."
+
+#: DuAEF.jsxinc:10909
+#, qt-format
+msgid "After Effects Blue"
+msgstr "Bleu After Effects"
+
+#: DuAEF.jsxinc:10911
+#, qt-format
+msgid "The After Effects highlighting blue"
+msgstr "Bleu de mise en valeur d'After Effects"
+
+#: DuAEF.jsxinc:10914
+#, qt-format
+msgid "RxLab Purple"
+msgstr "Pourpre RxLab"
+
+#: DuAEF.jsxinc:10916
+#, qt-format
+msgid "The RxLaboratory Purple"
+msgstr "Le pourpre RxLaboratory (notre préféré)"
+
+#: DuAEF.jsxinc:10919
+#, qt-format
+msgid "Rainbox Red"
+msgstr "Rouge Rainbox"
+
+#: DuAEF.jsxinc:10921
+#, qt-format
+msgid "The Rainbox Productions Red"
+msgstr "Le rouge Rainbox Productions"
+
+#: DuAEF.jsxinc:10924
+#, qt-format
+msgid "After Effects Orange (CS6)"
+msgstr "Orange After Effects (CS6)"
+
+#: DuAEF.jsxinc:10926
+#, qt-format
+msgid "The After Effects highlighting orange from good ol'CS6"
+msgstr "L'orange de mise en valeur du bon vieux After Effects CS6"
+
+#: DuAEF.jsxinc:10929
+#, qt-format
+msgid "Custom..."
+msgstr "Personnaliser..."
+
+#: DuAEF.jsxinc:10931
+#, qt-format
+msgid "Select a custom color."
+msgstr "Sélectionner une couleur personnalisée."
+
+#: DuAEF.jsxinc:10938
+#, qt-format
+msgid "Select the UI mode."
+msgstr "Choisir le mode d'interface."
+
+#: DuAEF.jsxinc:10941
+#, qt-format
+msgid "Rookie"
+msgstr "Débutant"
+
+#: DuAEF.jsxinc:10943
+#, qt-format
+msgid "The easiest-to-use mode, but also the biggest UI."
+msgstr "Le mode le plus facile, mais aussi la plus grosse interface."
+
+#: DuAEF.jsxinc:10946
+#, qt-format
+msgid "Standard"
+msgstr "Standard"
+
+#: DuAEF.jsxinc:10948
+#, qt-format
+msgid "The standard not-too-big UI."
+msgstr "L'interface standard, pas trop grosse."
+
+#: DuAEF.jsxinc:10951
+#, qt-format
+msgid "Expert"
+msgstr "Expert"
+
+#: DuAEF.jsxinc:10953
+#, qt-format
+msgid "The smallest UI, for expert users."
+msgstr "La plus petite IU, pour les utilisateurs experts."
+
+#: DuAEF.jsxinc:10960
+#, qt-format
+msgid "Normal mode"
+msgstr "Mode normal"
+
+#: DuAEF.jsxinc:10962
+#, qt-format
+msgid "Use at your own risk!"
+msgstr "Utilisez à vos risques et périls !"
+
+#: DuAEF.jsxinc:10963
+#, qt-format
+msgid "Dev and Debug mode"
+msgstr "Mode Dev et Débogage"
+
+#: DuAEF.jsxinc:11045
+#, qt-format
+msgid "Check for updates"
+msgstr "Vérifier les mises à jour"
+
+#: DuAEF.jsxinc:11059
+#, qt-format
+msgid "Default"
+msgstr "Défaut"
+
+#: DuAEF.jsxinc:11061
+#, qt-format
+msgid "Reset the settings to their default values."
+msgstr "Réinitialiser les paramètres à leurs valeurs par défaut."
+
+#: DuAEF.jsxinc:11068
+#, qt-format
+msgid "Apply"
+msgstr "Appliquer"
+
+#: DuAEF.jsxinc:11070
+#, qt-format
+msgid "Apply settings."
+msgstr "Appliquer les paramètres."
+
+#: DuAEF.jsxinc:11144
+#, qt-format
+msgid "You may need to restart the script for all changes to take effect."
+msgstr "Il faut peut-être redémarrer le script pour que tous les changements soient prix en compte."
+
+#: DuAEF.jsxinc:11176
+#, qt-format
+msgid "Thank you for your donations!"
+msgstr "Merci pour vos dons !"
+
+#: DuAEF.jsxinc:11188
+#, qt-format
+msgid "Help and options"
+msgstr "Aide et options"
+
+#: DuAEF.jsxinc:11202
+#, qt-format
+msgid "Edit settings"
+msgstr "Éditer les paramètres"
+
+#: DuAEF.jsxinc:11580
 #, qt-format
 msgid "[Shift]: More options..."
 msgstr "[Shift]: Plus d'options..."
 
-#: colorSelector.jsxinc:65
+#: DuAEF.jsxinc:11609
 #, qt-format
-msgid "Set a random value."
-msgstr "Choisir une valeur aléatoire."
+msgid "Options"
+msgstr ""
 
-#. "path for a file or a folder"
-#: fileSelector.jsxinc:65
-#, qt-format
-msgctxt "file system"
-msgid "Path..."
-msgstr "Chemin..."
-
-#: help.jsxinc:42
+#: DuAEF.jsxinc:11989
 #, qt-format
 msgid "Bug Report or Feature Request"
 msgstr "Rapport de bug ou demande de fonctionnalité"
 
-#: help.jsxinc:43
+#: DuAEF.jsxinc:11990
 #, qt-format
 msgid "Bug report\n"
 "Feature request\n\n"
@@ -860,37 +567,32 @@ msgstr "Rapport de bug\n"
 "Demande de fonctionnalité\n\n"
 "Dites-nous ce qui ne va pas ou demandez une nouvelle fonctionnalité."
 
-#: help.jsxinc:86
+#: DuAEF.jsxinc:12033
 #, qt-format
 msgid "Help"
 msgstr "Aide"
 
-#: help.jsxinc:87
+#: DuAEF.jsxinc:12034
 #, qt-format
 msgid "Get help."
 msgstr "Obtenez de l'aide."
 
-#: help.jsxinc:131
+#: DuAEF.jsxinc:12078
 #, qt-format
 msgid "Translate %1"
 msgstr "Traduire %1"
 
-#: help.jsxinc:132
+#: DuAEF.jsxinc:12079
 #, qt-format
 msgid "Help translating %1 to make it available to more people."
 msgstr "Aidez à traduire %1 pour le rendre accessible à plus de monde."
 
-#: help.jsxinc:342
+#: DuAEF.jsxinc:12289
 #, qt-format
 msgid "New version"
 msgstr "Nouvelle version"
 
-#: help.jsxinc:480
-#, qt-format
-msgid "Thank you for your donations!"
-msgstr "Merci pour vos dons !"
-
-#: help.jsxinc:486
+#: DuAEF.jsxinc:12433
 #, qt-format
 msgid "This month, the %1 fund is $%2.\n"
 "That's %3% of our monthly goal ( $%4 )\n\n"
@@ -899,242 +601,665 @@ msgstr "Ce mois ci, les fonds de %1 sont de %2 $.\n"
 "C'est %3% de notre but mensuel (%4 $)\n\n"
 "Cliquez sur ce bouton pour rejoindre le fonds de développement !"
 
+#. "path for a file or a folder"
+#: DuAEF.jsxinc:13801
+#, qt-format
+msgctxt "file system"
+msgid "Path..."
+msgstr "Chemin..."
+
+#: DuAEF.jsxinc:14569
+#, qt-format
+msgid "Set a random value."
+msgstr "Choisir une valeur aléatoire."
+
+#: DuAEF.jsxinc:14847
+#, qt-format
+msgid "Magic is happening"
+msgstr "Magie en cours"
+
+#: DuAEF.jsxinc:14872
+#, qt-format
+msgid "Working"
+msgstr "Au travail"
+
 #. "an item in the After Effects project"
-#: library.jsxinc:162
+#: DuAEF.jsxinc:15315
 #, qt-format
 msgctxt "project"
 msgid "Item"
 msgstr "Élément"
 
 #. "as in "run script""
-#: library.jsxinc:163
+#: DuAEF.jsxinc:15316
 #, qt-format
 msgctxt "file"
 msgid "Run"
 msgstr "Exécuter"
 
-#: library.jsxinc:164
+#: DuAEF.jsxinc:15317
 #, qt-format
 msgid "Open folder"
 msgstr "Ouvrir le dossier"
 
-#: library.jsxinc:165
+#: DuAEF.jsxinc:15318
 #, qt-format
 msgid "Add item or category"
 msgstr "Ajouter un élément ou une catégorie"
 
-#: library.jsxinc:166
+#: DuAEF.jsxinc:15319
 #, qt-format
 msgid "Edit item or category"
 msgstr "Éditer l'élément ou la catégorie"
 
-#: library.jsxinc:167
+#: DuAEF.jsxinc:15320
 #, qt-format
 msgid "Remove item or category"
 msgstr "Retirer l'élément ou la catégorie"
 
-#: library.jsxinc:421
+#: DuAEF.jsxinc:15494
+#, qt-format
+msgid "Item not found."
+msgstr ""
+
+#. "start typing a command in a command line interface"
+#: DuAEF.jsxinc:15579
 #, qt-format
 msgid "Start typing..."
 msgstr "Commencez à écrire..."
 
-#: library.jsxinc:549
+#. "refresh a list"
+#: DuAEF.jsxinc:15707
 #, qt-format
 msgid "Refresh"
 msgstr "Actualiser"
 
-#: library.jsxinc:567
+#: DuAEF.jsxinc:15725
 #, qt-format
 msgid "Category"
 msgstr "Catégorie"
 
-#: panel.jsxinc:570
+#: DuAEF.jsxinc:17004
 #, qt-format
-msgid "%1 Settings"
-msgstr "Paramètres de %1"
+msgid "Arm"
+msgstr "Bras"
 
-#: panel.jsxinc:595
+#: DuAEF.jsxinc:17062
 #, qt-format
-msgid "Set the language of the interface."
-msgstr "Choisir la langue de l'interface."
+msgid "Shoulder"
+msgstr "Épaule"
 
-#: panel.jsxinc:618
+#: DuAEF.jsxinc:17111
 #, qt-format
-msgid "Settings file"
-msgstr "Fichier de paramètres"
+msgid "Forearm"
+msgstr "Avant-Bras"
 
-#: panel.jsxinc:620
+#: DuAEF.jsxinc:17152
 #, qt-format
-msgid "Set the location of the settings file."
-msgstr "Choisir l'emplacement du fichier de paramètres."
+msgid "Hand"
+msgstr "Main"
 
-#: panel.jsxinc:631
+#: DuAEF.jsxinc:17193
 #, qt-format
-msgid "Set the highlight color."
-msgstr "Choisir la couleur de mise en valeur."
+msgid "Claws"
+msgstr "Griffes"
 
-#: panel.jsxinc:634
+#: DuAEF.jsxinc:17229
 #, qt-format
-msgid "After Effects Blue"
-msgstr "Bleu After Effects"
+msgid "Tip"
+msgstr "Bout"
 
-#: panel.jsxinc:636
+#: DuAEF.jsxinc:17270
 #, qt-format
-msgid "The After Effects highlighting blue"
-msgstr "Bleu de mise en valeur d'After Effects"
+msgid "Heel"
+msgstr "Talon"
 
-#: panel.jsxinc:639
+#: DuAEF.jsxinc:17332
 #, qt-format
-msgid "RxLab Purple"
-msgstr "Pourpre RxLab"
+msgid "Leg"
+msgstr "Jambe"
 
-#: panel.jsxinc:641
+#: DuAEF.jsxinc:17371
 #, qt-format
-msgid "The RxLaboratory Purple"
-msgstr "Le pourpre RxLaboratory (notre préféré)"
+msgid "Thigh"
+msgstr "Cuisse"
 
-#: panel.jsxinc:644
+#: DuAEF.jsxinc:17379
 #, qt-format
-msgid "Rainbox Red"
-msgstr "Rouge Rainbox"
+msgid "Calf"
+msgstr "Mollet"
 
-#: panel.jsxinc:646
+#: DuAEF.jsxinc:17400
 #, qt-format
-msgid "The Rainbox Productions Red"
-msgstr "Le rouge Rainbox Productions"
+msgid "Foot"
+msgstr "Pied"
 
-#: panel.jsxinc:649
+#: DuAEF.jsxinc:17422
 #, qt-format
-msgid "After Effects Orange (CS6)"
-msgstr "Orange After Effects (CS6)"
+msgid "Toes"
+msgstr "Orteils"
 
-#: panel.jsxinc:651
+#: DuAEF.jsxinc:17436
 #, qt-format
-msgid "The After Effects highlighting orange from good ol'CS6"
-msgstr "L'orange de mise en valeur du bon vieux After Effects CS6"
+msgid "Hoof"
+msgstr "Sabot"
 
-#: panel.jsxinc:654
+#: DuAEF.jsxinc:17507
 #, qt-format
-msgid "Custom..."
-msgstr "Personnaliser..."
+msgid "Spine"
+msgstr "Colonne"
 
-#: panel.jsxinc:656
+#: DuAEF.jsxinc:17525
 #, qt-format
-msgid "Select a custom color."
-msgstr "Sélectionner une couleur personnalisée."
+msgid "Hips"
+msgstr "Hanches"
 
-#: panel.jsxinc:663
+#: DuAEF.jsxinc:17546
 #, qt-format
-msgid "Select the UI mode."
-msgstr "Choisir le mode d'interface."
+msgid "Torso"
+msgstr "Torse"
 
-#: panel.jsxinc:666
+#: DuAEF.jsxinc:17567
 #, qt-format
-msgid "Rookie"
-msgstr "Débutant"
+msgid "Neck"
+msgstr "Cou"
 
-#: panel.jsxinc:668
+#: DuAEF.jsxinc:17576
 #, qt-format
-msgid "The easiest-to-use mode, but also the biggest UI."
-msgstr "Le mode le plus facile, mais aussi la plus grosse interface."
+msgid "Head"
+msgstr "Tête"
 
-#: panel.jsxinc:671
+#: DuAEF.jsxinc:17612
 #, qt-format
-msgid "Standard"
-msgstr "Standard"
+msgid "Tail"
+msgstr "Queue"
 
-#: panel.jsxinc:673
+#: DuAEF.jsxinc:17651
 #, qt-format
-msgid "The standard not-too-big UI."
-msgstr "L'interface standard, pas trop grosse."
+msgid "Hair"
+msgstr "Cheveux"
 
-#: panel.jsxinc:676
+#: DuAEF.jsxinc:17713
 #, qt-format
-msgid "Expert"
-msgstr "Expert"
+msgid "Wing"
+msgstr "Aile"
 
-#: panel.jsxinc:678
+#: DuAEF.jsxinc:17795
 #, qt-format
-msgid "The smallest UI, for expert users."
-msgstr "La plus petite IU, pour les utilisateurs experts."
+msgctxt "Anatomy"
+msgid "Feather"
+msgstr ""
 
-#: panel.jsxinc:685
+#: DuAEF.jsxinc:18057
 #, qt-format
-msgid "Normal mode"
-msgstr "Mode normal"
+msgctxt "Anatomy"
+msgid "Fin"
+msgstr ""
 
-#: panel.jsxinc:687
+#: DuAEF.jsxinc:18078
 #, qt-format
-msgid "Use at your own risk!"
-msgstr "Utilisez à vos risques et périls !"
+msgctxt "Anatomy"
+msgid "Fishbone"
+msgstr ""
 
-#: panel.jsxinc:688
+#: DuAEF.jsxinc:19266
 #, qt-format
-msgid "Dev and Debug mode"
-msgstr "Mode Dev et Débogage"
+msgctxt "Select"
+msgid "None"
+msgstr "Aucun"
 
-#: panel.jsxinc:770
+#: DuAEF.jsxinc:19907
 #, qt-format
-msgid "Check for updates"
-msgstr "Vérifier les mises à jour"
+msgid "Selected properties"
+msgstr ""
 
-#: panel.jsxinc:784
+#: DuAEF.jsxinc:19911
 #, qt-format
-msgid "Default"
-msgstr "Défaut"
+msgid "Selected layers"
+msgstr ""
 
-#: panel.jsxinc:786
+#: DuAEF.jsxinc:19915
 #, qt-format
-msgid "Reset the settings to their default values."
-msgstr "Réinitialiser les paramètres à leurs valeurs par défaut."
+msgid "Active composition"
+msgstr ""
 
-#: panel.jsxinc:793
+#: DuAEF.jsxinc:19919
 #, qt-format
-msgid "Apply"
-msgstr "Appliquer"
+msgid "Selected compositions"
+msgstr ""
 
-#: panel.jsxinc:795
+#: DuAEF.jsxinc:19923
 #, qt-format
-msgid "Apply settings."
-msgstr "Appliquer les paramètres."
+msgid "All compositions"
+msgstr ""
 
-#: panel.jsxinc:869
+#. "%1 will be the name of the panel"
+#: DuAEF.jsxinc:21196
 #, qt-format
-msgid "You may need to restart the script for all changes to take effect."
-msgstr "Il faut peut-être redémarrer le script pour que tous les changements soient prix en compte."
+msgid "The '%1' panel is not installed."
+msgstr ""
 
-#: panel.jsxinc:910
+#: DuAEF.jsxinc:29093
 #, qt-format
-msgid "Help and options"
-msgstr "Aide et options"
+msgid "You're starting a process which can take some time."
+msgstr ""
 
-#: panel.jsxinc:924
+#: DuAEF.jsxinc:29094
 #, qt-format
-msgid "Edit settings"
-msgstr "Éditer les paramètres"
+msgid "Hiding layer controls will improve performance a lot. Do you want to toggle layer controls now?"
+msgstr ""
 
-#: progressbar.jsxinc:13
+#: DuAEF.jsxinc:29095
 #, qt-format
-msgid "Working"
-msgstr "Au travail"
+msgid "If layer controls are already hidden, you can ignore this."
+msgstr ""
 
-#: progressbar.jsxinc:23
+#: DuAEF.jsxinc:29099
 #, qt-format
-msgid "Magic is happening"
-msgstr "Magie en cours"
+msgid "Permanently disable this alert."
+msgstr ""
 
-#: rssPanel.jsxinc:88
+#: DuAEF.jsxinc:29101
 #, qt-format
-msgid "Previous"
-msgstr "Précédent"
+msgid "You can disable this alert dialog from showing before long operations.\n"
+"Layer Controls state won't be changed."
+msgstr ""
 
-#: rssPanel.jsxinc:93
+#: DuAEF.jsxinc:29102
 #, qt-format
-msgid "Next"
-msgstr "Suivant"
+msgid "This alert will be disabled."
+msgstr ""
 
-#: titleBar.jsxinc:55
+#: DuAEF.jsxinc:29115
 #, qt-format
-msgid "Keep this panel open"
-msgstr "Garder ce panneau ouvert"
+msgid "Ignore"
+msgstr ""
+
+#: DuAEF.jsxinc:29120
+#, qt-format
+msgid "Hide layer controls"
+msgstr ""
+
+#: DuAEF.jsxinc:29156
+#, qt-format
+msgid "Magic is happening..."
+msgstr ""
+
+#: DuAEF.jsxinc:29639
+#, qt-format
+msgid "Project Root"
+msgstr "Racine du projet"
+
+#: DuAEF.jsxinc:30655
+#, qt-format
+msgctxt "After Effects Layer"
+msgid "Null"
+msgstr ""
+
+#: DuAEF.jsxinc:30746
+#, qt-format
+msgctxt "After Effects Layer"
+msgid "Shape"
+msgstr ""
+
+#: DuAEF.jsxinc:30756
+#, qt-format
+msgid "Rectangle"
+msgstr "Rectangle"
+
+#: DuAEF.jsxinc:30761
+#, qt-format
+msgid "Rounded rectangle"
+msgstr "Rectangle arrondi"
+
+#: DuAEF.jsxinc:30767
+#, qt-format
+msgid "Circle"
+msgstr "Cercle"
+
+#: DuAEF.jsxinc:30772
+#, qt-format
+msgid "Polygon"
+msgstr "Polygone"
+
+#: DuAEF.jsxinc:30778
+#, qt-format
+msgid "Star"
+msgstr "Étoile"
+
+#: DuAEF.jsxinc:31643
+#, qt-format
+msgid "The pseudo effect file does not exist."
+msgstr "Le fichier de pseudo-effet n'existe pas."
+
+#: DuAEF.jsxinc:31705
+#, qt-format
+msgid "Invalid pseudo effect file or match name."
+msgstr "Fichier ou \"matchName\" du pseudo-effet incorrect."
+
+#: DuAEF.jsxinc:31877
+#, qt-format
+msgctxt "in layer name"
+msgid "Edit mode"
+msgstr "Mode édition"
+
+#: DuAEF.jsxinc:32701
+#, qt-format
+msgid "Locator"
+msgstr "Localisateur"
+
+#: propPanel.jsx:9
+#, qt-format
+msgid "Hierarchy: Orphans"
+msgstr "Hiérarchie : Orphelins"
+
+#: propPanel.jsx:10
+#, qt-format
+msgid "Hierarchy: Have children"
+msgstr "Hiérarchie : Avec enfants"
+
+#: propPanel.jsx:12
+#, qt-format
+msgid "Type: Pre-compositions"
+msgstr "Type : Pré-compositions"
+
+#: propPanel.jsx:13
+#, qt-format
+msgid "Type: Null Objects"
+msgstr "Type : Objects Nuls"
+
+#: propPanel.jsx:14
+#, qt-format
+msgid "Type: Solids"
+msgstr "Type : Solides"
+
+#: propPanel.jsx:15
+#, qt-format
+msgid "Type: Shapes"
+msgstr "Type : Formes"
+
+#: propPanel.jsx:16
+#, qt-format
+msgid "Type: Texts"
+msgstr "Type : Textes"
+
+#: propPanel.jsx:17
+#, qt-format
+msgid "Type: Adjustment"
+msgstr "Type : Calques d'effets"
+
+#: propPanel.jsx:18
+#, qt-format
+msgid "Type: Lights"
+msgstr "Type : Lumières"
+
+#: propPanel.jsx:19
+#, qt-format
+msgid "Type: Cameras"
+msgstr "Type : Cameras"
+
+#: propPanel.jsx:20
+#, qt-format
+msgid "Type: 3D Models"
+msgstr ""
+
+#: propPanel.jsx:22
+#, qt-format
+msgid "Attribute: Visible"
+msgstr "Attribut : Visible"
+
+#: propPanel.jsx:23
+#, qt-format
+msgid "Attribute: Has Audio"
+msgstr "Attribut : Avec audio"
+
+#: propPanel.jsx:24
+#, qt-format
+msgid "Attribute: Solo"
+msgstr "Attribut : Solo"
+
+#: propPanel.jsx:25
+#, qt-format
+msgid "Attribute: Locked"
+msgstr "Attribut : Verrouillé"
+
+#: propPanel.jsx:26
+#, qt-format
+msgid "Attribute: Shy"
+msgstr "Attribut : Discret"
+
+#: propPanel.jsx:27
+#, qt-format
+msgid "Attribute: Effects"
+msgstr "Attribut : Effets"
+
+#: propPanel.jsx:28
+#, qt-format
+msgid "Attribute: Motion Blur"
+msgstr "Attribut : Flou de mouvement"
+
+#: propPanel.jsx:29
+#, qt-format
+msgid "Attribute: 3D"
+msgstr "Attribut : 3D"
+
+#: propPanel.jsx:30
+#, qt-format
+msgid "Attribute: Guide"
+msgstr "Attribut : Repère"
+
+#: propPanel.jsx:32
+#, qt-format
+msgid "Animation: At current time"
+msgstr "Animation : À l'instant courant"
+
+#: propPanel.jsx:33
+#, qt-format
+msgid "Animation: In preview range"
+msgstr "Animation : Dans la zone de travail"
+
+#: propPanel.jsx:34
+#, qt-format
+msgid "Animation: Has keyframes"
+msgstr "Animation : Avec images clefs"
+
+#: propPanel.jsx:35
+#, qt-format
+msgid "Animation: Has expressions"
+msgstr "Animation : Avec expressions"
+
+#: propPanel.jsx:37
+#, qt-format
+msgid "Matte & Blending: Has mask"
+msgstr "Cache et Fusion : Avec masque"
+
+#: propPanel.jsx:38
+#, qt-format
+msgid "Matte & Blending: Has track matte"
+msgstr "Cache et Fusion : Avec calque de cache"
+
+#: propPanel.jsx:39
+#, qt-format
+msgid "Matte & Blending: Is track matte"
+msgstr "Cache et Fusion : Est calque de cache"
+
+#: propPanel.jsx:40
+#, qt-format
+msgid "Matte & Blending: Preserve transparency"
+msgstr "Cache et Fusion : Préserver la transparence"
+
+#: propPanel.jsx:41
+#, qt-format
+msgid "Matte & Blending: Normal blending mode"
+msgstr "Cache et Fusion : Mode de fusion normal"
+
+#: propPanel.jsx:42
+#, qt-format
+msgid "Matte & Blending: Other blending mode"
+msgstr "Cache et Fusion : Autre mode de fusion"
+
+#: propPanel.jsx:44
+#, qt-format
+msgid "Layer Styles: All"
+msgstr "Styles de calque : Tous"
+
+#: propPanel.jsx:45
+#, qt-format
+msgid "Layer Styles: Drop Shadow"
+msgstr "Styles de calque : Ombre portée"
+
+#: propPanel.jsx:46
+#, qt-format
+msgid "Layer Styles: Inner Shadow"
+msgstr "Styles de calques : Ombre interne"
+
+#: propPanel.jsx:47
+#, qt-format
+msgid "Layer Styles: Outer Glow"
+msgstr "Styles de calque : Luminescence externe"
+
+#: propPanel.jsx:48
+#, qt-format
+msgid "Layer Styles: Inner Glow"
+msgstr "Styles de calque : Luminescence interne"
+
+#: propPanel.jsx:49
+#, qt-format
+msgid "Layer Styles: Bevel and Emboss"
+msgstr "Styles de calque : Biseau et estampage"
+
+#: propPanel.jsx:50
+#, qt-format
+msgid "Layer Styles: Satin"
+msgstr "Styles de calque : Satin"
+
+#: propPanel.jsx:51
+#, qt-format
+msgid "Layer Styles: Color Overlay"
+msgstr "Styles de calque : Incrustation de couleur"
+
+#: propPanel.jsx:52
+#, qt-format
+msgid "Layer Styles: Gradient Overlay"
+msgstr "Styles de calque : Incrustation de dégradé"
+
+#: propPanel.jsx:53
+#, qt-format
+msgid "Layer Styles: Stroke"
+msgstr "Styles de calque : Contour"
+
+#: settings.jsx:6
+#, qt-format
+msgid "Hide Ae layer switches"
+msgstr "Masquer les options de calque Ae"
+
+#: settings.jsx:8
+#, qt-format
+msgid "Show or hide the After Effects layer switches buttons."
+msgstr "Afficher/Masquer les boutons d'options de calque After Effects."
+
+#: settings.jsx:9
+#, qt-format
+msgid "Show Ae layer switches"
+msgstr "Afficher les options de calque Ae"
+
+#: settings.jsx:15
+#, qt-format
+msgid "Locked layers: deny changes"
+msgstr "Calques verrouillés : refuser les modifications"
+
+#: settings.jsx:17
+#, qt-format
+msgid "What to do if a layer is locked."
+msgstr "Que faire si un calque est verrouillé."
+
+#: settings.jsx:18
+#, qt-format
+msgid "Locked layers: allow changes"
+msgstr "Calques verrouillés : autoriser les modifications"
+
+#: settings.jsx:23
+#, qt-format
+msgid "Type of warning frame to use"
+msgstr "Type de cadre d'avertissement à utiliser"
+
+#: settings.jsx:25
+#, qt-format
+msgid "Warning frame: None"
+msgstr "Cadre d'avertissement : Aucun"
+
+#: settings.jsx:27
+#, qt-format
+msgid "Don't use any warning frame."
+msgstr "Ne pas utiliser de cadre d'avertissement."
+
+#: settings.jsx:30
+#, qt-format
+msgid "Warning frame: Above"
+msgstr "Cadre d'avertissement : Au-dessus"
+
+#: settings.jsx:32
+#, qt-format
+msgid "Draw the frame above the composition."
+msgstr "Dessine le cadre au-dessus de la composition."
+
+#: settings.jsx:35
+#, qt-format
+msgid "Warning frame: Below"
+msgstr "Cadre d'avertissement : En dessous"
+
+#: settings.jsx:37
+#, qt-format
+msgid "Draw the frame below the composition."
+msgstr "Dessine le cadre sous la composition."
+
+#: settings.jsx:44
+#, qt-format
+msgid "Isolation: hide layers"
+msgstr "Isolation : masquer les calques"
+
+#: settings.jsx:46
+#, qt-format
+msgid "Method used to isolate layers in the composition."
+msgstr "Méthode utilisée pour isoler les calques dans la composition."
+
+#: settings.jsx:47
+#, qt-format
+msgid "Isolation: wireframe"
+msgstr "Isolation : filaire"
+
+#: settings.jsx:54
+#, qt-format
+msgid "Hide markers"
+msgstr "Masquer les marqueurs"
+
+#: settings.jsx:56
+#, qt-format
+msgid "whether to show or hide the tags on the layers."
+msgstr "Afficher ou masquer les tags sur les calques."
+
+#: settings.jsx:57
+#, qt-format
+msgid "Show markers"
+msgstr "Afficher les marqueurs"
+
+#: settings.jsx:63
+#, qt-format
+msgid "Auto-select layers"
+msgstr "Sélection automatique des calques"
+
+#: settings.jsx:64
+#, qt-format
+msgid "Automatically select layers when selecting groups or properties"
+msgstr "Sélectionner automatiquement les calques lors de la sélection de groupes ou de propriétés"
+
+#: settings.jsx:71
+#, qt-format
+msgid "Lock hidden layers"
+msgstr "Verrouiller les calques masqués"
+
+#: settings.jsx:73
+#, qt-format
+msgid "whether the hidden layers have to be locked."
+msgstr "Les calques masqués doivent-ils être verrouillés ?"
 
