@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 12:05\n"
+"PO-Revision-Date: 2024-06-18 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -200,23 +200,23 @@ msgstr "Seleccionar las capas"
 #: mainPanel.jsx:515
 #, qt-format
 msgid "Active Composition"
-msgstr ""
+msgstr "Composición activa"
 
 #: mainPanel.jsx:520
 #, qt-format
 msgid "Active and Pre-compositions"
-msgstr ""
+msgstr "Composición activa y precomposiciones"
 
 #: mainPanel.jsx:525
 #, qt-format
 msgid "All Composition"
-msgstr ""
+msgstr "Todas las composiciones"
 
 #: mainPanel.jsx:536
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Custom Groups"
-msgstr ""
+msgstr "Grupos personalizados"
 
 #: mainPanel.jsx:538
 #, qt-format
@@ -234,7 +234,7 @@ msgstr "Todas las propiedades de capa"
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show all properties"
-msgstr ""
+msgstr "Mostrar todas las propiedades"
 
 #: mainPanel.jsx:546
 #, qt-format
@@ -246,92 +246,92 @@ msgstr "Jerarquía"
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show hierarchical (parenting) properties"
-msgstr ""
+msgstr "Mostrar las propiedades de jerarquía (emparentamiento)"
 
 #: mainPanel.jsx:551
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer types"
-msgstr ""
+msgstr "Tipos de capa"
 
 #: mainPanel.jsx:553
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer types"
-msgstr ""
+msgstr "Mostrar tipos de capa"
 
 #. "a type, as a kind (layer types)"
 #: mainPanel.jsx:554
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: mainPanel.jsx:556
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer attributes"
-msgstr ""
+msgstr "Atributos de capa"
 
 #: mainPanel.jsx:558
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer attributes"
-msgstr ""
+msgstr "Mostrar atributos de capa"
 
 #: mainPanel.jsx:559
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Attribute"
-msgstr ""
+msgstr "Atributo"
 
 #: mainPanel.jsx:561
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Animation"
-msgstr ""
+msgstr "Animación"
 
 #: mainPanel.jsx:563
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show animation properties"
-msgstr ""
+msgstr "Mostrar propiedades de animación"
 
 #: mainPanel.jsx:566
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Matte & Blending"
-msgstr ""
+msgstr "Mate y fusión"
 
 #: mainPanel.jsx:568
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show matte, blending, and alpha properties"
-msgstr ""
+msgstr "Mostrar mate, fusión y propiedades de alfa"
 
 #: mainPanel.jsx:569
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Matte"
-msgstr ""
+msgstr "Mate"
 
 #: mainPanel.jsx:571
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer styles"
-msgstr ""
+msgstr "Estilos de capa"
 
 #: mainPanel.jsx:573
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer styles"
-msgstr ""
+msgstr "Mostrar estilos de capa"
 
 #: mainPanel.jsx:574
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer Styles"
-msgstr ""
+msgstr "Estilos de Capa"
 
 #: mainPanel.jsx:581
 #, qt-format
@@ -366,7 +366,7 @@ msgstr "Buscar..."
 #: DuAEF.jsxinc:3162
 #, qt-format
 msgid "Test failed!"
-msgstr ""
+msgstr "¡Prueba fallida!"
 
 #: DuAEF.jsxinc:10244
 #, qt-format
@@ -551,7 +551,7 @@ msgstr "[May]: Más opciones..."
 #: DuAEF.jsxinc:11609
 #, qt-format
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: DuAEF.jsxinc:11989
 #, qt-format
@@ -660,7 +660,7 @@ msgstr "Eliminar elemento o categoría"
 #: DuAEF.jsxinc:15494
 #, qt-format
 msgid "Item not found."
-msgstr ""
+msgstr "Elemento no encontrado."
 
 #. "start typing a command in a command line interface"
 #: DuAEF.jsxinc:15579
@@ -788,19 +788,19 @@ msgstr "Ala"
 #, qt-format
 msgctxt "Anatomy"
 msgid "Feather"
-msgstr ""
+msgstr "Pluma"
 
 #: DuAEF.jsxinc:18057
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fin"
-msgstr ""
+msgstr "Aleta"
 
 #: DuAEF.jsxinc:18078
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fishbone"
-msgstr ""
+msgstr "Espina de pescado"
 
 #: DuAEF.jsxinc:19266
 #, qt-format
@@ -811,79 +811,80 @@ msgstr "Ninguno"
 #: DuAEF.jsxinc:19907
 #, qt-format
 msgid "Selected properties"
-msgstr ""
+msgstr "Propiedades seleccionadas"
 
 #: DuAEF.jsxinc:19911
 #, qt-format
 msgid "Selected layers"
-msgstr ""
+msgstr "Capas seleccionadas"
 
 #: DuAEF.jsxinc:19915
 #, qt-format
 msgid "Active composition"
-msgstr ""
+msgstr "Composición actual"
 
 #: DuAEF.jsxinc:19919
 #, qt-format
 msgid "Selected compositions"
-msgstr ""
+msgstr "Composiciones seleccionadas"
 
 #: DuAEF.jsxinc:19923
 #, qt-format
 msgid "All compositions"
-msgstr ""
+msgstr "Todas las composiciones"
 
 #. "%1 will be the name of the panel"
 #: DuAEF.jsxinc:21196
 #, qt-format
 msgid "The '%1' panel is not installed."
-msgstr ""
+msgstr "El panel '%1' no está instalado."
 
 #: DuAEF.jsxinc:29093
 #, qt-format
 msgid "You're starting a process which can take some time."
-msgstr ""
+msgstr "Usted está iniciando un proceso que puede tomar un momento."
 
 #: DuAEF.jsxinc:29094
 #, qt-format
 msgid "Hiding layer controls will improve performance a lot. Do you want to toggle layer controls now?"
-msgstr ""
+msgstr "Ocultar los controles de capas mejorará mucho el rendimiento. ¿Quisiera cambiar los controles de capa ahora?"
 
 #: DuAEF.jsxinc:29095
 #, qt-format
 msgid "If layer controls are already hidden, you can ignore this."
-msgstr ""
+msgstr "Si los controles de capas ya están ocultos, puede ignorar esto."
 
 #: DuAEF.jsxinc:29099
 #, qt-format
 msgid "Permanently disable this alert."
-msgstr ""
+msgstr "Desactivar permanentemente esta alerta."
 
 #: DuAEF.jsxinc:29101
 #, qt-format
 msgid "You can disable this alert dialog from showing before long operations.\n"
 "Layer Controls state won't be changed."
-msgstr ""
+msgstr "Puede desactivar esta alerta antes de realizar operaciones largas.\n"
+"El estado de los controles de capa cambiará."
 
 #: DuAEF.jsxinc:29102
 #, qt-format
 msgid "This alert will be disabled."
-msgstr ""
+msgstr "Esta alerta será desactivada."
 
 #: DuAEF.jsxinc:29115
 #, qt-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorar"
 
 #: DuAEF.jsxinc:29120
 #, qt-format
 msgid "Hide layer controls"
-msgstr ""
+msgstr "Ocultar los controles de capas"
 
 #: DuAEF.jsxinc:29156
 #, qt-format
 msgid "Magic is happening..."
-msgstr ""
+msgstr "La magia está proceso..."
 
 #: DuAEF.jsxinc:29639
 #, qt-format
@@ -894,13 +895,13 @@ msgstr "Raíz del Proyecto"
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Null"
-msgstr ""
+msgstr "Nulo"
 
 #: DuAEF.jsxinc:30746
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: DuAEF.jsxinc:30756
 #, qt-format
@@ -1001,7 +1002,7 @@ msgstr "Tipo: Cámaras"
 #: propPanel.jsx:20
 #, qt-format
 msgid "Type: 3D Models"
-msgstr ""
+msgstr "Tipo: Modelos 3D"
 
 #: propPanel.jsx:22
 #, qt-format
