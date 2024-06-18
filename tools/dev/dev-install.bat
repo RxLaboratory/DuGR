@@ -20,10 +20,10 @@ del "%aePath%\DuGR.jsx"
 rd /s /q "%aePath%\inc"
 
 :: link the main files
-mklink "%aePath%\DuGR.jsx" "%repoPath%\src\DuGR.jsx"
+mklink "%aePath%\DuGR.jsx" "%repoPath%\src\Scripts\ScriptUI Panels\DuGR.jsx"
 echo Linked main files
 
-mklink /D "%aePath%\inc" "%repoPath%\src\inc"
+mklink /D "%aePath%\inc" "%repoPath%\src\Scripts\ScriptUI Panels\inc"
 echo Linked included files in 'inc\'
 
 pause

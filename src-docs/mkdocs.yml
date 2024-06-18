@@ -28,10 +28,10 @@ extra_javascript:
     - meta.js
     - collapser.js
     - video-plyr.js
-site_dir: ../docs
+site_dir: ../build/docs
 dev_addr: '127.0.0.1:8002'
 nav:
-    - v5.0.x: index.md
+    - v5.1.x: index.md
     - Install: install.md
     - Help: introduction.md
     - Settings: settings.md

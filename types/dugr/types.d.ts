@@ -819,7 +819,7 @@ Alpha > 1 is clamped to 1.<br />
 Colors are stored in 32 bit float to keep the maximum precision.
  */
 declare class DuColor {
-    constructor(floatRGBA?: float[]);
+    constructor(floatRGBA?: Number[]);
     /**
      * Returns the color as a float Array with alpha
      * @param [clamped = true] - Set to false to keep the values > 1.0
@@ -892,8 +892,7 @@ declare class DuColor {
      */
     toJSON(): string;
     /**
-     * Creates a color adjusted according to the brightness setting of the application.<br />
-    For now, works only in After Effects
+     * Creates a color adjusted according to the brightness setting of the application.
      * @returns The new color
      */
     adjusted(): DuColor;
@@ -1883,10 +1882,10 @@ declare namespace DuMath {
      * Compares two numbers
      * @param value1 - The first value
      * @param value2 - The second value
-     * @param [floatPrecision = -1] - The precision for (float) number comparison, number of decimals. Set to -1 to not use.
+     * @param [floatPrecision = 9] - The precision for (float) number comparison, number of decimals. Set to -1 to not use.
      * @returns true if the two values are equal
      */
-    function equals(value1: number | Number[], value2: number | Number[], floatPrecision?: int): boolean;
+    function equals(value1: number | Number[], value2: number | Number[], floatPrecision?: number): boolean;
     /**
      * Calculates the log10 of a number
      * @param w - The number
@@ -2006,7 +2005,7 @@ declare namespace DuMath {
      * @param num - The number to check
      * @returns 1 if num is positive, -1 if negative, 0 in other cases (0, NaN...)
      */
-    function sign(num: number): int;
+    function sign(num: number): number;
     /**
      * Gets the bounds of the values
      * @param values - A list of values
@@ -2035,7 +2034,103 @@ declare namespace DuMath {
      * @param oppositePointB - The other opposite point
      * @returns The angle in radians.
      */
-    function angleFromSides(anglePoint: float[], oppositePointA: float[], oppositePointB: float[]): float;
+    function angleFromSides(anglePoint: Number[], oppositePointA: Number[], oppositePointB: Number[]): number;
+}
+
+/**
+ * Constructs a new Vector
+ * @param components - The components of the vector, one number per dimension
+ */
+declare class DuVector {
+    constructor(components: Number[]);
+    /**
+     * Creates a vector from two points
+     * @param pointA - The origin of the vector
+     * @param pointB - The end of the vector
+     */
+    static fromPoints(pointA: Number[], pointB: Number[]): DuVector;
+    /**
+     * Creates a unit vector
+     * @param axis - The unit axis
+     * @param dimensions - The number of dimensions
+     */
+    static unit(axis: number, dimensions: number): DuVector;
+    /**
+     * Addition
+     * @param other - The vector to add
+     * @returns The result
+     */
+    add(other: DuVector): DuVector;
+    /**
+     * Subtraction
+     * @param other - The vector to subtract
+     * @returns The result
+     */
+    subtract(other: DuVector): DuVector;
+    /**
+     * Scale
+     * @param factor - The scale factor
+     * @returns The result
+     */
+    scale(factor: number): DuVector;
+    /**
+     * +
+    The length of the vector
+     * @returns The length
+     */
+    length(): number;
+    /**
+     * Dot Product
+     * @param other - The other vector
+     */
+    dot(other: DuVector): number;
+    /**
+     * Create a normalized vector (with length equal to 1)
+     * @returns The normalized vector
+     */
+    normalize(): DuVector;
+    /**
+     * Checks if the two vectors have the same direction
+     */
+    hasSameDirection(other: DuVector): boolean;
+    /**
+     * Checks if the two vectors have an opposite direction
+     */
+    hasOppositeDirection(other: DuVector): boolean;
+    /**
+     * Checks if the two vectors are perpendicular
+     */
+    isPerpendicular(other: DuVector): boolean;
+    /**
+     * Cross Product
+     */
+    cross(other: DuVector): DuVector;
+    /**
+     * Gets the angle between the two vectors
+     * @returns The angle in degrees
+     */
+    angle(other: DuVector): number;
+    /**
+     * Creates the same vector in the opposite direction (scale -1)
+     */
+    negate(): DuVector;
+    /**
+     * Projects the vector on another vector
+     */
+    projectOn(other: DuVector): DuVector;
+    /**
+     * Sets a new length for the vector
+     */
+    setLength(newLength: number): DuVector;
+    /**
+     * Checks the orientation of the angle between 2D vectors
+     * @returns <code>1</code>: counter-clockwiser, <code>-1</code>: clockwise, <code>0</code>: aligned
+     */
+    orientation2D(other: DuVector): number;
+    /**
+     * Gets the angle between the two 2D vectors
+     */
+    orientedAngle(other: DuVector): number;
 }
 
 /**
@@ -2366,8 +2461,9 @@ declare namespace DuXMP {
      * Loads the XMP library if it has not been loaded yet. There is no need to call this function as it's called automatically by DuESF methods if needed.<br />
     Call it once if you plan to use XMP without the methods in DuESF.<br />
     Note that the XMP library is added statically as <code>ExternalObject.AdobeXMPScript</code>.
+     * @returns Init may fail, in this case the function returns false and the XMP lib can't be used.
      */
-    function init(): void;
+    function init(): boolean;
 }
 
 /**
@@ -2996,9 +3092,15 @@ declare namespace DuScriptUI {
      * @param [addSettingsButton = true] - Whether to create a button to open the settings or not
      * @param [addHelpButton = false] - Whether to create a button to open the help panel or not
      * @param [scriptFile] - The main script file, needed for the refresh button in debug mode
+     * @param [bottomButtons = []] - A list of objects to add buttons on the bottom bar. Each object must have these attributes:<br>
+    <ul>
+    <li><code>image</code>: the icon (a path or string encoded PNG)
+    <li><code>helpTip</code>: the helpTip text
+    <li><code>onClick</code>: a callback function
+    </ul>
      * @returns The panel created, either a ScriptUI Panel or a ScriptUI Window.
      */
-    function scriptPanel(container: Panel | null, addSettingsButton?: boolean, addHelpButton?: boolean, scriptFile?: File): DuScriptPanel;
+    function scriptPanel(container: Panel | null, addSettingsButton?: boolean, addHelpButton?: boolean, scriptFile?: File, bottomButtons?: object[]): DuScriptPanel;
     /**
      * Creates a popup to ask for a simple string
      * @param title - The title of the popup
@@ -3109,7 +3211,7 @@ declare namespace DuScriptUI {
      * @param color - The new color [R,V,B,A] Array
      * @param [adjusted = true] - lightens the color if the brightness setting of Ae is not set on the darkest one
      */
-    function setBackgroundColor(uiItem: ScriptUI, color: any[], adjusted?: boolean): void;
+    function setBackgroundColor(uiItem: ScriptUI, color: Number[] | DuColor, adjusted?: boolean): void;
     /**
      * Adds a group in a container, using  DuScriptUI default alignments, and DuScriptUI.defaultSpacing. Margins are set to 0.
      * @param container - Where to create the group
@@ -4346,7 +4448,7 @@ declare class DuToolBar {
      * @param [addOptions = false] - Whether to add more options
      * @param [optionsWithoutPanel = false] - Whether the options need a dedicated panel
      */
-    static addutton(text: string, icon?: string, helpTip?: string, addOptions?: boolean, optionsWithoutPanel?: boolean): void;
+    static addButton(text: string, icon?: string, helpTip?: string, addOptions?: boolean, optionsWithoutPanel?: boolean): void;
 }
 
 /**
@@ -5468,8 +5570,9 @@ declare namespace DuAEF {
      * This method has to be called once at the very beginning of the script, just after the inclusion of DuAEF <code>#include DuAEF.jsxinc</code>
      * @param [scriptName = "DuAEF"] - The name of your script, as it has to be displayed in the UI and the filesystem
      * @param [scriptVersion = "0.0.0"] - The version of your script, in the form "XX.XX.XX-Comment", for example "1.0.12-Beta". The "-Comment" part is optional.
+     * @param [companyName = ""] - The name of the company/organization/author of the script.
      */
-    function init(scriptName?: string, scriptVersion?: string): void;
+    function init(scriptName?: string, scriptVersion?: string, companyName?: string): void;
     /**
      * This method has to be called once at the end of the script, when everything is ready and the main UI visible (after any prompt or setup during startup).
      */
@@ -6081,6 +6184,52 @@ declare namespace DuAE {
 }
 
 /**
+ * After Effects User Interface tools
+ */
+declare namespace DuAEUI {
+    /**
+     * The limits between the three themes
+     */
+    enum brightnessLimits {
+        DARK = 0.16,
+        LIGHT = 0.5
+    }
+    /**
+     * Checks if the "use reduced contrast" appearance option is enabled.
+     */
+    function useReducedContrast(): boolean;
+    /**
+     * Gets the current Brightness appearance option.
+     * @returns A value in [0.0 ... 1.0].
+    In 24.4.0:
+    - Darkest is `<= 0.16`. The corresponding backgound color is [.11328125, .11328125, .11328125, 1]
+    - Dark is `> 0.16`. The corresponding backgound color is [.1953125, .1953125, .1953125, 1]
+    - Light is `> 0.5`.  The corresponding backgound color is [.96875, .96875, .96875, 1]
+     */
+    function brightness(): number;
+    /**
+     * Is the UI using the "Darkest" theme?
+     */
+    function isDarkest(): boolean;
+    /**
+     * Is the UI using the "Dark" theme?
+     */
+    function isDark(): boolean;
+    /**
+     * Is the UI using the "Light" theme?
+     */
+    function isLight(): boolean;
+    /**
+     * Gets the current bakckground color
+     */
+    function bgColor(): DuColor;
+    /**
+     * Gets the current foreground color
+     */
+    function textColor(): DuColor;
+}
+
+/**
  * After Effects tag methods<br />
 Tags are markers set on the first frame of layers, displaying an info about the layer (usually, a "type" or tag).<br />
 These markers are used by DuAEF (and Duik, DuGR, ...) to recognise and manipulate the layers, and to store hidden data.<br />
@@ -6280,6 +6429,11 @@ declare class DuAEProperty {
      * @returns true if the property is spatial.
      */
     isSpatial(): boolean;
+    /**
+     * Gets the root property group (the group just before the layer, e.g. transform, effects, masks, content...) containing the property
+     * @returns The property group
+     */
+    rootPropertyGroup(): PropertyGroup;
     /**
      * Reimplements the <code>Property.isSeparationLeader</code> attribute for convenience.
      * @returns true if the property is a separation leader.
@@ -6517,7 +6671,7 @@ declare class DuAEProperty {
      * @param [timeOffset = comp.time] - The time offset (added to DuAEKeyframe._time) where to add the key frame.
      * @returns Success
      */
-    setKey(key: DuAEKeyframe, timeOffset?: float): boolean;
+    setKey(key: DuAEKeyframe, timeOffset?: number): boolean;
     /**
      * Checks if the property value is a number or an Array of Number.<br >
     I.e if its value type is one of: one D, two D, three D (spatial or not), Color.
@@ -7389,6 +7543,11 @@ declare namespace DuAEExpression {
          */
         function "addPoints"(p1: float[][], p2: float[][], w: float): float[][];
         /**
+         * A fast pseudo random number generator
+        usage: `var rng = alea(seed); rng(5, 10);` Generates a number between  5 and 10.
+         */
+        function "alea"(seed: any): void;
+        /**
          * Gets the distance of a point to a line
          * @param point - The point [x,y]
          * @param line - The line [ A , B ] where A and B are two points
@@ -7469,6 +7628,13 @@ declare namespace DuAEExpression {
          */
         function "normalizeWeights"(weights: float[], sum?: float): float[];
         /**
+         * Generates a unit vector in 2 or 3 dimensions
+         * @param dimensions - The number of dimensions, either 2 or 3
+         * @param [rng = random] - A Random number generator which can take a min and max value like the random() function.
+         * @returns The vector
+         */
+        function "randomUnitVector"(dimensions: number, rng?: (...params: any[]) => any): Number[];
+        /**
          * Substracts two lists of points/vectors.
          * @param p1 - The list of points
          * @param p2 - The other list of points
@@ -7476,6 +7642,10 @@ declare namespace DuAEExpression {
          * @returns The substracted points
          */
         function "subPoints"(p1: float[][], p2: float[][], w: float): float[][];
+        /**
+         * Creates a unit vector along a given axis
+         */
+        function "unitVector"(dimensions: number, axis: number): Number[];
         /**
          * Adds two paths together.<br />
         The paths must be objects with three array attributes: points, inTangents, outTangents
@@ -7585,6 +7755,12 @@ declare namespace DuAEExpression {
          * @returns true if the property is the transform.position property.
          */
         function "isPosition"(prop?: Property): boolean;
+        /**
+         * Checks if a property is a shape layer.
+         * @param [lay = thisLayer] - The layer to test
+         * @returns true if the prop is a layer
+         */
+        function "isShapeLayer"(lay?: Property): boolean;
         /**
          * Checks if a property is spatial
          * @param [prop = thisProperty] - The property to check
@@ -8148,6 +8324,11 @@ declare namespace DuAEExpression {
          */
         function "addPoints"(p1: float[][], p2: float[][], w: float): float[][];
         /**
+         * A fast pseudo random number generator
+        usage: `var rng = alea(seed); rng(5, 10);` Generates a number between  5 and 10.
+         */
+        function "alea"(seed: any): void;
+        /**
          * Gets the distance of a point to a line
          * @param point - The point [x,y]
          * @param line - The line [ A , B ] where A and B are two points
@@ -8228,6 +8409,13 @@ declare namespace DuAEExpression {
          */
         function "normalizeWeights"(weights: float[], sum?: float): float[];
         /**
+         * Generates a unit vector in 2 or 3 dimensions
+         * @param dimensions - The number of dimensions, either 2 or 3
+         * @param [rng = random] - A Random number generator which can take a min and max value like the random() function.
+         * @returns The vector
+         */
+        function "randomUnitVector"(dimensions: number, rng?: (...params: any[]) => any): Number[];
+        /**
          * Substracts two lists of points/vectors.
          * @param p1 - The list of points
          * @param p2 - The other list of points
@@ -8235,6 +8423,10 @@ declare namespace DuAEExpression {
          * @returns The substracted points
          */
         function "subPoints"(p1: float[][], p2: float[][], w: float): float[][];
+        /**
+         * Creates a unit vector along a given axis
+         */
+        function "unitVector"(dimensions: number, axis: number): Number[];
         /**
          * Adds two paths together.<br />
         The paths must be objects with three array attributes: points, inTangents, outTangents
@@ -8344,6 +8536,12 @@ declare namespace DuAEExpression {
          * @returns true if the property is the transform.position property.
          */
         function "isPosition"(prop?: Property): boolean;
+        /**
+         * Checks if a property is a shape layer.
+         * @param [lay = thisLayer] - The layer to test
+         * @returns true if the prop is a layer
+         */
+        function "isShapeLayer"(lay?: Property): boolean;
         /**
          * Checks if a property is spatial
          * @param [prop = thisProperty] - The property to check
@@ -8780,10 +8978,10 @@ declare namespace DuAEProjectXMP {
     /**
      * Gets the value of a property.
      * @param prop - The name of the property
-     * @param [type] - The property data type, one of: - XMPConst.STRING - XMPConst.INTEGER - XMPConst.NUMBER - XMPConst.BOOLEAN - XMPConst.XMPDATE
+     * @param [defaultVal] - A default value to be returned if the property is not found.
      * @returns The value
      */
-    function getPropertyValue(prop: string, type?: XMPConst): any;
+    function getPropertyValue(prop: string, defaultVal?: any): any;
     /**
      * Sets the value of a property.
      * @param prop - The name of the property
@@ -9246,7 +9444,7 @@ declare namespace DuAELayer {
      * @param [dontMoveAncestors = false] - When set to true, the transform (position, rotation) values for ancestor layers (the ones without parent) will be offset to 0 before applying the animation.
      * @returns The animations which were not set (no corresponding layers)
      */
-    function setAnims(layers: Layer[] | LayerCollection, anims: DuAELayerAnimation[], time?: float, ignoreName?: boolean, setExpression?: boolean, onlyKeyframes?: boolean, replace?: boolean, whiteList?: string[], offset?: boolean, reverse?: boolean, dontMoveAncestors?: boolean): DuAELayerAnimation[];
+    function setAnims(layers: Layer[] | LayerCollection, anims: DuAELayerAnimation[], time?: number, ignoreName?: boolean, setExpression?: boolean, onlyKeyframes?: boolean, replace?: boolean, whiteList?: string[], offset?: boolean, reverse?: boolean, dontMoveAncestors?: boolean): DuAELayerAnimation[];
     /**
      * Reverses the times of the keyframes to reverse the animation
      * @param anims - The animation
@@ -9604,9 +9802,9 @@ declare namespace DuAELayer {
      * @param angleLayer - The layer at which to measure the angle
      * @param oppositeLayerA - One of the opposite layers
      * @param oppositeLayerB - The other opposite layer
-     * @returns The angle in degrees.
+     * @returns The angle in degrees. This is an oriented angle (the value can be negative).
      */
-    function angleFromLayers(angleLayer: Layer, oppositeLayerA: Layer, oppositeLayerB: Layer): float;
+    function angleFromLayers(angleLayer: Layer, oppositeLayerA: Layer, oppositeLayerB: Layer): number;
     /**
      * Returns the location of the layer relative to the reference.
      * @param point - The layer to check
