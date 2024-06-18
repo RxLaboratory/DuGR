@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 12:05\n"
+"PO-Revision-Date: 2024-06-18 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Esperanto\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Nuligi"
 #: DuGR_isolateGroup.jsx:23
 #, qt-format
 msgid "Exit isolation"
-msgstr "Eliri izoleco"
+msgstr "Eliri la izoleco"
 
 #: DuGR_isolateGroup.jsx:24
 #, qt-format
@@ -200,17 +200,17 @@ msgstr "Elektiti tavoloj"
 #: mainPanel.jsx:515
 #, qt-format
 msgid "Active Composition"
-msgstr ""
+msgstr "Aktiva komponaĵo"
 
 #: mainPanel.jsx:520
 #, qt-format
 msgid "Active and Pre-compositions"
-msgstr ""
+msgstr "Aktiva komponaĵo kaj prekomponaĵoj"
 
 #: mainPanel.jsx:525
 #, qt-format
 msgid "All Composition"
-msgstr ""
+msgstr "Ĉiuj komponaĵoj"
 
 #: mainPanel.jsx:536
 #, qt-format
@@ -222,7 +222,7 @@ msgstr "Propraj grupoj"
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show custom layer groups"
-msgstr "Montri proprajn grupojn de tavoloj"
+msgstr "Montri la proprajn grupojn de tavoloj"
 
 #: mainPanel.jsx:541
 #, qt-format
@@ -246,7 +246,7 @@ msgstr "Hierarkio"
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show hierarchical (parenting) properties"
-msgstr "Montri hierarkiajn (muntilon) propraĵojn"
+msgstr "Montri hierarkiajn (muntilo) propraĵojn"
 
 #: mainPanel.jsx:551
 #, qt-format
@@ -366,7 +366,7 @@ msgstr "Serĉi..."
 #: DuAEF.jsxinc:3162
 #, qt-format
 msgid "Test failed!"
-msgstr ""
+msgstr "Malsukcesa testo!"
 
 #: DuAEF.jsxinc:10244
 #, qt-format
@@ -551,7 +551,7 @@ msgstr "[Shift]: Pli da opcioj..."
 #: DuAEF.jsxinc:11609
 #, qt-format
 msgid "Options"
-msgstr ""
+msgstr "Opcioj"
 
 #: DuAEF.jsxinc:11989
 #, qt-format
@@ -660,7 +660,7 @@ msgstr "Forigi elementon aŭ kategorion"
 #: DuAEF.jsxinc:15494
 #, qt-format
 msgid "Item not found."
-msgstr ""
+msgstr "Ero ne trovita."
 
 #. "start typing a command in a command line interface"
 #: DuAEF.jsxinc:15579
@@ -788,19 +788,19 @@ msgstr "Alo"
 #, qt-format
 msgctxt "Anatomy"
 msgid "Feather"
-msgstr ""
+msgstr "Plumo"
 
 #: DuAEF.jsxinc:18057
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fin"
-msgstr ""
+msgstr "Naĝilo"
 
 #: DuAEF.jsxinc:18078
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fishbone"
-msgstr ""
+msgstr "Ostofiŝo"
 
 #: DuAEF.jsxinc:19266
 #, qt-format
@@ -811,79 +811,79 @@ msgstr "Neniom"
 #: DuAEF.jsxinc:19907
 #, qt-format
 msgid "Selected properties"
-msgstr ""
+msgstr "Elektitaj propraĵoj"
 
 #: DuAEF.jsxinc:19911
 #, qt-format
 msgid "Selected layers"
-msgstr ""
+msgstr "Elektiti tavoloj"
 
 #: DuAEF.jsxinc:19915
 #, qt-format
 msgid "Active composition"
-msgstr ""
+msgstr "Aktiva komponaĵo"
 
 #: DuAEF.jsxinc:19919
 #, qt-format
 msgid "Selected compositions"
-msgstr ""
+msgstr "Elektitaj komponaĵoj"
 
 #: DuAEF.jsxinc:19923
 #, qt-format
 msgid "All compositions"
-msgstr ""
+msgstr "Ĉiuj komponaĵoj"
 
 #. "%1 will be the name of the panel"
 #: DuAEF.jsxinc:21196
 #, qt-format
 msgid "The '%1' panel is not installed."
-msgstr ""
+msgstr "La '%1' panelo ne estas instalito."
 
 #: DuAEF.jsxinc:29093
 #, qt-format
 msgid "You're starting a process which can take some time."
-msgstr ""
+msgstr "Vi komenciĝas procezo kiu eble prenas iom da tempo."
 
 #: DuAEF.jsxinc:29094
 #, qt-format
 msgid "Hiding layer controls will improve performance a lot. Do you want to toggle layer controls now?"
-msgstr ""
+msgstr "Kaŝi la tavolajn regilojn plibonigos la rendimento. Ĉu vi volas baskuli la tavolaj regiloj nun?"
 
 #: DuAEF.jsxinc:29095
 #, qt-format
 msgid "If layer controls are already hidden, you can ignore this."
-msgstr ""
+msgstr "Se la tavolaj regiloj estas kaŝitaj, vi povas ignori ĉi tion."
 
 #: DuAEF.jsxinc:29099
 #, qt-format
 msgid "Permanently disable this alert."
-msgstr ""
+msgstr "Porĉiame malebligi ĉi tiu averto."
 
 #: DuAEF.jsxinc:29101
 #, qt-format
 msgid "You can disable this alert dialog from showing before long operations.\n"
 "Layer Controls state won't be changed."
-msgstr ""
+msgstr "Vi povas malebligi ĉi tiun avertan dialogujon antaŭe longaj operacioj."
 
 #: DuAEF.jsxinc:29102
 #, qt-format
 msgid "This alert will be disabled."
-msgstr ""
+msgstr "Ĉi tiu averto estos malebliga."
 
 #: DuAEF.jsxinc:29115
 #, qt-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignori"
 
 #: DuAEF.jsxinc:29120
 #, qt-format
 msgid "Hide layer controls"
-msgstr ""
+msgstr "Kaŝi la tavolajn regilojn"
 
 #: DuAEF.jsxinc:29156
 #, qt-format
 msgid "Magic is happening..."
-msgstr ""
+msgstr "La Magio okazas..."
 
 #: DuAEF.jsxinc:29639
 #, qt-format
@@ -894,13 +894,13 @@ msgstr "Radiko de la projekto"
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Null"
-msgstr ""
+msgstr "Nulo"
 
 #: DuAEF.jsxinc:30746
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Shape"
-msgstr ""
+msgstr "Formo"
 
 #: DuAEF.jsxinc:30756
 #, qt-format
@@ -1001,7 +1001,7 @@ msgstr "Tipo: Kameraoj"
 #: propPanel.jsx:20
 #, qt-format
 msgid "Type: 3D Models"
-msgstr ""
+msgstr "Tipo: Modeloj 3D"
 
 #: propPanel.jsx:22
 #, qt-format
