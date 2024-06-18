@@ -1,0 +1,61 @@
+{
+    "plugins": [
+        "node_modules/better-docs/category"
+    ],
+    "recurseDepth": 1,
+    "source": {
+        "include": [
+            "../../build/DuGR_API/libs/DuAEF.jsxinc",
+            "../../build/DuGR_API/libs/api.jsxinc"
+        ],
+        "includePattern": ".+\\.jsxinc$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "script",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": false,
+        "copyright"             : "Copyright © 2022-2023 Nicolas Dufresne and contributors",
+        "includeDate"           : true,
+        "search"                : true,
+        "better-docs": {
+            "name": "DuGR API Reference",
+            "logo": "",
+            "title": "",
+            "css": "jsdoc.css",
+            "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Website",
+                    "href": "https://rxlaboratory.org/tools/dugr"
+                },
+                {
+                    "label": "Source code",
+                    "href": "https://github.com/RxLaboratory/DuGR"
+                },
+                {
+                    "label": "User guide",
+                    "href": "http://dugr.rxlab.guide"
+                },
+                {
+                    "label": "Donate",
+                    "href": "http://donate.rxlab.info"
+                }
+            ]
+        }
+    },
+    "meta": {
+        "title": "DuGR",
+        "description": "Group your After Effects layers!",
+        "keyword": "ExtendScript, Adobe, After Effects"
+    },
+    "opts": {
+        "template": "node_modules/better-docs",
+        "recurse": false,
+        "destination": "../../build/docs/api"
+    }
+}

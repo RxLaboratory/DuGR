@@ -1,0 +1,36 @@
+{
+    "jsx": {
+        "API_files": [
+            "./src/Scripts/ScriptUI Panels/inc/modules/DuAEF.jsxinc",
+            "./src/Scripts/ScriptUI Panels/inc/api.jsx"
+        ],
+        "ScriptUI_Panels": "./src/Scripts/ScriptUI Panels",
+        "Scripts": "./src/Scripts"
+    },
+    "src": {
+        "repo_path": ".",
+        "icon_set": "",
+        "project": "DuGR",
+        "desktop": "",
+        "docs_path": "./src-docs",
+        "jsdoc_conf": "./tools/assets"
+    },
+    "meta": {
+        "version": "5.2.0",
+        "prerelease": "false"
+    },
+    "dependencies": [
+        { "name": "DuAEF", "repo_path": "../DuAEF", "include_path": "./src/Scripts/ScriptUI Panels/inc/modules" }
+    ],
+    "deploy": [
+        { "src": "./tools/assets/DuSI.jsx", "dest": "DuGR/Tools/DuSI.jsx"},
+        { "src": "./tools/assets/LICENSE.md", "dest": "DuGR/LICENSE.md"},
+        { "src": "./tools/assets/LICENSE.md", "dest": "DuGR_API/LICENSE.md"},
+        { "src": "./tools/assets/LICENSE.txt", "dest": "DuGR/LICENSE.txt"},
+        { "src": "./tools/assets/LICENSE.txt", "dest": "DuGR_API/LICENSE.txt"},
+        { "src": "./tools/assets/README.txt", "dest": "DuGR/README.txt"},
+        { "src": "./src/Scripts/DuGR_isolateGroup_comp viewer.jsx", "dest": "DuiGR_API/DuGR_isolateGroup_comp viewer.jsx"},
+        { "src": "./src/Scripts/DuGR_isolateGroup_timeline.jsx", "dest": "DuiGR_API/DuGR_isolateGroup_timeline.jsx"},
+        { "src": "./src/Scripts/DuGR_isolateGroup.jsx", "dest": "DuiGR_API/DuGR_isolateGroup.jsx"}
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "plugins": [
+        "node_modules/tsd-jsdoc/dist/plugin"
+    ],
+    "recurseDepth": 1,
+    "source": {
+		"include": [
+            "../../build/DuGR_API/libs/DuAEF.jsxinc",
+            "../../build/DuGR_API/libs/api.jsxinc"
+        ],
+        "includePattern": ".+\\.jsxinc$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "script",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+	"opts": {
+        "template": "node_modules/tsd-jsdoc/dist",
+		"recurse": false,
+        "destination": "../../types/dugr"
+    }
+}

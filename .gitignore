@@ -1,2 +1,9 @@
 node_modules
-tools/build/build/*
+build/
+
+.foldex.*
+
+# Ignore our own submodules (The best is to symlink them)
+src/Scripts/ScriptUI Panels/inc/modules/DuAEF.jsxinc
+types/duaef/types.d.ts
+src/Scripts/ScriptUI Panels/inc/modules/setup.jsxinc
