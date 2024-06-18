@@ -17,6 +17,7 @@ propItems[ i18n._("Type: Texts") ] = DuGR.Group.TEXT;
 propItems[ i18n._("Type: Adjustment") ] = DuGR.Group.ADJUSTMENT;
 propItems[ i18n._("Type: Lights") ] = DuGR.Group.LIGHT;
 propItems[ i18n._("Type: Cameras") ] = DuGR.Group.CAMERA;
+propItems[ i18n._("Type: 3D Models") ] = DuGR.Group.THREED_MODEL;
 
 propItems[ i18n._("Attribute: Visible") ] = DuGR.Group.VISIBLE;
 propItems[ i18n._("Attribute: Has Audio") ] = DuGR.Group.SOUND;

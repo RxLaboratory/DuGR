@@ -52,6 +52,10 @@ DuGR.Group = {
      */
     CAMERA: 'DuGR.type.camera',
     /**
+     * 3D Model layers
+     */
+    THREED_MODEL: 'DuGR.type.threeDModel',
+    /**
      * Visible layers
      */
     VISIBLE: 'DuGR.attr.visible',
@@ -334,6 +338,7 @@ DuGR.inGroups = function ( layer, groups, tag, and )
         else if (group == DuGR.Group.ADJUSTMENT ) ok = DuAELayer.isAdjustment( layer );
         else if (group == DuGR.Group.LIGHT ) ok =  layer instanceof LightLayer;
         else if (group == DuGR.Group.CAMERA ) ok = layer instanceof CameraLayer;
+        else if (group == DuGR.Group.THREED_MODEL ) ok = layer instanceof ThreeDModelLayer;
         else if (group == DuGR.Group.VISIBLE ) ok = layer.enabled;
         else if (group == DuGR.Group.SOUND ) ok = layer.hasAudio;
         else if (group == DuGR.Group.SOLO ) ok = layer.solo;
