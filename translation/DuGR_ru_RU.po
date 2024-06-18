@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 12:05\n"
+"PO-Revision-Date: 2024-06-18 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -258,80 +258,80 @@ msgstr "Типы слоя"
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer types"
-msgstr ""
+msgstr "Показать типы слоя"
 
 #. "a type, as a kind (layer types)"
 #: mainPanel.jsx:554
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: mainPanel.jsx:556
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer attributes"
-msgstr ""
+msgstr "Атрибуты слоя"
 
 #: mainPanel.jsx:558
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer attributes"
-msgstr ""
+msgstr "Показать атрибуты слоя"
 
 #: mainPanel.jsx:559
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Attribute"
-msgstr ""
+msgstr "Атрибут"
 
 #: mainPanel.jsx:561
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Animation"
-msgstr ""
+msgstr "Анимация"
 
 #: mainPanel.jsx:563
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show animation properties"
-msgstr ""
+msgstr "Показать свойства анимации"
 
 #: mainPanel.jsx:566
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Matte & Blending"
-msgstr ""
+msgstr "Подложка и Смешивание"
 
 #: mainPanel.jsx:568
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show matte, blending, and alpha properties"
-msgstr ""
+msgstr "Показать свойства, альфа, подложки и смешивание"
 
 #: mainPanel.jsx:569
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Matte"
-msgstr ""
+msgstr "Подложка"
 
 #: mainPanel.jsx:571
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer styles"
-msgstr ""
+msgstr "Стили слоя"
 
 #: mainPanel.jsx:573
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer styles"
-msgstr ""
+msgstr "Показать стили слоя"
 
 #: mainPanel.jsx:574
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Layer Styles"
-msgstr ""
+msgstr "Стили Слоя"
 
 #: mainPanel.jsx:581
 #, qt-format
@@ -551,7 +551,7 @@ msgstr "[Shift]: Дополнительные параметры..."
 #: DuAEF.jsxinc:11609
 #, qt-format
 msgid "Options"
-msgstr ""
+msgstr "Настройки"
 
 #: DuAEF.jsxinc:11989
 #, qt-format
@@ -660,7 +660,7 @@ msgstr "Удалить элемент или категорию"
 #: DuAEF.jsxinc:15494
 #, qt-format
 msgid "Item not found."
-msgstr ""
+msgstr "Элемент не найден."
 
 #. "start typing a command in a command line interface"
 #: DuAEF.jsxinc:15579
@@ -788,19 +788,19 @@ msgstr "Крыло"
 #, qt-format
 msgctxt "Anatomy"
 msgid "Feather"
-msgstr ""
+msgstr "Перо"
 
 #: DuAEF.jsxinc:18057
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fin"
-msgstr ""
+msgstr "Плавник"
 
 #: DuAEF.jsxinc:18078
 #, qt-format
 msgctxt "Anatomy"
 msgid "Fishbone"
-msgstr ""
+msgstr "Рыбья кость"
 
 #: DuAEF.jsxinc:19266
 #, qt-format
@@ -811,17 +811,17 @@ msgstr "Ничего"
 #: DuAEF.jsxinc:19907
 #, qt-format
 msgid "Selected properties"
-msgstr ""
+msgstr "Выделенные параметры"
 
 #: DuAEF.jsxinc:19911
 #, qt-format
 msgid "Selected layers"
-msgstr ""
+msgstr "Выделенные слои"
 
 #: DuAEF.jsxinc:19915
 #, qt-format
 msgid "Active composition"
-msgstr ""
+msgstr "Активная композиция"
 
 #: DuAEF.jsxinc:19919
 #, qt-format
@@ -837,7 +837,7 @@ msgstr ""
 #: DuAEF.jsxinc:21196
 #, qt-format
 msgid "The '%1' panel is not installed."
-msgstr ""
+msgstr "Панель '%1' не установлена."
 
 #: DuAEF.jsxinc:29093
 #, qt-format
@@ -857,33 +857,34 @@ msgstr ""
 #: DuAEF.jsxinc:29099
 #, qt-format
 msgid "Permanently disable this alert."
-msgstr ""
+msgstr "Больше не показывать это оповещение."
 
 #: DuAEF.jsxinc:29101
 #, qt-format
 msgid "You can disable this alert dialog from showing before long operations.\n"
 "Layer Controls state won't be changed."
-msgstr ""
+msgstr "Вы можете отключить показ этого диалогового оповещения перед длительными операциями.\n"
+"Режим \"Управление слоями\" не будет изменён."
 
 #: DuAEF.jsxinc:29102
 #, qt-format
 msgid "This alert will be disabled."
-msgstr ""
+msgstr "Это оповещение будет отключено."
 
 #: DuAEF.jsxinc:29115
 #, qt-format
 msgid "Ignore"
-msgstr ""
+msgstr "Игнорировать"
 
 #: DuAEF.jsxinc:29120
 #, qt-format
 msgid "Hide layer controls"
-msgstr ""
+msgstr "Скрыть слои контроля"
 
 #: DuAEF.jsxinc:29156
 #, qt-format
 msgid "Magic is happening..."
-msgstr ""
+msgstr "Творится магия..."
 
 #: DuAEF.jsxinc:29639
 #, qt-format
@@ -894,13 +895,13 @@ msgstr "Корень проекта"
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Null"
-msgstr ""
+msgstr "Нуль"
 
 #: DuAEF.jsxinc:30746
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Shape"
-msgstr ""
+msgstr "Фигура"
 
 #: DuAEF.jsxinc:30756
 #, qt-format
