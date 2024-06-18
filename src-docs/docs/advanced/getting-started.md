@@ -8,15 +8,17 @@ The API and its documentation can be downloaded from **[RxLaboratory](https://rx
 
 ## Include it in your script
 
-Just save the two files `DuGR_api.jsxinc` and `DuAEF_DuGR_api.jsxinc` in the folder where you're working and writing your own script.
+The DuGR API comes in a few files:
 
-- `DuAEF_DuGR_api.jsxinc` is the complete API, including all dependencies. This is the one you should use by default.
+- `DuGR_API.jsxinc` is the complete API, including all dependencies. This is the only file you should include in your script by default.
 
-- `DuGR_api.jsxinc` includes only the *DuGR API* without any dependencies. You'll have to include dependencies by yourself; The list of these dependencies can be found in the [API reference](http://dugr.rxlab.io/) (see *Requires* on the linked page). At the time we're writing this documentation, it's just *DuAEF*. You may use this file if you plan to combine several different API using *DuAEF*, to be sure to include it only once.
+- A Subfolder called `libs` contains the actual API code, separated in a few different libraries. These may be useful if you need to handle specific versions of these libraries, if you know what you're doing... Have a look at the main `DuGR_API.jsxinc` file if you want to see in which order they should be included in your scripts.
+
+All these files (both the `.jsxinc` file and the `libs` folder) need to be located next to your script in the following examples.
 
 ### Using only DuGR
 
-If you're only needing the DuGR API, you just have to include `DuAEF_Duik_api.jsxinc` at the beginning of your own script.
+If you're only needing the DuGR API, you just have to include `DuGR_API.jsxinc` at the beginning of your own script.
 
 Here's an example.
 
@@ -26,13 +28,13 @@ Here's an example.
 (function(thisObj)
 {
      // If you only need Duik, just include DuAEF_Duik_api at the beginning
-     #include "DuAEF_DuGR_api.jsxinc";
+     #include "DuGR_API.jsxinc";
      
 ```
 
 ### Combining the DuGR API with other APIs and DuAEF
 
-If you're going to include APIs other than DuGR, you'll need to include everything separately to be sure that all frameworks are included only once. In this case, include `DuGR_api.jsxinc` and the other APIs at the beginning of your script.
+If you're going to include APIs other than DuGR, you'll need to include everything separately to be sure that all frameworks are included only once. In this case, include the APIs at the beginning of your script.
 
 Here's an example:
 
@@ -43,9 +45,8 @@ Here's an example:
 {
      // If you need to combine DuGR and other APIs like DuIO
      // Include DuAEF first, and then stand-alone APIs
-     #include "DuAEF.jsxinc";
-     #include "DuGR_api.jsxinc";
-     #include "DuIO_api.jsxinc";
+     #include "libs/DuAEF.jsxinc";
+     #include "libs/api.jsxinc"; // DuGR API, you may rename it if needed.
 
      // Now you can also include any other API which also depends on DuAEF or one of the above APIs
      #include "another_API.jsxinc"
@@ -114,7 +115,7 @@ Don't forget to close the anonymous function we've created at the beginning to a
 (function(thisObj)
 {
      // If you only need Duik, just include DuAEF_Duik_api at the beginning
-     #include "DuAEF_DuGR_api.jsxinc";
+     #include "DuGR_api.jsxinc";
      
      // Running the init() method of DuAEF is required to setup everything properly.
      DuAEF.init( "YourScriptName", "1.0.0", "YourCompanyName" );

@@ -31,7 +31,7 @@ extra_javascript:
 site_dir: ../build/docs
 dev_addr: '127.0.0.1:8002'
 nav:
-    - v5.1.x: index.md
+    - v5.2.x: index.md
     - Install: install.md
     - Help: introduction.md
     - Settings: settings.md

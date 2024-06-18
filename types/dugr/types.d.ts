@@ -10115,6 +10115,10 @@ declare namespace DuGR {
          */
         CAMERA = "DuGR.type.camera",
         /**
+         * 3D Model layers
+         */
+        THREED_MODEL = "DuGR.type.threeDModel",
+        /**
          * Visible layers
          */
         VISIBLE = "DuGR.attr.visible",

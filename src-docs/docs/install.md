@@ -21,8 +21,8 @@ You'll find several folders and files.
 - *README.txt* contains a lot of information to help you get started with DuGR.
 - The *Help* folder contains these help pages. Double click on the file *index.html* to open it.
 - The *Tools* folder may contain some useful tools.
-- The *ScriptUI Panels* folder contains the actual *DuGR* script you need to install.  
-- The *Scriptlets* folder contains small scripts you can assign to [keyboard shortcuts](#keyboard-shortcuts) for example.
+- The *Scripts* folder contains small scripts you can assign to [keyboard shortcuts](#keyboard-shortcuts) for example.
+- The *Scripts/ScriptUI Panels* folder contains the actual *DuGR* script you need to install.  
 
 ### **3 - Install**
 
