@@ -16,6 +16,28 @@
             "title": "Windows"
         }
     ],
+    "assets": [
+        {
+            "nameRegEx": "DuGR.*\\.zip",
+            "name": "DuGR",
+            "description": "Read the installation instructions in the [comprehensive documentation](http://dugr.rxlab.guide).",
+            "hosts": [ {"name": "aftereffects", "title": "After Effects"} ],
+            "os": [ {"name": "mac", "title": "macOS"} ,  {"name": "win", "title": "Windows"} ],
+            "urls": [
+                {"title": "Documentation", "url": "http://dugr.rxlab.guide"}
+            ]
+        },
+        {
+            "nameRegEx": "DuGR_API.*\\.zip",
+            "name": "DuGR API",
+            "description": "Use the API to create your own scripts including features from DuGR.",
+            "hosts": [ {"name": "aftereffects", "title": "After Effects"} ],
+            "os": [ {"name": "mac", "title": "macOS"} ,  {"name": "win", "title": "Windows"} ],
+            "urls": [
+                {"title": "API reference", "url": "http://dugr.rxlab.io/"}
+            ]
+        }
+    ],
     "userGuide": "http://dugr.rxlab.guide",
     "apiReference": "http://dugr.rxlab.io/",
     "website": "https://rxlaboratory.org/tools/dugr/",
