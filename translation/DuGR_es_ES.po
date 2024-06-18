@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 14:02\n"
+"PO-Revision-Date: 2024-06-18 15:54\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -857,7 +857,7 @@ msgstr "Si los controles de capas ya están ocultos, puede ignorar esto."
 #: DuAEF.jsxinc:29099
 #, qt-format
 msgid "Permanently disable this alert."
-msgstr "Desactivar permanentemente esta alerta."
+msgstr "Desactivar esta alerta."
 
 #: DuAEF.jsxinc:29101
 #, qt-format
