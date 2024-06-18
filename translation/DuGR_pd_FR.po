@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 12:05\n"
+"PO-Revision-Date: 2024-06-18 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Chti-Picard\n"
 "MIME-Version: 1.0\n"
@@ -890,13 +890,13 @@ msgstr "Rachine del projet"
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Null"
-msgstr ""
+msgstr "Vite"
 
 #: DuAEF.jsxinc:30746
 #, qt-format
 msgctxt "After Effects Layer"
 msgid "Shape"
-msgstr ""
+msgstr "Forme"
 
 #: DuAEF.jsxinc:30756
 #, qt-format
