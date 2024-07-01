@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-07-01 04:06\n"
+"PO-Revision-Date: 2024-07-01 04:57\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -30,22 +30,22 @@ msgstr "退出隔離"
 #: DuGR_isolateGroup.jsx:24
 #, qt-format
 msgid "Isolate"
-msgstr "隔离"
+msgstr "隔離"
 
 #: DuGR_isolateGroup.jsx:56
 #, qt-format
 msgid "All layers"
-msgstr "所有图层"
+msgstr "全部圖層"
 
 #: DuGR_isolateGroup.jsx:57
 #, qt-format
 msgid "Selected"
-msgstr "所选"
+msgstr "已選取"
 
 #: DuGR_isolateGroup.jsx:58
 #, qt-format
 msgid "Grouped"
-msgstr "已分组"
+msgstr "已群組"
 
 #: DuGR_isolateGroup.jsx:59
 #, qt-format
@@ -55,62 +55,62 @@ msgstr "已忽略"
 #: groupPanel.jsx:23
 #, qt-format
 msgid "Add selected layers to group."
-msgstr "添加选中的图层到组。"
+msgstr "把選取的圖層加入群組。"
 
 #: groupPanel.jsx:31
 #, qt-format
 msgid "Get groups from selected layers."
-msgstr "获取选中的图层的组。"
+msgstr "從已選取的圖層取得群組。"
 
 #: groupPanel.jsx:39
 #, qt-format
 msgid "Remove selected layers from group."
-msgstr "从组中移除选中的图层。"
+msgstr "從群組移除選取的圖層。"
 
 #: groupPanel.jsx:50
 #, qt-format
 msgid "Create new group."
-msgstr "创建新组。"
+msgstr "建立新的群組。"
 
 #: groupPanel.jsx:58
 #, qt-format
 msgid "Change group name"
-msgstr "更改组名"
+msgstr "編輯群組名稱"
 
 #: groupPanel.jsx:66
 #, qt-format
 msgid "Remove group."
-msgstr "移除组。"
+msgstr "移除群組。"
 
 #: groupPanel.jsx:77
 #, qt-format
 msgid "New group"
-msgstr "新建组"
+msgstr "新增群組"
 
 #: groupPanel.jsx:87
 #, qt-format
 msgid "OK"
-msgstr "好的"
+msgstr "確定"
 
 #: mainPanel.jsx:42
 #, qt-format
 msgid "Exit isolation."
-msgstr "退出隔离状态。"
+msgstr "退出隔離。"
 
 #: mainPanel.jsx:58
 #, qt-format
 msgid "Isolate selected groups."
-msgstr "隔离选中的组。"
+msgstr "隔離選取的群組。"
 
 #: mainPanel.jsx:74
 #, qt-format
 msgid "Timeline"
-msgstr "时间线"
+msgstr "時間軸"
 
 #: mainPanel.jsx:76
 #, qt-format
 msgid "Isolate selected groups, in the timeline only."
-msgstr "仅在时间线内隔离选中的小组。"
+msgstr "隔離選取的群組，僅在時間軸內。"
 
 #: mainPanel.jsx:92
 #, qt-format
@@ -120,52 +120,52 @@ msgstr "合成"
 #: mainPanel.jsx:94
 #, qt-format
 msgid "Isolate selected groups, in the composition panel only"
-msgstr "仅隔离在合成面板里选中的组"
+msgstr "隔離選取的群組，僅在合成面版內。"
 
 #: mainPanel.jsx:112
 #, qt-format
 msgid "Set interactive (sticky) mode."
-msgstr "设定交互（粘粘）模式。"
+msgstr "設定互動 (黏貼) 模式。"
 
 #: mainPanel.jsx:188
 #, qt-format
 msgid "Show/Hide layers"
-msgstr "显示/隐藏图层"
+msgstr "顯示/隱藏圖層"
 
 #: mainPanel.jsx:194
 #, qt-format
 msgid "Toggle audio"
-msgstr "切换音频"
+msgstr "開關音訊"
 
 #: mainPanel.jsx:200
 #, qt-format
 msgid "Toggle solo mode"
-msgstr "切换单独显示模式"
+msgstr "開關獨立顯示模式"
 
 #: mainPanel.jsx:206
 #, qt-format
 msgid "Lock layers"
-msgstr "锁定图层"
+msgstr "鎖定圖層"
 
 #: mainPanel.jsx:212
 #, qt-format
 msgid "Shy layers"
-msgstr "害羞图层"
+msgstr "害羞圖層"
 
 #: mainPanel.jsx:218
 #, qt-format
 msgid "Collapse transformation / Continuous rasterization"
-msgstr "折叠变换 / 连续栅格化"
+msgstr "折疊變形 / 連續柵格化"
 
 #: mainPanel.jsx:224
 #, qt-format
 msgid "Guide layers"
-msgstr "参考图层"
+msgstr "參考圖層"
 
 #: mainPanel.jsx:231
 #, qt-format
 msgid "Set quality"
-msgstr "设定质量"
+msgstr "設定質量"
 
 #: mainPanel.jsx:237
 #, qt-format
@@ -190,12 +190,12 @@ msgstr "開關調整圖層模式"
 #: mainPanel.jsx:261
 #, qt-format
 msgid "Toggle 3D layer mode"
-msgstr "切换3D模式"
+msgstr "開關 3D 圖層模式"
 
 #: mainPanel.jsx:267
 #, qt-format
 msgid "Select layers"
-msgstr "所选图层"
+msgstr "選擇圖層"
 
 #: mainPanel.jsx:515
 #, qt-format
@@ -336,17 +336,17 @@ msgstr "圖層樣式"
 #: mainPanel.jsx:581
 #, qt-format
 msgid "Invert"
-msgstr "反转"
+msgstr "反轉"
 
 #: mainPanel.jsx:583
 #, qt-format
 msgid "Invert the group/property selection"
-msgstr "反转组/属性选择"
+msgstr "反轉選取群組/屬性"
 
 #: mainPanel.jsx:584
 #, qt-format
 msgid "Inverted"
-msgstr "反转的"
+msgstr "已反轉"
 
 #: mainPanel.jsx:596
 #, qt-format
@@ -356,7 +356,7 @@ msgstr "使用 AND(&) 或 OR(/) 運算子進行多個群組選擇。"
 #: mainPanel.jsx:616
 #, qt-format
 msgid "Remove all"
-msgstr "全部移除"
+msgstr "移除全部"
 
 #: mainPanel.jsx:626
 #, qt-format
@@ -371,117 +371,117 @@ msgstr "測試失敗！"
 #: DuAEF.jsxinc:10244
 #, qt-format
 msgid "Keep this panel open"
-msgstr "保持此面板打开"
+msgstr "保持開啟這個面板"
 
 #: DuAEF.jsxinc:10845
 #, qt-format
 msgid "%1 Settings"
-msgstr "%1 设置"
+msgstr "%1 設定"
 
 #: DuAEF.jsxinc:10870
 #, qt-format
 msgid "Set the language of the interface."
-msgstr "设置界面的语言."
+msgstr "設定介面的語言。"
 
 #: DuAEF.jsxinc:10893
 #, qt-format
 msgid "Settings file"
-msgstr "设置文件"
+msgstr "設定檔案"
 
 #: DuAEF.jsxinc:10895
 #, qt-format
 msgid "Set the location of the settings file."
-msgstr "设定设置文件的路径."
+msgstr "設定設定檔案的位置。"
 
 #: DuAEF.jsxinc:10906
 #, qt-format
 msgid "Set the highlight color."
-msgstr "设置高亮颜色."
+msgstr "設定突顯的顏色。"
 
 #: DuAEF.jsxinc:10909
 #, qt-format
 msgid "After Effects Blue"
-msgstr "After Effects 蓝色"
+msgstr "After Effects 藍"
 
 #: DuAEF.jsxinc:10911
 #, qt-format
 msgid "The After Effects highlighting blue"
-msgstr "After Effects 高亮蓝色"
+msgstr "The After Effects 突顯藍"
 
 #: DuAEF.jsxinc:10914
 #, qt-format
 msgid "RxLab Purple"
-msgstr "RxLab 紫色"
+msgstr "RxLab 紫"
 
 #: DuAEF.jsxinc:10916
 #, qt-format
 msgid "The RxLaboratory Purple"
-msgstr "The RxLaboratory 紫色"
+msgstr "RxLaboratory 紫"
 
 #: DuAEF.jsxinc:10919
 #, qt-format
 msgid "Rainbox Red"
-msgstr "Rainbox 红色"
+msgstr "Rainbox 紅"
 
 #: DuAEF.jsxinc:10921
 #, qt-format
 msgid "The Rainbox Productions Red"
-msgstr "Rainbox Productions 红"
+msgstr "Rainbox Productions 紅"
 
 #: DuAEF.jsxinc:10924
 #, qt-format
 msgid "After Effects Orange (CS6)"
-msgstr "After Effects 橙色 (CS6)"
+msgstr "After Effects 橘 (CS6)"
 
 #: DuAEF.jsxinc:10926
 #, qt-format
 msgid "The After Effects highlighting orange from good ol'CS6"
-msgstr "The After Effects CS6 古代高亮橙色"
+msgstr "After Effects 經典 CS6 突顯橘"
 
 #: DuAEF.jsxinc:10929
 #, qt-format
 msgid "Custom..."
-msgstr "自定义..."
+msgstr "自訂..."
 
 #: DuAEF.jsxinc:10931
 #, qt-format
 msgid "Select a custom color."
-msgstr "选择自定义颜色."
+msgstr "選擇一個自訂的顏色。"
 
 #: DuAEF.jsxinc:10938
 #, qt-format
 msgid "Select the UI mode."
-msgstr "选择用户界面模式."
+msgstr "選擇使用者介面模式。"
 
 #: DuAEF.jsxinc:10941
 #, qt-format
 msgid "Rookie"
-msgstr "初来乍到"
+msgstr "新手"
 
 #: DuAEF.jsxinc:10943
 #, qt-format
 msgid "The easiest-to-use mode, but also the biggest UI."
-msgstr "最容易使用的模式，但也是最大的界面。"
+msgstr "最容易使用的模式，但也是最大的使用者介面。"
 
 #: DuAEF.jsxinc:10946
 #, qt-format
 msgid "Standard"
-msgstr "标准"
+msgstr "標準"
 
 #: DuAEF.jsxinc:10948
 #, qt-format
 msgid "The standard not-too-big UI."
-msgstr "标准模式，用户界面中等大小."
+msgstr "標準大小適中的使用者介面。"
 
 #: DuAEF.jsxinc:10951
 #, qt-format
 msgid "Expert"
-msgstr "专家"
+msgstr "專家"
 
 #: DuAEF.jsxinc:10953
 #, qt-format
 msgid "The smallest UI, for expert users."
-msgstr "适合专家使用，用户界面最小."
+msgstr "最小的使用者介面，針對專家使用者。"
 
 #: DuAEF.jsxinc:10960
 #, qt-format
@@ -491,62 +491,62 @@ msgstr "普通模式"
 #: DuAEF.jsxinc:10962
 #, qt-format
 msgid "Use at your own risk!"
-msgstr "自行承担使用风险!"
+msgstr "使用需自行承擔風險！"
 
 #: DuAEF.jsxinc:10963
 #, qt-format
 msgid "Dev and Debug mode"
-msgstr "开发和调试模式"
+msgstr "開發和除錯模式"
 
 #: DuAEF.jsxinc:11045
 #, qt-format
 msgid "Check for updates"
-msgstr "检查更新"
+msgstr "檢查更新"
 
 #: DuAEF.jsxinc:11059
 #, qt-format
 msgid "Default"
-msgstr "默认"
+msgstr "預設值"
 
 #: DuAEF.jsxinc:11061
 #, qt-format
 msgid "Reset the settings to their default values."
-msgstr "还原设置到默认值."
+msgstr "將設定重設為其預設值。"
 
 #: DuAEF.jsxinc:11068
 #, qt-format
 msgid "Apply"
-msgstr "应用"
+msgstr "套用"
 
 #: DuAEF.jsxinc:11070
 #, qt-format
 msgid "Apply settings."
-msgstr "应用设置。"
+msgstr "套用設定。"
 
 #: DuAEF.jsxinc:11144
 #, qt-format
 msgid "You may need to restart the script for all changes to take effect."
-msgstr "您可能需要重启脚本才能使所有更改生效。"
+msgstr "您需要重新啟動腳本好讓全部的更改生效。"
 
 #: DuAEF.jsxinc:11176
 #, qt-format
 msgid "Thank you for your donations!"
-msgstr "感谢您的捐赠！"
+msgstr "感謝您的贊助！"
 
 #: DuAEF.jsxinc:11188
 #, qt-format
 msgid "Help and options"
-msgstr "帮助与选项"
+msgstr "說明和選項"
 
 #: DuAEF.jsxinc:11202
 #, qt-format
 msgid "Edit settings"
-msgstr "编辑设置"
+msgstr "編輯設定"
 
 #: DuAEF.jsxinc:11580
 #, qt-format
 msgid "[Shift]: More options..."
-msgstr "[Shift]︰更多选项..."
+msgstr "[Shift]: 更多選項…"
 
 #: DuAEF.jsxinc:11609
 #, qt-format
@@ -556,36 +556,36 @@ msgstr "選項"
 #: DuAEF.jsxinc:11989
 #, qt-format
 msgid "Bug Report or Feature Request"
-msgstr "错误报告或功能请求"
+msgstr "錯誤回報或功能建議"
 
 #: DuAEF.jsxinc:11990
 #, qt-format
 msgid "Bug report\n"
 "Feature request\n\n"
 "Tell us what's wrong or request a new feature."
-msgstr "错误报告\n"
-"功能请求\n\n"
-"告诉我们怎么了或请求一个新功能。"
+msgstr "問題回報\n"
+"功能建議\n\n"
+"告訴我們哪裡有問題或提出一個新功能建議。"
 
 #: DuAEF.jsxinc:12033
 #, qt-format
 msgid "Help"
-msgstr "帮助"
+msgstr "說明"
 
 #: DuAEF.jsxinc:12034
 #, qt-format
 msgid "Get help."
-msgstr "获得帮助."
+msgstr "取得說明。"
 
 #: DuAEF.jsxinc:12078
 #, qt-format
 msgid "Translate %1"
-msgstr "翻译 %1"
+msgstr "翻譯 %1"
 
 #: DuAEF.jsxinc:12079
 #, qt-format
 msgid "Help translating %1 to make it available to more people."
-msgstr "帮助翻译 %1 以使其可供更多人使用。"
+msgstr "協助翻譯 %1 讓更多人可以使用。"
 
 #: DuAEF.jsxinc:12289
 #, qt-format
@@ -597,26 +597,26 @@ msgstr "新版本"
 msgid "This month, the %1 fund is $%2.\n"
 "That's %3% of our monthly goal ( $%4 )\n\n"
 "Click on this button to join the development fund!"
-msgstr "本月， %1 的基金为 %2 美元。\n"
-"这是我们每月目标的 %3 % ( $ %4 )\n\n"
-"点击此按钮加入开发基金！"
+msgstr "本月的 %1 資金為 $%2。\n"
+"是我們每月目標 (%4) 的 %3% \n\n"
+"點這個按鈕加入開發資金！"
 
 #. "path for a file or a folder"
 #: DuAEF.jsxinc:13801
 #, qt-format
 msgctxt "file system"
 msgid "Path..."
-msgstr "路径..."
+msgstr "路徑..."
 
 #: DuAEF.jsxinc:14569
 #, qt-format
 msgid "Set a random value."
-msgstr "设置一个随机值。"
+msgstr "設定一個隨機數值。"
 
 #: DuAEF.jsxinc:14847
 #, qt-format
 msgid "Magic is happening"
-msgstr "神奇的事情正在发生"
+msgstr "魔法正在發生"
 
 #: DuAEF.jsxinc:14872
 #, qt-format
@@ -628,34 +628,34 @@ msgstr "工作中"
 #, qt-format
 msgctxt "project"
 msgid "Item"
-msgstr "项目"
+msgstr "項目"
 
 #. "as in "run script""
 #: DuAEF.jsxinc:15316
 #, qt-format
 msgctxt "file"
 msgid "Run"
-msgstr "执行"
+msgstr "執行"
 
 #: DuAEF.jsxinc:15317
 #, qt-format
 msgid "Open folder"
-msgstr "打开文件夹"
+msgstr "開啟資料夾"
 
 #: DuAEF.jsxinc:15318
 #, qt-format
 msgid "Add item or category"
-msgstr "添加项目或类别"
+msgstr "加入項目或類別"
 
 #: DuAEF.jsxinc:15319
 #, qt-format
 msgid "Edit item or category"
-msgstr "编辑项目或类别"
+msgstr "編輯項目或類別"
 
 #: DuAEF.jsxinc:15320
 #, qt-format
 msgid "Remove item or category"
-msgstr "移除项目或类别"
+msgstr "移除項目或類別"
 
 #: DuAEF.jsxinc:15494
 #, qt-format
@@ -666,18 +666,18 @@ msgstr "找不到項目。"
 #: DuAEF.jsxinc:15579
 #, qt-format
 msgid "Start typing..."
-msgstr "开始输入..."
+msgstr "開始輸入..."
 
 #. "refresh a list"
 #: DuAEF.jsxinc:15707
 #, qt-format
 msgid "Refresh"
-msgstr "刷新"
+msgstr "重新整理"
 
 #: DuAEF.jsxinc:15725
 #, qt-format
 msgid "Category"
-msgstr "类别"
+msgstr "類別"
 
 #: DuAEF.jsxinc:17004
 #, qt-format
@@ -687,7 +687,7 @@ msgstr "手臂"
 #: DuAEF.jsxinc:17062
 #, qt-format
 msgid "Shoulder"
-msgstr "肩膀"
+msgstr "肩部"
 
 #: DuAEF.jsxinc:17111
 #, qt-format
@@ -702,7 +702,7 @@ msgstr "手部"
 #: DuAEF.jsxinc:17193
 #, qt-format
 msgid "Claws"
-msgstr "爪子"
+msgstr "爪"
 
 #: DuAEF.jsxinc:17229
 #, qt-format
@@ -712,7 +712,7 @@ msgstr "提示"
 #: DuAEF.jsxinc:17270
 #, qt-format
 msgid "Heel"
-msgstr "脚跟"
+msgstr "腳跟"
 
 #: DuAEF.jsxinc:17332
 #, qt-format
@@ -727,7 +727,7 @@ msgstr "大腿"
 #: DuAEF.jsxinc:17379
 #, qt-format
 msgid "Calf"
-msgstr "腿肚"
+msgstr "小腿"
 
 #: DuAEF.jsxinc:17400
 #, qt-format
@@ -742,12 +742,12 @@ msgstr "脚趾"
 #: DuAEF.jsxinc:17436
 #, qt-format
 msgid "Hoof"
-msgstr "蹄子"
+msgstr "蹄"
 
 #: DuAEF.jsxinc:17507
 #, qt-format
 msgid "Spine"
-msgstr "脊柱"
+msgstr "脊椎"
 
 #: DuAEF.jsxinc:17525
 #, qt-format
@@ -757,27 +757,27 @@ msgstr "臀部"
 #: DuAEF.jsxinc:17546
 #, qt-format
 msgid "Torso"
-msgstr "躯干"
+msgstr "軀體"
 
 #: DuAEF.jsxinc:17567
 #, qt-format
 msgid "Neck"
-msgstr "颈部"
+msgstr "頸部"
 
 #: DuAEF.jsxinc:17576
 #, qt-format
 msgid "Head"
-msgstr "头部"
+msgstr "頭部"
 
 #: DuAEF.jsxinc:17612
 #, qt-format
 msgid "Tail"
-msgstr "尾巴"
+msgstr "尾部"
 
 #: DuAEF.jsxinc:17651
 #, qt-format
 msgid "Hair"
-msgstr "头发"
+msgstr "頭髮"
 
 #: DuAEF.jsxinc:17713
 #, qt-format
@@ -806,7 +806,7 @@ msgstr "魚骨"
 #, qt-format
 msgctxt "Select"
 msgid "None"
-msgstr "无"
+msgstr "無"
 
 #: DuAEF.jsxinc:19907
 #, qt-format
@@ -842,12 +842,12 @@ msgstr "'%1' 面板並沒有安裝。"
 #: DuAEF.jsxinc:29093
 #, qt-format
 msgid "You're starting a process which can take some time."
-msgstr ""
+msgstr "您開始了一個會花一些時間的處理。"
 
 #: DuAEF.jsxinc:29094
 #, qt-format
 msgid "Hiding layer controls will improve performance a lot. Do you want to toggle layer controls now?"
-msgstr ""
+msgstr "隱藏圖層控制器將會大幅改善效能。您現在要開關圖層控制器嗎？"
 
 #: DuAEF.jsxinc:29095
 #, qt-format
@@ -889,7 +889,7 @@ msgstr "魔法正在發生..."
 #: DuAEF.jsxinc:29639
 #, qt-format
 msgid "Project Root"
-msgstr "工程根目录"
+msgstr "專案根目錄"
 
 #: DuAEF.jsxinc:30655
 #, qt-format
@@ -911,17 +911,17 @@ msgstr "矩形"
 #: DuAEF.jsxinc:30761
 #, qt-format
 msgid "Rounded rectangle"
-msgstr "圆角矩形"
+msgstr "圓角矩形"
 
 #: DuAEF.jsxinc:30767
 #, qt-format
 msgid "Circle"
-msgstr "圆形"
+msgstr "圓形"
 
 #: DuAEF.jsxinc:30772
 #, qt-format
 msgid "Polygon"
-msgstr "多边形"
+msgstr "多邊形"
 
 #: DuAEF.jsxinc:30778
 #, qt-format
@@ -931,18 +931,18 @@ msgstr "星形"
 #: DuAEF.jsxinc:31643
 #, qt-format
 msgid "The pseudo effect file does not exist."
-msgstr "伪效果文件不存在."
+msgstr "偽效果檔案不存在。"
 
 #: DuAEF.jsxinc:31705
 #, qt-format
 msgid "Invalid pseudo effect file or match name."
-msgstr "非法的伪效果文件或匹配名称."
+msgstr "無效的偽效果檔案或不符合名稱。"
 
 #: DuAEF.jsxinc:31877
 #, qt-format
 msgctxt "in layer name"
 msgid "Edit mode"
-msgstr "编辑模式"
+msgstr "編輯模式"
 
 #: DuAEF.jsxinc:32701
 #, qt-format
@@ -952,102 +952,102 @@ msgstr "定位器"
 #: propPanel.jsx:9
 #, qt-format
 msgid "Hierarchy: Orphans"
-msgstr "层级: 不存在子级"
+msgstr "層級: 無父級"
 
 #: propPanel.jsx:10
 #, qt-format
 msgid "Hierarchy: Have children"
-msgstr "层级: 存在子级"
+msgstr "層級: 有子級"
 
 #: propPanel.jsx:12
 #, qt-format
 msgid "Type: Pre-compositions"
-msgstr "类型: 预合成"
+msgstr "類型: 預先合成"
 
 #: propPanel.jsx:13
 #, qt-format
 msgid "Type: Null Objects"
-msgstr "类型: 空对象"
+msgstr "類型: 空物件"
 
 #: propPanel.jsx:14
 #, qt-format
 msgid "Type: Solids"
-msgstr "类型: 纯色"
+msgstr "類型: 純色"
 
 #: propPanel.jsx:15
 #, qt-format
 msgid "Type: Shapes"
-msgstr "类型: 形状"
+msgstr "類型: 形狀"
 
 #: propPanel.jsx:16
 #, qt-format
 msgid "Type: Texts"
-msgstr "类型: 文本"
+msgstr "類型: 文字"
 
 #: propPanel.jsx:17
 #, qt-format
 msgid "Type: Adjustment"
-msgstr "类型: 调整"
+msgstr "類型: 調整"
 
 #: propPanel.jsx:18
 #, qt-format
 msgid "Type: Lights"
-msgstr "类型: 灯光"
+msgstr "類型: 燈光"
 
 #: propPanel.jsx:19
 #, qt-format
 msgid "Type: Cameras"
-msgstr "类型: 摄像机"
+msgstr "類型: 攝影機"
 
 #: propPanel.jsx:20
 #, qt-format
 msgid "Type: 3D Models"
-msgstr ""
+msgstr "類型: 3D模型"
 
 #: propPanel.jsx:22
 #, qt-format
 msgid "Attribute: Visible"
-msgstr "属性: 可见性"
+msgstr "性質: 可見"
 
 #: propPanel.jsx:23
 #, qt-format
 msgid "Attribute: Has Audio"
-msgstr "属性: 存在音频"
+msgstr "性質: 有音訊"
 
 #: propPanel.jsx:24
 #, qt-format
 msgid "Attribute: Solo"
-msgstr "属性: 单独显示"
+msgstr "性質: 獨立顯示"
 
 #: propPanel.jsx:25
 #, qt-format
 msgid "Attribute: Locked"
-msgstr "属性: 锁定"
+msgstr "性質: 鎖定"
 
 #: propPanel.jsx:26
 #, qt-format
 msgid "Attribute: Shy"
-msgstr "属性: 害羞"
+msgstr "性質: 害羞"
 
 #: propPanel.jsx:27
 #, qt-format
 msgid "Attribute: Effects"
-msgstr "属性: 效果"
+msgstr "性質: 效果"
 
 #: propPanel.jsx:28
 #, qt-format
 msgid "Attribute: Motion Blur"
-msgstr "属性: 运动模糊"
+msgstr "性質: 動態模糊"
 
 #: propPanel.jsx:29
 #, qt-format
 msgid "Attribute: 3D"
-msgstr "属性: 3D"
+msgstr "性質: 3D"
 
 #: propPanel.jsx:30
 #, qt-format
 msgid "Attribute: Guide"
-msgstr "属性:参考线"
+msgstr "性質: 參考"
 
 #: propPanel.jsx:32
 #, qt-format
@@ -1167,17 +1167,17 @@ msgstr "顯示 Ae 圖層切換"
 #: settings.jsx:15
 #, qt-format
 msgid "Locked layers: deny changes"
-msgstr "已锁图层：拒绝更改"
+msgstr "已鎖定圖層: 拒絕修改"
 
 #: settings.jsx:17
 #, qt-format
 msgid "What to do if a layer is locked."
-msgstr "当图层被锁定时要做什么。"
+msgstr "如果圖層被鎖定時要如何處理。"
 
 #: settings.jsx:18
 #, qt-format
 msgid "Locked layers: allow changes"
-msgstr "已锁图层：允许更改"
+msgstr "已鎖定圖層: 允許修改"
 
 #: settings.jsx:23
 #, qt-format
@@ -1187,62 +1187,62 @@ msgstr "要使用的警告框架類型"
 #: settings.jsx:25
 #, qt-format
 msgid "Warning frame: None"
-msgstr "警告帧：无"
+msgstr "警告框架: 無"
 
 #: settings.jsx:27
 #, qt-format
 msgid "Don't use any warning frame."
-msgstr "不使用任何警告帧。"
+msgstr "不要使用任何警告框架。"
 
 #: settings.jsx:30
 #, qt-format
 msgid "Warning frame: Above"
-msgstr "警告帧：以上"
+msgstr "警告框架: 上方"
 
 #: settings.jsx:32
 #, qt-format
 msgid "Draw the frame above the composition."
-msgstr "在合成上方绘制帧。"
+msgstr "在合成的上方繪製框架。"
 
 #: settings.jsx:35
 #, qt-format
 msgid "Warning frame: Below"
-msgstr "警告帧：以下"
+msgstr "警告框架: 下方"
 
 #: settings.jsx:37
 #, qt-format
 msgid "Draw the frame below the composition."
-msgstr "在合成下方绘制帧。"
+msgstr "在合成的下方繪製框架。"
 
 #: settings.jsx:44
 #, qt-format
 msgid "Isolation: hide layers"
-msgstr "隔离状态：隐藏图层"
+msgstr "隔離: 隱藏圖層"
 
 #: settings.jsx:46
 #, qt-format
 msgid "Method used to isolate layers in the composition."
-msgstr "用于隔离合成里的图层的方法。"
+msgstr "在合成內用於隔離圖層的方法。"
 
 #: settings.jsx:47
 #, qt-format
 msgid "Isolation: wireframe"
-msgstr "隔离状态：线框"
+msgstr "隔離: 線框"
 
 #: settings.jsx:54
 #, qt-format
 msgid "Hide markers"
-msgstr "隐藏标记"
+msgstr "隱藏標記"
 
 #: settings.jsx:56
 #, qt-format
 msgid "whether to show or hide the tags on the layers."
-msgstr "是否显示或隐藏图层上的标签。"
+msgstr "是否顯示或隱藏圖層上的標記。"
 
 #: settings.jsx:57
 #, qt-format
 msgid "Show markers"
-msgstr "显示标记"
+msgstr "顯示標記"
 
 #: settings.jsx:63
 #, qt-format
@@ -1257,10 +1257,10 @@ msgstr "當選取群組或屬性時自動選取圖層。"
 #: settings.jsx:71
 #, qt-format
 msgid "Lock hidden layers"
-msgstr "锁定隐藏图层"
+msgstr "鎖定隱藏圖層"
 
 #: settings.jsx:73
 #, qt-format
 msgid "whether the hidden layers have to be locked."
-msgstr "是否隐藏的图层必须被锁定。"
+msgstr "是否必須鎖定隱藏的圖層。"
 
