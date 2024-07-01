@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 14:02\n"
+"PO-Revision-Date: 2024-07-01 04:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "取消"
 #: DuGR_isolateGroup.jsx:23
 #, qt-format
 msgid "Exit isolation"
-msgstr ""
+msgstr "退出隔離"
 
 #: DuGR_isolateGroup.jsx:24
 #, qt-format
@@ -170,22 +170,22 @@ msgstr "设定质量"
 #: mainPanel.jsx:237
 #, qt-format
 msgid "Toggle effects"
-msgstr "切换特效"
+msgstr "開關效果"
 
 #: mainPanel.jsx:243
 #, qt-format
 msgid "Set frame blending mode"
-msgstr "设定帧混合模式"
+msgstr "設定影格混合模式"
 
 #: mainPanel.jsx:249
 #, qt-format
 msgid "Toggle motion blur"
-msgstr "切换运动模糊"
+msgstr "開關動態模糊"
 
 #: mainPanel.jsx:255
 #, qt-format
 msgid "Toggle adjustment layer mode"
-msgstr "切换调整图层模式"
+msgstr "開關調整圖層模式"
 
 #: mainPanel.jsx:261
 #, qt-format
@@ -200,17 +200,17 @@ msgstr "所选图层"
 #: mainPanel.jsx:515
 #, qt-format
 msgid "Active Composition"
-msgstr ""
+msgstr "動作中的合成"
 
 #: mainPanel.jsx:520
 #, qt-format
 msgid "Active and Pre-compositions"
-msgstr ""
+msgstr "動作中和預先合成"
 
 #: mainPanel.jsx:525
 #, qt-format
 msgid "All Composition"
-msgstr ""
+msgstr "全部的合成"
 
 #: mainPanel.jsx:536
 #, qt-format
@@ -852,7 +852,7 @@ msgstr ""
 #: DuAEF.jsxinc:29095
 #, qt-format
 msgid "If layer controls are already hidden, you can ignore this."
-msgstr ""
+msgstr "如果圖層控制器已經被隱藏，您可以忽略這個。"
 
 #: DuAEF.jsxinc:29099
 #, qt-format
