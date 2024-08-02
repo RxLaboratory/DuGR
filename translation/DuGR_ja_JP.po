@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dugr\n"
 "POT-Creation-Date: 2024-03-26 10:30\n"
-"PO-Revision-Date: 2024-06-18 12:05\n"
+"PO-Revision-Date: 2024-08-02 09:48\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -277,7 +277,7 @@ msgstr ""
 #, qt-format
 msgctxt "DuGR selector"
 msgid "Show layer attributes"
-msgstr ""
+msgstr "レイヤー属性を見る"
 
 #: mainPanel.jsx:559
 #, qt-format
@@ -361,7 +361,7 @@ msgstr ""
 #: mainPanel.jsx:626
 #, qt-format
 msgid "Search..."
-msgstr ""
+msgstr "検索…"
 
 #: DuAEF.jsxinc:3162
 #, qt-format
@@ -371,7 +371,7 @@ msgstr ""
 #: DuAEF.jsxinc:10244
 #, qt-format
 msgid "Keep this panel open"
-msgstr ""
+msgstr "パネルを開いたまま"
 
 #: DuAEF.jsxinc:10845
 #, qt-format
@@ -588,7 +588,7 @@ msgstr ""
 #: DuAEF.jsxinc:12289
 #, qt-format
 msgid "New version"
-msgstr ""
+msgstr "新しいバージョン"
 
 #: DuAEF.jsxinc:12433
 #, qt-format
@@ -827,7 +827,7 @@ msgstr ""
 #: DuAEF.jsxinc:19923
 #, qt-format
 msgid "All compositions"
-msgstr ""
+msgstr "全てのコンポジション"
 
 #. "%1 will be the name of the panel"
 #: DuAEF.jsxinc:21196
@@ -884,7 +884,7 @@ msgstr ""
 #: DuAEF.jsxinc:29639
 #, qt-format
 msgid "Project Root"
-msgstr ""
+msgstr "プロジェクトルート"
 
 #: DuAEF.jsxinc:30655
 #, qt-format
@@ -1252,7 +1252,7 @@ msgstr ""
 #: settings.jsx:71
 #, qt-format
 msgid "Lock hidden layers"
-msgstr ""
+msgstr "隠れたレイヤーをロック"
 
 #: settings.jsx:73
 #, qt-format
